@@ -1,0 +1,24 @@
+trigger:
+  - branches:
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'  # Adjust VM image if needed
+
+steps:
+  - task: DownloadSources
+    displayName: 'Download Sources'
+    inputs:
+      sourceRepository: '$(System.DefaultWorkingDirectory)'
+
+  - script: |  # Multi-line script for clarity
+    git config --global user.name 'amirhome'  # Replace with your username
+    git config --global user.email 'amir.email@yahoo.com'  # Replace with your email
+    //git remote add backup https://<backup_url>.git  # Replace with your backup remote URL
+    git push backup --mirror  # Push all branches to backup remote
+
+  - task: Publish
+    displayName: 'Publish'
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)'
+
