@@ -12,7 +12,6 @@ pool:
 steps:
 
 - script: |
-    git checkout master
     git status
     ls -alt
     git config --global user.name 'Amir-Azure'
