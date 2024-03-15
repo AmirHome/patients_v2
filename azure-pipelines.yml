@@ -20,6 +20,7 @@ steps:
 
 - script: |  # Multi-line script for clarity
     git --version
+    cat .git/config
     #git config --global user.name 'AmirHome'  # Replace with your username
     #git config --global user.email 'amir.email@yahoo.com'  # Replace with your email
     # git remote add backup https://<backup_url>.git  # Replace with your backup remote URL
