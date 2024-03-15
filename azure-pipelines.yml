@@ -18,7 +18,7 @@ steps:
     git config --global user.name 'Amir-Azure'
     git config --global user.email 'amir.hosseinzadeh@echontech.com.tr'
 
-    git pull origin master
+    git pull https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git
 
 
     #git remote add github https://github.com/AmirHome/patients_v2.git
@@ -26,7 +26,6 @@ steps:
     #git branch
     #git checkout -b master
     
-    #git pull https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git
 
     #git push https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git HEAD:master
     #git push -u github master
