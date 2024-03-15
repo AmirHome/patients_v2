@@ -19,9 +19,9 @@ steps:
   displayName: 'Run a multi-line script'
 
 - script: |  # Multi-line script for clarity
-    git --version
     git config --global user.name 'AmirHome'  # Replace with your username
     git config --global user.email 'amir.email@yahoo.com'  # Replace with your email
-    cat .git/config
-    # git remote add backup https://amirhosseinzadeh@dev.azure.com/amirhosseinzadeh
-    #git push backup --mirror  # Push all branches to backup remote
+    git remote add github https://github.com/AmirHome/patients_v2.git
+    # cat .git/config
+    # git push -u github master
+    git push github --mirror  # Push all branches to backup remote
