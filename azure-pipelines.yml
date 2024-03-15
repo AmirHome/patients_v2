@@ -22,12 +22,9 @@ steps:
     git config --global user.name 'AmirHome'
     git config --global user.email 'amir.email@yahoo.com'
     #git remote add github https://github.com/AmirHome/patients_v2.git
-    cat .git/config
+    #cat .git/config
     #git branch
     #git checkout -b master
 
     git push https://amir.email@yahoo.com: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@github.com/AmirHome/patients_v2.git master
     #git push -u github master
-    #git push -u https://amir.email@yahoo.com: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@github.com/AmirHome/patients_v2.git github master
-
-    # git push github --mirror  # Push all branches to backup remote
