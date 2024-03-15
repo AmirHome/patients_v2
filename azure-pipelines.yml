@@ -20,8 +20,8 @@ steps:
 
 - script: |  # Multi-line script for clarity
     git --version
+    git config --global user.name 'AmirHome'  # Replace with your username
+    git config --global user.email 'amir.email@yahoo.com'  # Replace with your email
     cat .git/config
-    #git config --global user.name 'AmirHome'  # Replace with your username
-    #git config --global user.email 'amir.email@yahoo.com'  # Replace with your email
-    # git remote add backup https://<backup_url>.git  # Replace with your backup remote URL
+    # git remote add backup https://amirhosseinzadeh@dev.azure.com/amirhosseinzadeh
     #git push backup --mirror  # Push all branches to backup remote
