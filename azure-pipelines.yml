@@ -10,18 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- script: |  # Multi-line script for clarity
     git config --global user.name 'Amir-Azure'
     git config --global user.email 'amir.hosseinzadeh@echontech.com.tr'
-    
+    git push https://amir.email%40yahoo.com:***@github.com/AmirHome/patients_v2.git HEAD:master
+
     #git remote add github https://github.com/AmirHome/patients_v2.git
     #cat .git/config
     #git branch
