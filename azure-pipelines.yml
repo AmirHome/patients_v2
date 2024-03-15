@@ -18,6 +18,9 @@ steps:
     git config --global user.name 'Amir-Azure'
     git config --global user.email 'amir.hosseinzadeh@echontech.com.tr'
 
+    git pull origin master
+
+
     #git remote add github https://github.com/AmirHome/patients_v2.git
     #cat .git/config
     #git branch
