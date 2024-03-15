@@ -26,5 +26,5 @@ steps:
     #git branch
     #git checkout -b master
 
-    git push https://amir.email@yahoo.com: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@github.com/AmirHome/patients_v2.git master
+    git push https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git master
     #git push -u github master
