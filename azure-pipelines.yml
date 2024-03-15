@@ -19,12 +19,13 @@ steps:
   displayName: 'Run a multi-line script'
 
 - script: |  # Multi-line script for clarity
-    git config --global user.name 'AmirHome'
-    git config --global user.email 'amir.email@yahoo.com'
+    git config --global user.name 'Amir-Azure'
+    git config --global user.email 'amir.hosseinzadeh@echontech.com.tr'
+    
     #git remote add github https://github.com/AmirHome/patients_v2.git
     #cat .git/config
     #git branch
     #git checkout -b master
 
-    git push https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git master
+    git push https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git
     #git push -u github master
