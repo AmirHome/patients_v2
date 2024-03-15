@@ -24,4 +24,5 @@ steps:
     git remote add github https://github.com/AmirHome/patients_v2.git
     # cat .git/config
     # git push -u github master
-    git push github --mirror  # Push all branches to backup remote
+    # git push github --mirror  # Push all branches to backup remote
+    git push --tags https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git
