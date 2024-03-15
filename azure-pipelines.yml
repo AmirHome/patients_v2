@@ -15,7 +15,9 @@ steps:
     git config --global user.name 'Amir-Azure'
     git config --global user.email 'amir.hosseinzadeh@echontech.com.tr'
 
+    git checkout -b master
     git branch --show-current
+    git branch
     #git push https://amir.email%40yahoo.com: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@github.com/AmirHome/patients_v2.git HEAD:master --force
 
 
