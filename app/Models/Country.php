@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, Auditable, HasFactory;
 
     public $table = 'countries';
 
@@ -22,6 +23,7 @@ class Country extends Model
     protected $fillable = [
         'name',
         'short_code',
+        'code_inc',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -116,6 +116,45 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('expense-reports/destroy', 'ExpenseReportController@massDestroy')->name('expense-reports.massDestroy');
     Route::resource('expense-reports', 'ExpenseReportController');
 
+    // Campaign Channels
+    Route::delete('campaign-channels/destroy', 'CampaignChannelsController@massDestroy')->name('campaign-channels.massDestroy');
+    Route::resource('campaign-channels', 'CampaignChannelsController');
+
+    // Campaign Org
+    Route::delete('campaign-orgs/destroy', 'CampaignOrgController@massDestroy')->name('campaign-orgs.massDestroy');
+    Route::resource('campaign-orgs', 'CampaignOrgController');
+
+    // Translator
+    Route::delete('translators/destroy', 'TranslatorController@massDestroy')->name('translators.massDestroy');
+    Route::resource('translators', 'TranslatorController');
+
+    // Ministries
+    Route::delete('ministries/destroy', 'MinistriesController@massDestroy')->name('ministries.massDestroy');
+    Route::resource('ministries', 'MinistriesController');
+
+    // Settings
+    Route::resource('settings', 'SettingsController', ['except' => ['create', 'store', 'destroy']]);
+
+    // Travel Group
+    Route::delete('travel-groups/destroy', 'TravelGroupController@massDestroy')->name('travel-groups.massDestroy');
+    Route::resource('travel-groups', 'TravelGroupController');
+
+    // Department
+    Route::delete('departments/destroy', 'DepartmentController@massDestroy')->name('departments.massDestroy');
+    Route::resource('departments', 'DepartmentController');
+
+    // Office
+    Route::delete('offices/destroy', 'OfficeController@massDestroy')->name('offices.massDestroy');
+    Route::resource('offices', 'OfficeController');
+
+    // Hospital
+    Route::delete('hospitals/destroy', 'HospitalController@massDestroy')->name('hospitals.massDestroy');
+    Route::resource('hospitals', 'HospitalController');
+
+    // Doctor
+    Route::delete('doctors/destroy', 'DoctorController@massDestroy')->name('doctors.massDestroy');
+    Route::resource('doctors', 'DoctorController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

@@ -16,7 +16,7 @@
             </a>
         </li>
         @can('user_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }} {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
@@ -44,16 +44,38 @@
                             </a>
                         </li>
                     @endcan
-                    @can('team_access')
+                    @can('user_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.teams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
+                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.team.title') }}
+                                {{ trans('cruds.user.title') }}
                             </a>
                         </li>
                     @endcan
+                    @can('audit_log_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.audit-logs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.auditLog.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
+        @can('definition_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.definition.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
                     @can('country_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.countries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/countries") || request()->is("admin/countries/*") ? "c-active" : "" }}">
@@ -74,23 +96,113 @@
                             </a>
                         </li>
                     @endcan
-                    @can('user_access')
+                    @can('team_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
+                            <a href="{{ route("admin.teams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.user.title') }}
+                                {{ trans('cruds.team.title') }}
                             </a>
                         </li>
                     @endcan
-                    @can('audit_log_access')
+                    @can('campaign_channel_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.audit-logs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
+                            <a href="{{ route("admin.campaign-channels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/campaign-channels") || request()->is("admin/campaign-channels/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.auditLog.title') }}
+                                {{ trans('cruds.campaignChannel.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('campaign_org_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.campaign-orgs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/campaign-orgs") || request()->is("admin/campaign-orgs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.campaignOrg.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('translator_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.translators.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/translators") || request()->is("admin/translators/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.translator.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('ministry_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.ministries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/ministries") || request()->is("admin/ministries/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.ministry.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('setting_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.setting.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('travel_group_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.travel-groups.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-groups") || request()->is("admin/travel-groups/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.travelGroup.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('department_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.departments.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/departments") || request()->is("admin/departments/*") ? "c-active" : "" }}">
+                                <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.department.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('office_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.offices.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/offices") || request()->is("admin/offices/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.office.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('hospital_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.hospitals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hospitals") || request()->is("admin/hospitals/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.hospital.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('doctor_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.doctors.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/doctors") || request()->is("admin/doctors/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.doctor.title') }}
                             </a>
                         </li>
                     @endcan

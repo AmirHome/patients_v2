@@ -31,6 +31,16 @@
                 <span class="help-block">{{ trans('cruds.country.fields.short_code_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="code_inc">{{ trans('cruds.country.fields.code_inc') }}</label>
+                <input class="form-control {{ $errors->has('code_inc') ? 'is-invalid' : '' }}" type="number" name="code_inc" id="code_inc" value="{{ old('code_inc', $country->code_inc) }}" step="1" required>
+                @if($errors->has('code_inc'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('code_inc') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.country.fields.code_inc_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

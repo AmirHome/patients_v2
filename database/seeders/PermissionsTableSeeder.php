@@ -480,6 +480,202 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 118,
+                'title' => 'definition_access',
+            ],
+            [
+                'id'    => 119,
+                'title' => 'campaign_channel_create',
+            ],
+            [
+                'id'    => 120,
+                'title' => 'campaign_channel_edit',
+            ],
+            [
+                'id'    => 121,
+                'title' => 'campaign_channel_show',
+            ],
+            [
+                'id'    => 122,
+                'title' => 'campaign_channel_delete',
+            ],
+            [
+                'id'    => 123,
+                'title' => 'campaign_channel_access',
+            ],
+            [
+                'id'    => 124,
+                'title' => 'campaign_org_create',
+            ],
+            [
+                'id'    => 125,
+                'title' => 'campaign_org_edit',
+            ],
+            [
+                'id'    => 126,
+                'title' => 'campaign_org_show',
+            ],
+            [
+                'id'    => 127,
+                'title' => 'campaign_org_delete',
+            ],
+            [
+                'id'    => 128,
+                'title' => 'campaign_org_access',
+            ],
+            [
+                'id'    => 129,
+                'title' => 'translator_create',
+            ],
+            [
+                'id'    => 130,
+                'title' => 'translator_edit',
+            ],
+            [
+                'id'    => 131,
+                'title' => 'translator_show',
+            ],
+            [
+                'id'    => 132,
+                'title' => 'translator_delete',
+            ],
+            [
+                'id'    => 133,
+                'title' => 'translator_access',
+            ],
+            [
+                'id'    => 134,
+                'title' => 'ministry_create',
+            ],
+            [
+                'id'    => 135,
+                'title' => 'ministry_edit',
+            ],
+            [
+                'id'    => 136,
+                'title' => 'ministry_show',
+            ],
+            [
+                'id'    => 137,
+                'title' => 'ministry_delete',
+            ],
+            [
+                'id'    => 138,
+                'title' => 'ministry_access',
+            ],
+            [
+                'id'    => 139,
+                'title' => 'setting_edit',
+            ],
+            [
+                'id'    => 140,
+                'title' => 'setting_show',
+            ],
+            [
+                'id'    => 141,
+                'title' => 'setting_access',
+            ],
+            [
+                'id'    => 142,
+                'title' => 'travel_group_create',
+            ],
+            [
+                'id'    => 143,
+                'title' => 'travel_group_edit',
+            ],
+            [
+                'id'    => 144,
+                'title' => 'travel_group_show',
+            ],
+            [
+                'id'    => 145,
+                'title' => 'travel_group_delete',
+            ],
+            [
+                'id'    => 146,
+                'title' => 'travel_group_access',
+            ],
+            [
+                'id'    => 147,
+                'title' => 'department_create',
+            ],
+            [
+                'id'    => 148,
+                'title' => 'department_edit',
+            ],
+            [
+                'id'    => 149,
+                'title' => 'department_show',
+            ],
+            [
+                'id'    => 150,
+                'title' => 'department_delete',
+            ],
+            [
+                'id'    => 151,
+                'title' => 'department_access',
+            ],
+            [
+                'id'    => 152,
+                'title' => 'office_create',
+            ],
+            [
+                'id'    => 153,
+                'title' => 'office_edit',
+            ],
+            [
+                'id'    => 154,
+                'title' => 'office_show',
+            ],
+            [
+                'id'    => 155,
+                'title' => 'office_delete',
+            ],
+            [
+                'id'    => 156,
+                'title' => 'office_access',
+            ],
+            [
+                'id'    => 157,
+                'title' => 'hospital_create',
+            ],
+            [
+                'id'    => 158,
+                'title' => 'hospital_edit',
+            ],
+            [
+                'id'    => 159,
+                'title' => 'hospital_show',
+            ],
+            [
+                'id'    => 160,
+                'title' => 'hospital_delete',
+            ],
+            [
+                'id'    => 161,
+                'title' => 'hospital_access',
+            ],
+            [
+                'id'    => 162,
+                'title' => 'doctor_create',
+            ],
+            [
+                'id'    => 163,
+                'title' => 'doctor_edit',
+            ],
+            [
+                'id'    => 164,
+                'title' => 'doctor_show',
+            ],
+            [
+                'id'    => 165,
+                'title' => 'doctor_delete',
+            ],
+            [
+                'id'    => 166,
+                'title' => 'doctor_access',
+            ],
+            [
+                'id'    => 167,
                 'title' => 'profile_password_edit',
             ],
         ];

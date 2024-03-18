@@ -25,6 +25,13 @@ class StoreCountryRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'code_inc' => [
+                'required',
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
         ];
     }
 }
