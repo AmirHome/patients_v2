@@ -49,6 +49,18 @@ class UpdateCrmCustomerRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'birthday' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'city_id' => [
+                'required',
+                'integer',
+            ],
+            'campaign_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

@@ -243,6 +243,12 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted At',
             'deleted_at_helper'  => ' ',
+            'birthday'           => 'Birthday',
+            'birthday_helper'    => ' ',
+            'city'               => 'City',
+            'city_helper'        => ' ',
+            'campaign'           => 'Campaign',
+            'campaign_helper'    => ' ',
         ],
     ],
     'crmNote' => [

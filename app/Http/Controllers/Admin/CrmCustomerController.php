@@ -6,21 +6,93 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyCrmCustomerRequest;
 use App\Http\Requests\StoreCrmCustomerRequest;
 use App\Http\Requests\UpdateCrmCustomerRequest;
+use App\Models\CampaignOrg;
 use App\Models\CrmCustomer;
 use App\Models\CrmStatus;
+use App\Models\Province;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class CrmCustomerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomers = CrmCustomer::with(['status'])->get();
+        if ($request->ajax()) {
+            $query = CrmCustomer::with(['status', 'city', 'campaign'])->select(sprintf('%s.*', (new CrmCustomer)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.crmCustomers.index', compact('crmCustomers'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'crm_customer_show';
+                $editGate      = 'crm_customer_edit';
+                $deleteGate    = 'crm_customer_delete';
+                $crudRoutePart = 'crm-customers';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('first_name', function ($row) {
+                return $row->first_name ? $row->first_name : '';
+            });
+            $table->editColumn('last_name', function ($row) {
+                return $row->last_name ? $row->last_name : '';
+            });
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+
+            $table->editColumn('email', function ($row) {
+                return $row->email ? $row->email : '';
+            });
+            $table->editColumn('phone', function ($row) {
+                return $row->phone ? $row->phone : '';
+            });
+            $table->editColumn('address', function ($row) {
+                return $row->address ? $row->address : '';
+            });
+            $table->editColumn('skype', function ($row) {
+                return $row->skype ? $row->skype : '';
+            });
+            $table->editColumn('website', function ($row) {
+                return $row->website ? $row->website : '';
+            });
+            $table->editColumn('description', function ($row) {
+                return $row->description ? $row->description : '';
+            });
+
+            $table->addColumn('city_name', function ($row) {
+                return $row->city ? $row->city->name : '';
+            });
+
+            $table->addColumn('campaign_title', function ($row) {
+                return $row->campaign ? $row->campaign->title : '';
+            });
+
+            $table->editColumn('campaign.started_at', function ($row) {
+                return $row->campaign ? (is_string($row->campaign) ? $row->campaign : $row->campaign->started_at) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'city', 'campaign']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.crmCustomers.index');
     }
 
     public function create()
@@ -29,7 +101,11 @@ class CrmCustomerController extends Controller
 
         $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.create', compact('statuses'));
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.crmCustomers.create', compact('campaigns', 'cities', 'statuses'));
     }
 
     public function store(StoreCrmCustomerRequest $request)
@@ -45,9 +121,13 @@ class CrmCustomerController extends Controller
 
         $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $crmCustomer->load('status');
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.edit', compact('crmCustomer', 'statuses'));
+        $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $crmCustomer->load('status', 'city', 'campaign');
+
+        return view('admin.crmCustomers.edit', compact('campaigns', 'cities', 'crmCustomer', 'statuses'));
     }
 
     public function update(UpdateCrmCustomerRequest $request, CrmCustomer $crmCustomer)
@@ -61,7 +141,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomer->load('status');
+        $crmCustomer->load('status', 'city', 'campaign');
 
         return view('admin.crmCustomers.show', compact('crmCustomer'));
     }

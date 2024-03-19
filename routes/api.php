@@ -11,6 +11,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Province
     Route::apiResource('provinces', 'ProvinceApiController');
 
+    // Crm Customer
+    Route::apiResource('crm-customers', 'CrmCustomerApiController');
+
     // Campaign Channels
     Route::apiResource('campaign-channels', 'CampaignChannelsApiController');
 

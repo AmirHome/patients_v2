@@ -105,6 +105,44 @@
                 <span class="help-block">{{ trans('cruds.crmCustomer.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="birthday">{{ trans('cruds.crmCustomer.fields.birthday') }}</label>
+                <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}" type="text" name="birthday" id="birthday" value="{{ old('birthday', $crmCustomer->birthday) }}">
+                @if($errors->has('birthday'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('birthday') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmCustomer.fields.birthday_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="city_id">{{ trans('cruds.crmCustomer.fields.city') }}</label>
+                <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" required>
+                    @foreach($cities as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('city_id') ? old('city_id') : $crmCustomer->city->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('city'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('city') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmCustomer.fields.city_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="campaign_id">{{ trans('cruds.crmCustomer.fields.campaign') }}</label>
+                <select class="form-control select2 {{ $errors->has('campaign') ? 'is-invalid' : '' }}" name="campaign_id" id="campaign_id" required>
+                    @foreach($campaigns as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('campaign_id') ? old('campaign_id') : $crmCustomer->campaign->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('campaign'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('campaign') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmCustomer.fields.campaign_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

@@ -18,6 +18,7 @@ class CreateCrmCustomersTable extends Migration
             $table->string('skype')->nullable();
             $table->string('website')->nullable();
             $table->longText('description')->nullable();
+            $table->date('birthday')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

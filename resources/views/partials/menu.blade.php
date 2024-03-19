@@ -16,7 +16,7 @@
             </a>
         </li>
         @can('user_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
@@ -64,11 +64,21 @@
                             </a>
                         </li>
                     @endcan
+                    @can('team_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.teams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.team.title') }}
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endcan
         @can('definition_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
@@ -93,16 +103,6 @@
 
                                 </i>
                                 {{ trans('cruds.province.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('team_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.teams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.team.title') }}
                             </a>
                         </li>
                     @endcan

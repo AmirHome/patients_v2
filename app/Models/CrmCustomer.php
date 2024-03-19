@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
+use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,11 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CrmCustomer extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, Auditable, HasFactory;
 
     public $table = 'crm_customers';
 
     protected $dates = [
+        'birthday',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -29,6 +32,9 @@ class CrmCustomer extends Model
         'skype',
         'website',
         'description',
+        'birthday',
+        'city_id',
+        'campaign_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -42,5 +48,25 @@ class CrmCustomer extends Model
     public function status()
     {
         return $this->belongsTo(CrmStatus::class, 'status_id');
+    }
+
+    public function getBirthdayAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setBirthdayAttribute($value)
+    {
+        $this->attributes['birthday'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(Province::class, 'city_id');
+    }
+
+    public function campaign()
+    {
+        return $this->belongsTo(CampaignOrg::class, 'campaign_id');
     }
 }

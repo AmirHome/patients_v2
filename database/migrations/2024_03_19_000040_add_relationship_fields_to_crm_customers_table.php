@@ -11,6 +11,10 @@ class AddRelationshipFieldsToCrmCustomersTable extends Migration
         Schema::table('crm_customers', function (Blueprint $table) {
             $table->unsignedBigInteger('status_id')->nullable();
             $table->foreign('status_id', 'status_fk_9599863')->references('id')->on('crm_statuses');
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->foreign('city_id', 'city_fk_9612842')->references('id')->on('provinces');
+            $table->unsignedBigInteger('campaign_id')->nullable();
+            $table->foreign('campaign_id', 'campaign_fk_9612843')->references('id')->on('campaign_orgs');
         });
     }
 }

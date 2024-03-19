@@ -95,6 +95,30 @@
                             {{ $crmCustomer->description }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmCustomer.fields.birthday') }}
+                        </th>
+                        <td>
+                            {{ $crmCustomer->birthday }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmCustomer.fields.city') }}
+                        </th>
+                        <td>
+                            {{ $crmCustomer->city->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmCustomer.fields.campaign') }}
+                        </th>
+                        <td>
+                            {{ $crmCustomer->campaign->title ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
