@@ -53,6 +53,6 @@ class CrmDocument extends Model implements HasMedia
 
     public function getDocumentFileAttribute()
     {
-        return $this->getMedia('document_file')->last();
+        return $this->getMedia('document_file');
     }
 }

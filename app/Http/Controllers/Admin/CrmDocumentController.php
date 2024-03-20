@@ -40,8 +40,8 @@ class CrmDocumentController extends Controller
     {
         $crmDocument = CrmDocument::create($request->all());
 
-        if ($request->input('document_file', false)) {
-            $crmDocument->addMedia(storage_path('tmp/uploads/' . basename($request->input('document_file'))))->toMediaCollection('document_file');
+        foreach ($request->input('document_file', []) as $file) {
+            $crmDocument->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -66,15 +66,18 @@ class CrmDocumentController extends Controller
     {
         $crmDocument->update($request->all());
 
-        if ($request->input('document_file', false)) {
-            if (! $crmDocument->document_file || $request->input('document_file') !== $crmDocument->document_file->file_name) {
-                if ($crmDocument->document_file) {
-                    $crmDocument->document_file->delete();
+        if (count($crmDocument->document_file) > 0) {
+            foreach ($crmDocument->document_file as $media) {
+                if (! in_array($media->file_name, $request->input('document_file', []))) {
+                    $media->delete();
                 }
-                $crmDocument->addMedia(storage_path('tmp/uploads/' . basename($request->input('document_file'))))->toMediaCollection('document_file');
             }
-        } elseif ($crmDocument->document_file) {
-            $crmDocument->document_file->delete();
+        }
+        $media = $crmDocument->document_file->pluck('file_name')->toArray();
+        foreach ($request->input('document_file', []) as $file) {
+            if (count($media) === 0 || ! in_array($file, $media)) {
+                $crmDocument->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file');
+            }
         }
 
         return redirect()->route('admin.crm-documents.index');

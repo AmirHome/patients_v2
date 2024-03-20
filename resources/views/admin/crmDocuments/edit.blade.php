@@ -70,10 +70,10 @@
 
 @section('scripts')
 <script>
-    Dropzone.options.documentFileDropzone = {
+    var uploadedDocumentFileMap = {}
+Dropzone.options.documentFileDropzone = {
     url: '{{ route('admin.crm-documents.storeMedia') }}',
     maxFilesize: 2, // MB
-    maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -82,23 +82,29 @@
       size: 2
     },
     success: function (file, response) {
-      $('form').find('input[name="document_file"]').remove()
-      $('form').append('<input type="hidden" name="document_file" value="' + response.name + '">')
+      $('form').append('<input type="hidden" name="document_file[]" value="' + response.name + '">')
+      uploadedDocumentFileMap[file.name] = response.name
     },
     removedfile: function (file) {
       file.previewElement.remove()
-      if (file.status !== 'error') {
-        $('form').find('input[name="document_file"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedDocumentFileMap[file.name]
       }
+      $('form').find('input[name="document_file[]"][value="' + name + '"]').remove()
     },
     init: function () {
 @if(isset($crmDocument) && $crmDocument->document_file)
-      var file = {!! json_encode($crmDocument->document_file) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="document_file" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
+          var files =
+            {!! json_encode($crmDocument->document_file) !!}
+              for (var i in files) {
+              var file = files[i]
+              this.options.addedfile.call(this, file)
+              file.previewElement.classList.add('dz-complete')
+              $('form').append('<input type="hidden" name="document_file[]" value="' + file.file_name + '">')
+            }
 @endif
     },
      error: function (file, response) {

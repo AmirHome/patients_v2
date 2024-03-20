@@ -36,11 +36,11 @@
                             {{ trans('cruds.crmDocument.fields.document_file') }}
                         </th>
                         <td>
-                            @if($crmDocument->document_file)
-                                <a href="{{ $crmDocument->document_file->getUrl() }}" target="_blank">
+                            @foreach($crmDocument->document_file as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
-                            @endif
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
