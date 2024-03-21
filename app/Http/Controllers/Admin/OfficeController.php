@@ -106,7 +106,7 @@ class OfficeController extends Controller
     {
         abort_if(Gate::denies('office_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $office->load('city');
+        $office->load('city', 'officePatients');
 
         return view('admin.offices.show', compact('office'));
     }

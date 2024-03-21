@@ -155,6 +155,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('doctors/destroy', 'DoctorController@massDestroy')->name('doctors.massDestroy');
     Route::resource('doctors', 'DoctorController');
 
+    // Patient
+    Route::delete('patients/destroy', 'PatientController@massDestroy')->name('patients.massDestroy');
+    Route::post('patients/media', 'PatientController@storeMedia')->name('patients.storeMedia');
+    Route::post('patients/ckmedia', 'PatientController@storeCKEditorImages')->name('patients.storeCKEditorImages');
+    Route::resource('patients', 'PatientController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

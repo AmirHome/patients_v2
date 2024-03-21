@@ -98,7 +98,7 @@ class ProvinceController extends Controller
     {
         abort_if(Gate::denies('province_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $province->load('country');
+        $province->load('country', 'cityPatients');
 
         return view('admin.provinces.show', compact('province'));
     }

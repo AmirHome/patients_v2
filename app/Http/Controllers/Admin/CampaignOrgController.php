@@ -101,7 +101,7 @@ class CampaignOrgController extends Controller
     {
         abort_if(Gate::denies('campaign_org_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $campaignOrg->load('channel');
+        $campaignOrg->load('channel', 'campaignOrgPatients');
 
         return view('admin.campaignOrgs.show', compact('campaignOrg'));
     }

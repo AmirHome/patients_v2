@@ -35,6 +35,11 @@ class Office extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function officePatients()
+    {
+        return $this->hasMany(Patient::class, 'office_id', 'id');
+    }
+
     public function city()
     {
         return $this->belongsTo(Province::class, 'city_id');

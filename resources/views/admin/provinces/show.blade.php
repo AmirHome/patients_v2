@@ -50,6 +50,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#city_patients" role="tab" data-toggle="tab">
+                {{ trans('cruds.patient.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="city_patients">
+            @includeIf('admin.provinces.relationships.cityPatients', ['patients' => $province->cityPatients])
+        </div>
+    </div>
+</div>
 
 @endsection

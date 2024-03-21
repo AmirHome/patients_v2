@@ -33,6 +33,11 @@ class Province extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function cityPatients()
+    {
+        return $this->hasMany(Patient::class, 'city_id', 'id');
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

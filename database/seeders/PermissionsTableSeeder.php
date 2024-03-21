@@ -676,6 +676,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 167,
+                'title' => 'patient_create',
+            ],
+            [
+                'id'    => 168,
+                'title' => 'patient_edit',
+            ],
+            [
+                'id'    => 169,
+                'title' => 'patient_show',
+            ],
+            [
+                'id'    => 170,
+                'title' => 'patient_delete',
+            ],
+            [
+                'id'    => 171,
+                'title' => 'patient_access',
+            ],
+            [
+                'id'    => 172,
                 'title' => 'profile_password_edit',
             ],
         ];

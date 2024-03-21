@@ -41,6 +41,11 @@ class CampaignOrg extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function campaignOrgPatients()
+    {
+        return $this->hasMany(Patient::class, 'campaign_org_id', 'id');
+    }
+
     public function channel()
     {
         return $this->belongsTo(CampaignChannel::class, 'channel_id');
