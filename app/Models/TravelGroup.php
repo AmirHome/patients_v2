@@ -30,4 +30,9 @@ class TravelGroup extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function groupTravels()
+    {
+        return $this->hasMany(Travel::class, 'group_id', 'id');
+    }
 }

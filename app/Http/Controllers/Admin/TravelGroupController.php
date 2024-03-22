@@ -54,6 +54,8 @@ class TravelGroupController extends Controller
     {
         abort_if(Gate::denies('travel_group_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $travelGroup->load('groupTravels');
+
         return view('admin.travelGroups.show', compact('travelGroup'));
     }
 

@@ -34,4 +34,9 @@ class Hospital extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function hospitalTravels()
+    {
+        return $this->hasMany(Travel::class, 'hospital_id', 'id');
+    }
 }

@@ -54,6 +54,8 @@ class DepartmentController extends Controller
     {
         abort_if(Gate::denies('department_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $department->load('departmentTravels');
+
         return view('admin.departments.show', compact('department'));
     }
 

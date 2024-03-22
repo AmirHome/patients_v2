@@ -80,6 +80,11 @@ class Patient extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function patientTravels()
+    {
+        return $this->hasMany(Travel::class, 'patient_id', 'id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

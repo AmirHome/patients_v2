@@ -35,4 +35,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Patient
     Route::post('patients/media', 'PatientApiController@storeMedia')->name('patients.storeMedia');
     Route::apiResource('patients', 'PatientApiController');
+
+    // Travel
+    Route::apiResource('travels', 'TravelApiController');
 });

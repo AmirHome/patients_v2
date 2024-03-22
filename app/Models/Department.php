@@ -30,4 +30,9 @@ class Department extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function departmentTravels()
+    {
+        return $this->hasMany(Travel::class, 'department_id', 'id');
+    }
 }

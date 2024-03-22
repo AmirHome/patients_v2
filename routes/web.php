@@ -161,6 +161,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('patients/ckmedia', 'PatientController@storeCKEditorImages')->name('patients.storeCKEditorImages');
     Route::resource('patients', 'PatientController');
 
+    // Travel
+    Route::delete('travels/destroy', 'TravelController@massDestroy')->name('travels.massDestroy');
+    Route::resource('travels', 'TravelController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

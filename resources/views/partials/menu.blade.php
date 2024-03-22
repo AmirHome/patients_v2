@@ -427,14 +427,36 @@
                 </ul>
             </li>
         @endcan
-        @can('patient_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+        @can('coordination_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-ambulance c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.patient.title') }}
+                    {{ trans('cruds.coordination.title') }}
                 </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('patient_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.patient.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('travel_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.travels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travels") || request()->is("admin/travels/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.travel.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
             </li>
         @endcan
         <li class="c-sidebar-nav-item">
