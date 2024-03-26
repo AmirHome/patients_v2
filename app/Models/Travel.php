@@ -63,6 +63,11 @@ class Travel extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function travelTravelTreatmentActivities()
+    {
+        return $this->hasMany(TravelTreatmentActivity::class, 'travel_id', 'id');
+    }
+
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');

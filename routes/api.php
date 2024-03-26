@@ -38,4 +38,11 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Travel
     Route::apiResource('travels', 'TravelApiController');
+
+    // Travel Treatment Activity
+    Route::post('travel-treatment-activities/media', 'TravelTreatmentActivityApiController@storeMedia')->name('travel-treatment-activities.storeMedia');
+    Route::apiResource('travel-treatment-activities', 'TravelTreatmentActivityApiController');
+
+    // Travel Treatment Status
+    Route::apiResource('travel-treatment-statuses', 'TravelTreatmentStatusApiController');
 });

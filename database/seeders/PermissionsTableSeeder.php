@@ -720,6 +720,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 178,
+                'title' => 'travel_treatment_activity_create',
+            ],
+            [
+                'id'    => 179,
+                'title' => 'travel_treatment_activity_edit',
+            ],
+            [
+                'id'    => 180,
+                'title' => 'travel_treatment_activity_show',
+            ],
+            [
+                'id'    => 181,
+                'title' => 'travel_treatment_activity_delete',
+            ],
+            [
+                'id'    => 182,
+                'title' => 'travel_treatment_activity_access',
+            ],
+            [
+                'id'    => 183,
+                'title' => 'travel_treatment_status_create',
+            ],
+            [
+                'id'    => 184,
+                'title' => 'travel_treatment_status_edit',
+            ],
+            [
+                'id'    => 185,
+                'title' => 'travel_treatment_status_show',
+            ],
+            [
+                'id'    => 186,
+                'title' => 'travel_treatment_status_delete',
+            ],
+            [
+                'id'    => 187,
+                'title' => 'travel_treatment_status_access',
+            ],
+            [
+                'id'    => 188,
                 'title' => 'profile_password_edit',
             ],
         ];

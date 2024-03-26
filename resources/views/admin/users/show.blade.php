@@ -107,6 +107,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#user_travel_treatment_activities" role="tab" data-toggle="tab">
+                {{ trans('cruds.travelTreatmentActivity.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#user_user_alerts" role="tab" data-toggle="tab">
                 {{ trans('cruds.userAlert.title') }}
             </a>
@@ -115,6 +120,9 @@
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="user_patients">
             @includeIf('admin.users.relationships.userPatients', ['patients' => $user->userPatients])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="user_travel_treatment_activities">
+            @includeIf('admin.users.relationships.userTravelTreatmentActivities', ['travelTreatmentActivities' => $user->userTravelTreatmentActivities])
         </div>
         <div class="tab-pane" role="tabpanel" id="user_user_alerts">
             @includeIf('admin.users.relationships.userUserAlerts', ['userAlerts' => $user->userUserAlerts])

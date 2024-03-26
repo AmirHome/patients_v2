@@ -428,7 +428,7 @@
             </li>
         @endcan
         @can('coordination_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-statuses*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-ambulance c-sidebar-nav-icon">
 
@@ -453,6 +453,26 @@
 
                                 </i>
                                 {{ trans('cruds.travel.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('travel_treatment_activity_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.travel-treatment-activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-activities") || request()->is("admin/travel-treatment-activities/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.travelTreatmentActivity.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('travel_treatment_status_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.travel-treatment-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-statuses") || request()->is("admin/travel-treatment-statuses/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.travelTreatmentStatus.title') }}
                             </a>
                         </li>
                     @endcan
