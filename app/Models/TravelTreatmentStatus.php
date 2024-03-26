@@ -36,4 +36,9 @@ class TravelTreatmentStatus extends Model
     {
         return $this->hasMany(TravelTreatmentActivity::class, 'status_id', 'id');
     }
+
+    public function statusActivities()
+    {
+        return $this->hasMany(Activity::class, 'status_id', 'id');
+    }
 }

@@ -68,6 +68,11 @@ class Travel extends Model
         return $this->hasMany(TravelTreatmentActivity::class, 'travel_id', 'id');
     }
 
+    public function travelActivities()
+    {
+        return $this->hasMany(Activity::class, 'travel_id', 'id');
+    }
+
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');

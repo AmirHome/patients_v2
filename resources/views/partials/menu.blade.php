@@ -428,7 +428,7 @@
             </li>
         @endcan
         @can('coordination_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-statuses*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-statuses*") ? "c-show" : "" }} {{ request()->is("admin/activities*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-ambulance c-sidebar-nav-icon">
 
@@ -473,6 +473,16 @@
 
                                 </i>
                                 {{ trans('cruds.travelTreatmentStatus.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('activity_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/activities") || request()->is("admin/activities/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.activity.title') }}
                             </a>
                         </li>
                     @endcan

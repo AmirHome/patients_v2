@@ -869,5 +869,27 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+    'activity' => [
+        'title'          => 'Activity',
+        'title_singular' => 'Activity',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => ' ',
+            'user'               => 'User',
+            'user_helper'        => ' ',
+            'travel'             => 'Travel',
+            'travel_helper'      => ' ',
+            'description'        => 'Description',
+            'description_helper' => ' ',
+            'status'             => 'Status',
+            'status_helper'      => ' ',
+            'created_at'         => 'Created at',
+            'created_at_helper'  => ' ',
+            'updated_at'         => 'Updated at',
+            'updated_at_helper'  => ' ',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => ' ',
+        ],
+    ],
 
 ];

@@ -165,7 +165,7 @@ class TravelController extends Controller
     {
         abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'travelTravelTreatmentActivities');
+        $travel->load('patient', 'group', 'hospital', 'department', 'travelTravelTreatmentActivities', 'travelActivities');
 
         return view('admin.travels.show', compact('travel'));
     }

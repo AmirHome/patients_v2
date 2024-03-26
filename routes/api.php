@@ -45,4 +45,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Travel Treatment Status
     Route::apiResource('travel-treatment-statuses', 'TravelTreatmentStatusApiController');
+
+    // Activity
+    Route::apiResource('activities', 'ActivityApiController');
 });

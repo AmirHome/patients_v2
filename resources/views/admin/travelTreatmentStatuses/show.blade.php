@@ -52,10 +52,18 @@
                 {{ trans('cruds.travelTreatmentActivity.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#status_activities" role="tab" data-toggle="tab">
+                {{ trans('cruds.activity.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="status_travel_treatment_activities">
             @includeIf('admin.travelTreatmentStatuses.relationships.statusTravelTreatmentActivities', ['travelTreatmentActivities' => $travelTreatmentStatus->statusTravelTreatmentActivities])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="status_activities">
+            @includeIf('admin.travelTreatmentStatuses.relationships.statusActivities', ['activities' => $travelTreatmentStatus->statusActivities])
         </div>
     </div>
 </div>
