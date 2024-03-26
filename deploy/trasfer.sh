@@ -28,8 +28,9 @@ function clean_root() {
 
 # Function to develop laravel
 function deployment() {
-  cp deploy/.env.local .env
-  cp deploy/README.md README.md
+  cp -r deploy/* ..
+  cp .env.local .env
+  
   composer update
   php artisan migrate:fresh --seed
   php artisan key:generate
