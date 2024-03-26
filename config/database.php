@@ -63,6 +63,17 @@ return [
             ]) : [],
         ],
 
+        'conversion_db' => [
+            'driver' => env('DB_CONVERT_CONNECTION', 'mysql'),
+            'host' => env('DB_CONVERT_HOST', '127.0.0.1'),
+            'port' => env('DB_CONVERT_PORT', '3306'),
+            'database' => env('DB_CONVERT_DATABASE', 'forge'),
+            'username' => env('DB_CONVERT_USERNAME', 'forge'),
+            'password' => env('DB_CONVERT_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

@@ -14,20 +14,16 @@ class UsersTableSeeder extends Seeder
         $usersData = DB::connection('conversion_db')->table('users')->get();
 
         foreach ($usersData as $userData) {
-            $users[] = [
+            User::create([
                 'id'             => $userData->id,
                 'name'           => $userData->name,
                 'email'          => $userData->email,
                 'password'       => ($userData->password),
-                // 'remember_token' => $userData->remember_token,
                 'phone'          => $userData->phone,
                 'job_type'      => $userData->job_type,
-            ];
-            //continue;
+            ])->roles()->sync(in_array($userData->id, [1, 66]) ? 1 : 2);
+
+
         }
-
-
-// dd($users);
-        User::insert($users);
     }
 }
