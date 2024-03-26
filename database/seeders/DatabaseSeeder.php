@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             CrmStatusTableSeeder::class,
             TaskStatusTableSeeder::class,
             CountriesTableSeeder::class,
+            
             TravelTreatmentStatusTableSeeder::class,
         ]);
     }

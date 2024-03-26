@@ -366,6 +366,7 @@ return array(
     'Database\\Seeders\\RoleUserTableSeeder' => $baseDir . '/database/seeders/RoleUserTableSeeder.php',
     'Database\\Seeders\\RolesTableSeeder' => $baseDir . '/database/seeders/RolesTableSeeder.php',
     'Database\\Seeders\\TaskStatusTableSeeder' => $baseDir . '/database/seeders/TaskStatusTableSeeder.php',
+    'Database\\Seeders\\TravelTreatmentStatusTableSeeder' => $baseDir . '/database/seeders/TravelTreatmentStatusTableSeeder.php',
     'Database\\Seeders\\UsersTableSeeder' => $baseDir . '/database/seeders/UsersTableSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
     'DateException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateException.php',

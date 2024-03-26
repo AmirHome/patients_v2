@@ -396,8 +396,8 @@ class ComposerStaticInit8941bed89b6cad7e37e16ff9c78dea92
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -951,6 +951,7 @@ class ComposerStaticInit8941bed89b6cad7e37e16ff9c78dea92
         'Database\\Seeders\\RoleUserTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleUserTableSeeder.php',
         'Database\\Seeders\\RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/RolesTableSeeder.php',
         'Database\\Seeders\\TaskStatusTableSeeder' => __DIR__ . '/../..' . '/database/seeders/TaskStatusTableSeeder.php',
+        'Database\\Seeders\\TravelTreatmentStatusTableSeeder' => __DIR__ . '/../..' . '/database/seeders/TravelTreatmentStatusTableSeeder.php',
         'Database\\Seeders\\UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeders/UsersTableSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
