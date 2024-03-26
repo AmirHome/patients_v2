@@ -28,8 +28,8 @@ function clean_root() {
 
 # Function to develop laravel
 function deployment() {
-  cp -r deploy/* ..
-  cp .env.local .env
+  cp -r deploy/transfer/* .
+  cp deploy/.env.local .env
   
   composer update
   php artisan migrate:fresh --seed
