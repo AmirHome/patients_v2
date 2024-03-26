@@ -44,7 +44,7 @@
                             {{ trans('cruds.user.fields.picture') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.job_title') }}
+                            {{ trans('cruds.user.fields.job_type') }}
                         </th>
                         <th>
                             &nbsp;
@@ -85,7 +85,7 @@
                                 @endif
                             </td>
                             <td>
-                                {{ $user->job_title ?? '' }}
+                                {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
                             </td>
                             <td>
                                 @can('user_show')

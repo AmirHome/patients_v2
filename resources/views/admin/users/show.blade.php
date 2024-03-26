@@ -79,10 +79,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.job_title') }}
+                            {{ trans('cruds.user.fields.job_type') }}
                         </th>
                         <td>
-                            {{ $user->job_title }}
+                            {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

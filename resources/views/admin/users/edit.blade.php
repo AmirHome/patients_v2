@@ -80,14 +80,19 @@
                 <span class="help-block">{{ trans('cruds.user.fields.picture_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="job_title">{{ trans('cruds.user.fields.job_title') }}</label>
-                <input class="form-control {{ $errors->has('job_title') ? 'is-invalid' : '' }}" type="text" name="job_title" id="job_title" value="{{ old('job_title', $user->job_title) }}">
-                @if($errors->has('job_title'))
+                <label>{{ trans('cruds.user.fields.job_type') }}</label>
+                <select class="form-control {{ $errors->has('job_type') ? 'is-invalid' : '' }}" name="job_type" id="job_type">
+                    <option value disabled {{ old('job_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\User::JOB_TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('job_type', $user->job_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('job_type'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('job_title') }}
+                        {{ $errors->first('job_type') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.job_title_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.user.fields.job_type_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>

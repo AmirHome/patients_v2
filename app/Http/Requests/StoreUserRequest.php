@@ -39,10 +39,6 @@ class StoreUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'job_title' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }

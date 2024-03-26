@@ -69,8 +69,8 @@ return [
             'phone_helper'             => ' ',
             'picture'                  => 'Picture',
             'picture_helper'           => ' ',
-            'job_title'                => 'Job Title',
-            'job_title_helper'         => ' ',
+            'job_type'                 => 'Job Type',
+            'job_type_helper'          => ' ',
         ],
     ],
     'team' => [

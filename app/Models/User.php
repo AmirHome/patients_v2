@@ -39,6 +39,13 @@ class User extends Authenticatable implements HasMedia
         'deleted_at',
     ];
 
+    public const JOB_TYPE_SELECT = [
+        '0' => 'Yönetici',
+        '1' => 'Çevirmen',
+        '2' => 'Karşılayıcı',
+        '3' => 'Standart Kullanıcı',
+    ];
+
     protected $fillable = [
         'name',
         'email',
@@ -47,7 +54,7 @@ class User extends Authenticatable implements HasMedia
         'remember_token',
         'created_at',
         'phone',
-        'job_title',
+        'job_type',
         'updated_at',
         'deleted_at',
         'team_id',

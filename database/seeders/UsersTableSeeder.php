@@ -10,17 +10,6 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-        $users = [
-            [
-                'id'             => 1,
-                'name'           => 'Admin',
-                'email'          => 'admin@admin.com',
-                'password'       => bcrypt('password'),
-                'remember_token' => null,
-                'phone'          => '',
-                'job_title'      => '',
-            ],
-        ];
 
         $usersData = DB::connection('conversion_db')->table('users')->get();
 
@@ -30,13 +19,15 @@ class UsersTableSeeder extends Seeder
                 'name'           => $userData->name,
                 'email'          => $userData->email,
                 'password'       => ($userData->password),
-                'remember_token' => $userData->remember_token,
+                // 'remember_token' => $userData->remember_token,
                 'phone'          => $userData->phone,
-                'job_title'      => $userData->job_title,
+                'job_type'      => $userData->job_type,
             ];
-            continue;
+            //continue;
         }
-dd($users);
+
+
+// dd($users);
         User::insert($users);
     }
 }

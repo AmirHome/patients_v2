@@ -36,10 +36,6 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'job_title' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }
