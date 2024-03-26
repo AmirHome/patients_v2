@@ -17,6 +17,7 @@
 - php artisan key:generate
 - php artisan storage:link
 
+- sh deploy/transfer.sh
 - sh deploy/release.sh
 
 ## Starter Kits
