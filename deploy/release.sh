@@ -42,7 +42,7 @@ function deployment() {
   php artisan route:clear
   php artisan view:clear
   php artisan cache:clear
-  php artisan log:clear
+  # php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
   # if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
