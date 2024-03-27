@@ -17,6 +17,9 @@ class CreateUsersTable extends Migration
             $table->string('remember_token')->nullable();
             $table->string('phone')->nullable();
             $table->string('job_type')->nullable();
+            $table->string('can_see_prices')->nullable();
+            $table->string('can_set_prices')->nullable();
+            $table->string('is_super')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

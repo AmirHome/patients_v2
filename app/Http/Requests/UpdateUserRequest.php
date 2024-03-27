@@ -36,6 +36,19 @@ class UpdateUserRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'office_id' => [
+                'required',
+                'integer',
+            ],
+            'can_see_prices' => [
+                'required',
+            ],
+            'can_set_prices' => [
+                'required',
+            ],
+            'is_super' => [
+                'required',
+            ],
         ];
     }
 }

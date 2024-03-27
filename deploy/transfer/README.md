@@ -22,7 +22,7 @@
 - php artisan chatify:install
 - php artisan migrate
 
-### Install Breeze and Livewire
+### Install Breeze and Livewire(volt class api)
 - composer require laravel/breeze --dev
 - php artisan breeze:install
 - php artisan migrate

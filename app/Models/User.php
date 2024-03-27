@@ -32,6 +32,21 @@ class User extends Authenticatable implements HasMedia
         'password',
     ];
 
+    public const IS_SUPER_RADIO = [
+        '0' => 'No',
+        '1' => 'Yes',
+    ];
+
+    public const CAN_SEE_PRICES_RADIO = [
+        '0' => 'No',
+        '1' => 'Yes',
+    ];
+
+    public const CAN_SET_PRICES_RADIO = [
+        '0' => 'No',
+        '1' => 'Yes',
+    ];
+
     protected $dates = [
         'email_verified_at',
         'created_at',
@@ -55,6 +70,10 @@ class User extends Authenticatable implements HasMedia
         'created_at',
         'phone',
         'job_type',
+        'office_id',
+        'can_see_prices',
+        'can_set_prices',
+        'is_super',
         'updated_at',
         'deleted_at',
         'team_id',
@@ -144,6 +163,11 @@ class User extends Authenticatable implements HasMedia
         }
 
         return $file;
+    }
+
+    public function office()
+    {
+        return $this->belongsTo(Office::class, 'office_id');
     }
 
     public function team()

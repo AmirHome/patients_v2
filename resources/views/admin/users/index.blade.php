@@ -47,6 +47,21 @@
                             {{ trans('cruds.user.fields.job_type') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.office') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.office.fields.phone') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.can_see_prices') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.can_set_prices') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.is_super') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -86,6 +101,21 @@
                             </td>
                             <td>
                                 {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->office->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->office->phone ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\User::CAN_SEE_PRICES_RADIO[$user->can_see_prices] ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\User::CAN_SET_PRICES_RADIO[$user->can_set_prices] ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\User::IS_SUPER_RADIO[$user->is_super] ?? '' }}
                             </td>
                             <td>
                                 @can('user_show')

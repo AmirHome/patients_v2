@@ -95,6 +95,65 @@
                 <span class="help-block">{{ trans('cruds.user.fields.job_type_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="office_id">{{ trans('cruds.user.fields.office') }}</label>
+                <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" required>
+                    @foreach($offices as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('office_id') ? old('office_id') : $user->office->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('office'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('office') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.office_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.user.fields.can_see_prices') }}</label>
+                @foreach(App\Models\User::CAN_SEE_PRICES_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('can_see_prices') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="can_see_prices_{{ $key }}" name="can_see_prices" value="{{ $key }}" {{ old('can_see_prices', $user->can_see_prices) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="can_see_prices_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('can_see_prices'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('can_see_prices') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.can_see_prices_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.user.fields.can_set_prices') }}</label>
+                @foreach(App\Models\User::CAN_SET_PRICES_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('can_set_prices') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="can_set_prices_{{ $key }}" name="can_set_prices" value="{{ $key }}" {{ old('can_set_prices', $user->can_set_prices) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="can_set_prices_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('can_set_prices'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('can_set_prices') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.can_set_prices_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.user.fields.is_super') }}</label>
+                @foreach(App\Models\User::IS_SUPER_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('is_super') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="is_super_{{ $key }}" name="is_super" value="{{ $key }}" {{ old('is_super', $user->is_super) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="is_super_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('is_super'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('is_super') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.is_super_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>
                 <select class="form-control select2 {{ $errors->has('team') ? 'is-invalid' : '' }}" name="team_id" id="team_id">
                     @foreach($teams as $id => $entry)

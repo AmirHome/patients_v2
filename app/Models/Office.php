@@ -40,6 +40,11 @@ class Office extends Model
         return $this->hasMany(Patient::class, 'office_id', 'id');
     }
 
+    public function officeUsers()
+    {
+        return $this->hasMany(User::class, 'office_id', 'id');
+    }
+
     public function city()
     {
         return $this->belongsTo(Province::class, 'city_id');

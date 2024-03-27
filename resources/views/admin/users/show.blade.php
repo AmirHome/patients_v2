@@ -85,6 +85,38 @@
                             {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.office') }}
+                        </th>
+                        <td>
+                            {{ $user->office->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.can_see_prices') }}
+                        </th>
+                        <td>
+                            {{ App\Models\User::CAN_SEE_PRICES_RADIO[$user->can_see_prices] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.can_set_prices') }}
+                        </th>
+                        <td>
+                            {{ App\Models\User::CAN_SET_PRICES_RADIO[$user->can_set_prices] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.is_super') }}
+                        </th>
+                        <td>
+                            {{ App\Models\User::IS_SUPER_RADIO[$user->is_super] ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
