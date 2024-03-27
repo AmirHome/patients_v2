@@ -16,13 +16,13 @@ function extract_archive() {
 
   # Extract the archive to the root directory
   unzip -q "$download_folder/$archive_file" -d .
+  echo "Extracted '$archive_file' to root directory."
 
   deployment
 
   # (Optional) Remove the archive file after extraction
   rm -f "$download_folder/$archive_file"
-
-  echo "Extracted '$archive_file' to root directory."
+  echo "Remove '$download_folder/$archive_file'."
 }
 
 # Function to clean root directory (excluding .git and deploy)
