@@ -32,25 +32,27 @@ function deployment() {
     # composer update
   # fi
 
-  /usr/local/bin/ea-php83 artisan key:generate
-  /usr/local/bin/ea-php83 artisan storage:link
+  composer update --ignore-platform-req=ext-zip --ignore-platform-req=ext-exif
+  
+  php artisan key:generate
+  php artisan storage:link
 
-  /usr/local/bin/ea-php83 artisan optimize:clear
-  /usr/local/bin/ea-php83 artisan config:clear
-  /usr/local/bin/ea-php83 artisan route:clear
-  /usr/local/bin/ea-php83 artisan view:clear
-  /usr/local/bin/ea-php83 artisan cache:clear
-  /usr/local/bin/ea-php83 artisan log:clear
+  php artisan optimize:clear
+  php artisan config:clear
+  php artisan route:clear
+  php artisan view:clear
+  php artisan cache:clear
+  php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
   # if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
-    /usr/local/bin/ea-php83 artisan migrate --force
+    php artisan migrate --force
   # fi
 
-  # /usr/local/bin/ea-php83 artisan test
-  # /usr/local/bin/ea-php83 artisan optimize
-  # /usr/local/bin/ea-php83 artisan config:cache
-  # /usr/local/bin/ea-php83 artisan route:cache
+  # php artisan test
+  # php artisan optimize
+  # php artisan config:cache
+  # php artisan route:cache
   # /usr/local/bin/ea-php83 artisan view:cache
 
 
