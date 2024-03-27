@@ -16,7 +16,7 @@ function pull_code() {
 function deployment() {
   # where is now (pwd)
   echo "Current directory: $(pwd)"
-  
+
   # if .env file dose not exists, copy .env.local to .env
   if [ ! -f ".env" ]; then
     cp deploy/.env.local .env
@@ -54,3 +54,6 @@ function deployment() {
 }
 
 # Main script execution
+clean_code
+pull_code
+deployment
