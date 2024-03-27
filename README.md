@@ -17,6 +17,21 @@
 - php artisan key:generate
 - php artisan storage:link
 
+### Install Chatify
+- composer require munafio/chatify
+- php artisan chatify:install
+- php artisan migrate
+
+### Install Livewire
+- composer require livewire/livewire
+- php artisan livewire:publish --assets
+
+### Install Sanctum
+- composer require laravel/sanctum
+- php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+- php artisan migrate
+
+### Deploy Project
 - sh deploy/transfer.sh
 - sh deploy/release.sh
 
