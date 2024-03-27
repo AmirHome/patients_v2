@@ -14,40 +14,34 @@ function deployment() {
     cp deploy/.env.local .env
   fi
   # if set argument update -u or --update, update composer
-  if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
-    composer update
-  fi
+  # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
+    # composer update
+  # fi
 
-  # if set argument migrate -m or --migrate, migrate database
-  if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
-    php artisan migrate:fresh --seed
-  fi
 
   php artisan key:generate
   php artisan storage:link
+
+  php artisan optimize:clear
+  php artisan config:clear
+  php artisan route:clear
+  php artisan view:clear
+  php artisan cache:clear
+  php artisan log:clear
+  
+  # if set argument migrate -m or --migrate, migrate database
+  # if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
+    php artisan migrate --force
+  # fi
+
+  # php artisan test
+  # php artisan optimize
+  # php artisan config:cache
+  # php artisan route:cache
+  # php artisan view:cache
+
 
   echo "Laravel development completed."
 }
 
 # Main script execution
-if [ $# -eq 0 ]; then
-  deployment
-elif [ $# -eq 1 ]; then
-  case $1 in
-    "clean")
-      clean_code
-      ;;
-    "-u" | "--update")
-      deployment "$1"
-      ;;
-    "-m" | "--migrate")
-      deployment "" "$1"
-      ;;
-    *)
-      echo "Invalid argument: $1"
-      exit 1
-      ;;
-  esac
-else
-  deployment "$1" "$2"
-fi

@@ -12,11 +12,16 @@ function extract_archive() {
     exit 1
   fi
 
+  clean_root
+
   # Extract the archive to the root directory
   unzip -q "$download_folder/$archive_file" -d .
 
-    # (Optional) Remove the archive file after extraction
-    rm -f "$download_folder/$archive_file"
+  deployment
+
+  # (Optional) Remove the archive file after extraction
+  rm -f "$download_folder/$archive_file"
+
   echo "Extracted '$archive_file' to root directory."
 }
 
@@ -30,8 +35,14 @@ function clean_root() {
 function deployment() {
   cp -r deploy/transfer/* .
   cp deploy/.env.local .env
-  
+
   composer update
+
+  ### Install Chatify
+  composer require munafio/chatify
+  php artisan chatify:install
+  # php artisan migrate
+
   php artisan migrate:fresh --seed
   php artisan key:generate
   php artisan storage:link
@@ -40,9 +51,7 @@ function deployment() {
 }
 
 # Main script execution
-clean_root
 extract_archive
-deployment
 
 # Get the commit message argument (if provided)
 commit_message="$1"
@@ -56,4 +65,3 @@ else
   git commit -m "$commit_message"
   git push
 fi
-
