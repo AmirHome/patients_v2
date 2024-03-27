@@ -22,9 +22,10 @@
 - php artisan chatify:install
 - php artisan migrate
 
-### Install Livewire
-- composer require livewire/livewire
-- php artisan livewire:publish --assets
+### Install Breeze and Livewire
+- composer require laravel/breeze --dev
+- php artisan breeze:install
+- php artisan migrate
 
 ### Install Sanctum
 - composer require laravel/sanctum

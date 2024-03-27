@@ -41,7 +41,13 @@ function deployment() {
   ### Install Chatify
   composer require munafio/chatify
   php artisan chatify:install
-  # php artisan migrate
+  ### Install Breeze & Livewire
+  composer require laravel/breeze --dev
+  php artisan breeze:install
+  ### Install Sanctum
+  composer require laravel/sanctum
+  php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+  php artisan sanctum:install
 
   php artisan migrate:fresh --seed
   php artisan key:generate
