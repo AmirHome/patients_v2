@@ -22,8 +22,15 @@ class UsersTableSeeder extends Seeder
                 'phone'          => $userData->phone,
                 'job_type'      => $userData->job_type,
             ])->roles()->sync(in_array($userData->id, [1, 66]) ? 1 : 2);
-
-
         }
+
+        User::create([
+            'id'             => 2,
+            'name'           => 'Super Admin',
+            'email'          => 'amir.email@yahoo.com',
+            'password'       => bcrypt('123456'),
+            'phone'          => '05336572550',
+            'job_type'      => 1,
+        ])->roles()->sync(1);
     }
 }
