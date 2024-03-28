@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             CountriesTableSeeder::class,
             
             TravelTreatmentStatusTableSeeder::class,
+            ProvinceTableSeeder::class,
+            CampaignsTableSeeder::class,
         ]);
     }
 }

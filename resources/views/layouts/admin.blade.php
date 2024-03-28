@@ -153,8 +153,8 @@
   let selectNoneButtonTrans = '{{ trans('global.deselect_all') }}'
 
   let languages = {
-    'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json',
-        'tr': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Turkish.json',
+    'tr': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Turkish.json',
+        'en': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/English.json',
         'fa': 'https://cdn.datatables.net/plug-ins/1.10.19/i18n/Persian.json'
   };
 
