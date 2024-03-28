@@ -22,19 +22,22 @@
 - php artisan chatify:install
 - php artisan migrate
 
-### Install Breeze and Livewire(volt class api)
-- composer require laravel/breeze --dev
-- php artisan breeze:install
-- php artisan migrate
+  ### Install LiveWire
+  composer require livewire/livewire
+  php artisan livewire:publish --assets --config
+  php artisan make:livewire counter
+  ### - app/Livewire/Counter.php
+  ### - resources/views/livewire/counter.blade.php
+  php artisan livewire:layout
+  ### - resources/views/components/layouts/app.blade.php
 
-### Install Sanctum
-- composer require laravel/sanctum
-- php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-- php artisan migrate
+
+  ### Sanctum already exists
 
 ### Deploy Project
 - sh deploy/transfer.sh
 - sh deploy/release.sh
+- sh deploy/shield.sh
 
 ## Starter Kits
 

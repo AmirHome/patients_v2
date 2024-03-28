@@ -36,18 +36,33 @@ function deployment() {
   cp -r deploy/transfer/* .
   cp deploy/.env.local .env
 
-  composer update
-
   ### Install Chatify
   composer require munafio/chatify
   php artisan chatify:install
-  ### Install Breeze & Livewire
-  composer require laravel/breeze --dev
-  php artisan breeze:install
-  ### Install Sanctum
-  composer require laravel/sanctum
-  php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-  php artisan sanctum:install
+  ### Install Breeze
+  # composer require laravel/breeze --dev
+  # php artisan breeze:install
+
+  ### Install LiveWire
+  composer require livewire/livewire
+  php artisan livewire:publish --assets --config
+  php artisan make:livewire counter
+  ### - app/Livewire/Counter.php
+  ### - resources/views/livewire/counter.blade.php
+  php artisan livewire:layout
+  ### - resources/views/components/layouts/app.blade.php
+
+
+  ### Sanctum already exists
+  # composer require laravel/sanctum
+  # php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+  # php artisan sanctum:install
+
+  ### Write code in function
+  coding
+
+  ### Laravel development
+  composer update
 
   php artisan migrate:fresh --seed
   php artisan key:generate
@@ -56,6 +71,14 @@ function deployment() {
   echo "Laravel development completed."
 }
 
+function coding() {
+
+  ### Set Route
+  LINE="Route::get('/counter', '\App\Livewire\Counter');"
+  FILE=routes/web.php
+  grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
+
+}
 # Main script execution
 extract_archive
 
