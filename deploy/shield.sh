@@ -7,6 +7,10 @@ cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ProvinceTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTreatmentStatusTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TranslatorTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/MinistryTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TravelGroupTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/SettingTableSeeder.php deploy/transfer/database/seeders
 
 
 
@@ -27,3 +31,4 @@ LINE="Route::get('/counter', '\App\Livewire\Counter');"
 FILE=routes/web.php
 grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 
+echo -e "\e[34mCopied Shield files.\e[0m"
