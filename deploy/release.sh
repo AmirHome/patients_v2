@@ -14,7 +14,7 @@ function pull_code() {
 }
 
 # Function to develop laravel
-function deployment($1) {
+function deployment() {
   echo "Current directory: $(pwd)"
 
   # if .env file dose not exists, copy .env.local to .env
