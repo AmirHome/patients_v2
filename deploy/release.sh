@@ -7,7 +7,6 @@ function clean_code() {
   echo -e "\e[34mCleaned code from git.\e[0m"
 }
 
-
 function pull_code() {
   git pull origin master
   # echo "Pulled code from master." by blue color
@@ -29,11 +28,11 @@ function deployment() {
 
   # if set argument update -u or --update, update composer
   # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
-    # composer update
+  # composer update
   # fi
 
   composer update --ignore-platform-req=ext-zip --ignore-platform-req=ext-exif
-  
+
   php artisan key:generate
   php artisan storage:link
 
@@ -58,18 +57,12 @@ function deployment() {
   # php artisan route:cache
   # /usr/local/bin/ea-php83 artisan view:cache
 
-
   echo "Laravel development completed."
 }
 
 # Main script execution
 clean_code
 pull_code
-deployment
+deployment($1)
 
-  if [ "$1" == "-m" ] || [ "$1" == "--migrate" ]; then
-    php artisan migrate --force
-  fi
-  if [ "$1" == "-mf" ] || [ "$1" == "--migrate-fresh" ]; then
-    php artisan migrate:fresh --seed
-  fi
+
