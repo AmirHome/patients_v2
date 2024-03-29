@@ -37,6 +37,7 @@ function deployment() {
   php artisan key:generate
   php artisan storage:link
 
+  php artisan media-library:clear
   php artisan optimize:clear
   # php artisan config:clear
   # php artisan route:clear
@@ -45,10 +46,12 @@ function deployment() {
   # php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
-  # if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
+  if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
     php artisan migrate --force
-  # fi
-
+  fi
+  if [ "$2" == "-mf" ] || [ "$2" == "--migrate-fresh" ]; then
+    php artisan migrate:fresh --seed
+  fi
   # php artisan test
   # php artisan optimize
   # php artisan config:cache

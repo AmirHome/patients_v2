@@ -55,9 +55,9 @@ function deployment() {
 
 
   ### Sanctum already exists
-  # composer require laravel/sanctum
-  # php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-  # php artisan sanctum:install
+
+  php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"
+  
 
   ### Write code in function
   coding
