@@ -57,7 +57,7 @@ function deployment() {
   ### Sanctum already exists
 
   php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"
-  
+
 
   ### Write code in function
   coding

@@ -14,7 +14,7 @@ cp database/seeders/SettingTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CustomersTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CrmStatusTableSeeder.php deploy/transfer/database/seeders
 
-cp -r app/Interfaces/ deploy/transfer/app
+cp -r app/Interfaces deploy/transfer/app
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 
