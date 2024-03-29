@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             MinistryTableSeeder::class,
             TravelGroupTableSeeder::class,
             SettingTableSeeder::class,
+            CustomersTableSeeder::class,
         ]);
     }
 }

@@ -119,6 +119,14 @@
                             {{ $crmCustomer->campaign->title ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmCustomer.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $crmCustomer->user->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

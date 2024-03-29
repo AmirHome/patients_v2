@@ -15,6 +15,8 @@ class AddRelationshipFieldsToCrmCustomersTable extends Migration
             $table->foreign('city_id', 'city_fk_9612842')->references('id')->on('provinces');
             $table->unsignedBigInteger('campaign_id')->nullable();
             $table->foreign('campaign_id', 'campaign_fk_9612843')->references('id')->on('campaign_orgs');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id', 'user_fk_9640993')->references('id')->on('users');
         });
     }
 }

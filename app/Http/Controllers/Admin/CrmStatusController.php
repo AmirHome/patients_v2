@@ -54,6 +54,8 @@ class CrmStatusController extends Controller
     {
         abort_if(Gate::denies('crm_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $crmStatus->load('statusCrmDocuments');
+
         return view('admin.crmStatuses.show', compact('crmStatus'));
     }
 

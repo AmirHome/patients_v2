@@ -61,6 +61,10 @@ class StoreCrmCustomerRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'user_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

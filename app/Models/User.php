@@ -121,6 +121,16 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Activity::class, 'user_id', 'id');
     }
 
+    public function userCrmCustomers()
+    {
+        return $this->hasMany(CrmCustomer::class, 'user_id', 'id');
+    }
+
+    public function userCrmDocuments()
+    {
+        return $this->hasMany(CrmDocument::class, 'user_id', 'id');
+    }
+
     public function userUserAlerts()
     {
         return $this->belongsToMany(UserAlert::class);

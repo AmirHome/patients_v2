@@ -64,6 +64,12 @@
                         {{ trans('cruds.campaignOrg.fields.started_at') }}
                     </th>
                     <th>
+                        {{ trans('cruds.crmCustomer.fields.user') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.email') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -133,6 +139,8 @@
 { data: 'city_name', name: 'city.name' },
 { data: 'campaign_title', name: 'campaign.title' },
 { data: 'campaign.started_at', name: 'campaign.started_at' },
+{ data: 'user_name', name: 'user.name' },
+{ data: 'user.email', name: 'user.email' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -23,14 +23,14 @@ class StoreCrmDocumentRequest extends FormRequest
             ],
             'document_file' => [
                 'array',
-                'required',
             ],
-            'document_file.*' => [
+            'user_id' => [
                 'required',
+                'integer',
             ],
-            'name' => [
-                'string',
-                'nullable',
+            'status_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

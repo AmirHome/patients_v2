@@ -30,4 +30,9 @@ class CrmStatus extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function statusCrmDocuments()
+    {
+        return $this->hasMany(CrmDocument::class, 'status_id', 'id');
+    }
 }

@@ -14,6 +14,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Crm Customer
     Route::apiResource('crm-customers', 'CrmCustomerApiController');
 
+    // Crm Document
+    Route::post('crm-documents/media', 'CrmDocumentApiController@storeMedia')->name('crm-documents.storeMedia');
+    Route::apiResource('crm-documents', 'CrmDocumentApiController');
+
     // Campaign Channels
     Route::apiResource('campaign-channels', 'CampaignChannelsApiController');
 

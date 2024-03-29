@@ -27,7 +27,6 @@ function extract_archive() {
 
 # Function to clean root directory (excluding .git and deploy)
 function clean_root() {
-  sh shield.sh
 
   find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
   echo "Cleaned root directory (excluding .git and deploy folder)."
@@ -81,7 +80,10 @@ function coding() {
   grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 
 }
+
 # Main script execution
+bash deploy/shield.sh
+
 extract_archive
 
 # Get the commit message argument (if provided)

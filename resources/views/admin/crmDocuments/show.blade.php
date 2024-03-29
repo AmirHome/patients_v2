@@ -45,18 +45,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.crmDocument.fields.name') }}
-                        </th>
-                        <td>
-                            {{ $crmDocument->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.crmDocument.fields.description') }}
                         </th>
                         <td>
                             {{ $crmDocument->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmDocument.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $crmDocument->user->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmDocument.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $crmDocument->status->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

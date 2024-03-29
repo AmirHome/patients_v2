@@ -10,10 +10,8 @@ class CreateCrmDocumentsTable extends Migration
     {
         Schema::create('crm_documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }

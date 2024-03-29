@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CrmDocument extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia, HasFactory;
+    use InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'crm_documents';
 
@@ -28,8 +28,9 @@ class CrmDocument extends Model implements HasMedia
 
     protected $fillable = [
         'customer_id',
-        'name',
         'description',
+        'user_id',
+        'status_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -54,5 +55,15 @@ class CrmDocument extends Model implements HasMedia
     public function getDocumentFileAttribute()
     {
         return $this->getMedia('document_file');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(CrmStatus::class, 'status_id');
     }
 }

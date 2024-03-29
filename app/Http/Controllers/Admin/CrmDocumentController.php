@@ -9,22 +9,82 @@ use App\Http\Requests\StoreCrmDocumentRequest;
 use App\Http\Requests\UpdateCrmDocumentRequest;
 use App\Models\CrmCustomer;
 use App\Models\CrmDocument;
+use App\Models\CrmStatus;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class CrmDocumentController extends Controller
 {
     use MediaUploadingTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('crm_document_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmDocuments = CrmDocument::with(['customer', 'media'])->get();
+        if ($request->ajax()) {
+            $query = CrmDocument::with(['customer', 'user', 'status'])->select(sprintf('%s.*', (new CrmDocument)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.crmDocuments.index', compact('crmDocuments'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'crm_document_show';
+                $editGate      = 'crm_document_edit';
+                $deleteGate    = 'crm_document_delete';
+                $crudRoutePart = 'crm-documents';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->addColumn('customer_first_name', function ($row) {
+                return $row->customer ? $row->customer->first_name : '';
+            });
+
+            $table->editColumn('document_file', function ($row) {
+                if (! $row->document_file) {
+                    return '';
+                }
+                $links = [];
+                foreach ($row->document_file as $media) {
+                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>';
+                }
+
+                return implode(', ', $links);
+            });
+            $table->editColumn('description', function ($row) {
+                return $row->description ? $row->description : '';
+            });
+            $table->addColumn('user_name', function ($row) {
+                return $row->user ? $row->user->name : '';
+            });
+
+            $table->editColumn('user.email', function ($row) {
+                return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
+            });
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'customer', 'document_file', 'user', 'status']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.crmDocuments.index');
     }
 
     public function create()
@@ -33,7 +93,11 @@ class CrmDocumentController extends Controller
 
         $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmDocuments.create', compact('customers'));
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.crmDocuments.create', compact('customers', 'statuses', 'users'));
     }
 
     public function store(StoreCrmDocumentRequest $request)
@@ -57,9 +121,13 @@ class CrmDocumentController extends Controller
 
         $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $crmDocument->load('customer');
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmDocuments.edit', compact('crmDocument', 'customers'));
+        $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $crmDocument->load('customer', 'user', 'status');
+
+        return view('admin.crmDocuments.edit', compact('crmDocument', 'customers', 'statuses', 'users'));
     }
 
     public function update(UpdateCrmDocumentRequest $request, CrmDocument $crmDocument)
@@ -87,7 +155,7 @@ class CrmDocumentController extends Controller
     {
         abort_if(Gate::denies('crm_document_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmDocument->load('customer');
+        $crmDocument->load('customer', 'user', 'status');
 
         return view('admin.crmDocuments.show', compact('crmDocument'));
     }

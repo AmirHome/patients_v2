@@ -35,6 +35,7 @@ class CrmCustomer extends Model
         'birthday',
         'city_id',
         'campaign_id',
+        'user_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -68,5 +69,10 @@ class CrmCustomer extends Model
     public function campaign()
     {
         return $this->belongsTo(CampaignOrg::class, 'campaign_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

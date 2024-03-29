@@ -24,7 +24,7 @@
                 <span class="help-block">{{ trans('cruds.crmDocument.fields.customer_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
+                <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
                 </div>
                 @if($errors->has('document_file'))
@@ -35,16 +35,6 @@
                 <span class="help-block">{{ trans('cruds.crmDocument.fields.document_file_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="name">{{ trans('cruds.crmDocument.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}">
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmDocument.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
                 @if($errors->has('description'))
@@ -53,6 +43,34 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.crmDocument.fields.description_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="user_id">{{ trans('cruds.crmDocument.fields.user') }}</label>
+                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
+                    @foreach($users as $id => $entry)
+                        <option value="{{ $id }}" {{ old('user_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('user'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('user') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmDocument.fields.user_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
+                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
+                    @foreach($statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmDocument.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -72,13 +90,13 @@
     var uploadedDocumentFileMap = {}
 Dropzone.options.documentFileDropzone = {
     url: '{{ route('admin.crm-documents.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 50, // MB
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2
+      size: 50
     },
     success: function (file, response) {
       $('form').append('<input type="hidden" name="document_file[]" value="' + response.name + '">')

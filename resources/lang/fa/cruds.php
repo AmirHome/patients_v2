@@ -257,6 +257,8 @@ return [
             'city_helper'        => ' ',
             'campaign'           => 'Campaign',
             'campaign_helper'    => ' ',
+            'user'               => 'User',
+            'user_helper'        => ' ',
         ],
     ],
     'crmNote' => [
@@ -287,8 +289,6 @@ return [
             'customer_helper'      => ' ',
             'document_file'        => 'File',
             'document_file_helper' => ' ',
-            'name'                 => 'Document name',
-            'name_helper'          => ' ',
             'description'          => 'Description',
             'description_helper'   => ' ',
             'created_at'           => 'Created at',
@@ -297,6 +297,10 @@ return [
             'updated_at_helper'    => ' ',
             'deleted_at'           => 'Deleted At',
             'deleted_at_helper'    => ' ',
+            'user'                 => 'User',
+            'user_helper'          => ' ',
+            'status'               => 'Status',
+            'status_helper'        => ' ',
         ],
     ],
     'faqManagement' => [

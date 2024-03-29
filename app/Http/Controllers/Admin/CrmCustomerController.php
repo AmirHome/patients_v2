@@ -10,6 +10,7 @@ use App\Models\CampaignOrg;
 use App\Models\CrmCustomer;
 use App\Models\CrmStatus;
 use App\Models\Province;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class CrmCustomerController extends Controller
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = CrmCustomer::with(['status', 'city', 'campaign'])->select(sprintf('%s.*', (new CrmCustomer)->table));
+            $query = CrmCustomer::with(['status', 'city', 'campaign', 'user'])->select(sprintf('%s.*', (new CrmCustomer)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -86,8 +87,15 @@ class CrmCustomerController extends Controller
             $table->editColumn('campaign.started_at', function ($row) {
                 return $row->campaign ? (is_string($row->campaign) ? $row->campaign : $row->campaign->started_at) : '';
             });
+            $table->addColumn('user_name', function ($row) {
+                return $row->user ? $row->user->name : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'status', 'city', 'campaign']);
+            $table->editColumn('user.email', function ($row) {
+                return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'city', 'campaign', 'user']);
 
             return $table->make(true);
         }
@@ -105,7 +113,9 @@ class CrmCustomerController extends Controller
 
         $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.create', compact('campaigns', 'cities', 'statuses'));
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.crmCustomers.create', compact('campaigns', 'cities', 'statuses', 'users'));
     }
 
     public function store(StoreCrmCustomerRequest $request)
@@ -125,9 +135,11 @@ class CrmCustomerController extends Controller
 
         $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $crmCustomer->load('status', 'city', 'campaign');
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.crmCustomers.edit', compact('campaigns', 'cities', 'crmCustomer', 'statuses'));
+        $crmCustomer->load('status', 'city', 'campaign', 'user');
+
+        return view('admin.crmCustomers.edit', compact('campaigns', 'cities', 'crmCustomer', 'statuses', 'users'));
     }
 
     public function update(UpdateCrmCustomerRequest $request, CrmCustomer $crmCustomer)
@@ -141,7 +153,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomer->load('status', 'city', 'campaign');
+        $crmCustomer->load('status', 'city', 'campaign', 'user');
 
         return view('admin.crmCustomers.show', compact('crmCustomer'));
     }

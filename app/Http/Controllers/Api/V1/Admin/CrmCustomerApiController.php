@@ -17,7 +17,7 @@ class CrmCustomerApiController extends Controller
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CrmCustomerResource(CrmCustomer::with(['status', 'city', 'campaign'])->get());
+        return new CrmCustomerResource(CrmCustomer::with(['status', 'city', 'campaign', 'user'])->get());
     }
 
     public function store(StoreCrmCustomerRequest $request)
@@ -33,7 +33,7 @@ class CrmCustomerApiController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CrmCustomerResource($crmCustomer->load(['status', 'city', 'campaign']));
+        return new CrmCustomerResource($crmCustomer->load(['status', 'city', 'campaign', 'user']));
     }
 
     public function update(UpdateCrmCustomerRequest $request, CrmCustomer $crmCustomer)
