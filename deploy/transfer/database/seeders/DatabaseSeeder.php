@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use App\Models\Setting;
 use App\Models\TravelGroup;
 use Illuminate\Database\Seeder;
@@ -28,6 +29,11 @@ class DatabaseSeeder extends Seeder
             TravelGroupTableSeeder::class,
             SettingTableSeeder::class,
             CustomersTableSeeder::class,
+            OfficeTableSeeder::class,
+            DepartmentTableSeeder::class,
+            HospitalTableSeeder::class,
+            DoctorTableSeeder::class,
+
         ]);
     }
 }
