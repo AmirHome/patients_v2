@@ -45,12 +45,19 @@ function deployment($1) {
   # php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
-  if [ "$1" == "-m" ] || [ "$1" == "--migrate" ]; then
-    php artisan migrate --force
-  fi
-  if [ "$1" == "-mf" ] || [ "$1" == "--migrate-fresh" ]; then
-    php artisan migrate:fresh --seed
-  fi
+  case "$1" in
+    "-m" | "--migrate")
+      php artisan migrate --force
+      echo -e "\e[34mDatabase migrated (force).\e[0m"
+      ;;
+    "-mf" | "--migrate-fresh")
+      php artisan migrate:fresh --seed
+      echo -e "\e[34mDatabase migrated (fresh) and seeded.\e[0m"
+      ;;
+    *)
+      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
+      ;;
+  esac
   # php artisan test
   # php artisan optimize
   # php artisan config:cache
@@ -63,6 +70,6 @@ function deployment($1) {
 # Main script execution
 clean_code
 pull_code
-deployment($1)
+deployment "$@"
 
 
