@@ -46,10 +46,10 @@ function deployment() {
   # php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
-  if [ "$2" == "-m" ] || [ "$2" == "--migrate" ]; then
+  if [ "$1" == "-m" ] || [ "$1" == "--migrate" ]; then
     php artisan migrate --force
   fi
-  if [ "$2" == "-mf" ] || [ "$2" == "--migrate-fresh" ]; then
+  if [ "$1" == "-mf" ] || [ "$1" == "--migrate-fresh" ]; then
     php artisan migrate:fresh --seed
   fi
   # php artisan test
