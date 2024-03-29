@@ -66,3 +66,10 @@ function deployment() {
 clean_code
 pull_code
 deployment
+
+  if [ "$1" == "-m" ] || [ "$1" == "--migrate" ]; then
+    php artisan migrate --force
+  fi
+  if [ "$1" == "-mf" ] || [ "$1" == "--migrate-fresh" ]; then
+    php artisan migrate:fresh --seed
+  fi
