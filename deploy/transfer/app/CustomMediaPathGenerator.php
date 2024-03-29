@@ -1,20 +1,28 @@
 <?php
 
-namespace App\Services;
+namespace App\Interfaces;
 
+use Spatie\MediaLibrary\MediaCollections\Models\Media; // Import the correct Media class
 use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator as BasePathGenerator;
 
-class CustomMediaPathGenerator implements PathGenerator
+class CustomMediaPathGenerator implements BasePathGenerator
 {
     public function getPath(Media $media): string
     {
-        //return 'uploads/' . $media->name . '.' . $media->extension();
-        return $media->name;
+        return '/';
     }
 
     public function getPathForConversions(Media $media): string
     {
-        $path = $this->getPath($media);
-        return "conversions/$path"; // اضافه کردن زیرپوشه "conversions" برای فایل های تبدیل شده
+        return "conversions/" . $this->getPath($media);
+    }
+
+    /*
+     * Get the path for responsive images of the given media, relative to the root storage path.
+     */
+    public function getPathForResponsiveImages(Media $media): string
+    {
+        return "responsive-images/" . $this->getPath($media);
     }
 }
+

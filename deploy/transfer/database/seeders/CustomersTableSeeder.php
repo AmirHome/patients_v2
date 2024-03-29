@@ -73,11 +73,7 @@ class CustomersTableSeeder extends Seeder
         $rows = DB::connection('conversion_db')->table('customer_files')->get();
 
         foreach ($rows as $key => $row) {
-
-            if ($key > 10) {
-                continue;
-            }
-
+            
             Media::create([
                 'model_type' => 'App\Models\CrmDocument',
                 'model_id'    => CrmDocument::where('id', $row->customer_action_id)->first()->id,
@@ -85,11 +81,13 @@ class CustomersTableSeeder extends Seeder
                 'name' => $row->name,
                 'file_name' => $row->name,
                 'disk'=> 'public',
+                'conversions_disk'=> 'public',
                 'size' => $row->size,
-                'manipulations' => '[]',
-                'custom_properties'=> '[]',
-                'generated_conversions' => '[]',
-                'responsive_images'=> '[]',
+                'mime_type' => $row->mime_type,
+                'manipulations' => [],
+                'custom_properties'=> [],
+                'generated_conversions' =>[],
+                'responsive_images'=> [],
             ]);
 
 
