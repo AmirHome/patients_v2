@@ -6,7 +6,7 @@ return [
         'title_singular' => 'Kullanıcı Yönetimi',
     ],
     'permission' => [
-        'title'          => 'İzinler',
+        'title'          => 'Kullanıcı Yetkileri',
         'title_singular' => 'İzin',
         'fields'         => [
             'id'                => 'ID',
@@ -22,7 +22,7 @@ return [
         ],
     ],
     'role' => [
-        'title'          => 'Roller',
+        'title'          => 'Kullanıcı Rolleri',
         'title_singular' => 'Rol',
         'fields'         => [
             'id'                 => 'ID',
@@ -40,7 +40,7 @@ return [
         ],
     ],
     'user' => [
-        'title'          => 'Kullanıcılar',
+        'title'          => 'Çağrı Merkezi Kullanıcıları',
         'title_singular' => 'Kullanıcı',
         'fields'         => [
             'id'                       => 'ID',
@@ -432,7 +432,7 @@ return [
         ],
     ],
     'incomeCategory' => [
-        'title'          => 'Gelir kategorileri',
+        'title'          => 'Belediye Başkanlık Partileri',
         'title_singular' => 'Gelir Türü',
         'fields'         => [
             'id'                => 'ID',
@@ -448,8 +448,8 @@ return [
         ],
     ],
     'expense' => [
-        'title'          => 'Giderler',
-        'title_singular' => 'Gider',
+        'title'          => 'Belediye Başkanlığı Tutanaklar',
+        'title_singular' => 'Belediye Başkanlığı Tutanak',
         'fields'         => [
             'id'                      => 'ID',
             'id_helper'               => ' ',
@@ -470,8 +470,8 @@ return [
         ],
     ],
     'income' => [
-        'title'          => 'Gelir',
-        'title_singular' => 'Gelir',
+        'title'          => 'Meclis Üyeliği Tutanak',
+        'title_singular' => 'Meclis Üyeliği Tutanak',
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
@@ -492,16 +492,16 @@ return [
         ],
     ],
     'expenseReport' => [
-        'title'          => 'Aylık rapor',
-        'title_singular' => 'Aylık rapor',
+        'title'          => 'Sonuç Raporu',
+        'title_singular' => 'Sonuç Raporu',
         'reports'        => [
             'title'             => 'Raporlar',
             'title_singular'    => 'Rapor',
-            'incomeReport'      => 'Gelir Raporları',
+            'incomeReport'      => 'Belediye Başkanlık Raporları',
             'incomeByCategory'  => 'Türe göre gelirler',
             'expenseByCategory' => 'Gider Türü',
-            'income'            => 'Gelir',
-            'expense'           => 'Gider',
+            'income'            => 'Meclis Üyeliği Tutanak',
+            'expense'           => 'Belediye Başkanlığı Tutanak',
             'profit'            => 'Kazanç',
         ],
     ],
@@ -799,8 +799,6 @@ return [
             'hospital_helper'                => ' ',
             'department'                     => 'Department',
             'department_helper'              => ' ',
-            'status'                         => 'Status',
-            'status_helper'                  => ' ',
             'attendant_name'                 => 'Attendant Name',
             'attendant_name_helper'          => ' ',
             'attendant_address'              => 'Attendant Address',
@@ -839,6 +837,10 @@ return [
             'updated_at_helper'              => ' ',
             'deleted_at'                     => 'Deleted at',
             'deleted_at_helper'              => ' ',
+            'status'                         => 'Status',
+            'status_helper'                  => ' ',
+            'notify_hospitals'               => 'Notify Hospitals',
+            'notify_hospitals_helper'        => ' ',
         ],
     ],
     'travelTreatmentActivity' => [
@@ -859,26 +861,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
-            'status'             => 'Status',
-            'status_helper'      => ' ',
             'files'              => 'Files',
             'files_helper'       => ' ',
-        ],
-    ],
-    'travelTreatmentStatus' => [
-        'title'          => 'Travel Treatment Status',
-        'title_singular' => 'Travel Treatment Status',
-        'fields'         => [
-            'id'                => 'ID',
-            'id_helper'         => ' ',
-            'title'             => 'Title',
-            'title_helper'      => ' ',
-            'created_at'        => 'Created at',
-            'created_at_helper' => ' ',
-            'updated_at'        => 'Updated at',
-            'updated_at_helper' => ' ',
-            'deleted_at'        => 'Deleted at',
-            'deleted_at_helper' => ' ',
         ],
     ],
     'activity' => [
@@ -905,6 +889,22 @@ return [
             'document_file_helper' => ' ',
             'document_name'        => 'Document Name',
             'document_name_helper' => ' ',
+        ],
+    ],
+    'travelStatus' => [
+        'title'          => 'Travel Status',
+        'title_singular' => 'Travel Status',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'title'             => 'Title',
+            'title_helper'      => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
         ],
     ],
 

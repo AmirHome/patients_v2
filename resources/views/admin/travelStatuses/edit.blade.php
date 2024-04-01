@@ -3,22 +3,22 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.travelTreatmentStatus.title_singular') }}
+        {{ trans('global.edit') }} {{ trans('cruds.travelStatus.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.travel-treatment-statuses.update", [$travelTreatmentStatus->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.travel-statuses.update", [$travelStatus->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.travelTreatmentStatus.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $travelTreatmentStatus->title) }}" required>
+                <label class="required" for="title">{{ trans('cruds.travelStatus.fields.title') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $travelStatus->title) }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.travelTreatmentStatus.fields.title_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.travelStatus.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -60,7 +60,7 @@ class Activity extends Model implements HasMedia
 
     public function status()
     {
-        return $this->belongsTo(TravelTreatmentStatus::class, 'status_id');
+        return $this->belongsTo(TravelStatus::class, 'status_id');
     }
 
     public function getDocumentFileAttribute()

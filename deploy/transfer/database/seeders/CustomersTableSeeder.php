@@ -13,9 +13,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use Exception;
-use Carbon\Carbon;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Illuminate\Support\Str;
 
 class CustomersTableSeeder extends Seeder
 {

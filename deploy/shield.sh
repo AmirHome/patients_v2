@@ -6,7 +6,7 @@ cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CountriesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ProvinceTableSeeder.php deploy/transfer/database/seeders
-cp database/seeders/TravelTreatmentStatusTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TravelStatusTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TranslatorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/MinistryTableSeeder.php deploy/transfer/database/seeders
@@ -19,6 +19,7 @@ cp database/seeders/DepartmentTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/HospitalTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DoctorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/PatientTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TravelTableSeeder.php deploy/transfer/database/seeders
 
 cp -r app/Interfaces deploy/transfer/app
 cp config/database.php deploy/transfer/config

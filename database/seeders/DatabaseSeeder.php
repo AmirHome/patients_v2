@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
-use App\Models\Setting;
-use App\Models\TravelGroup;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        ini_set('max_execution_time', 3600);
+        ini_set('memory_limit', '2048M');
+    
         $this->call([
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             TaskStatusTableSeeder::class,
             CountriesTableSeeder::class,
             
-            TravelTreatmentStatusTableSeeder::class,
+            TravelStatusTableSeeder::class,
             ProvinceTableSeeder::class,
             CampaignsTableSeeder::class,
             TranslatorTableSeeder::class,
@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             HospitalTableSeeder::class,
             DoctorTableSeeder::class,
             PatientTableSeeder::class,
+            TravelTableSeeder::class
 
         ]);
     }

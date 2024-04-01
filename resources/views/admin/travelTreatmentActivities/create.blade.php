@@ -48,20 +48,6 @@
                 <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.travelTreatmentActivity.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                    @foreach($statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="files">{{ trans('cruds.travelTreatmentActivity.fields.files') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
                 </div>

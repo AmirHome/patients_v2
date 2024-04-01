@@ -29,9 +29,6 @@ class UpdateTravelRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'status' => [
-                'required',
-            ],
             'attendant_name' => [
                 'string',
                 'required',
@@ -61,21 +58,25 @@ class UpdateTravelRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'notify_hospitals' => [
+                'string',
+                'nullable',
+            ],
             'hospitalization_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'planning_discharge_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'arrival_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'departure_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'wants_shopping' => [
                 'required',
@@ -84,12 +85,12 @@ class UpdateTravelRequest extends FormRequest
                 'required',
             ],
             'visa_start_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'visa_end_date' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
         ];
     }

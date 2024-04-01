@@ -73,6 +73,9 @@
                         {{ trans('cruds.travel.fields.reffering_other') }}
                     </th>
                     <th>
+                        {{ trans('cruds.travel.fields.notify_hospitals') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.travel.fields.hospitalization_date') }}
                     </th>
                     <th>
@@ -160,7 +163,7 @@
 { data: 'group_name', name: 'group.name' },
 { data: 'hospital_name', name: 'hospital.name' },
 { data: 'department_name', name: 'department.name' },
-{ data: 'status', name: 'status' },
+{ data: 'status_title', name: 'status.title' },
 { data: 'attendant_name', name: 'attendant_name' },
 { data: 'attendant_address', name: 'attendant_address' },
 { data: 'attendant_phone', name: 'attendant_phone' },
@@ -169,6 +172,7 @@
 { data: 'reffering', name: 'reffering' },
 { data: 'reffering_type', name: 'reffering_type' },
 { data: 'reffering_other', name: 'reffering_other' },
+{ data: 'notify_hospitals', name: 'notify_hospitals' },
 { data: 'hospitalization_date', name: 'hospitalization_date' },
 { data: 'planning_discharge_date', name: 'planning_discharge_date' },
 { data: 'arrival_date', name: 'arrival_date' },

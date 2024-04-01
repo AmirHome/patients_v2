@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TravelTreatmentStatus extends Model
+class TravelStatus extends Model
 {
     use SoftDeletes, Auditable, HasFactory;
 
-    public $table = 'travel_treatment_statuses';
+    public $table = 'travel_statuses';
 
     protected $dates = [
         'created_at',
@@ -32,13 +32,13 @@ class TravelTreatmentStatus extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function statusTravelTreatmentActivities()
-    {
-        return $this->hasMany(TravelTreatmentActivity::class, 'status_id', 'id');
-    }
-
     public function statusActivities()
     {
         return $this->hasMany(Activity::class, 'status_id', 'id');
+    }
+
+    public function statusTravels()
+    {
+        return $this->hasMany(Travel::class, 'status_id', 'id');
     }
 }

@@ -37,9 +37,6 @@
                             {{ trans('cruds.travelTreatmentActivity.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travelTreatmentActivity.fields.status') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.files') }}
                         </th>
                         <th>
@@ -63,13 +60,10 @@
                                 {{ $travelTreatmentActivity->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $travelTreatmentActivity->travel->status ?? '' }}
+                                {{ $travelTreatmentActivity->travel->attendant_name ?? '' }}
                             </td>
                             <td>
                                 {{ $travelTreatmentActivity->description ?? '' }}
-                            </td>
-                            <td>
-                                {{ $travelTreatmentActivity->status->title ?? '' }}
                             </td>
                             <td>
                                 @foreach($travelTreatmentActivity->files as $key => $media)

@@ -9,7 +9,6 @@ use App\Http\Requests\StoreTravelTreatmentActivityRequest;
 use App\Http\Requests\UpdateTravelTreatmentActivityRequest;
 use App\Models\Travel;
 use App\Models\TravelTreatmentActivity;
-use App\Models\TravelTreatmentStatus;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -26,7 +25,7 @@ class TravelTreatmentActivityController extends Controller
         abort_if(Gate::denies('travel_treatment_activity_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = TravelTreatmentActivity::with(['user', 'travel', 'status'])->select(sprintf('%s.*', (new TravelTreatmentActivity)->table));
+            $query = TravelTreatmentActivity::with(['user', 'travel'])->select(sprintf('%s.*', (new TravelTreatmentActivity)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -57,17 +56,13 @@ class TravelTreatmentActivityController extends Controller
             $table->editColumn('user.email', function ($row) {
                 return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
             });
-            $table->addColumn('travel_status', function ($row) {
-                return $row->travel ? $row->travel->status : '';
+            $table->addColumn('travel_attendant_name', function ($row) {
+                return $row->travel ? $row->travel->attendant_name : '';
             });
 
             $table->editColumn('description', function ($row) {
                 return $row->description ? $row->description : '';
             });
-            $table->addColumn('status_title', function ($row) {
-                return $row->status ? $row->status->title : '';
-            });
-
             $table->editColumn('files', function ($row) {
                 if (! $row->files) {
                     return '';
@@ -80,7 +75,7 @@ class TravelTreatmentActivityController extends Controller
                 return implode(', ', $links);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'user', 'travel', 'status', 'files']);
+            $table->rawColumns(['actions', 'placeholder', 'user', 'travel', 'files']);
 
             return $table->make(true);
         }
@@ -94,11 +89,9 @@ class TravelTreatmentActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelTreatmentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.travelTreatmentActivities.create', compact('statuses', 'travel', 'users'));
+        return view('admin.travelTreatmentActivities.create', compact('travel', 'users'));
     }
 
     public function store(StoreTravelTreatmentActivityRequest $request)
@@ -122,13 +115,11 @@ class TravelTreatmentActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelTreatmentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travelTreatmentActivity->load('user', 'travel');
 
-        $travelTreatmentActivity->load('user', 'travel', 'status');
-
-        return view('admin.travelTreatmentActivities.edit', compact('statuses', 'travel', 'travelTreatmentActivity', 'users'));
+        return view('admin.travelTreatmentActivities.edit', compact('travel', 'travelTreatmentActivity', 'users'));
     }
 
     public function update(UpdateTravelTreatmentActivityRequest $request, TravelTreatmentActivity $travelTreatmentActivity)
@@ -156,7 +147,7 @@ class TravelTreatmentActivityController extends Controller
     {
         abort_if(Gate::denies('travel_treatment_activity_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelTreatmentActivity->load('user', 'travel', 'status');
+        $travelTreatmentActivity->load('user', 'travel');
 
         return view('admin.travelTreatmentActivities.show', compact('travelTreatmentActivity'));
     }

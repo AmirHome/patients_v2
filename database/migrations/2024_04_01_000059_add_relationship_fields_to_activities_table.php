@@ -14,7 +14,7 @@ class AddRelationshipFieldsToActivitiesTable extends Migration
             $table->unsignedBigInteger('travel_id')->nullable();
             $table->foreign('travel_id', 'travel_fk_9635939')->references('id')->on('travels');
             $table->unsignedBigInteger('status_id')->nullable();
-            $table->foreign('status_id', 'status_fk_9635941')->references('id')->on('travel_treatment_statuses');
+            $table->foreign('status_id', 'status_fk_9635941')->references('id')->on('travel_statuses');
         });
     }
 }

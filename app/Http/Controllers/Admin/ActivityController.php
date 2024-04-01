@@ -9,7 +9,7 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Models\Activity;
 use App\Models\Travel;
-use App\Models\TravelTreatmentStatus;
+use App\Models\TravelStatus;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -57,8 +57,8 @@ class ActivityController extends Controller
             $table->editColumn('user.email', function ($row) {
                 return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
             });
-            $table->addColumn('travel_status', function ($row) {
-                return $row->travel ? $row->travel->status : '';
+            $table->addColumn('travel_attendant_name', function ($row) {
+                return $row->travel ? $row->travel->attendant_name : '';
             });
 
             $table->editColumn('travel.attendant_name', function ($row) {
@@ -100,9 +100,9 @@ class ActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelTreatmentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.activities.create', compact('statuses', 'travel', 'users'));
     }
@@ -128,9 +128,9 @@ class ActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelTreatmentStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $activity->load('user', 'travel', 'status');
 

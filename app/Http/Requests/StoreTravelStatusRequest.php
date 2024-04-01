@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\TravelTreatmentStatus;
+use App\Models\TravelStatus;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreTravelTreatmentStatusRequest extends FormRequest
+class StoreTravelStatusRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('travel_treatment_status_create');
+        return Gate::allows('travel_status_create');
     }
 
     public function rules()
@@ -20,7 +20,6 @@ class StoreTravelTreatmentStatusRequest extends FormRequest
             'title' => [
                 'string',
                 'required',
-                'unique:travel_treatment_statuses',
             ],
         ];
     }

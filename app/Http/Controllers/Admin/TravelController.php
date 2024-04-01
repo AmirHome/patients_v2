@@ -11,6 +11,7 @@ use App\Models\Hospital;
 use App\Models\Patient;
 use App\Models\Travel;
 use App\Models\TravelGroup;
+use App\Models\TravelStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class TravelController extends Controller
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Travel::with(['patient', 'group', 'hospital', 'department'])->select(sprintf('%s.*', (new Travel)->table));
+            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'status'])->select(sprintf('%s.*', (new Travel)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -72,9 +73,10 @@ class TravelController extends Controller
                 return $row->department ? $row->department->name : '';
             });
 
-            $table->editColumn('status', function ($row) {
-                return $row->status ? Travel::STATUS_SELECT[$row->status] : '';
+            $table->addColumn('status_title', function ($row) {
+                return $row->status ? $row->status->title : '';
             });
+
             $table->editColumn('attendant_name', function ($row) {
                 return $row->attendant_name ? $row->attendant_name : '';
             });
@@ -99,6 +101,9 @@ class TravelController extends Controller
             $table->editColumn('reffering_other', function ($row) {
                 return $row->reffering_other ? $row->reffering_other : '';
             });
+            $table->editColumn('notify_hospitals', function ($row) {
+                return $row->notify_hospitals ? $row->notify_hospitals : '';
+            });
 
             $table->editColumn('wants_shopping', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->wants_shopping ? 'checked' : null) . '>';
@@ -107,7 +112,7 @@ class TravelController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->visa_status ? 'checked' : null) . '>';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'has_pestilence', 'wants_shopping', 'visa_status']);
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'status', 'has_pestilence', 'wants_shopping', 'visa_status']);
 
             return $table->make(true);
         }
@@ -127,7 +132,9 @@ class TravelController extends Controller
 
         $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'patients'));
+        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'patients', 'statuses'));
     }
 
     public function store(StoreTravelRequest $request)
@@ -149,9 +156,11 @@ class TravelController extends Controller
 
         $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel->load('patient', 'group', 'hospital', 'department');
+        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'patients', 'travel'));
+        $travel->load('patient', 'group', 'hospital', 'department', 'status');
+
+        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'patients', 'statuses', 'travel'));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
@@ -165,7 +174,7 @@ class TravelController extends Controller
     {
         abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'travelTravelTreatmentActivities', 'travelActivities');
+        $travel->load('patient', 'group', 'hospital', 'department', 'status', 'travelTravelTreatmentActivities', 'travelActivities');
 
         return view('admin.travels.show', compact('travel'));
     }

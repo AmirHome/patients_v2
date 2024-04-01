@@ -78,7 +78,7 @@
             </li>
         @endcan
         @can('definition_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }} {{ request()->is("admin/travel-statuses*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
@@ -203,6 +203,16 @@
 
                                 </i>
                                 {{ trans('cruds.doctor.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('travel_status_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.travel-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-statuses") || request()->is("admin/travel-statuses/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.travelStatus.title') }}
                             </a>
                         </li>
                     @endcan
@@ -428,7 +438,7 @@
             </li>
         @endcan
         @can('coordination_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-statuses*") ? "c-show" : "" }} {{ request()->is("admin/activities*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/activities*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-ambulance c-sidebar-nav-icon">
 
@@ -463,16 +473,6 @@
 
                                 </i>
                                 {{ trans('cruds.travelTreatmentActivity.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('travel_treatment_status_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.travel-treatment-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-statuses") || request()->is("admin/travel-treatment-statuses/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.travelTreatmentStatus.title') }}
                             </a>
                         </li>
                     @endcan

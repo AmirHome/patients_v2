@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.travelTreatmentStatus.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.travelStatus.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.travel-treatment-statuses.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.travel-statuses.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,24 +17,24 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelTreatmentStatus.fields.id') }}
+                            {{ trans('cruds.travelStatus.fields.id') }}
                         </th>
                         <td>
-                            {{ $travelTreatmentStatus->id }}
+                            {{ $travelStatus->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelTreatmentStatus.fields.title') }}
+                            {{ trans('cruds.travelStatus.fields.title') }}
                         </th>
                         <td>
-                            {{ $travelTreatmentStatus->title }}
+                            {{ $travelStatus->title }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.travel-treatment-statuses.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.travel-statuses.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -48,22 +48,22 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#status_travel_treatment_activities" role="tab" data-toggle="tab">
-                {{ trans('cruds.travelTreatmentActivity.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#status_activities" role="tab" data-toggle="tab">
                 {{ trans('cruds.activity.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#status_travels" role="tab" data-toggle="tab">
+                {{ trans('cruds.travel.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="status_travel_treatment_activities">
-            @includeIf('admin.travelTreatmentStatuses.relationships.statusTravelTreatmentActivities', ['travelTreatmentActivities' => $travelTreatmentStatus->statusTravelTreatmentActivities])
-        </div>
         <div class="tab-pane" role="tabpanel" id="status_activities">
-            @includeIf('admin.travelTreatmentStatuses.relationships.statusActivities', ['activities' => $travelTreatmentStatus->statusActivities])
+            @includeIf('admin.travelStatuses.relationships.statusActivities', ['activities' => $travelStatus->statusActivities])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="status_travels">
+            @includeIf('admin.travelStatuses.relationships.statusTravels', ['travels' => $travelStatus->statusTravels])
         </div>
     </div>
 </div>

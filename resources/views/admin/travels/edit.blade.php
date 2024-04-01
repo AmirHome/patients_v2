@@ -67,11 +67,10 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.department_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.travel.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Travel::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', $travel->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="status_id">{{ trans('cruds.travel.fields.status') }}</label>
+                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id">
+                    @foreach($statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('status_id') ? old('status_id') : $travel->status->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('status'))
@@ -164,8 +163,18 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.reffering_other_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="hospitalization_date">{{ trans('cruds.travel.fields.hospitalization_date') }}</label>
-                <input class="form-control date {{ $errors->has('hospitalization_date') ? 'is-invalid' : '' }}" type="text" name="hospitalization_date" id="hospitalization_date" value="{{ old('hospitalization_date', $travel->hospitalization_date) }}" required>
+                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
+                <input class="form-control {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" type="text" name="notify_hospitals" id="notify_hospitals" value="{{ old('notify_hospitals', $travel->notify_hospitals) }}">
+                @if($errors->has('notify_hospitals'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('notify_hospitals') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.travel.fields.notify_hospitals_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="hospitalization_date">{{ trans('cruds.travel.fields.hospitalization_date') }}</label>
+                <input class="form-control date {{ $errors->has('hospitalization_date') ? 'is-invalid' : '' }}" type="text" name="hospitalization_date" id="hospitalization_date" value="{{ old('hospitalization_date', $travel->hospitalization_date) }}">
                 @if($errors->has('hospitalization_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('hospitalization_date') }}
@@ -174,8 +183,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.hospitalization_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="planning_discharge_date">{{ trans('cruds.travel.fields.planning_discharge_date') }}</label>
-                <input class="form-control date {{ $errors->has('planning_discharge_date') ? 'is-invalid' : '' }}" type="text" name="planning_discharge_date" id="planning_discharge_date" value="{{ old('planning_discharge_date', $travel->planning_discharge_date) }}" required>
+                <label for="planning_discharge_date">{{ trans('cruds.travel.fields.planning_discharge_date') }}</label>
+                <input class="form-control date {{ $errors->has('planning_discharge_date') ? 'is-invalid' : '' }}" type="text" name="planning_discharge_date" id="planning_discharge_date" value="{{ old('planning_discharge_date', $travel->planning_discharge_date) }}">
                 @if($errors->has('planning_discharge_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('planning_discharge_date') }}
@@ -184,8 +193,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.planning_discharge_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="arrival_date">{{ trans('cruds.travel.fields.arrival_date') }}</label>
-                <input class="form-control date {{ $errors->has('arrival_date') ? 'is-invalid' : '' }}" type="text" name="arrival_date" id="arrival_date" value="{{ old('arrival_date', $travel->arrival_date) }}" required>
+                <label for="arrival_date">{{ trans('cruds.travel.fields.arrival_date') }}</label>
+                <input class="form-control date {{ $errors->has('arrival_date') ? 'is-invalid' : '' }}" type="text" name="arrival_date" id="arrival_date" value="{{ old('arrival_date', $travel->arrival_date) }}">
                 @if($errors->has('arrival_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('arrival_date') }}
@@ -194,8 +203,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.arrival_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="departure_date">{{ trans('cruds.travel.fields.departure_date') }}</label>
-                <input class="form-control date {{ $errors->has('departure_date') ? 'is-invalid' : '' }}" type="text" name="departure_date" id="departure_date" value="{{ old('departure_date', $travel->departure_date) }}" required>
+                <label for="departure_date">{{ trans('cruds.travel.fields.departure_date') }}</label>
+                <input class="form-control date {{ $errors->has('departure_date') ? 'is-invalid' : '' }}" type="text" name="departure_date" id="departure_date" value="{{ old('departure_date', $travel->departure_date) }}">
                 @if($errors->has('departure_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('departure_date') }}
@@ -228,8 +237,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.visa_status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="visa_start_date">{{ trans('cruds.travel.fields.visa_start_date') }}</label>
-                <input class="form-control date {{ $errors->has('visa_start_date') ? 'is-invalid' : '' }}" type="text" name="visa_start_date" id="visa_start_date" value="{{ old('visa_start_date', $travel->visa_start_date) }}" required>
+                <label for="visa_start_date">{{ trans('cruds.travel.fields.visa_start_date') }}</label>
+                <input class="form-control date {{ $errors->has('visa_start_date') ? 'is-invalid' : '' }}" type="text" name="visa_start_date" id="visa_start_date" value="{{ old('visa_start_date', $travel->visa_start_date) }}">
                 @if($errors->has('visa_start_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('visa_start_date') }}
@@ -238,8 +247,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.visa_start_date_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="visa_end_date">{{ trans('cruds.travel.fields.visa_end_date') }}</label>
-                <input class="form-control date {{ $errors->has('visa_end_date') ? 'is-invalid' : '' }}" type="text" name="visa_end_date" id="visa_end_date" value="{{ old('visa_end_date', $travel->visa_end_date) }}" required>
+                <label for="visa_end_date">{{ trans('cruds.travel.fields.visa_end_date') }}</label>
+                <input class="form-control date {{ $errors->has('visa_end_date') ? 'is-invalid' : '' }}" type="text" name="visa_end_date" id="visa_end_date" value="{{ old('visa_end_date', $travel->visa_end_date) }}">
                 @if($errors->has('visa_end_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('visa_end_date') }}

@@ -171,15 +171,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('travel-treatment-activities/ckmedia', 'TravelTreatmentActivityController@storeCKEditorImages')->name('travel-treatment-activities.storeCKEditorImages');
     Route::resource('travel-treatment-activities', 'TravelTreatmentActivityController');
 
-    // Travel Treatment Status
-    Route::delete('travel-treatment-statuses/destroy', 'TravelTreatmentStatusController@massDestroy')->name('travel-treatment-statuses.massDestroy');
-    Route::resource('travel-treatment-statuses', 'TravelTreatmentStatusController');
-
     // Activity
     Route::delete('activities/destroy', 'ActivityController@massDestroy')->name('activities.massDestroy');
     Route::post('activities/media', 'ActivityController@storeMedia')->name('activities.storeMedia');
     Route::post('activities/ckmedia', 'ActivityController@storeCKEditorImages')->name('activities.storeCKEditorImages');
     Route::resource('activities', 'ActivityController');
+
+    // Travel Status
+    Route::delete('travel-statuses/destroy', 'TravelStatusController@massDestroy')->name('travel-statuses.massDestroy');
+    Route::resource('travel-statuses', 'TravelStatusController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');

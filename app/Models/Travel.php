@@ -15,10 +15,6 @@ class Travel extends Model
 
     public $table = 'travels';
 
-    public const STATUS_SELECT = [
-        '0' => 'default',
-    ];
-
     protected $dates = [
         'hospitalization_date',
         'planning_discharge_date',
@@ -36,7 +32,7 @@ class Travel extends Model
         'group_id',
         'hospital_id',
         'department_id',
-        'status',
+        'status_id',
         'attendant_name',
         'attendant_address',
         'attendant_phone',
@@ -45,6 +41,7 @@ class Travel extends Model
         'reffering',
         'reffering_type',
         'reffering_other',
+        'notify_hospitals',
         'hospitalization_date',
         'planning_discharge_date',
         'arrival_date',
@@ -91,6 +88,11 @@ class Travel extends Model
     public function department()
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(TravelStatus::class, 'status_id');
     }
 
     public function getHospitalizationDateAttribute($value)

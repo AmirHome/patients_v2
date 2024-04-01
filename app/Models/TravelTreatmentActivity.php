@@ -30,7 +30,6 @@ class TravelTreatmentActivity extends Model implements HasMedia
         'user_id',
         'travel_id',
         'description',
-        'status_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -55,11 +54,6 @@ class TravelTreatmentActivity extends Model implements HasMedia
     public function travel()
     {
         return $this->belongsTo(Travel::class, 'travel_id');
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(TravelTreatmentStatus::class, 'status_id');
     }
 
     public function getFilesAttribute()

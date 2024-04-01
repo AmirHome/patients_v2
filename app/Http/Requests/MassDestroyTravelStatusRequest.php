@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\TravelTreatmentStatus;
+use App\Models\TravelStatus;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyTravelTreatmentStatusRequest extends FormRequest
+class MassDestroyTravelStatusRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('travel_treatment_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('travel_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyTravelTreatmentStatusRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:travel_treatment_statuses,id',
+            'ids.*' => 'exists:travel_statuses,id',
         ];
     }
 }

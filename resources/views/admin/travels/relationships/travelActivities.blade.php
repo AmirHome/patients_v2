@@ -69,7 +69,7 @@
                                 {{ $activity->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->travel->status ?? '' }}
+                                {{ $activity->travel->attendant_name ?? '' }}
                             </td>
                             <td>
                                 {{ $activity->travel->attendant_name ?? '' }}

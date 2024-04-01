@@ -73,6 +73,9 @@
                             {{ trans('cruds.travel.fields.reffering_other') }}
                         </th>
                         <th>
+                            {{ trans('cruds.travel.fields.notify_hospitals') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.travel.fields.hospitalization_date') }}
                         </th>
                         <th>
@@ -132,7 +135,7 @@
                                 {{ $travel->department->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Travel::STATUS_SELECT[$travel->status] ?? '' }}
+                                {{ $travel->status->title ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->attendant_name ?? '' }}
@@ -158,6 +161,9 @@
                             </td>
                             <td>
                                 {{ $travel->reffering_other ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travel->notify_hospitals ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->hospitalization_date ?? '' }}

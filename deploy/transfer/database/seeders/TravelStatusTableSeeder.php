@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\TravelTreatmentStatus;
+use App\Models\TravelStatus;
 
-class TravelTreatmentStatusTableSeeder extends Seeder
+class TravelStatusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -38,7 +38,7 @@ class TravelTreatmentStatusTableSeeder extends Seeder
         ];
 
         foreach ($statuses as $status) {
-            TravelTreatmentStatus::create([
+            TravelStatus::create([
                 'title' => $status,
             ]);
         }

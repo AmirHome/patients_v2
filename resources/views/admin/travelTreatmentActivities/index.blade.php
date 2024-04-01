@@ -37,9 +37,6 @@
                         {{ trans('cruds.travelTreatmentActivity.fields.description') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelTreatmentActivity.fields.status') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.travelTreatmentActivity.fields.files') }}
                     </th>
                     <th>
@@ -101,9 +98,8 @@
 { data: 'id', name: 'id' },
 { data: 'user_name', name: 'user.name' },
 { data: 'user.email', name: 'user.email' },
-{ data: 'travel_status', name: 'travel.status' },
+{ data: 'travel_attendant_name', name: 'travel.attendant_name' },
 { data: 'description', name: 'description' },
-{ data: 'status_title', name: 'status.title' },
 { data: 'files', name: 'files', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

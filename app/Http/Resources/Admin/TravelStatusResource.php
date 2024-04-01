@@ -4,7 +4,7 @@ namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TravelTreatmentStatusResource extends JsonResource
+class TravelStatusResource extends JsonResource
 {
     public function toArray($request)
     {

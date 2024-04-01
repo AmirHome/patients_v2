@@ -60,7 +60,7 @@
                             {{ trans('cruds.travel.fields.status') }}
                         </th>
                         <td>
-                            {{ App\Models\Travel::STATUS_SELECT[$travel->status] ?? '' }}
+                            {{ $travel->status->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -125,6 +125,14 @@
                         </th>
                         <td>
                             {{ $travel->reffering_other }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.travel.fields.notify_hospitals') }}
+                        </th>
+                        <td>
+                            {{ $travel->notify_hospitals }}
                         </td>
                     </tr>
                     <tr>

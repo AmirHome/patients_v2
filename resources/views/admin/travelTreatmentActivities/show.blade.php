@@ -36,7 +36,7 @@
                             {{ trans('cruds.travelTreatmentActivity.fields.travel') }}
                         </th>
                         <td>
-                            {{ $travelTreatmentActivity->travel->status ?? '' }}
+                            {{ $travelTreatmentActivity->travel->attendant_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -45,14 +45,6 @@
                         </th>
                         <td>
                             {{ $travelTreatmentActivity->description }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.travelTreatmentActivity.fields.status') }}
-                        </th>
-                        <td>
-                            {{ $travelTreatmentActivity->status->title ?? '' }}
                         </td>
                     </tr>
                     <tr>

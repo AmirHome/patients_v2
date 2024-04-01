@@ -20,10 +20,11 @@ class PatientTableSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $rows = DB::connection('conversion_db')->table('patients')->get();
 
-        foreach ($rows as $row) {
+        foreach ($rows as $key => $row) {
+
             $birthDate = $row->birth_date;
             try {
                 if ($birthDate !== '0000-00-00') {
@@ -64,5 +65,8 @@ class PatientTableSeeder extends Seeder
                 'code'           => $row->code,
             ]);
         }
+
+        echo ini_get('max_execution_time');
+        
     }
 }
