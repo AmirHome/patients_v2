@@ -17,11 +17,23 @@ function pull_code() {
 function deployment() {
   echo "Current directory: $(pwd)"
 
-  # if .env file dose not exists, copy .env.local to .env
-  if [ ! -f ".env" ]; then
-    cp deploy/.env.local .env
-    # echo "Copied .env.local to .env." by blue color
-    echo -e "\e[34mCopied .env.local to .env.\e[0m"
+  # Parse arguments
+  for arg in "$@"
+  do
+      case $arg in
+          env=*)
+              ENVIRONMENT="${arg#*=}"
+              shift
+              ;;
+          *)
+              # Unknown argument
+              ;;
+      esac
+  done
+
+  # If environment is not provided, default to 'local'
+  if [ ! -z "$ENVIRONMENT" ]; then
+      cp "deploy/.env.$ENVIRONMENT" .env
   fi
 
   cp deploy/.htaccess public/.htaccess
