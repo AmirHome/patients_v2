@@ -20,7 +20,7 @@ class TravelTreatmentActivityApiController extends Controller
     {
         abort_if(Gate::denies('travel_treatment_activity_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelTreatmentActivityResource(TravelTreatmentActivity::with(['user', 'travel'])->get());
+        return new TravelTreatmentActivityResource(TravelTreatmentActivity::with(['user', 'travel', 'status'])->get());
     }
 
     public function store(StoreTravelTreatmentActivityRequest $request)
@@ -40,7 +40,7 @@ class TravelTreatmentActivityApiController extends Controller
     {
         abort_if(Gate::denies('travel_treatment_activity_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelTreatmentActivityResource($travelTreatmentActivity->load(['user', 'travel']));
+        return new TravelTreatmentActivityResource($travelTreatmentActivity->load(['user', 'travel', 'status']));
     }
 
     public function update(UpdateTravelTreatmentActivityRequest $request, TravelTreatmentActivity $travelTreatmentActivity)

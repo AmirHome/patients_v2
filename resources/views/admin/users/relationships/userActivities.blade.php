@@ -34,7 +34,7 @@
                             {{ trans('cruds.activity.fields.travel') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.attendant_name') }}
+                            {{ trans('cruds.travel.fields.reffering_type') }}
                         </th>
                         <th>
                             {{ trans('cruds.activity.fields.description') }}
@@ -69,10 +69,10 @@
                                 {{ $activity->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->travel->attendant_name ?? '' }}
+                                {{ $activity->travel->reffering ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->travel->attendant_name ?? '' }}
+                                {{ $activity->travel->reffering_type ?? '' }}
                             </td>
                             <td>
                                 {{ $activity->description ?? '' }}

@@ -87,8 +87,7 @@ class CustomersTableSeeder extends Seeder
                 'generated_conversions' =>[],
                 'responsive_images'=> [],
             ]);
-
-
         }
+        
     }
 }

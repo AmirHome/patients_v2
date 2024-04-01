@@ -29,6 +29,7 @@ class TravelTreatmentActivity extends Model implements HasMedia
     protected $fillable = [
         'user_id',
         'travel_id',
+        'status_id',
         'description',
         'created_at',
         'updated_at',
@@ -54,6 +55,11 @@ class TravelTreatmentActivity extends Model implements HasMedia
     public function travel()
     {
         return $this->belongsTo(Travel::class, 'travel_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(TravelStatus::class, 'status_id');
     }
 
     public function getFilesAttribute()

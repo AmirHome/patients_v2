@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Laravel Seeder
-#$ php artisan make:seeder OfficeTableSeeder
+#$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CountriesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
@@ -20,6 +20,7 @@ cp database/seeders/HospitalTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DoctorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/PatientTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/database/seeders
 
 cp -r app/Interfaces deploy/transfer/app
 cp config/database.php deploy/transfer/config

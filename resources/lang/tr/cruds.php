@@ -6,7 +6,7 @@ return [
         'title_singular' => 'Kullanıcı Yönetimi',
     ],
     'permission' => [
-        'title'          => 'Kullanıcı Yetkileri',
+        'title'          => 'İzinler',
         'title_singular' => 'İzin',
         'fields'         => [
             'id'                => 'ID',
@@ -22,7 +22,7 @@ return [
         ],
     ],
     'role' => [
-        'title'          => 'Kullanıcı Rolleri',
+        'title'          => 'Roller',
         'title_singular' => 'Rol',
         'fields'         => [
             'id'                 => 'ID',
@@ -40,7 +40,7 @@ return [
         ],
     ],
     'user' => [
-        'title'          => 'Çağrı Merkezi Kullanıcıları',
+        'title'          => 'Kullanıcılar',
         'title_singular' => 'Kullanıcı',
         'fields'         => [
             'id'                       => 'ID',
@@ -432,7 +432,7 @@ return [
         ],
     ],
     'incomeCategory' => [
-        'title'          => 'Belediye Başkanlık Partileri',
+        'title'          => 'Gelir kategorileri',
         'title_singular' => 'Gelir Türü',
         'fields'         => [
             'id'                => 'ID',
@@ -448,8 +448,8 @@ return [
         ],
     ],
     'expense' => [
-        'title'          => 'Belediye Başkanlığı Tutanaklar',
-        'title_singular' => 'Belediye Başkanlığı Tutanak',
+        'title'          => 'Giderler',
+        'title_singular' => 'Gider',
         'fields'         => [
             'id'                      => 'ID',
             'id_helper'               => ' ',
@@ -470,8 +470,8 @@ return [
         ],
     ],
     'income' => [
-        'title'          => 'Meclis Üyeliği Tutanak',
-        'title_singular' => 'Meclis Üyeliği Tutanak',
+        'title'          => 'Gelir',
+        'title_singular' => 'Gelir',
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
@@ -492,16 +492,16 @@ return [
         ],
     ],
     'expenseReport' => [
-        'title'          => 'Sonuç Raporu',
-        'title_singular' => 'Sonuç Raporu',
+        'title'          => 'Aylık rapor',
+        'title_singular' => 'Aylık rapor',
         'reports'        => [
             'title'             => 'Raporlar',
             'title_singular'    => 'Rapor',
-            'incomeReport'      => 'Belediye Başkanlık Raporları',
+            'incomeReport'      => 'Gelir Raporları',
             'incomeByCategory'  => 'Türe göre gelirler',
             'expenseByCategory' => 'Gider Türü',
-            'income'            => 'Meclis Üyeliği Tutanak',
-            'expense'           => 'Belediye Başkanlığı Tutanak',
+            'income'            => 'Gelir',
+            'expense'           => 'Gider',
             'profit'            => 'Kazanç',
         ],
     ],
@@ -863,6 +863,8 @@ return [
             'deleted_at_helper'  => ' ',
             'files'              => 'Files',
             'files_helper'       => ' ',
+            'status'             => 'Status',
+            'status_helper'      => ' ',
         ],
     ],
     'activity' => [

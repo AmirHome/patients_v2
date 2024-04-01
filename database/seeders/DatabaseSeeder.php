@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TravelTreatmentActivity;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,7 +35,8 @@ class DatabaseSeeder extends Seeder
             HospitalTableSeeder::class,
             DoctorTableSeeder::class,
             PatientTableSeeder::class,
-            TravelTableSeeder::class
+            TravelTableSeeder::class,
+            TravelTreatmentActivityTableSeeder::class,
 
         ]);
     }

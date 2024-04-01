@@ -25,6 +25,10 @@ class UpdateTravelTreatmentActivityRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'status_id' => [
+                'required',
+                'integer',
+            ],
             'description' => [
                 'required',
             ],

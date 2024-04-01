@@ -863,6 +863,8 @@ return [
             'deleted_at_helper'  => ' ',
             'files'              => 'Files',
             'files_helper'       => ' ',
+            'status'             => 'Status',
+            'status_helper'      => ' ',
         ],
     ],
     'activity' => [

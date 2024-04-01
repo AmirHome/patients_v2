@@ -87,7 +87,7 @@ class TravelStatusController extends Controller
     {
         abort_if(Gate::denies('travel_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelStatus->load('statusActivities', 'statusTravels');
+        $travelStatus->load('statusActivities', 'statusTravels', 'statusTravelTreatmentActivities');
 
         return view('admin.travelStatuses.show', compact('travelStatus'));
     }

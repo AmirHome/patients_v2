@@ -65,8 +65,6 @@ class PatientTableSeeder extends Seeder
                 'code'           => $row->code,
             ]);
         }
-
-        echo ini_get('max_execution_time');
         
     }
 }

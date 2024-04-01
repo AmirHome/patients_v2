@@ -1,8 +1,8 @@
-@can('activity_create')
+@can('travel_treatment_activity_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.activities.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.activity.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.travel-treatment-activities.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.travelTreatmentActivity.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,43 +10,40 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.activity.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.travelTreatmentActivity.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-statusActivities">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-statusTravelTreatmentActivities">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.id') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.user') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.user') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.travel') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.travel') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.reffering_type') }}
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.description') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.status') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.activity.fields.document_file') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.activity.fields.document_name') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.files') }}
                         </th>
                         <th>
                             &nbsp;
@@ -54,57 +51,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($activities as $key => $activity)
-                        <tr data-entry-id="{{ $activity->id }}">
+                    @foreach($travelTreatmentActivities as $key => $travelTreatmentActivity)
+                        <tr data-entry-id="{{ $travelTreatmentActivity->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $activity->id ?? '' }}
+                                {{ $travelTreatmentActivity->id ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->user->name ?? '' }}
+                                {{ $travelTreatmentActivity->user->name ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->user->email ?? '' }}
+                                {{ $travelTreatmentActivity->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->travel->reffering ?? '' }}
+                                {{ $travelTreatmentActivity->travel->reffering ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->travel->reffering_type ?? '' }}
+                                {{ $travelTreatmentActivity->travel->reffering_type ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->description ?? '' }}
+                                {{ $travelTreatmentActivity->status->title ?? '' }}
                             </td>
                             <td>
-                                {{ $activity->status->title ?? '' }}
+                                {{ $travelTreatmentActivity->description ?? '' }}
                             </td>
                             <td>
-                                @foreach($activity->document_file as $key => $media)
+                                @foreach($travelTreatmentActivity->files as $key => $media)
                                     <a href="{{ $media->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
                                     </a>
                                 @endforeach
                             </td>
                             <td>
-                                {{ $activity->document_name ?? '' }}
-                            </td>
-                            <td>
-                                @can('activity_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.activities.show', $activity->id) }}">
+                                @can('travel_treatment_activity_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.travel-treatment-activities.show', $travelTreatmentActivity->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('activity_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.activities.edit', $activity->id) }}">
+                                @can('travel_treatment_activity_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.travel-treatment-activities.edit', $travelTreatmentActivity->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('activity_delete')
-                                    <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('travel_treatment_activity_delete')
+                                    <form action="{{ route('admin.travel-treatment-activities.destroy', $travelTreatmentActivity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -126,11 +120,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('activity_delete')
+@can('travel_treatment_activity_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.activities.massDestroy') }}",
+    url: "{{ route('admin.travel-treatment-activities.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -161,7 +155,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-statusActivities:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-statusTravelTreatmentActivities:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
