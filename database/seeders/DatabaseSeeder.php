@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             DepartmentTableSeeder::class,
             HospitalTableSeeder::class,
             DoctorTableSeeder::class,
+            PatientTableSeeder::class,
 
         ]);
     }

@@ -22,12 +22,12 @@ class CreatePatientsTable extends Migration
             $table->string('foriegn_phone');
             $table->string('email');
             $table->string('gender');
-            $table->date('birthday');
+            $table->date('birthday')->nullable();
             $table->string('birth_place');
             $table->longText('address');
             $table->float('weight', 5, 2);
             $table->float('height', 5, 2);
-            $table->string('blood_group');
+            $table->string('blood_group')->nullable();
             $table->string('code');
             $table->timestamps();
             $table->softDeletes();

@@ -80,8 +80,8 @@ class StorePatientRequest extends FormRequest
                 'required',
             ],
             'birthday' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
             'birth_place' => [
                 'string',
@@ -96,9 +96,6 @@ class StorePatientRequest extends FormRequest
             ],
             'height' => [
                 'numeric',
-                'required',
-            ],
-            'blood_group' => [
                 'required',
             ],
             'code' => [

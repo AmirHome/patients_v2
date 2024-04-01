@@ -32,6 +32,17 @@ class UpdateActivityRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'document_file' => [
+                'array',
+                'required',
+            ],
+            'document_file.*' => [
+                'required',
+            ],
+            'document_name' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

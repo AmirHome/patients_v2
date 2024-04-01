@@ -177,6 +177,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Activity
     Route::delete('activities/destroy', 'ActivityController@massDestroy')->name('activities.massDestroy');
+    Route::post('activities/media', 'ActivityController@storeMedia')->name('activities.storeMedia');
+    Route::post('activities/ckmedia', 'ActivityController@storeCKEditorImages')->name('activities.storeCKEditorImages');
     Route::resource('activities', 'ActivityController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');

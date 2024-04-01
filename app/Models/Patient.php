@@ -22,11 +22,6 @@ class Patient extends Model implements HasMedia
         'photo',
     ];
 
-    public const BLOOD_GROUP_SELECT = [
-        '-1' => '-A',
-        '1'  => '+A',
-    ];
-
     public const GENDER_SELECT = [
         '0' => 'women',
         '1' => 'men',
@@ -38,6 +33,17 @@ class Patient extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+    ];
+
+    public const BLOOD_GROUP_SELECT = [
+        '0' => 'A RH+',
+        '1' => 'A RH-',
+        '2' => 'B RH+',
+        '3' => 'B RH-',
+        '4' => '0 RH+',
+        '5' => '0 RH-',
+        '6' => 'AB RH+',
+        '7' => 'AB RH-',
     ];
 
     protected $fillable = [

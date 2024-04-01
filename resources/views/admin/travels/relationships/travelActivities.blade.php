@@ -43,6 +43,12 @@
                             {{ trans('cruds.activity.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.activity.fields.document_file') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.activity.fields.document_name') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -73,6 +79,16 @@
                             </td>
                             <td>
                                 {{ $activity->status->title ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($activity->document_file as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $activity->document_name ?? '' }}
                             </td>
                             <td>
                                 @can('activity_show')

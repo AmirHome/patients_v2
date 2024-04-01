@@ -51,5 +51,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('travel-treatment-statuses', 'TravelTreatmentStatusApiController');
 
     // Activity
+    Route::post('activities/media', 'ActivityApiController@storeMedia')->name('activities.storeMedia');
     Route::apiResource('activities', 'ActivityApiController');
 });

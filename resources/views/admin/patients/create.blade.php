@@ -191,8 +191,8 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.gender_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
-                <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}" type="text" name="birthday" id="birthday" value="{{ old('birthday') }}" required>
+                <label for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
+                <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}" type="text" name="birthday" id="birthday" value="{{ old('birthday') }}">
                 @if($errors->has('birthday'))
                     <div class="invalid-feedback">
                         {{ $errors->first('birthday') }}
@@ -241,8 +241,8 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.height_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.patient.fields.blood_group') }}</label>
-                <select class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}" name="blood_group" id="blood_group" required>
+                <label>{{ trans('cruds.patient.fields.blood_group') }}</label>
+                <select class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}" name="blood_group" id="blood_group">
                     <option value disabled {{ old('blood_group', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\Patient::BLOOD_GROUP_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('blood_group', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>

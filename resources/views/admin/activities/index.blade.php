@@ -43,6 +43,12 @@
                         {{ trans('cruds.activity.fields.status') }}
                     </th>
                     <th>
+                        {{ trans('cruds.activity.fields.document_file') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.activity.fields.document_name') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -105,6 +111,8 @@
 { data: 'travel.attendant_name', name: 'travel.attendant_name' },
 { data: 'description', name: 'description' },
 { data: 'status_title', name: 'status.title' },
+{ data: 'document_file', name: 'document_file', sortable: false, searchable: false },
+{ data: 'document_name', name: 'document_name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
