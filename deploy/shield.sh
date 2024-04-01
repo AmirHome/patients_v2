@@ -21,6 +21,7 @@ cp database/seeders/DoctorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/PatientTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/ActivityTableSeeder.php deploy/transfer/database/seeders
 
 cp -r app/Interfaces deploy/transfer/app
 cp config/database.php deploy/transfer/config
