@@ -2,26 +2,25 @@
 
 namespace Database\Seeders;
 
+use App\Models\Activity;
 use App\Models\Travel;
 use App\Models\TravelStatus;
-use App\Models\TravelTreatmentActivity;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class TravelTreatmentActivityTableSeeder extends Seeder
+class ActivityTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        
-        $rows = DB::connection('conversion_db')->table('treatment_actions')->get();
+        $rows = DB::connection('conversion_db')->table('actions')->get();
         foreach ($rows as $row) {
-            TravelTreatmentActivity::create([
+            Activity::create([
                 'id'             => $row->id,
                 'user_id'        => User::where('id', $row->user_id)->first()->id, 
                 'travel_id'      => Travel::where('id', $row->travel_id)->first()->id,
@@ -31,12 +30,12 @@ class TravelTreatmentActivityTableSeeder extends Seeder
         }
             
 
-        $rows = DB::connection('conversion_db')->table('treatment_files')->get();
+        $rows = DB::connection('conversion_db')->table('files')->get();
         foreach ($rows as $key => $row) {
             if(empty($row->name)) continue;
             Media::create([
-                'model_type' => 'App\Models\TravelTreatmentActivity',
-                'model_id'    => TravelTreatmentActivity::where('id', $row->treatment_action_id)->first()->id,
+                'model_type' => 'App\Models\Activity',
+                'model_id'    => Activity::where('id', $row->action_id)->first()->id,
                 'collection_name' => 'files',
                 'name' => $row->description??'',
                 'file_name' => $row->name,
@@ -50,6 +49,5 @@ class TravelTreatmentActivityTableSeeder extends Seeder
                 'responsive_images'=> [],
             ]);
         }
-
     }
 }

@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             PatientTableSeeder::class,
             TravelTableSeeder::class,
             TravelTreatmentActivityTableSeeder::class,
+            ActivityTableSeeder::class,
 
         ]);
     }

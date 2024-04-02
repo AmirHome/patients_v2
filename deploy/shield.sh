@@ -27,6 +27,10 @@ cp -r app/Interfaces deploy/transfer/app
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 
+# View
+mkdir -p deploy/transfer/resources/views/layouts
+cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
+
 # LiveWire
 mkdir -p deploy/transfer/app
 mkdir -p deploy/transfer/resources/views/livewire
