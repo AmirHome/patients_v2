@@ -24,12 +24,17 @@ cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/datab
 cp database/seeders/ActivityTableSeeder.php deploy/transfer/database/seeders
 
 cp -r app/Interfaces deploy/transfer/app
+cp -r app/Helpers deploy/transfer/app
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 
-# View
+# Development
 mkdir -p deploy/transfer/resources/views/layouts
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
+mkdir -p deploy/transfer/app/Providers
+cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
+cp composer.json composer.json.bak
+
 
 # LiveWire
 mkdir -p deploy/transfer/app

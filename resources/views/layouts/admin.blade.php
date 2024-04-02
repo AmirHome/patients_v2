@@ -88,6 +88,11 @@
                       <i class="fa fa-comments" aria-hidden="true"> </i>
                     </a>
                 </li>
+                <li>
+                    <a class="c-header-nav-link" href="{{ url('/admin/monitor') }}">
+                      <i class="fa fa-desktop" aria-hidden="true"></i>
+                    </a>
+                </li>
 
             </ul>
         </header>

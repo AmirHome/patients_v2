@@ -9,7 +9,6 @@ function clean_code() {
 
 function pull_code() {
   git pull origin master
-  # echo "Pulled code from master." by blue color
   echo -e "\e[34mPulled code from master.\e[0m"
 }
 

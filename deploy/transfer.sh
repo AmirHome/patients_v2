@@ -18,7 +18,7 @@ function extract_archive() {
   unzip -q "$download_folder/$archive_file" -d .
   echo "Extracted '$archive_file' to root directory."
 
-  deployment
+  deployment "$@"
 
   # (Optional) Remove the archive file after extraction
   rm -f "$download_folder/$archive_file"
@@ -53,22 +53,38 @@ function deployment() {
   php artisan livewire:layout
   ### - resources/views/components/layouts/app.blade.php
 
+  ### Sanctum already exists ###
 
-  ### Sanctum already exists
-
+  ### Install Media Library
   php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"
 
+  ### Install Pulse
+  composer config minimum-stability beta
+  composer require laravel/pulse
+  php artisan vendor:publish --provider="Laravel\Pulse\PulseServiceProvider"
+  #php artisan migrate
 
   ### Write code in function
   coding
 
   ### Laravel development
-  composer update
-
-  php artisan migrate:fresh --seed
   php artisan key:generate
   php artisan storage:link
 
+  composer update
+  case "$1" in
+    "-a" | "--autoload")
+      cp deploy/transfers/composer.json composer.json
+      composer update
+      composer dump-autoload
+      ;;
+    "-mf" | "--migrate-fresh")
+      php artisan migrate:fresh --seed
+      ;;
+    *)
+      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
+      ;;
+  esac
   echo "Laravel development completed."
 }
 
@@ -84,17 +100,42 @@ function coding() {
 # Main script execution
 bash deploy/shield.sh
 
-extract_archive
+# extract_archive
 
-# Get the commit message argument (if provided)
-commit_message="$1"
 
-# Check if a commit message was provided
-if [[ -z "$commit_message" ]]; then
-  echo "Skipping Git commands as no commit message provided."
-else
-  # Git add, commit and push with provided message
+function composer() {
+  case "$1" in
+    "-a" | "--autoload")
+      cp deploy/transfers/composer.json composer.json
+      composer update
+      composer dump-autoload
+      ;;
+    "-mf" | "--migrate-fresh")
+      php artisan migrate:fresh --seed
+      ;;
+    *)
+      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
+      ;;
+  esac
+}
+
+composer "$@"
+
+# Parse arguments 
+for arg in "$@"
+do
+    case $arg in
+        git=*)
+            ARG="${arg#*=}"
+            shift
+            ;;
+        *)
+            # Unknown argument
+            ;;
+    esac
+done
+if [ ! -z "$ARG" ]; then
   git add .
-  git commit -m "$commit_message"
+  git commit -m "$ARG"
   git push
 fi
