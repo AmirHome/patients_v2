@@ -106,7 +106,7 @@ bash deploy/shield.sh
 function composer() {
   case "$1" in
     "-a" | "--autoload")
-      cp deploy/transfers/composer.json composer.json
+      cp deploy/composer.json composer.json
       composer update
       composer dump-autoload
       ;;
@@ -114,7 +114,7 @@ function composer() {
       php artisan migrate:fresh --seed
       ;;
     *)
-      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
+      echo "Skipping database migration (no argument provided)."
       ;;
   esac
 }
