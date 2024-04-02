@@ -72,19 +72,27 @@ function deployment() {
   php artisan storage:link
 
   composer update
+
   case "$1" in
     "-a" | "--autoload")
-      cp deploy/transfers/composer.json composer.json
+      composer --version
+      cp deploy/composer.json composer.json
       composer update
       composer dump-autoload
       ;;
     "-mf" | "--migrate-fresh")
+      php artisan --version
       php artisan migrate:fresh --seed
       ;;
     *)
-      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
+      if [ -z "$1" ]; then
+        echo "Skipping database migration (no argument provided)."
+      else
+        echo "Invalid argument: $1"
+      fi
       ;;
   esac
+  
   echo "Laravel development completed."
 }
 
@@ -100,26 +108,7 @@ function coding() {
 # Main script execution
 bash deploy/shield.sh
 
-# extract_archive
-
-
-function composer() {
-  case "$1" in
-    "-a" | "--autoload")
-      cp deploy/composer.json composer.json
-      composer update
-      composer dump-autoload
-      ;;
-    "-mf" | "--migrate-fresh")
-      php artisan migrate:fresh --seed
-      ;;
-    *)
-      echo "Skipping database migration (no argument provided)."
-      ;;
-  esac
-}
-
-composer "$@"
+extract_archive "$@"
 
 # Parse arguments 
 for arg in "$@"
