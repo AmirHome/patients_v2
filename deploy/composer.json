@@ -8,8 +8,10 @@
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
+        "laravel/horizon": "^5.23",
         "laravel/pulse": "^1.0@beta",
         "laravel/sanctum": "^3.2",
+        "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
         "laraveldaily/laravel-charts": "^0.1.29",
         "livewire/livewire": "^3.4",
@@ -33,8 +35,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": ["app/Helpers/Init.php"]
+        }
     },
     "autoload-dev": {
         "psr-4": {

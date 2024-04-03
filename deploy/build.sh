@@ -95,14 +95,14 @@ function deployment() {
   #php artisan migrate
 
   ### Install Telescope
-  # composer require laravel/telescope
-  # php artisan telescope:install
+  composer require laravel/telescope
+  php artisan telescope:install
   # php artisan telescope:publish
   #php artisan migrate
 
   ### Install Horizon
-  # composer require laravel/horizon
-  # php artisan horizon:install
+  composer require laravel/horizon
+  php artisan horizon:install
 
   ### Write code in function
   coding
@@ -113,10 +113,10 @@ function deployment() {
 
   if [ $AUTOLOAD ]; then
     cp deploy/composer.json composer.json
-    composer update
+    # composer update
     composer dump-autoload
   fi
-  composer dump-autoload
+  composer update
 
   if [ $MIGRATESEED ]; then
     php artisan migrate:fresh --seed
