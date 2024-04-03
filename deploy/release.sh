@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# Parse arguments
+for args in "$@"; do
+  case $args in
+  env=*)
+    ENV="${args#*=}"
+    shift
+    ;;
+  -m)
+    MIGRATE=true
+    shift
+    ;;
+  -ms)
+    MIGRATESEED=true
+    shift
+    ;;
+  *)
+    echo "Invalid argument: $args"
+    ;;
+  esac
+done
+
 # Function to clean code git
 function clean_code() {
   git reset --hard
@@ -16,23 +37,9 @@ function pull_code() {
 function deployment() {
   echo "Current directory: $(pwd)"
 
-  # Parse arguments
-  for arg in "$@"
-  do
-      case $arg in
-          env=*)
-              ENVIRONMENT="${arg#*=}"
-              shift
-              ;;
-          *)
-              # Unknown argument
-              ;;
-      esac
-  done
-
   # If environment is not provided, default to 'local'
-  if [ ! -z "$ENVIRONMENT" ]; then
-      cp "deploy/.env.$ENVIRONMENT" .env
+  if [ ! -z "$ENV" ]; then
+    cp "deploy/.env.$ENV" .env
   fi
 
   cp deploy/.htaccess public/.htaccess
@@ -56,19 +63,15 @@ function deployment() {
   # php artisan log:clear
 
   # if set argument migrate -m or --migrate, migrate database
-  case "$1" in
-    "-m" | "--migrate")
-      php artisan migrate --force
-      echo -e "\e[34mDatabase migrated (force).\e[0m"
-      ;;
-    "-mf" | "--migrate-fresh")
-      php artisan migrate:fresh --seed
-      echo -e "\e[34mDatabase migrated (fresh) and seeded.\e[0m"
-      ;;
-    *)
-      echo -e "\e[33mSkipping database migration (no argument provided).\e[0m"
-      ;;
-  esac
+
+  if [ "$MIGRATESEED" ]; then
+    php artisan migrate:fresh --seed
+    echo "Database migrated and seeded."
+  else
+    php artisan migrate --force
+    echo "Database migrated."
+  fi
+
   # php artisan test
   # php artisan optimize
   # php artisan config:cache
@@ -81,6 +84,4 @@ function deployment() {
 # Main script execution
 clean_code
 pull_code
-deployment "$@"
-
-
+deployment

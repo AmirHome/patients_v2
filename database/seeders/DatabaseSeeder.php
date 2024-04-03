@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         ini_set('max_execution_time', 3600);
-        ini_set('memory_limit', '2048M');
+        ini_set('memory_limit', '3072M');
     
         $this->call([
             PermissionsTableSeeder::class,

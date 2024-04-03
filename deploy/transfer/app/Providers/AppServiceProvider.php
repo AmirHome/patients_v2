@@ -25,5 +25,15 @@ class AppServiceProvider extends ServiceProvider
             $user = User::findOrFail($user->id);
             return $user->is_admin == 1;
         });
+
+        Gate::define('viewTelescope', function (User $user) {
+            $user = User::findOrFail($user->id);
+            return $user->is_admin == 1;
+        });
+
+        Gate::define('viewHorizon', function (User $user) {
+            $user = User::findOrFail($user->id);
+            return $user->is_admin == 1;
+        });
     }
 }

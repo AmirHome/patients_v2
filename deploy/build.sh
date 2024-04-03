@@ -4,8 +4,33 @@
 download_folder="$HOME/Downloads"
 archive_file="dev-admin-e9f11f11d86ec53e.zip"
 
+# Parse arguments
+for args in "$@"; do
+  case $args in
+  git=*)
+    GIT="${args#*=}"
+    shift
+    ;;
+  -ms)
+    MIGRATESEED=true
+    shift
+    ;;
+  -at)
+    AUTOLOAD=true
+    shift
+    ;;
+  -r)
+    RM=true
+    shift
+    ;;
+  *)
+    echo "Invalid argument: $args"
+    ;;
+  esac
+done
+
 # Function to extract archive
-function extract_archive() {
+function build() {
   # Check if archive exists
   if [ ! -f "$download_folder/$archive_file" ]; then
     echo "Error: Archive '$archive_file' not found in '$download_folder'"
@@ -18,16 +43,21 @@ function extract_archive() {
   unzip -q "$download_folder/$archive_file" -d .
   echo "Extracted '$archive_file' to root directory."
 
-  deployment "$@"
+  deployment
 
   # (Optional) Remove the archive file after extraction
-  rm -f "$download_folder/$archive_file"
-  echo "Remove '$download_folder/$archive_file'."
+  if [ $RM ]; then
+    rm -f "$download_folder/$archive_file"
+    echo "Remove '$download_folder/$archive_file'."
+  fi
+
 }
 
 # Function to clean root directory (excluding .git and deploy)
 function clean_root() {
-
+  # protect files
+  bash deploy/shield.sh
+  # clean files
   find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
   echo "Cleaned root directory (excluding .git and deploy folder)."
 }
@@ -64,6 +94,16 @@ function deployment() {
   php artisan vendor:publish --provider="Laravel\Pulse\PulseServiceProvider"
   #php artisan migrate
 
+  ### Install Telescope
+  # composer require laravel/telescope
+  # php artisan telescope:install
+  # php artisan telescope:publish
+  #php artisan migrate
+
+  ### Install Horizon
+  # composer require laravel/horizon
+  # php artisan horizon:install
+
   ### Write code in function
   coding
 
@@ -71,28 +111,19 @@ function deployment() {
   php artisan key:generate
   php artisan storage:link
 
-  composer update
+  if [ $AUTOLOAD ]; then
+    cp deploy/composer.json composer.json
+    composer update
+    composer dump-autoload
+  fi
+  composer dump-autoload
 
-  case "$1" in
-    "-a" | "--autoload")
-      composer --version
-      cp deploy/composer.json composer.json
-      composer update
-      composer dump-autoload
-      ;;
-    "-mf" | "--migrate-fresh")
-      php artisan --version
-      php artisan migrate:fresh --seed
-      ;;
-    *)
-      if [ -z "$1" ]; then
-        echo "Skipping database migration (no argument provided)."
-      else
-        echo "Invalid argument: $1"
-      fi
-      ;;
-  esac
-  
+  if [ $MIGRATESEED ]; then
+    php artisan migrate:fresh --seed
+  else
+    php artisan migrate --force
+  fi
+
   echo "Laravel development completed."
 }
 
@@ -101,30 +132,14 @@ function coding() {
   ### Set Route
   LINE="Route::get('/counter', '\App\Livewire\Counter');"
   FILE=routes/web.php
-  grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
+  grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
 
 }
 
-# Main script execution
-bash deploy/shield.sh
+build
 
-extract_archive "$@"
-
-# Parse arguments 
-for arg in "$@"
-do
-    case $arg in
-        git=*)
-            ARG="${arg#*=}"
-            shift
-            ;;
-        *)
-            # Unknown argument
-            ;;
-    esac
-done
-if [ ! -z "$ARG" ]; then
+if [ ! -z "$GIT" ]; then
   git add .
-  git commit -m "$ARG"
+  git commit -m "$GIT"
   git push
 fi
