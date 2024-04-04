@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# Laravel Seeder
+
+
+# Laravel DB, Seeder
+mkdir -p deploy/transfer/database/seeders
+
+cp database/patients_db_old.sql deploy/transfer/database
 #$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CountriesTableSeeder.php deploy/transfer/database/seeders
@@ -23,16 +28,18 @@ cp database/seeders/TravelTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ActivityTableSeeder.php deploy/transfer/database/seeders
 
+# Development
+mkdir -p deploy/transfer/resources/views/layouts
+mkdir -p deploy/transfer/app/Providers
+mkdir -p deploy/transfer/config
+
 cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 
-# Development
-mkdir -p deploy/transfer/resources/views/layouts
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
 
-mkdir -p deploy/transfer/app/Providers
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
 cp composer.json composer.json.bak
 

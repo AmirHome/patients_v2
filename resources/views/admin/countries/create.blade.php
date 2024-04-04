@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="code_inc">{{ trans('cruds.country.fields.code_inc') }}</label>
-                <input class="form-control {{ $errors->has('code_inc') ? 'is-invalid' : '' }}" type="number" name="code_inc" id="code_inc" value="{{ old('code_inc', '') }}" step="1" required>
+                <input class="form-control {{ $errors->has('code_inc') ? 'is-invalid' : '' }}" type="number" name="code_inc" id="code_inc" value="{{ old('code_inc', '0') }}" step="1" required>
                 @if($errors->has('code_inc'))
                     <div class="invalid-feedback">
                         {{ $errors->first('code_inc') }}
