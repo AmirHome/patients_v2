@@ -16,33 +16,6 @@
                     @endif
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <a class="card text-white bg-dark" href="{{ url(config('pulse.path')) }}">
-                                    <div class="card-body pb-0">
-                                        <div>Monitor</div>
-                                        <br />
-                                    </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a class="card text-white bg-info" href="{{ url(config('telescope.path')) }}">
-                                <div class="card-body pb-0">
-                                    <div>Telescope</div>
-                                    <br />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a class="card text-white bg-secondary"  href="{{ url(config('horizon.path')) }}">
-                                <div class="card-body pb-0">
-                                    <div>Horizon</div>
-                                    <br />
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="{{ $settings1['column_class'] }}">
                             <div class="card text-white bg-primary">
                                 <div class="card-body pb-0">
@@ -66,6 +39,15 @@
                                 <div class="card-body pb-0">
                                     <div class="text-value">{{ number_format($settings3['total_number']) }}</div>
                                     <div>{{ $settings3['chart_title'] }}</div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="{{ $settings4['column_class'] }}">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="text-value">{{ number_format($settings4['total_number']) }}</div>
+                                    <div>{{ $settings4['chart_title'] }}</div>
                                     <br />
                                 </div>
                             </div>
