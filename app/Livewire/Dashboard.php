@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Livewire;
 
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use Livewire\Component;
 
-class HomeController
+class Dashboard extends Component
 {
-    public function index()
+    public function render()
     {
         $settings1 = [
             'chart_title'           => 'Users',
@@ -85,19 +85,18 @@ class HomeController
         }
 
         $settings3 = [
-            'chart_title'           => 'Patients 30D',
+            'chart_title'           => 'Company',
             'chart_type'            => 'number_block',
             'report_type'           => 'group_by_date',
-            'model'                 => 'App\Models\Patient',
-            'group_by_field'        => 'birthday',
+            'model'                 => 'App\Models\Team',
+            'group_by_field'        => 'created_at',
             'group_by_period'       => 'day',
             'aggregate_function'    => 'count',
             'filter_field'          => 'created_at',
-            'filter_days'           => '30',
-            'group_by_field_format' => 'Y-m-d',
+            'group_by_field_format' => 'd/m/Y H:i:s',
             'column_class'          => 'col-md-3',
             'entries_number'        => '5',
-            'translation_key'       => 'patient',
+            'translation_key'       => 'team',
         ];
 
         $settings3['total_number'] = 0;
@@ -123,45 +122,10 @@ class HomeController
                 ->{$settings3['aggregate_function'] ?? 'count'}($settings3['aggregate_field'] ?? '*');
         }
 
-        $settings4 = [
-            'chart_title'           => 'Travels 30D',
-            'chart_type'            => 'number_block',
-            'report_type'           => 'group_by_date',
-            'model'                 => 'App\Models\Travel',
-            'group_by_field'        => 'hospitalization_date',
-            'group_by_period'       => 'day',
-            'aggregate_function'    => 'count',
-            'filter_field'          => 'created_at',
-            'filter_days'           => '30',
-            'group_by_field_format' => 'Y-m-d',
-            'column_class'          => 'col-md-3',
-            'entries_number'        => '5',
-            'translation_key'       => 'travel',
-        ];
+        //return view('home', compact('settings1', 'settings2', 'settings3'));
 
-        $settings4['total_number'] = 0;
-        if (class_exists($settings4['model'])) {
-            $settings4['total_number'] = $settings4['model']::when(isset($settings4['filter_field']), function ($query) use ($settings4) {
-                if (isset($settings4['filter_days'])) {
-                    return $query->where($settings4['filter_field'], '>=',
-                        now()->subDays($settings4['filter_days'])->format('Y-m-d'));
-                } elseif (isset($settings4['filter_period'])) {
-                    switch ($settings4['filter_period']) {
-                        case 'week': $start = date('Y-m-d', strtotime('last Monday'));
-                        break;
-                        case 'month': $start = date('Y-m') . '-01';
-                        break;
-                        case 'year': $start = date('Y') . '-01-01';
-                        break;
-                    }
-                    if (isset($start)) {
-                        return $query->where($settings4['filter_field'], '>=', $start);
-                    }
-                }
-            })
-                ->{$settings4['aggregate_function'] ?? 'count'}($settings4['aggregate_field'] ?? '*');
-        }
+        $title = 'Dashboard';
+        return view('livewire.dashboard')->layout('components.layouts.app', compact('title','settings1', 'settings2', 'settings3'));
 
-        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4'));
     }
 }

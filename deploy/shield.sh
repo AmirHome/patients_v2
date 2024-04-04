@@ -31,7 +31,6 @@ cp config/media-library.php deploy/transfer/config
 # Development
 mkdir -p deploy/transfer/resources/views/layouts
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
-cp resources/views/home.blade.php deploy/transfer/resources/views
 
 mkdir -p deploy/transfer/app/Providers
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers

@@ -40,6 +40,23 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
+              <li>
+                <a class="c-header-nav-link" href="{{ url(config('pulse.path')) }}" title="Pulse">
+                  <i class="fa fa-desktop" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="c-header-nav-link" href="{{ url(config('telescope.path')) }}" title="Telescope">
+                  <i class="fa fa-bug" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a class="c-header-nav-link" href="{{ url(config('horizon.path')) }}" title="Horizon">
+                  <i class="fa fa-rocket" aria-hidden="true"></i>
+                </a>
+              </li>
+
+
                 @if(count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
                         <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -88,11 +105,7 @@
                       <i class="fa fa-comments" aria-hidden="true"> </i>
                     </a>
                 </li>
-                <li>
-                    <a class="c-header-nav-link" href="{{ url('/admin/monitor') }}">
-                      <i class="fa fa-desktop" aria-hidden="true"></i>
-                    </a>
-                </li>
+
 
             </ul>
         </header>
