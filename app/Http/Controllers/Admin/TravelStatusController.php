@@ -46,6 +46,9 @@ class TravelStatusController extends Controller
             $table->editColumn('title', function ($row) {
                 return $row->title ? $row->title : '';
             });
+            $table->editColumn('ordering', function ($row) {
+                return $row->ordering ? $row->ordering : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder']);
 

@@ -779,6 +779,8 @@ return [
             'updated_at_helper'      => ' ',
             'deleted_at'             => 'Deleted at',
             'deleted_at_helper'      => ' ',
+            'treating_doctor'        => 'Treating Doctor',
+            'treating_doctor_helper' => ' ',
         ],
     ],
     'coordination' => [
@@ -907,6 +909,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'ordering'          => 'Ordering',
+            'ordering_helper'   => ' ',
         ],
     ],
 

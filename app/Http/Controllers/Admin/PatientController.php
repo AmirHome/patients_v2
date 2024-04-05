@@ -122,6 +122,9 @@ class PatientController extends Controller
             $table->editColumn('blood_group', function ($row) {
                 return $row->blood_group ? Patient::BLOOD_GROUP_SELECT[$row->blood_group] : '';
             });
+            $table->editColumn('treating_doctor', function ($row) {
+                return $row->treating_doctor ? $row->treating_doctor : '';
+            });
             $table->editColumn('code', function ($row) {
                 return $row->code ? $row->code : '';
             });

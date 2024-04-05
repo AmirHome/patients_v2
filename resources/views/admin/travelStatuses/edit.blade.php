@@ -21,6 +21,16 @@
                 <span class="help-block">{{ trans('cruds.travelStatus.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="ordering">{{ trans('cruds.travelStatus.fields.ordering') }}</label>
+                <input class="form-control {{ $errors->has('ordering') ? 'is-invalid' : '' }}" type="number" name="ordering" id="ordering" value="{{ old('ordering', $travelStatus->ordering) }}" step="1">
+                @if($errors->has('ordering'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('ordering') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.travelStatus.fields.ordering_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

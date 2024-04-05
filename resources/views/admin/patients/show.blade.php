@@ -201,6 +201,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.patient.fields.treating_doctor') }}
+                        </th>
+                        <td>
+                            {{ $patient->treating_doctor }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.patient.fields.code') }}
                         </th>
                         <td>

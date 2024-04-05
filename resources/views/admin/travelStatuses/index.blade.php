@@ -28,6 +28,9 @@
                         {{ trans('cruds.travelStatus.fields.title') }}
                     </th>
                     <th>
+                        {{ trans('cruds.travelStatus.fields.ordering') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -85,6 +88,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
+{ data: 'ordering', name: 'ordering' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

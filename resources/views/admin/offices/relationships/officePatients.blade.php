@@ -94,6 +94,9 @@
                             {{ trans('cruds.patient.fields.blood_group') }}
                         </th>
                         <th>
+                            {{ trans('cruds.patient.fields.treating_doctor') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.patient.fields.code') }}
                         </th>
                         <th>
@@ -181,6 +184,9 @@
                             </td>
                             <td>
                                 {{ App\Models\Patient::BLOOD_GROUP_SELECT[$patient->blood_group] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $patient->treating_doctor ?? '' }}
                             </td>
                             <td>
                                 {{ $patient->code ?? '' }}

@@ -257,6 +257,16 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.blood_group_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="treating_doctor">{{ trans('cruds.patient.fields.treating_doctor') }}</label>
+                <input class="form-control {{ $errors->has('treating_doctor') ? 'is-invalid' : '' }}" type="text" name="treating_doctor" id="treating_doctor" value="{{ old('treating_doctor', $patient->treating_doctor) }}">
+                @if($errors->has('treating_doctor'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('treating_doctor') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.patient.fields.treating_doctor_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="code">{{ trans('cruds.patient.fields.code') }}</label>
                 <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" required>
                 @if($errors->has('code'))

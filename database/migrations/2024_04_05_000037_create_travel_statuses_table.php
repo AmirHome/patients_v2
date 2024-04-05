@@ -11,6 +11,7 @@ class CreateTravelStatusesTable extends Migration
         Schema::create('travel_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->integer('ordering')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

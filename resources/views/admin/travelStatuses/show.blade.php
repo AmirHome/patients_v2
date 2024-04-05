@@ -31,6 +31,14 @@
                             {{ $travelStatus->title }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.travelStatus.fields.ordering') }}
+                        </th>
+                        <td>
+                            {{ $travelStatus->ordering }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

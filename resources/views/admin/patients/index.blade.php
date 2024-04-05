@@ -94,6 +94,9 @@
                         {{ trans('cruds.patient.fields.blood_group') }}
                     </th>
                     <th>
+                        {{ trans('cruds.patient.fields.treating_doctor') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.patient.fields.code') }}
                     </th>
                     <th>
@@ -179,6 +182,7 @@
 { data: 'weight', name: 'weight' },
 { data: 'height', name: 'height' },
 { data: 'blood_group', name: 'blood_group' },
+{ data: 'treating_doctor', name: 'treating_doctor' },
 { data: 'code', name: 'code' },
 { data: 'photo', name: 'photo', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

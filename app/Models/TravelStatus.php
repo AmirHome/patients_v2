@@ -22,6 +22,7 @@ class TravelStatus extends Model
 
     protected $fillable = [
         'title',
+        'ordering',
         'created_at',
         'updated_at',
         'deleted_at',

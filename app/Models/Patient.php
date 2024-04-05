@@ -69,6 +69,7 @@ class Patient extends Model implements HasMedia
         'weight',
         'height',
         'blood_group',
+        'treating_doctor',
         'code',
         'created_at',
         'updated_at',

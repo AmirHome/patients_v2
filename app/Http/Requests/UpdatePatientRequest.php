@@ -98,6 +98,10 @@ class UpdatePatientRequest extends FormRequest
                 'numeric',
                 'required',
             ],
+            'treating_doctor' => [
+                'string',
+                'nullable',
+            ],
             'code' => [
                 'string',
                 'required',

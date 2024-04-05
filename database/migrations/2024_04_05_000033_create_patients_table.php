@@ -28,6 +28,7 @@ class CreatePatientsTable extends Migration
             $table->float('weight', 5, 2);
             $table->float('height', 5, 2);
             $table->string('blood_group')->nullable();
+            $table->string('treating_doctor')->nullable();
             $table->string('code');
             $table->timestamps();
             $table->softDeletes();

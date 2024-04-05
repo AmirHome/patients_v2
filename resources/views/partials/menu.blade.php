@@ -37,7 +37,7 @@
                     @can('role_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-briefcase c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-user-lock c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.role.title') }}
@@ -67,7 +67,7 @@
                     @can('team_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.teams.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/teams") || request()->is("admin/teams/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.team.title') }}
@@ -109,7 +109,7 @@
                     @can('campaign_channel_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.campaign-channels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/campaign-channels") || request()->is("admin/campaign-channels/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-flag-checkered c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.campaignChannel.title') }}
@@ -119,7 +119,7 @@
                     @can('campaign_org_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.campaign-orgs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/campaign-orgs") || request()->is("admin/campaign-orgs/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-sitemap c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.campaignOrg.title') }}
@@ -129,7 +129,7 @@
                     @can('travel_group_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.travel-groups.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-groups") || request()->is("admin/travel-groups/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-object-group c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.travelGroup.title') }}
@@ -139,7 +139,7 @@
                     @can('travel_status_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.travel-statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-statuses") || request()->is("admin/travel-statuses/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw far fa-check-square c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.travelStatus.title') }}
@@ -149,7 +149,7 @@
                     @can('ministry_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.ministries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/ministries") || request()->is("admin/ministries/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.ministry.title') }}
@@ -169,7 +169,7 @@
                     @can('office_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.offices.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/offices") || request()->is("admin/offices/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.office.title') }}
@@ -179,7 +179,7 @@
                     @can('hospital_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.hospitals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hospitals") || request()->is("admin/hospitals/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-h-square c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.hospital.title') }}
@@ -189,7 +189,7 @@
                     @can('doctor_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.doctors.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/doctors") || request()->is("admin/doctors/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-user-md c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.doctor.title') }}
@@ -199,7 +199,7 @@
                     @can('translator_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.translators.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/translators") || request()->is("admin/translators/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-language c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.translator.title') }}
@@ -449,7 +449,7 @@
                     @can('patient_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-bed c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.patient.title') }}
@@ -459,7 +459,7 @@
                     @can('travel_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.travels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travels") || request()->is("admin/travels/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-briefcase-medical c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.travel.title') }}
@@ -469,7 +469,7 @@
                     @can('travel_treatment_activity_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.travel-treatment-activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-activities") || request()->is("admin/travel-treatment-activities/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-file-medical c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.travelTreatmentActivity.title') }}
@@ -479,7 +479,7 @@
                     @can('activity_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/activities") || request()->is("admin/activities/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-notes-medical c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.activity.title') }}
