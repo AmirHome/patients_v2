@@ -37,6 +37,7 @@ cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
+cp config/telescope.php deploy/transfer/config
 
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
 
@@ -45,7 +46,6 @@ cp composer.json composer.json.bak
 
 
 # LiveWire
-mkdir -p deploy/transfer/app
 mkdir -p deploy/transfer/resources/views/livewire
 mkdir -p deploy/transfer/resources/views/components
 
