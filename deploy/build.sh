@@ -68,8 +68,9 @@ function deployment() {
   cp deploy/.env.local .env
 
   ### Install Chatify
-  composer require munafio/chatify
-  php artisan chatify:install
+  # composer require munafio/chatify
+  # php artisan chatify:install
+
   ### Install Breeze
   # composer require laravel/breeze --dev
   # php artisan breeze:install
@@ -112,7 +113,7 @@ function deployment() {
   php artisan storage:link
 
   if [ $AUTOLOAD ]; then
-    cp deploy/composer.json composer.json
+    #cp deploy/composer.json composer.json
     # composer update
     composer dump-autoload
   fi

@@ -21,6 +21,10 @@ class UsersTableSeeder extends Seeder
                 'password'       => ($userData->password),
                 'phone'          => $userData->phone,
                 'job_type'      => $userData->job_type,
+                'email_verified_at' => \Carbon\Carbon::now(),
+                'is_active' => 1,
+                'is_system' => 1,
+                'is_super_admin' => false,
             ])->roles()->sync(in_array($userData->id, [1, 66]) ? 1 : 2);
         }
 
@@ -28,9 +32,19 @@ class UsersTableSeeder extends Seeder
             'id'             => 2,
             'name'           => 'Super Admin',
             'email'          => 'amir.email@yahoo.com',
-            'password'       => bcrypt('123456'),
+            'password'       => bcrypt('admin@123'),
             'phone'          => '05336572550',
             'job_type'      => 1,
+            'email_verified_at' => \Carbon\Carbon::now(),
+            'is_active' => 1,
+            'is_system' => 1,
+            'is_super_admin' => true,
         ])->roles()->sync(1);
+
+        DB::table('model_has_roles')->insert([
+            ['role_id' => 1, 'model_type' => 'App\Models\User', 'model_id' => 2],
+            ['role_id' => 2, 'model_type' => 'App\Models\User', 'model_id' => 66],
+        ]);
+
     }
 }

@@ -101,7 +101,7 @@
                     </li>
                 </ul>
                 <li>
-                    <a class="c-header-nav-link" href="{{ url('/admin/chat') }}">
+                    <a class="c-header-nav-link" href="{{ config('chat.url') }}">
                       <i class="fa fa-comments" aria-hidden="true"> </i>
                     </a>
                 </li>
