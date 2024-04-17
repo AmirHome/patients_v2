@@ -38,6 +38,7 @@ function build() {
   fi
 
   clean_root
+  
 
   # Extract the archive to the root directory
   unzip -q "$download_folder/$archive_file" -d .
@@ -67,13 +68,10 @@ function deployment() {
   cp -r deploy/transfer/* .
   cp deploy/.env.local .env
 
+
   ### Install Chatify
   # composer require munafio/chatify
   # php artisan chatify:install
-
-  ### Install Breeze
-  # composer require laravel/breeze --dev
-  # php artisan breeze:install
 
   ### Install LiveWire
   composer require livewire/livewire
@@ -105,12 +103,20 @@ function deployment() {
   composer require laravel/horizon
   php artisan horizon:install
 
+
+  ### Session config
+  # php artisan session:table
+  # copy from deploy 2024_04_17_121142_create_sessions_table.php
+
   ### Write code in function
   coding
 
   ### Laravel development
-  php artisan key:generate
+  # php artisan key:generate
   php artisan storage:link
+
+  php artisan optimize:clear
+
 
   if [ $AUTOLOAD ]; then
     #cp deploy/composer.json composer.json

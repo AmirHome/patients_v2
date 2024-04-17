@@ -30,7 +30,7 @@ cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/datab
 cp database/seeders/ActivityTableSeeder.php deploy/transfer/database/seeders
 
 ## Chat DB
-cp config/permission.php deploy/transfer/config
+# cp config/permission.php deploy/transfer/config
 
 cp database/migrations/chat_2014_10_12_000000_create_users_table.php deploy/transfer/database/migrations
 cp database/migrations/chat_2019_09_16_051035_create_conversations_table.php deploy/transfer/database/migrations
@@ -75,8 +75,8 @@ cp database/seeders/ChatAddDefaultSettingSeeder.php deploy/transfer/database/see
 cp database/seeders/ChatAddPWAIconFieldSettingSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ChatCreatePermissionSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ChatFrontCmsSeeder.php deploy/transfer/database/seeders
-cp database/seeders/ChatRoleTableSeeder.php deploy/transfer/database/seeders
-cp database/seeders/ChatSetIsDefaultSuperAdminSeeder.php deploy/transfer/database/seeders
+# cp database/seeders/ChatRoleTableSeeder.php deploy/transfer/database/seeders
+# cp database/seeders/ChatSetIsDefaultSuperAdminSeeder.php deploy/transfer/database/seeders
 
 cp app/Models/ChatSetting.php deploy/transfer/app/Models
 cp config/chat.php deploy/transfer/config
