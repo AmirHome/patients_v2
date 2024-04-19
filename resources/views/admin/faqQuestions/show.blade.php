@@ -44,7 +44,7 @@
                             {{ trans('cruds.faqQuestion.fields.answer') }}
                         </th>
                         <td>
-                            {{ $faqQuestion->answer }}
+                            {!! $faqQuestion->answer !!}
                         </td>
                     </tr>
                 </tbody>

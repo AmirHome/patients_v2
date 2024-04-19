@@ -87,6 +87,8 @@ mkdir -p deploy/transfer/app/Providers
 
 cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
+
+cp config/panel.php deploy/transfer/config
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 cp config/telescope.php deploy/transfer/config

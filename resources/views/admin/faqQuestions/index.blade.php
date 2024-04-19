@@ -32,9 +32,6 @@
                             {{ trans('cruds.faqQuestion.fields.question') }}
                         </th>
                         <th>
-                            {{ trans('cruds.faqQuestion.fields.answer') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -53,9 +50,6 @@
                             </td>
                             <td>
                                 {{ $faqQuestion->question ?? '' }}
-                            </td>
-                            <td>
-                                {{ $faqQuestion->answer ?? '' }}
                             </td>
                             <td>
                                 @can('faq_question_show')
