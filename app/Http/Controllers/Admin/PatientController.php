@@ -139,8 +139,19 @@ class PatientController extends Controller
 
                 return '';
             });
+            $table->editColumn('passport_image', function ($row) {
+                if ($photo = $row->passport_image) {
+                    return sprintf(
+                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
+                        $photo->url,
+                        $photo->thumbnail
+                    );
+                }
 
-            $table->rawColumns(['actions', 'placeholder', 'user', 'office', 'campaign_org', 'city', 'photo']);
+                return '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'user', 'office', 'campaign_org', 'city', 'photo', 'passport_image']);
 
             return $table->make(true);
         }
@@ -169,6 +180,10 @@ class PatientController extends Controller
 
         if ($request->input('photo', false)) {
             $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+        }
+
+        if ($request->input('passport_image', false)) {
+            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -208,6 +223,17 @@ class PatientController extends Controller
             }
         } elseif ($patient->photo) {
             $patient->photo->delete();
+        }
+
+        if ($request->input('passport_image', false)) {
+            if (! $patient->passport_image || $request->input('passport_image') !== $patient->passport_image->file_name) {
+                if ($patient->passport_image) {
+                    $patient->passport_image->delete();
+                }
+                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
+            }
+        } elseif ($patient->passport_image) {
+            $patient->passport_image->delete();
         }
 
         return redirect()->route('admin.patients.index');

@@ -20,6 +20,7 @@ class Patient extends Model implements HasMedia
 
     protected $appends = [
         'photo',
+        'passport_image',
     ];
 
     public const GENDER_SELECT = [
@@ -125,6 +126,18 @@ class Patient extends Model implements HasMedia
     public function getPhotoAttribute()
     {
         $file = $this->getMedia('photo')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+
+    public function getPassportImageAttribute()
+    {
+        $file = $this->getMedia('passport_image')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');

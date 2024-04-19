@@ -103,6 +103,9 @@
                         {{ trans('cruds.patient.fields.photo') }}
                     </th>
                     <th>
+                        {{ trans('cruds.patient.fields.passport_image') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -185,6 +188,7 @@
 { data: 'treating_doctor', name: 'treating_doctor' },
 { data: 'code', name: 'code' },
 { data: 'photo', name: 'photo', sortable: false, searchable: false },
+{ data: 'passport_image', name: 'passport_image', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

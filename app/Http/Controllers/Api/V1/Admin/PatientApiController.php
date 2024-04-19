@@ -31,6 +31,10 @@ class PatientApiController extends Controller
             $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
         }
 
+        if ($request->input('passport_image', false)) {
+            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
+        }
+
         return (new PatientResource($patient))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -56,6 +60,17 @@ class PatientApiController extends Controller
             }
         } elseif ($patient->photo) {
             $patient->photo->delete();
+        }
+
+        if ($request->input('passport_image', false)) {
+            if (! $patient->passport_image || $request->input('passport_image') !== $patient->passport_image->file_name) {
+                if ($patient->passport_image) {
+                    $patient->passport_image->delete();
+                }
+                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
+            }
+        } elseif ($patient->passport_image) {
+            $patient->passport_image->delete();
         }
 
         return (new PatientResource($patient))

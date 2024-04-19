@@ -103,6 +103,9 @@
                             {{ trans('cruds.patient.fields.photo') }}
                         </th>
                         <th>
+                            {{ trans('cruds.patient.fields.passport_image') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -195,6 +198,13 @@
                                 @if($patient->photo)
                                     <a href="{{ $patient->photo->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $patient->photo->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                @if($patient->passport_image)
+                                    <a href="{{ $patient->passport_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $patient->passport_image->getUrl('thumb') }}">
                                     </a>
                                 @endif
                             </td>

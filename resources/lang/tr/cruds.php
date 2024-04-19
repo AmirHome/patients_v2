@@ -40,7 +40,7 @@ return [
         ],
     ],
     'user' => [
-        'title'          => 'Çağrı Merkezi Kullanıcıları',
+        'title'          => 'Kullanıcılar',
         'title_singular' => 'Kullanıcı',
         'fields'         => [
             'id'                       => 'ID',
@@ -781,6 +781,8 @@ return [
             'deleted_at_helper'      => ' ',
             'treating_doctor'        => 'Treating Doctor',
             'treating_doctor_helper' => ' ',
+            'passport_image'         => 'Passport Image',
+            'passport_image_helper'  => ' ',
         ],
     ],
     'coordination' => [

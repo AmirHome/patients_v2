@@ -227,6 +227,18 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.patient.fields.passport_image') }}
+                        </th>
+                        <td>
+                            @if($patient->passport_image)
+                                <a href="{{ $patient->passport_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $patient->passport_image->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
