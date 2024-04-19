@@ -10,7 +10,7 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
-
+        $password = bcrypt('admin@123');
         $usersData = DB::connection('conversion_db')->table('users')->get();
 
         foreach ($usersData as $userData) {
@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'id'             => $userData->id,
                 'name'           => $userData->name,
                 'email'          => $userData->email,
-                'password'       => ($userData->password),
+                'password'       => Config('app.debug') ? $password : $userData->password,
                 'phone'          => $userData->phone,
                 'job_type'      => $userData->job_type,
                 'email_verified_at' => \Carbon\Carbon::now(),
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'id'             => 2,
             'name'           => 'Super Admin',
             'email'          => 'amir.email@yahoo.com',
-            'password'       => bcrypt('admin@123'),
+            'password'       => $password,
             'phone'          => '05336572550',
             'job_type'      => 1,
             'email_verified_at' => \Carbon\Carbon::now(),
