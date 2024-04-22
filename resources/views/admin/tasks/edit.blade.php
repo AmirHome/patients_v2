@@ -31,6 +31,21 @@
                 <span class="help-block">{{ trans('cruds.task.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required">{{ trans('cruds.task.fields.emergency') }}</label>
+                @foreach(App\Models\Task::EMERGENCY_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('emergency') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', $task->emergency) === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="emergency_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('emergency'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('emergency') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.task.fields.emergency_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="status_id">{{ trans('cruds.task.fields.status') }}</label>
                 <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
                     @foreach($statuses as $id => $entry)
@@ -43,24 +58,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.task.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="tags">{{ trans('cruds.task.fields.tag') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
-                    @foreach($tags as $id => $tag)
-                        <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $task->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('tags'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('tags') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.task.fields.tag_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="attachment">{{ trans('cruds.task.fields.attachment') }}</label>

@@ -21,15 +21,12 @@ class StoreTaskRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'emergency' => [
+                'required',
+            ],
             'status_id' => [
                 'required',
                 'integer',
-            ],
-            'tags.*' => [
-                'integer',
-            ],
-            'tags' => [
-                'array',
             ],
             'due_date' => [
                 'date_format:' . config('panel.date_format'),

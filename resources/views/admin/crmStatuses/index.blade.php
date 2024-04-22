@@ -29,6 +29,9 @@
                             {{ trans('cruds.crmStatus.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.crmStatus.fields.color') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $crmStatus->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $crmStatus->color ?? '' }}
                             </td>
                             <td>
                                 @can('crm_status_show')

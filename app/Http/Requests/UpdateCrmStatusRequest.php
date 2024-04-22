@@ -21,6 +21,10 @@ class UpdateCrmStatusRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'color' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

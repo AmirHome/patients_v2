@@ -32,10 +32,10 @@
                             {{ trans('cruds.task.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.task.fields.status') }}
+                            {{ trans('cruds.task.fields.emergency') }}
                         </th>
                         <th>
-                            {{ trans('cruds.task.fields.tag') }}
+                            {{ trans('cruds.task.fields.status') }}
                         </th>
                         <th>
                             {{ trans('cruds.task.fields.attachment') }}
@@ -67,12 +67,10 @@
                                 {{ $task->description ?? '' }}
                             </td>
                             <td>
-                                {{ $task->status->name ?? '' }}
+                                {{ App\Models\Task::EMERGENCY_RADIO[$task->emergency] ?? '' }}
                             </td>
                             <td>
-                                @foreach($task->tags as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
+                                {{ $task->status->name ?? '' }}
                             </td>
                             <td>
                                 @if($task->attachment)

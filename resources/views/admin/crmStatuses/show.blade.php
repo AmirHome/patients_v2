@@ -31,6 +31,14 @@
                             {{ $crmStatus->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.crmStatus.fields.color') }}
+                        </th>
+                        <td>
+                            {{ $crmStatus->color }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

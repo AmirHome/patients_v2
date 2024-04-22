@@ -21,6 +21,11 @@ class Task extends Model implements HasMedia
         'attachment',
     ];
 
+    public const EMERGENCY_RADIO = [
+        '0' => 'Normal',
+        '1' => 'Emergency',
+    ];
+
     protected $dates = [
         'due_date',
         'created_at',
@@ -31,6 +36,7 @@ class Task extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'emergency',
         'status_id',
         'due_date',
         'assigned_to_id',
@@ -53,11 +59,6 @@ class Task extends Model implements HasMedia
     public function status()
     {
         return $this->belongsTo(TaskStatus::class, 'status_id');
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(TaskTag::class);
     }
 
     public function getAttachmentAttribute()

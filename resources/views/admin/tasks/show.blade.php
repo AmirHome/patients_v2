@@ -41,20 +41,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.task.fields.status') }}
+                            {{ trans('cruds.task.fields.emergency') }}
                         </th>
                         <td>
-                            {{ $task->status->name ?? '' }}
+                            {{ App\Models\Task::EMERGENCY_RADIO[$task->emergency] ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.task.fields.tag') }}
+                            {{ trans('cruds.task.fields.status') }}
                         </th>
                         <td>
-                            @foreach($task->tags as $key => $tag)
-                                <span class="label label-info">{{ $tag->name }}</span>
-                            @endforeach
+                            {{ $task->status->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

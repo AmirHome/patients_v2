@@ -219,6 +219,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => ' ',
+            'color'             => 'Color',
+            'color_helper'      => 'Sample: #FFFFFF',
         ],
     ],
     'crmCustomer' => [
@@ -391,8 +393,6 @@ return [
             'description_helper' => ' ',
             'status'             => 'Status',
             'status_helper'      => ' ',
-            'tag'                => 'Tags',
-            'tag_helper'         => ' ',
             'attachment'         => 'Attachment',
             'attachment_helper'  => ' ',
             'due_date'           => 'Due date',
@@ -405,6 +405,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted At',
             'deleted_at_helper'  => ' ',
+            'emergency'          => 'Emergency',
+            'emergency_helper'   => ' ',
         ],
     ],
     'tasksCalendar' => [
