@@ -20,9 +20,13 @@ class CustomersTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run($limit=null): void
     {
-        $rows = DB::connection('conversion_db')->table('customers')->get();
+        $rows = DB::connection('conversion_db')->table('customers');
+        if(isset($limit)) {
+            $rows = $rows->limit($limit);
+        }
+        $rows = $rows->get();
 
         foreach ($rows as $row) {
 
@@ -55,9 +59,12 @@ class CustomersTableSeeder extends Seeder
             ]);            
         }
 
+        $customer_ids = CrmCustomer::pluck('id')->toArray();
+
         $rows = DB::connection('conversion_db')->table('customer_actions')->get();
 
         foreach ($rows as $row) {
+            if(!in_array($row->customer_id, $customer_ids)) continue;
             CrmDocument::create([
                 'id'             => $row->id,
                 'customer_id'    => CrmCustomer::where('id', $row->customer_id)->first()->id ?? 1,
@@ -66,12 +73,12 @@ class CustomersTableSeeder extends Seeder
                 'description'     => $row->description,
             ]);
         }
-            
+        $document_ids = CrmDocument::pluck('id')->toArray();
 
         $rows = DB::connection('conversion_db')->table('customer_files')->get();
 
         foreach ($rows as $key => $row) {
-            
+            if(!in_array($row->customer_action_id, $document_ids)) continue;
             Media::create([
                 'model_type' => 'App\Models\CrmDocument',
                 'model_id'    => CrmDocument::where('id', $row->customer_action_id)->first()->id,

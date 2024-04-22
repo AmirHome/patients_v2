@@ -18,11 +18,15 @@ class PatientTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run($limit=null): void
     {
 
-        $rows = DB::connection('conversion_db')->table('patients')->get();
-
+        $rows = DB::connection('conversion_db')->table('patients');
+        if(isset($limit)) {
+            $rows = $rows->limit($limit);
+        }
+        $rows = $rows->get();
+        
         foreach ($rows as $key => $row) {
 
             $birthDate = $row->birth_date;

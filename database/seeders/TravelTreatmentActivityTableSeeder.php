@@ -16,11 +16,19 @@ class TravelTreatmentActivityTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run($limit=null): void
     {
+
+        $rows = DB::connection('conversion_db')->table('treatment_actions');
+        if(isset($limit)) {
+            $rows = $rows->where('travel_id', Travel::pluck('id')->toArray())->limit($limit);
+            
+        }
+        $rows = $rows->get();
         
-        $rows = DB::connection('conversion_db')->table('treatment_actions')->get();
         foreach ($rows as $row) {
+            
+
             TravelTreatmentActivity::create([
                 'id'             => $row->id,
                 'user_id'        => User::where('id', $row->user_id)->first()->id, 
@@ -30,9 +38,11 @@ class TravelTreatmentActivityTableSeeder extends Seeder
             ]);
         }
             
+        $treatment_action_ids = TravelTreatmentActivity::pluck('id')->toArray();
 
         $rows = DB::connection('conversion_db')->table('treatment_files')->get();
         foreach ($rows as $key => $row) {
+            if(!in_array($row->treatment_action_id, $treatment_action_ids)) continue;
             if(empty($row->name)) continue;
             Media::create([
                 'model_type' => 'App\Models\TravelTreatmentActivity',

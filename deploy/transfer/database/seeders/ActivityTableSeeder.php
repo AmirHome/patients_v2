@@ -16,9 +16,16 @@ class ActivityTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run($limit=null): void
     {
-        $rows = DB::connection('conversion_db')->table('actions')->get();
+
+        $rows = DB::connection('conversion_db')->table('actions');
+        if(isset($limit)) {
+            $rows = $rows->where('travel_id', Travel::pluck('id')->toArray())->limit($limit);
+
+        }
+        $rows = $rows->get();
+        
         foreach ($rows as $row) {
             Activity::create([
                 'id'             => $row->id,
@@ -29,9 +36,11 @@ class ActivityTableSeeder extends Seeder
             ]);
         }
             
+        $action_ids = Activity::pluck('id')->toArray();
 
         $rows = DB::connection('conversion_db')->table('files')->get();
         foreach ($rows as $key => $row) {
+            if(!in_array($row->action_id, $action_ids)) continue;
             if(empty($row->name)) continue;
             Media::create([
                 'model_type' => 'App\Models\Activity',

@@ -18,9 +18,16 @@ class TravelTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run($limit=null): void
     {
-        $rows = DB::connection('conversion_db')->table('travels')->get();
+
+        $rows = DB::connection('conversion_db')->table('travels');
+        if(isset($limit)) {
+            $rows = $rows->where('patient_id', Patient::pluck('id')->toArray())->limit($limit);
+        }
+        $rows = $rows->get();
+        
+        //dd($rows, Patient::pluck('id')->toArray());
 
         foreach ($rows as $row) {
 
