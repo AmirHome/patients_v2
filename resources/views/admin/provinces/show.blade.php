@@ -60,10 +60,18 @@
                 {{ trans('cruds.patient.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#city_hotels" role="tab" data-toggle="tab">
+                {{ trans('cruds.hotel.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="city_patients">
             @includeIf('admin.provinces.relationships.cityPatients', ['patients' => $province->cityPatients])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="city_hotels">
+            @includeIf('admin.provinces.relationships.cityHotels', ['hotels' => $province->cityHotels])
         </div>
     </div>
 </div>

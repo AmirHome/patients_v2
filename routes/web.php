@@ -183,6 +183,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('travel-statuses/destroy', 'TravelStatusController@massDestroy')->name('travel-statuses.massDestroy');
     Route::resource('travel-statuses', 'TravelStatusController');
 
+    // Content Category
+    Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
+    Route::resource('content-categories', 'ContentCategoryController');
+
+    // Content Tag
+    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagController');
+
+    // Content Page
+    Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
+    Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
+    Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
+    Route::resource('content-pages', 'ContentPageController');
+
+    // Hotel
+    Route::delete('hotels/destroy', 'HotelController@massDestroy')->name('hotels.massDestroy');
+    Route::resource('hotels', 'HotelController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

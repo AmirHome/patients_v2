@@ -780,6 +780,90 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 193,
+                'title' => 'content_management_access',
+            ],
+            [
+                'id'    => 194,
+                'title' => 'content_category_create',
+            ],
+            [
+                'id'    => 195,
+                'title' => 'content_category_edit',
+            ],
+            [
+                'id'    => 196,
+                'title' => 'content_category_show',
+            ],
+            [
+                'id'    => 197,
+                'title' => 'content_category_delete',
+            ],
+            [
+                'id'    => 198,
+                'title' => 'content_category_access',
+            ],
+            [
+                'id'    => 199,
+                'title' => 'content_tag_create',
+            ],
+            [
+                'id'    => 200,
+                'title' => 'content_tag_edit',
+            ],
+            [
+                'id'    => 201,
+                'title' => 'content_tag_show',
+            ],
+            [
+                'id'    => 202,
+                'title' => 'content_tag_delete',
+            ],
+            [
+                'id'    => 203,
+                'title' => 'content_tag_access',
+            ],
+            [
+                'id'    => 204,
+                'title' => 'content_page_create',
+            ],
+            [
+                'id'    => 205,
+                'title' => 'content_page_edit',
+            ],
+            [
+                'id'    => 206,
+                'title' => 'content_page_show',
+            ],
+            [
+                'id'    => 207,
+                'title' => 'content_page_delete',
+            ],
+            [
+                'id'    => 208,
+                'title' => 'content_page_access',
+            ],
+            [
+                'id'    => 209,
+                'title' => 'hotel_create',
+            ],
+            [
+                'id'    => 210,
+                'title' => 'hotel_edit',
+            ],
+            [
+                'id'    => 211,
+                'title' => 'hotel_show',
+            ],
+            [
+                'id'    => 212,
+                'title' => 'hotel_delete',
+            ],
+            [
+                'id'    => 213,
+                'title' => 'hotel_access',
+            ],
+            [
+                'id'    => 214,
                 'title' => 'profile_password_edit',
             ],
         ];

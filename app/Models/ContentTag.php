@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Province extends Model
+class ContentTag extends Model
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use SoftDeletes, HasFactory;
 
-    public $table = 'provinces';
+    public $table = 'content_tags';
 
     protected $dates = [
         'created_at',
@@ -21,8 +20,8 @@ class Province extends Model
     ];
 
     protected $fillable = [
-        'country_id',
         'name',
+        'slug',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,20 +30,5 @@ class Province extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function cityPatients()
-    {
-        return $this->hasMany(Patient::class, 'city_id', 'id');
-    }
-
-    public function cityHotels()
-    {
-        return $this->hasMany(Hotel::class, 'city_id', 'id');
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id');
     }
 }

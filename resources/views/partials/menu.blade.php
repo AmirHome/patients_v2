@@ -78,7 +78,7 @@
             </li>
         @endcan
         @can('definition_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/travel-statuses*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/tasks-calendars*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/travel-statuses*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/tasks-calendars*") ? "c-show" : "" }} {{ request()->is("admin/hotels*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
@@ -223,6 +223,16 @@
 
                                 </i>
                                 {{ trans('cruds.tasksCalendar.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('hotel_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.hotels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hotels") || request()->is("admin/hotels/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-concierge-bell c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.hotel.title') }}
                             </a>
                         </li>
                     @endcan
@@ -483,6 +493,48 @@
 
                                 </i>
                                 {{ trans('cruds.activity.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
+        @can('content_management_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-book c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.contentManagement.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('content_category_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.content-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/content-categories") || request()->is("admin/content-categories/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-folder c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.contentCategory.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('content_tag_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.content-tags.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/content-tags") || request()->is("admin/content-tags/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-tags c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.contentTag.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('content_page_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.content-pages.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/content-pages") || request()->is("admin/content-pages/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.contentPage.title') }}
                             </a>
                         </li>
                     @endcan

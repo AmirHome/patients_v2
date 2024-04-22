@@ -53,4 +53,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Travel Status
     Route::apiResource('travel-statuses', 'TravelStatusApiController');
+
+    // Hotel
+    Route::apiResource('hotels', 'HotelApiController');
 });

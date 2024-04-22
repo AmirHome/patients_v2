@@ -93,7 +93,7 @@ class CountriesController extends Controller
     {
         abort_if(Gate::denies('country_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $country->load('countryProvinces');
+        $country->load('countryProvinces', 'countryHotels');
 
         return view('admin.countries.show', compact('country'));
     }

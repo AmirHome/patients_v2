@@ -68,10 +68,18 @@
                 {{ trans('cruds.province.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#country_hotels" role="tab" data-toggle="tab">
+                {{ trans('cruds.hotel.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="country_provinces">
             @includeIf('admin.countries.relationships.countryProvinces', ['provinces' => $country->countryProvinces])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="country_hotels">
+            @includeIf('admin.countries.relationships.countryHotels', ['hotels' => $country->countryHotels])
         </div>
     </div>
 </div>

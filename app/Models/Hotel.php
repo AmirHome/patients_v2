@@ -6,13 +6,12 @@ use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Province extends Model
+class Hotel extends Model
 {
-    use SoftDeletes, Auditable, HasFactory;
+    use Auditable, HasFactory;
 
-    public $table = 'provinces';
+    public $table = 'hotels';
 
     protected $dates = [
         'created_at',
@@ -21,8 +20,11 @@ class Province extends Model
     ];
 
     protected $fillable = [
-        'country_id',
         'name',
+        'location',
+        'price',
+        'country_id',
+        'city_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -33,18 +35,13 @@ class Province extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function cityPatients()
-    {
-        return $this->hasMany(Patient::class, 'city_id', 'id');
-    }
-
-    public function cityHotels()
-    {
-        return $this->hasMany(Hotel::class, 'city_id', 'id');
-    }
-
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(Province::class, 'city_id');
     }
 }
