@@ -134,12 +134,41 @@ function deployment() {
   echo "Laravel development completed."
 }
 
+insert_line_if_not_exists() {
+  local file_path="$1"
+  local line_to_check="$2"
+  local placeholder="$3"  # Use "placeholder" for clarity
+
+  # Check if the line exists using grep -qF
+  if grep -qF "$line_to_check" "$file_path"; then
+    echo "$line_to_check already exists in the $file_path"
+  else
+    # Escape backslashes in line_to_check using sed
+    local escaped_line=$(sed 's/\\/\\\\/g' <<< "$line_to_check")
+    local escaped_placeholder=$(sed 's/\\/\\\\/g' <<< "$placeholder")
+
+    # Insert the line with awk (improved error handling)
+    # awk -v escaped_line="$escaped_line" -v escaped_placeholder="$escaped_placeholder" -v placeholder="$placeholder" 'BEGIN { exit_code = 0 } { sub(placeholder, escaped_placeholder"\n" escaped_line); print } END { exit(exit_code) }' "$file_path" > "$file_path.tmp" || {
+    awk -v line="$escaped_line" 'BEGIN { exit_code = 0 } { print } END { print line; exit(exit_code) }' "$file_path" > "$file_path.tmp" && mv "$file_path.tmp" "$file_path"  || {
+      echo "Error: Failed to insert line into $file_path" >&2
+      return 1  # Indicate error to caller
+    }
+
+    echo $placeholder
+    echo "$line_to_check inserted into $file_path"
+  fi
+}
+
 function coding() {
 
   ### Set Route
-  LINE="Route::get('/counter', '\App\Livewire\Counter');"
-  FILE=routes/web.php
-  grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
+  # LINE="Route::get('/counter', '\App\Livewire\Counter');"
+  # FILE=routes/web.php
+  # grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
+
+  insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Counter');" ""
+  insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Travel');" ""
+
 
 }
 

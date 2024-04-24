@@ -95,6 +95,7 @@ cp config/telescope.php deploy/transfer/config
 
 
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
+cp resources/views/layouts/app.blade.php deploy/transfer/resources/views/layouts
 
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
 
@@ -107,8 +108,8 @@ cp -r resources/views/livewire deploy/transfer/resources/views
 cp -r resources/views/components deploy/transfer/resources/views
 
 # Write to function coding() in deploy/transfer.sh
-LINE="Route::get('/counter', '\App\Livewire\Counter');"
-FILE=routes/web.php
-grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
+# LINE="Route::get('/counter', '\App\Livewire\Counter');"
+# FILE=routes/web.php
+# grep -qF -- "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 
 echo  "Copied Shield files."
