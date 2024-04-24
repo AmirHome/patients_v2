@@ -73,6 +73,8 @@ function deployment() {
   # composer require munafio/chatify
   # php artisan chatify:install
 
+  ### Sanctum already exists ###
+
   ### Install LiveWire
   composer require livewire/livewire
   php artisan livewire:publish --assets --config
@@ -81,8 +83,6 @@ function deployment() {
   ### - resources/views/livewire/counter.blade.php
   php artisan livewire:layout
   ### - resources/views/components/layouts/app.blade.php
-
-  ### Sanctum already exists ###
 
   ### Install Media Library
   php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"

@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class Travel extends Component
 {
-    #[Title('Create Post')] 
+    ##[Title('Wizard - Travel')]
+    ##[Layout('layouts.admin')]
     public function render()
     {
-        $title = 'Travel';
-        return view('livewire.travel', compact('title'))
-        ->layout('layouts.admin');
+        $title = 'Title';
+        return view('livewire.travel', compact('title'))->layout('layouts.app');
     }
 }
