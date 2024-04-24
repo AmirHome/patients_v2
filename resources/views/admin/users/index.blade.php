@@ -32,25 +32,16 @@
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
+                            {{ trans('cruds.user.fields.office') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.roles') }}
+                            {{ trans('cruds.office.fields.phone') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.picture') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.user.fields.job_type') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.office') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.office.fields.phone') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.can_see_prices') }}
@@ -60,6 +51,15 @@
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.is_super') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.email_verified_at') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.picture') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.roles') }}
                         </th>
                         <th>
                             &nbsp;
@@ -82,31 +82,16 @@
                                 {{ $user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $user->email_verified_at ?? '' }}
+                                {{ $user->office->name ?? '' }}
                             </td>
                             <td>
-                                @foreach($user->roles as $key => $item)
-                                    <span class="badge badge-info">{{ $item->title }}</span>
-                                @endforeach
+                                {{ $user->office->phone ?? '' }}
                             </td>
                             <td>
                                 {{ $user->phone ?? '' }}
                             </td>
                             <td>
-                                @if($user->picture)
-                                    <a href="{{ $user->picture->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $user->picture->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
                                 {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->office->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $user->office->phone ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\User::CAN_SEE_PRICES_RADIO[$user->can_see_prices] ?? '' }}
@@ -116,6 +101,21 @@
                             </td>
                             <td>
                                 {{ App\Models\User::IS_SUPER_RADIO[$user->is_super] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->email_verified_at ?? '' }}
+                            </td>
+                            <td>
+                                @if($user->picture)
+                                    <a href="{{ $user->picture->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $user->picture->getUrl('thumb') }}">
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                @foreach($user->roles as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 @can('user_show')

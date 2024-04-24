@@ -12,14 +12,14 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('email')->nullable()->unique();
-            $table->datetime('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->string('remember_token')->nullable();
             $table->string('phone')->nullable();
             $table->string('job_type')->nullable();
             $table->string('can_see_prices')->nullable();
             $table->string('can_set_prices')->nullable();
             $table->string('is_super')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->datetime('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

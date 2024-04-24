@@ -41,20 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
+                            {{ trans('cruds.user.fields.office') }}
                         </th>
                         <td>
-                            {{ $user->email_verified_at }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.roles') }}
-                        </th>
-                        <td>
-                            @foreach($user->roles as $key => $roles)
-                                <span class="label label-info">{{ $roles->title }}</span>
-                            @endforeach
+                            {{ $user->office->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -67,30 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.picture') }}
-                        </th>
-                        <td>
-                            @if($user->picture)
-                                <a href="{{ $user->picture->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $user->picture->getUrl('thumb') }}">
-                                </a>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.user.fields.job_type') }}
                         </th>
                         <td>
                             {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.office') }}
-                        </th>
-                        <td>
-                            {{ $user->office->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -115,6 +85,36 @@
                         </th>
                         <td>
                             {{ App\Models\User::IS_SUPER_RADIO[$user->is_super] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.email_verified_at') }}
+                        </th>
+                        <td>
+                            {{ $user->email_verified_at }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.picture') }}
+                        </th>
+                        <td>
+                            @if($user->picture)
+                                <a href="{{ $user->picture->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $user->picture->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.roles') }}
+                        </th>
+                        <td>
+                            @foreach($user->roles as $key => $roles)
+                                <span class="label label-info">{{ $roles->title }}</span>
+                            @endforeach
                         </td>
                     </tr>
                 </tbody>

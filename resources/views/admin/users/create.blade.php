@@ -40,22 +40,18 @@
                 <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
-                    @foreach($roles as $id => $role)
-                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                <label class="required" for="office_id">{{ trans('cruds.user.fields.office') }}</label>
+                <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" required>
+                    @foreach($offices as $id => $entry)
+                        <option value="{{ $id }}" {{ old('office_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('roles'))
+                @if($errors->has('office'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('roles') }}
+                        {{ $errors->first('office') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.user.fields.office_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="phone">{{ trans('cruds.user.fields.phone') }}</label>
@@ -66,17 +62,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.phone_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="picture">{{ trans('cruds.user.fields.picture') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('picture') ? 'is-invalid' : '' }}" id="picture-dropzone">
-                </div>
-                @if($errors->has('picture'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('picture') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.picture_helper') }}</span>
             </div>
             <div class="form-group">
                 <label>{{ trans('cruds.user.fields.job_type') }}</label>
@@ -92,20 +77,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.job_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="office_id">{{ trans('cruds.user.fields.office') }}</label>
-                <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" required>
-                    @foreach($offices as $id => $entry)
-                        <option value="{{ $id }}" {{ old('office_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('office'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('office') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.office_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required">{{ trans('cruds.user.fields.can_see_prices') }}</label>
@@ -151,6 +122,35 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.is_super_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="picture">{{ trans('cruds.user.fields.picture') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('picture') ? 'is-invalid' : '' }}" id="picture-dropzone">
+                </div>
+                @if($errors->has('picture'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('picture') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.picture_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                    @foreach($roles as $id => $role)
+                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('roles'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('roles') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="team_id">{{ trans('cruds.user.fields.team') }}</label>

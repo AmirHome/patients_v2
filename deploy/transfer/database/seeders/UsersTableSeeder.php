@@ -19,8 +19,13 @@ class UsersTableSeeder extends Seeder
                 'name'           => $userData->name,
                 'email'          => $userData->email,
                 'password'       => Config('app.debug') ? $password : $userData->password,
+                'office_id'      => $userData->office_id,
                 'phone'          => $userData->phone,
                 'job_type'      => $userData->job_type,
+                'can_see_prices'=> $userData->can_see_prices,
+                'can_set_prices'=> $userData->can_set_prices,
+                'is_super'      => $userData->is_super,
+
                 'email_verified_at' => \Carbon\Carbon::now(),
                 'is_active' => 1,
                 'is_system' => 1,
@@ -35,6 +40,7 @@ class UsersTableSeeder extends Seeder
             'password'       => $password,
             'phone'          => '05336572550',
             'job_type'      => 1,
+
             'email_verified_at' => \Carbon\Carbon::now(),
             'is_active' => 1,
             'is_system' => 1,

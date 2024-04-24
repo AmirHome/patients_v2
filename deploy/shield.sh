@@ -100,8 +100,13 @@ cp resources/views/layouts/app.blade.php deploy/transfer/resources/views/layouts
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
 
 # LiveWire
+mkdir -p app/Livewire deploy/transfer/app
 mkdir -p deploy/transfer/resources/views/livewire
 mkdir -p deploy/transfer/resources/views/components
+
+rm -rf deploy/transfer/app/Livewire
+rm -rf deploy/transfer/resources/views/livewire
+rm -rf deploy/transfer/resources/views/components
 
 cp -r app/Livewire deploy/transfer/app
 cp -r resources/views/livewire deploy/transfer/resources/views
