@@ -11,6 +11,7 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">STEP 1/4 - Personal Details</div>
                 <div class="card-body">
+
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -200,21 +201,23 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="">Countery</label>
-                                <select  class="form-control" wire:model="countery_id">
-                                    <option value="" selected>Choose country</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                <select class="form-control" wire:model.live="countryId">
+                                    <option value=null>Select a country</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
                                 </select>
-                                <span class="text-danger">@error('countery_id'){{ $message }}@enderror</span>
+                                <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">City</label>
-                                <select  class="form-control" wire:model="city_id">
-                                    <option value="" selected>Choose city</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                <label for="">City @json($city_id)</label>
+                                <select class="form-control" wire:model.live="city_id">
+                                    <option>Select city</option>
+                                    @foreach ($cities as $city)
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
                                 </select>
                                 <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>
                             </div>

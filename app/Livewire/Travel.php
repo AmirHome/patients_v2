@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Http\Requests\StorePatientRequest;
+use App\Models\Country;
+use App\Models\Province;
 use Livewire\Component;
 
 use Livewire\Attributes\Title;
@@ -19,15 +21,37 @@ class Travel extends Component
 
     public $user_id;
     public $office_id;
-    public $first_name;
-    public $last_name;
+
+    public $name;
+    public $surname;
+    public $middle_name;
+    public $birthday;
+    public $birth_place;
+    public $mother_name;
+    public $father_name;
+    public $weight;
+    public $height;
+    public $blood_group;
+    public $citizenship;
+    public $passport_no;
+    public $passport_image;
+    public $passport_origin;
+    public $phone;
+    public $foriegn_phone;
+    public $email;
     public $gender;
+    public $address;
+    public $city_id;
+    public $campaign_org_id;
+    public $reffering_type;
+    public $treating_doctor;
+    public $code;
+
+
+
+
     public $age;
     public $description;
-    public $email;
-    public $phone;
-    public $country;
-    public $city;
     public $frameworks = [];
     public $cv;
     public $terms;
@@ -38,6 +62,26 @@ class Travel extends Component
     public function render()
     {
         return view('livewire.travel-wizard')->layout('components.layouts.app');
+    }
+
+    // public $size;
+    public $countryId;
+    public $countries;
+    public $cities;
+
+    public function mount()
+    {
+        $this->countries = Country::get(['id', 'name']);
+        $this->cities    = collect();
+        $this->countryId = null;
+        $this->city_id    = null;
+
+    }
+
+    public function updatedCountryId($value)
+    {
+        $this->cities = Province::where('country_id', $value)->get(['id', 'name']);
+        $this->city_id = null;
     }
 
     public function __construct()
