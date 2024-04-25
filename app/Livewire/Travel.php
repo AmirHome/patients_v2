@@ -18,6 +18,7 @@ class Travel extends Component
     // Patient
 
     public $user_id;
+    public $office_id;
     public $first_name;
     public $last_name;
     public $gender;
@@ -42,6 +43,7 @@ class Travel extends Component
     public function __construct()
     {
         $this->user_id = auth()->id();
+        $this->office_id = auth()->user()->office_id;
     }
 
     public function increaseStep()
