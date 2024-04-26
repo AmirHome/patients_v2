@@ -34,6 +34,9 @@
                         {{ trans('cruds.travelTreatmentActivity.fields.travel') }}
                     </th>
                     <th>
+                        {{ trans('cruds.travel.fields.reffering') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.travelTreatmentActivity.fields.status') }}
                     </th>
                     <th>
@@ -101,7 +104,8 @@
 { data: 'id', name: 'id' },
 { data: 'user_name', name: 'user.name' },
 { data: 'user.email', name: 'user.email' },
-{ data: 'travel_attendant_name', name: 'travel.attendant_name' },
+{ data: 'travel_reffering_type', name: 'travel.reffering_type' },
+{ data: 'travel.reffering', name: 'travel.reffering' },
 { data: 'status_title', name: 'status.title' },
 { data: 'description', name: 'description' },
 { data: 'files', name: 'files', sortable: false, searchable: false },

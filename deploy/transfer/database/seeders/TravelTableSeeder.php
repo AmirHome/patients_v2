@@ -122,7 +122,7 @@ class TravelTableSeeder extends Seeder
                 'attendant_phone' => $row->attendant_phone,
                 'has_pestilence' => $row->has_pestilence,
                 'hospital_mail_notify' => $row->hospital_mail_notify,
-                'reffering'      => (in_array($row->reffering_type,['App\Models\Fond','App\Models\Other']) ? $row->reffering_other : $row->reffering),
+                'reffering'      => (in_array($row->reffering_type,['App\Models\Fond','App\Models\Other']) ? $row->reffering_other : $row->reffering_id),
                 'reffering_type' => $row->reffering_type,
                 // 'reffering_other' => $row->reffering_other,
                 'hospitalization_date' => $hospitalizationDate,

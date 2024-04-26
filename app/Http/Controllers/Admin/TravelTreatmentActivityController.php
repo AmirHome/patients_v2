@@ -57,10 +57,13 @@ class TravelTreatmentActivityController extends Controller
             $table->editColumn('user.email', function ($row) {
                 return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
             });
-            $table->addColumn('travel_attendant_name', function ($row) {
-                return $row->travel ? $row->travel->attendant_name : '';
+            $table->addColumn('travel_reffering_type', function ($row) {
+                return $row->travel ? $row->travel->reffering_type : '';
             });
 
+            $table->editColumn('travel.reffering', function ($row) {
+                return $row->travel ? (is_string($row->travel) ? $row->travel : $row->travel->reffering) : '';
+            });
             $table->addColumn('status_title', function ($row) {
                 return $row->status ? $row->status->title : '';
             });
@@ -94,7 +97,7 @@ class TravelTreatmentActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('reffering_type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -122,7 +125,7 @@ class TravelTreatmentActivityController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel = Travel::pluck('attendant_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $travel = Travel::pluck('reffering_type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
