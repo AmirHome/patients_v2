@@ -23,17 +23,17 @@ class Patient extends Model implements HasMedia
         'passport_image',
     ];
 
+    public const GENDER_SELECT = [
+        '0' => 'women',
+        '1' => 'men',
+        '2' => 'N/A',
+    ];
+
     protected $dates = [
         'birthday',
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
-
-    public const GENDER_SELECT = [
-        '0' => 'women',
-        '1' => 'men',
-        '2' => 'N/A',
     ];
 
     public const BLOOD_GROUP_SELECT = [
@@ -45,14 +45,6 @@ class Patient extends Model implements HasMedia
         '5' => '0 RH-',
         '6' => 'AB RH+',
         '7' => 'AB RH-',
-    ];
-
-    public const REFERING_TYPE = [
-        'Other'    => 'Diğer',
-        'Doctor'   => 'Doktor',
-        'Phone'     => 'Fon',
-        'Ministry' => 'Kurum',
-        'Office'   => 'Ofis',
     ];
 
     protected $fillable = [

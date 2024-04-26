@@ -15,6 +15,14 @@ class Travel extends Model
 
     public $table = 'travels';
 
+    public const REFFERING_TYPE_SELECT = [
+        'Other'    => 'Diğer',
+        'Doctor'   => 'Doctor',
+        'Ministry' => 'Kurm',
+        'Office'   => 'Ofis',
+        'Phone'    => 'Fon',
+    ];
+
     protected $dates = [
         'hospitalization_date',
         'planning_discharge_date',
@@ -40,7 +48,6 @@ class Travel extends Model
         'hospital_mail_notify',
         'reffering',
         'reffering_type',
-        'reffering_other',
         'notify_hospitals',
         'hospitalization_date',
         'planning_discharge_date',

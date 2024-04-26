@@ -133,7 +133,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="reffering">{{ trans('cruds.travel.fields.reffering') }}</label>
-                <input class="form-control {{ $errors->has('reffering') ? 'is-invalid' : '' }}" type="number" name="reffering" id="reffering" value="{{ old('reffering', '') }}" step="1" required>
+                <input class="form-control {{ $errors->has('reffering') ? 'is-invalid' : '' }}" type="text" name="reffering" id="reffering" value="{{ old('reffering', '') }}" required>
                 @if($errors->has('reffering'))
                     <div class="invalid-feedback">
                         {{ $errors->first('reffering') }}
@@ -142,24 +142,19 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.reffering_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="reffering_type">{{ trans('cruds.travel.fields.reffering_type') }}</label>
-                <input class="form-control {{ $errors->has('reffering_type') ? 'is-invalid' : '' }}" type="text" name="reffering_type" id="reffering_type" value="{{ old('reffering_type', '') }}" required>
+                <label class="required">{{ trans('cruds.travel.fields.reffering_type') }}</label>
+                <select class="form-control {{ $errors->has('reffering_type') ? 'is-invalid' : '' }}" name="reffering_type" id="reffering_type" required>
+                    <option value disabled {{ old('reffering_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Travel::REFFERING_TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('reffering_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
                 @if($errors->has('reffering_type'))
                     <div class="invalid-feedback">
                         {{ $errors->first('reffering_type') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.travel.fields.reffering_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="reffering_other">{{ trans('cruds.travel.fields.reffering_other') }}</label>
-                <input class="form-control {{ $errors->has('reffering_other') ? 'is-invalid' : '' }}" type="text" name="reffering_other" id="reffering_other" value="{{ old('reffering_other', '') }}">
-                @if($errors->has('reffering_other'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('reffering_other') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travel.fields.reffering_other_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }}</label>

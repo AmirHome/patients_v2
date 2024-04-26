@@ -70,9 +70,6 @@
                         {{ trans('cruds.travel.fields.reffering_type') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travel.fields.reffering_other') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.travel.fields.notify_hospitals') }}
                     </th>
                     <th>
@@ -171,7 +168,6 @@
 { data: 'hospital_mail_notify', name: 'hospital_mail_notify' },
 { data: 'reffering', name: 'reffering' },
 { data: 'reffering_type', name: 'reffering_type' },
-{ data: 'reffering_other', name: 'reffering_other' },
 { data: 'notify_hospitals', name: 'notify_hospitals' },
 { data: 'hospitalization_date', name: 'hospitalization_date' },
 { data: 'planning_discharge_date', name: 'planning_discharge_date' },

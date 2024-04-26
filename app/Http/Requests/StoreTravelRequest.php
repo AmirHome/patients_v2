@@ -45,18 +45,11 @@ class StoreTravelRequest extends FormRequest
                 'nullable',
             ],
             'reffering' => [
+                'string',
                 'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'reffering_type' => [
-                'string',
                 'required',
-            ],
-            'reffering_other' => [
-                'string',
-                'nullable',
             ],
             'notify_hospitals' => [
                 'string',

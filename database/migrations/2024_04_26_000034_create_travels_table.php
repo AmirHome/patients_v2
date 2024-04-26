@@ -15,9 +15,8 @@ class CreateTravelsTable extends Migration
             $table->string('attendant_phone');
             $table->boolean('has_pestilence')->default(0);
             $table->string('hospital_mail_notify')->nullable();
-            $table->integer('reffering');
+            $table->string('reffering');
             $table->string('reffering_type');
-            $table->string('reffering_other')->nullable();
             $table->string('notify_hospitals')->nullable();
             $table->date('hospitalization_date')->nullable();
             $table->date('planning_discharge_date')->nullable();

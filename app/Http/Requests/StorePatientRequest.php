@@ -65,12 +65,6 @@ class StorePatientRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'passport_image' => [
-                'required',
-            ],
-            'photo' => [
-                'nullable',
-            ],
             'phone' => [
                 'string',
                 'required',

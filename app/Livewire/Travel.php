@@ -11,6 +11,7 @@ use App\Models\Ministry;
 use App\Models\Office;
 use App\Models\Patient;
 use App\Models\Province;
+use App\Models\Travel as ModelsTravel;
 use Livewire\Component;
 
 use Livewire\Attributes\Title;
@@ -88,7 +89,7 @@ class Travel extends Component
     public $compaignChannelId;
     public $campaignOrganizations;
     public $refferingTypes;
-    public $refferingIds;
+    public $refferingIds=[];
 
 
     public function mount()
@@ -100,7 +101,7 @@ class Travel extends Component
 
         $this->genders = Patient::GENDER_SELECT;
         $this->bloodGroups = Patient::BLOOD_GROUP_SELECT;
-        $this->refferingTypes = Patient::REFERING_TYPE;
+        $this->refferingTypes = ModelsTravel::REFFERING_TYPE_SELECT;
 
         $this->campaignChannels = CampaignChannel::get(['id', 'title']);//->pluck('title', 'id');
         $this->campaignOrganizations = collect();
@@ -158,7 +159,9 @@ class Travel extends Component
 
             $rules = (new StorePatientRequest())->rules();
             $wizardData['Patient'] = $this->validate($rules);
-            dd($wizardData['Patient'], $this->validate(array_merge($rules, ['name' => 'required'])));
+            $this->validate(array_merge($rules, ['reffering' => 'required',
+                'reffering' => in_array($this->refferingTypes, ['Doctor','Ministry','Office']) ? 'required' : 'nullable',
+            ]));
             //Patient::create($this->validate($rules));
             
         } elseif ($this->currentStep == 2) {

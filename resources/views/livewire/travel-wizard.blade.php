@@ -118,6 +118,30 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
+                                <label for="">Campaign channels</label>
+                                <select  class="form-control" wire:model.live="compaignChannelId">
+                                    <option value="" selected>Choose channels</option>
+                                    @foreach ($campaignChannels as $channel)
+                                        <option value="{{ $channel->id }}">{{ $channel->title }}</option>                                       
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Campaign organization @json($campaign_org_id)</label>
+                                <select  class="form-control" wire:model.live="campaign_org_id">
+                                    <option value="" selected>Choose organization</option>
+                                    @foreach ($campaignOrganizations as $org)
+                                        <option value="{{ $org->id }}">{{ $org->title }}</option>                                        
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
                                 <label for="">Reffering type @json($reffering_type)</label>
                                 <select  class="form-control" wire:model.live="reffering_type">
                                     <option value="" selected>Choose reffering type</option>
@@ -146,30 +170,6 @@
                                 @endif
                                 
                                 <span class="text-danger">@error('reffering'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Campaign channels</label>
-                                <select  class="form-control" wire:model.live="compaignChannelId">
-                                    <option value="" selected>Choose channels</option>
-                                    @foreach ($campaignChannels as $channel)
-                                        <option value="{{ $channel->id }}">{{ $channel->title }}</option>                                       
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Campaign organization @json($campaign_org_id)</label>
-                                <select  class="form-control" wire:model.live="campaign_org_id">
-                                    <option value="" selected>Choose organization</option>
-                                    @foreach ($campaignOrganizations as $org)
-                                        <option value="{{ $org->id }}">{{ $org->title }}</option>                                        
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
                     </div>

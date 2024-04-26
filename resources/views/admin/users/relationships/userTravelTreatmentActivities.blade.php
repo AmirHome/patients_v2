@@ -34,9 +34,6 @@
                             {{ trans('cruds.travelTreatmentActivity.fields.travel') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.reffering_type') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.status') }}
                         </th>
                         <th>
@@ -66,10 +63,7 @@
                                 {{ $travelTreatmentActivity->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $travelTreatmentActivity->travel->reffering ?? '' }}
-                            </td>
-                            <td>
-                                {{ $travelTreatmentActivity->travel->reffering_type ?? '' }}
+                                {{ $travelTreatmentActivity->travel->attendant_name ?? '' }}
                             </td>
                             <td>
                                 {{ $travelTreatmentActivity->status->title ?? '' }}

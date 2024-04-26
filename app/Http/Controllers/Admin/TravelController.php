@@ -96,10 +96,7 @@ class TravelController extends Controller
                 return $row->reffering ? $row->reffering : '';
             });
             $table->editColumn('reffering_type', function ($row) {
-                return $row->reffering_type ? $row->reffering_type : '';
-            });
-            $table->editColumn('reffering_other', function ($row) {
-                return $row->reffering_other ? $row->reffering_other : '';
+                return $row->reffering_type ? Travel::REFFERING_TYPE_SELECT[$row->reffering_type] : '';
             });
             $table->editColumn('notify_hospitals', function ($row) {
                 return $row->notify_hospitals ? $row->notify_hospitals : '';
