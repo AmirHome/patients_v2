@@ -166,7 +166,7 @@ function coding() {
   # FILE=routes/web.php
   # grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
 
-  insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Counter');" ""
+  insert_line_if_not_exists "routes/web.php" "Route::get('/counter','\App\Livewire\Counter');" ""
   insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Travel');" ""
 
 

@@ -38,11 +38,12 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="">Gender</label>
-                                <select  class="form-control" wire:model="gender">
+                                <label for="">Gender @json($gender)</label>
+                                <select  class="form-control" wire:model.live="gender">
                                        <option value="" selected>Choose gender</option>
-                                       <option value="male">Male</option>
-                                       <option value="female">Female</option>
+                                       @foreach ($genders as $key => $title)
+                                           <option value="{{ $key }}">{{ $title }}</option>
+                                       @endforeach
                                 </select>
                                 <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                             </div>
@@ -94,13 +95,22 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Blood group</label>
-                                <select  class="form-control" wire:model="blood_group">
-                                    <option value="" selected>Choose city</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                <label for="">Blood group @json($blood_group)</label>
+                                <select  class="form-control" wire:model.live="blood_group">
+                                    <option value="" selected>Choose blood group</option>
+                                    @foreach ($bloodGroups as $key => $title)
+                                        <option value="{{ $key }}">{{ $title }}</option>                                        
+                                    @endforeach
                                 </select>
                                 <span class="text-danger">@error('blood_group'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Treating doctor @json($treating_doctor)</label>
+                                <input type="text" class="form-control" wire:model="treating_doctor">
+                                </select>
+                                <span class="text-danger">@error('treating_doctor'){{ $message }}@enderror</span>
                             </div>
                         </div>
                     </div>
@@ -108,44 +118,56 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Reffering type</label>
-                                <select  class="form-control" wire:model="reffering_type">
+                                <label for="">Reffering type @json($reffering_type)</label>
+                                <select  class="form-control" wire:model.live="reffering_type">
                                     <option value="" selected>Choose reffering type</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    @foreach ($refferingTypes as $key => $title)
+                                        <option value="{{ $key }}">{{ $title }}</option>
+                                    @endforeach
                                 </select>
                                 <span class="text-danger">@error('reffering_type'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Campaign organization</label>
-                                <select  class="form-control" wire:model="office_id">
-                                    <option value="" selected>Choose organization</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                                <span class="text-danger">@error('office_id'){{ $message }}@enderror</span>
+                                
+                                @if ($reffering_type != 'Phone')
+                                    <label for="">Reffering @json($reffering)</label>
+                                    @if ($reffering_type == 'Other')
+                                      <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
+                                    @else
+                                        <select  class="form-control" wire:model.live="reffering">
+                                            <option value="" selected>Choose Reffering</option>
+                                            @foreach ($refferingIds as $key => $refferings)
+                                                <option value="{{ $key }}">{{ $refferings }}</option>
+                                            @endforeach
+                                        </select>
+                                    @endif
+                                @endif
+                                
+                                <span class="text-danger">@error('reffering'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Campaign channels</label>
-                                <select  class="form-control" wire:model="campaign_org_id">
+                                <select  class="form-control" wire:model.live="compaignChannelId">
                                     <option value="" selected>Choose channels</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    @foreach ($campaignChannels as $channel)
+                                        <option value="{{ $channel->id }}">{{ $channel->title }}</option>                                       
+                                    @endforeach
                                 </select>
-                                <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
+                                <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Campaign organization</label>
-                                <select  class="form-control" wire:model="campaign_org_id">
+                                <label for="">Campaign organization @json($campaign_org_id)</label>
+                                <select  class="form-control" wire:model.live="campaign_org_id">
                                     <option value="" selected>Choose organization</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    @foreach ($campaignOrganizations as $org)
+                                        <option value="{{ $org->id }}">{{ $org->title }}</option>                                        
+                                    @endforeach
                                 </select>
                                 <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
                             </div>
@@ -167,7 +189,14 @@
                                 <span class="text-danger">@error('passport_no'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="">Passport Origin</label>
+                                <input type="text" class="form-control" placeholder="Enter your passport origin" wire:model="passport_origin">
+                                <span class="text-danger">@error('passport_origin'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Passport Image</label>
                                 <input type="file" class="form-control" placeholder="Enter your birth place" wire:model="passport_image">
@@ -346,7 +375,6 @@
         @endif
 
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
-
            @if ($currentStep == 1)
                <div></div>
            @endif

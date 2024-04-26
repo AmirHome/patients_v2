@@ -3,7 +3,13 @@
 namespace App\Livewire;
 
 use App\Http\Requests\StorePatientRequest;
+use App\Models\CampaignChannel;
+use App\Models\CampaignOrg;
 use App\Models\Country;
+use App\Models\Doctor;
+use App\Models\Ministry;
+use App\Models\Office;
+use App\Models\Patient;
 use App\Models\Province;
 use Livewire\Component;
 
@@ -22,6 +28,7 @@ class Travel extends Component
     public $user_id;
     public $office_id;
 
+    public $photo;
     public $name;
     public $surname;
     public $middle_name;
@@ -44,10 +51,10 @@ class Travel extends Component
     public $city_id;
     public $campaign_org_id;
     public $reffering_type;
+    public $reffering;
+    public $reffering_other;
     public $treating_doctor;
     public $code;
-
-
 
 
     public $age;
@@ -64,10 +71,25 @@ class Travel extends Component
         return view('livewire.travel-wizard')->layout('components.layouts.app');
     }
 
-    // public $size;
+
+    public function __construct()
+    {
+        $this->user_id = auth()->id();
+        $this->office_id = auth()->user()->office_id??2;
+        $this->code = 'TRV-' . date('Y') . '-' . rand(1000, 9999);
+    }
+
     public $countryId;
     public $countries;
     public $cities;
+    public $genders;
+    public $bloodGroups;
+    public $campaignChannels;
+    public $compaignChannelId;
+    public $campaignOrganizations;
+    public $refferingTypes;
+    public $refferingIds;
+
 
     public function mount()
     {
@@ -75,6 +97,15 @@ class Travel extends Component
         $this->cities    = collect();
         $this->countryId = null;
         $this->city_id    = null;
+
+        $this->genders = Patient::GENDER_SELECT;
+        $this->bloodGroups = Patient::BLOOD_GROUP_SELECT;
+        $this->refferingTypes = Patient::REFERING_TYPE;
+
+        $this->campaignChannels = CampaignChannel::get(['id', 'title']);//->pluck('title', 'id');
+        $this->campaignOrganizations = collect();
+        $this->compaignChannelId = null;
+        $this->campaign_org_id = null;
 
     }
 
@@ -84,10 +115,21 @@ class Travel extends Component
         $this->city_id = null;
     }
 
-    public function __construct()
+    public function updatedCompaignChannelId($value)
     {
-        $this->user_id = auth()->id();
-        $this->office_id = auth()->user()->office_id;
+        $this->campaignOrganizations = CampaignOrg::where('channel_id', $value)->where('status',1)->get(['id', 'title']);
+        $this->campaign_org_id = null;
+    }
+
+    public function updatedRefferingType($value)
+    {
+        // $this->reffering_type = $value.'xxx';
+
+        if(in_array($value, ['Doctor','Ministry','Office']))
+            $this->refferingIds = resolve("App\\Models\\$value")::get(['id','name'])->pluck('name','id');  
+
+        $this->reffering = null;
+        $this->reffering_other = null;
     }
 
     public function increaseStep()
@@ -115,8 +157,10 @@ class Travel extends Component
         if ($this->currentStep == 1) {
 
             $rules = (new StorePatientRequest())->rules();
-            $this->validate($rules);
-
+            $wizardData['Patient'] = $this->validate($rules);
+            dd($wizardData['Patient'], $this->validate(array_merge($rules, ['name' => 'required'])));
+            //Patient::create($this->validate($rules));
+            
         } elseif ($this->currentStep == 2) {
             $this->validate([
                 'email' => 'required|email|unique:patients',
@@ -133,6 +177,7 @@ class Travel extends Component
 
     public function register()
     {
+        dd('register');
         $this->resetErrorBag();
         if ($this->currentStep == 4) {
             $this->validate([
@@ -159,8 +204,8 @@ class Travel extends Component
             );
 
             //Student::insert($values);
-            //   $this->reset();
-            //   $this->currentStep = 1;
+            $this->reset();
+            $this->currentStep = 1;
             $data = ['name' => $this->first_name . ' ' . $this->last_name, 'email' => $this->email];
             return redirect()->route('travel.success', $data);
         }
