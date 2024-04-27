@@ -67,9 +67,6 @@
                             {{ trans('cruds.travel.fields.reffering') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.reffering_type') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.travel.fields.notify_hospitals') }}
                         </th>
                         <th>
@@ -152,9 +149,6 @@
                             </td>
                             <td>
                                 {{ $travel->reffering ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Travel::REFFERING_TYPE_SELECT[$travel->reffering_type] ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->notify_hospitals ?? '' }}
