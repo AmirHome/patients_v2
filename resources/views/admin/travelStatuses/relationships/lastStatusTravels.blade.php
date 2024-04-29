@@ -15,7 +15,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-statusTravels">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-lastStatusTravels">
                 <thead>
                     <tr>
                         <th width="10">
@@ -46,7 +46,10 @@
                             {{ trans('cruds.travel.fields.department') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.status') }}
+                            {{ trans('cruds.travel.fields.last_status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.travelStatus.fields.ordering') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.attendant_name') }}
@@ -129,7 +132,10 @@
                                 {{ $travel->department->name ?? '' }}
                             </td>
                             <td>
-                                {{ $travel->status->title ?? '' }}
+                                {{ $travel->last_status->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travel->last_status->ordering ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->attendant_name ?? '' }}
@@ -250,7 +256,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-statusTravels:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-lastStatusTravels:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

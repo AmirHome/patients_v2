@@ -67,18 +67,18 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.department_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="status_id">{{ trans('cruds.travel.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id">
-                    @foreach($statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('status_id') ? old('status_id') : $travel->status->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label class="required" for="last_status_id">{{ trans('cruds.travel.fields.last_status') }}</label>
+                <select class="form-control select2 {{ $errors->has('last_status') ? 'is-invalid' : '' }}" name="last_status_id" id="last_status_id" required>
+                    @foreach($last_statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('last_status_id') ? old('last_status_id') : $travel->last_status->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('status'))
+                @if($errors->has('last_status'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
+                        {{ $errors->first('last_status') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.travel.fields.status_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.travel.fields.last_status_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="attendant_name">{{ trans('cruds.travel.fields.attendant_name') }}</label>

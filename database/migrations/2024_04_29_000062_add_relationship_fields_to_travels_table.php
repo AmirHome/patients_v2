@@ -17,8 +17,8 @@ class AddRelationshipFieldsToTravelsTable extends Migration
             $table->foreign('hospital_id', 'hospital_fk_9623422')->references('id')->on('hospitals');
             $table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id', 'department_fk_9623423')->references('id')->on('departments');
-            $table->unsignedBigInteger('status_id')->nullable();
-            $table->foreign('status_id', 'status_fk_9652067')->references('id')->on('travel_statuses');
+            $table->unsignedBigInteger('last_status_id')->nullable();
+            $table->foreign('last_status_id', 'last_status_fk_9735286')->references('id')->on('travel_statuses');
         });
     }
 }

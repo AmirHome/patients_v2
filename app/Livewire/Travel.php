@@ -6,12 +6,14 @@ use App\Http\Requests\StorePatientRequest;
 use App\Models\CampaignChannel;
 use App\Models\CampaignOrg;
 use App\Models\Country;
+use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Ministry;
 use App\Models\Office;
 use App\Models\Patient;
 use App\Models\Province;
 use App\Models\Travel as ModelsTravel;
+use App\Models\TravelStatus;
 use Livewire\Component;
 
 use Livewire\Attributes\Title;
@@ -91,6 +93,11 @@ class Travel extends Component
     public $refferingTypes;
     public $refferingIds=[];
 
+    public $statuses;
+    public $status_id;
+
+    public $departments;
+    public $department_id;
 
     public function mount()
     {
@@ -108,6 +115,13 @@ class Travel extends Component
         $this->compaignChannelId = null;
         $this->campaign_org_id = null;
 
+        $this->statuses = TravelStatus::orderBy('ordering','desc')->get(['id', 'title'])->pluck('title', 'id');
+
+        $this->departments = Department::get(['id', 'name'])->pluck('name', 'id');
+        $this->department_id = null;
+
+        $this->status_id = null;
+
     }
 
     public function updatedCountryId($value)
@@ -124,8 +138,6 @@ class Travel extends Component
 
     public function updatedRefferingType($value)
     {
-        // $this->reffering_type = $value.'xxx';
-
         if(in_array($value, ['Doctor','Ministry','Office']))
             $this->refferingIds = resolve("App\\Models\\$value")::get(['id','name'])->pluck('name','id');  
 
@@ -155,7 +167,7 @@ class Travel extends Component
     public function validateData()
     {
 
-        if ($this->currentStep == 1) {
+        if ($this->currentStep == 2) {
 
             $rules = (new StorePatientRequest())->rules();
             $wizardData['Patient'] = $this->validate($rules);
@@ -164,7 +176,8 @@ class Travel extends Component
             ]));
             //Patient::create($this->validate($rules));
             
-        } elseif ($this->currentStep == 2) {
+        } elseif ($this->currentStep == 1) {
+            
             $this->validate([
                 'email' => 'required|email|unique:patients',
                 'phone' => 'required',

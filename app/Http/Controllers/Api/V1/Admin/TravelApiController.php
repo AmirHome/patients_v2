@@ -17,7 +17,7 @@ class TravelApiController extends Controller
     {
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelResource(Travel::with(['patient', 'group', 'hospital', 'department', 'status'])->get());
+        return new TravelResource(Travel::with(['patient', 'group', 'hospital', 'department', 'last_status'])->get());
     }
 
     public function store(StoreTravelRequest $request)
@@ -33,7 +33,7 @@ class TravelApiController extends Controller
     {
         abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelResource($travel->load(['patient', 'group', 'hospital', 'department', 'status']));
+        return new TravelResource($travel->load(['patient', 'group', 'hospital', 'department', 'last_status']));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)

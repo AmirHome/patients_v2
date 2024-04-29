@@ -57,10 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travel.fields.status') }}
+                            {{ trans('cruds.travel.fields.last_status') }}
                         </th>
                         <td>
-                            {{ $travel->status->title ?? '' }}
+                            {{ $travel->last_status->title ?? '' }}
                         </td>
                     </tr>
                     <tr>

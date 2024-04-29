@@ -38,13 +38,13 @@ class TravelStatus extends Model
         return $this->hasMany(Activity::class, 'status_id', 'id');
     }
 
-    public function statusTravels()
-    {
-        return $this->hasMany(Travel::class, 'status_id', 'id');
-    }
-
     public function statusTravelTreatmentActivities()
     {
         return $this->hasMany(TravelTreatmentActivity::class, 'status_id', 'id');
+    }
+
+    public function lastStatusTravels()
+    {
+        return $this->hasMany(Travel::class, 'last_status_id', 'id');
     }
 }

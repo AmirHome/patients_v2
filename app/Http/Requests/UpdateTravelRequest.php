@@ -29,6 +29,10 @@ class UpdateTravelRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'last_status_id' => [
+                'required',
+                'integer',
+            ],
             'attendant_name' => [
                 'string',
                 'required',

@@ -24,7 +24,7 @@ class TravelController extends Controller
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'status'])->select(sprintf('%s.*', (new Travel)->table));
+            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status'])->select(sprintf('%s.*', (new Travel)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -73,10 +73,13 @@ class TravelController extends Controller
                 return $row->department ? $row->department->name : '';
             });
 
-            $table->addColumn('status_title', function ($row) {
-                return $row->status ? $row->status->title : '';
+            $table->addColumn('last_status_title', function ($row) {
+                return $row->last_status ? $row->last_status->title : '';
             });
 
+            $table->editColumn('last_status.ordering', function ($row) {
+                return $row->last_status ? (is_string($row->last_status) ? $row->last_status : $row->last_status->ordering) : '';
+            });
             $table->editColumn('attendant_name', function ($row) {
                 return $row->attendant_name ? $row->attendant_name : '';
             });
@@ -106,7 +109,7 @@ class TravelController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->visa_status ? 'checked' : null) . '>';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'status', 'has_pestilence', 'wants_shopping', 'visa_status']);
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'wants_shopping', 'visa_status']);
 
             return $table->make(true);
         }
@@ -126,9 +129,9 @@ class TravelController extends Controller
 
         $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'patients', 'statuses'));
+        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'last_statuses', 'patients'));
     }
 
     public function store(StoreTravelRequest $request)
@@ -150,11 +153,11 @@ class TravelController extends Controller
 
         $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'status');
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status');
 
-        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'patients', 'statuses', 'travel'));
+        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses', 'patients', 'travel'));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
@@ -168,7 +171,7 @@ class TravelController extends Controller
     {
         abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'status', 'travelTravelTreatmentActivities', 'travelActivities');
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'travelTravelTreatmentActivities', 'travelActivities');
 
         return view('admin.travels.show', compact('travel'));
     }

@@ -46,7 +46,10 @@
                         {{ trans('cruds.travel.fields.department') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travel.fields.status') }}
+                        {{ trans('cruds.travel.fields.last_status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.travelStatus.fields.ordering') }}
                     </th>
                     <th>
                         {{ trans('cruds.travel.fields.attendant_name') }}
@@ -157,7 +160,8 @@
 { data: 'group_name', name: 'group.name' },
 { data: 'hospital_name', name: 'hospital.name' },
 { data: 'department_name', name: 'department.name' },
-{ data: 'status_title', name: 'status.title' },
+{ data: 'last_status_title', name: 'last_status.title' },
+{ data: 'last_status.ordering', name: 'last_status.ordering' },
 { data: 'attendant_name', name: 'attendant_name' },
 { data: 'attendant_address', name: 'attendant_address' },
 { data: 'attendant_phone', name: 'attendant_phone' },

@@ -46,7 +46,10 @@
                             {{ trans('cruds.travel.fields.department') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.status') }}
+                            {{ trans('cruds.travel.fields.last_status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.travelStatus.fields.ordering') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.attendant_name') }}
@@ -129,7 +132,10 @@
                                 {{ $travel->department->name ?? '' }}
                             </td>
                             <td>
-                                {{ $travel->status->title ?? '' }}
+                                {{ $travel->last_status->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travel->last_status->ordering ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->attendant_name ?? '' }}

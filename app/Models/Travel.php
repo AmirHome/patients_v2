@@ -40,7 +40,7 @@ class Travel extends Model
         'group_id',
         'hospital_id',
         'department_id',
-        'status_id',
+        'last_status_id',
         'attendant_name',
         'attendant_address',
         'attendant_phone',
@@ -97,9 +97,9 @@ class Travel extends Model
         return $this->belongsTo(Department::class, 'department_id');
     }
 
-    public function status()
+    public function last_status()
     {
-        return $this->belongsTo(TravelStatus::class, 'status_id');
+        return $this->belongsTo(TravelStatus::class, 'last_status_id');
     }
 
     public function getHospitalizationDateAttribute($value)
