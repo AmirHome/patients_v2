@@ -116,7 +116,7 @@ class TravelTableSeeder extends Seeder
                 'group_id'       => TravelGroup::where('id', $row->group_id)->first()->id??2,
                 'hospital_id'    => Hospital::where('id', $row->hospital_id)->first()->id??1,
                 'department_id'  => Department::where('id', $row->department_id)->first()->id??null,
-                'status_id'      => TravelStatus::where('id', $row->status)->first()->id??null,
+                'last_status_id'      => TravelStatus::where('id', $row->status)->first()->id??null,
                 'attendant_name' => $row->attendant_name,
                 'attendant_address' => $row->attendant_address,
                 'attendant_phone' => $row->attendant_phone,
