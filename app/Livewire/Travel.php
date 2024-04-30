@@ -3,13 +3,11 @@
 namespace App\Livewire;
 
 use App\Http\Requests\StorePatientRequest;
+use App\Http\Requests\StoreTravelRequest;
 use App\Models\CampaignChannel;
 use App\Models\CampaignOrg;
 use App\Models\Country;
 use App\Models\Department;
-use App\Models\Doctor;
-use App\Models\Ministry;
-use App\Models\Office;
 use App\Models\Patient;
 use App\Models\Province;
 use App\Models\Travel as ModelsTravel;
@@ -177,13 +175,8 @@ class Travel extends Component
             //Patient::create($this->validate($rules));
             
         } elseif ($this->currentStep == 1) {
-            
-            $this->validate([
-                'email' => 'required|email|unique:patients',
-                'phone' => 'required',
-                'country' => 'required',
-                'city' => 'required'
-            ]);
+            $rules = (new StoreTravelRequest())->rules();
+            $this->validate($rules);
         } elseif ($this->currentStep == 3) {
             $this->validate([
                 'frameworks' => 'required|array|min:2|max:3'
