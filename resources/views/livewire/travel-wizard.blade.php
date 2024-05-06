@@ -1,17 +1,15 @@
 <div>
 
-    <form wire:submit.prevent="register">
+    <h1>STEP {{$currentStep}}</h1>
+    <form wire:submit.prevent="store">
 
         {{-- STEP 1 --}}
 
-        @if ($currentStep == 2)
-
-
-        <div class="step-one">
+        <div class="step-one {{$currentStep == 1 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP {{$currentStep}}/4 - Personal Details</div>
+                <div class="card-header bg-secondary text-white">1/4 - Personal Details</div>
                 <div class="card-body">
-
+                    <span class="row mx-1 pb-3">Code: {{$code}}</span>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -276,16 +274,12 @@
                 </div>
             </div>
         </div>
-        @endif
 
         {{-- STEP 2 --}}
 
-        @if ($currentStep == 1)
-
-
-        <div class="step-two">
+        <div class="step-two {{$currentStep == 2 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP {{$currentStep}}/4 - Address & Contacts</div>
+                <div class="card-header bg-secondary text-white">STEP 2/4 - Address & Contacts</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -302,6 +296,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="">department @json($department_id)</label>
+                                <div wire:ignore>
+                                    <select class="form-control select2">
+                                        @foreach ($departments as $id => $entry)
+                                        <option value="{{ $id }}">{{ $entry }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <span class="text-danger">@error('department_id'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="travel_treatment_activities_description">description</label>
                                 <textarea class="form-control" cols="2" rows="2" placeholder="Enter description"
                                     wire.model="description"></textarea>
@@ -309,26 +318,18 @@
                             </div>
                         </div>
                     </div>
+                    <!-- TODO: Dropzone init -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="travel_treatment_activities">files</label>
-                                <input type="file" class="form-control" wire:model="files">
-                                <span class="text-danger">@error('files'){{ $message }}@enderror</span>
-                                <span class="text-danger">@error('files'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">department @json($department_id)</label>
-                                <div wire:ignore>
-                                    <select class="form-control select2">
-                                    @foreach ($departments as $id => $entry)
-                                    <option value="{{ $id }}">{{ $entry }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="col-md-12">@json($document_files)
+                            <div class="form-group" wire:ignore>
+                                <label class="required" for="document_file">{{ trans('cruds.activity.fields.document_file') }}</label>
+                                <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone"></div>
+                                @if($errors->has('document_file'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('document_file') }}
                                 </div>
-                                <span class="text-danger">@error('department_id'){{ $message }}@enderror</span>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.activity.fields.document_file_helper')}}</span>
                             </div>
                         </div>
                     </div>
@@ -336,15 +337,11 @@
             </div>
         </div>
 
-        @endif
         {{-- STEP 3 --}}
 
-        @if ($currentStep == 3)
-
-
-        <div class="step-three">
+        <div class="step-three {{$currentStep == 3 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP {{$currentStep}}/4 - Frameworks experience</div>
+                <div class="card-header bg-secondary text-white">STEP 3/4 - Frameworks experience</div>
                 <div class="card-body">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo, impedit maxime possimus
                     excepturi veniam ut error sit, molestias aliquam repellat eos porro? Sit ex voluptates nemo
@@ -368,15 +365,12 @@
                 </div>
             </div>
         </div>
-        @endif
 
         {{-- STEP 4 --}}
-        @if ($currentStep == 4)
 
-
-        <div class="step-four">
+        <div class="step-four {{$currentStep == 4 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP {{$currentStep}}/4 - Attachments</div>
+                <div class="card-header bg-secondary text-white">STEP 4/4 - Attachments</div>
                 <div class="card-body">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque delectus officia inventore id
                     facere at aspernatur ad corrupti asperiores placeat, fugiat tempora soluta optio recusandae eligendi
@@ -397,7 +391,6 @@
             </div>
         </div>
 
-        @endif
 
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
             @if ($currentStep == 1)
@@ -430,5 +423,66 @@
     $('.select2').change(function (e) {
     @this.set('department_id', e.target.value);
 });
+</script>
+<script>
+    var uploadedDocumentFileMap = {}
+Dropzone.options.documentFileDropzone = {
+    url: '{{ route('admin.activities.storeMedia') }}',
+    maxFilesize: 50, // MB
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 50
+    },
+    success: function (file, response) {
+      $('form').append('<input type="hidden" name="document_file[]" value="' + response.name + '">')
+      uploadedDocumentFileMap[file.name] = response.name
+      @this.set('document_files', uploadedDocumentFileMap)
+
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedDocumentFileMap[file.name];
+        delete uploadedDocumentFileMap[file.name];
+        @this.set('document_files', uploadedDocumentFileMap)
+
+      }
+      $('form').find('input[name="document_file[]"][value="' + name + '"]').remove()
+    },
+    init: function () {
+@if(isset($activity) && $activity->document_file)
+          var files =
+            {!! json_encode($activity->document_file) !!}
+              for (var i in files) {
+              var file = files[i]
+              this.options.addedfile.call(this, file)
+              file.previewElement.classList.add('dz-complete')
+              $('form').append('<input type="hidden" name="document_file[]" value="' + file.file_name + '">')
+            }
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
 </script>
 @endpush

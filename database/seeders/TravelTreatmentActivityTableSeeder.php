@@ -18,6 +18,8 @@ class TravelTreatmentActivityTableSeeder extends Seeder
      */
     public function run($limit=null): void
     {
+        # GUIDE: Hızlı Vaka Girisi Rapor Yükleme  attach files into TravelTreatmentActivity
+        # GUIDE: Raporlar attach files into TravelTreatmentActivity
 
         $rows = DB::connection('conversion_db')->table('treatment_actions');
         if(isset($limit)) {

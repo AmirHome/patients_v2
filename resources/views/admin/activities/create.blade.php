@@ -111,6 +111,10 @@ Dropzone.options.documentFileDropzone = {
     success: function (file, response) {
       $('form').append('<input type="hidden" name="document_file[]" value="' + response.name + '">')
       uploadedDocumentFileMap[file.name] = response.name
+      console.log('success')
+      console.log(file.name)
+        console.log(response.name)
+      console.log(uploadedDocumentFileMap)
     },
     removedfile: function (file) {
       file.previewElement.remove()
@@ -147,7 +151,6 @@ Dropzone.options.documentFileDropzone = {
              node = _ref[_i]
              _results.push(node.textContent = message)
          }
-
          return _results
      }
 }

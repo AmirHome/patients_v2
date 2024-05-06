@@ -18,6 +18,7 @@ class ActivityTableSeeder extends Seeder
      */
     public function run($limit=null): void
     {
+        // GUIDE: Yeni Hareketler ve Dosyaları Attach files into Activity
 
         $rows = DB::connection('conversion_db')->table('actions');
         if(isset($limit)) {
