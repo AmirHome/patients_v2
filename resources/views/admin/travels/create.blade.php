@@ -24,8 +24,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.patient_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="group_id">{{ trans('cruds.travel.fields.group') }}</label>
-                <select class="form-control select2 {{ $errors->has('group') ? 'is-invalid' : '' }}" name="group_id" id="group_id" required>
+                <label for="group_id">{{ trans('cruds.travel.fields.group') }}</label>
+                <select class="form-control select2 {{ $errors->has('group') ? 'is-invalid' : '' }}" name="group_id" id="group_id">
                     @foreach($groups as $id => $entry)
                         <option value="{{ $id }}" {{ old('group_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -38,8 +38,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.group_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="hospital_id">{{ trans('cruds.travel.fields.hospital') }}</label>
-                <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id" required>
+                <label for="hospital_id">{{ trans('cruds.travel.fields.hospital') }}</label>
+                <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id">
                     @foreach($hospitals as $id => $entry)
                         <option value="{{ $id }}" {{ old('hospital_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -80,8 +80,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.last_status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="attendant_name">{{ trans('cruds.travel.fields.attendant_name') }}</label>
-                <input class="form-control {{ $errors->has('attendant_name') ? 'is-invalid' : '' }}" type="text" name="attendant_name" id="attendant_name" value="{{ old('attendant_name', '') }}" required>
+                <label for="attendant_name">{{ trans('cruds.travel.fields.attendant_name') }}</label>
+                <input class="form-control {{ $errors->has('attendant_name') ? 'is-invalid' : '' }}" type="text" name="attendant_name" id="attendant_name" value="{{ old('attendant_name', '') }}">
                 @if($errors->has('attendant_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('attendant_name') }}
@@ -100,8 +100,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.attendant_address_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="attendant_phone">{{ trans('cruds.travel.fields.attendant_phone') }}</label>
-                <input class="form-control {{ $errors->has('attendant_phone') ? 'is-invalid' : '' }}" type="text" name="attendant_phone" id="attendant_phone" value="{{ old('attendant_phone', '') }}" required>
+                <label for="attendant_phone">{{ trans('cruds.travel.fields.attendant_phone') }}</label>
+                <input class="form-control {{ $errors->has('attendant_phone') ? 'is-invalid' : '' }}" type="text" name="attendant_phone" id="attendant_phone" value="{{ old('attendant_phone', '') }}">
                 @if($errors->has('attendant_phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('attendant_phone') }}
@@ -111,8 +111,9 @@
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('has_pestilence') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="has_pestilence" id="has_pestilence" value="1" required {{ old('has_pestilence', 0) == 1 ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="has_pestilence">{{ trans('cruds.travel.fields.has_pestilence') }}</label>
+                    <input type="hidden" name="has_pestilence" value="0">
+                    <input class="form-check-input" type="checkbox" name="has_pestilence" id="has_pestilence" value="1" {{ old('has_pestilence', 0) == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="has_pestilence">{{ trans('cruds.travel.fields.has_pestilence') }}</label>
                 </div>
                 @if($errors->has('has_pestilence'))
                     <div class="invalid-feedback">
@@ -208,8 +209,9 @@
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('wants_shopping') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="wants_shopping" id="wants_shopping" value="1" required {{ old('wants_shopping', 0) == 1 ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="wants_shopping">{{ trans('cruds.travel.fields.wants_shopping') }}</label>
+                    <input type="hidden" name="wants_shopping" value="0">
+                    <input class="form-check-input" type="checkbox" name="wants_shopping" id="wants_shopping" value="1" {{ old('wants_shopping', 0) == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="wants_shopping">{{ trans('cruds.travel.fields.wants_shopping') }}</label>
                 </div>
                 @if($errors->has('wants_shopping'))
                     <div class="invalid-feedback">

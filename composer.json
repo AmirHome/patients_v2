@@ -9,7 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/horizon": "^5.24",
-        "laravel/pulse": "^1.0@beta",
+        "laravel/pulse": "^1.0",
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
@@ -34,10 +34,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "app/Helpers/init.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

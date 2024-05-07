@@ -10,10 +10,10 @@ class CreateTravelsTable extends Migration
     {
         Schema::create('travels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('attendant_name');
+            $table->string('attendant_name')->nullable();
             $table->longText('attendant_address')->nullable();
-            $table->string('attendant_phone');
-            $table->boolean('has_pestilence')->default(0);
+            $table->string('attendant_phone')->nullable();
+            $table->boolean('has_pestilence')->default(0)->nullable();
             $table->string('hospital_mail_notify')->nullable();
             $table->string('reffering');
             $table->string('reffering_type');
@@ -22,7 +22,7 @@ class CreateTravelsTable extends Migration
             $table->date('planning_discharge_date')->nullable();
             $table->date('arrival_date')->nullable();
             $table->date('departure_date')->nullable();
-            $table->boolean('wants_shopping')->default(0);
+            $table->boolean('wants_shopping')->default(0)->nullable();
             $table->boolean('visa_status')->default(0);
             $table->date('visa_start_date')->nullable();
             $table->date('visa_end_date')->nullable();

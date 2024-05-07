@@ -32,7 +32,7 @@ class UpdateTravelTreatmentActivityRequest extends FormRequest
             'description' => [
                 'required',
             ],
-            'files' => [
+            'treatment_file' => [
                 'array',
             ],
         ];

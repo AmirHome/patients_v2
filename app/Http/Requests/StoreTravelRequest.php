@@ -21,28 +21,17 @@ class StoreTravelRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'group_id' => [
-                'required',
-                'integer',
-            ],
-            'hospital_id' => [
-                'required',
-                'integer',
-            ],
             'last_status_id' => [
                 'required',
                 'integer',
             ],
             'attendant_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'attendant_phone' => [
                 'string',
-                'required',
-            ],
-            'has_pestilence' => [
-                'required',
+                'nullable',
             ],
             'hospital_mail_notify' => [
                 'string',
@@ -74,9 +63,6 @@ class StoreTravelRequest extends FormRequest
             'departure_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
-            ],
-            'wants_shopping' => [
-                'required',
             ],
             'visa_status' => [
                 'required',

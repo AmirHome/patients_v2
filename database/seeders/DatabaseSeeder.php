@@ -32,16 +32,10 @@ class DatabaseSeeder extends Seeder
             MinistryTableSeeder::class,
             TravelGroupTableSeeder::class,
             SettingTableSeeder::class,
-            //CustomersTableSeeder::class,
             
             DepartmentTableSeeder::class,
             HospitalTableSeeder::class,
             DoctorTableSeeder::class,
-
-            // PatientTableSeeder::class,
-            // TravelTableSeeder::class,
-            // TravelTreatmentActivityTableSeeder::class,
-            // ActivityTableSeeder::class,
 
             ChatCreatePermissionSeeder::class,
             ChatAddPWAIconFieldSettingSeeder::class,

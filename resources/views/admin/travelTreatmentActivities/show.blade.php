@@ -57,10 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travelTreatmentActivity.fields.files') }}
+                            {{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}
                         </th>
                         <td>
-                            @foreach($travelTreatmentActivity->files as $key => $media)
+                            @foreach($travelTreatmentActivity->treatment_file as $key => $media)
                                 <a href="{{ $media->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>

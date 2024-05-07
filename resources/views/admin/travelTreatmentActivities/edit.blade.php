@@ -63,15 +63,15 @@
                 <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="files">{{ trans('cruds.travelTreatmentActivity.fields.files') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
+                <label for="treatment_file">{{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
                 </div>
-                @if($errors->has('files'))
+                @if($errors->has('treatment_file'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('files') }}
+                        {{ $errors->first('treatment_file') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.files_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.treatment_file_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
@@ -88,20 +88,20 @@
 
 @section('scripts')
 <script>
-    var uploadedFilesMap = {}
-Dropzone.options.filesDropzone = {
+    var uploadedTreatmentFileMap = {}
+Dropzone.options.treatmentFileDropzone = {
     url: '{{ route('admin.travel-treatment-activities.storeMedia') }}',
-    maxFilesize: 50, // MB
+    maxFilesize: 2, // MB
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 50
+      size: 2
     },
     success: function (file, response) {
-      $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
-      uploadedFilesMap[file.name] = response.name
+      $('form').append('<input type="hidden" name="treatment_file[]" value="' + response.name + '">')
+      uploadedTreatmentFileMap[file.name] = response.name
     },
     removedfile: function (file) {
       file.previewElement.remove()
@@ -109,19 +109,19 @@ Dropzone.options.filesDropzone = {
       if (typeof file.file_name !== 'undefined') {
         name = file.file_name
       } else {
-        name = uploadedFilesMap[file.name]
+        name = uploadedTreatmentFileMap[file.name]
       }
-      $('form').find('input[name="files[]"][value="' + name + '"]').remove()
+      $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
     },
     init: function () {
-@if(isset($travelTreatmentActivity) && $travelTreatmentActivity->files)
+@if(isset($travelTreatmentActivity) && $travelTreatmentActivity->treatment_file)
           var files =
-            {!! json_encode($travelTreatmentActivity->files) !!}
+            {!! json_encode($travelTreatmentActivity->treatment_file) !!}
               for (var i in files) {
               var file = files[i]
               this.options.addedfile.call(this, file)
               file.previewElement.classList.add('dz-complete')
-              $('form').append('<input type="hidden" name="files[]" value="' + file.file_name + '">')
+              $('form').append('<input type="hidden" name="treatment_file[]" value="' + file.file_name + '">')
             }
 @endif
     },

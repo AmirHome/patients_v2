@@ -15,7 +15,7 @@ class TravelTreatmentActivity extends Model implements HasMedia
     use InteractsWithMedia, Auditable, HasFactory;
 
     protected $appends = [
-        'files',
+        'treatment_file',
     ];
 
     public $table = 'travel_treatment_activities';
@@ -62,8 +62,8 @@ class TravelTreatmentActivity extends Model implements HasMedia
         return $this->belongsTo(TravelStatus::class, 'status_id');
     }
 
-    public function getFilesAttribute()
+    public function getTreatmentFileAttribute()
     {
-        return $this->getMedia('files');
+        return $this->getMedia('treatment_file');
     }
 }

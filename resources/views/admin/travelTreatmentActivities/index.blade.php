@@ -43,9 +43,6 @@
                         {{ trans('cruds.travelTreatmentActivity.fields.description') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelTreatmentActivity.fields.files') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -108,7 +105,6 @@
 { data: 'travel.reffering', name: 'travel.reffering' },
 { data: 'status_title', name: 'status.title' },
 { data: 'description', name: 'description' },
-{ data: 'files', name: 'files', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

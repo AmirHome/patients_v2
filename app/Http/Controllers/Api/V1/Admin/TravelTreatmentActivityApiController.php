@@ -27,8 +27,8 @@ class TravelTreatmentActivityApiController extends Controller
     {
         $travelTreatmentActivity = TravelTreatmentActivity::create($request->all());
 
-        foreach ($request->input('files', []) as $file) {
-            $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+        foreach ($request->input('treatment_file', []) as $file) {
+            $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
         }
 
         return (new TravelTreatmentActivityResource($travelTreatmentActivity))
@@ -47,17 +47,17 @@ class TravelTreatmentActivityApiController extends Controller
     {
         $travelTreatmentActivity->update($request->all());
 
-        if (count($travelTreatmentActivity->files) > 0) {
-            foreach ($travelTreatmentActivity->files as $media) {
-                if (! in_array($media->file_name, $request->input('files', []))) {
+        if (count($travelTreatmentActivity->treatment_file) > 0) {
+            foreach ($travelTreatmentActivity->treatment_file as $media) {
+                if (! in_array($media->file_name, $request->input('treatment_file', []))) {
                     $media->delete();
                 }
             }
         }
-        $media = $travelTreatmentActivity->files->pluck('file_name')->toArray();
-        foreach ($request->input('files', []) as $file) {
+        $media = $travelTreatmentActivity->treatment_file->pluck('file_name')->toArray();
+        foreach ($request->input('treatment_file', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
             }
         }
 
