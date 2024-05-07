@@ -43,6 +43,9 @@
                             {{ trans('cruds.travelTreatmentActivity.fields.description') }}
                         </th>
                         <th>
+                            {{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -73,6 +76,13 @@
                             </td>
                             <td>
                                 {{ $travelTreatmentActivity->description ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($travelTreatmentActivity->treatment_file as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 @can('travel_treatment_activity_show')

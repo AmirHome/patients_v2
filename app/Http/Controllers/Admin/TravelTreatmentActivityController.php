@@ -71,8 +71,19 @@ class TravelTreatmentActivityController extends Controller
             $table->editColumn('description', function ($row) {
                 return $row->description ? $row->description : '';
             });
+            $table->editColumn('treatment_file', function ($row) {
+                if (! $row->treatment_file) {
+                    return '';
+                }
+                $links = [];
+                foreach ($row->treatment_file as $media) {
+                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>';
+                }
 
-            $table->rawColumns(['actions', 'placeholder', 'user', 'travel', 'status']);
+                return implode(', ', $links);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'user', 'travel', 'status', 'treatment_file']);
 
             return $table->make(true);
         }

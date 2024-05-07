@@ -49,7 +49,7 @@ class TravelTreatmentActivityTableSeeder extends Seeder
             Media::create([
                 'model_type' => 'App\Models\TravelTreatmentActivity',
                 'model_id'    => TravelTreatmentActivity::where('id', $row->treatment_action_id)->first()->id,
-                'collection_name' => 'files',
+                'collection_name' => 'treatment_file',
                 'name' => $row->description??'',
                 'file_name' => $row->name,
                 'disk'=> 'public',

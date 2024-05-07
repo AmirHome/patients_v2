@@ -46,7 +46,7 @@ class ActivityTableSeeder extends Seeder
             Media::create([
                 'model_type' => 'App\Models\Activity',
                 'model_id'    => Activity::where('id', $row->action_id)->first()->id,
-                'collection_name' => 'files',
+                'collection_name' => 'document_file',
                 'name' => $row->description??'',
                 'file_name' => $row->name,
                 'disk'=> 'public',
