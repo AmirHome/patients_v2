@@ -15,6 +15,10 @@ for args in "$@"; do
     MIGRATESEED=true
     shift
     ;;
+  -cc)
+    CPYCOM=true
+    shift
+    ;;
   -at)
     AUTOLOAD=true
     shift
@@ -118,9 +122,11 @@ function deployment() {
   php artisan optimize:clear
 
 
+  if [ $CPYCOM ]; then
+    cp deploy/composer.json composer.json
+    # cp composer.json deploy/composer.json
+  fi
   if [ $AUTOLOAD ]; then
-    #cp deploy/composer.json composer.json
-    # composer update
     composer dump-autoload
   fi
   composer update
