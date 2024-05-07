@@ -113,7 +113,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.travel.fields.reffering_type') }}
+                            {{ trans('cruds.travel.fields.reffering_type') }} {{$travel->reffering_type}}
                         </th>
                         <td>
                             {{ App\Models\Travel::REFFERING_TYPE_SELECT[$travel->reffering_type] ?? '' }}

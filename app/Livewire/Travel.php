@@ -32,6 +32,28 @@ class Travel extends Component
 
     public $user_id;
     public $office_id;
+    public $patient_id;
+    public $travel_id;
+    public $group_id;
+    public $hospital_id;
+    public $last_status_id;
+    public $attendant_name;
+    public $attendant_phone;
+    public $has_pestilence;
+    public $wants_shopping;
+    public $hospital_mail_notify;
+    public $notify_hospitals;
+    public $hospitalization_date;
+    public $planning_discharge_date;
+    public $arrival_date;
+    public $departure_date;
+    public $visa_status;
+    public $visa_start_date;
+    public $visa_end_date;
+
+
+
+
 
     public $wizardData = [];
 
@@ -59,7 +81,6 @@ class Travel extends Component
     public $campaign_org_id;
     public $reffering_type;
     public $reffering;
-    public $reffering_other;
     public $treating_doctor;
     public $code;
 
@@ -130,7 +151,7 @@ class Travel extends Component
         $this->departments = Department::get(['id', 'name'])->pluck('name', 'id');
         $this->department_id = null;
 
-        $this->status_id = null;
+        $this->status_id = $this->last_status_id = null;
     }
 
     public function updatedCountryId($value)
@@ -153,7 +174,6 @@ class Travel extends Component
             $this->refferingIds = resolve("App\\Models\\$value")::get(['id', 'name'])->pluck('name', 'id');
 
         $this->reffering = null;
-        $this->reffering_other = null;
     }
 
     public function increaseStep()
@@ -182,26 +202,48 @@ class Travel extends Component
 
             $rules = (new StorePatientRequest())->rules();
             $rules = array_merge($rules, [
-                'reffering' => 'required',
-                'reffering' => in_array($this->refferingTypes, ['Doctor', 'Ministry', 'Office']) ? 'required' : 'nullable',
+                'reffering_type' => 'required',
+                'reffering' => in_array($this->reffering_type, ['Phone', 'Other']) ? 'nullable' : 'required',
             ]);
-            $this->wizardData['Patient'] = $this->validate($rules);
-            
+            $data = $this->validate($rules);
+            $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
+            $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
 
         } elseif ($this->currentStep == 2) {
-            $rules = (new StoreTravelTreatmentActivityRequest())->rules();
+
+            $rules = array_merge((new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
+
+            // Fill later
+            $rules['patient_id'] = ['nullable'];
+            $rules['travel_id'] = ['nullable'];
+
+            // For store dont need
+            $rules['attendant_name'] = ['nullable'];
+            $rules['attendant_phone'] = ['nullable'];
+            $rules['has_pestilence'] = ['nullable'];
+            $rules['group_id'] = ['nullable'];
+            $rules['hospital_id'] = ['nullable'];
+            $rules['wants_shopping'] = ['nullable'];
+
+            dd( $rules, $this->all(), (new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
+            $data = $this->validate($rules);
+
+            $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
+            $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
+
+            $this->wizardData['Travel'] = $this->validate($rules);
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rules);
 
         } elseif ($this->currentStep == 3) {
             // $this->validate([
             //     'frameworks' => 'required|array|min:2|max:3'
             // ]);
+
         } elseif ($this->currentStep == 4) {
             $this->validate([
                 'cv' => 'required|mimes:doc,docx,pdf|max:1024',
                 'terms' => 'accepted'
             ]);
-            
         }
 
         if($this->currentStep == $this->totalSteps){

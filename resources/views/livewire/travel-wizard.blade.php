@@ -161,18 +161,17 @@
                             <div class="form-group">
 
                                 @if ($reffering_type != 'Phone')
-                                <label for="">Reffering @json($reffering)</label>
-                                @if ($reffering_type == 'Other')
-                                <input type="text" class="form-control" placeholder="Enter reffering"
-                                    wire:model.live="reffering">
-                                @else
-                                <select class="form-control" wire:model.live="reffering">
-                                    <option value="" selected>Choose Reffering</option>
-                                    @foreach ($refferingIds as $key => $refferings)
-                                    <option value="{{ $key }}">{{ $refferings }}</option>
-                                    @endforeach
-                                </select>
-                                @endif
+                                    <label for="">Reffering @json($reffering)</label>
+                                    @if ($reffering_type == 'Other')
+                                    <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
+                                    @else
+                                    <select class="form-control" wire:model.live="reffering">
+                                        <option value="" selected>Choose Reffering</option>
+                                        @foreach ($refferingIds as $key => $refferings)
+                                        <option value="{{ $key }}">{{ $refferings }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
                                 @endif
 
                                 <span class="text-danger">@error('reffering'){{ $message }}@enderror</span>
@@ -313,7 +312,7 @@
                             <div class="form-group">
                                 <label for="travel_treatment_activities_description">description</label>
                                 <textarea class="form-control" cols="2" rows="2" placeholder="Enter description"
-                                    wire.model="description"></textarea>
+                                    wire:model="description"></textarea>
                                 <span class="text-danger">@error('description'){{ $message }}@enderror</span>
                             </div>
                         </div>
