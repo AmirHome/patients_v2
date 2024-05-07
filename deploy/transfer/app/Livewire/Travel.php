@@ -89,8 +89,7 @@ class Travel extends Component
     public $description;
     public $frameworks = [];
     public $cv;
-    public $files = [];
-    public $document_files = [];
+    public $treatment_files = [];
     public $terms;
 
     public $totalSteps = 4;
@@ -199,7 +198,7 @@ class Travel extends Component
     {
 
         if ($this->currentStep == 1) {
-
+            
             $rules = (new StorePatientRequest())->rules();
             $rules = array_merge($rules, [
                 'reffering_type' => 'required',
@@ -211,28 +210,26 @@ class Travel extends Component
 
         } elseif ($this->currentStep == 2) {
 
-            $rules = array_merge((new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
+            $rulesTravel = [
+                'status_id'                 => 'integer',
+            ];
+            $rulesTravelTreatmentActivity = [
+                'status_id'                 => 'integer'
+            ];
+            $rules = array_merge($rulesTravel, $rulesTravelTreatmentActivity);
+            $this->validate($rules);
 
-            // Fill later
-            $rules['patient_id'] = ['nullable'];
-            $rules['travel_id'] = ['nullable'];
+            $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rulesTravel));
+            $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
 
-            // For store dont need
-            $rules['attendant_name'] = ['nullable'];
-            $rules['attendant_phone'] = ['nullable'];
-            $rules['has_pestilence'] = ['nullable'];
-            $rules['group_id'] = ['nullable'];
-            $rules['hospital_id'] = ['nullable'];
-            $rules['wants_shopping'] = ['nullable'];
 
-            dd( $rules, $this->all(), (new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
-            $data = $this->validate($rules);
+            // dd( $rules, $this->all(), (new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
 
-            $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
-            $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
+            // $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
+            // $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
 
-            $this->wizardData['Travel'] = $this->validate($rules);
-            $this->wizardData['TravelTreatmentActivity'] = $this->validate($rules);
+            // $this->wizardData['Travel'] = $this->validate($rules);
+            // $this->wizardData['TravelTreatmentActivity'] = $this->validate($rules);
 
         } elseif ($this->currentStep == 3) {
             // $this->validate([
@@ -240,10 +237,10 @@ class Travel extends Component
             // ]);
 
         } elseif ($this->currentStep == 4) {
-            $this->validate([
-                'cv' => 'required|mimes:doc,docx,pdf|max:1024',
-                'terms' => 'accepted'
-            ]);
+            // $this->validate([
+            //     'cv' => 'required|mimes:doc,docx,pdf|max:1024',
+            //     'terms' => 'accepted'
+            // ]);
         }
 
         if($this->currentStep == $this->totalSteps){
@@ -275,12 +272,13 @@ class Travel extends Component
             $travel = ModelsTravel::create($this->wizardData['Travel']);
 
             $travelTreatmentActivity = TravelTreatmentActivity::create($this->wizardData['TravelTreatmentActivity']);
-            foreach ($this->document_files as $file) {
-                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            foreach ($travelTreatmentActivity->treatment_file as $file) {
+                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
             }
 
         } catch (\Exception $e) {
             DB::rollBack();
+            dd($e->getMessage(), $this->all());
             return $e->getMessage();
         }
 

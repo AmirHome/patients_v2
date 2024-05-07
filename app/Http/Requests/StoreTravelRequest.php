@@ -39,7 +39,7 @@ class StoreTravelRequest extends FormRequest
             ],
             'reffering' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'reffering_type' => [
                 'required',
@@ -63,9 +63,6 @@ class StoreTravelRequest extends FormRequest
             'departure_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
-            ],
-            'visa_status' => [
-                'required',
             ],
             'visa_start_date' => [
                 'date_format:' . config('panel.date_format'),

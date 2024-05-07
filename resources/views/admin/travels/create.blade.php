@@ -133,8 +133,8 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.hospital_mail_notify_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="reffering">{{ trans('cruds.travel.fields.reffering') }}</label>
-                <input class="form-control {{ $errors->has('reffering') ? 'is-invalid' : '' }}" type="text" name="reffering" id="reffering" value="{{ old('reffering', '') }}" required>
+                <label for="reffering">{{ trans('cruds.travel.fields.reffering') }}</label>
+                <input class="form-control {{ $errors->has('reffering') ? 'is-invalid' : '' }}" type="text" name="reffering" id="reffering" value="{{ old('reffering', '') }}">
                 @if($errors->has('reffering'))
                     <div class="invalid-feedback">
                         {{ $errors->first('reffering') }}
@@ -222,8 +222,9 @@
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('visa_status') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="visa_status" id="visa_status" value="1" required {{ old('visa_status', 0) == 1 ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="visa_status">{{ trans('cruds.travel.fields.visa_status') }}</label>
+                    <input type="hidden" name="visa_status" value="0">
+                    <input class="form-check-input" type="checkbox" name="visa_status" id="visa_status" value="1" {{ old('visa_status', 0) == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="visa_status">{{ trans('cruds.travel.fields.visa_status') }}</label>
                 </div>
                 @if($errors->has('visa_status'))
                     <div class="invalid-feedback">

@@ -15,7 +15,7 @@ class CreateTravelsTable extends Migration
             $table->string('attendant_phone')->nullable();
             $table->boolean('has_pestilence')->default(0)->nullable();
             $table->string('hospital_mail_notify')->nullable();
-            $table->string('reffering');
+            $table->string('reffering')->nullable();
             $table->string('reffering_type');
             $table->string('notify_hospitals')->nullable();
             $table->date('hospitalization_date')->nullable();
@@ -23,7 +23,7 @@ class CreateTravelsTable extends Migration
             $table->date('arrival_date')->nullable();
             $table->date('departure_date')->nullable();
             $table->boolean('wants_shopping')->default(0)->nullable();
-            $table->boolean('visa_status')->default(0);
+            $table->boolean('visa_status')->default(0)->nullable();
             $table->date('visa_start_date')->nullable();
             $table->date('visa_end_date')->nullable();
             $table->timestamps();

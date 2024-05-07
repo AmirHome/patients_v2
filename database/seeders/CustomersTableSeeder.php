@@ -24,7 +24,7 @@ class CustomersTableSeeder extends Seeder
     {
         $rows = DB::connection('conversion_db')->table('customers');
         if(isset($limit)) {
-            $rows = $rows->limit($limit);
+            $rows = $rows->orderByDesc('id')->limit($limit);
         }
         $rows = $rows->get();
 
