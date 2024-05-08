@@ -81,12 +81,16 @@ class ChatCreatePermissionSeeder extends Seeder
         ])->each(function ($permission) {
             DB::table('role_has_permissions')->insert([
                 'permission_id' => $permission->id,
-                'role_id' => 1,
+                'role_id' => 1, // Admin
+            ]);
+            DB::table('role_has_permissions')->insert([
+                'permission_id' => $permission->id,
+                'role_id' => 100, // Super Admin
             ]);
             if ($permission->title == 'manage_conversations' || $permission->title == 'manage_meetings') {
                 DB::table('role_has_permissions')->insert([
                     'permission_id' => $permission->id,
-                    'role_id' => 2,
+                    'role_id' => 2, // User
                 ]);
             }
         });
