@@ -21,6 +21,10 @@ class UpdateTaskStatusRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'color' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

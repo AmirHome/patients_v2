@@ -363,6 +363,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted At',
             'deleted_at_helper' => ' ',
+            'color'             => 'Color',
+            'color_helper'      => ' ',
         ],
     ],
     'taskTag' => [

@@ -29,6 +29,9 @@
                             {{ trans('cruds.taskStatus.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.taskStatus.fields.color') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $taskStatus->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $taskStatus->color ?? '' }}
                             </td>
                             <td>
                                 @can('task_status_show')

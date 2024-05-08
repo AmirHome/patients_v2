@@ -31,6 +31,14 @@
                             {{ $taskStatus->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.taskStatus.fields.color') }}
+                        </th>
+                        <td>
+                            {{ $taskStatus->color }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

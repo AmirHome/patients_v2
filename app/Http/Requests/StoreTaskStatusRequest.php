@@ -21,6 +21,10 @@ class StoreTaskStatusRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'color' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }
