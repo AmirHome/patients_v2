@@ -124,6 +124,19 @@
                 <span class="help-block">{{ trans('cruds.travel.fields.has_pestilence_helper') }}</span>
             </div>
             <div class="form-group">
+                <div class="form-check {{ $errors->has('hospital_mail_notify') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="hospital_mail_notify" value="0">
+                    <input class="form-check-input" type="checkbox" name="hospital_mail_notify" id="hospital_mail_notify" value="1" {{ $travel->hospital_mail_notify || old('hospital_mail_notify', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="hospital_mail_notify">{{ trans('cruds.travel.fields.hospital_mail_notify') }}</label>
+                </div>
+                @if($errors->has('hospital_mail_notify'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('hospital_mail_notify') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.travel.fields.hospital_mail_notify_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -140,16 +153,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.travel.fields.notify_hospitals_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="hospital_mail_notify">{{ trans('cruds.travel.fields.hospital_mail_notify') }}</label>
-                <input class="form-control {{ $errors->has('hospital_mail_notify') ? 'is-invalid' : '' }}" type="text" name="hospital_mail_notify" id="hospital_mail_notify" value="{{ old('hospital_mail_notify', $travel->hospital_mail_notify) }}">
-                @if($errors->has('hospital_mail_notify'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('hospital_mail_notify') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.travel.fields.hospital_mail_notify_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="reffering">{{ trans('cruds.travel.fields.reffering') }}</label>

@@ -39,10 +39,6 @@ class UpdateTravelRequest extends FormRequest
             'notify_hospitals' => [
                 'array',
             ],
-            'hospital_mail_notify' => [
-                'string',
-                'nullable',
-            ],
             'reffering' => [
                 'string',
                 'nullable',

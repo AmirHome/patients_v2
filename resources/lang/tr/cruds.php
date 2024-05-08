@@ -815,8 +815,6 @@ return [
             'attendant_phone_helper'         => ' ',
             'has_pestilence'                 => 'Has Pestilence',
             'has_pestilence_helper'          => ' ',
-            'hospital_mail_notify'           => 'Hospital Mail Notify',
-            'hospital_mail_notify_helper'    => 'comma separate',
             'hospitalization_date'           => 'Hospitalization Date',
             'hospitalization_date_helper'    => ' ',
             'planning_discharge_date'        => 'Planning Discharge Date',
@@ -847,6 +845,8 @@ return [
             'last_status_helper'             => ' ',
             'notify_hospitals'               => 'Notify Hospitals',
             'notify_hospitals_helper'        => ' ',
+            'hospital_mail_notify'           => 'Hospital Mail Notify',
+            'hospital_mail_notify_helper'    => ' ',
         ],
     ],
     'travelTreatmentActivity' => [

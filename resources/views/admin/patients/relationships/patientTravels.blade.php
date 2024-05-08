@@ -64,10 +64,10 @@
                             {{ trans('cruds.travel.fields.has_pestilence') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.notify_hospitals') }}
+                            {{ trans('cruds.travel.fields.hospital_mail_notify') }}
                         </th>
                         <th>
-                            {{ trans('cruds.travel.fields.hospital_mail_notify') }}
+                            {{ trans('cruds.travel.fields.notify_hospitals') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.reffering') }}
@@ -151,12 +151,13 @@
                                 <input type="checkbox" disabled="disabled" {{ $travel->has_pestilence ? 'checked' : '' }}>
                             </td>
                             <td>
+                                <span style="display:none">{{ $travel->hospital_mail_notify ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $travel->hospital_mail_notify ? 'checked' : '' }}>
+                            </td>
+                            <td>
                                 @foreach($travel->notify_hospitals as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
-                            </td>
-                            <td>
-                                {{ $travel->hospital_mail_notify ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->reffering ?? '' }}

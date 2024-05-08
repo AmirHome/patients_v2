@@ -97,20 +97,20 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.travel.fields.hospital_mail_notify') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $travel->hospital_mail_notify ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.travel.fields.notify_hospitals') }}
                         </th>
                         <td>
                             @foreach($travel->notify_hospitals as $key => $notify_hospitals)
                                 <span class="label label-info">{{ $notify_hospitals->name }}</span>
                             @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.travel.fields.hospital_mail_notify') }}
-                        </th>
-                        <td>
-                            {{ $travel->hospital_mail_notify }}
                         </td>
                     </tr>
                     <tr>

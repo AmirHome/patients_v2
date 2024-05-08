@@ -64,10 +64,10 @@
                         {{ trans('cruds.travel.fields.has_pestilence') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travel.fields.notify_hospitals') }}
+                        {{ trans('cruds.travel.fields.hospital_mail_notify') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travel.fields.hospital_mail_notify') }}
+                        {{ trans('cruds.travel.fields.notify_hospitals') }}
                     </th>
                     <th>
                         {{ trans('cruds.travel.fields.reffering') }}
@@ -166,15 +166,14 @@
                     <td>
                     </td>
                     <td>
+                    </td>
+                    <td>
                         <select class="search">
                             <option value>{{ trans('global.all') }}</option>
                             @foreach($hospitals as $key => $item)
                                 <option value="{{ $item->name }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -264,8 +263,8 @@
 { data: 'attendant_address', name: 'attendant_address' },
 { data: 'attendant_phone', name: 'attendant_phone' },
 { data: 'has_pestilence', name: 'has_pestilence' },
-{ data: 'notify_hospitals', name: 'notify_hospitals.name' },
 { data: 'hospital_mail_notify', name: 'hospital_mail_notify' },
+{ data: 'notify_hospitals', name: 'notify_hospitals.name' },
 { data: 'reffering', name: 'reffering' },
 { data: 'hospitalization_date', name: 'hospitalization_date' },
 { data: 'planning_discharge_date', name: 'planning_discharge_date' },

@@ -92,6 +92,9 @@ class TravelController extends Controller
             $table->editColumn('has_pestilence', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->has_pestilence ? 'checked' : null) . '>';
             });
+            $table->editColumn('hospital_mail_notify', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->hospital_mail_notify ? 'checked' : null) . '>';
+            });
             $table->editColumn('notify_hospitals', function ($row) {
                 $labels = [];
                 foreach ($row->notify_hospitals as $notify_hospital) {
@@ -99,9 +102,6 @@ class TravelController extends Controller
                 }
 
                 return implode(' ', $labels);
-            });
-            $table->editColumn('hospital_mail_notify', function ($row) {
-                return $row->hospital_mail_notify ? $row->hospital_mail_notify : '';
             });
             $table->editColumn('reffering', function ($row) {
                 return $row->reffering ? $row->reffering : '';
@@ -114,7 +114,7 @@ class TravelController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->visa_status ? 'checked' : null) . '>';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'notify_hospitals', 'wants_shopping', 'visa_status']);
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status']);
 
             return $table->make(true);
         }

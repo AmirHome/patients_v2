@@ -121,7 +121,8 @@ class TravelTableSeeder extends Seeder
                 'attendant_address' => $row->attendant_address,
                 'attendant_phone' => $row->attendant_phone,
                 'has_pestilence' => $row->has_pestilence,
-                'hospital_mail_notify' => $row->hospital_mail_notify,
+                'notify_hospitals' => $row->hospital_mail_notify,
+                'hospital_mail_notify' => $row->hospital_mail_id,
                 'reffering'      => (in_array($row->reffering_type,['App\Models\Fond','App\Models\Other']) ? $row->reffering_other : $row->reffering_id),
                 'reffering_type' => refferingType($row->reffering_type),
                 // GUIDE: Remove reffering_other and use reffering_id instead of it

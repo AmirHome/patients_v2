@@ -10,6 +10,24 @@ class PermissionRoleTableSeeder extends Seeder
 {
     public function run()
     {
+        $permissions = [
+            [
+                'title' => 'viewPulse',
+                'display_name' => 'viewPulse',
+            ],
+            [
+                'title' => 'viewTelescope',
+                'display_name' => 'viewTelescope',
+            ],
+            [
+                'title' => 'viewHorizon',
+                'display_name' => 'viewHorizon',
+            ],
+        ];
+        foreach ($permissions as $permission) {
+            Permission::create($permission);
+        }
+
         $super_admin_permissions = Permission::all();
         Role::findOrFail(100)->permissions()->sync($super_admin_permissions->pluck('id'));
         
@@ -27,6 +45,9 @@ class PermissionRoleTableSeeder extends Seeder
         $user_permissions = $admin_permissions->filter(function ($permission) {
             return substr($permission->title, 0, 5) != 'user_'
                 && substr($permission->title, 0, 5) != 'role_'
+                && $permission->title != 'viewPulse'
+                && $permission->title != 'viewTelescope'
+                && $permission->title != 'viewHorizon'
                 //&& substr($permission->title, 0, 11) != 'permission_'
                 //&& substr($permission->title, 0, 5) != 'team_'
                 ;

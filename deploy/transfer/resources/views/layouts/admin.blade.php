@@ -40,22 +40,27 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
+              @can('viewPulse')
               <li>
-                <a class="c-header-nav-link" href="{{ url(config('pulse.path')) }}" title="Pulse">
+                <a class="c-header-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
                   <i class="fa fa-desktop" aria-hidden="true"></i>
                 </a>
               </li>
+              @endcan
+              @can('viewTelescope')
               <li>
-                <a class="c-header-nav-link" href="{{ url(config('telescope.path')) }}" title="Telescope">
+                <a class="c-header-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
                   <i class="fa fa-bug" aria-hidden="true"></i>
                 </a>
-              </li>
+              </li>                
+              @endcan
+              @can('viewHorizon')
               <li>
-                <a class="c-header-nav-link" href="{{ url(config('horizon.path')) }}" title="Horizon">
+                <a class="c-header-nav-link" target="_blank" href="{{ url(config('horizon.path')) }}" title="Horizon">
                   <i class="fa fa-rocket" aria-hidden="true"></i>
                 </a>
-              </li>
-
+              </li>                
+              @endcan
 
                 @if(count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
