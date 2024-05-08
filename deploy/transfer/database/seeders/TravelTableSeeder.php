@@ -110,7 +110,7 @@ class TravelTableSeeder extends Seeder
                 $visaEndDate = null;
             }
 
-            Travel::create([
+            $travel = Travel::create([
                 'id'             => $row->id,
                 'patient_id'     => Patient::where('id', $row->patient_id)->first()->id,
                 'group_id'       => TravelGroup::where('id', $row->group_id)->first()->id??2,
@@ -121,7 +121,7 @@ class TravelTableSeeder extends Seeder
                 'attendant_address' => $row->attendant_address,
                 'attendant_phone' => $row->attendant_phone,
                 'has_pestilence' => $row->has_pestilence,
-                'notify_hospitals' => $row->hospital_mail_notify,
+                //'notify_hospitals' => $row->hospital_mail_notify,
                 'hospital_mail_notify' => $row->hospital_mail_id,
                 'reffering'      => (in_array($row->reffering_type,['App\Models\Fond','App\Models\Other']) ? $row->reffering_other : $row->reffering_id),
                 'reffering_type' => refferingType($row->reffering_type),
@@ -136,6 +136,10 @@ class TravelTableSeeder extends Seeder
                 'visa_start_date' => $visaStartDate,
                 'visa_end_date'  => $visaEndDate,
             ]);
+
+            if(!empty($row->hospital_mail_notify)){
+              $travel->notify_hospitals()->sync(explode(',', $row->hospital_mail_notify));
+            }
         }
         
     }

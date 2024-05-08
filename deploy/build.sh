@@ -2,7 +2,7 @@
 
 # Set the download folder path (modify if needed)
 download_folder="$HOME/Downloads"
-archive_file="dev-admin-e9f11f11d86ec53e.zip"
+archive_file="dev-admin-e9f11f11d86ec53e"
 
 # Parse arguments
 for args in "$@"; do
@@ -36,8 +36,8 @@ done
 # Function to extract archive
 function build() {
   # Check if archive exists
-  if [ ! -f "$download_folder/$archive_file" ]; then
-    echo "Error: Archive '$archive_file' not found in '$download_folder'"
+  if [ ! -f "$download_folder/$archive_file.zip" ]; then
+    echo "Error: Archive '$archive_file.zip' not found in '$download_folder'"
     exit 1
   fi
 
@@ -45,14 +45,14 @@ function build() {
   
 
   # Extract the archive to the root directory
-  unzip -q "$download_folder/$archive_file" -d .
+  unzip -q "$download_folder/$archive_file.zip" -d .
   echo "Extracted '$archive_file' to root directory."
 
   deployment
 
   # (Optional) Remove the archive file after extraction
   if [ $RM ]; then
-    rm -f "$download_folder/$archive_file"
+    find "$download_folder" -type f -name "dev-admin-e9f11f11d86ec53e*" -delete
     echo "Remove '$download_folder/$archive_file'."
   fi
 
