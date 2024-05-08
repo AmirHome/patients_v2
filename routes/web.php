@@ -215,4 +215,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 });
 Route::get('/counter','\App\Livewire\Counter');
-Route::get('/travel','\App\Livewire\Travel')->name('travel');
+Route::get('/travel','\App\Livewire\Travel');

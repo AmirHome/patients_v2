@@ -24,7 +24,7 @@ class TravelController extends Controller
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status'])->select(sprintf('%s.*', (new Travel)->table));
+            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals'])->select(sprintf('%s.*', (new Travel)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -92,14 +92,19 @@ class TravelController extends Controller
             $table->editColumn('has_pestilence', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->has_pestilence ? 'checked' : null) . '>';
             });
+            $table->editColumn('notify_hospitals', function ($row) {
+                $labels = [];
+                foreach ($row->notify_hospitals as $notify_hospital) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $notify_hospital->name);
+                }
+
+                return implode(' ', $labels);
+            });
             $table->editColumn('hospital_mail_notify', function ($row) {
                 return $row->hospital_mail_notify ? $row->hospital_mail_notify : '';
             });
             $table->editColumn('reffering', function ($row) {
                 return $row->reffering ? $row->reffering : '';
-            });
-            $table->editColumn('notify_hospitals', function ($row) {
-                return $row->notify_hospitals ? $row->notify_hospitals : '';
             });
 
             $table->editColumn('wants_shopping', function ($row) {
@@ -109,12 +114,18 @@ class TravelController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->visa_status ? 'checked' : null) . '>';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'wants_shopping', 'visa_status']);
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'notify_hospitals', 'wants_shopping', 'visa_status']);
 
             return $table->make(true);
         }
 
-        return view('admin.travels.index');
+        $patients        = Patient::get();
+        $travel_groups   = TravelGroup::get();
+        $hospitals       = Hospital::get();
+        $departments     = Department::get();
+        $travel_statuses = TravelStatus::get();
+
+        return view('admin.travels.index', compact('patients', 'travel_groups', 'hospitals', 'departments', 'travel_statuses'));
     }
 
     public function create()
@@ -131,12 +142,15 @@ class TravelController extends Controller
 
         $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'last_statuses', 'patients'));
+        $notify_hospitals = Hospital::pluck('name', 'id');
+
+        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'last_statuses', 'notify_hospitals', 'patients'));
     }
 
     public function store(StoreTravelRequest $request)
     {
         $travel = Travel::create($request->all());
+        $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
 
         return redirect()->route('admin.travels.index');
     }
@@ -155,14 +169,17 @@ class TravelController extends Controller
 
         $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'last_status');
+        $notify_hospitals = Hospital::pluck('name', 'id');
 
-        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses', 'patients', 'travel'));
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals');
+
+        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses', 'notify_hospitals', 'patients', 'travel'));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
         $travel->update($request->all());
+        $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
 
         return redirect()->route('admin.travels.index');
     }
@@ -171,7 +188,7 @@ class TravelController extends Controller
     {
         abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'travelTravelTreatmentActivities', 'travelActivities');
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals', 'travelTravelTreatmentActivities', 'travelActivities');
 
         return view('admin.travels.show', compact('travel'));
     }

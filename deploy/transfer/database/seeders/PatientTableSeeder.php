@@ -23,7 +23,7 @@ class PatientTableSeeder extends Seeder
 
         $rows = DB::connection('conversion_db')->table('patients');
         if(isset($limit)) {
-            $rows = $rows->limit($limit);
+            $rows = $rows->orderByDesc('id')->limit($limit);
         }
         $rows = $rows->get();
         

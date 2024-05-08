@@ -99,7 +99,7 @@ class HospitalController extends Controller
     {
         abort_if(Gate::denies('hospital_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $hospital->load('hospitalTravels');
+        $hospital->load('hospitalTravels', 'notifyHospitalsTravels');
 
         return view('admin.hospitals.show', compact('hospital'));
     }

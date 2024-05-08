@@ -28,6 +28,9 @@
                             {{ trans('cruds.crmDocument.fields.customer') }}
                         </th>
                         <th>
+                            {{ trans('cruds.crmCustomer.fields.last_name') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.crmDocument.fields.document_file') }}
                         </th>
                         <th>
@@ -58,6 +61,9 @@
                             </td>
                             <td>
                                 {{ $crmDocument->customer->first_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $crmDocument->customer->last_name ?? '' }}
                             </td>
                             <td>
                                 @foreach($crmDocument->document_file as $key => $media)

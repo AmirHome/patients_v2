@@ -29,9 +29,6 @@ class UpdateTravelTreatmentActivityRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'description' => [
-                'required',
-            ],
             'treatment_file' => [
                 'array',
             ],

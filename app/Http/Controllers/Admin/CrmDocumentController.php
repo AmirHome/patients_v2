@@ -54,6 +54,9 @@ class CrmDocumentController extends Controller
                 return $row->customer ? $row->customer->first_name : '';
             });
 
+            $table->editColumn('customer.last_name', function ($row) {
+                return $row->customer ? (is_string($row->customer) ? $row->customer : $row->customer->last_name) : '';
+            });
             $table->editColumn('document_file', function ($row) {
                 if (! $row->document_file) {
                     return '';

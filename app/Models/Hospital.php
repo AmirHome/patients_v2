@@ -39,4 +39,9 @@ class Hospital extends Model
     {
         return $this->hasMany(Travel::class, 'hospital_id', 'id');
     }
+
+    public function notifyHospitalsTravels()
+    {
+        return $this->belongsToMany(Travel::class);
+    }
 }

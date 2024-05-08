@@ -33,6 +33,12 @@ class UpdateTravelRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'notify_hospitals.*' => [
+                'integer',
+            ],
+            'notify_hospitals' => [
+                'array',
+            ],
             'hospital_mail_notify' => [
                 'string',
                 'nullable',
@@ -43,10 +49,6 @@ class UpdateTravelRequest extends FormRequest
             ],
             'reffering_type' => [
                 'required',
-            ],
-            'notify_hospitals' => [
-                'string',
-                'nullable',
             ],
             'hospitalization_date' => [
                 'date_format:' . config('panel.date_format'),

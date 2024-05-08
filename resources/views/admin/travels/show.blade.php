@@ -97,6 +97,16 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.travel.fields.notify_hospitals') }}
+                        </th>
+                        <td>
+                            @foreach($travel->notify_hospitals as $key => $notify_hospitals)
+                                <span class="label label-info">{{ $notify_hospitals->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.travel.fields.hospital_mail_notify') }}
                         </th>
                         <td>
@@ -117,14 +127,6 @@
                         </th>
                         <td>
                             {{ App\Models\Travel::REFFERING_TYPE_SELECT[$travel->reffering_type] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.travel.fields.notify_hospitals') }}
-                        </th>
-                        <td>
-                            {{ $travel->notify_hospitals }}
                         </td>
                     </tr>
                     <tr>

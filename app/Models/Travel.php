@@ -48,7 +48,6 @@ class Travel extends Model
         'hospital_mail_notify',
         'reffering',
         'reffering_type',
-        'notify_hospitals',
         'hospitalization_date',
         'planning_discharge_date',
         'arrival_date',
@@ -100,6 +99,11 @@ class Travel extends Model
     public function last_status()
     {
         return $this->belongsTo(TravelStatus::class, 'last_status_id');
+    }
+
+    public function notify_hospitals()
+    {
+        return $this->belongsToMany(Hospital::class);
     }
 
     public function getHospitalizationDateAttribute($value)

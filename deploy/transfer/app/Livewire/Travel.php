@@ -105,7 +105,6 @@ class Travel extends Component
     {
         $this->user_id = auth()->id();
         $this->office_id = auth()->user()->office_id ?? 2;
-        
     }
 
     public $countryId;
@@ -207,14 +206,14 @@ class Travel extends Component
             $data = $this->validate($rules);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
-
         } elseif ($this->currentStep == 2) {
 
-            $rulesTravel = [
-                'status_id'                 => 'integer',
-            ];
+            $rulesTravel =  ['last_status_id' => 'nullable|integer',
+                             'department_id' => 'required', 
+                            ];
             $rulesTravelTreatmentActivity = [
-                'status_id'                 => 'integer'
+                'status_id'                 => 'integer',
+                'description'               => 'required',
             ];
             $rules = array_merge($rulesTravel, $rulesTravelTreatmentActivity);
             $this->validate($rules);
@@ -222,86 +221,54 @@ class Travel extends Component
             $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rulesTravel));
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
 
-
-            // dd( $rules, $this->all(), (new StoreTravelRequest())->rules(), (new StoreTravelTreatmentActivityRequest())->rules());
-
-            // $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
-            // $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
-
-            // $this->wizardData['Travel'] = $this->validate($rules);
-            // $this->wizardData['TravelTreatmentActivity'] = $this->validate($rules);
-
         } elseif ($this->currentStep == 3) {
-            // $this->validate([
-            //     'frameworks' => 'required|array|min:2|max:3'
-            // ]);
-
         } elseif ($this->currentStep == 4) {
-            // $this->validate([
-            //     'cv' => 'required|mimes:doc,docx,pdf|max:1024',
-            //     'terms' => 'accepted'
-            // ]);
+
         }
 
-        if($this->currentStep == $this->totalSteps){
+        if ($this->currentStep == $this->totalSteps) {
             $this->store();
         }
     }
 
     public function store()
     {
-        
+
         $this->resetErrorBag();
-        // if ($this->currentStep == 4) {
-        //     $this->validate([
-        //         'cv' => 'required|mimes:doc,docx,pdf|max:1024',
-        //         'terms' => 'accepted'
-        //     ]);
-        // }
-
-        // $cv_name = 'CV_' . $this->cv->getClientOriginalName();
-        // $files_name = 'CV_' . $this->files[0]->getClientOriginalName();
-        
-        // dd('register', $cv_name, $files_name);
-        // $upload_cv = $this->cv->storeAs('students_cvs', $cv_name);
-
         DB::beginTransaction();
         try {
-            $patient = Patient::create($this->wizardData['Patient']);
+            $this->patient_id = Patient::create($this->wizardData['Patient'])->id;
 
-            $travel = ModelsTravel::create($this->wizardData['Travel']);
+            $this->wizardData['Travel']['patient_id'] = $this->patient_id;
+            $this->wizardData['Travel']['last_status_id'] = $this->status_id;
+            $this->travel_id = ModelsTravel::create($this->wizardData['Travel'])->id;
 
+
+            $this->wizardData['TravelTreatmentActivity']['user_id'] = $this->user_id;
+            $this->wizardData['TravelTreatmentActivity']['travel_id'] = $this->travel_id;
             $travelTreatmentActivity = TravelTreatmentActivity::create($this->wizardData['TravelTreatmentActivity']);
-            foreach ($travelTreatmentActivity->treatment_file as $file) {
+
+            foreach ($this->treatment_files as $file) {
                 $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
             }
+            
+            Country::where('id', $this->countryId)->increment('code_inc');
 
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage(), $this->all());
             return $e->getMessage();
         }
 
 
+        $data = ['code' => $this->wizardData['Patient']['code']];
+        $this->reset();
+        $this->currentStep = 1;
 
-            // $values = array(
-            //     "first_name" => $this->first_name,
-            //     "last_name" => $this->last_name,
-            //     "gender" => $this->gender,
-            //     "email" => $this->email,
-            //     "phone" => $this->phone,
-            //     "country" => $this->country,
-            //     "city" => $this->city,
-            //     "frameworks" => json_encode($this->frameworks),
-            //     "description" => $this->description,
-            //     "cv" => $cv_name,
-            // );
+        return redirect('travel')->with('success', 'Travel created successfully');
 
-            //Student::insert($values);
-            $this->reset();
-            $this->currentStep = 1;
-            $data = ['name' => $this->first_name . ' ' . $this->last_name, 'email' => $this->email];
-            return redirect()->route('travel.success', $data);
-        
+        // return redirect()->route('travel', $data);
+        // return redirect()->route('admin.travels.index', compact('data'));
+
     }
 }

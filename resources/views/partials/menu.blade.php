@@ -281,7 +281,7 @@
                     @can('crm_note_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.crm-notes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/crm-notes") || request()->is("admin/crm-notes/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-sticky-note c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-trash-alt c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.crmNote.title') }}
@@ -417,7 +417,7 @@
                     @can('expense_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.expenses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses") || request()->is("admin/expenses/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-arrow-circle-right c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-arrow-alt-circle-left c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.expense.title') }}

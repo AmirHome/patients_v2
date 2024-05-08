@@ -64,13 +64,13 @@
                             {{ trans('cruds.travel.fields.has_pestilence') }}
                         </th>
                         <th>
+                            {{ trans('cruds.travel.fields.notify_hospitals') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.travel.fields.hospital_mail_notify') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.reffering') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.travel.fields.notify_hospitals') }}
                         </th>
                         <th>
                             {{ trans('cruds.travel.fields.hospitalization_date') }}
@@ -151,13 +151,15 @@
                                 <input type="checkbox" disabled="disabled" {{ $travel->has_pestilence ? 'checked' : '' }}>
                             </td>
                             <td>
+                                @foreach($travel->notify_hospitals as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 {{ $travel->hospital_mail_notify ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->reffering ?? '' }}
-                            </td>
-                            <td>
-                                {{ $travel->notify_hospitals ?? '' }}
                             </td>
                             <td>
                                 {{ $travel->hospitalization_date ?? '' }}
@@ -254,7 +256,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-hospitalTravels:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

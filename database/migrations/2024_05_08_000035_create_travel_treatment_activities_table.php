@@ -10,7 +10,7 @@ class CreateTravelTreatmentActivitiesTable extends Migration
     {
         Schema::create('travel_treatment_activities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

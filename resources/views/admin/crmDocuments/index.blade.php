@@ -28,6 +28,9 @@
                         {{ trans('cruds.crmDocument.fields.customer') }}
                     </th>
                     <th>
+                        {{ trans('cruds.crmCustomer.fields.last_name') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.crmDocument.fields.document_file') }}
                     </th>
                     <th>
@@ -100,6 +103,7 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'customer_first_name', name: 'customer.first_name' },
+{ data: 'customer.last_name', name: 'customer.last_name' },
 { data: 'document_file', name: 'document_file', sortable: false, searchable: false },
 { data: 'description', name: 'description' },
 { data: 'user_name', name: 'user.name' },

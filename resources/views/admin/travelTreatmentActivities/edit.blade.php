@@ -53,8 +53,8 @@
                 <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="description">{{ trans('cruds.travelTreatmentActivity.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description" required>{{ old('description', $travelTreatmentActivity->description) }}</textarea>
+                <label for="description">{{ trans('cruds.travelTreatmentActivity.fields.description') }}</label>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $travelTreatmentActivity->description) }}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}

@@ -298,6 +298,7 @@
                                 <label for="">department @json($department_id)</label>
                                 <div wire:ignore>
                                     <select class="form-control select2">
+                                        <option value="" selected>Select departmant</option>
                                         @foreach ($departments as $id => $entry)
                                         <option value="{{ $id }}">{{ $entry }}</option>
                                         @endforeach

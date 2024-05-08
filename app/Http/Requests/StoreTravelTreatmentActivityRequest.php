@@ -29,9 +29,6 @@ class StoreTravelTreatmentActivityRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'description' => [
-                'required',
-            ],
             'treatment_file' => [
                 'array',
             ],
