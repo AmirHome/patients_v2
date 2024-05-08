@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ProvinceTableSeeder::class,
             OfficeTableSeeder::class,
             UsersTableSeeder::class,
-            RoleUserTableSeeder::class,
+            //RoleUserTableSeeder::class,
             CrmStatusTableSeeder::class,
             TaskStatusTableSeeder::class,
 

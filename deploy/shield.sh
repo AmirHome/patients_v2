@@ -7,13 +7,19 @@ mkdir -p deploy/transfer/database/migrations
 mkdir -p deploy/transfer/config
 
 cp database/patients_db_old.sql deploy/transfer/database
+
+# Core: Change Quick Admin Panel
+cp database/seeders/PermissionRoleTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
+cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
+
+
 #$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CountriesTableSeeder.php deploy/transfer/database/seeders
-cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ProvinceTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelStatusTableSeeder.php deploy/transfer/database/seeders
-cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TranslatorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/MinistryTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelGroupTableSeeder.php deploy/transfer/database/seeders
