@@ -293,11 +293,12 @@
                                 <span class="text-danger">@error('status_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
+                        <!-- GUIDE Select2 init -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">department @json($department_id)</label>
                                 <div wire:ignore>
-                                    <select class="form-control select2">
+                                    <select class="form-control select2" id="department_id">
                                         <option value="" selected>Select departmant</option>
                                         @foreach ($departments as $id => $entry)
                                         <option value="{{ $id }}">{{ $entry }}</option>
@@ -318,7 +319,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- TODO: Dropzone init -->
+                    <!-- GUIDE Dropzone init -->
                     <div class="row">
                         <div class="col-md-12">@json($treatment_files)
                             <div class="form-group" wire:ignore>
@@ -343,54 +344,47 @@
             <div class="card">
                 <div class="card-header bg-secondary text-white">STEP 3/4 - Frameworks experience</div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo, impedit maxime possimus
-                    excepturi veniam ut error sit, molestias aliquam repellat eos porro? Sit ex voluptates nemo
-                    veritatis delectus quia?
-                    <div class="frameworks d-flex flex-column align-items-left mt-2">
-                        <label for="laravel">
-                            <input type="checkbox" id="laravel" value="laravel" wire:model="frameworks"> Laravel
-                        </label>
-                        <label for="codeigniter">
-                            <input type="checkbox" id="codeigniter" value="codeigniter" wire:model="frameworks">
-                            Codeigniter
-                        </label>
-                        <label for="vuejs">
-                            <input type="checkbox" id="vuejs" value="vuejs" wire:model="frameworks"> Vue Js
-                        </label>
-                        <label for="cakePHP">
-                            <input type="checkbox" id="cakePHP" value="cakePHP" wire:model="frameworks"> CakePHP
-                        </label>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} @json($notifyHospitalIds)</label>
+                                <div wire:ignore>
+                                    <div style="padding-bottom: 4px">
+                                        <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                                        <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                    </div>
+                                    <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notifyHospitalIds" multiple>
+                                        @foreach($notify_hospitals as $id => $notify_hospital)
+                                            <option value="{{ $id }}" {{ in_array($id, old('notify_hospitals', [])) ? 'selected' : '' }}>{{ $notify_hospital }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <span class="text-danger">@error('notifyHospitalIds'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="traslators">Translators @json($translatorId)</label>
+                                <select class="form-control" wire:model.live="translatorId">
+                                    <option value="" selected>Select translator</option>
+                                    @foreach ($translators as $id => $translator)
+                                    <option value="{{ $id }}">{{ $translator }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('translatorId'){{ $message }}@enderror</span>
+
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-danger">@error('frameworks'){{ $message }}@enderror</span>
+                    
+
+
+
                 </div>
             </div>
         </div>
-
-        {{-- STEP 4 --}}
-
-        <div class="step-four {{$currentStep == 4 ? 'd-block' : 'd-none'}}">
-            <div class="card">
-                <div class="card-header bg-secondary text-white">STEP 4/4 - Attachments</div>
-                <div class="card-body">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque delectus officia inventore id
-                    facere at aspernatur ad corrupti asperiores placeat, fugiat tempora soluta optio recusandae eligendi
-                    impedit ipsam ullam amet!
-                    <div class="form-group">
-                        <label for="cv">CV</label>
-                        <input type="file" class="form-control" wire:model="cv">
-                        <span class="text-danger">@error('cv'){{ $message }}@enderror</span>
-                    </div>
-                    <div class="form-group">
-                        <label for="terms" class="d-block">
-                            <input type="checkbox" id="terms" wire:model="terms"> You must agree with our <a
-                                href="#">Terms and Conditions</a>
-                        </label>
-                        <span class="text-danger">@error('terms'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    
+        {{-- Buttons panel --}}
 
         <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
             @if ($currentStep == 1)
@@ -420,9 +414,12 @@
 
 @push('scripts')
 <script>
+    // GUIDE Select2 set livewire
     $('.select2').change(function (e) {
-    @this.set('department_id', e.target.value);
-});
+        // Exm: @this.set('department_id', e.target.value);
+        // Exm: @this.set('department_id', e.target.value);
+        @this.set($(this).attr('id'), $(this).val());
+    });
 </script>
 
 <script>
@@ -440,7 +437,7 @@ Dropzone.options.treatmentFileDropzone = {
     success: function (file, response) {
       $('form').append('<input type="hidden" name="treatment_file[]" value="' + response.name + '">')
       uploadedTreatmentFileMap[file.name] = response.name
-      // GUIDE: init Dropzone livewire
+      // GUIDE Dropzone set livewire
       @this.set('treatment_files', uploadedTreatmentFileMap)
 
     },
@@ -451,7 +448,7 @@ Dropzone.options.treatmentFileDropzone = {
         name = file.file_name
       } else {
         name = uploadedTreatmentFileMap[file.name]
-        // GUIDE: init Dropzone livewire
+        // GUIDE Dropzone remove livewire
         delete uploadedTreatmentFileMap[file.name];
         @this.set('treatment_files', uploadedTreatmentFileMap)
       }

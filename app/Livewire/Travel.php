@@ -10,8 +10,10 @@ use App\Models\CampaignChannel;
 use App\Models\CampaignOrg;
 use App\Models\Country;
 use App\Models\Department;
+use App\Models\Hospital;
 use App\Models\Patient;
 use App\Models\Province;
+use App\Models\Translator;
 use App\Models\Travel as ModelsTravel;
 use App\Models\TravelStatus;
 use App\Models\TravelTreatmentActivity;
@@ -41,8 +43,11 @@ class Travel extends Component
     public $attendant_phone;
     public $has_pestilence;
     public $wants_shopping;
-    public $hospital_mail_notify;
+
     public $notify_hospitals;
+    public $notifyHospitalIds = [];
+    public $translators;
+    public $translatorId;
     public $hospitalization_date;
     public $planning_discharge_date;
     public $arrival_date;
@@ -50,10 +55,6 @@ class Travel extends Component
     public $visa_status;
     public $visa_start_date;
     public $visa_end_date;
-
-
-
-
 
     public $wizardData = [];
 
@@ -84,29 +85,6 @@ class Travel extends Component
     public $treating_doctor;
     public $code;
 
-
-    public $age;
-    public $description;
-    public $frameworks = [];
-    public $cv;
-    public $treatment_files = [];
-    public $terms;
-
-    public $totalSteps = 4;
-    public $currentStep = 1;
-
-    public function render()
-    {
-        return view('livewire.travel-wizard')->layout('components.layouts.app');
-    }
-
-
-    public function __construct()
-    {
-        $this->user_id = auth()->id();
-        $this->office_id = auth()->user()->office_id ?? 2;
-    }
-
     public $countryId;
     public $countries;
     public $cities;
@@ -123,6 +101,27 @@ class Travel extends Component
 
     public $departments;
     public $department_id;
+
+    public $age;
+    public $description;
+    public $frameworks = [];
+    public $cv;
+    public $treatment_files = [];
+    public $terms;
+
+    public $totalSteps = 3;
+    public $currentStep = 1;
+
+    public function render()
+    {
+        return view('livewire.travel-wizard')->layout('components.layouts.app');
+    }
+
+    public function __construct()
+    {
+        $this->user_id = auth()->id();
+        $this->office_id = auth()->user()->office_id ?? 2;
+    }
 
     public function mount()
     {
@@ -150,6 +149,11 @@ class Travel extends Component
         $this->department_id = null;
 
         $this->status_id = $this->last_status_id = null;
+
+        $this->notify_hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
+        $this->notifyHospitalIds = [];
+        $this->translators = Translator::get(['id', 'title'])->pluck('title', 'id');
+        $this->translatorId = null;
     }
 
     public function updatedCountryId($value)
@@ -206,6 +210,7 @@ class Travel extends Component
             $data = $this->validate($rules);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
+            
         } elseif ($this->currentStep == 2) {
 
             $rulesTravel =  ['last_status_id' => 'nullable|integer',
@@ -222,7 +227,13 @@ class Travel extends Component
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
 
         } elseif ($this->currentStep == 3) {
-        } elseif ($this->currentStep == 4) {
+
+            $rules = [
+                'notifyHospitalIds' => 'nullable|array',
+                'translatorId' => 'nullable|integer',
+            ];
+            //$this->validate($rules);
+            $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rules));
 
         }
 
@@ -241,11 +252,12 @@ class Travel extends Component
 
             $this->wizardData['Travel']['patient_id'] = $this->patient_id;
             $this->wizardData['Travel']['last_status_id'] = $this->status_id;
-            $this->travel_id = ModelsTravel::create($this->wizardData['Travel'])->id;
 
+            $travel = ModelsTravel::create($this->wizardData['Travel']);
+            $travel->notify_hospitals()->sync($this->wizardData['Travel']['notifyHospitalIds'], []);
 
             $this->wizardData['TravelTreatmentActivity']['user_id'] = $this->user_id;
-            $this->wizardData['TravelTreatmentActivity']['travel_id'] = $this->travel_id;
+            $this->wizardData['TravelTreatmentActivity']['travel_id'] = $travel->id;
             $travelTreatmentActivity = TravelTreatmentActivity::create($this->wizardData['TravelTreatmentActivity']);
 
             foreach ($this->treatment_files as $file) {
@@ -257,6 +269,7 @@ class Travel extends Component
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
+            // TODO: Show and log error
             return $e->getMessage();
         }
 
