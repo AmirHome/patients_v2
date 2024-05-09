@@ -20,6 +20,17 @@ class TravelStatusController extends Controller
 
         if ($request->ajax()) {
             $query = TravelStatus::query()->select(sprintf('%s.*', (new TravelStatus)->table));
+
+            // Add custom filter for search_index
+            if ($request->has('s_title')) {
+                $value = $request->input('s_title');
+                $query->where('title', 'like', '%' . $value . '%');
+            }
+            if ($request->has('s_id')) {
+                $value = $request->input('s_id');
+                $query->where('id', 'like', '%' . $value . '%');
+            }
+            
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -40,9 +51,9 @@ class TravelStatusController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
+            // $table->editColumn('id', function ($row) {
+            //     return $row->id ? $row->id : '';
+            // });
             $table->editColumn('title', function ($row) {
                 return $row->title ? $row->title : '';
             });

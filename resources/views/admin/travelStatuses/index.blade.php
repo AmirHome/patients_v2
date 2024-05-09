@@ -15,14 +15,25 @@
     </div>
 
     <div class="card-body">
+        <div class="row m-1 pb-3">
+            <form action="{{ route('admin.travel-statuses.index') }}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control search" name="title" placeholder="Title">
+                    <input type="text" class="form-control search" name="id" placeholder="Id">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="search-form-submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-TravelStatus">
             <thead>
                 <tr>
                     <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.travelStatus.fields.id') }}
                     </th>
                     <th>
                         {{ trans('cruds.travelStatus.fields.title') }}
@@ -83,10 +94,15 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.travel-statuses.index') }}",
+    ajax: {
+        url: "{{ route('admin.travel-statuses.index') }}",
+        data: function(d) {
+            d.s_title = $('.search[name="title"]').val();
+            d.s_id = $('.search[name="id"]').val();
+        }
+    },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
 { data: 'ordering', name: 'ordering' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
@@ -100,8 +116,12 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
+    $('#search-form-submit').click(function () {
+        table.ajax.reload();
+    })
 });
+
 
 </script>
 @endsection

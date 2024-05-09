@@ -308,6 +308,8 @@ table.on('column-visibility.dt', function(e, settings, column, state) {
       });
   })
 });
-
+$('.search').on('input', function () {
+    console.log('searching');
+  });
 </script>
 @endsection
