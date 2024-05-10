@@ -2,9 +2,14 @@
 
 # Laravel DB, Seeder
 mkdir -p deploy/transfer/app/Models
+mkdir -p deploy/transfer/app/Http/Controllers/Admin
 mkdir -p deploy/transfer/database/seeders
 mkdir -p deploy/transfer/database/migrations
 mkdir -p deploy/transfer/config
+# Development
+mkdir -p deploy/transfer/resources/views/layouts
+mkdir -p deploy/transfer/resources/views/admin
+mkdir -p deploy/transfer/app/Providers
 
 cp database/patients_db_old.sql deploy/transfer/database
 
@@ -14,6 +19,11 @@ cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
 
+# travelStatus
+mkdir -p deploy/transfer/resources/views/admin/travelStatuses/relationships
+cp app/Http/Controllers/Admin/TravelStatusController.php deploy/transfer/app/Http/Controllers/Admin
+cp resources/views/admin/travelStatuses/index.blade.php deploy/transfer/resources/views/admin/travelStatuses
+cp resources/views/admin/travelStatuses/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travelStatuses/relationships
 
 #$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
@@ -86,10 +96,6 @@ cp database/seeders/ChatFrontCmsSeeder.php deploy/transfer/database/seeders
 
 cp app/Models/ChatSetting.php deploy/transfer/app/Models
 cp config/chat.php deploy/transfer/config
-
-# Development
-mkdir -p deploy/transfer/resources/views/layouts
-mkdir -p deploy/transfer/app/Providers
 
 cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
