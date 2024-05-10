@@ -6,3 +6,50 @@
     line-height: 1.5;
     border-radius: 3px;
 }
+
+.page-link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    border-radius: .25rem;
+    margin-left: 0.333em;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+table,
+th, td {
+    border: 0 !important;
+}
+
+table.dataTable thead tr {
+    /* border-bottom: 1px solid #000000 !important; */
+    padding: 0;
+    margin: 0;
+    /* border-radius: 3px !important; */
+    background-color: rgb(238, 240, 255);
+}
+
+table.dataTable thead th {
+    font-weight: 500;
+    font-size: small;
+    color: #001909;
+    white-space: nowrap;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(80, 80, 80, 0.01);
+}
+
+.table-hover tbody tr:hover {
+    color: #00137b;
+}
+
+
+td {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.05) !important;
+}
+
+table {
+    border-collapse: collapse !important;
+}

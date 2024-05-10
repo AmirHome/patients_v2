@@ -30,7 +30,7 @@ class TravelStatusController extends Controller
                 $value = $request->input('ff_id');
                 $query->where('id', 'like', '%' . $value . '%');
             }
-            
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
