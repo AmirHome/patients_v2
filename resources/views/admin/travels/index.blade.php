@@ -1,20 +1,18 @@
 @extends('layouts.admin')
 @section('content')
-@can('travel_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.travels.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.travel.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
+
+
+@includeIf('admin.travels.relationships.formFilter', [$genders])
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.travel.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
+
+        
+
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Travel">
             <thead>
                 <tr>
@@ -27,12 +25,7 @@
                     <th>
                         {{ trans('cruds.travel.fields.patient') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.middle_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.surname') }}
-                    </th>
+
                     <th>
                         {{ trans('cruds.patient.fields.code') }}
                     </th>
@@ -49,53 +42,9 @@
                         {{ trans('cruds.travel.fields.last_status') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travelStatus.fields.ordering') }}
+                        {{ trans('cruds.travel.fields.created_at') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.attendant_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.attendant_address') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.attendant_phone') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.has_pestilence') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.hospital_mail_notify') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.notify_hospitals') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.reffering') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.hospitalization_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.planning_discharge_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.arrival_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.departure_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.wants_shopping') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.visa_status') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.visa_start_date') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.travel.fields.visa_end_date') }}
-                    </th>
+                  
                     <th>
                         &nbsp;
                     </th>
@@ -149,34 +98,24 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.travels.index') }}",
+    ajax: {
+        url: "{{ route('admin.travels.index') }}",
+        data: function(d) {
+            d.ff_patient_name = $('.filter[name="patient_name"]').val();
+            d.ff_patient_code = $('.filter[name="patient_code"]').val();
+        }
+    },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'patient_name', name: 'patient.name' },
-{ data: 'patient.middle_name', name: 'patient.middle_name' },
-{ data: 'patient.surname', name: 'patient.surname' },
 { data: 'patient.code', name: 'patient.code' },
 { data: 'group_name', name: 'group.name' },
 { data: 'hospital_name', name: 'hospital.name' },
 { data: 'department_name', name: 'department.name' },
 { data: 'last_status_title', name: 'last_status.title' },
-{ data: 'last_status.ordering', name: 'last_status.ordering' },
-{ data: 'attendant_name', name: 'attendant_name' },
-{ data: 'attendant_address', name: 'attendant_address' },
-{ data: 'attendant_phone', name: 'attendant_phone' },
-{ data: 'has_pestilence', name: 'has_pestilence' },
-{ data: 'hospital_mail_notify', name: 'hospital_mail_notify' },
-{ data: 'notify_hospitals', name: 'notify_hospitals.name' },
-{ data: 'reffering', name: 'reffering' },
-{ data: 'hospitalization_date', name: 'hospitalization_date' },
-{ data: 'planning_discharge_date', name: 'planning_discharge_date' },
-{ data: 'arrival_date', name: 'arrival_date' },
-{ data: 'departure_date', name: 'departure_date' },
-{ data: 'wants_shopping', name: 'wants_shopping' },
-{ data: 'visa_status', name: 'visa_status' },
-{ data: 'visa_start_date', name: 'visa_start_date' },
-{ data: 'visa_end_date', name: 'visa_end_date' },
+{ data: 'created_at', name: 'created_at' },
+
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
@@ -189,6 +128,9 @@
           .columns.adjust();
   });
   
+  $('#form-filter-submit').click(function () {
+        table.ajax.reload();
+    })
 });
 
 </script>

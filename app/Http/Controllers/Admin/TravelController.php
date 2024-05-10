@@ -12,6 +12,10 @@ use App\Models\Patient;
 use App\Models\Travel;
 use App\Models\TravelGroup;
 use App\Models\TravelStatus;
+use App\Models\Country;
+use App\Models\CampaignChannel;
+use App\Models\Translator;
+
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,8 +27,38 @@ class TravelController extends Controller
     {
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        // Form filters
+        $countries = Country::get(['id', 'name']);
+        $cities    = collect();
+        $genders = Patient::GENDER_SELECT;
+        $bloodGroups = Patient::BLOOD_GROUP_SELECT;
+        $refferingTypes = Travel::REFFERING_TYPE_SELECT;
+        $campaignChannels = CampaignChannel::get(['id', 'title']); //->pluck('title', 'id');
+        $campaignOrganizations = collect();
+        $statuses = TravelStatus::orderBy('ordering', 'desc')->get(['id', 'title'])->pluck('title', 'id');
+        $departments = Department::get(['id', 'name'])->pluck('name', 'id');
+        $notify_hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
+        $translators = Translator::get(['id', 'title'])->pluck('title', 'id');
+
         if ($request->ajax()) {
-            $query = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals'])->select(sprintf('%s.*', (new Travel)->table));
+            $query = Travel::with(['patient.city.country', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals'])->select(sprintf('%s.*', (new Travel)->table));
+            
+            // Add custom filter for search_index
+            if ($request->has('ff_patient_name')) {
+                $value = $request->input('ff_patient_name');
+                $query->whereHas('patient', function ($query) use ($value) {
+                    $query->where('name', 'like', '%' . $value . '%')
+                        ->orWhere('surname', 'like', '%' . $value . '%')
+                        ->orWhere('middle_name', 'like', '%' . $value . '%');
+                });
+            }
+            if ($request->has('ff_patient_code')) {
+                $value = $request->input('ff_patient_code');
+                $query->whereHas('patient', function ($query) use ($value) {
+                    $query->where('code', 'like', '%' . $value . '%');
+                });
+            }
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -49,18 +83,18 @@ class TravelController extends Controller
                 return $row->id ? $row->id : '';
             });
             $table->addColumn('patient_name', function ($row) {
-                return $row->patient ? $row->patient->name : '';
+                return $row->patient ? $row->patient->name .' '.  $row->patient->surname: '';
             });
 
             $table->editColumn('patient.middle_name', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->middle_name) : '';
             });
-            $table->editColumn('patient.surname', function ($row) {
-                return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->surname) : '';
-            });
-            $table->editColumn('patient.code', function ($row) {
-                return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->code) : '';
-            });
+            // $table->editColumn('patient.surname', function ($row) {
+            //     return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->surname) : '';
+            // });
+            // $table->editColumn('patient.code', function ($row) {
+            //     return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->code) : '';
+            // });
             $table->addColumn('group_name', function ($row) {
                 return $row->group ? $row->group->name : '';
             });
@@ -114,12 +148,17 @@ class TravelController extends Controller
                 return '<input type="checkbox" disabled ' . ($row->visa_status ? 'checked' : null) . '>';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status']);
+            $table->editColumn('created_at', function ($row) {
+                return $row->created_at ? $row->created_at : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 
+            'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status']);
 
             return $table->make(true);
         }
 
-        return view('admin.travels.index');
+        return view('admin.travels.index', compact('countries', 'cities','genders', 'bloodGroups', 'refferingTypes', 'campaignChannels', 'campaignOrganizations', 'statuses', 'departments', 'notify_hospitals', 'translators'));
     }
 
     public function create()

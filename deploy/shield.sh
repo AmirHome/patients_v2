@@ -10,6 +10,7 @@ mkdir -p deploy/transfer/config
 mkdir -p deploy/transfer/resources/views/layouts
 mkdir -p deploy/transfer/resources/views/admin
 mkdir -p deploy/transfer/app/Providers
+mkdir -p deploy/transfer/public/css
 
 cp database/patients_db_old.sql deploy/transfer/database
 
@@ -18,12 +19,19 @@ cp database/seeders/PermissionRoleTableSeeder.php deploy/transfer/database/seede
 cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
+cp public/css/app.css deploy/transfer/public/css
 
 # travelStatus
 mkdir -p deploy/transfer/resources/views/admin/travelStatuses/relationships
 cp app/Http/Controllers/Admin/TravelStatusController.php deploy/transfer/app/Http/Controllers/Admin
 cp resources/views/admin/travelStatuses/index.blade.php deploy/transfer/resources/views/admin/travelStatuses
 cp resources/views/admin/travelStatuses/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travelStatuses/relationships
+# travels
+mkdir -p deploy/transfer/resources/views/admin/travels/relationships
+cp app/Http/Controllers/Admin/TravelController.php deploy/transfer/app/Http/Controllers/Admin
+cp resources/views/admin/travels/index.blade.php deploy/transfer/resources/views/admin/travels
+cp resources/views/admin/travels/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travels/relationships
+
 
 #$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
