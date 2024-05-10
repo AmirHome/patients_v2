@@ -156,12 +156,7 @@ class PatientController extends Controller
             return $table->make(true);
         }
 
-        $users         = User::get();
-        $offices       = Office::get();
-        $campaign_orgs = CampaignOrg::get();
-        $provinces     = Province::get();
-
-        return view('admin.patients.index', compact('users', 'offices', 'campaign_orgs', 'provinces'));
+        return view('admin.patients.index');
     }
 
     public function create()

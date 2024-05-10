@@ -119,13 +119,7 @@ class TravelController extends Controller
             return $table->make(true);
         }
 
-        $patients        = Patient::get();
-        $travel_groups   = TravelGroup::get();
-        $hospitals       = Hospital::get();
-        $departments     = Department::get();
-        $travel_statuses = TravelStatus::get();
-
-        return view('admin.travels.index', compact('patients', 'travel_groups', 'hospitals', 'departments', 'travel_statuses'));
+        return view('admin.travels.index');
     }
 
     public function create()
