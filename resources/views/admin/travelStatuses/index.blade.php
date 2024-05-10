@@ -88,8 +88,8 @@ let dtOverrideGlobals = {
     ajax: {
         url: "{{ route('admin.travel-statuses.index') }}",
         data: function(d) {
-            d.s_title = $('.search[name="title"]').val();
-            d.s_id = $('.search[name="id"]').val();
+            d.ff_title = $('.filter[name="title"]').val();
+            d.ff_id = $('.filter[name="id"]').val();
         }
     },
     columns: [
@@ -109,7 +109,7 @@ let dtOverrideGlobals = {
           .columns.adjust();
   });
 
-    $('#search-form-submit').click(function () {
+    $('#form-filter-submit').click(function () {
         table.ajax.reload();
     })
 });

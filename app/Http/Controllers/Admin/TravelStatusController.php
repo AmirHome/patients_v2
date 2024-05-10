@@ -22,15 +22,15 @@ class TravelStatusController extends Controller
             $query = TravelStatus::query()->select(sprintf('%s.*', (new TravelStatus)->table));
 
             // Add custom filter for search_index
-            if ($request->has('s_title')) {
-                $value = $request->input('s_title');
+            if ($request->has('ff_title')) {
+                $value = $request->input('ff_title');
                 $query->where('title', 'like', '%' . $value . '%');
             }
-            if ($request->has('s_id')) {
-                $value = $request->input('s_id');
+            if ($request->has('ff_id')) {
+                $value = $request->input('ff_id');
                 $query->where('id', 'like', '%' . $value . '%');
             }
-            
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
