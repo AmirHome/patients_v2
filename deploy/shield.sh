@@ -3,6 +3,7 @@
 # Laravel DB, Seeder
 mkdir -p deploy/transfer/app/Models
 mkdir -p deploy/transfer/app/Http/Controllers/Admin
+mkdir -p deploy/transfer/app/Http/Controllers/Traits
 mkdir -p deploy/transfer/database/seeders
 mkdir -p deploy/transfer/database/migrations
 mkdir -p deploy/transfer/config
@@ -31,6 +32,15 @@ mkdir -p deploy/transfer/resources/views/admin/travels/relationships
 cp app/Http/Controllers/Admin/TravelController.php deploy/transfer/app/Http/Controllers/Admin
 cp resources/views/admin/travels/index.blade.php deploy/transfer/resources/views/admin/travels
 cp resources/views/admin/travels/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travels/relationships
+# crm customers
+mkdir -p deploy/transfer/resources/views/admin/crmCustomers/relationships
+cp app/Http/Controllers/Admin/CrmCustomerController.php deploy/transfer/app/Http/Controllers/Admin
+cp resources/views/admin/crmCustomers/index.blade.php deploy/transfer/resources/views/admin/crmCustomers
+cp resources/views/admin/crmCustomers/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
+
+
+# Triat
+cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits
 
 
 #$ php artisan make:seeder ActivityTableSeeder

@@ -129,7 +129,7 @@
   });
   
   $('#form-filter-submit').click(function () {
-        table.ajax.reload();
+    table.ajax.reload();
     })
 });
 

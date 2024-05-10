@@ -1,14 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-@can('crm_customer_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.crm-customers.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.crmCustomer.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
+
+@includeIf('admin.crmCustomers.relationships.formFilter')
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.crmCustomer.title_singular') }} {{ trans('global.list') }}
@@ -122,7 +116,15 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.crm-customers.index') }}",
+    ajax: {
+        url: "{{ route('admin.crm-customers.index') }}",
+        data: function(d) {
+            d.ff_name = $('.filter[name="name"]').val();
+            d.ff_status_id = $('.filter[name="status_id"]').val();
+            d.ff_campaign_start = $('.filter[name="campaign_start"]').val();
+            d.ff_campaign_end = $('.filter[name="campaign_end"]').val();
+        }
+    },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
@@ -152,6 +154,10 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
+
+$('#form-filter-submit').click(function () {
+    table.ajax.reload();
+})
   
 });
 

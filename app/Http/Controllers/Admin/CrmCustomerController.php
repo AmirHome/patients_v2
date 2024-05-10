@@ -15,15 +15,25 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Controllers\Traits\DataTablesFilterTrait;
+use App\Models\CampaignChannel;
+use App\Models\Country;
 
 class CrmCustomerController extends Controller
 {
+    use DataTablesFilterTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $data = $this->crmMountFilter();
+
         if ($request->ajax()) {
             $query = CrmCustomer::with(['status', 'city', 'campaign', 'user'])->select(sprintf('%s.*', (new CrmCustomer)->table));
+            
+            $query = $this->crmFilter($request, $query);
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -100,7 +110,7 @@ class CrmCustomerController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.crmCustomers.index');
+        return view('admin.crmCustomers.index', $data);
     }
 
     public function create()
