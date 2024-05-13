@@ -1,8 +1,3 @@
-@can('crm_document_create')
-    {{-- route('admin.crm-documents.create') --}}
-    @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
-@endcan
-
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.crmDocument.title_singular') }} {{ trans('global.list') }}
