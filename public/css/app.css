@@ -1,6 +1,5 @@
 .dt-buttons .btn {
     margin-left: 0.333em;
-    /* border-radius: 1; */
     padding: 1px 5px;
     font-size: 12px;
     line-height: 1.5;
@@ -45,11 +44,48 @@ table.dataTable thead th {
     color: #00137b;
 }
 
-
 td {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.05) !important;
 }
 
 table {
     border-collapse: collapse !important;
+}
+
+/* 
+.navbar-brand for your business, goods, or project name.
+.navbar-nav for a navigation.
+.navbar-toggler for use with our collapse plugin.
+.form-inline for any forms.
+.navbar-text for any text.
+*/
+
+.c-sidebar .c-sidebar-brand, .c-sidebar .c-sidebar-header {
+    background-color: white;
+    color: grey;
+}
+.c-sidebar {
+    background-color: #ebedef;
+}
+.c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon, .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-dropdown-toggle, .c-sidebar .c-sidebar-nav-link {
+    color: rgba(80, 80, 80, 1);
+    background: 0 0;
+}
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon, .c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle, .c-sidebar .c-sidebar-nav-link.c-active {
+    color: #00137b !important;
+    background-color: rgb(238, 240, 255);
+}
+ 
+.c-sidebar .c-sidebar-nav-dropdown-toggle {
+    /* color: rgba(80, 80, 80, 1); */
+    background: rgba(0,0,0,.05);
+}
+.c-sidebar .c-sidebar-nav-dropdown.c-show {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(80, 80, 80, 1);
+}
+.c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+    color: #332b2b;
 }

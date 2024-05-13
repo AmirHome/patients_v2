@@ -57,12 +57,16 @@ class CrmCustomerController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('first_name', function ($row) {
-                return $row->first_name ? $row->first_name : '';
+
+            $table->addColumn('full_name', function ($user) {
+                return $user->first_name . ' ' . $user->last_name;
+            })->filterColumn('full_name', function($query, $keyword) {
+                $sql = "CONCAT(first_name, ' ', last_name) LIKE ?";
+                $query->whereRaw($sql, ["%{$keyword}%"]);
+            })->orderColumn('full_name', function ($query, $order) {
+                $query->orderByRaw("CONCAT(first_name, ' ', last_name) $order");
             });
-            $table->editColumn('last_name', function ($row) {
-                return $row->last_name ? $row->last_name : '';
-            });
+            
             $table->addColumn('status_name', function ($row) {
                 return $row->status ? $row->status->name : '';
             });
@@ -73,37 +77,41 @@ class CrmCustomerController extends Controller
             $table->editColumn('phone', function ($row) {
                 return $row->phone ? $row->phone : '';
             });
-            $table->editColumn('address', function ($row) {
-                return $row->address ? $row->address : '';
-            });
-            $table->editColumn('skype', function ($row) {
-                return $row->skype ? $row->skype : '';
-            });
-            $table->editColumn('website', function ($row) {
-                return $row->website ? $row->website : '';
-            });
-            $table->editColumn('description', function ($row) {
-                return $row->description ? $row->description : '';
-            });
 
             $table->addColumn('city_name', function ($row) {
-                return $row->city ? $row->city->name : '';
+                //return $row->city ? $row->city->name : '';
+                return $row->city ? $row->city->country->name . ' ' . $row->city->name : '';
+            })->filterColumn('city_name', function($query, $keyword) {
+                $query->whereHas('city', function($query) use ($keyword) {
+                    $query->whereHas('country', function($query) use ($keyword) {
+                        $query->where('name', 'like', "%{$keyword}%");
+                    })->orWhere('name', 'like', "%{$keyword}%");
+                });
+            })->orderColumn('city_name', function ($query, $order) {
+                $query->orderBy(Province::select('name')
+                         ->whereColumn('provinces.id', 'city_id'), $order);
             });
 
             $table->addColumn('campaign_title', function ($row) {
-                return $row->campaign ? $row->campaign->title : '';
+                return $row->campaign ?  $row->campaign->title . ' ' . $row->campaign->channel->title : '';
             });
 
-            $table->editColumn('campaign.started_at', function ($row) {
-                return $row->campaign ? (is_string($row->campaign) ? $row->campaign : $row->campaign->started_at) : '';
-            });
-            $table->addColumn('user_name', function ($row) {
-                return $row->user ? $row->user->name : '';
+            $table->editColumn('created_at', function ($row) {
+                return $row->created_at ? $row->created_at : '';
             });
 
-            $table->editColumn('user.email', function ($row) {
-                return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
-            });
+
+
+            // $table->editColumn('campaign.started_at', function ($row) {
+            //     return $row->campaign ? (is_string($row->campaign) ? $row->campaign : $row->campaign->started_at) : '';
+            // });
+            // $table->addColumn('user_name', function ($row) {
+            //     return $row->user ? $row->user->name : '';
+            // });
+
+            // $table->editColumn('user.email', function ($row) {
+            //     return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
+            // });
 
             $table->rawColumns(['actions', 'placeholder', 'status', 'city', 'campaign', 'user']);
 
