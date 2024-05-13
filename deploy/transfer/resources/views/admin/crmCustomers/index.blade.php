@@ -19,11 +19,9 @@
                         {{ trans('cruds.crmCustomer.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.crmCustomer.fields.first_name') }}
+                        {{ trans('cruds.crmCustomer.fields.full_name') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.last_name') }}
-                    </th>
+
                     <th>
                         {{ trans('cruds.crmCustomer.fields.status') }}
                     </th>
@@ -34,34 +32,13 @@
                         {{ trans('cruds.crmCustomer.fields.phone') }}
                     </th>
                     <th>
-                        {{ trans('cruds.crmCustomer.fields.address') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.skype') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.website') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.description') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.birthday') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.crmCustomer.fields.city') }}
                     </th>
                     <th>
                         {{ trans('cruds.crmCustomer.fields.campaign') }}
                     </th>
                     <th>
-                        {{ trans('cruds.campaignOrg.fields.started_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.user') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email') }}
+                        {{ trans('cruds.travel.fields.created_at') }}
                     </th>
                     <th>
                         &nbsp;
@@ -127,22 +104,16 @@
     },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'first_name', name: 'first_name' },
-{ data: 'last_name', name: 'last_name' },
+{ data: 'id', name: 'id' , visible: false},
+
+{ data: 'full_name', name: 'full_name'},
+
 { data: 'status_name', name: 'status.name' },
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
-{ data: 'address', name: 'address' },
-{ data: 'skype', name: 'skype' },
-{ data: 'website', name: 'website' },
-{ data: 'description', name: 'description' },
-{ data: 'birthday', name: 'birthday' },
-{ data: 'city_name', name: 'city.name' },
+{ data: 'city_name', name: 'city_name' },
 { data: 'campaign_title', name: 'campaign.title' },
-{ data: 'campaign.started_at', name: 'campaign.started_at' },
-{ data: 'user_name', name: 'user.name' },
-{ data: 'user.email', name: 'user.email' },
+{ data: 'created_at', name: 'created_at' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

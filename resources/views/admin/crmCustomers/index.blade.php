@@ -19,7 +19,7 @@
                         {{ trans('cruds.crmCustomer.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.crmCustomer.fields.full_name') }}
+                        {{ trans('cruds.crmCustomer.fields.first_name') }}
                     </th>
 
                     <th>
