@@ -171,9 +171,12 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
         $crmCustomer->load('status', 'city', 'campaign', 'user', 'customerCrmDocuments');
 
-        return view('admin.crmCustomers.show', compact('crmCustomer'));
+        return view('admin.crmCustomers.show', compact('crmCustomer', 'statuses'));
     }
 
     public function destroy(CrmCustomer $crmCustomer)

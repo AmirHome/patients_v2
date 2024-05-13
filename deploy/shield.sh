@@ -12,6 +12,7 @@ mkdir -p deploy/transfer/resources/views/layouts
 mkdir -p deploy/transfer/resources/views/admin
 mkdir -p deploy/transfer/app/Providers
 mkdir -p deploy/transfer/public/css
+mkdir -p deploy/transfer/app/Http/Requests
 
 cp database/patients_db_old.sql deploy/transfer/database
 
@@ -39,6 +40,9 @@ cp resources/views/admin/crmCustomers/index.blade.php deploy/transfer/resources/
 cp resources/views/admin/crmCustomers/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp resources/views/admin/crmCustomers/show.blade.php deploy/transfer/resources/views/admin/crmCustomers
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocuments.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
+cp app/Http/Controllers/Admin/CrmDocumentController.php deploy/transfer/app/Http/Controllers/Admin
+cp app/Http/Requests/StoreCrmDocumentRequest.php deploy/transfer/app/Http/Requests
+cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsCreate.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 
 
 # Triat
