@@ -37,6 +37,8 @@ mkdir -p deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmCustomerController.php deploy/transfer/app/Http/Controllers/Admin
 cp resources/views/admin/crmCustomers/index.blade.php deploy/transfer/resources/views/admin/crmCustomers
 cp resources/views/admin/crmCustomers/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
+cp resources/views/admin/crmCustomers/show.blade.php deploy/transfer/resources/views/admin/crmCustomers
+cp resources/views/admin/crmCustomers/relationships/customerCrmDocuments.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 
 
 # Triat

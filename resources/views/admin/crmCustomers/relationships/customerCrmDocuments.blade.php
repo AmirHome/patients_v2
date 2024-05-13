@@ -1,11 +1,5 @@
 @can('crm_document_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.crm-documents.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.crmDocument.title_singular') }}
-            </a>
-        </div>
-    </div>
+route('admin.crm-documents.create')
 @endcan
 
 <div class="card">
@@ -22,13 +16,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.crmDocument.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.crmDocument.fields.customer') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.crmCustomer.fields.last_name') }}
+                            {{ trans('cruds.crmDocument.fields.status') }}
                         </th>
                         <th>
                             {{ trans('cruds.crmDocument.fields.document_file') }}
@@ -38,12 +26,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.crmDocument.fields.user') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.email') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.crmDocument.fields.status') }}
                         </th>
                         <th>
                             &nbsp;
@@ -57,19 +39,13 @@
 
                             </td>
                             <td>
-                                {{ $crmDocument->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $crmDocument->customer->first_name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $crmDocument->customer->last_name ?? '' }}
+                                {{ $crmDocument->status->name ?? '' }}
                             </td>
                             <td>
                                 @foreach($crmDocument->document_file as $key => $media)
-                                    <a href="{{ $media->getUrl() }}" target="_blank">
-                                        {{ trans('global.view_file') }}
-                                    </a>
+                                    <a href="{{ $media->getUrl() }}" target="_blank" title="{{ $media->file_name }}">
+                                        {{  Str::limit($media->file_name, 25) }}
+                                    </a><sup>{{ formatSize($media->size) }}</sup>
                                 @endforeach
                             </td>
                             <td>
@@ -78,19 +54,8 @@
                             <td>
                                 {{ $crmDocument->user->name ?? '' }}
                             </td>
+                     
                             <td>
-                                {{ $crmDocument->user->email ?? '' }}
-                            </td>
-                            <td>
-                                {{ $crmDocument->status->name ?? '' }}
-                            </td>
-                            <td>
-                                @can('crm_document_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.crm-documents.show', $crmDocument->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
-
                                 @can('crm_document_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.crm-documents.edit', $crmDocument->id) }}">
                                         {{ trans('global.edit') }}

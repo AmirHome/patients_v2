@@ -2,9 +2,7 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.crmCustomer.title') }}
-    </div>
+
 
     <div class="card-body">
         <div class="form-group">
@@ -138,7 +136,7 @@
     </div>
 </div>
 
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
     </div>
@@ -148,12 +146,12 @@
                 {{ trans('cruds.crmDocument.title') }}
             </a>
         </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="customer_crm_documents">
+    </ul> --}}
+    {{-- <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="customer_crm_documents"> --}}
             @includeIf('admin.crmCustomers.relationships.customerCrmDocuments', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
-        </div>
-    </div>
-</div>
+        {{-- </div>
+    </div> --}}
+{{-- </div> --}}
 
 @endsection
