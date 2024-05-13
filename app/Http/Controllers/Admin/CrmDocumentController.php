@@ -104,7 +104,7 @@ class CrmDocumentController extends Controller
     }
 
     public function store(StoreCrmDocumentRequest $request)
-    {dd('here');
+    {
         $crmDocument = CrmDocument::create($request->all());
 
         foreach ($request->input('document_file', []) as $file) {
