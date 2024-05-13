@@ -10,10 +10,6 @@
                 <a class="btn btn-ghost-secondary" href="{{ route('admin.crm-customers.index') }}">
                     <i class="fa fa-arrow-left"></i> {{ trans('global.back_to_list') }}
                 </a>
-
-                {{-- Create Modal --}}
-                @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
-
             </div>
             <div class="row form-group">
                 <div class="col-md-3">

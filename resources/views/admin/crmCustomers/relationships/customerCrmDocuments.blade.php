@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.crmDocument.title_singular') }} {{ trans('global.list') }}
+        {{-- Create Modal --}}
+        @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
     </div>
 
     <div class="card-body">
