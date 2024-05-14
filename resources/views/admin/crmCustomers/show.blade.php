@@ -78,4 +78,6 @@
 
     @includeIf('admin.crmCustomers.relationships.customerCrmDocuments', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
 
+    @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsEdit')
+
 @endsection

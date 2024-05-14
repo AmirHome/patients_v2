@@ -7,8 +7,8 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.crm-customers.index') }}">
-                    {{ trans('global.back_to_list') }}
+                <a class="btn btn-ghost-secondary" href="{{ route('admin.crm-customers.index') }}">
+                    <i class="fa fa-arrow-left"></i> {{ trans('global.back_to_list') }}
                 </a>
             </div>
             <div class="row form-group">
@@ -75,22 +75,9 @@
     </div>
 </div>
 
-{{-- <div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
-    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#customer_crm_documents" role="tab" data-toggle="tab">
-                {{ trans('cruds.crmDocument.title') }}
-            </a>
-        </li>
-    </ul> --}}
-    {{-- <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="customer_crm_documents"> --}}
-            @includeIf('admin.crmCustomers.relationships.customerCrmDocuments', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
-        {{-- </div>
-    </div> --}}
-{{-- </div> --}}
+
+    @includeIf('admin.crmCustomers.relationships.customerCrmDocuments', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
+
+    @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsEdit')
 
 @endsection

@@ -13,10 +13,12 @@ mkdir -p deploy/transfer/resources/views/admin
 mkdir -p deploy/transfer/app/Providers
 mkdir -p deploy/transfer/public/css
 mkdir -p deploy/transfer/app/Http/Requests
+mkdir -p deploy/transfer/routes
 
 cp database/patients_db_old.sql deploy/transfer/database
 
 # Core: Change Quick Admin Panel
+cp routes/web.php deploy/transfer/routes
 cp database/seeders/PermissionRoleTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
@@ -39,11 +41,12 @@ cp app/Http/Controllers/Admin/CrmCustomerController.php deploy/transfer/app/Http
 cp resources/views/admin/crmCustomers/index.blade.php deploy/transfer/resources/views/admin/crmCustomers
 cp resources/views/admin/crmCustomers/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp resources/views/admin/crmCustomers/show.blade.php deploy/transfer/resources/views/admin/crmCustomers
+cp resources/views/admin/crmDocuments/edit.blade.php deploy/transfer/resources/views/admin/crmDocuments
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocuments.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmDocumentController.php deploy/transfer/app/Http/Controllers/Admin
 cp app/Http/Requests/StoreCrmDocumentRequest.php deploy/transfer/app/Http/Requests
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsCreate.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
-
+cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsEdit.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits

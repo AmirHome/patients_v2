@@ -1,13 +1,9 @@
-@can('crm_document_create')
-    {{-- route('admin.crm-documents.create') --}}
-    @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
-@endcan
-
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.crmDocument.title_singular') }} {{ trans('global.list') }}
+        {{-- Create Modal --}}
+        @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
     </div>
-
+    
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-customerCrmDocuments">
@@ -68,6 +64,12 @@
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.crm-documents.edit', $crmDocument->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
+                                @endcan
+
+                                @can('crm_document_edit')
+                                <button type="button" class="btn btn-xs btn-ghost-success" data-toggle="modal" data-target="#crm_document_edit_modal" data-crm_document_id={{$crmDocument->id}}>
+                                    <i class="fa fa-edit"></i> {{ trans('global.edit') }}
+                                </button>
                                 @endcan
 
                                 @can('crm_document_delete')

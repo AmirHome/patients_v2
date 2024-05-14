@@ -142,6 +142,7 @@ class CrmDocumentController extends Controller
 
     public function update(UpdateCrmDocumentRequest $request, CrmDocument $crmDocument)
     {
+
         $crmDocument->update($request->all());
 
         if (count($crmDocument->document_file) > 0) {
@@ -159,6 +160,17 @@ class CrmDocumentController extends Controller
         }
 
         return redirect()->route('admin.crm-documents.index');
+    }
+
+    public function ajaxShow(CrmDocument $crmDocument)
+    {
+        abort_if(Gate::denies('crm_document_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $crmDocument->load('status');
+
+        return response()->json([
+            'crmDocument' => $crmDocument,
+        ]);
     }
 
     public function show(CrmDocument $crmDocument)

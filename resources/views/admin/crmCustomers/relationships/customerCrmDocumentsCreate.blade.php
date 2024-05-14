@@ -10,6 +10,9 @@
     <div class="modal fade" id="crm-documents-store" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
+            
+        <form method="POST" action="{{ route("admin.crm-documents.store") }}" enctype="multipart/form-data">
+            
             <div class="modal-header">
             <h5 class="modal-title" id="modalLabel">{{ trans('global.create') }} {{ trans('cruds.crmDocument.title_singular') }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -17,8 +20,6 @@
             </button>
             </div>
             <div class="modal-body">
-
-                <form method="POST" action="{{ route("admin.crm-documents.store") }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="redirect_url" value="{{ url()->current() }}">
                     <input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">
@@ -68,14 +69,13 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
-                            {{ trans('global.save') }}
-                        </button>
-                    </div>
-                </form>
-                
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="submit">
+                    {{ trans('global.save') }}
+                </button>
+            </div>
+        </form>
         </div>
         </div>
     </div>
