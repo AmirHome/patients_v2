@@ -62,8 +62,8 @@
                             <td>
                                 <!-- GUIDE Modal Show -->
                                 @can('crm_document_edit')
-                                <button type="button" class="btn btn-xs btn-ghost-success" data-toggle="modal" data-target="#crm_document_edit_modal" data-crm_document_id={{$crmDocument->id}}>
-                                    <i class="fa fa-edit"></i> {{ trans('global.edit') }}
+                                <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#crm_document_edit_modal" data-crm_document_id={{$crmDocument->id}}>
+                                    {{ trans('global.edit') }}
                                 </button>
                                 @endcan
 
@@ -71,9 +71,7 @@
                                     <form action="{{ route('admin.crm-documents.destroy', $crmDocument->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-xs btn-ghost-danger" name="delete">
-                                            <i class="fas fa-trash-alt"></i> {{ trans('global.delete') }}
-                                        </button>
+                                        <button type="submit" class="btn btn-xs btn-danger"> {{ trans('global.delete') }} </button>
                                     </form>
                                 @endcan
 
