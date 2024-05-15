@@ -33,7 +33,8 @@ class PermissionRoleTableSeeder extends Seeder
         
         $admin_permissions = $super_admin_permissions->filter(function ($permission) {
             return substr($permission->title, 0, 9) != 'crm_note_'
-                && substr($permission->title, 0, 13) != 'crm_document_'
+                && substr($permission->title, 0, 19) != 'crm_document_access'
+                && substr($permission->title, 0, 17) != 'crm_document_show'
                 && substr($permission->title, 0, 9) != 'task_tag_'
                 && substr($permission->title, 0, 26) != 'travel_treatment_activity_'
                 && substr($permission->title, 0, 9) != 'activity_'
