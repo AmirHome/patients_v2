@@ -3,7 +3,7 @@
         {{-- Create Modal --}}
         @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
     </div>
-    
+
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-customerCrmDocuments">
@@ -60,12 +60,7 @@
                             </td>
                      
                             <td>
-                                @can('crm_document_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.crm-documents.edit', $crmDocument->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
+                                <!-- GUIDE Modal Show -->
                                 @can('crm_document_edit')
                                 <button type="button" class="btn btn-xs btn-ghost-success" data-toggle="modal" data-target="#crm_document_edit_modal" data-crm_document_id={{$crmDocument->id}}>
                                     <i class="fa fa-edit"></i> {{ trans('global.edit') }}
@@ -76,7 +71,9 @@
                                     <form action="{{ route('admin.crm-documents.destroy', $crmDocument->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-ghost-danger" name="delete">
+                                            <i class="fas fa-trash-alt"></i> {{ trans('global.delete') }}
+                                        </button>
                                     </form>
                                 @endcan
 

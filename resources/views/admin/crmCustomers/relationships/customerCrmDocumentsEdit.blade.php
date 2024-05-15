@@ -1,4 +1,4 @@
-
+<!-- GUIDE Modal Body -->
 <div class="modal fade" id="crm_document_edit_modal" tabindex="-1" role="dialog"
     aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -61,7 +61,7 @@
                 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger" type="button" data-dismiss-off="modal">
+                <button class="btn btn-danger submit" type="button">
                     {{ trans('global.save') }}
                 </button>
             </div>
@@ -175,9 +175,7 @@
             }
         });
 
-            //click submit button
-        $('#crm_document_edit_modal').on('click', 'button[type="button"]', function() {
-            //change action form
+        $('#crm_document_edit_modal').on('click', 'button.submit[type="button"]', function() {
             var form = $("form#crm_document_edit_form");
             form.attr('action', form.attr('action').replace('/0', '/' + documentId));
             form.submit();

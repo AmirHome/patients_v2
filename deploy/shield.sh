@@ -45,6 +45,7 @@ cp resources/views/admin/crmDocuments/edit.blade.php deploy/transfer/resources/v
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocuments.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmDocumentController.php deploy/transfer/app/Http/Controllers/Admin
 cp app/Http/Requests/StoreCrmDocumentRequest.php deploy/transfer/app/Http/Requests
+cp app/Http/Requests/UpdateCrmDocumentRequest.php deploy/transfer/app/Http/Requests
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsCreate.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsEdit.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 

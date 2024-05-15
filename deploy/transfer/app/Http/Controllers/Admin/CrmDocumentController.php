@@ -159,7 +159,12 @@ class CrmDocumentController extends Controller
             }
         }
 
-        return redirect()->route('admin.crm-documents.index');
+        $redirectUrl = $request->get('redirect_url');
+        if (!empty($redirectUrl)) {
+            return redirect($redirectUrl);
+        } else {
+            return redirect()->route('admin.crm-customers.index');
+        }
     }
 
     public function ajaxShow(CrmDocument $crmDocument)
