@@ -64,19 +64,19 @@ class User extends Authenticatable implements HasMedia
     protected $fillable = [
         'name',
         'email',
-        'email_verified_at',
         'password',
-        'remember_token',
-        'created_at',
+        'office_id',
         'phone',
         'job_type',
-        'office_id',
         'can_see_prices',
         'can_set_prices',
         'is_super',
+        'remember_token',
+        'email_verified_at',
+        'team_id',
+        'created_at',
         'updated_at',
         'deleted_at',
-        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -136,16 +136,6 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsToMany(UserAlert::class);
     }
 
-    public function getEmailVerifiedAtAttribute($value)
-    {
-        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
-    }
-
-    public function setEmailVerifiedAtAttribute($value)
-    {
-        $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
-    }
-
     public function setPasswordAttribute($input)
     {
         if ($input) {
@@ -158,9 +148,19 @@ class User extends Authenticatable implements HasMedia
         $this->notify(new ResetPassword($token));
     }
 
-    public function roles()
+    public function office()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsTo(Office::class, 'office_id');
+    }
+
+    public function getEmailVerifiedAtAttribute($value)
+    {
+        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    }
+
+    public function setEmailVerifiedAtAttribute($value)
+    {
+        $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
     public function getPictureAttribute()
@@ -175,9 +175,9 @@ class User extends Authenticatable implements HasMedia
         return $file;
     }
 
-    public function office()
+    public function roles()
     {
-        return $this->belongsTo(Office::class, 'office_id');
+        return $this->belongsToMany(Role::class);
     }
 
     public function team()

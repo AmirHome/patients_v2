@@ -24,7 +24,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with(['roles', 'office', 'team', 'media'])->get();
+        $users = User::with(['office', 'roles', 'team', 'media'])->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -33,9 +33,9 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('title', 'id');
-
         $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $roles = Role::pluck('title', 'id');
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -61,13 +61,13 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::pluck('title', 'id');
-
         $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $roles = Role::pluck('title', 'id');
 
         $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $user->load('roles', 'office', 'team');
+        $user->load('office', 'roles', 'team');
 
         return view('admin.users.edit', compact('offices', 'roles', 'teams', 'user'));
     }
@@ -94,7 +94,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'office', 'team', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userUserAlerts');
+        $user->load('office', 'roles', 'team', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userUserAlerts');
 
         return view('admin.users.show', compact('user'));
     }

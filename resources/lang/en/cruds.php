@@ -389,7 +389,7 @@ return [
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',
-            'name'               => 'Name',
+            'name'               => 'Title',
             'name_helper'        => ' ',
             'description'        => 'Description',
             'description_helper' => ' ',
@@ -409,6 +409,8 @@ return [
             'deleted_at_helper'  => ' ',
             'emergency'          => 'Emergency',
             'emergency_helper'   => ' ',
+            'team'               => 'Team',
+            'team_helper'        => ' ',
         ],
     ],
     'tasksCalendar' => [

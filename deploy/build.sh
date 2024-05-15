@@ -70,6 +70,7 @@ function clean_root() {
 # Function to develop laravel
 function deployment() {
   cp -r deploy/transfer/* .
+  cp deploy/transfer/.gitignore .gitignore
   cp deploy/.env.local .env
 
 

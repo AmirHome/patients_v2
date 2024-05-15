@@ -12,12 +12,74 @@
     margin-left: 0.333em;
 }
 
+
+
+/* 
+.navbar-brand for your business, goods, or project name.
+.navbar-nav for a navigation.
+.navbar-toggler for use with our collapse plugin.
+.form-inline for any forms.
+.navbar-text for any text.
+*/
+
+.c-sidebar .c-sidebar-brand,
+.c-sidebar .c-sidebar-header {
+    background-color: white;
+    color: grey;
+}
+
+.c-sidebar {
+    background-color: #ebedef;
+}
+
+.c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-dropdown-toggle,
+.c-sidebar .c-sidebar-nav-link {
+    color: rgba(80, 80, 80, 1);
+    background: 0 0;
+}
+
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle,
+.c-sidebar .c-sidebar-nav-link.c-active {
+    color: #00137b !important;
+    background-color: rgb(238, 240, 255);
+}
+
+.c-sidebar .c-sidebar-nav-dropdown-toggle {
+    /* color: rgba(80, 80, 80, 1); */
+    background: rgba(0, 0, 0, .05);
+}
+
+.c-sidebar .c-sidebar-nav-dropdown.c-show {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(80, 80, 80, 1);
+}
+
+.c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
+    color: #332b2b;
+}
+
+/* ***************************************
+   ---------- Datatable minimal ----------
+*/
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td {
+    vertical-align: middle;
+    /* padding: 0px; */
+    padding-top: 10px !important;
+    padding-bottom: 20px;
+}
+
 .table {
     width: 100%;
     margin-bottom: 1rem;
 }
+
 table,
-th, td {
+th,
+td {
     border: 0 !important;
 }
 
@@ -45,47 +107,78 @@ table.dataTable thead th {
 }
 
 td {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1) !important;
 }
 
 table {
     border-collapse: collapse !important;
 }
 
-/* 
-.navbar-brand for your business, goods, or project name.
-.navbar-nav for a navigation.
-.navbar-toggler for use with our collapse plugin.
-.form-inline for any forms.
-.navbar-text for any text.
-*/
+td .btn-primary{
+    color: #321fdb;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    /* position:relative; */
+    /* padding-left: 17px; */
+}
+td .btn-primary:before {
+        content: "\f06e";
+        font-family: FontAwesome;
+        font-size: 15px;
+        /* left:3px; */
+        /* position:absolute; */
+        top:0;
+}
+td .btn-primary:hover{
+    color: white;
+    background-color: #321fdb;
+    background-image: none;
+    border-color: #321fdb;
+}
 
-.c-sidebar .c-sidebar-brand, .c-sidebar .c-sidebar-header {
-    background-color: white;
-    color: grey;
+td .btn-info{
+    color: #39f;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    /* position:relative;
+    padding-left: 17px; */
 }
-.c-sidebar {
-    background-color: #ebedef;
+td .btn-info:before {
+        content: "\f044";
+        font-family: FontAwesome;
+        font-size: 15px;
+        /* left:3px;
+        position:absolute; */
+        /* top:0; */
 }
-.c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon, .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon,
-.c-sidebar .c-sidebar-nav-dropdown-toggle, .c-sidebar .c-sidebar-nav-link {
-    color: rgba(80, 80, 80, 1);
-    background: 0 0;
+td .btn-info:hover{
+    color: white;
+    background-color: #39f;
+    background-image: none;
+    border-color: #39f;
 }
-.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon, .c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,
-.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle, .c-sidebar .c-sidebar-nav-link.c-active {
-    color: #00137b !important;
-    background-color: rgb(238, 240, 255);
+
+td .btn-danger{
+    color: #e55353;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    /* position:relative; */
+    /* padding-left: 17px; */
 }
- 
-.c-sidebar .c-sidebar-nav-dropdown-toggle {
-    /* color: rgba(80, 80, 80, 1); */
-    background: rgba(0,0,0,.05);
+td .btn-danger:before {
+        content: "\f1f8";
+        font-family: FontAwesome;
+        font-size: 15px;
+        /* left:3px;*/
+        /* position:absolute;  */
+        /* top:0; */
 }
-.c-sidebar .c-sidebar-nav-dropdown.c-show {
-    background: rgba(255, 255, 255, 0.3);
-    color: rgba(80, 80, 80, 1);
-}
-.c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-    color: #332b2b;
+td .btn-danger:hover{
+    color: white;
+    background-color: #e55353;
+    background-image: none;
+    border-color: #e55353;
 }

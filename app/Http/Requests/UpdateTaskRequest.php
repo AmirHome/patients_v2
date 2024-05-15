@@ -17,6 +17,10 @@ class UpdateTaskRequest extends FormRequest
     public function rules()
     {
         return [
+            'due_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'name' => [
                 'string',
                 'required',
@@ -27,10 +31,6 @@ class UpdateTaskRequest extends FormRequest
             'status_id' => [
                 'required',
                 'integer',
-            ],
-            'due_date' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
             ],
         ];
     }

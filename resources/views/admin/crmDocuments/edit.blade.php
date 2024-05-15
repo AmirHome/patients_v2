@@ -24,7 +24,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.crmDocument.fields.customer_helper') }}</span>
             </div>
-            
             <div class="form-group">
                 <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
@@ -36,7 +35,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.crmDocument.fields.document_file_helper') }}</span>
             </div>
-
             <div class="form-group">
                 <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $crmDocument->description) }}</textarea>

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
+use App\Traits\MultiTenantModelTrait;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Task extends Model implements HasMedia
 {
-    use SoftDeletes, InteractsWithMedia, HasFactory;
+    use SoftDeletes, MultiTenantModelTrait, InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'tasks';
 
@@ -34,15 +36,16 @@ class Task extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'due_date',
         'name',
         'description',
         'emergency',
         'status_id',
-        'due_date',
         'assigned_to_id',
         'created_at',
         'updated_at',
         'deleted_at',
+        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -56,16 +59,6 @@ class Task extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function status()
-    {
-        return $this->belongsTo(TaskStatus::class, 'status_id');
-    }
-
-    public function getAttachmentAttribute()
-    {
-        return $this->getMedia('attachment')->last();
-    }
-
     public function getDueDateAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -76,8 +69,23 @@ class Task extends Model implements HasMedia
         $this->attributes['due_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
+    public function status()
+    {
+        return $this->belongsTo(TaskStatus::class, 'status_id');
+    }
+
     public function assigned_to()
     {
         return $this->belongsTo(User::class, 'assigned_to_id');
+    }
+
+    public function getAttachmentAttribute()
+    {
+        return $this->getMedia('attachment')->last();
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

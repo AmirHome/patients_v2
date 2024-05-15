@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.task.fields.due_date') }}
+                        </th>
+                        <td>
+                            {{ $task->due_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.task.fields.name') }}
                         </th>
                         <td>
@@ -57,6 +65,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.task.fields.assigned_to') }}
+                        </th>
+                        <td>
+                            {{ $task->assigned_to->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.task.fields.attachment') }}
                         </th>
                         <td>
@@ -69,18 +85,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.task.fields.due_date') }}
+                            {{ trans('cruds.task.fields.created_at') }}
                         </th>
                         <td>
-                            {{ $task->due_date }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.assigned_to') }}
-                        </th>
-                        <td>
-                            {{ $task->assigned_to->name ?? '' }}
+                            {{ $task->created_at }}
                         </td>
                     </tr>
                 </tbody>
