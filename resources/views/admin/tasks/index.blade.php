@@ -105,12 +105,17 @@
 { data: 'created_at', name: 'created_at' },
 { data: 'due_date', name: 'due_date' },
 { data: 'name', name: 'name' },
-{ data: 'emergency', name: 'emergency' },
+{ data: 'emergency', name: 'emergency' ,visible: false},
 { data: 'status_name', name: 'status.name' },
 { data: 'assigned_to_name', name: 'assigned_to.name' },
 { data: 'attachment', name: 'attachment', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
+    createdRow: function (row, data, dataIndex) {
+        if (data['emergency'] == 'Emergency') {
+            $(row).addClass('emergency');
+        }
+    },
     orderCellsTop: true,
     order: [[ 8, 'desc' ]],
     pageLength: 10,
