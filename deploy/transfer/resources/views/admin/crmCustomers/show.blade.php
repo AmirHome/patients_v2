@@ -7,7 +7,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-ghost-secondary" href="{{ route('admin.crm-customers.index') }}">
+                <a class="btn btn-secondary" href="{{ route('admin.crm-customers.index') }}">
                     <i class="fa fa-arrow-left"></i> {{ trans('global.back_to_list') }}
                 </a>
             </div>
