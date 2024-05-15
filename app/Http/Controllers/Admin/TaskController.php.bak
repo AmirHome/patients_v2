@@ -15,17 +15,24 @@ use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Controllers\Traits\DataTablesFilterTrait;
 
 class TaskController extends Controller
 {
     use MediaUploadingTrait;
+    use DataTablesFilterTrait;
 
     public function index(Request $request)
     {
         abort_if(Gate::denies('task_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        $data = $this->taskMountFilter();
 
         if ($request->ajax()) {
             $query = Task::with(['status', 'assigned_to', 'team'])->select(sprintf('%s.*', (new Task)->table));
+                        
+            $query = $this->taskFilter($request, $query);
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -77,7 +84,7 @@ class TaskController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.tasks.index');
+        return view('admin.tasks.index', $data);
     }
 
     public function create()

@@ -159,6 +159,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#user_tasks" role="tab" data-toggle="tab">
+                {{ trans('cruds.task.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#user_user_alerts" role="tab" data-toggle="tab">
                 {{ trans('cruds.userAlert.title') }}
             </a>
@@ -179,6 +184,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="user_crm_documents">
             @includeIf('admin.users.relationships.userCrmDocuments', ['crmDocuments' => $user->userCrmDocuments])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="user_tasks">
+            @includeIf('admin.users.relationships.userTasks', ['tasks' => $user->userTasks])
         </div>
         <div class="tab-pane" role="tabpanel" id="user_user_alerts">
             @includeIf('admin.users.relationships.userUserAlerts', ['userAlerts' => $user->userUserAlerts])

@@ -1,14 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-@can('task_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.tasks.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.task.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
+
+@includeIf('admin.tasks.relationships.formFilter')
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.task.title_singular') }} {{ trans('global.list') }}
@@ -41,6 +35,9 @@
                     </th>
                     <th>
                         {{ trans('cruds.task.fields.assigned_to') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.task.fields.user') }}
                     </th>
                     <th>
                         {{ trans('cruds.task.fields.attachment') }}
@@ -98,7 +95,14 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.tasks.index') }}",
+    ajax: {
+        url: "{{ route('admin.tasks.index') }}",
+        data: function(d) {
+            d.ff_content = $('.filter[name="content"]').val();
+            d.ff_status_id = $('.filter[name="status_id"]').val();
+            d.ff_assignee = $('.filter[name="assignee"]').val()??0;
+        }
+    },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
@@ -108,6 +112,7 @@
 { data: 'emergency', name: 'emergency' ,visible: false},
 { data: 'status_name', name: 'status.name' },
 { data: 'assigned_to_name', name: 'assigned_to.name' },
+{ data: 'user_name', name: 'user.name' },
 { data: 'attachment', name: 'attachment', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
@@ -126,6 +131,9 @@
           .columns.adjust();
   });
   
+  $('#form-filter-submit').click(function () {
+        table.ajax.reload();
+    })
 });
 
 </script>

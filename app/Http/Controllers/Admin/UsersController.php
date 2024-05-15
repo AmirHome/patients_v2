@@ -94,7 +94,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('office', 'roles', 'team', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userUserAlerts');
+        $user->load('office', 'roles', 'team', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userTasks', 'userUserAlerts');
 
         return view('admin.users.show', compact('user'));
     }

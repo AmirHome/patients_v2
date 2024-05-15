@@ -25,10 +25,12 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('task_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
         $data = $this->taskMountFilter();
 
         if ($request->ajax()) {
-            $query = Task::with(['status', 'assigned_to', 'user', 'team'])->select(sprintf('%s.*', (new Task)->table));
+            $query = Task::with(['status', 'assigned_to', 'team'])->select(sprintf('%s.*', (new Task)->table));
+                        
             $query = $this->taskFilter($request, $query);
 
             $table = Datatables::of($query);
@@ -73,11 +75,11 @@ class TaskController extends Controller
                 return $row->attachment ? '<a href="' . $row->attachment->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>' : '';
             });
 
-            $table->addColumn('user_name', function ($row) {
-                return $row->user ? $row->user->name : '';
+            $table->editColumn('created_at', function ($row) {
+                return $row->created_at ? $row->created_at->format(config('panel.date_format')) : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'status', 'assigned_to', 'attachment', 'user']);
+            $table->rawColumns(['actions', 'placeholder', 'status', 'assigned_to', 'attachment']);
 
             return $table->make(true);
         }
@@ -93,9 +95,7 @@ class TaskController extends Controller
 
         $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.tasks.create', compact('assigned_tos', 'statuses', 'users'));
+        return view('admin.tasks.create', compact('assigned_tos', 'statuses'));
     }
 
     public function store(StoreTaskRequest $request)
@@ -121,11 +121,9 @@ class TaskController extends Controller
 
         $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $task->load('status', 'assigned_to', 'team');
 
-        $task->load('status', 'assigned_to', 'user', 'team');
-
-        return view('admin.tasks.edit', compact('assigned_tos', 'statuses', 'task', 'users'));
+        return view('admin.tasks.edit', compact('assigned_tos', 'statuses', 'task'));
     }
 
     public function update(UpdateTaskRequest $request, Task $task)
@@ -150,7 +148,7 @@ class TaskController extends Controller
     {
         abort_if(Gate::denies('task_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $task->load('status', 'assigned_to', 'user', 'team');
+        $task->load('status', 'assigned_to', 'team');
 
         return view('admin.tasks.show', compact('task'));
     }

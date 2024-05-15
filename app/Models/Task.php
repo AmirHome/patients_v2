@@ -45,6 +45,7 @@ class Task extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'user_id',
         'team_id',
     ];
 
@@ -82,6 +83,11 @@ class Task extends Model implements HasMedia
     public function getAttachmentAttribute()
     {
         return $this->getMedia('attachment')->last();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function team()

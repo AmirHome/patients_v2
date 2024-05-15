@@ -91,6 +91,14 @@
                             {{ $task->created_at }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.task.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $task->user->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

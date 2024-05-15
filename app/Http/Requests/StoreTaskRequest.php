@@ -14,6 +14,13 @@ class StoreTaskRequest extends FormRequest
         return Gate::allows('task_create');
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'user_id' => auth()->id(),
+        ]);
+    }
+    
     public function rules()
     {
         return [
@@ -29,6 +36,10 @@ class StoreTaskRequest extends FormRequest
                 'required',
             ],
             'status_id' => [
+                'required',
+                'integer',
+            ],
+            'user_id' => [
                 'required',
                 'integer',
             ],

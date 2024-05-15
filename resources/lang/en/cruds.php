@@ -411,6 +411,8 @@ return [
             'emergency_helper'   => ' ',
             'team'               => 'Team',
             'team_helper'        => ' ',
+            'user'               => 'User',
+            'user_helper'        => ' ',
         ],
     ],
     'tasksCalendar' => [

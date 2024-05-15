@@ -32,6 +32,10 @@ class UpdateTaskRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'user_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }

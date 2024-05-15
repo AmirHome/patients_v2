@@ -52,7 +52,9 @@ cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsEdit.bla
 # Tasks
 mkdir -p deploy/transfer/resources/views/admin/tasks/relationships
 cp resources/views/admin/tasks/index.blade.php deploy/transfer/resources/views/admin/tasks
-cp app/Http/Controllers/Admin/TaskController.php deploy/transfer/app/Http/Controllers/Admin
+cp app/Http/Controllers/Admin/TaskController.php deploy/transfer/app/Http/Controllers/Admin/TaskController.php
+cp resources/views/admin/tasks/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/tasks/relationships
+cp app/Http/Requests/StoreTaskRequest.php deploy/transfer/app/Http/Requests
 
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits

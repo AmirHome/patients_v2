@@ -9,8 +9,10 @@ use App\Models\CrmStatus;
 use App\Models\Department;
 use App\Models\Hospital;
 use App\Models\Patient;
+use App\Models\TaskStatus;
 use App\Models\Translator;
 use App\Models\TravelStatus;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -83,6 +85,46 @@ trait DataTablesFilterTrait
         $statuses = CrmStatus::get(['id', 'name'])->pluck('name', 'id');
 
         return compact('countries', 'cities', 'campaignChannels', 'campaignOrganizations', 'statuses');
+    }
+
+    public function taskMountFilter(){
+        // Mount Data for Form filters
+
+        $statuses = TaskStatus::pluck('name', 'id')->prepend(trans('global.select_all'), '');
+        $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.select_all'), '');
+
+        return compact('statuses', 'assigned_tos');
+    }
+    public function taskFilter(Request $request, $query){
+        // Add custom filter for search_index
+        if ($request->has('ff_content')) {
+            $value = $request->input('ff_content');
+            if(!empty($value)){
+                $query->where(function ($q) use($value){
+                    $q->where('name', 'like', '%' . $value . '%')
+                        ->orWhere('description', 'like', '%' . $value . '%');
+                });            
+            }
+        }
+        if ($request->has('ff_status_id')) {
+            $value = $request->input('ff_status_id');
+            if(!empty($value)){
+                $query->where('status_id', $value);
+            }
+        }
+
+        if ($request->has('ff_assignee')) {
+            $value = $request->input('ff_assignee');
+            if(!empty($value)){
+                $query->where('assigned_to_id', auth()->id());
+            }else{
+                $query->where('user_id',  auth()->id());
+            }
+        }else{
+            $query->where('user_id',  auth()->id());
+        }
+
+        return $query;
     }
 }
 

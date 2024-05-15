@@ -28,20 +28,13 @@ class StoreUserRequest extends FormRequest
             'password' => [
                 'required',
             ],
-            'roles.*' => [
-                'integer',
-            ],
-            'roles' => [
+            'office_id' => [
                 'required',
-                'array',
+                'integer',
             ],
             'phone' => [
                 'string',
                 'nullable',
-            ],
-            'office_id' => [
-                'required',
-                'integer',
             ],
             'can_see_prices' => [
                 'required',
@@ -51,6 +44,13 @@ class StoreUserRequest extends FormRequest
             ],
             'is_super' => [
                 'required',
+            ],
+            'roles.*' => [
+                'integer',
+            ],
+            'roles' => [
+                'required',
+                'array',
             ],
         ];
     }

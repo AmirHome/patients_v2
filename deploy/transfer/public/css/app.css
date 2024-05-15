@@ -49,7 +49,6 @@
 }
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle {
-    /* color: rgba(80, 80, 80, 1); */
     background: rgba(0, 0, 0, .05);
 }
 
@@ -65,16 +64,19 @@
 /* ***************************************
    ---------- Datatable minimal ----------
 */
+
+
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td {
     vertical-align: middle;
-    /* padding: 0px; */
     padding-top: 10px !important;
     padding-bottom: 20px;
 }
 
-.table {
+table.dataTable {
     width: 100%;
     margin-bottom: 1rem;
+    border-collapse: collapse !important; 
+    /* border-spacing: 5em; */
 }
 
 table,
@@ -84,10 +86,8 @@ td {
 }
 
 table.dataTable thead tr {
-    /* border-bottom: 1px solid #000000 !important; */
     padding: 0;
     margin: 0;
-    /* border-radius: 3px !important; */
     background-color: rgb(238, 240, 255);
 }
 
@@ -181,4 +181,12 @@ td .btn-danger:hover{
     background-color: #e55353;
     background-image: none;
     border-color: #e55353;
+}
+
+.emergency {
+    color: #00137b !important;
+    /* background-color: blueviolet !important; */
+    border-color: rgba(255, 0, 0, 0.1);
+    border-style: dotted;
+    border-left: 7px solid red;
 }
