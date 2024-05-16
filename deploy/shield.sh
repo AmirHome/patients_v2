@@ -50,6 +50,10 @@ cp app/Http/Requests/UpdateCrmDocumentRequest.php deploy/transfer/app/Http/Reque
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsCreate.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsEdit.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 
+#crm status
+cp app/Models/CrmStatus.php deploy/transfer/app/Models
+cp app/Http/Controllers/Admin/CrmStatusController.php deploy/transfer/app/Http/Controllers/Admin
+
 # Tasks
 mkdir -p deploy/transfer/resources/views/admin/tasks/relationships
 cp resources/views/admin/tasks/index.blade.php deploy/transfer/resources/views/admin/tasks
