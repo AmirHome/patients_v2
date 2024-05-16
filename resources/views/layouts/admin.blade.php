@@ -102,8 +102,8 @@
                                     <div class="dropdown-item">
                                         <a href="{{ $alert->alert_link ? $alert->alert_link : "#" }}" target="_blank" rel="noopener noreferrer">
                                             @if($alert->pivot->read === 0) <strong> @endif
-                                                {{ $alert->alert_text }}
-                                                @if($alert->pivot->read === 0) </strong> @endif
+                                                {!! $alert->alert_text !!}
+                                            @if($alert->pivot->read === 0) </strong> @endif
                                         </a>
                                     </div>
                                 @endforeach

@@ -16,6 +16,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\Traits\DataTablesFilterTrait;
+use App\Models\UserAlert;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -100,17 +102,32 @@ class TaskController extends Controller
 
     public function store(StoreTaskRequest $request)
     {
-        $task = Task::create($request->all());
+        DB::beginTransaction();
+        try {
+            $task = Task::create($request->all());
 
-        if ($request->input('attachment', false)) {
-            $task->addMedia(storage_path('tmp/uploads/' . basename($request->input('attachment'))))->toMediaCollection('attachment');
+            if ($request->input('attachment', false)) {
+                $task->addMedia(storage_path('tmp/uploads/' . basename($request->input('attachment'))))->toMediaCollection('attachment');
+            }
+
+            if ($media = $request->input('ck-media', false)) {
+                Media::whereIn('id', $media)->update(['model_id' => $task->id]);
+            }
+
+            $userAlert = UserAlert::create([
+                'alert_text' => $request->input('name'),
+                'alert_link' => url("/admin/tasks/$task->id"),
+                'users' => $request->input('assigned_to_id', []),
+            ]);
+            $userAlert->users()->sync($request->input('assigned_to_id', []));
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.tasks.index')->with('error', 'Error: ' . $e->getMessage());
         }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $task->id]);
-        }
-
-        return redirect()->route('admin.tasks.index');
+        return redirect()->route('admin.tasks.index')->with('success', 'Task created successfully.');
     }
 
     public function edit(Task $task)
