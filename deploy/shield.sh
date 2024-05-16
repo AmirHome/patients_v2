@@ -24,6 +24,7 @@ cp database/seeders/PermissionRoleTableSeeder.php deploy/transfer/database/seede
 cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
 cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TaskStatusTableSeeder.php deploy/transfer/database/seeders
 cp public/css/app.css deploy/transfer/public/css
 
 # travelStatus
@@ -55,6 +56,7 @@ cp resources/views/admin/tasks/index.blade.php deploy/transfer/resources/views/a
 cp app/Http/Controllers/Admin/TaskController.php deploy/transfer/app/Http/Controllers/Admin/TaskController.php
 cp resources/views/admin/tasks/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/tasks/relationships
 cp app/Http/Requests/StoreTaskRequest.php deploy/transfer/app/Http/Requests
+cp app/Http/Requests/UpdateTaskRequest.php deploy/transfer/app/Http/Requests
 
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits

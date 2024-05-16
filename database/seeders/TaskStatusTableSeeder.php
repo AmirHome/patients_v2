@@ -19,7 +19,7 @@ class TaskStatusTableSeeder extends Seeder
                 'name' => 'In progress',
             ],
             [
-                'id'   => 3,
+                'id'   => 30,
                 'name' => 'Closed',
             ],
         ];

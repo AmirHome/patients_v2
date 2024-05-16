@@ -100,7 +100,7 @@
         data: function(d) {
             d.ff_content = $('.filter[name="content"]').val();
             d.ff_status_id = $('.filter[name="status_id"]').val();
-            d.ff_assignee = $('.filter[name="assignee"]').val()??0;
+            d.ff_assignee = $('.filter[name="assignee"]').val();
         }
     },
     columns: [

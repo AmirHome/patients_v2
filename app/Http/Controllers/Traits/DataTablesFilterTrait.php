@@ -90,8 +90,8 @@ trait DataTablesFilterTrait
     public function taskMountFilter(){
         // Mount Data for Form filters
 
-        $statuses = TaskStatus::pluck('name', 'id')->prepend(trans('global.select_all'), '');
-        $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.select_all'), '');
+        $statuses = TaskStatus::pluck('name', 'id');//->prepend(trans('global.select_all'), '');
+        $assigned_tos = User::pluck('name', 'id');//->prepend(trans('global.select_all'), '');
 
         return compact('statuses', 'assigned_tos');
     }
@@ -109,7 +109,7 @@ trait DataTablesFilterTrait
         if ($request->has('ff_status_id')) {
             $value = $request->input('ff_status_id');
             if(!empty($value)){
-                $query->where('status_id', $value);
+                $query->whereIn('status_id', $value);
             }
         }
 
@@ -118,10 +118,14 @@ trait DataTablesFilterTrait
             if(!empty($value)){
                 $query->where('assigned_to_id', auth()->id());
             }else{
-                $query->where('user_id',  auth()->id());
+                if(auth()->user()->roles->first()->title == 'User'){
+                    $query->where('user_id', auth()->id());
+                }
             }
         }else{
-            $query->where('user_id',  auth()->id());
+            if(auth()->user()->roles->first()->title == 'User'){
+                $query->where('user_id', auth()->id());
+            }
         }
 
         return $query;

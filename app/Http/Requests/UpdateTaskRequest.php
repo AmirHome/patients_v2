@@ -14,6 +14,13 @@ class UpdateTaskRequest extends FormRequest
         return Gate::allows('task_edit');
     }
 
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'user_id' => auth()->id(),
+        ]);
+    }
+    
     public function rules()
     {
         return [

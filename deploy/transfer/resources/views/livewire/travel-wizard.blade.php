@@ -349,6 +349,7 @@
                             <div class="form-group">
                                 <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} @json($notifyHospitalIds)</label>
                                 <div wire:ignore>
+                                     <!-- GUIDE Select2 multiple init -->
                                     <div style="padding-bottom: 4px">
                                         <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                                         <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
