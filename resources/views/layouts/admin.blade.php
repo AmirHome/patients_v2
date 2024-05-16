@@ -146,8 +146,35 @@
                             </ul>
                         </div>
                     @endif
-                    @yield('content')
+                    
 
+
+
+                              
+                  <div style="position: fixed; top: 10px;right: 0; z-index: 2000;">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="2000">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        
+                    @endif
+                    
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show toast" data-autohide="true" data-delay="3000">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                    @endif
+
+                  </div>
+                @yield('content')
+                
                 </div>
 
 
@@ -305,6 +332,8 @@
     });
 });
 
+$('.toast').toast('show');
+$('.alert').alert();
     </script>
     @yield('scripts')
 </body>

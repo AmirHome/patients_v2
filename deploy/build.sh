@@ -185,4 +185,6 @@ if [ ! -z "$GIT" ]; then
   git add .
   git commit -m "$GIT"
   git push
+else
+    git status
 fi

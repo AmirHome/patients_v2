@@ -63,8 +63,13 @@ class CrmStatusController extends Controller
     {
         abort_if(Gate::denies('crm_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmStatus->delete();
-
+        try {
+            $crmStatus->delete();
+            session()->flash('success', 'The status has been successfully deleted.');
+        } catch (\Exception $e) {
+            // If there's an exception, flash an error message to the session
+            session()->flash('error', 'Error: The status could not be deleted.');
+        }
         return back();
     }
 

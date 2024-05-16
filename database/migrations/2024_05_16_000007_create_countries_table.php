@@ -14,7 +14,6 @@ class CreateCountriesTable extends Migration
             $table->string('short_code')->nullable();
             $table->integer('code_inc')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }
