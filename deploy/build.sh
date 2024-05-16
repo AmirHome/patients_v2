@@ -35,36 +35,38 @@ done
 
 # Function to extract archive
 function build() {
-  # Check if archive exists
-  if [ ! -f "$download_folder/$archive_file.zip" ]; then
-    echo "Error: Archive '$archive_file.zip' not found in '$download_folder'"
-    exit 1
-  fi
+  # protect files
+  bash deploy/shield.sh
 
-  clean_root
-  
-
-  # Extract the archive to the root directory
-  unzip -q "$download_folder/$archive_file.zip" -d .
-  echo "Extracted '$archive_file' to root directory."
+  clean_root_unzip
 
   deployment
 
-  # (Optional) Remove the archive file after extraction
-  if [ $RM ]; then
-    find "$download_folder" -type f -name "dev-admin-e9f11f11d86ec53e*" -delete
-    echo "Remove '$download_folder/$archive_file'."
-  fi
-
 }
 
-# Function to clean root directory (excluding .git and deploy)
-function clean_root() {
-  # protect files
-  bash deploy/shield.sh
-  # clean files
-  find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
-  echo "Cleaned root directory (excluding .git and deploy folder)."
+function clean_root_unzip() {
+
+  # Check if archive exists
+  if [ ! -f "$download_folder/$archive_file.zip" ]; then
+    echo "Info: Archive '$archive_file.zip' not found in '$download_folder'"
+    # exit 1
+  else
+    # clean files
+    find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
+    echo "Info: Cleaned root directory (excluding .git and deploy folder)."
+
+      # Extract the archive to the root directory
+    unzip -q "$download_folder/$archive_file.zip" -d .
+    echo "Extracted '$archive_file' to root directory."
+
+
+    # (Optional) Remove the archive file after extraction
+    if [ $RM ]; then
+      find "$download_folder" -type f -name "dev-admin-e9f11f11d86ec53e*" -delete
+      echo "Remove '$download_folder/$archive_file'."
+    fi 
+  fi
+
 }
 
 # Function to develop laravel
@@ -116,6 +118,9 @@ function deployment() {
   ### Write code in function
   coding
 
+  ### Install queue
+  php artisan queue:table
+  
   ### Laravel development
   # php artisan key:generate
   php artisan storage:link
