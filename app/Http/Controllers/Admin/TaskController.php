@@ -115,7 +115,7 @@ class TaskController extends Controller
             }
 
             $userAlert = UserAlert::create([
-                'alert_text' => $request->input('name'),
+                'alert_text' => '<i class="fas fa-tasks"></i>  '.$request->input('name'),
                 'alert_link' => url("/admin/tasks/$task->id"),
                 'users' => $request->input('assigned_to_id', []),
             ]);
