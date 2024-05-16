@@ -247,9 +247,10 @@ class Travel extends Component
 
         $this->resetErrorBag();
 
-        $data = ['email' => 'test@test.com'];
-        $test = dispatch(new EmailSendingJob($data));
-        dd($data);
+        $data = ['email' => 'test@test.com', 'name' => 'Test'];
+        //$view = view('livewire.travel-success', compact('data'));
+
+        dispatch(new EmailSendingJob('emails.email_translator',$data));
 
         DB::beginTransaction();
         try {

@@ -7,19 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Jobs\Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailSendingTemplate;
 
 class EmailSendingJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+
     private $data;
+    private $view;
     /**
      * Create a new job instance.
      */
-    public function __construct($data)
+    public function __construct($view, $data)
     {
         $this->data = $data;
+        $this->view = $view;
     }
 
     /**
@@ -28,8 +32,9 @@ class EmailSendingJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $view = view('Livewire.travel-success.blade');
-        Mail::to($this->data['email'])->send($view);
+        $email = new EmailSendingTemplate( $this->view, $this->data);
+
+        Mail::to($this->data['email'])->send($email);
     }
 
     // public static function notifyTranslator($data)
