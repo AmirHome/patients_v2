@@ -14,6 +14,7 @@ mkdir -p deploy/transfer/app/Providers
 mkdir -p deploy/transfer/public/css
 mkdir -p deploy/transfer/app/Http/Requests
 mkdir -p deploy/transfer/routes
+mkdir -p app/Jobs
 
 cp database/patients_db_old.sql deploy/transfer/database
 cp .gitignore deploy/transfer
@@ -27,6 +28,8 @@ cp database/seeders/UsersTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TaskStatusTableSeeder.php deploy/transfer/database/seeders
 cp public/css/app.css deploy/transfer/public/css
 
+# Jobs
+cp app/Jobs/EmailSendingJob.php deploy/transfer/app/Jobs
 # travelStatus
 mkdir -p deploy/transfer/resources/views/admin/travelStatuses/relationships
 cp app/Http/Controllers/Admin/TravelStatusController.php deploy/transfer/app/Http/Controllers/Admin
@@ -66,7 +69,6 @@ cp app/Http/Requests/UpdateTaskRequest.php deploy/transfer/app/Http/Requests
 
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits
-
 
 #$ php artisan make:seeder ActivityTableSeeder
 cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
