@@ -120,6 +120,7 @@ function deployment() {
 
   ### Install queue
   php artisan queue:table
+  php artisan queue:failed-table
   # php artisan queue:work --daemon > /dev/null 2>&1
   # php artisan queue:failed
 

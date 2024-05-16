@@ -14,7 +14,9 @@ mkdir -p deploy/transfer/app/Providers
 mkdir -p deploy/transfer/public/css
 mkdir -p deploy/transfer/app/Http/Requests
 mkdir -p deploy/transfer/routes
-mkdir -p app/Jobs
+mkdir -p deploy/transfer/app/Jobs
+mkdir -p deploy/transfer/app/Mail
+mkdir -p deploy/transfer/resources/views/emails
 
 cp database/patients_db_old.sql deploy/transfer/database
 cp .gitignore deploy/transfer
@@ -30,6 +32,8 @@ cp public/css/app.css deploy/transfer/public/css
 
 # Jobs
 cp app/Jobs/EmailSendingJob.php deploy/transfer/app/Jobs
+cp resources/views/emails/* deploy/transfer/resources/views/emails
+cp app/Mail/EmailSendingTemplate.php deploy/transfer/app/Mail
 # travelStatus
 mkdir -p deploy/transfer/resources/views/admin/travelStatuses/relationships
 cp app/Http/Controllers/Admin/TravelStatusController.php deploy/transfer/app/Http/Controllers/Admin

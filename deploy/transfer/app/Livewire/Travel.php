@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\StoreTravelRequest;
 use App\Http\Requests\StoreTravelTreatmentActivityRequest;
-
+use App\Jobs\EmailSendingJob;
 use App\Models\CampaignChannel;
 use App\Models\CampaignOrg;
 use App\Models\Country;
@@ -199,7 +199,7 @@ class Travel extends Component
 
     public function validateData()
     {
-
+        $this->store();
         if ($this->currentStep == 1) {
             
             $rules = (new StorePatientRequest())->rules();
@@ -246,6 +246,11 @@ class Travel extends Component
     {
 
         $this->resetErrorBag();
+
+        $data = ['email' => 'test@test.com'];
+        $test = dispatch(new EmailSendingJob($data));
+        dd($data);
+
         DB::beginTransaction();
         try {
             $this->patient_id = Patient::create($this->wizardData['Patient'])->id;
