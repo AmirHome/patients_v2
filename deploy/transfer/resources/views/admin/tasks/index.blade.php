@@ -37,6 +37,9 @@
                         {{ trans('cruds.task.fields.assigned_to') }}
                     </th>
                     <th>
+                        {{ trans('cruds.task.fields.user') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.task.fields.attachment') }}
                     </th>
                     <th>
@@ -97,6 +100,7 @@
         data: function(d) {
             d.ff_content = $('.filter[name="content"]').val();
             d.ff_status_id = $('.filter[name="status_id"]').val();
+            d.ff_assignee = $('.filter[name="assignee"]').val();
         }
     },
     columns: [
@@ -108,6 +112,7 @@
 { data: 'emergency', name: 'emergency' ,visible: false},
 { data: 'status_name', name: 'status.name' },
 { data: 'assigned_to_name', name: 'assigned_to.name' },
+{ data: 'user_name', name: 'user.name' },
 { data: 'attachment', name: 'attachment', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
