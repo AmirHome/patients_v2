@@ -169,7 +169,6 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
                     @endif
 
                   </div>
@@ -333,7 +332,6 @@
 });
 
 $('.toast').toast('show');
-$('.alert').alert();
     </script>
     @yield('scripts')
 </body>
