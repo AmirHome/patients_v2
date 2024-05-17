@@ -30,12 +30,12 @@ class TravelTreatmentActivityTableSeeder extends Seeder
         
         foreach ($rows as $row) {
             
-
+            $status = $row->status == 0 ? 21 : $row->status;
             TravelTreatmentActivity::create([
                 'id'             => $row->id,
                 'user_id'        => User::where('id', $row->user_id)->first()->id, 
                 'travel_id'      => Travel::where('id', $row->travel_id)->first()->id,
-                'status_id'      => TravelStatus::where('id', $row->status)->first()->id??null,
+                'status_id'      => TravelStatus::where('id', $status)->first()->id??null,
                 'description'    => $row->description,
             ]);
         }

@@ -65,6 +65,9 @@
    ---------- Datatable minimal ----------
 */
 
+.dt-body {
+    white-space: nowrap;
+ }
 
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody>table>tbody>tr>td {
     vertical-align: middle;

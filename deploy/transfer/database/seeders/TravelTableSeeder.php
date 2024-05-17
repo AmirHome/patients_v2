@@ -110,13 +110,14 @@ class TravelTableSeeder extends Seeder
                 $visaEndDate = null;
             }
 
+            $status = $row->status == 0 ? 21 : $row->status;
             $travel = Travel::create([
                 'id'             => $row->id,
                 'patient_id'     => Patient::where('id', $row->patient_id)->first()->id,
                 'group_id'       => TravelGroup::where('id', $row->group_id)->first()->id??2,
                 'hospital_id'    => Hospital::where('id', $row->hospital_id)->first()->id??1,
                 'department_id'  => Department::where('id', $row->department_id)->first()->id??null,
-                'last_status_id'      => TravelStatus::where('id', $row->status)->first()->id??null,
+                'last_status_id'      => TravelStatus::where('id', $status)->first()->id??null,
                 'attendant_name' => $row->attendant_name,
                 'attendant_address' => $row->attendant_address,
                 'attendant_phone' => $row->attendant_phone,
