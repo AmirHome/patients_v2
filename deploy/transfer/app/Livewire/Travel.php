@@ -19,7 +19,8 @@ use App\Models\TravelStatus;
 use App\Models\TravelTreatmentActivity;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Response;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
 
@@ -114,6 +115,8 @@ class Travel extends Component
 
     public function render()
     {
+        abort_if(Gate::denies('travel_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('livewire.travel-wizard')->layout('components.layouts.app');
     }
 

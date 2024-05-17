@@ -241,7 +241,13 @@
                 <div class="row">
                     <div class="col-8">
                         @can('travel_create')
+                        @if (Auth::user()->roles->first()->id == 100)
                         <a class="btn btn-success" href="{{ route('admin.travels.create') }}">
+                            <i class="far fa-plus-square"></i> {{ trans('global.add') }} {{
+                            trans('cruds.travel.title_singular') }}
+                        </a>
+                        @endif
+                        <a class="btn btn-success" href="{{ url('admin/travel') }}">
                             <i class="fas fa-plus"></i> {{ trans('global.add') }} {{
                             trans('cruds.travel.title_singular') }}
                         </a>

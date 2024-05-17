@@ -121,6 +121,11 @@
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 25,
+    // dom: '<"top"i>rt<"bottom"flp><"clear">',
+    // dom: '<"wrapper"flipt>',
+    rowGroup: {
+        dataSrc: 'group_name'
+    }
   };
   let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

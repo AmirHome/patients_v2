@@ -55,11 +55,12 @@ class DatabaseSeeder extends Seeder
                 ActivityTableSeeder::class,
             ]);
         } else {
-            $this->callWith(CustomersTableSeeder::class, ['limit' => 20]);
-            $this->callWith(PatientTableSeeder::class, ['limit' => 20]);
-            $this->callWith(TravelTableSeeder::class, ['limit' => 120]);
-            $this->callWith(TravelTreatmentActivityTableSeeder::class, ['limit' => 20]);
-            $this->callWith(ActivityTableSeeder::class, ['limit' => 20]);
+            $limit = 20;
+            $this->callWith(CustomersTableSeeder::class, ['limit' => $limit]);
+            $this->callWith(PatientTableSeeder::class, ['limit' => $limit]);
+            $this->callWith(TravelTableSeeder::class, ['limit' => $limit+100]);
+            $this->callWith(TravelTreatmentActivityTableSeeder::class, ['limit' => $limit]);
+            $this->callWith(ActivityTableSeeder::class, ['limit' => $limit]);
         }
     }
 }
