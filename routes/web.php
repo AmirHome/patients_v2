@@ -13,6 +13,11 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    // Livewire
+    Route::get('counter','\App\Livewire\Counter');
+    Route::get('travel','\App\Livewire\Travel');
+
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -215,5 +220,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
-Route::get('/counter','\App\Livewire\Counter');
-Route::get('/travel','\App\Livewire\Travel');
+
