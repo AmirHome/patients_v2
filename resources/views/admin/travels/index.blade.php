@@ -93,7 +93,7 @@
 @endcan
 
   let dtOverrideGlobals = {
-    buttons: dtButtons,
+    // buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,

@@ -227,7 +227,8 @@
     language: {
       url: languages['{{ app()->getLocale() }}']
     },
-    columnDefs: [{
+    columnDefs: [{ visible: false, targets: 0 }],
+/*     columnDefs: [{
         orderable: false,
         className: 'select-checkbox',
         targets: 0
@@ -239,13 +240,13 @@
     select: {
       style:    'multi+shift',
       selector: 'td:first-child'
-    },
+    }, */
     order: [],
     scrollX: true,
     pageLength: 100,
     dom: 'lBfrtip<"actions">',
     buttons: [
-      {
+/*       {
         extend: 'selectAll',
         className: 'btn-primary',
         text: selectAllButtonTrans,
@@ -265,7 +266,7 @@
         exportOptions: {
           columns: ':visible'
         }
-      },
+      }, */
       {
         extend: 'copy',
         className: 'btn-default',
