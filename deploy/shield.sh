@@ -8,6 +8,7 @@ mkdir -p deploy/transfer/database/seeders
 mkdir -p deploy/transfer/database/migrations
 mkdir -p deploy/transfer/config
 # Development
+mkdir -p deploy/transfer/app/Console/Commands
 mkdir -p deploy/transfer/resources/views/layouts
 mkdir -p deploy/transfer/resources/views/admin
 mkdir -p deploy/transfer/app/Providers
@@ -20,6 +21,7 @@ mkdir -p deploy/transfer/resources/views/emails
 
 cp database/patients_db_old.sql deploy/transfer/database
 cp .gitignore deploy/transfer
+cp app/Console/Commands/ManipulateCodes.php deploy/transfer/app/Console/Commands
 
 # Core: Change Quick Admin Panel
 cp routes/web.php deploy/transfer/routes

@@ -93,7 +93,7 @@
 @endcan
 
   let dtOverrideGlobals = {
-    buttons: dtButtons,
+    // buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,
@@ -123,9 +123,14 @@
     pageLength: 25,
     // dom: '<"top"i>rt<"bottom"flp><"clear">',
     // dom: '<"wrapper"flipt>',
-    rowGroup: {
-        dataSrc: 'group_name'
-    }
+    // rowGroup: {
+    //     dataSrc: 'group_name'
+    // }    
+    createdRow: function (row, data, dataIndex) {
+        if (data['group_name'] == 'Acil') {
+            $(row).addClass('emergency');
+        }
+    },
   };
   let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

@@ -115,9 +115,6 @@ function deployment() {
   # php artisan session:table
   # copy from deploy 2024_04_17_121142_create_sessions_table.php
 
-  ### Write code in function
-  coding
-
   ### Install queue
   php artisan queue:table
   php artisan queue:failed-table
@@ -130,6 +127,8 @@ function deployment() {
 
   php artisan optimize:clear
 
+  ### Manipulate codes
+  coding
 
   if [ $CPYCOM ]; then
     cp deploy/composer.json composer.json
@@ -181,10 +180,19 @@ function coding() {
   # FILE=routes/web.php
   # grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
 
-  insert_line_if_not_exists "routes/web.php" "Route::get('/counter','\App\Livewire\Counter');" ""
-  insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Travel');" ""
+  # insert_line_if_not_exists "routes/web.php" "Route::get('/counter','\App\Livewire\Counter');" ""
+  # insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Travel');" ""
 
+# FILE="app/Http/Kernel.php"
+# if ! grep -q "ManipulateCodes::class," "$FILE"; then
 
+#   sed -i '$s/}$/   \n protected $commands = [\
+#         \\App\\Console\\Commands\\ManipulateCodes::class,\
+#     ];\
+# }/' "$FILE"
+# fi
+
+    php artisan manipulate:codes
 }
 
 build
