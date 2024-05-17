@@ -131,7 +131,7 @@
       }
     }
   }
-  dtButtons.push(deleteButton)
+  // dtButtons.push(deleteButton)
 @endcan
 
   $.extend(true, $.fn.dataTable.defaults, {

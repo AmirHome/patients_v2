@@ -27,8 +27,8 @@ class ManipulateCodes extends Command
     public function handle()
     {
 
-        $search = 'buttons: dtButtons,';
-        $replace = '// buttons: dtButtons,';
+        $search = 'dtButtons.push(deleteButton)';
+        $replace = '// dtButtons.push(deleteButton)';
         $this->replaceAll(resource_path('views/admin'), $search, $replace);
 
         $this->info('Done processing files.');
@@ -43,7 +43,7 @@ class ManipulateCodes extends Command
         foreach ($files as $file) {
             $this->info('Processing: ' . $file->getRelativePathname());
                 $contents = File::get($file->getPathname());
-                $newContents = $this->removeLine($contents, $search, $replace);
+                $newContents = $this->replaceLine($contents, $search, $replace);
                 File::put($file->getPathname(), $newContents);
         }
         //return str_replace($search, $replace, $contents);
@@ -52,13 +52,23 @@ class ManipulateCodes extends Command
     protected function replaceLine($contents, $search, $replace)
     {
         $lines = explode(PHP_EOL, $contents);
+        $replaceExists = false;
         
         foreach ($lines as &$line) {
             if (strpos($line, $search) !== false) {
+                if (strpos($line, $replace) !== false) {
+                    $replaceExists = true;
+                    break; // No need to continue, replace already exists
+                }
                 $line = str_replace($search, $replace, $line);
             }
         }
         
-        return implode(PHP_EOL, $lines);
-    }    
+        if (!$replaceExists) {
+            return implode(PHP_EOL, $lines);
+        } else {
+            return $contents; // Return original contents if replace already exists
+        }
+    }
+     
 }

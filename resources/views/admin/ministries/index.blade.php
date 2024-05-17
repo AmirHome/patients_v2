@@ -77,7 +77,7 @@
       }
     }
   }
-  dtButtons.push(deleteButton)
+  // dtButtons.push(deleteButton)
 @endcan
 
   let dtOverrideGlobals = {
