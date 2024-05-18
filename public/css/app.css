@@ -60,6 +60,21 @@
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
     color: #332b2b;
 }
+/* ***************************************
+   ---------- Tabs minimal ----------
+*/
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: currentColor;
+    font-weight: 600;
+    background-color: #ffffff;
+    /* border-color: #d8dbe0 #d8dbe0 #c4c9d0; */
+}
+.nav-tabs .nav-link,
+a.nav-link{
+    color: #768192;
+    border-color: rgba(183, 183, 183, 0.9) ;
+}
 
 /* ***************************************
    ---------- Datatable minimal ----------

@@ -14,28 +14,36 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-travelActivities">
-                <thead class="d-none">
+                <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
                             {{ trans('cruds.activity.fields.id') }}
-                     
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.user') }}
-                        
+                        </th>
+                        <th>
                             {{ trans('cruds.user.fields.email') }}
-                        
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.travel') }}
-                       
+                        </th>
+                        <th>
                             {{ trans('cruds.travel.fields.reffering') }}
-                        
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.description') }}
-                        
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.status') }}
-                       
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.document_file') }}
-                        
+                        </th>
+                        <th>
                             {{ trans('cruds.activity.fields.document_name') }}
                         </th>
                         <th>
@@ -49,24 +57,32 @@
                             <td>
 
                             </td>
-
                             <td>
-                                <span>{{ $activity->travel->created_at ?? '' }}</span>
-                                <h1>{{ $activity->status->title ?? '' }}</h1>
-                                <div>
-                                    <i class="fas fa-user"></i> {{ $activity->user->name ?? '' }}  <i class="far fa-envelope"></i> {{ $activity->user->email ?? '' }}
-                                </div>             
-                                <div>
-                                    <pre><i class="fas fa-comments"></i> {{ $activity->description ?? '' }}</pre>
-                                </div>
-                                
+                                {{ $activity->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->user->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->user->email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->travel->reffering_type ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->travel->reffering ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->description ?? '' }}
+                            </td>
+                            <td>
+                                {{ $activity->status->title ?? '' }}
+                            </td>
+                            <td>
                                 @foreach($activity->document_file as $key => $media)
-                                <div class="">
-                                    <i class="fas fa-file-medical-alt"></i>
                                     <a href="{{ $media->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
                                     </a>
-                                </div>
                                 @endforeach
                             </td>
                             <td>

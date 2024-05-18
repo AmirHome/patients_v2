@@ -75,7 +75,7 @@
       }
     }
   }
-  dtButtons.push(deleteButton)
+  // dtButtons.push(deleteButton)
 @endcan
 
 

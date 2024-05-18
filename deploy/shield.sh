@@ -46,6 +46,8 @@ mkdir -p deploy/transfer/resources/views/admin/travels/relationships
 cp app/Http/Controllers/Admin/TravelController.php deploy/transfer/app/Http/Controllers/Admin
 cp resources/views/admin/travels/index.blade.php deploy/transfer/resources/views/admin/travels
 cp resources/views/admin/travels/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travels/relationships
+cp resources/views/admin/travels/relationships/travelActivities.blade.php deploy/transfer/resources/views/admin/travels/relationships
+cp resources/views/admin/travels/relationships/travelTravelTreatmentActivities.blade.php deploy/transfer/resources/views/admin/travels/relationships
 # crm customers
 mkdir -p deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmCustomerController.php deploy/transfer/app/Http/Controllers/Admin

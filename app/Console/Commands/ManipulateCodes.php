@@ -27,28 +27,43 @@ class ManipulateCodes extends Command
     public function handle()
     {
 
-        $search = 'dtButtons.push(deleteButton)';
-        $replace = '// dtButtons.push(deleteButton)';
-        $this->replaceAll(resource_path('views/admin'), $search, $replace);
+        $search = ['dtButtons.push(deleteButton)',
+            '<a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
+            '<div class="tab-pane" role="tabpanel" id="travel_travel_treatment_activities">',
+        ];
+        $replace = ['// dtButtons.push(deleteButton)',
+            '<a class="nav-link active" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
+            '<div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">',
+        ];
 
+
+        $this->replaceAll(resource_path('views/admin'), $search, $replace);
+    
         $this->info('Done processing files.');
         return true;
     }
-
-    protected function replaceAll($directory, $search, $replace)
+    
+    protected function replaceAll($directory, $searchArray, $replaceArray)
     {
-
         $files = File::allFiles($directory);
         
         foreach ($files as $file) {
             $this->info('Processing: ' . $file->getRelativePathname());
-                $contents = File::get($file->getPathname());
-                $newContents = $this->replaceLine($contents, $search, $replace);
-                File::put($file->getPathname(), $newContents);
+            $contents = File::get($file->getPathname());
+            $newContents = $this->replaceLines($contents, $searchArray, $replaceArray);
+            File::put($file->getPathname(), $newContents);
         }
-        //return str_replace($search, $replace, $contents);
     }
-
+    
+    protected function replaceLines($contents, $searchArray, $replaceArray)
+    {
+        foreach ($searchArray as $key => $search) {
+            $contents = $this->replaceLine($contents, $search, $replaceArray[$key]);
+        }
+        
+        return $contents;
+    }
+    
     protected function replaceLine($contents, $search, $replace)
     {
         $lines = explode(PHP_EOL, $contents);
@@ -70,5 +85,4 @@ class ManipulateCodes extends Command
             return $contents; // Return original contents if replace already exists
         }
     }
-     
 }

@@ -19,15 +19,21 @@
 
                         </th>
                         <th>
-                    
+                            
+                        </th>
+                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.travel') }}
-                      
+                        </th>
+                        <th>
                             {{ trans('cruds.travel.fields.reffering') }}
-                     
+                        </th>
+                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.status') }}
-                      
+                        </th>
+                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.description') }}
-                      
+                        </th>
+                        <th>
                             {{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}
                         </th>
                         <th>
@@ -42,22 +48,30 @@
 
                             </td>
                             <td>
-                                <span>{{ $travelTreatmentActivity->travel->created_at ?? '' }}</span>
-                                <h1>{{ $travelTreatmentActivity->status->title ?? '' }}</h1>
-                                <div>
-                                    <i class="fas fa-user"></i> {{ $travelTreatmentActivity->user->name ?? '' }}  <i class="far fa-envelope"></i> {{ $travelTreatmentActivity->user->email ?? '' }}
-                                </div>             
-                                <div>
-                                    <pre><i class="fas fa-comments"></i> {{ $travelTreatmentActivity->description ?? '' }}</pre>
-                                </div>
+                                {{ trans('cruds.travelTreatmentActivity.fields.user') }}
+                        
+                                {{ $travelTreatmentActivity->user->name ?? '' }}
                                 
+                                {{ trans('cruds.user.fields.email') }}
+                                {{ $travelTreatmentActivity->user->email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travelTreatmentActivity->travel->reffering_type ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travelTreatmentActivity->travel->reffering ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travelTreatmentActivity->status->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $travelTreatmentActivity->description ?? '' }}
+                            </td>
+                            <td>
                                 @foreach($travelTreatmentActivity->treatment_file as $key => $media)
-                                <div class="">
-                                    <i class="fas fa-file-medical-alt"></i>
                                     <a href="{{ $media->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
                                     </a>
-                                </div>
                                 @endforeach
                             </td>
                             <td>

@@ -204,13 +204,10 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
+
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">
+            <a class="nav-link active" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">
                 {{ trans('cruds.travelTreatmentActivity.title') }}
             </a>
         </li>
@@ -221,13 +218,13 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="travel_travel_treatment_activities">
+        <div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">
             @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
         </div>
         <div class="tab-pane" role="tabpanel" id="travel_activities">
             @includeIf('admin.travels.relationships.travelActivities', ['activities' => $travel->travelActivities])
         </div>
     </div>
-</div>
+
 
 @endsection
