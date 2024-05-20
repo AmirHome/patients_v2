@@ -3,6 +3,32 @@
 use App\Models\Country;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
+
+if (!function_exists('checkShareCode')) {
+    function checkShareCode($code, $salt = 'share_hospital')
+    {
+        $id = getShareId($code);
+        abort_if(($code !== makeShareCode($id, $salt)), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        return $id;
+    }
+}
+
+if (!function_exists('makeShareCode')) {
+    function makeShareCode($id, $salt = 'share_hospital')
+    {
+        $checkSecurityCode = md5($salt.$id);
+        return substr($checkSecurityCode, 0, 16). $id. substr($checkSecurityCode, -16);
+    }
+}
+
+if (!function_exists('getShareId')) {
+    function getShareId($code)
+    {
+        return substr($code, 16, -16);
+    }
+}
 
 if (!function_exists('generateCode')) {
     function generateCode($countryId)

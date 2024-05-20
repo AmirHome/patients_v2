@@ -14,10 +14,6 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
-    // Livewire
-    Route::get('counter','\App\Livewire\Counter');
-    Route::get('travel','\App\Livewire\Travel');
-
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -219,4 +215,48 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile', 'ChangePasswordController@updateProfile')->name('password.updateProfile');
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
+});
+
+
+
+Route::group(['namespace' => 'Admin\Override'], function () {
+
+    Route::get('share/hospital/{code}','TravelController@shares')->name('share.hospital');
+    Route::get('share/translator/{code}','TravelController@share')->name('share.translator');
+
+
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+
+        // Livewire
+        Route::get('counter','\App\Livewire\Counter');
+        Route::get('travel','\App\Livewire\Travel');
+
+        // Override
+        // Route::get('travels','TravelController@index')->name('travels.index');
+
+
+    });
+});
+
+#Support old version staffView/translator/9667/5d97f4dd7c44b29096675c799db681b80ce0
+Route::get('staffView/translator/{id}/{code}', function($id, $code){
+    $checkSecurityCode = makeShareCode($id, '');
+    
+    checkShareCode($checkSecurityCode,'');
+    $checkSecurityCode = makeShareCode($id,'share_hospital');
+    
+    //Redirect to Route::get('share/hospital/{code}','TravelController@share');
+    return redirect()->route('share.translator', ['code' => $checkSecurityCode]);
+});
+
+#Support old version staffView/hospital/6947/a424ded436368e3f9f10da14c23acc85
+Route::get('staffView/hospital/{id}/{code}', function($id, $code){
+
+    $checkSecurityCode = makeShareCode($id, '');
+    checkShareCode($checkSecurityCode,'');
+
+    $checkSecurityCode = makeShareCode($id,'share_hospital');
+
+    //Redirect to Route::get('share/hospital/{code}','TravelController@share');
+    return redirect()->route('share.hospital', ['code' => $checkSecurityCode]);
 });

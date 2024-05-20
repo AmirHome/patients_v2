@@ -23,7 +23,7 @@ class ProvinceTableSeeder extends Seeder
                 'country_id'     => $row->country_id,
                 'created_at'     => $row->created_at,
                 'updated_at'     => $row->updated_at,
-                'deleted_at'     => $row->deleted_at,
+                // 'deleted_at'     => $row->deleted_at,
             ]);
         }
     }

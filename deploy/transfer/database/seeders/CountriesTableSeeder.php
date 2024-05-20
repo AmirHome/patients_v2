@@ -1224,7 +1224,7 @@ class CountriesTableSeeder extends Seeder
                 'code_inc'          => $row->code_inc,
                 'created_at'     => $row->created_at,
                 'updated_at'     => $row->updated_at,
-                'deleted_at'     => $row->deleted_at,
+                // 'deleted_at'     => $row->deleted_at,
             ]);
         }
     }

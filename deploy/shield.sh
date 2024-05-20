@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Laravel DB, Seeder
+# Laravel DB, Seeder, Controller
 mkdir -p deploy/transfer/app/Models
-mkdir -p deploy/transfer/app/Http/Controllers/Admin
+# mkdir -p deploy/transfer/app/Http/Controllers/Admin
+mkdir -p deploy/transfer/app/Http/Controllers/Admin/Override
 mkdir -p deploy/transfer/app/Http/Controllers/Traits
 mkdir -p deploy/transfer/database/seeders
 mkdir -p deploy/transfer/database/migrations
@@ -18,6 +19,7 @@ mkdir -p deploy/transfer/routes
 mkdir -p deploy/transfer/app/Jobs
 mkdir -p deploy/transfer/app/Mail
 mkdir -p deploy/transfer/resources/views/emails
+
 
 cp database/patients_db_old.sql deploy/transfer/database
 cp .gitignore deploy/transfer
@@ -48,6 +50,8 @@ cp resources/views/admin/travels/index.blade.php deploy/transfer/resources/views
 cp resources/views/admin/travels/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travels/relationships
 cp resources/views/admin/travels/relationships/travelActivities.blade.php deploy/transfer/resources/views/admin/travels/relationships
 cp resources/views/admin/travels/relationships/travelTravelTreatmentActivities.blade.php deploy/transfer/resources/views/admin/travels/relationships
+cp resources/views/admin/travels/share.blade.php deploy/transfer/resources/views/admin/travels
+cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
 # crm customers
 mkdir -p deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmCustomerController.php deploy/transfer/app/Http/Controllers/Admin

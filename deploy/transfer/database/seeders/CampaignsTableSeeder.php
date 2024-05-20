@@ -22,7 +22,7 @@ class CampaignsTableSeeder extends Seeder
                 'title'           => $row->name,
                 'created_at'     => $row->created_at,
                 'updated_at'     => $row->updated_at,
-                'deleted_at'     => $row->deleted_at,
+                // 'deleted_at'     => $row->deleted_at,
             ]);
         }
 
@@ -36,7 +36,7 @@ class CampaignsTableSeeder extends Seeder
                 'status' => $row->status,
                 'created_at'     => $row->created_at,
                 'updated_at'     => $row->updated_at,
-                'deleted_at'     => $row->deleted_at,
+                // 'deleted_at'     => $row->deleted_at,
             ]);
         }
     }
