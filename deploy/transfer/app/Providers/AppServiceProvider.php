@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         //if env is local, then disable lazy loading
         $lock = $this->app->environment() === 'local';
-        Model::preventLazyLoading($lock && true);
+        //Model::preventLazyLoading($lock && true);
         
     }
 }
