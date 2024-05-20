@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
 
         // If APP_ENV is not production (is local), seed the following tables
-        if (env('APP_DEBUG')) {
+        if (!env('APP_DEBUG')) {
             $this->call([
                 CustomersTableSeeder::class,
                 PatientTableSeeder::class,
