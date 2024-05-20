@@ -30,7 +30,7 @@ class CrmCustomerController extends Controller
         $data = $this->crmMountFilter();
 
         if ($request->ajax()) {
-            $query = CrmCustomer::with(['status', 'city', 'campaign', 'user'])->select(sprintf('%s.*', (new CrmCustomer)->table));
+            $query = CrmCustomer::with(['status', 'city.country', 'campaign.channel', 'user'])->select(sprintf('%s.*', (new CrmCustomer)->table));
             
             $query = $this->crmFilter($request, $query);
 

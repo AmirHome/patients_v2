@@ -39,6 +39,7 @@ class PermissionRoleTableSeeder extends Seeder
                 && substr($permission->title, 0, 26) != 'travel_treatment_activity_'
                 && substr($permission->title, 0, 9) != 'activity_'
                 && substr($permission->title, 0, 11) != 'permission_'
+                && substr($permission->title, 0, 11) != 'travel_group_show'
                 && substr($permission->title, 0, 5) != 'team_';
         });
         Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));

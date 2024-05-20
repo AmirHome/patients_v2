@@ -51,7 +51,7 @@
                             </td>
 
                             <td>
-                                <span>{{ $activity->travel->created_at ?? '' }}</span>
+                                <span>{{ $activity->created_at ?? '' }}</span>
                                 <h1>{{ $activity->status->title ?? '' }}</h1>
                                 <div>
                                     <i class="fas fa-user"></i> {{ $activity->user->name ?? '' }}  <i class="far fa-envelope"></i> {{ $activity->user->email ?? '' }}

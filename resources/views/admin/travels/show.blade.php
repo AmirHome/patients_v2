@@ -28,7 +28,7 @@
                             {{ trans('cruds.travel.fields.patient') }}
                         </th>
                         <td>
-                            {{ $travel->patient->name ?? '' }}
+                            {{ $travel->patient->name ?? '' }} {{ $travel->patient->weight ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -219,10 +219,10 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">
-            @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
+            @includeIf('admin.travels.relationships.travelActivities', ['activities' => $travel->travelActivities])
         </div>
         <div class="tab-pane" role="tabpanel" id="travel_activities">
-            @includeIf('admin.travels.relationships.travelActivities', ['activities' => $travel->travelActivities])
+            @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
         </div>
     </div>
 

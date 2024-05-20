@@ -42,7 +42,7 @@
 
                             </td>
                             <td>
-                                <span>{{ $travelTreatmentActivity->travel->created_at ?? '' }}</span>
+                                <span>{{ $travelTreatmentActivity->created_at ?? '' }}</span>
                                 <h1>{{ $travelTreatmentActivity->status->title ?? '' }}</h1>
                                 <div>
                                     <i class="fas fa-user"></i> {{ $travelTreatmentActivity->user->name ?? '' }}  <i class="far fa-envelope"></i> {{ $travelTreatmentActivity->user->email ?? '' }}
