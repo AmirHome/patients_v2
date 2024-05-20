@@ -4,14 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTravelTreatmentActivitiesTable extends Migration
+class CreateMinistriesTable extends Migration
 {
     public function up()
     {
-        Schema::create('travel_treatment_activities', function (Blueprint $table) {
+        Schema::create('ministries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('description')->nullable();
+            $table->string('name');
+            $table->string('code');
+            $table->integer('code_inc');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

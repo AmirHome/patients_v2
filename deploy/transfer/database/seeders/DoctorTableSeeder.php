@@ -29,6 +29,9 @@ class DoctorTableSeeder extends Seeder
                 'city_id'          => Province::where('id', $row->city_id)->first()->id, //$row->city_id,
                 'hospital_id'          => Hospital::where('id', $row->hospital_id)->first()->id ?? 1, //$row->hospital_id,
                 'department_id'          => Department::where('id', $row->department_id)->first()->id ?? 1, //$row->department_id,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
     }

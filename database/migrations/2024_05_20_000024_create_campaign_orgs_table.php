@@ -14,6 +14,7 @@ class CreateCampaignOrgsTable extends Migration
             $table->date('started_at');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

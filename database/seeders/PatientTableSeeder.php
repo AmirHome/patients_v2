@@ -67,6 +67,9 @@ class PatientTableSeeder extends Seeder
                 'height'         => $row->height,
                 'blood_group'    => ($row->blood_group==-1)?null:$row->blood_group,
                 'code'           => $row->code,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
         

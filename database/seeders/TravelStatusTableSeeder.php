@@ -43,7 +43,7 @@ class TravelStatusTableSeeder extends Seeder
         foreach ($statuses as $status) {
             TravelStatus::create([
                 'id' => $status['id'],
-                'title' => $status['title'],
+                'title' => $status['title']
             ]);
         }
 

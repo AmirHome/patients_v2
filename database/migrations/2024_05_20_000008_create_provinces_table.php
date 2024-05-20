@@ -4,14 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCrmDocumentsTable extends Migration
+class CreateProvincesTable extends Migration
 {
     public function up()
     {
-        Schema::create('crm_documents', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('description')->nullable();
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

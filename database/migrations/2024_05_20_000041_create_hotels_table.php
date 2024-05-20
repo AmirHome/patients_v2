@@ -4,18 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHospitalsTable extends Migration
+class CreateHotelsTable extends Migration
 {
     public function up()
     {
-        Schema::create('hospitals', function (Blueprint $table) {
+        Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('fax');
-            $table->string('address');
+            $table->string('location');
+            $table->decimal('price', 15, 2)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

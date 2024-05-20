@@ -4,16 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMinistriesTable extends Migration
+class CreateCampaignChannelsTable extends Migration
 {
     public function up()
     {
-        Schema::create('ministries', function (Blueprint $table) {
+        Schema::create('campaign_channels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('code');
-            $table->integer('code_inc');
+            $table->string('title');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 }

@@ -136,6 +136,11 @@ class TravelTableSeeder extends Seeder
                 'visa_status'    => $row->visa_status,
                 'visa_start_date' => $visaStartDate,
                 'visa_end_date'  => $visaEndDate,
+
+
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
 
             if(!empty($row->hospital_mail_notify)){

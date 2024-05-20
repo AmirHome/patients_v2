@@ -25,6 +25,9 @@ class TranslatorTableSeeder extends Seeder
                 'email'          => $row->email,
                 'phone'          => $row->phone,
                 'city_id'          => Province::where('name', $row->city)->first()->id,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);            
         }
     }

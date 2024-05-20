@@ -24,6 +24,9 @@ class HospitalTableSeeder extends Seeder
                 'phone'          => $row->phone,
                 'fax'          => $row->fax,
                 'address'          => $row->address,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);            
         }
     }

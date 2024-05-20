@@ -56,6 +56,9 @@ class CustomersTableSeeder extends Seeder
                 'phone'          => $row->phone,
                 
                 'birthday'       => $birthDate,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);            
         }
 
@@ -71,6 +74,9 @@ class CustomersTableSeeder extends Seeder
                 'user_id'    => User::where('id', $row->user_id)->first()->id,
                 'status_id'      => $row->status+1,
                 'description'     => $row->description,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
         $document_ids = CrmDocument::pluck('id')->toArray();

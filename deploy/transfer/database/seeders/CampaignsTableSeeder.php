@@ -22,6 +22,7 @@ class CampaignsTableSeeder extends Seeder
                 'title'           => $row->name,
                 'created_at'     => $row->created_at,
                 'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
 
@@ -33,6 +34,9 @@ class CampaignsTableSeeder extends Seeder
                 'channel_id' => $row->channel_id,
                 'started_at' => $row->started_at,
                 'status' => $row->status,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
     }

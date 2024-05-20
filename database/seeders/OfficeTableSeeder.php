@@ -25,6 +25,9 @@ class OfficeTableSeeder extends Seeder
                 'fax'          => $row->fax,
                 'address'          => $row->address,
                 'city_id'          => Province::where('id', $row->city_id)->first()->id, //$row->city_id,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);            
         }
     }

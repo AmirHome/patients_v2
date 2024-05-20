@@ -37,6 +37,9 @@ class TravelTreatmentActivityTableSeeder extends Seeder
                 'travel_id'      => Travel::where('id', $row->travel_id)->first()->id,
                 'status_id'      => TravelStatus::where('id', $status)->first()->id??null,
                 'description'    => $row->description,
+                'created_at'     => $row->created_at,
+                'updated_at'     => $row->updated_at,
+                'deleted_at'     => $row->deleted_at,
             ]);
         }
             

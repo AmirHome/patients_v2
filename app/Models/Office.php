@@ -6,10 +6,11 @@ use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Office extends Model
 {
-    use Auditable, HasFactory;
+    use SoftDeletes, Auditable, HasFactory;
 
     public $table = 'offices';
 
