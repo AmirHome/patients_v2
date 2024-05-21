@@ -206,7 +206,31 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.relatedData') }}
+
+        
+
+        {{-- @can('travel_treatment_activity_create') --}}
+            <div style="margin-bottom: 10px;" class="row">
+                <div class="col-6">
+                    {{ trans('global.relatedData') }}
+                </div>
+
+                <div class="col-6 text-right">
+                    <a class="btn btn-success" href="{{ route('admin.travel-treatment-activities.create') }}">
+                        {{ trans('global.add') }} {{ trans('cruds.travelTreatmentActivity.title_singular') }}
+                    </a>
+
+        {{-- @endcan --}}
+
+        {{-- @can('activity_create') --}}
+
+                    <a class="btn btn-success" href="{{ route('admin.activities.create') }}">
+                        {{ trans('global.add') }} {{ trans('cruds.activity.title_singular') }}
+                    </a>
+                </div>
+            </div>
+        {{-- @endcan --}}
+
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">

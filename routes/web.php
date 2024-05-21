@@ -221,7 +221,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 
 Route::group(['namespace' => 'Admin\Override'], function () {
 
+    //https://patientsv2.test/share/hospital/cf99236573b09963694717bfd03a3645c73b
     Route::get('share/hospital/{code}','TravelController@shares')->name('share.hospital');
+    //https://patientsv2.test/share/translator/b97ad6974329f7749667d5060a40a50ca1ed
     Route::get('share/translator/{code}','TravelController@share')->name('share.translator');
 
 
@@ -245,7 +247,6 @@ Route::get('staffView/translator/{id}/{code}', function($id, $code){
     checkShareCode($checkSecurityCode,'');
     $checkSecurityCode = makeShareCode($id,'share_hospital');
     
-    //Redirect to Route::get('share/hospital/{code}','TravelController@share');
     return redirect()->route('share.translator', ['code' => $checkSecurityCode]);
 });
 
@@ -257,6 +258,5 @@ Route::get('staffView/hospital/{id}/{code}', function($id, $code){
 
     $checkSecurityCode = makeShareCode($id,'share_hospital');
 
-    //Redirect to Route::get('share/hospital/{code}','TravelController@share');
     return redirect()->route('share.hospital', ['code' => $checkSecurityCode]);
 });
