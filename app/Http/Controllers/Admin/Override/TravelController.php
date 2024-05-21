@@ -29,7 +29,6 @@ class TravelController extends ParentController
 
     public function shares($code)
     {
-        abort_if((Gate::denies('travel_show')), Response::HTTP_FORBIDDEN, '403 Forbidden');
   
         $travel = checkShareCode($code, 'share_hospital');
         
@@ -44,7 +43,6 @@ class TravelController extends ParentController
 
     public function share($code)
     {
-        abort_if((Gate::denies('travel_show')), Response::HTTP_FORBIDDEN, '403 Forbidden');
   
         $id = checkShareCode($code, 'share_hospital');
         
