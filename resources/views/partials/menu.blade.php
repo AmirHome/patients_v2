@@ -479,26 +479,6 @@
                 </ul>
             </li>
         @endcan
-        @can('user_alert_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-bell c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.userAlert.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('report_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reports") || request()->is("admin/reports/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-bug c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.report.title') }}
-                </a>
-            </li>
-        @endcan
         @can('content_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -539,6 +519,26 @@
                         </li>
                     @endcan
                 </ul>
+            </li>
+        @endcan
+        @can('user_alert_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-bell c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.userAlert.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('report_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reports") || request()->is("admin/reports/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-bug c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.report.title') }}
+                </a>
             </li>
         @endcan
         <li class="c-sidebar-nav-item">

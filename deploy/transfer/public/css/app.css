@@ -13,14 +13,18 @@
 }
 
 
-
-/* 
-.navbar-brand for your business, goods, or project name.
-.navbar-nav for a navigation.
-.navbar-toggler for use with our collapse plugin.
-.form-inline for any forms.
-.navbar-text for any text.
+/* ***************************************
+   ---------- SideBar ----------
 */
+.c-sidebar-nav-item i::before{
+    content: "\f111";
+    /* content: "\f6aa"; */
+    font-family: "Font Awesome 5 Free";
+    color: darkgrey;
+    font-weight: 400;
+    font-size: 0.5rem; /* Adjust the font size as needed */
+
+}
 
 .c-sidebar .c-sidebar-brand,
 .c-sidebar .c-sidebar-header {
