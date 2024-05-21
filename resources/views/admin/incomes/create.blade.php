@@ -24,6 +24,20 @@
                 <span class="help-block">{{ trans('cruds.income.fields.income_category_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="patient_id">{{ trans('cruds.income.fields.patient') }}</label>
+                <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                    @foreach($patients as $id => $entry)
+                        <option value="{{ $id }}" {{ old('patient_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('patient'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('patient') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.income.fields.patient_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="entry_date">{{ trans('cruds.income.fields.entry_date') }}</label>
                 <input class="form-control date {{ $errors->has('entry_date') ? 'is-invalid' : '' }}" type="text" name="entry_date" id="entry_date" value="{{ old('entry_date') }}" required>
                 @if($errors->has('entry_date'))

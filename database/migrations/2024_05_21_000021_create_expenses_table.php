@@ -12,6 +12,7 @@ class CreateExpensesTable extends Migration
             $table->bigIncrements('id');
             $table->date('entry_date')->nullable();
             $table->decimal('amount', 15, 2)->nullable();
+            $table->string('branch')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

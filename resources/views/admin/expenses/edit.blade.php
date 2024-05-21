@@ -25,6 +25,20 @@
                 <span class="help-block">{{ trans('cruds.expense.fields.expense_category_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="patient_id">{{ trans('cruds.expense.fields.patient') }}</label>
+                <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
+                    @foreach($patients as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('patient_id') ? old('patient_id') : $expense->patient->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('patient'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('patient') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.expense.fields.patient_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="entry_date">{{ trans('cruds.expense.fields.entry_date') }}</label>
                 <input class="form-control date {{ $errors->has('entry_date') ? 'is-invalid' : '' }}" type="text" name="entry_date" id="entry_date" value="{{ old('entry_date', $expense->entry_date) }}" required>
                 @if($errors->has('entry_date'))
@@ -43,6 +57,21 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.expense.fields.amount_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label>{{ trans('cruds.expense.fields.branch') }}</label>
+                <select class="form-control {{ $errors->has('branch') ? 'is-invalid' : '' }}" name="branch" id="branch">
+                    <option value disabled {{ old('branch', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Expense::BRANCH_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('branch', $expense->branch) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('branch'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('branch') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.expense.fields.branch_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="description">{{ trans('cruds.expense.fields.description') }}</label>

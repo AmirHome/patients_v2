@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.expense.fields.patient') }}
+                        </th>
+                        <td>
+                            {{ $expense->patient->code ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <td>
@@ -45,6 +53,14 @@
                         </th>
                         <td>
                             {{ $expense->amount }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.expense.fields.branch') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Expense::BRANCH_SELECT[$expense->branch] ?? '' }}
                         </td>
                     </tr>
                     <tr>

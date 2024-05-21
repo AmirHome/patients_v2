@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             PermissionRoleTableSeeder::class,
 
+            FinanceCategorySeeder::class,
             CountriesTableSeeder::class,
             ProvinceTableSeeder::class,
             OfficeTableSeeder::class,
             UsersTableSeeder::class,
-            //RoleUserTableSeeder::class,
             CrmStatusTableSeeder::class,
             TaskStatusTableSeeder::class,
 

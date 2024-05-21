@@ -475,6 +475,12 @@ return [
             'updated_at_helper'       => ' ',
             'deleted_at'              => 'Deleted At',
             'deleted_at_helper'       => ' ',
+            'team'                    => 'Team',
+            'team_helper'             => ' ',
+            'patient'                 => 'Patient',
+            'patient_helper'          => ' ',
+            'branch'                  => 'Branch',
+            'branch_helper'           => ' ',
         ],
     ],
     'income' => [
@@ -497,6 +503,10 @@ return [
             'updated_at_helper'      => ' ',
             'deleted_at'             => 'Deleted At',
             'deleted_at_helper'      => ' ',
+            'team'                   => 'Team',
+            'team_helper'            => ' ',
+            'patient'                => 'Patient',
+            'patient_helper'         => ' ',
         ],
     ],
     'expenseReport' => [

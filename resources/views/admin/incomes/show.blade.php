@@ -33,6 +33,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.income.fields.patient') }}
+                        </th>
+                        <td>
+                            {{ $income->patient->code ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.income.fields.entry_date') }}
                         </th>
                         <td>

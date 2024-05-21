@@ -1,13 +1,3 @@
-@can('travel_treatment_activity_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.travel-treatment-activities.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.travelTreatmentActivity.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-
 <div class="card">
 
     <div class="card-body">
