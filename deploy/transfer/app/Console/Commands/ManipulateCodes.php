@@ -26,6 +26,12 @@ class ManipulateCodes extends Command
      */
     public function handle()
     {
+        $composerConfig = json_decode(file_get_contents('composer.json'), true);
+        $composerConfig['autoload']['files'] = [
+            "app/Helpers/Init.php"
+        ];
+        $composerJson = json_encode($composerConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        file_put_contents('composer.json', $composerJson);
 
         $search = ['dtButtons.push(deleteButton)',
             '<a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
