@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateIncomeRequest;
 use App\Models\Income;
 use App\Models\IncomeCategory;
 use App\Models\Patient;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@ class IncomeController extends Controller
         abort_if(Gate::denies('income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Income::with(['income_category', 'patient', 'team'])->select(sprintf('%s.*', (new Income)->table));
+            $query = Income::with(['income_category', 'patient', 'user', 'team'])->select(sprintf('%s.*', (new Income)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -56,12 +57,15 @@ class IncomeController extends Controller
             $table->editColumn('patient.name', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->name) : '';
             });
+            $table->addColumn('user_name', function ($row) {
+                return $row->user ? $row->user->name : '';
+            });
 
             $table->editColumn('amount', function ($row) {
                 return $row->amount ? $row->amount : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'income_category', 'patient']);
+            $table->rawColumns(['actions', 'placeholder', 'income_category', 'patient', 'user']);
 
             return $table->make(true);
         }
@@ -77,7 +81,9 @@ class IncomeController extends Controller
 
         $patients = Patient::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.incomes.create', compact('income_categories', 'patients'));
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.incomes.create', compact('income_categories', 'patients', 'users'));
     }
 
     public function store(StoreIncomeRequest $request)
@@ -95,9 +101,11 @@ class IncomeController extends Controller
 
         $patients = Patient::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $income->load('income_category', 'patient', 'team');
+        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.incomes.edit', compact('income', 'income_categories', 'patients'));
+        $income->load('income_category', 'patient', 'user', 'team');
+
+        return view('admin.incomes.edit', compact('income', 'income_categories', 'patients', 'users'));
     }
 
     public function update(UpdateIncomeRequest $request, Income $income)
@@ -111,7 +119,7 @@ class IncomeController extends Controller
     {
         abort_if(Gate::denies('income_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $income->load('income_category', 'patient', 'team');
+        $income->load('income_category', 'patient', 'user', 'team');
 
         return view('admin.incomes.show', compact('income'));
     }

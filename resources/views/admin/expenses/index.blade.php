@@ -28,6 +28,12 @@
                         {{ trans('cruds.expense.fields.expense_category') }}
                     </th>
                     <th>
+                        {{ trans('cruds.expense.fields.user') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.user.fields.email') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.expense.fields.entry_date') }}
                     </th>
                     <th>
@@ -94,6 +100,8 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'expense_category_name', name: 'expense_category.name' },
+{ data: 'user_name', name: 'user.name' },
+{ data: 'user.email', name: 'user.email' },
 { data: 'entry_date', name: 'entry_date' },
 { data: 'amount', name: 'amount' },
 { data: 'branch', name: 'branch' },

@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.expense.fields.user') }}
+                        </th>
+                        <td>
+                            {{ $expense->user->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <td>

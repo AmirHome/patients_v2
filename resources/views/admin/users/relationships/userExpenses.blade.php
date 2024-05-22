@@ -1,8 +1,8 @@
-@can('income_create')
+@can('expense_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.incomes.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.income.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.expenses.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.expense.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,37 +10,37 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.income.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.expense.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-patientIncomes">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-userExpenses">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.id') }}
+                            {{ trans('cruds.expense.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.income_category') }}
+                            {{ trans('cruds.expense.fields.expense_category') }}
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.patient') }}
+                            {{ trans('cruds.expense.fields.user') }}
                         </th>
                         <th>
-                            {{ trans('cruds.patient.fields.name') }}
+                            {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.user') }}
+                            {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.entry_date') }}
+                            {{ trans('cruds.expense.fields.amount') }}
                         </th>
                         <th>
-                            {{ trans('cruds.income.fields.amount') }}
+                            {{ trans('cruds.expense.fields.branch') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,47 +48,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($incomes as $key => $income)
-                        <tr data-entry-id="{{ $income->id }}">
+                    @foreach($expenses as $key => $expense)
+                        <tr data-entry-id="{{ $expense->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $income->id ?? '' }}
+                                {{ $expense->id ?? '' }}
                             </td>
                             <td>
-                                {{ $income->income_category->name ?? '' }}
+                                {{ $expense->expense_category->name ?? '' }}
                             </td>
                             <td>
-                                {{ $income->patient->code ?? '' }}
+                                {{ $expense->user->name ?? '' }}
                             </td>
                             <td>
-                                {{ $income->patient->name ?? '' }}
+                                {{ $expense->user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $income->user->name ?? '' }}
+                                {{ $expense->entry_date ?? '' }}
                             </td>
                             <td>
-                                {{ $income->entry_date ?? '' }}
+                                {{ $expense->amount ?? '' }}
                             </td>
                             <td>
-                                {{ $income->amount ?? '' }}
+                                {{ App\Models\Expense::BRANCH_SELECT[$expense->branch] ?? '' }}
                             </td>
                             <td>
-                                @can('income_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.incomes.show', $income->id) }}">
+                                @can('expense_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.expenses.show', $expense->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('income_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.incomes.edit', $income->id) }}">
+                                @can('expense_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.expenses.edit', $expense->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('income_delete')
-                                    <form action="{{ route('admin.incomes.destroy', $income->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('expense_delete')
+                                    <form action="{{ route('admin.expenses.destroy', $expense->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -110,11 +110,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('income_delete')
+@can('expense_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.incomes.massDestroy') }}",
+    url: "{{ route('admin.expenses.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -145,7 +145,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-patientIncomes:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-userExpenses:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

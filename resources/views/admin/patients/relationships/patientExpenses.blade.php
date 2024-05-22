@@ -28,6 +28,12 @@
                             {{ trans('cruds.expense.fields.expense_category') }}
                         </th>
                         <th>
+                            {{ trans('cruds.expense.fields.user') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.email') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <th>
@@ -52,6 +58,12 @@
                             </td>
                             <td>
                                 {{ $expense->expense_category->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->user->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->user->email ?? '' }}
                             </td>
                             <td>
                                 {{ $expense->entry_date ?? '' }}

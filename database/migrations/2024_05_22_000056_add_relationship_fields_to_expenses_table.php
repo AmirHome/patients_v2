@@ -13,6 +13,8 @@ class AddRelationshipFieldsToExpensesTable extends Migration
             $table->foreign('expense_category_id', 'expense_category_fk_9599931')->references('id')->on('expense_categories');
             $table->unsignedBigInteger('patient_id')->nullable();
             $table->foreign('patient_id', 'patient_fk_9807422')->references('id')->on('patients');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id', 'user_fk_9809821')->references('id')->on('users');
             $table->unsignedBigInteger('team_id')->nullable();
             $table->foreign('team_id', 'team_fk_9807400')->references('id')->on('teams');
         });

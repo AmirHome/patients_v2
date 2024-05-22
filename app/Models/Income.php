@@ -26,6 +26,7 @@ class Income extends Model
     protected $fillable = [
         'income_category_id',
         'patient_id',
+        'user_id',
         'entry_date',
         'amount',
         'description',
@@ -48,6 +49,11 @@ class Income extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function getEntryDateAttribute($value)

@@ -136,6 +136,16 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Task::class, 'user_id', 'id');
     }
 
+    public function userExpenses()
+    {
+        return $this->hasMany(Expense::class, 'user_id', 'id');
+    }
+
+    public function userIncomes()
+    {
+        return $this->hasMany(Income::class, 'user_id', 'id');
+    }
+
     public function userUserAlerts()
     {
         return $this->belongsToMany(UserAlert::class);

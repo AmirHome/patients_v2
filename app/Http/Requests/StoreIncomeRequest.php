@@ -21,6 +21,10 @@ class StoreIncomeRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'user_id' => [
+                'required',
+                'integer',
+            ],
             'entry_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

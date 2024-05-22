@@ -130,10 +130,6 @@ function deployment() {
   ### Manipulate codes
   coding
 
-  # if [ $CPYCOM ]; then
-    # cp deploy/composer.json composer.json
-    # cp composer.json deploy/composer.json
-  # fi
   if [ $AUTOLOAD ]; then
     composer dump-autoload
   fi

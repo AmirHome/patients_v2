@@ -34,6 +34,9 @@
                         {{ trans('cruds.patient.fields.name') }}
                     </th>
                     <th>
+                        {{ trans('cruds.income.fields.user') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.income.fields.entry_date') }}
                     </th>
                     <th>
@@ -99,6 +102,7 @@
 { data: 'income_category_name', name: 'income_category.name' },
 { data: 'patient_code', name: 'patient.code' },
 { data: 'patient.name', name: 'patient.name' },
+{ data: 'user_name', name: 'user.name' },
 { data: 'entry_date', name: 'entry_date' },
 { data: 'amount', name: 'amount' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

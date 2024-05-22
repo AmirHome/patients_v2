@@ -481,6 +481,8 @@ return [
             'patient_helper'          => ' ',
             'branch'                  => 'Branch',
             'branch_helper'           => ' ',
+            'user'                    => 'User',
+            'user_helper'             => ' ',
         ],
     ],
     'income' => [
@@ -507,6 +509,8 @@ return [
             'team_helper'            => ' ',
             'patient'                => 'Patient',
             'patient_helper'         => ' ',
+            'user'                   => 'User',
+            'user_helper'            => ' ',
         ],
     ],
     'expenseReport' => [

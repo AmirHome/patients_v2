@@ -38,6 +38,20 @@
                 <span class="help-block">{{ trans('cruds.expense.fields.patient_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="user_id">{{ trans('cruds.expense.fields.user') }}</label>
+                <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>
+                    @foreach($users as $id => $entry)
+                        <option value="{{ $id }}" {{ old('user_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('user'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('user') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.expense.fields.user_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="entry_date">{{ trans('cruds.expense.fields.entry_date') }}</label>
                 <input class="form-control date {{ $errors->has('entry_date') ? 'is-invalid' : '' }}" type="text" name="entry_date" id="entry_date" value="{{ old('entry_date') }}" required>
                 @if($errors->has('entry_date'))
