@@ -148,6 +148,22 @@ function deployment() {
   echo "Laravel development completed."
 }
 
+function coding() {
+
+    php artisan manipulate:codes
+}
+
+build
+
+if [ ! -z "$GIT" ]; then
+  git add .
+  git commit -m "$GIT"
+  git push
+else
+    git status
+fi
+
+# Depriceated
 insert_line_if_not_exists() {
   local file_path="$1"
   local line_to_check="$2"
@@ -172,35 +188,3 @@ insert_line_if_not_exists() {
     echo "$line_to_check inserted into $file_path"
   fi
 }
-
-function coding() {
-
-  ### Set Route
-  # LINE="Route::get('/counter', '\App\Livewire\Counter');"
-  # FILE=routes/web.php
-  # grep -qF -- "$LINE" "$FILE" || echo "$LINE" >>"$FILE"
-
-  # insert_line_if_not_exists "routes/web.php" "Route::get('/counter','\App\Livewire\Counter');" ""
-  # insert_line_if_not_exists "routes/web.php" "Route::get('/travel','\App\Livewire\Travel');" ""
-
-# FILE="app/Http/Kernel.php"
-# if ! grep -q "ManipulateCodes::class," "$FILE"; then
-
-#   sed -i '$s/}$/   \n protected $commands = [\
-#         \\App\\Console\\Commands\\ManipulateCodes::class,\
-#     ];\
-# }/' "$FILE"
-# fi
-
-    php artisan manipulate:codes
-}
-
-build
-
-if [ ! -z "$GIT" ]; then
-  git add .
-  git commit -m "$GIT"
-  git push
-else
-    git status
-fi

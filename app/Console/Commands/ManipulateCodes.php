@@ -26,12 +26,7 @@ class ManipulateCodes extends Command
      */
     public function handle()
     {
-        $composerConfig = json_decode(file_get_contents('composer.json'), true);
-        $composerConfig['autoload']['files'] = [
-            "app/Helpers/Init.php"
-        ];
-        $composerJson = json_encode($composerConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        file_put_contents('composer.json', $composerJson);
+        $this->initHelperComposer();
 
         $search = ['dtButtons.push(deleteButton)',
             '<a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
@@ -90,5 +85,13 @@ class ManipulateCodes extends Command
         } else {
             return $contents; // Return original contents if replace already exists
         }
+    }
+
+    protected function initHelperComposer()
+    {
+        $composer = 'composer.json';
+        $composerContents = json_decode(file_get_contents($composer), true);
+        $composerContents['autoload']['files'] = ['app/Helpers/Init.php'];
+        file_put_contents($composer, json_encode($composerContents, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 }

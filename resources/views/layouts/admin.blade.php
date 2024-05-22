@@ -227,7 +227,7 @@
     language: {
       url: languages['{{ app()->getLocale() }}']
     },
-    columnDefs: [{ visible: false, targets: 0 }],
+    columnDefs: [{ visible: false, targets: 0 }, { searchable: false, targets: -1 }],
 /*     columnDefs: [{
         orderable: false,
         className: 'select-checkbox',
