@@ -117,7 +117,12 @@ class Travel extends Component
     {
         abort_if(Gate::denies('travel_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('livewire.travel-wizard')->layout('components.layouts.app');
+        //resources/views/layouts/admin.blade.php
+        return view('livewire.travel-wizard')->layout('layouts.admin');
+
+        //resources/views/components/layouts/app.blade.php
+        // return view('livewire.travel-wizard')->layout('components.layouts.app');
+
     }
 
     public function __construct()
@@ -287,7 +292,7 @@ class Travel extends Component
         $this->reset();
         $this->currentStep = 1;
 
-        return redirect('travel')->with('success', 'Travel created successfully');
+        return redirect('admin/travel')->with('success', 'Travel created successfully');
 
         // return redirect()->route('travel', $data);
         // return redirect()->route('admin.travels.index', compact('data'));

@@ -173,6 +173,7 @@
 
                   </div>
                 @yield('content')
+                {{ $slot??'' }}
                 
                 </div>
 
