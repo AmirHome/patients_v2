@@ -93,16 +93,5 @@ class ManipulateCodes extends Command
         $composerContents = json_decode(file_get_contents($composer), true);
         $composerContents['autoload']['files'] = ['app/Helpers/Init.php'];
         file_put_contents($composer, json_encode($composerContents, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-
-
-        // $composer = base_path('composer.json');
-        // $composerContents = json_decode(file_get_contents($composer), true);
-        // $composerContents['autoload']['files'][] = 'app/Helpers/Helper.php';
-        // file_put_contents($composer, json_encode($composerContents, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-
-        // $composerConfig = json_decode(file_get_contents('composer.json'), true);
-        // $composerConfig['autoload']['files'] = [ "app/Helpers/Init.php" ];
-        // $composerJson = json_encode($composerConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        // file_put_contents('composer.json', $composerJson);
     }
 }
