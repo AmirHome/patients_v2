@@ -19,6 +19,9 @@ class FinanceCategorySeeder extends Seeder
         ExpenseCategory::create([
             'name' => 'Treatment',
         ]);
+        ExpenseCategory::create([
+            'name' => 'Commission',
+        ]);
 
         IncomeCategory::create(
             ['name' => 'Paid']
