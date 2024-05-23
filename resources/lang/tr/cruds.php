@@ -577,8 +577,6 @@ return [
             'id_helper'         => ' ',
             'title'             => 'Title',
             'title_helper'      => ' ',
-            'email'             => 'Email',
-            'email_helper'      => ' ',
             'phone'             => 'Phone',
             'phone_helper'      => ' ',
             'city'              => 'City',
@@ -589,6 +587,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'email'             => 'Email',
+            'email_helper'      => ' ',
         ],
     ],
     'ministry' => [

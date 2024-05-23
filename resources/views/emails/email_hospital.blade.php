@@ -6,4 +6,4 @@ Dönüşünüzü rica eder, iyi çalışmalar dileriz.
 CLINICS - International Patient Center
 
 Dosyalar mevcuttur linke tıklayarak indirebilirsiniz :
-{{$data['link']}}
+<a href="{{$data['link']}}">click me!</a>

@@ -22,6 +22,7 @@ class UpdateTranslatorRequest extends FormRequest
                 'required',
             ],
             'email' => [
+                'string',
                 'required',
             ],
             'phone' => [

@@ -22,6 +22,7 @@ class StoreTranslatorRequest extends FormRequest
                 'required',
             ],
             'email' => [
+                'string',
                 'required',
             ],
             'phone' => [

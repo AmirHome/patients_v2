@@ -277,36 +277,27 @@ class Travel extends Component
             
             Country::where('id', $this->countryId)->increment('code_inc');
 
-
-            dd($this->all());
             $data['link'] = url('share/hospital/'.makeShareCode($travel->id,'share_hospital'));
-            foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
-                $data['email'] = Hospital::find($hospitalId)->email;
-                //dd($hospitalId, $data['email']);
-                if ($data['email']) {
-                    //echo $data['link'];
-                    //dispatch(new EmailSendingJob('emails.email_hospital',$data));
+            //if (!empty($this->treatment_files)){
+                foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
+                    $data['email'] = TravelHospital::find($hospitalId)->email??null;
+                    if ($data['email']) {
+                        dispatch(new EmailSendingJob('emails.email_hospital',$data));
+                    }
                 }
-            }
-            $data['email'] = Setting::find(1)->email;
+            //}
+
+            $data['email'] = Setting::find(1)->email??null;
             if ($data['email']) {
-                $data['link'] = url('share/hospital/'.makeShareCode($$travel->id,'share_hospital'));
-
-                //dispatch(new EmailSendingJob('emails.email_translator',$data));
+                dispatch(new EmailSendingJob('emails.email_hospital',$data));
             }
 
-            $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])?->email;
+            $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])->email??null;
             if ($data['email']) {
                 $data['link'] = url('share/translator/'.makeShareCode($travelTreatmentActivity->id,'share_translator'));
-                echo($data['link']);
-                //dispatch(new EmailSendingJob('emails.email_translator',$data));
+                dispatch(new EmailSendingJob('emails.email_translator',$data));
             }
-
-            dd($data, $this->all());
-            
-
-            dispatch(new EmailSendingJob('emails.email_hospital',$data));
-            
+                        
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
