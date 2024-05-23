@@ -137,22 +137,32 @@ td {
 table.dataTable thead tr {
     padding: 0;
     margin: 0;
-    background-color: rgb(238, 240, 255);
+    background-color: rgb(244, 246, 248);
 }
 
 table.dataTable thead th {
-    font-weight: 500;
-    font-size: small;
-    color: #001909;
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(99, 115, 129);
     white-space: nowrap;
+    text-align: left;
+    font-family: "Public Sans", sans-serif;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(80, 80, 80, 0.01);
 }
-
+.table-hover tbody tr {
+    color: rgb(33, 43, 54);
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 500;
+}
 .table-hover tbody tr:hover {
-    color: #00137b;
+    background-color: rgb(244, 246, 248);
+    color: rgb(33, 43, 54);
 }
 
 td {
