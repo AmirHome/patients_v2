@@ -12,6 +12,7 @@ mkdir -p deploy/transfer/config
 mkdir -p deploy/transfer/app/Console/Commands
 mkdir -p deploy/transfer/resources/views/layouts
 mkdir -p deploy/transfer/resources/views/admin
+mkdir -p deploy/transfer/resources/views/partials
 mkdir -p deploy/transfer/app/Providers
 mkdir -p deploy/transfer/public/css
 mkdir -p deploy/transfer/app/Http/Requests
@@ -167,6 +168,7 @@ cp config/telescope.php deploy/transfer/config
 
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
 cp resources/views/layouts/app.blade.php deploy/transfer/resources/views/layouts
+cp resources/views/partials/datatablesActions.blade.php deploy/transfer/resources/views/partials
 
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
 
