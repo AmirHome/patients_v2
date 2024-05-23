@@ -39,8 +39,8 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="campaign_org_id">{{ trans('cruds.patient.fields.campaign_org') }}</label>
-                <select class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}" name="campaign_org_id" id="campaign_org_id" required>
+                <label for="campaign_org_id">{{ trans('cruds.patient.fields.campaign_org') }}</label>
+                <select class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}" name="campaign_org_id" id="campaign_org_id">
                     @foreach($campaign_orgs as $id => $entry)
                         <option value="{{ $id }}" {{ (old('campaign_org_id') ? old('campaign_org_id') : $patient->campaign_org->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach

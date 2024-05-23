@@ -46,6 +46,10 @@
 .c-sidebar .c-sidebar-nav-link {
     color: rgb(99, 115, 129);
 }
+.c-sidebar .c-sidebar-nav-dropdown-toggle::after {
+    background-image: none;
+
+}
 
 .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
 .c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,

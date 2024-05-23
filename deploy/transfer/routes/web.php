@@ -245,7 +245,7 @@ Route::get('staffView/translator/{id}/{code}', function($id, $code){
     $checkSecurityCode = makeShareCode($id, '');
     
     checkShareCode($checkSecurityCode,'');
-    $checkSecurityCode = makeShareCode($id,'share_hospital');
+    $checkSecurityCode = makeShareCode($id,'share_translator');
     
     return redirect()->route('share.translator', ['code' => $checkSecurityCode]);
 });

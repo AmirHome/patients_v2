@@ -25,10 +25,6 @@ class StorePatientRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'campaign_org_id' => [
-                'required',
-                'integer',
-            ],
             'city_id' => [
                 'required',
                 'integer',
