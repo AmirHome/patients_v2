@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Admin\Override'], function () {
         Route::get('travel','\App\Livewire\Travel');
 
         // Override
-        // Route::get('travels','TravelController@index')->name('travels.index');
+        Route::get('travels','TravelController@index')->name('travels.index');
 
 
     });
