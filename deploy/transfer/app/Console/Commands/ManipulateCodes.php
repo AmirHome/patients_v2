@@ -28,6 +28,8 @@ class ManipulateCodes extends Command
     {
         $this->initHelperComposer();
 
+        $this->appendToContent('routes/web.php', "include('web.extend.php');");
+        
         $search = ['dtButtons.push(deleteButton)',
             '<a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
             '<div class="tab-pane" role="tabpanel" id="travel_travel_treatment_activities">',
@@ -93,5 +95,16 @@ class ManipulateCodes extends Command
         $composerContents = json_decode(file_get_contents($composer), true);
         $composerContents['autoload']['files'] = ['app/Helpers/Init.php'];
         file_put_contents($composer, json_encode($composerContents, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    }
+
+    protected function appendToContent($filePath, $content)
+    {
+        if (file_exists($filePath)) {
+            $contents = file_get_contents($filePath);
+        
+            if (strpos($contents, $content) === false) {
+                file_put_contents($filePath, "\n$content", FILE_APPEND);
+            }
+        }
     }
 }

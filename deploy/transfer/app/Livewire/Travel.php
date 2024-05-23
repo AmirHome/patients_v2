@@ -13,8 +13,10 @@ use App\Models\Department;
 use App\Models\Hospital;
 use App\Models\Patient;
 use App\Models\Province;
+use App\Models\Setting;
 use App\Models\Translator;
 use App\Models\Travel as ModelsTravel;
+use App\Models\TravelHospital;
 use App\Models\TravelStatus;
 use App\Models\TravelTreatmentActivity;
 use Illuminate\Support\Facades\DB;
@@ -158,7 +160,7 @@ class Travel extends Component
 
         $this->status_id = $this->last_status_id = null;
 
-        $this->notify_hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
+        $this->notify_hospitals = TravelHospital::get(['id', 'title'])->pluck('title', 'id');
         $this->notifyHospitalIds = [];
         $this->translators = Translator::get(['id', 'title'])->pluck('title', 'id');
         $this->translatorId = null;
@@ -207,7 +209,6 @@ class Travel extends Component
 
     public function validateData()
     {
-        $this->store();
         if ($this->currentStep == 1) {
             
             $rules = (new StorePatientRequest())->rules();
@@ -215,6 +216,7 @@ class Travel extends Component
                 'reffering_type' => 'required',
                 'reffering' => in_array($this->reffering_type, ['Phone', 'Other']) ? 'nullable' : 'required',
             ]);
+
             $data = $this->validate($rules);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
@@ -255,11 +257,6 @@ class Travel extends Component
 
         $this->resetErrorBag();
 
-        $data = ['email' => 'test@test.com', 'name' => 'Test'];
-        //$view = view('livewire.travel-success', compact('data'));
-
-        dispatch(new EmailSendingJob('emails.email_translator',$data));
-
         DB::beginTransaction();
         try {
             $this->patient_id = Patient::create($this->wizardData['Patient'])->id;
@@ -280,6 +277,36 @@ class Travel extends Component
             
             Country::where('id', $this->countryId)->increment('code_inc');
 
+
+            dd($this->all());
+            $data['link'] = url('share/hospital/'.makeShareCode($travel->id,'share_hospital'));
+            foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
+                $data['email'] = Hospital::find($hospitalId)->email;
+                //dd($hospitalId, $data['email']);
+                if ($data['email']) {
+                    //echo $data['link'];
+                    //dispatch(new EmailSendingJob('emails.email_hospital',$data));
+                }
+            }
+            $data['email'] = Setting::find(1)->email;
+            if ($data['email']) {
+                $data['link'] = url('share/hospital/'.makeShareCode($$travel->id,'share_hospital'));
+
+                //dispatch(new EmailSendingJob('emails.email_translator',$data));
+            }
+
+            $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])?->email;
+            if ($data['email']) {
+                $data['link'] = url('share/translator/'.makeShareCode($travelTreatmentActivity->id,'share_translator'));
+                echo($data['link']);
+                //dispatch(new EmailSendingJob('emails.email_translator',$data));
+            }
+
+            dd($data, $this->all());
+            
+
+            dispatch(new EmailSendingJob('emails.email_hospital',$data));
+            
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

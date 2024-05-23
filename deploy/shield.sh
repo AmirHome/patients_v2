@@ -26,7 +26,7 @@ cp .gitignore deploy/transfer
 cp app/Console/Commands/ManipulateCodes.php deploy/transfer/app/Console/Commands
 
 # Core: Change Quick Admin Panel
-cp routes/web.php deploy/transfer/routes
+cp routes/web.extend.php deploy/transfer/routes
 cp database/seeders/PermissionRoleTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/RolesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/DatabaseSeeder.php deploy/transfer/database/seeders
@@ -87,6 +87,7 @@ cp database/seeders/CampaignsTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/CountriesTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ProvinceTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelStatusTableSeeder.php deploy/transfer/database/seeders
+cp database/seeders/TravelHospitalTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TranslatorTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/MinistryTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelGroupTableSeeder.php deploy/transfer/database/seeders

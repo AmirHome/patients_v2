@@ -27,10 +27,11 @@ class DatabaseSeeder extends Seeder
             TaskStatusTableSeeder::class,
 
             TravelStatusTableSeeder::class,
+            TravelHospitalTableSeeder::class,
+            TravelGroupTableSeeder::class,
             CampaignsTableSeeder::class,
             TranslatorTableSeeder::class,
             MinistryTableSeeder::class,
-            TravelGroupTableSeeder::class,
             SettingTableSeeder::class,
             
             DepartmentTableSeeder::class,

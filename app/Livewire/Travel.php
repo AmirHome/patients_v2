@@ -16,6 +16,7 @@ use App\Models\Province;
 use App\Models\Setting;
 use App\Models\Translator;
 use App\Models\Travel as ModelsTravel;
+use App\Models\TravelHospital;
 use App\Models\TravelStatus;
 use App\Models\TravelTreatmentActivity;
 use Illuminate\Support\Facades\DB;
@@ -159,7 +160,7 @@ class Travel extends Component
 
         $this->status_id = $this->last_status_id = null;
 
-        $this->notify_hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
+        $this->notify_hospitals = TravelHospital::get(['id', 'title'])->pluck('title', 'id');
         $this->notifyHospitalIds = [];
         $this->translators = Translator::get(['id', 'title'])->pluck('title', 'id');
         $this->translatorId = null;
@@ -277,6 +278,7 @@ class Travel extends Component
             Country::where('id', $this->countryId)->increment('code_inc');
 
 
+            dd($this->all());
             $data['link'] = url('share/hospital/'.makeShareCode($travel->id,'share_hospital'));
             foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
                 $data['email'] = Hospital::find($hospitalId)->email;
@@ -286,7 +288,6 @@ class Travel extends Component
                     //dispatch(new EmailSendingJob('emails.email_hospital',$data));
                 }
             }
-            dd($this->all(), $this->wizardData['Travel']['notifyHospitalIds']);
             $data['email'] = Setting::find(1)->email;
             if ($data['email']) {
                 $data['link'] = url('share/hospital/'.makeShareCode($$travel->id,'share_hospital'));

@@ -15,8 +15,8 @@ for args in "$@"; do
     MIGRATESEED=true
     shift
     ;;
-  -cc)
-    CPYCOM=true
+  -ncp)
+    NOTCPDEPLOY=false
     shift
     ;;
   -at)
@@ -32,6 +32,7 @@ for args in "$@"; do
     ;;
   esac
 done
+
 
 # Function to extract archive
 function build() {
@@ -71,9 +72,12 @@ function clean_root_unzip() {
 
 # Function to develop laravel
 function deployment() {
-  cp -r deploy/transfer/* .
-  cp deploy/transfer/.gitignore .gitignore
+  
   cp deploy/.env.local .env
+  if [ ! $NOTCPDEPLOY ]; then
+    cp -r deploy/transfer/* .
+    cp deploy/transfer/.gitignore .gitignore
+  fi
 
 
   ### Install Chatify
