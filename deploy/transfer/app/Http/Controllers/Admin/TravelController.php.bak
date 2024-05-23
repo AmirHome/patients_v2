@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Override;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\TravelController as ParentController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\DataTablesFilterTrait;
 use App\Http\Requests\MassDestroyTravelRequest;
 use App\Http\Requests\StoreTravelRequest;
@@ -16,17 +16,17 @@ use App\Models\TravelStatus;
 use App\Models\Country;
 use App\Models\CampaignChannel;
 use App\Models\Translator;
-use App\Models\TravelTreatmentActivity;
+
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 
-class TravelController extends ParentController
+class TravelController extends Controller
 {
     use DataTablesFilterTrait;
-    
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -140,42 +140,92 @@ class TravelController extends ParentController
         return view('admin.travels.index', $data);
     }
 
-    public function shares($code)
+    public function create()
     {
-  
-        $travel = checkShareCode($code, 'share_hospital');
-        
-        $travel = Travel::find($travel)
-                    ->load('patient', 'group', 'hospital', 'department', 'last_status',
-                            'notify_hospitals',
-                            'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
-                    )
-                    ;
-        return view('admin.travels.share', compact('travel'));
+        abort_if(Gate::denies('travel_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $groups = TravelGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $hospitals = Hospital::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $notify_hospitals = Hospital::pluck('name', 'id');
+
+        return view('admin.travels.create', compact('departments', 'groups', 'hospitals', 'last_statuses', 'notify_hospitals', 'patients'));
     }
 
-    public function share($code)
+    public function store(StoreTravelRequest $request)
     {
-  
-        $id = checkShareCode($code, 'share_translator');
-        
-        $travel = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status',
-        'travelTravelTreatmentActivities'=>function($query) use($id){
-            $query->where('id', $id);
-        }])
-        ->whereHas('travelTravelTreatmentActivities', function ($query) use ($id){
-            $query->where('id', $id);
-        })
-        // ->load('patient', 'group', 'hospital', 'department', 'last_status',
-        //         'notify_hospitals',
-        //         'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
-        // )
-        ->first();
-        ;
-        //dd( $code , $id, $data, $travel);
+        $travel = Travel::create($request->all());
+        $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
 
-        return view('admin.travels.share', compact('travel'));
+        return redirect()->route('admin.travels.index');
     }
 
+    public function edit(Travel $travel)
+    {
+        abort_if(Gate::denies('travel_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $groups = TravelGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $hospitals = Hospital::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $notify_hospitals = Hospital::pluck('name', 'id');
+
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals');
+
+        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses', 'notify_hospitals', 'patients', 'travel'));
+    }
+
+    public function update(UpdateTravelRequest $request, Travel $travel)
+    {
+        $travel->update($request->all());
+        $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
+
+        return redirect()->route('admin.travels.index');
+    }
+
+    public function show(Travel $travel)
+    {
+        abort_if(Gate::denies('travel_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status',
+         'notify_hospitals', 'travelActivities.status', 'travelActivities.user',
+         'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
+          
+        );
+
+        return view('admin.travels.show', compact('travel'));
+    }
+
+    public function destroy(Travel $travel)
+    {
+        abort_if(Gate::denies('travel_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $travel->delete();
+
+        return back();
+    }
+
+    public function massDestroy(MassDestroyTravelRequest $request)
+    {
+        $travels = Travel::find(request('ids'));
+
+        foreach ($travels as $travel) {
+            $travel->delete();
+        }
+
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }
