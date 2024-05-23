@@ -1025,5 +1025,25 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+    'travelHospital' => [
+        'title'          => 'Travel Hospital',
+        'title_singular' => 'Travel Hospital',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'title'             => 'Title',
+            'title_helper'      => ' ',
+            'email'             => 'Email',
+            'email_helper'      => 'comma separator Example: info@gmail.com, amir@gmail.com',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+            'team'              => 'Team',
+            'team_helper'       => ' ',
+        ],
+    ],
 
 ];

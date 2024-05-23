@@ -103,7 +103,7 @@ class Travel extends Model
 
     public function notify_hospitals()
     {
-        return $this->belongsToMany(Hospital::class);
+        return $this->belongsToMany(TravelHospital::class);
     }
 
     public function getHospitalizationDateAttribute($value)

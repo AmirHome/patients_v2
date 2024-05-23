@@ -109,7 +109,7 @@
                         </th>
                         <td>
                             @foreach($travel->notify_hospitals as $key => $notify_hospitals)
-                                <span class="label label-info">{{ $notify_hospitals->name }}</span>
+                                <span class="label label-info">{{ $notify_hospitals->title }}</span>
                             @endforeach
                         </td>
                     </tr>

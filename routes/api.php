@@ -72,4 +72,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Hotel
     Route::apiResource('hotels', 'HotelApiController');
+
+    // Travel Hospital
+    Route::apiResource('travel-hospitals', 'TravelHospitalApiController');
 });

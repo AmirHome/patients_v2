@@ -864,6 +864,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 214,
+                'title' => 'travel_hospital_create',
+            ],
+            [
+                'id'    => 215,
+                'title' => 'travel_hospital_edit',
+            ],
+            [
+                'id'    => 216,
+                'title' => 'travel_hospital_show',
+            ],
+            [
+                'id'    => 217,
+                'title' => 'travel_hospital_delete',
+            ],
+            [
+                'id'    => 218,
+                'title' => 'travel_hospital_access',
+            ],
+            [
+                'id'    => 219,
                 'title' => 'profile_password_edit',
             ],
         ];

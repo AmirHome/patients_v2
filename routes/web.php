@@ -13,7 +13,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
-
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -70,7 +69,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('crm-documents/destroy', 'CrmDocumentController@massDestroy')->name('crm-documents.massDestroy');
     Route::post('crm-documents/media', 'CrmDocumentController@storeMedia')->name('crm-documents.storeMedia');
     Route::post('crm-documents/ckmedia', 'CrmDocumentController@storeCKEditorImages')->name('crm-documents.storeCKEditorImages');
-    Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
     Route::resource('crm-documents', 'CrmDocumentController');
 
     // Faq Category
@@ -203,6 +201,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('hotels/destroy', 'HotelController@massDestroy')->name('hotels.massDestroy');
     Route::resource('hotels', 'HotelController');
 
+    // Travel Hospital
+    Route::delete('travel-hospitals/destroy', 'TravelHospitalController@massDestroy')->name('travel-hospitals.massDestroy');
+    Route::resource('travel-hospitals', 'TravelHospitalController');
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');
@@ -217,46 +219,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
     }
 });
 
-
-
-Route::group(['namespace' => 'Admin\Override'], function () {
-
-    //https://patientsv2.test/share/hospital/cf99236573b09963694717bfd03a3645c73b
-    Route::get('share/hospital/{code}','TravelController@shares')->name('share.hospital');
-    //https://patientsv2.test/share/translator/b97ad6974329f7749667d5060a40a50ca1ed
-    Route::get('share/translator/{code}','TravelController@share')->name('share.translator');
-
-
-    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
-
-        // Livewire
-        Route::get('counter','\App\Livewire\Counter');
-        Route::get('travel','\App\Livewire\Travel');
-
-        // Override
-        // Route::get('travels','TravelController@index')->name('travels.index');
-
-
-    });
-});
-
-#Support old version staffView/translator/9667/5d97f4dd7c44b29096675c799db681b80ce0
-Route::get('staffView/translator/{id}/{code}', function($id, $code){
-    $checkSecurityCode = makeShareCode($id, '');
-    
-    checkShareCode($checkSecurityCode,'');
-    $checkSecurityCode = makeShareCode($id,'share_hospital');
-    
-    return redirect()->route('share.translator', ['code' => $checkSecurityCode]);
-});
-
-#Support old version staffView/hospital/6947/a424ded436368e3f9f10da14c23acc85
-Route::get('staffView/hospital/{id}/{code}', function($id, $code){
-
-    $checkSecurityCode = makeShareCode($id, '');
-    checkShareCode($checkSecurityCode,'');
-
-    $checkSecurityCode = makeShareCode($id,'share_hospital');
-
-    return redirect()->route('share.hospital', ['code' => $checkSecurityCode]);
-});
+include('web.extend.php');

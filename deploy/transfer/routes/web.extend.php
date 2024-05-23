@@ -1,4 +1,10 @@
 <?php
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+    // crm_document
+    Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
+});
+
 Route::group(['namespace' => 'Admin\Override'], function () {
 
     //https://patientsv2.test/share/hospital/cf99236573b09963694717bfd03a3645c73b
