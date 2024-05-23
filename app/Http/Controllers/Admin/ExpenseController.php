@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyExpenseRequest;
 use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Requests\UpdateExpenseRequest;
+use App\Models\Department;
 use App\Models\Expense;
 use App\Models\ExpenseCategory;
 use App\Models\Patient;
@@ -22,7 +23,7 @@ class ExpenseController extends Controller
         abort_if(Gate::denies('expense_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Expense::with(['expense_category', 'patient', 'user', 'team'])->select(sprintf('%s.*', (new Expense)->table));
+            $query = Expense::with(['expense_category', 'patient', 'user', 'departmant', 'team'])->select(sprintf('%s.*', (new Expense)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -57,15 +58,15 @@ class ExpenseController extends Controller
             $table->editColumn('user.email', function ($row) {
                 return $row->user ? (is_string($row->user) ? $row->user : $row->user->email) : '';
             });
+            $table->addColumn('departmant_name', function ($row) {
+                return $row->departmant ? $row->departmant->name : '';
+            });
 
             $table->editColumn('amount', function ($row) {
                 return $row->amount ? $row->amount : '';
             });
-            $table->editColumn('branch', function ($row) {
-                return $row->branch ? Expense::BRANCH_SELECT[$row->branch] : '';
-            });
 
-            $table->rawColumns(['actions', 'placeholder', 'expense_category', 'user']);
+            $table->rawColumns(['actions', 'placeholder', 'expense_category', 'user', 'departmant']);
 
             return $table->make(true);
         }
@@ -83,7 +84,9 @@ class ExpenseController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.expenses.create', compact('expense_categories', 'patients', 'users'));
+        $departmants = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.expenses.create', compact('departmants', 'expense_categories', 'patients', 'users'));
     }
 
     public function store(StoreExpenseRequest $request)
@@ -103,9 +106,11 @@ class ExpenseController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $expense->load('expense_category', 'patient', 'user', 'team');
+        $departmants = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.expenses.edit', compact('expense', 'expense_categories', 'patients', 'users'));
+        $expense->load('expense_category', 'patient', 'user', 'departmant', 'team');
+
+        return view('admin.expenses.edit', compact('departmants', 'expense', 'expense_categories', 'patients', 'users'));
     }
 
     public function update(UpdateExpenseRequest $request, Expense $expense)
@@ -119,7 +124,7 @@ class ExpenseController extends Controller
     {
         abort_if(Gate::denies('expense_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $expense->load('expense_category', 'patient', 'user', 'team');
+        $expense->load('expense_category', 'patient', 'user', 'departmant', 'team');
 
         return view('admin.expenses.show', compact('expense'));
     }

@@ -34,13 +34,13 @@
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
+                            {{ trans('cruds.expense.fields.departmant') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.expense.fields.entry_date') }}
                         </th>
                         <th>
                             {{ trans('cruds.expense.fields.amount') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.expense.fields.branch') }}
                         </th>
                         <th>
                             &nbsp;
@@ -66,13 +66,13 @@
                                 {{ $expense->user->email ?? '' }}
                             </td>
                             <td>
+                                {{ $expense->departmant->name ?? '' }}
+                            </td>
+                            <td>
                                 {{ $expense->entry_date ?? '' }}
                             </td>
                             <td>
                                 {{ $expense->amount ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Expense::BRANCH_SELECT[$expense->branch] ?? '' }}
                             </td>
                             <td>
                                 @can('expense_show')
@@ -142,8 +142,8 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    order: [[ 6, 'desc' ]],
+    pageLength: 25,
   });
   let table = $('.datatable-userExpenses:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

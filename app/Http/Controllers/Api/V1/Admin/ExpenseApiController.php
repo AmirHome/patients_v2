@@ -17,7 +17,7 @@ class ExpenseApiController extends Controller
     {
         abort_if(Gate::denies('expense_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExpenseResource(Expense::with(['expense_category', 'patient', 'user', 'team'])->get());
+        return new ExpenseResource(Expense::with(['expense_category', 'patient', 'user', 'departmant', 'team'])->get());
     }
 
     public function store(StoreExpenseRequest $request)
@@ -33,7 +33,7 @@ class ExpenseApiController extends Controller
     {
         abort_if(Gate::denies('expense_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExpenseResource($expense->load(['expense_category', 'patient', 'user', 'team']));
+        return new ExpenseResource($expense->load(['expense_category', 'patient', 'user', 'departmant', 'team']));
     }
 
     public function update(UpdateExpenseRequest $request, Expense $expense)

@@ -16,11 +16,6 @@ class Expense extends Model
 
     public $table = 'expenses';
 
-    public const BRANCH_SELECT = [
-        '1' => 'Branch01',
-        '2' => 'Branch02',
-    ];
-
     protected $dates = [
         'entry_date',
         'created_at',
@@ -32,9 +27,9 @@ class Expense extends Model
         'expense_category_id',
         'patient_id',
         'user_id',
+        'departmant_id',
         'entry_date',
         'amount',
-        'branch',
         'description',
         'created_at',
         'updated_at',
@@ -60,6 +55,11 @@ class Expense extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function departmant()
+    {
+        return $this->belongsTo(Department::class, 'departmant_id');
     }
 
     public function getEntryDateAttribute($value)

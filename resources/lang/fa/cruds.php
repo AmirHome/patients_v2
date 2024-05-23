@@ -479,10 +479,10 @@ return [
             'team_helper'             => ' ',
             'patient'                 => 'Patient',
             'patient_helper'          => ' ',
-            'branch'                  => 'Branch',
-            'branch_helper'           => ' ',
             'user'                    => 'User',
             'user_helper'             => ' ',
+            'departmant'              => 'Departmant',
+            'departmant_helper'       => ' ',
         ],
     ],
     'income' => [
