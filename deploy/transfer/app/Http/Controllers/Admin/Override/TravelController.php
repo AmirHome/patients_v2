@@ -44,7 +44,7 @@ class TravelController extends ParentController
     public function share($code)
     {
   
-        $id = checkShareCode($code, 'share_hospital');
+        $id = checkShareCode($code, 'share_translator');
         
         $travel = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status',
         'travelTravelTreatmentActivities'=>function($query) use($id){

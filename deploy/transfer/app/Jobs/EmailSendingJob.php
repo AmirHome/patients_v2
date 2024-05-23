@@ -32,9 +32,12 @@ class EmailSendingJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $email = new EmailSendingTemplate( $this->view, $this->data);
+        if (! isset($this->data['email']) || empty($this->data['email']) ) {
+            return;
+        }
 
-        Mail::to($this->data['email'])->send($email);
+        $template = new EmailSendingTemplate( $this->view, $this->data);
+        Mail::to($this->data['email'])->send($template);
     }
 
     // public static function notifyTranslator($data)
