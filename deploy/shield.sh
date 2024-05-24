@@ -163,6 +163,7 @@ cp config/panel.php deploy/transfer/config
 cp config/database.php deploy/transfer/config
 cp config/media-library.php deploy/transfer/config
 cp config/telescope.php deploy/transfer/config
+cp app/Providers/TelescopeServiceProvider.php deploy/transfer/app/Providers
 
 
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
 
@@ -302,6 +303,7 @@ class Travel extends Component
         } catch (\Exception $e) {
             DB::rollBack();
             // TODO: Show and log error
+            Log::error($e->getMessage());
             return $e->getMessage();
         }
 
