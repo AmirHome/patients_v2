@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use App\Handlers\LazyLoadingViolationHandler;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,7 +40,13 @@ class AppServiceProvider extends ServiceProvider
 
         //if env is local, then disable lazy loading
         $lock = $this->app->environment() === 'local';
-        //Model::preventLazyLoading($lock && true);
+        Model::preventLazyLoading($lock);
+        //Model::shouldBeStrict($lock);
+        
+        Model::handleLazyLoadingViolationUsing(function ($model, $relation) {
+            $handler = new LazyLoadingViolationHandler();
+            $handler->handle($model, $relation);
+        });
         
     }
 }

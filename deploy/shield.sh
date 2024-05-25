@@ -2,7 +2,6 @@
 
 # Laravel DB, Seeder, Controller
 mkdir -p deploy/transfer/app/Models
-# mkdir -p deploy/transfer/app/Http/Controllers/Admin
 mkdir -p deploy/transfer/app/Http/Controllers/Admin/Override
 mkdir -p deploy/transfer/app/Http/Controllers/Traits
 mkdir -p deploy/transfer/database/seeders
@@ -21,6 +20,10 @@ mkdir -p deploy/transfer/app/Jobs
 mkdir -p deploy/transfer/app/Mail
 mkdir -p deploy/transfer/resources/views/emails
 
+cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
+cp -r app/Interfaces deploy/transfer/app
+cp -r app/Helpers deploy/transfer/app
+cp -r app/Handlers deploy/transfer/app
 
 cp database/patients_db_old.sql deploy/transfer/database
 cp .gitignore deploy/transfer
@@ -46,7 +49,6 @@ cp resources/views/admin/travelStatuses/index.blade.php deploy/transfer/resource
 cp resources/views/admin/travelStatuses/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travelStatuses/relationships
 # travels
 mkdir -p deploy/transfer/resources/views/admin/travels/relationships
-cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
 cp resources/views/admin/travels/index.blade.php deploy/transfer/resources/views/admin/travels
 cp resources/views/admin/travels/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/travels/relationships
 cp resources/views/admin/travels/relationships/travelActivities.blade.php deploy/transfer/resources/views/admin/travels/relationships
@@ -155,9 +157,6 @@ cp database/seeders/ChatFrontCmsSeeder.php deploy/transfer/database/seeders
 
 cp app/Models/ChatSetting.php deploy/transfer/app/Models
 cp config/chat.php deploy/transfer/config
-
-cp -r app/Interfaces deploy/transfer/app
-cp -r app/Helpers deploy/transfer/app
 
 cp config/panel.php deploy/transfer/config
 cp config/database.php deploy/transfer/config

@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailSendingTemplate;
+use Illuminate\Support\Facades\Log;
 
 class EmailSendingJob implements ShouldQueue
 {
@@ -32,12 +33,14 @@ class EmailSendingJob implements ShouldQueue
      */
     public function handle(): void
     {
-        if (! isset($this->data['email']) || empty($this->data['email']) ) {
-            return;
-        }
+        if ( isset($this->data['email']) &&( ! empty($this->data['email'])) ) {
+            $this->data['email'] = array_map('trim', explode(',', $this->data['email']));
 
-        $template = new EmailSendingTemplate( $this->view, $this->data);
-        Mail::to($this->data['email'])->send($template);
+            $template = new EmailSendingTemplate( $this->view, $this->data);
+            Mail::to($this->data['email'])->send($template);
+        }
+        Log::info('Notify translator');
+
     }
 
     // public static function notifyTranslator($data)
