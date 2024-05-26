@@ -28,6 +28,12 @@
                             {{ trans('cruds.expense.fields.expense_category') }}
                         </th>
                         <th>
+                            {{ trans('cruds.expense.fields.patient') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.patient.fields.name') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.expense.fields.user') }}
                         </th>
                         <th>
@@ -58,6 +64,12 @@
                             </td>
                             <td>
                                 {{ $expense->expense_category->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->patient->code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $expense->patient->name ?? '' }}
                             </td>
                             <td>
                                 {{ $expense->user->name ?? '' }}
@@ -142,7 +154,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 6, 'desc' ]],
+    order: [[ 8, 'desc' ]],
     pageLength: 25,
   });
   let table = $('.datatable-patientExpenses:not(.ajaxTable)').DataTable({ buttons: dtButtons })

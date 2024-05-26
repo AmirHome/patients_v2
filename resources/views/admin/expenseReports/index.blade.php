@@ -11,7 +11,7 @@
                     <label class="required" for="patient_id">{{ trans('cruds.expense.fields.patient') }}</label>
                     <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id" required>
                         @foreach($patients as $id => $entry)
-                            <option value="{{ $id }}" {{ old('patient_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            <option value="{{ $id }}" {{ $patientId == $id ? 'selected' : '' }}>{{ $entry }}</option>
                         @endforeach
                     </select>
                 </div>

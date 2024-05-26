@@ -15,19 +15,19 @@ class ExpenseReportController extends ParentController
 {
     public function index()
     {
-       
-        $patients = Patient::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $patients = Patient::pluck('code', 'id');
 
+        $y = request()->y;
+        $m = request()->m;
         $from = Carbon::parse(sprintf(
             '%s-%s-01',
-            request()->y ?? Carbon::now()->year,
-            request()->m ?? Carbon::now()->month
+            $y ?? Carbon::now()->year,
+            $m ?? Carbon::now()->month
         ));
         $to      = clone $from;
         $to->day = $to->daysInMonth;
 
-        $patientId = request()->patient_id;
-
+        $patientId = request()->patient_id??$patients->first();
 
         $expenses = Expense::with('expense_category')
             ->whereBetween('entry_date', [$from, $to])
@@ -80,6 +80,8 @@ class ExpenseReportController extends ParentController
             'incomesTotal',
             'profit',
             'patients',
+            'patientId',
+            'y','m'
         ));
     }
 

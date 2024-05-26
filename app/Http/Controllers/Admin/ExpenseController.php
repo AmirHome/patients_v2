@@ -51,6 +51,13 @@ class ExpenseController extends Controller
                 return $row->expense_category ? $row->expense_category->name : '';
             });
 
+            $table->addColumn('patient_code', function ($row) {
+                return $row->patient ? $row->patient->code : '';
+            });
+
+            $table->editColumn('patient.name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->name) : '';
+            });
             $table->addColumn('user_name', function ($row) {
                 return $row->user ? $row->user->name : '';
             });
@@ -66,7 +73,7 @@ class ExpenseController extends Controller
                 return $row->amount ? $row->amount : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'expense_category', 'user', 'departmant']);
+            $table->rawColumns(['actions', 'placeholder', 'expense_category', 'patient', 'user', 'departmant']);
 
             return $table->make(true);
         }

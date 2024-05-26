@@ -28,6 +28,12 @@
                         {{ trans('cruds.expense.fields.expense_category') }}
                     </th>
                     <th>
+                        {{ trans('cruds.expense.fields.patient') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.patient.fields.name') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.expense.fields.user') }}
                     </th>
                     <th>
@@ -100,6 +106,8 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'expense_category_name', name: 'expense_category.name' },
+{ data: 'patient_code', name: 'patient.code' },
+{ data: 'patient.name', name: 'patient.name' },
 { data: 'user_name', name: 'user.name' },
 { data: 'user.email', name: 'user.email' },
 { data: 'departmant_name', name: 'departmant.name' },
@@ -108,7 +116,7 @@
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 6, 'desc' ]],
+    order: [[ 8, 'desc' ]],
     pageLength: 25,
   };
   let table = $('.datatable-Expense').DataTable(dtOverrideGlobals);

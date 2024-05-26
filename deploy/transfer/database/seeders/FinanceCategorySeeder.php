@@ -14,6 +14,7 @@ class FinanceCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * php artisan db:seed --class=FinanceCategorySeeder
      */
     public function run(): void
     {
@@ -41,28 +42,31 @@ class FinanceCategorySeeder extends Seeder
         ];
         IncomeCategory::insertOrIgnore($data);
 
+        Expense::truncate();
+        Income::truncate();
         if (env('APP_ENV') === 'local') {
-            $numberOfExpenses = 500;
+            $numberOfExpenses = 50;
 
-            // dd( Faker::create()->dateTime('now')->format('Y-m-d') );
             // Generate fake expenses
             for ($i = 0; $i < $numberOfExpenses; $i++) {
+                $catId = rand(1, 2);
+
                 Expense::create([
                     'user_id' => 77, // Admin user
                     'patient_id' => Patient::inRandomOrder()->first()->id,
-                    'expense_category_id' => ExpenseCategory::inRandomOrder()->first()->id,
+                    'expense_category_id' => $catId,
                     'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
-                    'amount' => Faker::create()->numberBetween(1000, 1000000),
+                    'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
                     'description' => Faker::create()->sentence(),
                 ]);
 
-
+                $catId = rand(1, 2);
                 Income::create([
                     'user_id' => 77, // Admin user
                     'patient_id' => Patient::inRandomOrder()->first()->id,
-                    'income_category_id' => IncomeCategory::inRandomOrder()->first()->id,
+                    'income_category_id' => $catId,
                     'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
-                    'amount' => Faker::create()->numberBetween(1000, 1000000),
+                    'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
                     'description' => Faker::create()->sentence(),
                 ]);
             }
