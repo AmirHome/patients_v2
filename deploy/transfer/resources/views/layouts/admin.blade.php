@@ -42,20 +42,6 @@
             </button>
 
             <ul class="c-header-nav ml-auto">
-              @can('viewPulse')
-              <li>
-                <a class="c-header-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
-                  <i class="fa fa-desktop" aria-hidden="true"></i>
-                </a>
-              </li>
-              @endcan
-              @can('viewTelescope')
-              <li>
-                <a class="c-header-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
-                  <i class="fa fa-bug" aria-hidden="true"></i>
-                </a>
-              </li>                
-              @endcan
 
                 @if(count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
@@ -105,7 +91,32 @@
                       <i class="fa fa-comments" aria-hidden="true"> </i>
                     </a>
                 </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link avatar-name dropdown-toggle" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
+                     aria-haspopup="true" aria-expanded="false">
+                      <span class="profile-name">{{ (htmlspecialchars_decode(\Auth::user()->name))??'' }}</span>
+                      <img class="img-avatar rounded-circle" src="{{\Auth::user()->picture->url}}" style="height: 40px;" loading="lazy">
+                  </a>
 
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <span class="dropdown-header">{{\Auth::user()->email}}</span>
+                      <div class="dropdown-divider"></div>
+                      @can('viewPulse')
+                        <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
+                          <i class="fa fa-desktop" aria-hidden="true"></i> Pluse
+                        </a>
+                      @endcan
+                      @can('viewTelescope')
+                        <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
+                          <i class="fa fa-bug" aria-hidden="true"></i> Telescope
+                        </a>
+                      @endcan
+                      <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                        <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt"></i>
+                        {{ trans('global.logout') }}
+                      </a>
+                    </div>
+              </li>
 
             </ul>
         </header>
