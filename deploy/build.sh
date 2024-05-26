@@ -111,9 +111,13 @@ function deployment() {
   #php artisan migrate
 
   ### Install Horizon
-  composer require laravel/horizon
-  php artisan horizon:install
+  # composer require laravel/horizon
+  # php artisan horizon:install
 
+  ### Install Debugbar
+  composer require barryvdh/laravel-debugbar --dev
+
+  ### Install 
 
   ### Session config
   # php artisan session:table

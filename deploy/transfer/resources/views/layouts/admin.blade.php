@@ -56,13 +56,6 @@
                 </a>
               </li>                
               @endcan
-              @can('viewHorizon')
-              <li>
-                <a class="c-header-nav-link" target="_blank" href="{{ url(config('horizon.path')) }}" title="Horizon">
-                  <i class="fa fa-rocket" aria-hidden="true"></i>
-                </a>
-              </li>                
-              @endcan
 
                 @if(count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
@@ -76,14 +69,6 @@
                         </div>
                     </li>
                 @endif
-
-                <li>
-                  <a class="c-header-nav-link" href="{{ url(config('horizon.path')) }}" title="Horizon">
-                    <div class="avatar avatar-md" bis_skin_checked="1">
-                      <img class="rounded-circle" width="32px" src="https://coreui.io/demos/bootstrap/5.0/light/assets/img/avatars/8.jpg" alt="user@email.com">
-                    </div>
-                  </a>
-                </li>
 
                 <ul class="c-header-nav ml-auto">
                     <li class="c-header-nav-item dropdown notifications-menu">

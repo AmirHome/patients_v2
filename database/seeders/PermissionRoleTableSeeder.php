@@ -19,10 +19,10 @@ class PermissionRoleTableSeeder extends Seeder
                 'title' => 'viewTelescope',
                 'display_name' => 'viewTelescope',
             ],
-            [
-                'title' => 'viewHorizon',
-                'display_name' => 'viewHorizon',
-            ],
+            // [
+            //     'title' => 'viewHorizon',
+            //     'display_name' => 'viewHorizon',
+            // ],
         ];
         foreach ($permissions as $permission) {
             Permission::create($permission);
@@ -48,7 +48,7 @@ class PermissionRoleTableSeeder extends Seeder
                 && substr($permission->title, 0, 5) != 'role_'
                 && $permission->title != 'viewPulse'
                 && $permission->title != 'viewTelescope'
-                && $permission->title != 'viewHorizon'
+                // && $permission->title != 'viewHorizon'
                 //&& substr($permission->title, 0, 11) != 'permission_'
                 //&& substr($permission->title, 0, 5) != 'team_'
                 ;

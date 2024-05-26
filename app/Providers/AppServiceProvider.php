@@ -33,10 +33,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->is_admin == 1;
         });
 
-        Gate::define('viewHorizon', function (User $user) {
-            $user = User::findOrFail($user->id);
-            return $user->is_admin == 1;
-        });
+        // Gate::define('viewHorizon', function (User $user) {
+        //     $user = User::findOrFail($user->id);
+        //     return $user->is_admin == 1;
+        // });
 
         //if env is local, then disable lazy loading
         $lock = $this->app->environment() === 'local';
