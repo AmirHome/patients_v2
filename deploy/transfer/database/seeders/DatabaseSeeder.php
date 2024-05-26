@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             PermissionRoleTableSeeder::class,
 
-            FinanceCategorySeeder::class,
             CountriesTableSeeder::class,
             ProvinceTableSeeder::class,
             OfficeTableSeeder::class,
@@ -63,5 +62,10 @@ class DatabaseSeeder extends Seeder
             $this->callWith(TravelTreatmentActivityTableSeeder::class, ['limit' => $limit]);
             $this->callWith(ActivityTableSeeder::class, ['limit' => $limit]);
         }
+
+        $this->call([
+            FinanceCategorySeeder::class,
+        ]);
+
     }
 }

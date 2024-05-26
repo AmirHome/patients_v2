@@ -95,7 +95,7 @@
                   <a class="nav-link avatar-name dropdown-toggle" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                      aria-haspopup="true" aria-expanded="false">
                       <span class="profile-name">{{ (htmlspecialchars_decode(\Auth::user()->name))??'' }}</span>
-                      <img class="img-avatar rounded-circle" src="{{\Auth::user()->picture->url}}" style="height: 40px;" loading="lazy">
+                      <img class="img-avatar rounded-circle" src="{{\Auth::user()->picture->url??''}}" style="height: 40px;" loading="lazy">
                   </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
