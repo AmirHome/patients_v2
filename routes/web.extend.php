@@ -7,6 +7,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 Route::group(['namespace' => 'Admin\Override'], function () {
 
+    Route::get('admin/expense-reports', 'ExpenseReportController@index')->name('admin.expense-reports.index');
+    Route::post('admin/expense-reports', 'ExpenseReportController@index')->name('admin.expense-reports.filter');
+
     //https://patientsv2.test/share/hospital/cf99236573b09963694717bfd03a3645c73b
     Route::get('share/hospital/{code}','TravelController@shares')->name('share.hospital');
     //https://patientsv2.test/share/translator/b97ad6974329f7749667d5060a40a50ca1ed

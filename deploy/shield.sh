@@ -81,6 +81,9 @@ cp resources/views/admin/tasks/relationships/formFilter.blade.php deploy/transfe
 # cp app/Http/Requests/StoreTaskRequest.php deploy/transfer/app/Http/Requests
 # cp app/Http/Requests/UpdateTaskRequest.php deploy/transfer/app/Http/Requests
 
+### Finance
+mkdir -p deploy/transfer/resources/views/admin/expenseReports
+cp resources/views/admin/expenseReports/index.blade.php deploy/transfer/resources/views/admin/expenseReports/
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits
 
