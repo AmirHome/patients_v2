@@ -14,7 +14,15 @@ class StoreCrmStatusRequest extends FormRequest
         return Gate::allows('crm_status_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'name' => [

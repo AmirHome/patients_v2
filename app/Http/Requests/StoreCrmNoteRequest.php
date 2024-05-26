@@ -14,7 +14,15 @@ class StoreCrmNoteRequest extends FormRequest
         return Gate::allows('crm_note_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'customer_id' => [

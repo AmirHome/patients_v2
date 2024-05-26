@@ -14,7 +14,15 @@ class UpdateOfficeRequest extends FormRequest
         return Gate::allows('office_edit');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'name' => [

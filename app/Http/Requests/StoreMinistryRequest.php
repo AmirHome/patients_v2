@@ -14,7 +14,15 @@ class StoreMinistryRequest extends FormRequest
         return Gate::allows('ministry_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'name' => [

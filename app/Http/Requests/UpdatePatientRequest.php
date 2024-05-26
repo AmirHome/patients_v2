@@ -14,7 +14,15 @@ class UpdatePatientRequest extends FormRequest
         return Gate::allows('patient_edit');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'user_id' => [

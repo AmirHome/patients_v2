@@ -28,28 +28,45 @@ class ManipulateCodes extends Command
     {
         $this->initHelperComposer();
 
+        $filePath = 'app/Http/Requests/StoreCrmDocumentRequest.php';
+        $directoryPath = 'app/Http/Requests';
+
+        $strCheck = 'protected function prepareForValidation()';
+        $strPoint = 'public function rules()';
+        $strAdd = 'protected function prepareForValidation(){
+            $this->merge([
+                \'user_id\' => auth()->id(),
+            ]);
+        }' . "\n\n    ";
+
+        $this->insertToFilesInDirectory($directoryPath, $strCheck, $strPoint, $strAdd);
+
+
+
         $this->appendToContent('routes/web.php', "include('web.extend.php');");
-        
-        $search = ['dtButtons.push(deleteButton)',
+
+        $search = [
+            'dtButtons.push(deleteButton)',
             '<a class="nav-link" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
             '<div class="tab-pane" role="tabpanel" id="travel_travel_treatment_activities">',
         ];
-        $replace = ['// dtButtons.push(deleteButton)',
+        $replace = [
+            '// dtButtons.push(deleteButton)',
             '<a class="nav-link active" href="#travel_travel_treatment_activities" role="tab" data-toggle="tab">',
             '<div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">',
         ];
 
 
         $this->replaceAll(resource_path('views/admin'), $search, $replace);
-    
-        $this->info('Done processing files.');
+
+        $this->info('Done manipulate codes.');
         return true;
     }
-    
+
     protected function replaceAll($directory, $searchArray, $replaceArray)
     {
         $files = File::allFiles($directory);
-        
+
         foreach ($files as $file) {
             $this->info('Processing: ' . $file->getRelativePathname());
             $contents = File::get($file->getPathname());
@@ -57,21 +74,21 @@ class ManipulateCodes extends Command
             File::put($file->getPathname(), $newContents);
         }
     }
-    
+
     protected function replaceLines($contents, $searchArray, $replaceArray)
     {
         foreach ($searchArray as $key => $search) {
             $contents = $this->replaceLine($contents, $search, $replaceArray[$key]);
         }
-        
+
         return $contents;
     }
-    
+
     protected function replaceLine($contents, $search, $replace)
     {
         $lines = explode(PHP_EOL, $contents);
         $replaceExists = false;
-        
+
         foreach ($lines as &$line) {
             if (strpos($line, $search) !== false) {
                 if (strpos($line, $replace) !== false) {
@@ -81,7 +98,7 @@ class ManipulateCodes extends Command
                 $line = str_replace($search, $replace, $line);
             }
         }
-        
+
         if (!$replaceExists) {
             return implode(PHP_EOL, $lines);
         } else {
@@ -101,9 +118,66 @@ class ManipulateCodes extends Command
     {
         if (file_exists($filePath)) {
             $contents = file_get_contents($filePath);
-        
+
             if (strpos($contents, $content) === false) {
                 file_put_contents($filePath, "\n$content", FILE_APPEND);
+            }
+        }
+    }
+
+    function insertToFile($filePath, $strCheck, $strPoint, $strAdd, $insertAfter = false)
+    {
+
+        $fileContents = file_get_contents($filePath);
+
+        if (strpos($fileContents, $strCheck) !== false) {
+            return;
+        }
+
+        $strPointPattern = preg_replace('/\s+/', '\s*', preg_quote($strPoint, '/'));
+
+        if (!preg_match('/' . $strPointPattern . '/', $fileContents, $matches, PREG_OFFSET_CAPTURE)) {
+            // If strPoint is not found, exit the function
+            return;
+        }
+
+        $strPointPos = $matches[0][1];
+        $strPointLength = strlen($matches[0][0]);
+
+        $insertionPoint = $insertAfter ? $strPointPos + $strPointLength : $strPointPos;
+
+        $newContents = substr($fileContents, 0, $insertionPoint) . "" . $strAdd . "" . substr($fileContents, $insertionPoint);
+
+        file_put_contents($filePath, $newContents);
+    }
+
+    function insertToFilesInDirectory($directoryPath, $strCheck, $strPoint, $strAdd, $insertAfter = false)
+    {
+        $files = glob($directoryPath . '/*');
+
+        foreach ($files as $filePath) {
+            if (is_file($filePath)) {
+                $fileContents = file_get_contents($filePath);
+
+                if (strpos($fileContents, $strCheck) !== false) {
+                    continue;
+                }
+
+                $strPointPattern = preg_replace('/\s+/', '\s*', preg_quote($strPoint, '/'));
+
+                if (!preg_match('/' . $strPointPattern . '/', $fileContents, $matches, PREG_OFFSET_CAPTURE)) {
+                    // If strPoint is not found, skip this file
+                    continue;
+                }
+
+                $strPointPos = $matches[0][1];
+                $strPointLength = strlen($matches[0][0]);
+
+                $insertionPoint = $insertAfter ? $strPointPos + $strPointLength : $strPointPos;
+
+                $newContents = substr($fileContents, 0, $insertionPoint) . "\n" . $strAdd . "\n" . substr($fileContents, $insertionPoint);
+
+                file_put_contents($filePath, $newContents);
             }
         }
     }

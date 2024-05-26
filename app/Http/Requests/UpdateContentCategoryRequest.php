@@ -14,7 +14,15 @@ class UpdateContentCategoryRequest extends FormRequest
         return Gate::allows('content_category_edit');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'name' => [

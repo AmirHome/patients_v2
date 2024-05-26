@@ -26,7 +26,15 @@ class UpdateProfileRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'name'  => ['required', 'string', 'max:255'],

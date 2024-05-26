@@ -62,8 +62,8 @@ cp resources/views/admin/crmCustomers/relationships/formFilter.blade.php deploy/
 cp resources/views/admin/crmCustomers/show.blade.php deploy/transfer/resources/views/admin/crmCustomers
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocuments.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp app/Http/Controllers/Admin/CrmDocumentController.php deploy/transfer/app/Http/Controllers/Admin
-cp app/Http/Requests/StoreCrmDocumentRequest.php deploy/transfer/app/Http/Requests
-cp app/Http/Requests/UpdateCrmDocumentRequest.php deploy/transfer/app/Http/Requests
+# cp app/Http/Requests/StoreCrmDocumentRequest.php deploy/transfer/app/Http/Requests
+# cp app/Http/Requests/UpdateCrmDocumentRequest.php deploy/transfer/app/Http/Requests
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsCreate.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 cp resources/views/admin/crmCustomers/relationships/customerCrmDocumentsEdit.blade.php deploy/transfer/resources/views/admin/crmCustomers/relationships
 
@@ -78,8 +78,8 @@ cp resources/views/admin/tasks/create.blade.php deploy/transfer/resources/views/
 cp resources/views/admin/tasks/edit.blade.php deploy/transfer/resources/views/admin/tasks
 cp app/Http/Controllers/Admin/TaskController.php deploy/transfer/app/Http/Controllers/Admin/TaskController.php
 cp resources/views/admin/tasks/relationships/formFilter.blade.php deploy/transfer/resources/views/admin/tasks/relationships
-cp app/Http/Requests/StoreTaskRequest.php deploy/transfer/app/Http/Requests
-cp app/Http/Requests/UpdateTaskRequest.php deploy/transfer/app/Http/Requests
+# cp app/Http/Requests/StoreTaskRequest.php deploy/transfer/app/Http/Requests
+# cp app/Http/Requests/UpdateTaskRequest.php deploy/transfer/app/Http/Requests
 
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits

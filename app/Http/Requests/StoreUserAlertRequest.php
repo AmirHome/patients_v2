@@ -14,7 +14,15 @@ class StoreUserAlertRequest extends FormRequest
         return Gate::allows('user_alert_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'alert_text' => [

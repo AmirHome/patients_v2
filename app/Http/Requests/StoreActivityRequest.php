@@ -14,7 +14,15 @@ class StoreActivityRequest extends FormRequest
         return Gate::allows('activity_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'user_id' => [

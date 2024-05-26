@@ -14,7 +14,15 @@ class StoreSettingRequest extends FormRequest
         return Gate::allows('setting_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'central_hospital_mail' => [

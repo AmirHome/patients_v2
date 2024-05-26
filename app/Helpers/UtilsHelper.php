@@ -10,7 +10,7 @@ if (!function_exists('checkShareCode')) {
     {
         $id = getShareId($code);
         abort_if(($code !== makeShareCode($id, $salt)), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        
+
         return $id;
     }
 }
@@ -18,8 +18,8 @@ if (!function_exists('checkShareCode')) {
 if (!function_exists('makeShareCode')) {
     function makeShareCode($id, $salt = 'share_hospital')
     {
-        $checkSecurityCode = md5($salt.$id);
-        return substr($checkSecurityCode, 0, 16). $id. substr($checkSecurityCode, -16);
+        $checkSecurityCode = md5($salt . $id);
+        return substr($checkSecurityCode, 0, 16) . $id . substr($checkSecurityCode, -16);
     }
 }
 
@@ -47,7 +47,7 @@ if (!function_exists('refferingType')) {
     function refferingType($str)
     {
         // App\Models\Doctor ...
-        
+
         // 'Other'    => 'Diğer',
         // 'Doctor'   => 'Doktor',
         // 'Fond'     => 'Fon',
@@ -61,31 +61,21 @@ if (!function_exists('refferingType')) {
 if (!function_exists('formatSize')) {
     function formatSize($bytes)
     {
-        if ($bytes >= 1073741824)
-        {
+        if ($bytes >= 1073741824) {
             $bytes = number_format($bytes / 1073741824, 2) . ' GB';
-        }
-        elseif ($bytes >= 1048576)
-        {
+        } elseif ($bytes >= 1048576) {
             $bytes = number_format($bytes / 1048576, 2) . ' MB';
-        }
-        elseif ($bytes >= 1024)
-        {
+        } elseif ($bytes >= 1024) {
             $bytes = number_format($bytes / 1024, 2) . ' KB';
-        }
-        elseif ($bytes > 1)
-        {
+        } elseif ($bytes > 1) {
             $bytes = $bytes . ' bytes';
-        }
-        elseif ($bytes == 1)
-        {
+        } elseif ($bytes == 1) {
             $bytes = $bytes . ' byte';
-        }
-        else
-        {
+        } else {
             $bytes = '0 bytes';
         }
 
         return $bytes;
-}
+    }
+
 }

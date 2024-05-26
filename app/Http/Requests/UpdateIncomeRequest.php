@@ -14,7 +14,15 @@ class UpdateIncomeRequest extends FormRequest
         return Gate::allows('income_edit');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'patient_id' => [

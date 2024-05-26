@@ -26,7 +26,15 @@ class UpdatePasswordRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'password' => ['required', 'string', 'min:8', 'confirmed'],

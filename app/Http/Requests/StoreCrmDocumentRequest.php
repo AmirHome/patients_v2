@@ -14,14 +14,15 @@ class StoreCrmDocumentRequest extends FormRequest
         return Gate::allows('crm_document_create');
     }
 
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'user_id' => auth()->id(),
-        ]);
-    }
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
 
-    public function rules()
+    
+public function rules()
     {
         return [
             'customer_id' => [

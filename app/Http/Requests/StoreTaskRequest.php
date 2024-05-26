@@ -14,14 +14,15 @@ class StoreTaskRequest extends FormRequest
         return Gate::allows('task_create');
     }
 
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'user_id' => auth()->id(),
-        ]);
-    }
     
-    public function rules()
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'due_date' => [

@@ -14,7 +14,15 @@ class StoreExpenseRequest extends FormRequest
         return Gate::allows('expense_create');
     }
 
-    public function rules()
+    
+protected function prepareForValidation(){
+            $this->merge([
+                'user_id' => auth()->id(),
+            ]);
+        }
+
+    
+public function rules()
     {
         return [
             'patient_id' => [
