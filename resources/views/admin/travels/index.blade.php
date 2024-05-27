@@ -4,9 +4,10 @@
 
 @includeIf('admin.travels.relationships.formFilter', [$genders])
 
-<div class="card">
+<div class="card card-table m-4">
     <div class="card-header">
-        {{ trans('cruds.travel.title_singular') }} {{ trans('global.list') }}
+    <h4 class="form-title-text pt-2  font-weight-bold">  {{ trans('cruds.travel.title_singular') }} {{ trans('global.list') }}</h4>
+
     </div>
 
     <div class="card-body">
@@ -23,12 +24,12 @@
                         {{ trans('cruds.travel.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.travel.fields.patient') }}
-                    </th>
-
-                    <th>
                         {{ trans('cruds.patient.fields.code') }}
                     </th>
+                    <th>
+                        {{ trans('cruds.travel.fields.patient') }}
+                    </th>
+                
                     <th>
                         {{ trans('cruds.travel.fields.group') }}
                     </th>
@@ -108,8 +109,9 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'patient_name', name: 'patient.name' },
 { data: 'patient.code', name: 'patient.code' },
+{ data: 'patient_name', name: 'patient.name' },
+
 { data: 'group_name', name: 'group.name' },
 { data: 'hospital_name', name: 'hospital.name' },
 { data: 'department_name', name: 'department.name' },

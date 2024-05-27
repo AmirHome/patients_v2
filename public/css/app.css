@@ -320,10 +320,17 @@ td .btn-danger:hover {
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
-
+.form-control-sm[type="search"] {
+    position: relative;
+    padding: 14.5px 26px 16.5px 12px;
+}
+.form-control-sm[type="search"]::placeholder {
+    content: "Search..."; /* Placeholder metni */
+    color: #999; /* Placeholder rengi */
+}
 /*Cards Minimal*/
 .card-table {
-    border-radius: 0.5rem; /* Border radiusu daha keskin */
+    border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
 }
 .dotted-border {

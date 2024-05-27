@@ -3,8 +3,9 @@
         <h4 class="text-left pb-4 font-weight-bold">Vakalar</h4>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-11">
 <div class="card card-table pl-2 pr-3">
+<h5 class="form-title-text pt-4 pl-3 font-weight-bold">Vaka Listeleme</h5>
     <div class="card-body">
         <form action="{{ route('admin.travel-statuses.index') }}" method="get">
 
@@ -27,15 +28,6 @@
                 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" class="form-control form-text-input filter" placeholder="Telefon Numarası" name="phone">
-                        <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                    </div>
-                </div>
- 
-            </div>
-            <div class="row">
-            <div class="col-md-4">
-                    <div class="form-group">
                         <select class="form-control filter" wire:model.live="gender">
                             <option value="" selected>Cinsiyet</option>
                             @foreach ($genders as $key => $title)
@@ -45,17 +37,11 @@
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select class="form-control filter" wire:model.live="gender">
-                            <option value="" selected>Hastane</option>
-                            @foreach ($genders as $key => $title)
-                            <option value="{{ $key }}">{{ $title }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+ 
+            </div>
+            <div class="row">
+         
+               
                 <div class="col-md-4">
                     <div class="form-group">
                         <select class="form-control filter" wire:model.live="gender">
@@ -66,11 +52,8 @@
                         </select>
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                     </div>
-                </div>    
-             </div>
-            <div class="row">
-            
-                     <div class="col-md-4">
+                </div>  
+                <div class="col-md-4">
                     <div class="form-group">
                         <select class="form-control filter" wire:model.live="gender">
                             <option value="" selected>Sevk Yeri</option>
@@ -80,8 +63,9 @@
                         </select>
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                     </div>
-                </div>       
-                   <div class="col-md-4">
+                </div>   
+                       
+                <div class="col-md-4">
                     <div class="form-group">
                         <select class="form-control filter" wire:model.live="gender">
                             <option value="" selected>Departman</option>
@@ -92,14 +76,8 @@
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control filter" placeholder="Hastanın Sisteme eklenme tarihi"
-                            name="birth_place">
-                        <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-            </div> 
+             </div>
+           
             <div class="row">
               
             <div class="col-md-4">
@@ -165,7 +143,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <select class="form-control filter" wire:model.live="compaignChannelId">
-                            <option value="" selected>Rapor Geliş</option>
+                            <option value="" selected>Kategori</option>
                             @foreach ($campaignChannels as $channel)
                             <option value="{{ $channel->id }}">{{ $channel->title }}</option>
                             @endforeach
