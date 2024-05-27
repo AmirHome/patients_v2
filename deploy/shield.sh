@@ -20,7 +20,8 @@ mkdir -p deploy/transfer/app/Jobs
 mkdir -p deploy/transfer/app/Mail
 mkdir -p deploy/transfer/resources/views/emails
 
-cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
+# cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
+cp -r app/Http/Controllers/Admin deploy/transfer/app/Http/Controllers
 cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
 cp -r app/Handlers deploy/transfer/app
@@ -84,6 +85,9 @@ cp resources/views/admin/tasks/relationships/formFilter.blade.php deploy/transfe
 ### Finance
 mkdir -p deploy/transfer/resources/views/admin/expenseReports
 cp resources/views/admin/expenseReports/index.blade.php deploy/transfer/resources/views/admin/expenseReports/
+
+### View
+cp resources/views/admin/doctors/index.blade.php deploy/transfer/resources/views/admin/doctors
 # Triat
 cp app/Http/Controllers/Traits/DataTablesFilterTrait.php deploy/transfer/app/Http/Controllers/Traits
 

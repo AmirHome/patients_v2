@@ -15,10 +15,6 @@
             <div class="modal-body">
                     @method('PUT')
                     @csrf
-
-                    <input type="hidden" name="redirect_url" value="{{ url()->current() }}">
-                    <input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">
-
                     <div class="form-group">
                         <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
                         <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}"
@@ -133,6 +129,8 @@
         }
     }
 
+
+    // GUIDE Modal AJAX Script
     var filesAddedWithEmit = [];
     
     $('#crm_document_edit_modal').on('show.bs.modal', function (event) {
@@ -140,8 +138,7 @@
         var documentId = button.data('crm_document_id') ?? 0;
 
         $.ajax({
-            url: "{{ route('admin.ajax.crm-documents.show', ['crm_document' => ':param']) }}"
-            .replace(':param', documentId),
+            url: "{{ route('admin.ajax.crm-documents.show', ['crm_document' => ':param']) }}".replace(':param', documentId),
             type: 'GET',
             success: function(data) {
 
@@ -178,6 +175,7 @@
         $('#crm_document_edit_modal').on('click', 'button.submit[type="button"]', function() {
             var form = $("form#crm_document_edit_form");
             form.attr('action', form.attr('action').replace('/0', '/' + documentId));
+            form.append('<input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">');
             form.submit();
         });
     });
