@@ -25,6 +25,8 @@ Route::group(['namespace' => 'Admin\Override'], function () {
 
         // Override
         Route::get('travels','TravelController@index')->name('travels.index');
+        //CountriesController
+        Route::get('countries','CountriesController@index')->name('countries.index');
 
     });
 });
