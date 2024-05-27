@@ -328,6 +328,56 @@ td .btn-danger:hover {
     content: "Search..."; /* Placeholder metni */
     color: #999; /* Placeholder rengi */
 }
+/*Select İnput*/
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    color: rgb(50, 50, 50);
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    margin-right: 7px;
+    height: 49px;
+}
+
+.select2-container .select2-selection--single {
+    height: 55px;
+    padding: 8px;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    display: flex;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+}
+.select2-container--default .select2-selection--single:hover {
+    border-color: black !important;
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82);
+}
+
+.select2-container--default .select2-selection--single:focus {
+    color: black;
+    background-color: #fff;
+    border-color: black !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.04rem rgba(0, 0, 0, 0.82);
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+.select2-search__field {
+    outline: 1px solid #ced4da !important;
+    border-radius: 5px !important;
+}
+
 /*Cards Minimal*/
 .card-table {
     border-radius: 0.5rem !important; /* Border radiusu daha keskin */
