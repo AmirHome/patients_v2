@@ -277,7 +277,7 @@ td .btn-danger:hover {
 /* ***************************************
    ---------- Form minimal ----------
 */
-.form-text-input {
+.form-control {
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
     box-sizing: content-box;
     background: none;
@@ -296,17 +296,19 @@ td .btn-danger:hover {
     padding: 16.5px 0px 16.5px 14px;
     cursor: pointer;
     border-radius: 0.5rem; /* Border radiusu daha keskin */
+    text-overflow: ellipsis;
 }
 
-.form-text-input::placeholder {
+.form-control::placeholder {
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
+    text-overflow: ellipsis;
 }
-.form-text-input:hover {
+.form-control:hover {
     color: black; /* Yazı rengi siyah */
     border-color: black !important; /* Border rengi siyah */
-    box-shadow: 0 0 0 0.02rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
 }
 
 .form-control:focus {
@@ -323,4 +325,8 @@ td .btn-danger:hover {
 .card-table {
     border-radius: 0.5rem; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
+}
+.dotted-border {
+    border-top: 1px dotted #ccc;
+    padding: 8px 0 10px;
 }
