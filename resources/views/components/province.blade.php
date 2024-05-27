@@ -1,7 +1,7 @@
 
 <div class="{{$class}}">
     <div class="form-group">
-        <select class="form-control select2 filter" id="countryId">
+        <select class="form-control select2 filter" id="country_id">
             <option value=null>Ülke</option>
             @foreach ($countries as $country)
             <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -23,10 +23,38 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('.filter').select2();
-    });
+@section('scripts')
 
+<<<<<<< HEAD
     
 </script>
+=======
+<script>
+
+    $('#country_id').on('change', function() {
+            var countryId = $(this).val();
+            if (countryId) {
+                $.ajax({
+                url: "{{ route('admin.ajax.provinces.index', ['country' => ':param']) }}".replace(':param', countryId),
+                type: 'GET',
+                success: function(data) {
+                    $('#city_id').empty();
+                    $('#city_id').append('<option value="">Select City</option>');
+                    $.each(data.provinces, function(key, value) {
+                        $('#city_id').append('<option value="' + key + '">' + value + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+            } else {
+                $('#city_id').empty();
+                $('#city_id').append('<option value="">Select City</option>');
+            }
+
+        });
+</script>
+@endsection
+>>>>>>> 95a1c460a9068cb2427c9de00942e10c6b696889

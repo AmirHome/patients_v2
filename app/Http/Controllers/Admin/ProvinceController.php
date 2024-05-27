@@ -60,6 +60,15 @@ class ProvinceController extends Controller
         return view('admin.provinces.index');
     }
 
+    public function ajaxIndexByCountryId($countryId){
+
+        $provinces = Province::where('country_id', $countryId)->pluck('name', 'id');
+
+        return response()->json([
+            'provinces' => $provinces,
+        ]);
+        
+    }
     public function create()
     {
         abort_if(Gate::denies('province_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -122,4 +131,6 @@ class ProvinceController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    
 }
