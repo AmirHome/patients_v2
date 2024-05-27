@@ -49,7 +49,6 @@
 }
 .c-sidebar .c-sidebar-nav-dropdown-toggle::after {
     background-image: none;
-
 }
 
 .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
@@ -273,4 +272,55 @@ td .btn-danger:hover {
     border-color: rgba(255, 0, 0, 0.1);
     border-style: dotted;
     border-left: 7px solid red;
+}
+
+/* ***************************************
+   ---------- Form minimal ----------
+*/
+.form-text-input {
+    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    animation-name: mui-auto-fill-cancel;
+    animation-duration: 10ms;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    padding: 16.5px 0px 16.5px 14px;
+    cursor: pointer;
+    border-radius: 0.5rem; /* Border radiusu daha keskin */
+}
+
+.form-text-input::placeholder {
+    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+.form-text-input:hover {
+    color: black; /* Yazı rengi siyah */
+    border-color: black !important; /* Border rengi siyah */
+    box-shadow: 0 0 0 0.02rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+}
+
+.form-control:focus {
+    color: black;
+    background-color: #fff;
+    border-color: black;
+    outline: 0;
+    box-shadow: 0 0 0 0.07rem rgba(0, 0, 0, 0.82);
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+
+/*Cards Minimal*/
+.card-table {
+    border-radius: 0.5rem; /* Border radiusu daha keskin */
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
 }

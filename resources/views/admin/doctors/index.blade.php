@@ -2,18 +2,15 @@
 @section('content')
 @can('doctor_create')
     <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.doctors.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.doctor.title_singular') }}
-            </a>
-        </div>
+    <button type="button" class="btn btn-s btn-info" data-toggle="modal" data-target="#doctors-store">
+    {{ trans('global.add') }} {{ trans('cruds.doctor.title_singular') }}
+
+    </button>
+    @includeIf('admin.doctors.relationships.modal_create')
+
     </div>
 
-    <button type="button" class="btn btn-s btn-info" data-toggle="modal" data-target="#doctors-store">
-       xxx
-    </button>
-    resources/views/admin/doctors/relationships/modal_create.blade.php
-    @includeIf('admin.doctors.relationships.modal_create')
+ 
 
 
 @endcan
