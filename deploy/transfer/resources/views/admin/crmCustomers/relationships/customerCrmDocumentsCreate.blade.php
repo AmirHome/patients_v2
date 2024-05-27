@@ -21,8 +21,6 @@
             </div>
             <div class="modal-body">
                     @csrf
-                    <input type="hidden" name="redirect_url" value="{{ url()->current() }}">
-                    <input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">
         
                     <div class="row">
                         <div class="col-md-6">

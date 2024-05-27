@@ -36,10 +36,6 @@ done
 
 # Function to extract archive
 function build() {
-  # protect files
-  bash deploy/shield.sh
-
-  clean_root_unzip
 
   deployment
 
@@ -52,6 +48,10 @@ function clean_root_unzip() {
     echo "Info: Archive '$archive_file.zip' not found in '$download_folder'"
     # exit 1
   else
+
+    # protect files
+    bash deploy/shield.sh
+
     # clean files
     find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
     echo "Info: Cleaned root directory (excluding .git and deploy folder)."
@@ -75,68 +75,71 @@ function deployment() {
   
   cp deploy/.env.local .env
   if [ ! $NOTCPDEPLOY ]; then
+    clean_root_unzip
+
     cp -r deploy/transfer/* .
     cp deploy/transfer/.gitignore .gitignore
+
+    ### Install Chatify
+    # composer require munafio/chatify
+    # php artisan chatify:install
+
+    ### Sanctum already exists ###
+
+    ### Install LiveWire
+    composer require livewire/livewire
+    php artisan livewire:publish --assets --config
+    php artisan make:livewire counter
+    ### - app/Livewire/Counter.php
+    ### - resources/views/livewire/counter.blade.php
+    php artisan livewire:layout
+    ### - resources/views/components/layouts/app.blade.php
+
+    ### Install Media Library
+    php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"
+
+    ### Install Pulse
+    composer config minimum-stability beta
+    composer require laravel/pulse
+    php artisan vendor:publish --provider="Laravel\Pulse\PulseServiceProvider"
+    #php artisan migrate
+
+    ### Install Telescope
+    composer require laravel/telescope
+    php artisan telescope:install
+    # php artisan telescope:publish
+    #php artisan migrate
+
+    ### Install Horizon
+    # composer require laravel/horizon
+    # php artisan horizon:install
+
+    ### Install Debugbar
+    composer require barryvdh/laravel-debugbar --dev
+
+    ### Install 
+
+    ### Session config
+    # php artisan session:table
+    # copy from deploy 2024_04_17_121142_create_sessions_table.php
+
+    ### Install queue
+    php artisan queue:table
+    php artisan queue:failed-table
+    # php artisan queue:work --daemon > /dev/null 2>&1
+    # php artisan queue:failed
+
+    ### Manipulate codes
+    coding
+
   fi
 
-
-  ### Install Chatify
-  # composer require munafio/chatify
-  # php artisan chatify:install
-
-  ### Sanctum already exists ###
-
-  ### Install LiveWire
-  composer require livewire/livewire
-  php artisan livewire:publish --assets --config
-  php artisan make:livewire counter
-  ### - app/Livewire/Counter.php
-  ### - resources/views/livewire/counter.blade.php
-  php artisan livewire:layout
-  ### - resources/views/components/layouts/app.blade.php
-
-  ### Install Media Library
-  php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="config"
-
-  ### Install Pulse
-  composer config minimum-stability beta
-  composer require laravel/pulse
-  php artisan vendor:publish --provider="Laravel\Pulse\PulseServiceProvider"
-  #php artisan migrate
-
-  ### Install Telescope
-  composer require laravel/telescope
-  php artisan telescope:install
-  # php artisan telescope:publish
-  #php artisan migrate
-
-  ### Install Horizon
-  # composer require laravel/horizon
-  # php artisan horizon:install
-
-  ### Install Debugbar
-  composer require barryvdh/laravel-debugbar --dev
-
-  ### Install 
-
-  ### Session config
-  # php artisan session:table
-  # copy from deploy 2024_04_17_121142_create_sessions_table.php
-
-  ### Install queue
-  php artisan queue:table
-  php artisan queue:failed-table
-  # php artisan queue:work --daemon > /dev/null 2>&1
-  # php artisan queue:failed
 
   ### Laravel development
   # php artisan key:generate
   php artisan storage:link
 
   php artisan optimize:clear
-
-  ### Manipulate codes
-  coding
 
   if [ $AUTOLOAD ]; then
     composer dump-autoload
@@ -157,6 +160,8 @@ function coding() {
     php artisan manipulate:codes
 }
 
+
+deploy/build.sh
 build
 
 if [ ! -z "$GIT" ]; then

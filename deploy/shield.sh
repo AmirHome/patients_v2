@@ -20,7 +20,8 @@ mkdir -p deploy/transfer/app/Jobs
 mkdir -p deploy/transfer/app/Mail
 mkdir -p deploy/transfer/resources/views/emails
 
-cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
+# cp -r app/Http/Controllers/Admin/Override deploy/transfer/app/Http/Controllers/Admin
+cp -r app/Http/Controllers/Admin deploy/transfer/app/Http/Controllers
 cp -r app/Interfaces deploy/transfer/app
 cp -r app/Helpers deploy/transfer/app
 cp -r app/Handlers deploy/transfer/app

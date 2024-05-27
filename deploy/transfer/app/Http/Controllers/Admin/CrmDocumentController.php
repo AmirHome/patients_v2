@@ -117,12 +117,7 @@ class CrmDocumentController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $crmDocument->id]);
         }
 
-        $redirectUrl = $request->get('redirect_url');
-        if (!empty($redirectUrl)) {
-            return redirect($redirectUrl);
-        } else {
-            return redirect()->route('admin.crm-customers.index');
-        }
+        return redirect()->back();
     }
 
     public function edit(CrmDocument $crmDocument)
@@ -159,12 +154,14 @@ class CrmDocumentController extends Controller
             }
         }
 
-        $redirectUrl = $request->get('redirect_url');
-        if (!empty($redirectUrl)) {
-            return redirect($redirectUrl);
-        } else {
-            return redirect()->route('admin.crm-customers.index');
-        }
+        // GUIDE Modal Redirect
+        return redirect()->back();
+        // $redirectUrl = $request->get('redirect_url');
+        // if (!empty($redirectUrl)) {
+        //     return redirect($redirectUrl);
+        // } else {
+        //     return redirect()->route('admin.crm-customers.index');
+        // }
     }
 
     public function ajaxShow(CrmDocument $crmDocument)

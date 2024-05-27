@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+    // GUIDE Modal AJAX Route
     // crm_document
     Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
 });
@@ -24,7 +25,6 @@ Route::group(['namespace' => 'Admin\Override'], function () {
 
         // Override
         Route::get('travels','TravelController@index')->name('travels.index');
-
 
     });
 });
