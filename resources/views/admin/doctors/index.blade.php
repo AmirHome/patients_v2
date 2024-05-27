@@ -8,6 +8,14 @@
             </a>
         </div>
     </div>
+
+    <button type="button" class="btn btn-s btn-info" data-toggle="modal" data-target="#doctors-store">
+       xxx
+    </button>
+    resources/views/admin/doctors/relationships/modal_create.blade.php
+    @includeIf('admin.doctors.relationships.modal_create')
+
+
 @endcan
 <div class="card">
     <div class="card-header">

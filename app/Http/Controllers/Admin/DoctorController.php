@@ -73,12 +73,19 @@ class DoctorController extends Controller
                 return $row->department ? $row->department->name : '';
             });
 
+            
             $table->rawColumns(['actions', 'placeholder', 'city', 'hospital', 'department']);
 
             return $table->make(true);
         }
 
-        return view('admin.doctors.index');
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $hospitals = Hospital::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.doctors.index', compact('cities', 'departments', 'hospitals'));
     }
 
     public function create()
