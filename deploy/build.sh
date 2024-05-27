@@ -74,9 +74,15 @@ function clean_root_unzip() {
 function deployment() {
   
   cp deploy/.env.local .env
+
+  # php artisan key:generate
+  php artisan storage:link
+  php artisan optimize:clear
+
   if [ ! $NOTCPDEPLOY ]; then
     clean_root_unzip
 
+    cp deploy/.env.local .env
     cp -r deploy/transfer/* .
     cp deploy/transfer/.gitignore .gitignore
 
@@ -136,10 +142,6 @@ function deployment() {
 
 
   ### Laravel development
-  # php artisan key:generate
-  php artisan storage:link
-
-  php artisan optimize:clear
 
   if [ $AUTOLOAD ]; then
     composer dump-autoload
@@ -160,8 +162,6 @@ function coding() {
     php artisan manipulate:codes
 }
 
-
-deploy/build.sh
 build
 
 if [ ! -z "$GIT" ]; then
