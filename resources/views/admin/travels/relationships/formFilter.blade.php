@@ -87,29 +87,8 @@
                     </div>
                 </div>
              
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select class="form-control filter" wire:model.live="countryId">
-                            <option value=null>Ülke</option>
-                            @foreach ($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+                <x-province class="col-md-4" :template="$template='Province'"/>
 
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select class="form-control filter" wire:model.live="city_id">
-                            <option>Şehir</option>
-                            @foreach ($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>
-                    </div>
-                </div>
             </div>
             <div class="row justify-content-center">
         <div class="col-md-12 pt-3 pb-3">
