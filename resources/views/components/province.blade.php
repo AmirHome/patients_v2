@@ -25,10 +25,6 @@
 
 @section('scripts')
 
-<<<<<<< HEAD
-    
-</script>
-=======
 <script>
 
     $('#country_id').on('change', function() {
@@ -57,4 +53,3 @@
         });
 </script>
 @endsection
->>>>>>> 95a1c460a9068cb2427c9de00942e10c6b696889
