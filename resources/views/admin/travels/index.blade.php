@@ -122,7 +122,7 @@
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 25,
+    pageLength: 10,
     // dom: '<"top"i>rt<"bottom"flp><"clear">',
     // dom: '<"wrapper"flipt>',
     // rowGroup: {

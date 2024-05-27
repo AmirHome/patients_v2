@@ -24,7 +24,7 @@
 </div>
 
 @section('scripts')
-
+@parent
 <script>
 
     $('#country_id').on('change', function() {
