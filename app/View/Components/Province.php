@@ -10,12 +10,12 @@ use Illuminate\View\Component;
 
 class Province extends Component
 {
-    private $template;
+    private $data;
     private $class;
 
-    public function __construct($class, $template='province')
+    public function __construct($class, $data)
     {
-        $this->template = $template;
+        $this->data = $data;
         $this->class = $class;
     }
     
@@ -25,9 +25,9 @@ class Province extends Component
     public function render(): View|Closure|string
     {
         $countries = Country::get();
-        $cities = ModelsProvince::get();
+        $cities = ModelsProvince::where('country_id', $this->data->country_id??0)->get();
         $class = $this->class;
-        return view('components.'.$this->template, compact('countries', 'cities', 'class'));
+        return view('components.'.($this->data->template ?? 'province'), compact('countries', 'cities', 'class'));
     }
 
 }
