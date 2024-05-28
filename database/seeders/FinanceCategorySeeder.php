@@ -48,28 +48,32 @@ class FinanceCategorySeeder extends Seeder
             $numberOfExpenses = 50;
 
             // Generate fake expenses
-            for ($i = 0; $i < $numberOfExpenses; $i++) {
-                $catId = rand(1, 2);
-
-                Expense::create([
-                    'user_id' => 77, // Admin user
-                    'patient_id' => Patient::inRandomOrder()->first()->id,
-                    'expense_category_id' => $catId,
-                    'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
-                    'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
-                    'description' => Faker::create()->sentence(),
-                ]);
-
-                $catId = rand(1, 2);
-                Income::create([
-                    'user_id' => 77, // Admin user
-                    'patient_id' => Patient::inRandomOrder()->first()->id,
-                    'income_category_id' => $catId,
-                    'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
-                    'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
-                    'description' => Faker::create()->sentence(),
-                ]);
+            $patientIds = Patient::inRandomOrder()->take(10)->get('id');
+            foreach($patientIds as $patientId) {
+                for ($i = 0; $i < $numberOfExpenses; $i++) {
+                    $catId = rand(1, 2);
+    
+                    Expense::create([
+                        'user_id' => 77, // Admin user
+                        'patient_id' => $patientId->id,
+                        'expense_category_id' => $catId,
+                        'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
+                        'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
+                        'description' => Faker::create()->sentence(),
+                    ]);
+    
+                    $catId = rand(1, 2);
+                    Income::create([
+                        'user_id' => 77, // Admin user
+                        'patient_id' => $patientId->id,
+                        'income_category_id' => $catId,
+                        'entry_date' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
+                        'amount' => Faker::create()->numberBetween(100, 1000) * ($catId === 1 ? 1000 : 500),
+                        'description' => Faker::create()->sentence(),
+                    ]);
+                }
             }
+
         }
         
     }
