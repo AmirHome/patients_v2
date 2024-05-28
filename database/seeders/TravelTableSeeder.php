@@ -32,7 +32,6 @@ class TravelTableSeeder extends Seeder
         //dd($rows, Patient::pluck('id')->toArray());
 
         foreach ($rows as $key => $row) {
-            echo $key . "\n";
 
             $hospitalizationDate = $row->hospitalization_date;
             $planningDischargeDate = $row->planning_discharge_date;
