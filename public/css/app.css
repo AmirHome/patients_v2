@@ -107,26 +107,24 @@ body {
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
 .c-sidebar .c-sidebar-nav-link:hover,
+.c-sidebar .c-sidebar-nav-item-header:hover,
 .c-sidebar .c-sidebar-nav-item-header:hover {
-    background-color: #cccccc;
-    color: #637381 !important;
-    background: linear-gradient(to right, #cccccc, rgba(255, 255, 255, 0));
+    color: #637381;
+    background: initial;
+    background-color: rgba(145, 158, 171, 0.15);
+    border-radius: 6px;
 }
+
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
 .c-sidebar
     .c-sidebar-nav-dropdown.c-show
     .c-sidebar-nav-dropdown-toggle
     i::before {
-    color: rgb(0, 167, 111);
-    background-color: rgba(0, 167, 111, 0.08);
-    border-radius: 12px;
-    width: 95%;
+    color: rgb(33, 43, 54);
+    background-color: rgba(145, 158, 171, 0.08);
+    border-radius: 6px;
 }
 
-.c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle:hover {
-    color: rgb(0, 167, 111) !important;
-    background-color: transparent !important;
-}
 .c-sidebar .c-sidebar-nav-dropdown-toggle::after {
     background-image: none !important;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-right%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M4.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L10.293%208%204.646%202.354a.5.5%200%200%201%200-.708%22/%3E%3C/svg%3E") !important;
@@ -136,20 +134,18 @@ body {
     color: rgb(0, 167, 111) !important;
     background-color: rgba(0, 167, 111, 0.08) !important;
 }
-.c-sidebar-nav-item-header.c-active,
-.c-sidebar-nav-item-header.c-show {
+.c-sidebar-nav-item-header.c-active {
     background-color: rgba(0, 167, 111, 0.08) !important;
 }
 .c-sidebar-nav-item-header .c-sidebar-nav-link.c-active {
     color: rgb(0, 167, 111) !important;
     background-color: rgba(0, 167, 111, 0.08);
-    border-radius: 12px;
-    width: 95%;
+    border-radius: 6px;
 }
 .c-sidebar-nav-item-header .c-sidebar-nav-link.c-active i::before {
     color: rgb(0, 167, 111);
     background-color: rgba(0, 167, 111);
-    border-radius: 12px;
+    border-radius: 6px;
 }
 .c-sidebar-nav-link.c-active {
     color: #212b36 !important;
