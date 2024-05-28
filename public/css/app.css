@@ -1,3 +1,8 @@
+body {
+    background-color: rgb(255, 255, 255) !important;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
 .dt-buttons .btn {
     margin-left: 0.333em;
     padding: 1px 5px;
@@ -11,9 +16,22 @@
     border-radius: 0.25rem;
     margin-left: 0.333em;
 }
-
+/*Scrollbar*/
+.ps__rail-y.ps--clicking .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:not(:hover) > .ps__thumb-y {
+    height: 70% !important;
+    width: 50% !important;
+    background-color: #b4bcc3;
+}
+.ps--active-x > .ps__rail-x:hover,
+.ps--active-y > .ps__rail-y:hover {
+    background-color: white;
+    color: #b4bcc3;
+}
 /* ***************************************
-   ---------- SideBar ----------
+   ---------- SideBar ----------    
 */
 /*Logo En üst*/
 .c-sidebar .c-sidebar-brand,
@@ -21,30 +39,37 @@
     background-color: white;
     color: grey;
 }
-
+.c-sidebar-brand {
+    background-color: rgb(255, 255, 255) !important;
+}
 .c-sidebar {
-    background-color: #ebedef;
+    background-color: rgb(255, 255, 255) !important;
     font-weight: 500;
 }
 .c-sidebar-nav {
-    border-right: 1px dotted #cccccc;
+    border-right: 1px dashed rgba(145, 158, 171, 0.2);
+    padding-left: 16px;
+    padding-right: 16px;
 }
 .c-sidebar-nav-item i::before {
     content: "\f111";
     /* content: "\f6aa"; */
     font-family: "Font Awesome 5 Free";
-    color: rgb(99, 115, 129);
-    background-color: rgb(99, 115, 129);
-    border-radius: 15px;
+    color: #637381;
+    background-color: #637381;
+    border-radius: 50%;
     font-weight: 400;
-    font-size: 0.4rem; /* Adjust the font size as needed */
+    font-size: 0.18rem; /* Adjust the font size as needed */
+    padding-bottom: 1px;
+    padding-left: 1px;
+    vertical-align: middle; /* En üste sabitlemek için */
 }
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
 .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon,
 .c-sidebar .c-sidebar-nav-dropdown-toggle,
 .c-sidebar .c-sidebar-nav-link {
-    color: rgb(99, 115, 129);
+    color: #637381;
     transition: none; /* Transitionu kaldır */
 }
 .c-sidebar .c-sidebar-nav-dropdown-toggle::after {
@@ -53,8 +78,7 @@
 
 .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
 .c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,
-.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle,
-.c-sidebar .c-sidebar-nav-link.c-active {
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle {
     color: rgb(33, 43, 54) !important;
     transform: none;
 }
@@ -62,8 +86,15 @@
     color: rgb(0, 167, 111);
     background-color: rgb(0, 167, 111);
 }
-.c-sidebar-nav-dropdown-toggle:hover i::before {
-    color: rgb(99, 115, 129);
+.c-sidebar-nav-dropdown-items .c-sidebar-nav-link.c-active i::before {
+    color: rgb(0, 167, 111);
+    background-color: rgb(0, 167, 111);
+    font-size: 0.35rem !important;
+    border-radius: 80% !important;
+}
+.c-sidebar-nav-dropdown-toggle:hover i::before,
+.c-sidebar .c-sidebar-nav-item-header:hover i::before {
+    color: #637381;
 }
 .c-sidebar .c-sidebar-nav-dropdown.c-show {
     background: rgba(255, 255, 255, 0.3);
@@ -71,13 +102,14 @@
 }
 
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link {
-    color: rgb(99, 115, 129);
+    color: #637381;
 }
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
-.c-sidebar .c-sidebar-nav-link:hover {
+.c-sidebar .c-sidebar-nav-link:hover,
+.c-sidebar .c-sidebar-nav-item-header:hover {
     background-color: #cccccc;
-    color: rgb(99, 115, 129) !important;
+    color: #637381 !important;
     background: linear-gradient(to right, #cccccc, rgba(255, 255, 255, 0));
 }
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle,
@@ -88,6 +120,7 @@
     color: rgb(0, 167, 111);
     background-color: rgba(0, 167, 111, 0.08);
     border-radius: 12px;
+    width: 95%;
 }
 
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle:hover {
@@ -99,6 +132,35 @@
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22currentColor%22%20class%3D%22bi%20bi-chevron-right%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M4.646%201.646a.5.5%200%200%201%20.708%200l6%206a.5.5%200%200%201%200%20.708l-6%206a.5.5%200%200%201-.708-.708L10.293%208%204.646%202.354a.5.5%200%200%201%200-.708%22/%3E%3C/svg%3E") !important;
 }
 
+.c-sidebar-nav-item-header .c-sidebar-nav-link.c-active i::before {
+    color: rgb(0, 167, 111) !important;
+    background-color: rgba(0, 167, 111, 0.08) !important;
+}
+.c-sidebar-nav-item-header.c-active,
+.c-sidebar-nav-item-header.c-show {
+    background-color: rgba(0, 167, 111, 0.08) !important;
+}
+.c-sidebar-nav-item-header .c-sidebar-nav-link.c-active {
+    color: rgb(0, 167, 111) !important;
+    background-color: rgba(0, 167, 111, 0.08);
+    border-radius: 12px;
+    width: 95%;
+}
+.c-sidebar-nav-item-header .c-sidebar-nav-link.c-active i::before {
+    color: rgb(0, 167, 111);
+    background-color: rgba(0, 167, 111);
+    border-radius: 12px;
+}
+.c-sidebar-nav-link.c-active {
+    color: #212b36 !important;
+}
+.c-sidebar-nav-logo {
+    padding: 30px 10px;
+}
+
+.main-logo {
+    max-width: 60px;
+}
 /* ***************************************
    ---------- Tabs minimal ----------
 */
