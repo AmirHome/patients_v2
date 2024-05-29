@@ -130,82 +130,122 @@ trait DataTablesFilterTrait
 
         return $query;
     }
+
+    //financeFilter financeMountFilter
+    public function financeMountFilter(){
+        // Mount Data for Form filters
+        // $departments = Department::get(['id', 'name']);
+        // $users = User::get(['id', 'name']);
+        $patients = Patient::get(['id', 'name']);
+        // $statuses = CrmStatus::get(['id', 'name']);
+
+        return compact('patients');
+    }
+    public function financeFilter (Request $request, $query){
+        // Add custom filter for search_index
+        if ($request->has('ff_patient_name')) {
+            $value = $request->input('ff_patient_name');
+            $query->whereHas('patient', function ($query) use ($value) {
+                $query->where('name', 'like', '%' . $value . '%')
+                    ->orWhere('surname', 'like', '%' . $value . '%')
+                    ->orWhere('middle_name', 'like', '%' . $value . '%');
+            });
+        }
+        if ($request->has('ff_patient_code')) {
+            $value = $request->input('ff_patient_code');
+            $query->whereHas('patient', function ($query) use ($value) {
+                $query->where('code', 'like', '%' . $value . '%');
+            });
+        }
+        return $query;
+        
+    }
+
 }
 
 /*
 GUIDE DataTables Filter Trait
 
-1. in index
+-- Controller
+    use DataTablesFilterTrait;
 
-@includeIf('admin.crmCustomers.relationships.formFilter')
+    $data = $this->__MountFilter();
 
-<!-- scripts -->
+    $query = $this->__Filter($request, $query);
 
-ajax: {
-    url: "{{ route('admin.travels.index') }}",
-    data: function(d) {
-        d.ff_patient_name = $('.filter[name="patient_name"]').val();
-        d.ff_patient_code = $('.filter[name="patient_code"]').val();
-    }
-},
+    return view('', $data);
+
+-- Index blade
+
+    @includeIf('admin.__.relationships.formFilter')
+
+    <!-- scripts -->
+
+    ajax: {
+        url: "{{ route('admin.__.index') }}",
+        data: function(d) {
+            d.ff__name = $('.filter[name="__name"]').val();
+            d.ff__code = $('.filter[name="__code"]').val();
+        }
+    },
 
 
-$('#form-filter-submit').click(function () {
-    table.ajax.reload();
-})
+    $('#form-filter-submit').click(function () {
+        table.ajax.reload();
+    })
 
-2. in formFilter.blade.php
+-- formFilter.blade.php
 
-<div class="card">
-    <div class="card-body">
-        <form action="{{ route('admin.travel-statuses.index') }}" method="get">
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('admin.__.index') }}" method="get">
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="">Customer Code</label>
-                        <input type="text" class="form-control filter" placeholder="Enter customer code"
-                            name="customer_code">
-                        <span class="text-danger">@error('customer_code'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">customer name</label>
-                        <input type="text" class="form-control filter" placeholder="Enter customer name"
-                            name="customer_name">
-
-                        <span class="text-danger">@error('customer_name'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="">Last name</label>
-                        <input type="text" class="form-control filter" placeholder="Enter last name" name="surname">
-                        <span class="text-danger">@error('surname'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bar">
                 <div class="row">
-                    <div class="col-8">
-                        @can('crm_customer_create')
-                        <a class="btn btn-success" href="{{ route('admin.crm-customers.create') }}">
-                            <i class="fas fa-plus"></i> {{ trans('global.add') }} {{ trans('cruds.crmCustomer.title_singular') }}
-                        </a>
-                        @endcan
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Customer Code</label>
+                            <input type="text" class="form-control filter" placeholder="Enter customer code"
+                                name="customer_code">
+                            <span class="text-danger">@error('customer_code'){{ $message }}@enderror</span>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <button class="float-right btn btn-primary" type="button" id="form-filter-submit">
-                            Search <i class="fas fa-search"></i>
-                        </button>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="">customer name</label>
+                            <input type="text" class="form-control filter" placeholder="Enter customer name"
+                                name="customer_name">
+
+                            <span class="text-danger">@error('customer_name'){{ $message }}@enderror</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label for="">Last name</label>
+                            <input type="text" class="form-control filter" placeholder="Enter last name" name="surname">
+                            <span class="text-danger">@error('surname'){{ $message }}@enderror</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+
+                <div class="bar">
+                    <div class="row">
+                        <div class="col-8">
+                            @can('crm_customer_create')
+                            <a class="btn btn-success" href="{{ route('admin.crm-customers.create') }}">
+                                <i class="fas fa-plus"></i> {{ trans('global.add') }} {{ trans('cruds.crmCustomer.title_singular') }}
+                            </a>
+                            @endcan
+                        </div>
+                        <div class="col-4">
+                            <button class="float-right btn btn-primary" type="button" id="form-filter-submit">
+                                Search <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 
 */

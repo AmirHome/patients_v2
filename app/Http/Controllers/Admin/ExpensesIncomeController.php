@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\DataTablesFilterTrait;
 use App\Http\Requests\MassDestroyExpensesIncomeRequest;
 use App\Http\Requests\StoreExpensesIncomeRequest;
 use App\Http\Requests\UpdateExpensesIncomeRequest;
@@ -18,9 +19,13 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ExpensesIncomeController extends Controller
 {
+    use DataTablesFilterTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
 
         if ($request->ajax()) {
             // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
@@ -31,6 +36,9 @@ class ExpensesIncomeController extends Controller
                             DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
                             DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission'))
                         ->groupBy('patient_id');
+
+            $query = $this->financeFilter($request, $query);
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -49,7 +57,8 @@ class ExpensesIncomeController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.expensesIncomes.index');
+        return view('admin.expensesIncomes.index', $data);
+
     }
 
     public function create()

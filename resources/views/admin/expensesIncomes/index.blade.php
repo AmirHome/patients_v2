@@ -1,14 +1,8 @@
 @extends('layouts.admin')
 @section('content')
-@can('expenses_income_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.expenses-incomes.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
+
+@includeIf('admin.expensesIncomes.relationships.formFilter')
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
@@ -64,7 +58,13 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.expenses-incomes.index') }}",
+    ajax: {
+    url: "{{ route('admin.expenses-incomes.index') }}",
+        data: function(d) {
+            d.ff_patient_name = $('.filter[name="patient_name"]').val();
+            d.ff_patient_code = $('.filter[name="patient_code"]').val();
+        }
+    },
     columns: [
         { data: 'placeholder', name: 'placeholder' },
         { data: 'patient_id', name: 'patient_id' },
@@ -85,7 +85,12 @@
           .columns.adjust();
   });
   
+  $('#form-filter-submit').click(function () {
+      table.ajax.reload();
+  })
 });
 
+
 </script>
+
 @endsection
