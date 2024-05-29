@@ -1,12 +1,19 @@
 #!/bin/bash
 
+rm -rf deploy/backup/
+mkdir -p deploy/backup/
+
 rsync -av --exclude='bootstrap' \
-          --exclude='deploy' \
-          --exclude='storage' \
-          --exclude='tests' \
-          --exclude='vendor' \
-          --exclude='.gitignore' \
-          ./ deploy/transfer/
+    --exclude='deploy' \
+    --exclude='storage' \
+    --exclude='tests' \
+    --exclude='vendor' \
+    --exclude='artisan' \
+    --exclude='README.md' \
+    --exclude='phpunit.xml' \
+    --exclude='.*' \
+    # $HOME/Downloads/dev-admin-e9f11f11d86ec53e/ deploy/backup/
+    ./ deploy/transfer/
 
 echo "\r"
 git status

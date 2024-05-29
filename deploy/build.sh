@@ -90,7 +90,10 @@ function deployment() {
           --exclude='storage' \
           --exclude='tests' \
           --exclude='vendor' \
-          --exclude='.gitignore' \
+          --exclude='artisan' \
+          --exclude='README.md' \
+          --exclude='phpunit.xml' \
+          --exclude='.*' \
           ./ deploy/backup/
     # rm -rf deploy/backup
     # mkdir -p deploy/backup/app/Models
