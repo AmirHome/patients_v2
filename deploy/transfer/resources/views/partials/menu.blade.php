@@ -396,6 +396,28 @@
                 </ul>
             </li>
         @endcan
+        @can('finance_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/expenses-incomes*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-money-bill-alt c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.finance.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('expenses_income_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expensesIncome.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('expense_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/expense-categories*") ? "c-show" : "" }} {{ request()->is("admin/income-categories*") ? "c-show" : "" }} {{ request()->is("admin/expenses*") ? "c-show" : "" }} {{ request()->is("admin/incomes*") ? "c-show" : "" }} {{ request()->is("admin/expense-reports*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -552,14 +574,7 @@
                 </a>
             </li>
         @endcan
-        <li class="c-sidebar-nav-item-header">
-            <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
-                <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
 
-                </i>
-                {{ trans('global.systemCalendar') }}
-            </a>
-        </li>
         @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
             <li class="c-sidebar-nav-item-header">
                 <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "c-active" : "" }} c-sidebar-nav-link" href="{{ route("admin.team-members.index") }}">

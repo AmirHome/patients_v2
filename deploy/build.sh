@@ -83,6 +83,16 @@ function deployment() {
     clean_root_unzip
 
     cp deploy/.env.local .env
+
+    ### Backups
+    rm -rf deploy/backup
+    mkdir -p deploy/backup/app/Models
+    mkdir -p deploy/backup/app/Http
+    cp -r resources deploy/backup
+    cp -r app/Models deploy/backup/app/Models
+    cp -r app/Http deploy/backup/app/Http
+
+    ### Transfer
     cp -r deploy/transfer/* .
     cp deploy/transfer/.gitignore .gitignore
 
