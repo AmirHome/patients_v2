@@ -43,6 +43,11 @@ class ExpensesIncomeController extends Controller
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row){
+                return '<a class="btn btn-xs btn-primary" href="'.route('admin.expenses-incomes.index.patient', $row->patient_id).'">'.
+                trans('global.view').
+                '</a>';
+            });
 
             $table->addColumn('patient_name', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name .' '. $row->patient->surname) : '';
@@ -58,6 +63,70 @@ class ExpensesIncomeController extends Controller
         }
 
         return view('admin.expensesIncomes.index', $data);
+
+    }
+
+    public function indexPatient(Request $request, $patientId)
+    {
+        abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
+
+        if ($request->ajax()) {
+
+            $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table))
+                ->where('patient_id', $patientId);
+
+            $query = $this->financeFilter($request, $query);
+
+            $table = Datatables::of($query);
+
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'expenses_income_show';
+                $editGate      = 'expenses_income_edit';
+                $deleteGate    = 'expenses_income_delete';
+                $crudRoutePart = 'expenses-incomes';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('category', function ($row) {
+                return $row->category ? ExpensesIncome::CATEGORY_SELECT[$row->category] : '';
+            });
+
+            $table->addColumn('department_name', function ($row) {
+                return $row->department ? $row->department->name : '';
+            });
+
+            $table->editColumn('amount', function ($row) {
+                return $row->amount ? $row->amount : '';
+            });
+
+            $table->addColumn('patient_name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name .' '. $row->patient->surname) : '';
+            });
+
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+            // dd($table->toArray());
+            return $table->make(true);
+        }
+
+        return view('admin.expensesIncomes.indexPatient', $data)->with('patientId', $patientId);
 
     }
 

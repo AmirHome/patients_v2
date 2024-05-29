@@ -1,8 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-
-@includeIf('admin.expensesIncomes.relationships.formFilter')
-
+@can('expenses_income_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.expenses-incomes.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
+            </a>
+        </div>
+    </div>
+@endcan
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
@@ -19,19 +25,22 @@
                         {{ trans('cruds.expensesIncome.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.expensesIncome.fields.category') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.expensesIncome.fields.patient') }}
                     </th>
                     <th>
-                         patient_code 
+                        {{ trans('cruds.patient.fields.surname') }}
                     </th>
                     <th>
-                         countery 
+                        {{ trans('cruds.expensesIncome.fields.department') }}
                     </th>
                     <th>
-                         total_expenses 
+                        {{ trans('cruds.expensesIncome.fields.amount') }}
                     </th>
                     <th>
-                        total_income 
+                        {{ trans('cruds.expensesIncome.fields.created_at') }}
                     </th>
                     <th>
                         &nbsp;
@@ -52,32 +61,25 @@
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
   let dtOverrideGlobals = {
-    dom: 'rtlp',
-    // buttons: dtButtons,
+    buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: {
-    url: "{{ route('admin.expenses-incomes.index') }}",
-        data: function(d) {
-            d.ff_patient_id = $('.filter[name="patient_id"]').val();
-            d.ff_patient_name = $('.filter[name="patient_name"]').val();
-            d.ff_patient_code = $('.filter[name="patient_code"]').val();
-        }
-    },
+    ajax: "{{ route('admin.expenses-incomes.index.patient', $patientId) }}",
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'patient_id', name: 'patient_id' },
-        { data: 'patient_name', name: 'patient.name' },
-        { data: 'patient.code', name: 'patient.code' },
-        { data: 'country_name', name: 'country_name' },
-        { data: 'total_expenses', name: 'total_expenses' },
-        { data: 'total_income', name: 'total_income' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
+    { data: 'placeholder', name: 'placeholder' },
+    { data: 'id', name: 'id' , visible: false},
+    { data: 'category', name: 'category' },
+    { data: 'patient_name', name: 'patient.name' },
+    { data: 'patient.surname', name: 'patient.surname' },
+    { data: 'department_name', name: 'department.name' },
+    { data: 'amount', name: 'amount' },
+    { data: 'created_at', name: 'created_at' },
+    { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 3, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-ExpensesIncome').DataTable(dtOverrideGlobals);
@@ -86,12 +88,7 @@
           .columns.adjust();
   });
   
-  $('#form-filter-submit').click(function () {
-      table.ajax.reload();
-  })
 });
 
-
 </script>
-
 @endsection
