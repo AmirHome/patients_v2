@@ -40,6 +40,9 @@
                         {{ trans('cruds.expensesIncome.fields.amount') }}
                     </th>
                     <th>
+                        {{ trans('cruds.expensesIncome.fields.created_at') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,7 @@
 { data: 'patient.surname', name: 'patient.surname' },
 { data: 'department_name', name: 'department.name' },
 { data: 'amount', name: 'amount' },
+{ data: 'created_at', name: 'created_at' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
