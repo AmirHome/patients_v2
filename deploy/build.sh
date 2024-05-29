@@ -85,12 +85,19 @@ function deployment() {
     cp deploy/.env.local .env
 
     ### Backups
-    rm -rf deploy/backup
-    mkdir -p deploy/backup/app/Models
-    mkdir -p deploy/backup/app/Http
-    cp -r resources deploy/backup
-    cp -r app/Models deploy/backup/app/Models
-    cp -r app/Http deploy/backup/app/Http
+    rsync -av --exclude='bootstrap' \
+          --exclude='deploy' \
+          --exclude='storage' \
+          --exclude='tests' \
+          --exclude='vendor' \
+          --exclude='.gitignore' \
+          ./ deploy/backup/
+    # rm -rf deploy/backup
+    # mkdir -p deploy/backup/app/Models
+    # mkdir -p deploy/backup/app/Http
+    # cp -r resources deploy/backup
+    # cp -r app/Models deploy/backup/app/Models
+    # cp -r app/Http deploy/backup/app/Http
 
     ### Transfer
     cp -r deploy/transfer/* .

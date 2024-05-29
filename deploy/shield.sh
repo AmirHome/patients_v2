@@ -1,5 +1,16 @@
 #!/bin/bash
 
+rsync -av --exclude='bootstrap' \
+          --exclude='deploy' \
+          --exclude='storage' \
+          --exclude='tests' \
+          --exclude='vendor' \
+          --exclude='.gitignore' \
+          ./ deploy/transfer/
+
+echo "\r"
+git status
+exit
 # Laravel DB, Seeder, Controller
 mkdir -p deploy/transfer/app/Models
 mkdir -p deploy/transfer/app/Http/Controllers/Admin/Override
