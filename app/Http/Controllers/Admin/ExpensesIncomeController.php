@@ -40,6 +40,10 @@ class ExpensesIncomeController extends Controller
                 return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name .' '. $row->patient->surname) : '';
             });
 
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
             // dd($table->toArray());
             return $table->make(true);

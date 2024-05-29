@@ -28,6 +28,12 @@
                         {{ trans('cruds.expensesIncome.fields.patient') }}
                     </th>
                     <th>
+                         patient_code 
+                    </th>
+                    <th>
+                         countery 
+                    </th>
+                    <th>
                          total_expenses 
                     </th>
                     <th>
@@ -63,6 +69,8 @@
         { data: 'placeholder', name: 'placeholder' },
         { data: 'patient_id', name: 'patient_id' },
         { data: 'patient_name', name: 'patient.name' },
+        { data: 'patient.code', name: 'patient.code' },
+        { data: 'country_name', name: 'country_name' },
         { data: 'total_expenses', name: 'total_expenses' },
         { data: 'total_income', name: 'total_income' },
         { data: 'actions', name: '{{ trans('global.actions') }}' }
