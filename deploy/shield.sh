@@ -111,7 +111,7 @@ cp database/seeders/PatientTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/TravelTreatmentActivityTableSeeder.php deploy/transfer/database/seeders
 cp database/seeders/ActivityTableSeeder.php deploy/transfer/database/seeders
-cp database/seeders/FinanceCategorySeeder.php deploy/transfer/database/seeders
+cp database/seeders/FinanceSeeder.php deploy/transfer/database/seeders
 
 ## Chat DB
 # cp config/permission.php deploy/transfer/config

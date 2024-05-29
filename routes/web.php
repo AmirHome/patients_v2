@@ -205,7 +205,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('travel-hospitals/destroy', 'TravelHospitalController@massDestroy')->name('travel-hospitals.massDestroy');
     Route::resource('travel-hospitals', 'TravelHospitalController');
 
-    Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
+    // Expenses Income
+    Route::delete('expenses-incomes/destroy', 'ExpensesIncomeController@massDestroy')->name('expenses-incomes.massDestroy');
+    Route::resource('expenses-incomes', 'ExpensesIncomeController');
+
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');
 });

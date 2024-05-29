@@ -884,6 +884,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 219,
+                'title' => 'finance_access',
+            ],
+            [
+                'id'    => 220,
+                'title' => 'expenses_income_create',
+            ],
+            [
+                'id'    => 221,
+                'title' => 'expenses_income_edit',
+            ],
+            [
+                'id'    => 222,
+                'title' => 'expenses_income_show',
+            ],
+            [
+                'id'    => 223,
+                'title' => 'expenses_income_delete',
+            ],
+            [
+                'id'    => 224,
+                'title' => 'expenses_income_access',
+            ],
+            [
+                'id'    => 225,
                 'title' => 'profile_password_edit',
             ],
         ];

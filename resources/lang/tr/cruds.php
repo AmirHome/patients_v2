@@ -6,7 +6,7 @@ return [
         'title_singular' => 'Kullanıcı Yönetimi',
     ],
     'permission' => [
-        'title'          => 'Kullanıcı Yetkileri',
+        'title'          => 'Kullanıcı İzinleri',
         'title_singular' => 'İzin',
         'fields'         => [
             'id'                => 'ID',
@@ -456,8 +456,8 @@ return [
         ],
     ],
     'expense' => [
-        'title'          => 'Belediye Başkanlığı Tutanaklar',
-        'title_singular' => 'Belediye Başkanlığı Tutanak',
+        'title'          => 'Giderler',
+        'title_singular' => 'Gider',
         'fields'         => [
             'id'                      => 'ID',
             'id_helper'               => ' ',
@@ -486,8 +486,8 @@ return [
         ],
     ],
     'income' => [
-        'title'          => 'Meclis Üyeliği Tutanak',
-        'title_singular' => 'Meclis Üyeliği Tutanak',
+        'title'          => 'Gelir',
+        'title_singular' => 'Gelir',
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
@@ -519,11 +519,11 @@ return [
         'reports'        => [
             'title'             => 'Raporlar',
             'title_singular'    => 'Rapor',
-            'incomeReport'      => 'Belediye Başkanlık Raporları',
+            'incomeReport'      => 'Gelir raporu',
             'incomeByCategory'  => 'Türe göre gelirler',
             'expenseByCategory' => 'Gider Türü',
-            'income'            => 'Meclis Üyeliği Tutanak',
-            'expense'           => 'Belediye Başkanlığı Tutanak',
+            'income'            => 'Gelir',
+            'expense'           => 'Gider',
             'profit'            => 'Kazanç',
         ],
     ],
@@ -1043,6 +1043,36 @@ return [
             'deleted_at_helper' => ' ',
             'team'              => 'Team',
             'team_helper'       => ' ',
+        ],
+    ],
+    'finance' => [
+        'title'          => 'Finance',
+        'title_singular' => 'Finance',
+    ],
+    'expensesIncome' => [
+        'title'          => 'Expenses Income',
+        'title_singular' => 'Expenses Income',
+        'fields'         => [
+            'id'                 => 'ID',
+            'id_helper'          => ' ',
+            'user'               => 'User',
+            'user_helper'        => ' ',
+            'category'           => 'Category',
+            'category_helper'    => ' ',
+            'patient'            => 'Patient',
+            'patient_helper'     => ' ',
+            'department'         => 'Department',
+            'department_helper'  => ' ',
+            'amount'             => 'Amount',
+            'amount_helper'      => ' ',
+            'description'        => 'Description',
+            'description_helper' => ' ',
+            'created_at'         => 'Created at',
+            'created_at_helper'  => ' ',
+            'updated_at'         => 'Updated at',
+            'updated_at_helper'  => ' ',
+            'deleted_at'         => 'Deleted at',
+            'deleted_at_helper'  => ' ',
         ],
     ],
 

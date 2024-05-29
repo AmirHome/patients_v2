@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
-            FinanceCategorySeeder::class,
+            FinanceSeeder::class,
         ]);
 
     }

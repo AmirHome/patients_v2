@@ -75,4 +75,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Travel Hospital
     Route::apiResource('travel-hospitals', 'TravelHospitalApiController');
+
+    // Expenses Income
+    Route::apiResource('expenses-incomes', 'ExpensesIncomeApiController');
 });
