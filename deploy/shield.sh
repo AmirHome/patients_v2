@@ -175,6 +175,7 @@ cp app/Providers/TelescopeServiceProvider.php deploy/transfer/app/Providers
 cp resources/views/layouts/admin.blade.php deploy/transfer/resources/views/layouts
 cp resources/views/layouts/app.blade.php deploy/transfer/resources/views/layouts
 cp resources/views/partials/datatablesActions.blade.php deploy/transfer/resources/views/partials
+cp resources/views/partials/menu.blade.php deploy/transfer/resources/views/partials
 
 cp app/Providers/AppServiceProvider.php deploy/transfer/app/Providers
 
