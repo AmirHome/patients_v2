@@ -12,6 +12,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -22,50 +23,25 @@ class ExpensesIncomeController extends Controller
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            $query = ExpensesIncome::with(['user', 'patient', 'department'])
+                        ->select('patient_id', 
+                            DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
+                            DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                            DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
+                            DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission'))
+                        ->groupBy('patient_id');
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
-            $table->editColumn('actions', function ($row) {
-                $viewGate      = 'expenses_income_show';
-                $editGate      = 'expenses_income_edit';
-                $deleteGate    = 'expenses_income_delete';
-                $crudRoutePart = 'expenses-incomes';
-
-                return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
-            });
-
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('category', function ($row) {
-                return $row->category ? ExpensesIncome::CATEGORY_SELECT[$row->category] : '';
-            });
             $table->addColumn('patient_name', function ($row) {
-                return $row->patient ? $row->patient->name : '';
-            });
-
-            $table->editColumn('patient.surname', function ($row) {
-                return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->surname) : '';
-            });
-            $table->addColumn('department_name', function ($row) {
-                return $row->department ? $row->department->name : '';
-            });
-
-            $table->editColumn('amount', function ($row) {
-                return $row->amount ? $row->amount : '';
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name .' '. $row->patient->surname) : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
-
+            // dd($table->toArray());
             return $table->make(true);
         }
 
