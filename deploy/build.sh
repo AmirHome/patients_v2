@@ -85,7 +85,9 @@ function deployment() {
     cp deploy/.env.local .env
 
     ### Backups
-    rsync -av --exclude='bootstrap' \
+    rm -rf deploy/backup/
+    mkdir -p deploy/backup/
+    rsync -a --exclude='bootstrap' \
           --exclude='deploy' \
           --exclude='storage' \
           --exclude='tests' \
@@ -95,6 +97,7 @@ function deployment() {
           --exclude='phpunit.xml' \
           --exclude='.*' \
           ./ deploy/backup/
+          
     # rm -rf deploy/backup
     # mkdir -p deploy/backup/app/Models
     # mkdir -p deploy/backup/app/Http

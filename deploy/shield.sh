@@ -1,9 +1,22 @@
 #!/bin/bash
 
-rm -rf deploy/backup/
-mkdir -p deploy/backup/
+# rm -rf deploy/backup/
+# mkdir -p deploy/backup/
 
-rsync -av --exclude='bootstrap' \
+# rsync -a --exclude='bootstrap' \
+#     --exclude='deploy' \
+#     --exclude='storage' \
+#     --exclude='tests' \
+#     --exclude='vendor' \
+#     --exclude='artisan' \
+#     --exclude='README.md' \
+#     --exclude='phpunit.xml' \
+#     --exclude='.*' \
+#     $HOME/Downloads/dev-admin-e9f11f11d86ec53e/ deploy/backup/
+
+rm -rf deploy/transfer/
+mkdir -p deploy/transfer/
+rsync -a --exclude='bootstrap' \
     --exclude='deploy' \
     --exclude='storage' \
     --exclude='tests' \
@@ -11,8 +24,11 @@ rsync -av --exclude='bootstrap' \
     --exclude='artisan' \
     --exclude='README.md' \
     --exclude='phpunit.xml' \
+    --exclude='composer.json' \
+    --exclude='composer.lock' \
+    --exclude='package.json' \
+    --exclude='vite.config.js' \
     --exclude='.*' \
-    # $HOME/Downloads/dev-admin-e9f11f11d86ec53e/ deploy/backup/
     ./ deploy/transfer/
 
 echo "\r"
