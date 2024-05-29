@@ -1,15 +1,16 @@
 <div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
 
-    <div class="c-sidebar-brand d-md-down-none">
-        <a class="c-sidebar-brand-full h4" href="#">
-            {{ trans('panel.site_title') }}
-        </a>
-    </div>
+
 
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-item">
+    <li class="c-sidebar-nav-logo">
+            <a href="{{ route("admin.home") }}" class="c-sidebar-nav-logo">
+            <img src="https://patients-old.clinics.com.tr/assets/clinics-logo.png" alt="logo" class="main-logo">
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item-header">
             <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
+                <i class="c-sidebar-nav-icon fas fa-fw fa-home">
 
                 </i>
                 {{ trans('global.dashboard') }}
@@ -532,7 +533,7 @@
             </li>
         @endcan
         @can('user_alert_access')
-            <li class="c-sidebar-nav-item">
+            <li class="c-sidebar-nav-item-header">
                 <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-bell c-sidebar-nav-icon">
 
@@ -542,7 +543,7 @@
             </li>
         @endcan
         @can('report_access')
-            <li class="c-sidebar-nav-item">
+            <li class="c-sidebar-nav-item-header">
                 <a href="{{ route("admin.reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reports") || request()->is("admin/reports/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-bug c-sidebar-nav-icon">
 
@@ -551,7 +552,7 @@
                 </a>
             </li>
         @endcan
-        <li class="c-sidebar-nav-item">
+        <li class="c-sidebar-nav-item-header">
             <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
                 <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
 
@@ -560,7 +561,7 @@
             </a>
         </li>
         @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
-            <li class="c-sidebar-nav-item">
+            <li class="c-sidebar-nav-item-header">
                 <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "c-active" : "" }} c-sidebar-nav-link" href="{{ route("admin.team-members.index") }}">
                     <i class="c-sidebar-nav-icon fa-fw fa fa-users">
                     </i>
@@ -570,7 +571,7 @@
         @endif
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
-                <li class="c-sidebar-nav-item">
+                <li class="c-sidebar-nav-item-header">
                     <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
                         <i class="fa-fw fas fa-key c-sidebar-nav-icon">
                         </i>
@@ -579,7 +580,7 @@
                 </li>
             @endcan
         @endif
-        <li class="c-sidebar-nav-item">
+        <li class="c-sidebar-nav-item-header">
             <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
 
