@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\CampaignOrg;
 use App\Models\CrmCustomer;
 use App\Models\CrmDocument;
+use App\Models\CrmNote;
 use App\Models\CrmStatus;
 use App\Models\Province;
 use App\Models\User;
@@ -17,18 +18,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CustomersTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run($limit=null): void
-    {
-        $rows = DB::connection('conversion_db')->table('customers');
-        if(isset($limit)) {
-            $rows = $rows->orderByDesc('id')->limit($limit);
-        }
-        $rows = $rows->get();
-
+    
+    private function insertCustomers($rows, &$limit=null){
         foreach ($rows as $row) {
+
+            if(isset($limit) && ($limit-- < 0)) {break;};
 
             $birthDate = $row->birth_date;
 
@@ -61,11 +55,9 @@ class CustomersTableSeeder extends Seeder
                 'deleted_at'     => $row->deleted_at,
             ]);            
         }
+    }
 
-        $customer_ids = CrmCustomer::pluck('id')->toArray();
-
-        $rows = DB::connection('conversion_db')->table('customer_actions')->get();
-
+    private function insertCustomerActions($rows, $customer_ids){
         foreach ($rows as $row) {
             if(!in_array($row->customer_id, $customer_ids)) continue;
             CrmDocument::create([
@@ -79,10 +71,9 @@ class CustomersTableSeeder extends Seeder
                 'deleted_at'     => $row->deleted_at,
             ]);
         }
-        $document_ids = CrmDocument::pluck('id')->toArray();
+    }
 
-        $rows = DB::connection('conversion_db')->table('customer_files')->get();
-
+    private function insertCustomerFiles($rows, $document_ids){
         foreach ($rows as $key => $row) {
             if(!in_array($row->customer_action_id, $document_ids)) continue;
             Media::create([
@@ -101,6 +92,36 @@ class CustomersTableSeeder extends Seeder
                 'responsive_images'=> [],
             ]);
         }
+    }
+
+    public function run($limit=null): void
+    {
+        $chunkSize = 1000;
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        CrmDocument::truncate();
+        CrmNote::truncate();
+        CrmCustomer::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
+
+        $start = microtime(true);
+
+        DB::connection('conversion_db')->table('customers')->orderByDesc('id')->chunk($chunkSize, function ($rows) use (&$limit){
+            $this->insertCustomers($rows, $limit);
+        });
+
+        $customer_ids = CrmCustomer::pluck('id')->toArray();
+        DB::connection('conversion_db')->table('customer_actions')->orderByDesc('id')->chunk($chunkSize, function ($rows) use ($customer_ids) {
+            $this->insertCustomerActions($rows, $customer_ids);
+        });
+
+        $document_ids = CrmDocument::pluck('id')->toArray();
+        DB::connection('conversion_db')->table('customer_files')->orderByDesc('id')->chunk($chunkSize, function ($rows) use ($document_ids) {
+            $this->insertCustomerFiles($rows, $document_ids);
+        });
+        $end = microtime(true);
+        echo "\nChunk:" . $end - $start;
         
     }
 }

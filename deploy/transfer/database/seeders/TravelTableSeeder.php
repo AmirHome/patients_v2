@@ -7,29 +7,31 @@ use App\Models\Hospital;
 use App\Models\Patient;
 use App\Models\Travel;
 use App\Models\TravelGroup;
+use App\Models\TravelHospital;
 use App\Models\TravelStatus;
 use DateTime;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class TravelTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run($limit=null): void
+    public function run($limit = null): void
     {
 
         $rows = DB::connection('conversion_db')->table('travels');
-        if(isset($limit)) {
+        if (isset($limit)) {
             $rows = $rows->where('patient_id', Patient::pluck('id')->toArray())->limit($limit);
         }
         $rows = $rows->get();
-        
+
         //dd($rows, Patient::pluck('id')->toArray());
 
-        foreach ($rows as $row) {
+        foreach ($rows as $key => $row) {
 
             $hospitalizationDate = $row->hospitalization_date;
             $planningDischargeDate = $row->planning_discharge_date;
@@ -111,20 +113,19 @@ class TravelTableSeeder extends Seeder
             }
 
             $status = $row->status == 0 ? 21 : $row->status;
-            $travel = Travel::create([
-                'id'             => $row->id,
+            $travel = Travel::updateOrCreate(['id' => $row->id], [
                 'patient_id'     => Patient::where('id', $row->patient_id)->first()->id,
-                'group_id'       => TravelGroup::where('id', $row->group_id)->first()->id??2,
-                'hospital_id'    => Hospital::where('id', $row->hospital_id)->first()->id??1,
-                'department_id'  => Department::where('id', $row->department_id)->first()->id??null,
-                'last_status_id'      => TravelStatus::where('id', $status)->first()->id??null,
+                'group_id'       => TravelGroup::where('id', $row->group_id)->first()->id ?? 2,
+                'hospital_id'    => Hospital::where('id', $row->hospital_id)->first()->id ?? 1,
+                'department_id'  => Department::where('id', $row->department_id)->first()->id ?? null,
+                'last_status_id'      => TravelStatus::where('id', $status)->first()->id ?? null,
                 'attendant_name' => $row->attendant_name,
                 'attendant_address' => $row->attendant_address,
                 'attendant_phone' => $row->attendant_phone,
                 'has_pestilence' => $row->has_pestilence,
                 //'notify_hospitals' => $row->hospital_mail_notify,
                 'hospital_mail_notify' => $row->hospital_mail_id,
-                'reffering'      => (in_array($row->reffering_type,['App\Models\Fond','App\Models\Other']) ? $row->reffering_other : $row->reffering_id),
+                'reffering'      => (in_array($row->reffering_type, ['App\Models\Fond', 'App\Models\Other']) ? $row->reffering_other : $row->reffering_id),
                 'reffering_type' => refferingType($row->reffering_type),
                 // GUIDE: Remove reffering_other and use reffering_id instead of it
                 // 'reffering_other' => $row->reffering_other,
@@ -143,10 +144,19 @@ class TravelTableSeeder extends Seeder
                 'deleted_at'     => $row->deleted_at,
             ]);
 
-            if(!empty($row->hospital_mail_notify)){
-              $travel->notify_hospitals()->sync(explode(',', $row->hospital_mail_notify));
+
+            if (!empty($row->hospital_mail_notify)) {
+                $ids = explode(',', $row->hospital_mail_notify);
+                $validIds = TravelHospital::pluck('id')->toArray();
+                $verifyIds = array_intersect($ids, $validIds);
+
+                if(sort($ids) !== sort($verifyIds)){
+                    Log::emergency("Seeder:\nTravelId={$travel->id} TravelHospitalIDs=$row->hospital_mail_notify");
+                }
+
+                $travel->notify_hospitals()->sync($verifyIds);
             }
+          
         }
-        
     }
 }

@@ -277,7 +277,7 @@ td .btn-danger:hover {
 /* ***************************************
    ---------- Form minimal ----------
 */
-.form-text-input {
+.form-control {
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
     box-sizing: content-box;
     background: none;
@@ -296,17 +296,19 @@ td .btn-danger:hover {
     padding: 16.5px 0px 16.5px 14px;
     cursor: pointer;
     border-radius: 0.5rem; /* Border radiusu daha keskin */
+    text-overflow: ellipsis;
 }
 
-.form-text-input::placeholder {
+.form-control::placeholder {
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
+    text-overflow: ellipsis;
 }
-.form-text-input:hover {
+.form-control:hover {
     color: black; /* Yazı rengi siyah */
     border-color: black !important; /* Border rengi siyah */
-    box-shadow: 0 0 0 0.02rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
 }
 
 .form-control:focus {
@@ -318,9 +320,70 @@ td .btn-danger:hover {
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
+.form-control-sm[type="search"] {
+    position: relative;
+    padding: 14.5px 26px 16.5px 12px;
+}
+.form-control-sm[type="search"]::placeholder {
+    content: "Search..."; /* Placeholder metni */
+    color: #999; /* Placeholder rengi */
+}
+/*Select İnput*/
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    color: rgb(50, 50, 50);
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    margin-right: 7px;
+    height: 49px;
+}
+
+.select2-container .select2-selection--single {
+    height: 55px;
+    padding: 8px;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    display: flex;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+}
+.select2-container--default .select2-selection--single:hover {
+    border-color: black !important;
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82);
+}
+
+.select2-container--default .select2-selection--single:focus {
+    color: black;
+    background-color: #fff;
+    border-color: black !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.04rem rgba(0, 0, 0, 0.82);
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+.select2-search__field {
+    outline: 1px solid #ced4da !important;
+    border-radius: 5px !important;
+}
 
 /*Cards Minimal*/
 .card-table {
-    border-radius: 0.5rem; /* Border radiusu daha keskin */
+    border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
+}
+.dotted-border {
+    border-top: 1px dotted #ccc;
+    padding: 8px 0 10px;
 }

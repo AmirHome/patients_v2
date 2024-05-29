@@ -191,5 +191,5 @@ cp -r app/Livewire deploy/transfer/app
 cp -r resources/views/livewire deploy/transfer/resources/views
 cp -r resources/views/components deploy/transfer/resources/views
 
-
+git status
 echo  "Copied Shield files."

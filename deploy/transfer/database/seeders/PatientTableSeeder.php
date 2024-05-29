@@ -21,13 +21,22 @@ class PatientTableSeeder extends Seeder
     public function run($limit=null): void
     {
 
-        $rows = DB::connection('conversion_db')->table('patients');
-        if(isset($limit)) {
-            $rows = $rows->orderByDesc('id')->limit($limit);
-        }
-        $rows = $rows->get();
+        $chunkSize = 1000;
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Patient::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
+        DB::connection('conversion_db')->table('patients')->orderByDesc('id')->chunk($rows = $chunkSize, function ($rows) use (&$limit) {
+            $this->insertPatients($rows, $limit);
+        });
         
+    }
+
+    private function insertPatients($rows, &$limit=null){
         foreach ($rows as $key => $row) {
+
+            if(isset($limit) && ($limit-- < 0)) {break;};
 
             $birthDate = $row->birth_date;
             try {
@@ -72,6 +81,6 @@ class PatientTableSeeder extends Seeder
                 'deleted_at'     => $row->deleted_at,
             ]);
         }
-        
     }
+
 }

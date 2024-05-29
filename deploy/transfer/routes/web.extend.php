@@ -4,6 +4,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // GUIDE Modal AJAX Route
     // crm_document
     Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
+    Route::get('ajax-provinces/{country}', 'ProvinceController@ajaxIndexByCountryId')->name('ajax.provinces.index');
 });
 
 Route::group(['namespace' => 'Admin\Override'], function () {
