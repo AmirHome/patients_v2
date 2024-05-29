@@ -29,8 +29,13 @@ rsync -a --exclude='bootstrap' \
     --exclude='package.json' \
     --exclude='vite.config.js' \
     --exclude='.*' \
+    --exclude='config/app.php' \
+    --exclude='config/telescope.php' \
+    --exclude='config/pulse.php' \
+    --exclude='app/Providers/pulse.php' \
+    --exclude='app/Providers/TelescopeServiceProvider.php' \
     ./ deploy/transfer/
-    
+
 cp .gitignore deploy/transfer
 
 echo "\r"
