@@ -30,6 +30,8 @@ rsync -a --exclude='bootstrap' \
     --exclude='vite.config.js' \
     --exclude='.*' \
     ./ deploy/transfer/
+    
+cp .gitignore deploy/transfer
 
 echo "\r"
 git status
