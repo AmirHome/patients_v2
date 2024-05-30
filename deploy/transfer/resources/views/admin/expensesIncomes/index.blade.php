@@ -1,14 +1,33 @@
 @extends('layouts.admin')
 @section('content')
-@can('expenses_income_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.expenses-incomes.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
-            </a>
+
+{{-- <div style="height: 32rem;"> --}}
+    <div class="card">
+        <div class="card-header">
+            head
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <livewire:livewire-column-chart
+                        key="{{ $columnChartModel->reactiveKey() }}"
+                        :column-chart-model="$columnChartModel" >
+                </div>
+                <div class="col-md-6">
+    
+                    <livewire:livewire-pie-chart
+                        key="{{ $pieChartModel->reactiveKey() }}"
+                        :pie-chart-model="$pieChartModel"
+                    />
+                 </div>
+            </div>
         </div>
     </div>
-@endcan
+    
+    {{-- </div> --}}
+
+@includeIf('admin.expensesIncomes.relationships.formFilter')
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
@@ -25,22 +44,19 @@
                         {{ trans('cruds.expensesIncome.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.expensesIncome.fields.category') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.expensesIncome.fields.patient') }}
                     </th>
                     <th>
-                        {{ trans('cruds.patient.fields.surname') }}
+                         patient_code 
                     </th>
                     <th>
-                        {{ trans('cruds.expensesIncome.fields.department') }}
+                         countery 
                     </th>
                     <th>
-                        {{ trans('cruds.expensesIncome.fields.amount') }}
+                         total_expenses 
                     </th>
                     <th>
-                        {{ trans('cruds.expensesIncome.fields.created_at') }}
+                        total_income 
                     </th>
                     <th>
                         &nbsp;
@@ -56,59 +72,39 @@
 @endsection
 @section('scripts')
 @parent
+@livewireChartsScripts
+<livewire:scripts />
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('expenses_income_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.expenses-incomes.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
-      });
-
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
-
-        return
-      }
-
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  // dtButtons.push(deleteButton)
-@endcan
 
   let dtOverrideGlobals = {
-    buttons: dtButtons,
+    dom: 'rlftp',
+    // buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.expenses-incomes.index') }}",
+    ajax: {
+    url: "{{ route('admin.expenses-incomes.index') }}",
+        data: function(d) {
+            d.ff_patient_id = $('.filter[name="patient_id"]').val();
+            d.ff_patient_name = $('.filter[name="patient_name"]').val();
+            d.ff_patient_code = $('.filter[name="patient_code"]').val();
+        }
+    },
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'category', name: 'category' },
-{ data: 'patient_name', name: 'patient.name' },
-{ data: 'patient.surname', name: 'patient.surname' },
-{ data: 'department_name', name: 'department.name' },
-{ data: 'amount', name: 'amount' },
-{ data: 'created_at', name: 'created_at' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'patient_id', name: 'patient_id' },
+        { data: 'patient_name', name: 'patient.name' },
+        { data: 'patient.code', name: 'patient.code' },
+        { data: 'country_name', name: 'patient.city.country.name', sortable: false},
+        { data: 'total_expenses', name: 'total_expenses', searchable:false, sortable: false },
+        { data: 'total_income', name: 'total_income', searchable:false, sortable: false },
+        { data: 'actions', name: '{{ trans('global.actions') }}' , sortable: false}
     ],
     orderCellsTop: true,
-    order: [[ 3, 'desc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-ExpensesIncome').DataTable(dtOverrideGlobals);
@@ -117,7 +113,12 @@
           .columns.adjust();
   });
   
+  $('#form-filter-submit').click(function () {
+      table.ajax.reload();
+  })
 });
 
+
 </script>
+
 @endsection

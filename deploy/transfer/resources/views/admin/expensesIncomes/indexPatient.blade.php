@@ -19,7 +19,7 @@
 </div>
 <div class="card">
     <div class="card-header">
-        @includeIf('admin.expensesIncomes.relationships.formFilterPatient')
+        {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -72,17 +72,12 @@
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
   let dtOverrideGlobals = {
-    buttons: [],
+    buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: {
-        url: "{{ route('admin.expenses-incomes.index.patient', $patientId) }}",
-        data: function(d) {
-            d.ff_category = $('.filter[name="category"]').val();
-        }
-    },
+    ajax: "{{ route('admin.expenses-incomes.index.patient', $patientId) }}",
     columns: [
     { data: 'placeholder', name: 'placeholder' },
     { data: 'id', name: 'id' , visible: false},
@@ -103,32 +98,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
-    $('#filter-expenses').on('click', function() {
-        $('.filter[name="category"]').val(1);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
-    $('#filter-income').on('click', function() {
-        $('.filter[name="category"]').val(3);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
-
-    $('#filter-expenses-commission').on('click', function() {
-        $('.filter[name="category"]').val(2);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
-    $('#filter-income-commission').on('click', function() {
-        $('.filter[name="category"]').val(4);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
+  
 });
 
 </script>

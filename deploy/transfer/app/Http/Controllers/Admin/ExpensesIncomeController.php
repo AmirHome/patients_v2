@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\DataTablesFilterTrait;
 use App\Http\Requests\MassDestroyExpensesIncomeRequest;
 use App\Http\Requests\StoreExpensesIncomeRequest;
 use App\Http\Requests\UpdateExpensesIncomeRequest;
@@ -10,24 +11,98 @@ use App\Models\Department;
 use App\Models\ExpensesIncome;
 use App\Models\Patient;
 use App\Models\User;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class ExpensesIncomeController extends Controller
 {
+    use DataTablesFilterTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $data = $this->financeMountFilter();
+
         if ($request->ajax()) {
-            $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            $query = ExpensesIncome::with(['user', 'patient', 'department'])
+                ->select(
+                    'patient_id',
+                    DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
+                    DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                    DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
+                    DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                )
+                ->groupBy('patient_id');
+
+            $query = $this->financeFilter($request, $query);
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row) {
+                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.index.patient', $row->patient_id) . '">' .
+                    trans('global.view') .
+                    '</a>';
+            });
 
+            $table->addColumn('patient_name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name . ' ' . $row->patient->surname) : '';
+            });
+
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+
+
+            return $table->make(true);
+        }
+
+            $columnChartModel = (new ColumnChartModel())
+                ->setTitle('Expenses by Type')
+                ->addColumn('Food', 100, '#f6ad55')
+                ->addColumn('Shopping', 200, '#fc8181')
+                ->addColumn('Travel', 300, '#90cdf4');
+
+            $pieChartModel = (new PieChartModel())
+                ->setTitle('Expenses by Type')
+                ->addSlice('Food', 100, '#f6ad55')
+                ->addSlice('Shopping', 200, '#fc8181')
+                ->addSlice('Travel', 300, '#90cdf4');
+        return view('admin.expensesIncomes.index', $data)
+        ->with('pieChartModel', $pieChartModel)
+        ->with('columnChartModel', $columnChartModel);
+    }
+
+    public function indexPatient(Request $request, $patientId)
+    {
+        abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
+
+        // append patient id to data
+        $data['patient'] = Patient::find($patientId);
+
+        if ($request->ajax()) {
+
+            $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table))
+                ->where('patient_id', $patientId);
+
+            $query = $this->financeFilter($request, $query);
+
+            $table = Datatables::of($query);
+
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) {
                 $viewGate      = 'expenses_income_show';
                 $editGate      = 'expenses_income_edit';
@@ -49,13 +124,7 @@ class ExpensesIncomeController extends Controller
             $table->editColumn('category', function ($row) {
                 return $row->category ? ExpensesIncome::CATEGORY_SELECT[$row->category] : '';
             });
-            $table->addColumn('patient_name', function ($row) {
-                return $row->patient ? $row->patient->name : '';
-            });
 
-            $table->editColumn('patient.surname', function ($row) {
-                return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->surname) : '';
-            });
             $table->addColumn('department_name', function ($row) {
                 return $row->department ? $row->department->name : '';
             });
@@ -64,12 +133,20 @@ class ExpensesIncomeController extends Controller
                 return $row->amount ? $row->amount : '';
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+            $table->addColumn('patient_name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name . ' ' . $row->patient->surname) : '';
+            });
 
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+            // dd($table->toArray());
             return $table->make(true);
         }
 
-        return view('admin.expensesIncomes.index');
+        return view('admin.expensesIncomes.indexPatient', $data)->with('patientId', $patientId);
     }
 
     public function create()

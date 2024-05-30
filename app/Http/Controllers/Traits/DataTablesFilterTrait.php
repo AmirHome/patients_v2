@@ -157,6 +157,11 @@ trait DataTablesFilterTrait
                 $query->where('code', 'like', '%' . $value . '%');
             });
         }
+        //ff_category
+        if ($request->has('ff_category')) {
+            $value = $request->input('ff_category');
+            $query->where('category', $value);
+        }
         return $query;
         
     }

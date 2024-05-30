@@ -1,6 +1,10 @@
 <?php
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+
+    Route::get('expenses-incomes/index/{patient}', 'ExpensesIncomeController@indexPatient')->name('expenses-incomes.index.patient');
+
+
     // GUIDE Modal AJAX Route
     // crm_document
     Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
