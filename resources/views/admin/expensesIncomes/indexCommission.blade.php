@@ -30,7 +30,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.commission.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.expensesIncome.commission') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">

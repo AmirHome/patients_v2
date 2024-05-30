@@ -419,7 +419,23 @@
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.commission.title') }}
+                                {{ trans('cruds.expensesIncome.commission') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.report.finance") }}" class="c-sidebar-nav-link {{ request()->is("admin/report/finance") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expensesIncome.report') }} {{ trans('cruds.expensesIncome.title') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.report.commission") }}" class="c-sidebar-nav-link {{ request()->is("admin/report/commission") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expensesIncome.report') }} {{ trans('cruds.expensesIncome.commission') }}
                             </a>
                         </li>
                     @endcan
