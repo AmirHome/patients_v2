@@ -41,10 +41,10 @@
          <i id="righticon" class="fas fa-chevron-right" style="display:none;"></i>
           </button>
 
-            <button class="main-search" type="button" responsive="true">
+            <!-- <button class="main-search" type="button" responsive="true">
                 <i class="fas fa-fw fa-search"></i>
             </button>
-            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button>
+            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button> -->
             
             <ul class="c-header-nav ml-auto">
 
@@ -108,16 +108,15 @@
                       <div class="dropdown-divider"></div>
                       @can('viewPulse')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
-                          <i class="fa fa-desktop" aria-hidden="true"></i> Pluse
+                          Pluse
                         </a>
                       @endcan
                       @can('viewTelescope')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
-                          <i class="fa fa-bug" aria-hidden="true"></i> Telescope
+                           Telescope
                         </a>
                       @endcan
                       <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                        <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt"></i>
                         {{ trans('global.logout') }}
                       </a>
                     </div>

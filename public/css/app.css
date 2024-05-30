@@ -384,7 +384,8 @@ td .btn-primary {
     color: #321fdb;
 }
 td .btn-primary:hover {
-    background-color: rgba(50, 31, 219, 0.9); /* Opak mavi tonu */
+    background-color: initial !important;
+    color: rgba(50, 31, 219, 0.6) !important;
 }
 
 td .btn-primary:before {
@@ -395,44 +396,56 @@ td .btn-info {
     color: #39f;
 }
 td .btn-info:hover {
-    background-color: rgba(51, 153, 255, 0.6); /* Mavi tonu ve 0.9 opaklık */
+    background-color: initial !important;
+    color: rgba(51, 153, 255, 0.5) !important;
 }
 td .btn-info:before {
     content: "\f044";
 }
+
+td .btn-danger {
+    color: #e55353;
+}
+td .btn-danger:hover {
+    background-color: initial !important;
+    color: rgba(229, 83, 83, 0.6);
+}
+
+td .btn-danger:before {
+    content: "\f1f8";
+}
+
 td .btn-info:hover,
 td .btn-danger:hover,
 td .btn-primary:hover {
-    color: white;
-    font-weight: 500;
-    border-radius: 10px;
-    font-size: 13px;
     border: none;
-    transform: none !important; /* Hover durumunda transformu devre dışı bırak */
+    transform: none !important;
+    font-weight: 500;
+    border: none;
+    line-height: 0px;
 }
 td .btn-info,
 td .btn-danger,
 td .btn-primary {
     font-family: "Public Sans", sans-serif;
     font-weight: 500;
-    transition: none !important; /* Transitionu kaldır */
+    transition: none !important;
+    border: none;
+    line-height: 0px;
 }
 td .btn-danger:before,
 td .btn-info:before,
 td .btn-primary:before {
     font-family: FontAwesome;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 500;
 }
 td .btn-danger:focus,
 td .btn-info:focus,
 td .btn-primary:focus {
     box-shadow: none !important;
     outline: none;
-    border-radius: 10px;
-    color: white;
     font-weight: 500;
-    border-radius: 10px;
-    font-size: 13px;
     border: none;
     transform: none !important; /* Hover durumunda transformu devre dışı bırak */
 }
@@ -444,23 +457,8 @@ td .btn-primary {
     border-color: transparent;
     font-family: "Public Sans", sans-serif;
 }
-td .btn-danger {
-    color: #e55353;
-
-    font-weight: 600;
-    /* position:relative; */
-    /* padding-left: 17px; */
-}
-td .btn-danger:before {
-    content: "\f1f8";
-}
-td .btn-danger:hover {
-    background-color: rgba(255, 99, 71);
-}
 
 .emergency {
-    color: #00137b !important;
-    /* background-color: blueviolet !important; */
     border-color: rgba(255, 0, 0, 0.1);
     border-style: dotted;
     border-left: 7px solid red;
@@ -658,4 +656,33 @@ li.active .page-link {
     max-width: 30px;
     max-height: 30px;
     margin-top: 2px;
+}
+.btn-primary,
+.btn-success,
+.btn-danger {
+    background-color: rgb(33, 43, 54);
+    color: white;
+    border: none !important;
+    outline: none;
+    box-shadow: none !important;
+    line-height: 1.71429;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+.btn-primary:hover,
+.btn-success:hover,
+.btn-danger:hover,
+.btn-primary:focus,
+.btn-success:focus,
+.btn-danger:focus,
+.btn-primary:active,
+.btn-success:active,
+.btn-danger:active {
+    background-color: rgb(69, 79, 91) !important;
+    color: white;
+    border-color: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
