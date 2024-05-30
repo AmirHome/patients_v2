@@ -256,8 +256,8 @@
           }, */
           order: [],
           scrollX: true,
-          pageLength: 100,
-          dom: 'lBfrtip<"actions">',
+          pageLength: 10,
+          dom: 'Bfrtilp<"actions">',
           buttons: [
           /*       {
               extend: 'selectAll',
@@ -289,21 +289,22 @@
             //   }
             // },
             {
-              extend: 'csv',
-              className: 'btn-default',
-              text: csvButtonTrans,
+              extend: 'excel',
+              className: 'btn-excel',
+              text: '<i class="far fa-file-excel"></i> ' +excelButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }
             },
             {
-              extend: 'excel',
-              className: 'btn-default',
-              text: excelButtonTrans,
+              extend: 'csv',
+              className: 'btn-csv',
+              text: '<i class="far fa-file-alt"></i>' +csvButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }
             },
+        
             // {
             //   extend: 'pdf',
             //   className: 'btn-default',
@@ -314,8 +315,8 @@
             // },
             {
               extend: 'print',
-              className: 'btn-default',
-              text: printButtonTrans,
+              className: 'btn-print',
+              text: '<i class="fas fa-print"></i> '+printButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }

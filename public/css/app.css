@@ -3,6 +3,19 @@ body {
     font-family: "Public Sans", sans-serif;
     font-weight: 600;
 }
+:root {
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --gray: rgb(99, 115, 129);
+    --light-gray: rgb(145, 158, 171);
+    --blue: rgb(0, 167, 111);
+    --red: rgb(255, 0, 0);
+    --light-blue: rgb(51, 153, 255);
+    --light-red: rgba(255, 99, 71);
+    --transparent-black: rgba(0, 0, 0, 0.1);
+    --transparent-gray: rgba(80, 80, 80, 0.01);
+    --transparent-white: rgba(255, 255, 255, 0.3);
+}
 .dt-buttons .btn {
     margin-left: 0.333em;
     padding: 1px 5px;
@@ -11,11 +24,6 @@ body {
     border-radius: 3px;
 }
 
-.page-link:not(:disabled):not(.disabled) {
-    cursor: pointer;
-    border-radius: 0.25rem;
-    margin-left: 0.333em;
-}
 @media ((min-width: 768px)) {
     .c-main > .container-fluid,
     .c-main > .container-lg,
@@ -256,7 +264,9 @@ a.nav-link {
 /*Cards Minimal*/
 .card {
     border: 0px;
+    margin-bottom: 0px;
 }
+
 .card-table {
     border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
@@ -272,7 +282,6 @@ a.nav-link {
     background-color: white;
     border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
-    color: gray;
     box-sizing: border-box;
 }
 .card-header {
@@ -287,12 +296,25 @@ a.nav-link {
 .card-body {
     font-size: 0.875rem;
 }
-
+.card .card-body .text-value {
+    color: rgb(33, 43, 54);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.card .card-body .text-header {
+    font-weight: 600;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    color: rgb(33, 43, 54);
+}
 /* ***************************************
    ---------- Datatable minimal ----------
 */
 .dt-body {
     white-space: nowrap;
+}
+.dataTables_scroll {
+    padding-bottom: 20px;
 }
 
 .dataTables_wrapper
@@ -328,12 +350,11 @@ table.dataTable thead tr {
 
 table.dataTable thead th {
     padding-left: 10px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     color: rgb(99, 115, 129);
     white-space: nowrap;
     text-align: left;
-    font-family: "Public Sans", sans-serif;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -343,8 +364,7 @@ table.dataTable thead th {
     color: rgb(33, 43, 54);
     line-height: 1.57143;
     font-size: 0.875rem;
-    font-family: "Public Sans", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 }
 .table-hover tbody tr:hover {
     background-color: rgb(244, 246, 248);
@@ -548,4 +568,94 @@ td .btn-danger:hover {
 .select2-search__field {
     outline: 1px solid #ced4da !important;
     border-radius: 5px !important;
+}
+
+/*Button Minimal*/
+.btn-excel {
+    background-color: rgba(17, 141, 87);
+}
+.btn-excel:hover {
+    background-color: rgba(17, 141, 87, 0.88);
+}
+.btn-csv {
+    background-color: rgba(51, 153, 255);
+}
+.btn-csv:hover {
+    background-color: rgba(51, 153, 255, 0.75);
+}
+.btn-print {
+    background-color: rgba(255, 171, 0);
+}
+.btn-print:hover {
+    background-color: rgba(255, 171, 0, 0.75);
+}
+.btn-excel,
+.btn-csv,
+.btn-print {
+    color: white;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+}
+.btn-excel:hover,
+.btn-excel:focus,
+.btn-csv:hover,
+.btn-csv:focus,
+.btn-print:hover,
+.btn-print:focus {
+    color: white;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+    outline: none;
+    box-shadow: none;
+}
+.btn-excel i,
+.btn-csv i,
+.btn-print i {
+    padding-right: 15px;
+    font-weight: 600;
+}
+/* pagination  btn */
+.page-link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    border-radius: 0.25rem;
+    margin-left: 0.333em;
+    color: #006c9c;
+    border-color: #006c9c !important;
+}
+.page-link:not(:disabled):hover,
+.page-link:not(.disabled):hover {
+    color: white !important;
+    background-color: rgba(0, 108, 156, 0.9);
+}
+li.active .page-link {
+    color: white !important;
+    background-color: rgba(0, 108, 156, 1);
+}
+.page-link:not(:disabled):focus,
+.page-link:not(.disabled):focus {
+    outline: none;
+    box-shadow: none;
+}
+.pagination .page-link:not(:first-child):not(:last-child) {
+    font-size: 50px !important;
+}
+.dataTables_length {
+    padding: 5px 5px 5px 25px;
+}
+
+.pagination > *:not(:first-child):not(:last-child) .page-link {
+    border-radius: 50%; /* Tam bir yuvarlak */
+    width: 1.5vw; /* Viewport genişliğinin yüzde beşi kadar genişlik */
+    height: 1.5vw; /* Konteynırın genişliğinin beşte biri kadar yükseklik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 5%; /* İçeriği dikey olarak tam ortala */
+    max-width: 30px;
+    max-height: 30px;
+    margin-top: 2px;
 }

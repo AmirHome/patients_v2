@@ -74,7 +74,7 @@ return [
     'datatables'                     => [
         'copy'          => 'Copy',
         'csv'           => 'CSV',
-        'excel'         => 'Excel',
+        'excel'         => 'Download as Excel',
         'pdf'           => 'PDF',
         'print'         => 'Print',
         'colvis'        => 'Columns',

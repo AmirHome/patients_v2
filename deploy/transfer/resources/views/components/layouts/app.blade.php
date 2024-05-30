@@ -201,7 +201,7 @@
     },
     order: [],
     scrollX: true,
-    pageLength: 100,
+    pageLength: 10,
     dom: 'lBfrtip<"actions">',
     buttons: [
       {
