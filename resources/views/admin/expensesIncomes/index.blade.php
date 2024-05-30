@@ -59,6 +59,9 @@
                         total_income 
                     </th>
                     <th>
+                        total difference 
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,7 @@
         { data: 'country_name', name: 'patient.city.country.name', sortable: false},
         { data: 'total_expenses', name: 'total_expenses', searchable:false, sortable: false },
         { data: 'total_income', name: 'total_income', searchable:false, sortable: false },
+        { data: 'total_difference', name: 'total_difference', searchable:false, sortable: false },
         { data: 'actions', name: '{{ trans('global.actions') }}' , sortable: false}
     ],
     orderCellsTop: true,

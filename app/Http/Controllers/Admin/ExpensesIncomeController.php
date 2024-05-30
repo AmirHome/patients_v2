@@ -35,9 +35,9 @@ class ExpensesIncomeController extends Controller
                 ->select(
                     'patient_id',
                     DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
-                    DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                    // DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
                     DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
-                    DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                    // DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
                 )
                 ->groupBy('patient_id');
 
@@ -61,6 +61,12 @@ class ExpensesIncomeController extends Controller
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
             });
 
+            $table->addColumn('total_difference', function ($row) {
+                $total_expenses = $row->total_expenses;
+                $total_income = $row->total_income;
+                return $total_income - $total_expenses;
+            });
+            
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
 
 
@@ -94,9 +100,9 @@ class ExpensesIncomeController extends Controller
             $query = ExpensesIncome::with([ 'patient'])
                 ->select(
                     'patient_id',
-                    DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
+                    // DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
                     DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
-                    DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
+                    // DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
                     DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
                 )
                 ->groupBy('patient_id');
@@ -108,7 +114,7 @@ class ExpensesIncomeController extends Controller
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) {
-                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.index.patient', $row->patient_id) . '">' .
+                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.patient.index', $row->patient_id) . '">' .
                     trans('global.view') .
                     '</a>';
             });
@@ -119,6 +125,12 @@ class ExpensesIncomeController extends Controller
 
             $table->addColumn('country_name', function ($row) {
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->addColumn('total_difference', function ($row) {
+                $total_expenses = $row->total_expenses_commission;
+                $total_income = $row->total_income_commission;
+                return $total_income - $total_expenses;
             });
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
