@@ -73,21 +73,7 @@ class ExpensesIncomeController extends Controller
             return $table->make(true);
         }
 
-            $columnChartModel = (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4');
-
-            $pieChartModel = (new PieChartModel())
-                ->setTitle('Expenses by Type')
-                ->addSlice('Food', 100, '#f6ad55')
-                ->addSlice('Shopping', 200, '#fc8181')
-                ->addSlice('Travel', 300, '#90cdf4');
-
-        return view('admin.expensesIncomes.index', $data)
-        ->with('pieChartModel', $pieChartModel)
-        ->with('columnChartModel', $columnChartModel);
+        return view('admin.expensesIncomes.index', $data);
     }
 
     public function commission(Request $request)
@@ -139,21 +125,7 @@ class ExpensesIncomeController extends Controller
             return $table->make(true);
         }
 
-            $columnChartModel = (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4');
-
-            $pieChartModel = (new PieChartModel())
-                ->setTitle('Expenses by Type')
-                ->addSlice('Food', 100, '#f6ad55')
-                ->addSlice('Shopping', 200, '#fc8181')
-                ->addSlice('Travel', 300, '#90cdf4');
-
-        return view('admin.expensesIncomes.indexCommission', $data)
-                ->with('pieChartModel', $pieChartModel)
-                ->with('columnChartModel', $columnChartModel);
+        return view('admin.expensesIncomes.indexCommission', $data);
     }
 
     public function report(Request $request)
@@ -222,7 +194,7 @@ class ExpensesIncomeController extends Controller
         ->with('pieChartModel', $pieChartModel)
         ->with('columnChartModel', $columnChartModel);
     }
-    
+
     public function reportCommission(Request $request)
     {
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');

@@ -87,7 +87,7 @@
                     </div>
                 </div>
              
-                <x-province class="col-md-4" :data="[$template='Province']"/>
+                <x-province-component class="col-md-4" :data="[$template='Province']"/>
 
             </div>
             <div class="row justify-content-center">
