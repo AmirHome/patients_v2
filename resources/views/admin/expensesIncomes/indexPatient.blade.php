@@ -40,10 +40,10 @@
                     </th>
                     <th>
                         {{ trans('cruds.patient.fields.surname') }}
-                    </th>
+                    </th> --}}
                     <th>
                         {{ trans('cruds.expensesIncome.fields.department') }}
-                    </th> --}}
+                    </th>
                     <th>
                         {{ trans('cruds.expensesIncome.fields.amount') }}
                     </th>
@@ -89,7 +89,7 @@
     { data: 'category', name: 'category' },
     // { data: 'patient_name', name: 'patient.name' },
     // { data: 'patient.surname', name: 'patient.surname' },
-    // { data: 'department_name', name: 'department.name' },
+    { data: 'department_name', name: 'department.name' },
     { data: 'amount', name: 'amount' },
     { data: 'created_at', name: 'created_at' },
     { data: 'actions', name: '{{ trans('global.actions') }}' }
@@ -104,31 +104,19 @@
           .columns.adjust();
   });
 
-    $('#filter-expenses').on('click', function() {
-        $('.filter[name="category"]').val(1);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
-    $('#filter-income').on('click', function() {
-        $('.filter[name="category"]').val(3);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
+    function handleFilterButtonClick(category, button) {
+        $('.filter[name="category"]').val(category);
+        $('.btn-filter').removeClass('btn-info').addClass('btn-secondary');
+        button.removeClass('btn-secondary').addClass('btn-info');
+        $('#category-name').text(button.text());
+        table.ajax.reload(); 
+    }
+
+    $('.btn-filter').on('click', function() {
+        const category = $(this).data('category');
+        handleFilterButtonClick(category, $(this));
     });
 
-    $('#filter-expenses-commission').on('click', function() {
-        $('.filter[name="category"]').val(2);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
-    $('#filter-income-commission').on('click', function() {
-        $('.filter[name="category"]').val(4);
-        $('.filter').removeClass('btn-info').addClass('btn-secondary');
-        $(this).removeClass('btn-secondary').addClass('btn-info');
-        table.ajax.reload();
-    });
 });
 
 </script>
