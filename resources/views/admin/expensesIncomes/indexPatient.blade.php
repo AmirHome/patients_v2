@@ -78,7 +78,7 @@
     retrieve: true,
     aaSorting: [],
     ajax: {
-        url: "{{ route('admin.expenses-incomes.index.patient', $patientId) }}",
+        url: "{{ route('admin.expenses-incomes.patient.index', $patientId) }}",
         data: function(d) {
             d.ff_category = $('.filter[name="category"]').val();
         }

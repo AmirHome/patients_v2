@@ -407,11 +407,19 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('expenses_income_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ (request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*")) && !request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.expensesIncome.title') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.index.commission") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.commission.title') }}
                             </a>
                         </li>
                     @endcan

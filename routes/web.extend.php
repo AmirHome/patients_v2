@@ -2,7 +2,9 @@
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
-    Route::get('expenses-incomes/index/{patient}', 'ExpensesIncomeController@indexPatient')->name('expenses-incomes.index.patient');
+    Route::get('expenses-incomes/{patient}/index', 'ExpensesIncomeController@indexPatient')->name('expenses-incomes.patient.index');
+    Route::get('expenses-incomes/index/commission', 'ExpensesIncomeController@commission')->name('expenses-incomes.index.commission');
+
 
 
     // GUIDE Modal AJAX Route
