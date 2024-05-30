@@ -1,6 +1,31 @@
 @extends('layouts.admin')
 @section('content')
 
+{{-- <div style="height: 32rem;"> --}}
+    <div class="card">
+        <div class="card-header">
+            head
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <livewire:livewire-column-chart
+                        key="{{ $columnChartModel->reactiveKey() }}"
+                        :column-chart-model="$columnChartModel" >
+                </div>
+                <div class="col-md-6">
+    
+                    <livewire:livewire-pie-chart
+                        key="{{ $pieChartModel->reactiveKey() }}"
+                        :pie-chart-model="$pieChartModel"
+                    />
+                 </div>
+            </div>
+        </div>
+    </div>
+    
+    {{-- </div> --}}
+
 @includeIf('admin.expensesIncomes.relationships.formFilter')
 
 <div class="card">
@@ -47,12 +72,14 @@
 @endsection
 @section('scripts')
 @parent
+@livewireChartsScripts
+<livewire:scripts />
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
   let dtOverrideGlobals = {
-    dom: 'rtlp',
+    dom: 'rlftp',
     // buttons: dtButtons,
     processing: true,
     serverSide: true,
@@ -71,10 +98,10 @@
         { data: 'patient_id', name: 'patient_id' },
         { data: 'patient_name', name: 'patient.name' },
         { data: 'patient.code', name: 'patient.code' },
-        { data: 'country_name', name: 'country_name' },
-        { data: 'total_expenses', name: 'total_expenses' },
-        { data: 'total_income', name: 'total_income' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'country_name', name: 'patient.city.country.name', sortable: false},
+        { data: 'total_expenses', name: 'total_expenses', searchable:false, sortable: false },
+        { data: 'total_income', name: 'total_income', searchable:false, sortable: false },
+        { data: 'actions', name: '{{ trans('global.actions') }}' , sortable: false}
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],

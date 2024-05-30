@@ -146,7 +146,9 @@ function deployment() {
     ### Install Debugbar
     composer require barryvdh/laravel-debugbar --dev
 
-    ### Install 
+    ### Install Chart
+    composer require asantibanez/livewire-charts
+    php artisan livewire-charts:install
 
     ### Session config
     # php artisan session:table

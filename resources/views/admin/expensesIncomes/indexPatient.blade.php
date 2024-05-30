@@ -1,14 +1,22 @@
 @extends('layouts.admin')
 @section('content')
-@can('expenses_income_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.expenses-incomes.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
-            </a>
+
+<div class="card">
+    <div class="card-header">
+        Patient Info
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                {{ $patient->name}}  {{ $patient->middle_name}} {{ $patient->surname}} {{ $patient->code}}
+            </div>
+            <div class="col-md-6">
+                {{ $patient->city->name}} {{ $patient->city->country->name}}
+
+             </div>
         </div>
     </div>
-@endcan
+</div>
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
@@ -27,7 +35,7 @@
                     <th>
                         {{ trans('cruds.expensesIncome.fields.category') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.expensesIncome.fields.patient') }}
                     </th>
                     <th>
@@ -35,7 +43,7 @@
                     </th>
                     <th>
                         {{ trans('cruds.expensesIncome.fields.department') }}
-                    </th>
+                    </th> --}}
                     <th>
                         {{ trans('cruds.expensesIncome.fields.amount') }}
                     </th>
@@ -54,8 +62,11 @@
 
 
 @endsection
+
+
 @section('scripts')
 @parent
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -71,9 +82,9 @@
     { data: 'placeholder', name: 'placeholder' },
     { data: 'id', name: 'id' , visible: false},
     { data: 'category', name: 'category' },
-    { data: 'patient_name', name: 'patient.name' },
-    { data: 'patient.surname', name: 'patient.surname' },
-    { data: 'department_name', name: 'department.name' },
+    // { data: 'patient_name', name: 'patient.name' },
+    // { data: 'patient.surname', name: 'patient.surname' },
+    // { data: 'department_name', name: 'department.name' },
     { data: 'amount', name: 'amount' },
     { data: 'created_at', name: 'created_at' },
     { data: 'actions', name: '{{ trans('global.actions') }}' }
