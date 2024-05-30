@@ -1,31 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-{{-- <div style="height: 32rem;"> --}}
-    <div class="card">
-        <div class="card-header">
-            head
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <livewire:livewire-column-chart
-                        key="{{ $columnChartModel->reactiveKey() }}"
-                        :column-chart-model="$columnChartModel" >
-                </div>
-                <div class="col-md-6">
-    
-                    <livewire:livewire-pie-chart
-                        key="{{ $pieChartModel->reactiveKey() }}"
-                        :pie-chart-model="$pieChartModel"
-                    />
-                 </div>
-            </div>
-        </div>
-    </div>
-    
-    {{-- </div> --}}
-
 @includeIf('admin.expensesIncomes.relationships.formFilter')
 
 <div class="card">
