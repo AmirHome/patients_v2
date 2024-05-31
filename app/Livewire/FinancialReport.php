@@ -37,27 +37,32 @@ class FinancialReport extends Component
 
     public function render()
     {
-        $columnChartModel = $this->generateChart();
-        $columnChartModel->setTitle('Expenses by Type')
-                            ->setAnimated(true)
-                            // ->withOnColumnClickEventName('onColumnClick')
-                            // ->setDataLabelsEnabled(true)
-                            ->setLegendVisibility(false)
-                            ->setOpacity(0.5)
-                            ->setColors($this->colors)
-                            ->setColumnWidth(30)
-                            ->withGrid();
+        $typeCategories = ['expenses' => [1,3], 'commission' => [2,4]];
+        foreach($typeCategories[$this->type] as $key => $category){
+            $columnChartModel[$key] = $this->generateChart($category);
+            $columnChartModel[$key]->setTitle('Expenses by Type')
+                                ->setAnimated(true)
+                                // ->withOnColumnClickEventName('onColumnClick')
+                                // ->setDataLabelsEnabled(true)
+                                ->setLegendVisibility(false)
+                                ->setOpacity(0.5)
+                                ->setColors($this->colors)
+                                ->setColumnWidth(30)
+                                ->withGrid();
+        }
 
-        return view('livewire.financial-report')->with([
-            'columnChartModel' => $columnChartModel,
-        ]);
+        return view('livewire.financial-report', compact('columnChartModel'));
     }
 
-
-    public function generateChart(){
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+    
+    public function generateChart($category){
         
         $expensesByMonth = ExpensesIncome::whereYear('created_at', $this->currentYear)
-            ->where('category', 1) // Assuming 1 is the category for expenses
+            ->where('category', $category) // Assuming 1 is the category for expenses
             ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
             ->groupBy('month')
             ->orderBy('month')
