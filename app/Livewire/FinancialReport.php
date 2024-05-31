@@ -55,14 +55,14 @@ class FinancialReport extends Component
     public function generateStackChart($categories) {
 
         $expensesData = ExpensesIncome::whereYear('created_at', $this->year)
-        ->where('category', 1)
+        ->where('category', $categories[0])
         ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
         ->groupBy('month')
         ->orderBy('month')
         ->pluck('total', 'month');
 
         $incomeData = ExpensesIncome::whereYear('created_at', $this->year)
-            ->where('category', 3)
+            ->where('category', $categories[1])
             ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
             ->groupBy('month')
             ->orderBy('month')
@@ -87,26 +87,6 @@ class FinancialReport extends Component
                 $columnChartModel->addSeriesColumn('Remind', $monthName, $remind, ['#0000ff']);
             }
 
-        return $columnChartModel;
-    }
-    
-    public function generateChart($category){
-        
-        $expensesByMonth = ExpensesIncome::whereYear('created_at', $this->currentYear)
-            ->where('category', $category) // Assuming 1 is the category for expenses
-            ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
-            ->groupBy('month')
-            ->orderBy('month')
-            ->pluck('total', 'month');
-
-        $columnChartModel = new ColumnChartModel();
-        $columnChartModel->setTitle('Expenses by Month');
-
-        foreach (range(1, 12) as $month) {
-            $monthName = Carbon::create()->month($month)->format('F');
-            $amount = $expensesByMonth->get($month, 0);
-            $columnChartModel->addColumn($monthName, $amount, '#f6ad55');
-        }
         return $columnChartModel;
     }
 

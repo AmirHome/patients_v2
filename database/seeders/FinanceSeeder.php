@@ -25,16 +25,57 @@ class FinanceSeeder extends Seeder
             $patientIds = Patient::inRandomOrder()->take(10)->get('id');
             foreach($patientIds as $patientId) {
                 for ($i = 0; $i < $numberOfExpenses; $i++) {
-                    $catId = rand(1, 4);
+
+                    // Expenses
+                    $amountExpenses = Faker::create()->numberBetween(100, 1000)*10;
+                    // Commission Expenses percent 10% - 20% 
+                    $amountCommissionExpenses = (int) ($amountExpenses * Faker::create()->numberBetween(10, 20) / 100);
+
+                    // Income random less or equal to Expenses
+                    $amountIncome = Faker::create()->numberBetween(1000, $amountExpenses);
+                    // Commission Income is percent of amountIncome 10% - 20% and less or equal to amountCommissionExpenses
+                    $amountCommissionIncome = (int)((($amountIncome>$amountCommissionExpenses)?$amountIncome:$amountCommissionExpenses) * Faker::create()->numberBetween(10, 20) / 100);
+
+                    $date = Faker::create()->dateTimeBetween('-1 year', 'now')->format('Y-m-d');
+
+                    ExpensesIncome::create([
+                        'user_id' => 77, // Admin user
+                        'category' => 1,
+                        'patient_id' => $patientId->id,
+                        'department_id' => Department::inRandomOrder()->first()->id,
+                        'amount' => $amountExpenses,
+                        'description' => Faker::create()->sentence(20),
+                        'created_at' => $date,
+                    ]);
     
                     ExpensesIncome::create([
                         'user_id' => 77, // Admin user
-                        'category' => $catId,
+                        'category' => 2,
                         'patient_id' => $patientId->id,
                         'department_id' => Department::inRandomOrder()->first()->id,
-                        'amount' => Faker::create()->numberBetween(10, 100) * ($catId === 1 ? 10000 : 500),
-                        'description' => Faker::create()->sentence(12),
-                        'created_at' => Faker::create()->dateTimeBetween('-1 month', 'now')->format('Y-m-d'),
+                        'amount' => $amountCommissionExpenses,
+                        'description' => Faker::create()->sentence(20),
+                        'created_at' => $date,
+                    ]);
+
+                    ExpensesIncome::create([
+                        'user_id' => 77, // Admin user
+                        'category' => 3,
+                        'patient_id' => $patientId->id,
+                        'department_id' => Department::inRandomOrder()->first()->id,
+                        'amount' => $amountIncome,
+                        'description' => Faker::create()->sentence(20),
+                        'created_at' => $date,
+                    ]);
+
+                    ExpensesIncome::create([
+                        'user_id' => 77, // Admin user
+                        'category' => 4,
+                        'patient_id' => $patientId->id,
+                        'department_id' => Department::inRandomOrder()->first()->id,
+                        'amount' => $amountCommissionIncome,
+                        'description' => Faker::create()->sentence(20),
+                        'created_at' => $date,
                     ]);
                 }
             }
