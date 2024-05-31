@@ -10,53 +10,84 @@ use Livewire\Component;
 
 class FinancialReport extends Component
 {
-    public $currentYear;
-    public $type;
+    public $year;
 
-    public $colors = [
-        '#ff0000', // January
-        '#ff7f00', // February
-        '#ffff00', // March
-        '#7fff00', // April
-        '#00ff00', // May
-        '#00ff7f', // June
-        '#00ffff', // July
-        '#007fff', // August
-        '#0000ff', // September
-        '#7f00ff', // October
-        '#ff00ff', // November
-        '#ff007f'  // December
-    ];
+    public $colors = ['#ff0000', '#00ff00', '#0000ff']; //Red for Expenses, Green for Paid (Income), Blue for Remind
 
     public function mount()
     {
-        $this->currentYear = Carbon::now()->year;
-        $this->type = 'expenses';
+        $this->year = Carbon::now()->year; //currentYear
 
     }
 
     public function render()
     {
+
         $typeCategories = ['expenses' => [1,3], 'commission' => [2,4]];
-        foreach($typeCategories[$this->type] as $key => $category){
-            $columnChartModel[$key] = $this->generateChart($category);
-            $columnChartModel[$key]->setTitle('Expenses by Type')
+
+        $columnChartStackModelExpenses = $this->generateStackChart($typeCategories['expenses'])->setTitle('Expenses by Type')
                                 ->setAnimated(true)
-                                // ->withOnColumnClickEventName('onColumnClick')
-                                // ->setDataLabelsEnabled(true)
-                                ->setLegendVisibility(false)
+                                // ->setLegendVisibility(false)
+                                ->setDataLabelsEnabled(false)
                                 ->setOpacity(0.5)
                                 ->setColors($this->colors)
                                 ->setColumnWidth(30)
                                 ->withGrid();
-        }
 
-        return view('livewire.financial-report', compact('columnChartModel'));
+        $columnChartStackModelCommission = $this->generateStackChart($typeCategories['commission'])->setTitle('Commission by Type')
+                                ->setAnimated(true)
+                                // ->setLegendVisibility(false)
+                                ->setDataLabelsEnabled(false)
+                                ->setOpacity(0.5)
+                                ->setColors($this->colors)
+                                ->setColumnWidth(30)
+                                ->withGrid();
+
+
+        return view('livewire.financial-report', compact('columnChartStackModelExpenses', 'columnChartStackModelCommission'));
     }
 
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    public function generateStackChart($categories) {
+
+        $expensesData = ExpensesIncome::whereYear('created_at', $this->year)
+        ->where('category', 1)
+        ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
+        ->groupBy('month')
+        ->orderBy('month')
+        ->pluck('total', 'month');
+
+        $incomeData = ExpensesIncome::whereYear('created_at', $this->year)
+            ->where('category', 3)
+            ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('total', 'month');
+
+        $columnChartModel = (new ColumnChartModel())
+            ->setTitle('Expenses and Income by Month')
+            ->setDataLabelsEnabled(true)
+            ->multiColumn() // Set chart to display multiple column series
+            ->stacked(true); // Set chart to display column series stacked
+
+
+            foreach (range(1, 12) as $month) {
+                $monthName = Carbon::create()->month($month)->format('F');
+
+                $expenses = $expensesData->get($month, 0);
+                $income = $incomeData->get($month, 0);
+                $remind = $expenses - $income;
+    
+                $columnChartModel->addSeriesColumn('Expenses', $monthName, $expenses, ['#ff0000']);
+                $columnChartModel->addSeriesColumn('Paid', $monthName, $income, ['#00ff00']);
+                $columnChartModel->addSeriesColumn('Remind', $monthName, $remind, ['#0000ff']);
+            }
+
+        return $columnChartModel;
     }
     
     public function generateChart($category){
