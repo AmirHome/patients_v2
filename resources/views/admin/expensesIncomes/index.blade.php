@@ -50,8 +50,7 @@
 @endsection
 @section('scripts')
 @parent
-@livewireChartsScripts
-<livewire:scripts />
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)

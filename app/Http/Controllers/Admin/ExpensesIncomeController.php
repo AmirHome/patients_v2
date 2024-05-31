@@ -31,7 +31,7 @@ class ExpensesIncomeController extends Controller
 
         if ($request->ajax()) {
             // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
-            $query = ExpensesIncome::with([ 'patient'])
+            $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
                     DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
@@ -83,7 +83,7 @@ class ExpensesIncomeController extends Controller
         $data = $this->financeMountFilter();
 
         if ($request->ajax()) {
-            $query = ExpensesIncome::with([ 'patient'])
+            $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
                     // DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
@@ -134,9 +134,25 @@ class ExpensesIncomeController extends Controller
 
         $data = $this->financeMountFilter();
 
+        $columnChartModel = (new ColumnChartModel())
+            ->setTitle('Expenses by Type')
+            ->addColumn('Food', 100, '#f6ad55')
+            ->addColumn('Shopping', 200, '#fc8181')
+            ->addColumn('Travel', 300, '#90cdf4');
+
+        $pieChartModel = (new PieChartModel())
+            ->setTitle('Expenses by Type')
+            ->addSlice('Food', 100, '#f6ad55')
+            ->addSlice('Shopping', 200, '#fc8181')
+            ->addSlice('Travel', 300, '#90cdf4');
+
+        return view('admin.expensesIncomes.report', $data)
+            ->with('pieChartModel', $pieChartModel)
+            ->with('columnChartModel', $columnChartModel);
+
         if ($request->ajax()) {
             // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
-            $query = ExpensesIncome::with([ 'patient'])
+            $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
                     DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
@@ -171,28 +187,28 @@ class ExpensesIncomeController extends Controller
                 $total_income = $row->total_income;
                 return $total_income - $total_expenses;
             });
-            
+
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
 
 
             return $table->make(true);
         }
 
-            $columnChartModel = (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4');
+        $columnChartModel = (new ColumnChartModel())
+            ->setTitle('Expenses by Type')
+            ->addColumn('Food', 100, '#f6ad55')
+            ->addColumn('Shopping', 200, '#fc8181')
+            ->addColumn('Travel', 300, '#90cdf4');
 
-            $pieChartModel = (new PieChartModel())
-                ->setTitle('Expenses by Type')
-                ->addSlice('Food', 100, '#f6ad55')
-                ->addSlice('Shopping', 200, '#fc8181')
-                ->addSlice('Travel', 300, '#90cdf4');
+        $pieChartModel = (new PieChartModel())
+            ->setTitle('Expenses by Type')
+            ->addSlice('Food', 100, '#f6ad55')
+            ->addSlice('Shopping', 200, '#fc8181')
+            ->addSlice('Travel', 300, '#90cdf4');
 
         return view('admin.expensesIncomes.index', $data)
-        ->with('pieChartModel', $pieChartModel)
-        ->with('columnChartModel', $columnChartModel);
+            ->with('pieChartModel', $pieChartModel)
+            ->with('columnChartModel', $columnChartModel);
     }
 
     public function reportCommission(Request $request)
@@ -202,7 +218,7 @@ class ExpensesIncomeController extends Controller
         $data = $this->financeMountFilter();
 
         if ($request->ajax()) {
-            $query = ExpensesIncome::with([ 'patient'])
+            $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
                     // DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
@@ -244,21 +260,25 @@ class ExpensesIncomeController extends Controller
             return $table->make(true);
         }
 
-            $columnChartModel = (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4');
+        /*         
+        @livewireChartsScripts
+        <livewire:scripts /> 
+        */
+        $columnChartModel = (new ColumnChartModel())
+            ->setTitle('Expenses by Type')
+            ->addColumn('Food', 100, '#f6ad55')
+            ->addColumn('Shopping', 200, '#fc8181')
+            ->addColumn('Travel', 300, '#90cdf4');
 
-            $pieChartModel = (new PieChartModel())
-                ->setTitle('Expenses by Type')
-                ->addSlice('Food', 100, '#f6ad55')
-                ->addSlice('Shopping', 200, '#fc8181')
-                ->addSlice('Travel', 300, '#90cdf4');
+        $pieChartModel = (new PieChartModel())
+            ->setTitle('Expenses by Type')
+            ->addSlice('Food', 100, '#f6ad55')
+            ->addSlice('Shopping', 200, '#fc8181')
+            ->addSlice('Travel', 300, '#90cdf4');
 
-        return view('admin.expensesIncomes.indexCommission', $data)
-                ->with('pieChartModel', $pieChartModel)
-                ->with('columnChartModel', $columnChartModel);
+        return view('admin.expensesIncomes.reportCommission', $data)
+            ->with('pieChartModel', $pieChartModel)
+            ->with('columnChartModel', $columnChartModel);
     }
 
     public function indexPatient(Request $request, $patientId)
