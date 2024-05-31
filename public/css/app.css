@@ -647,8 +647,8 @@ li.active .page-link {
 
 .pagination > *:not(:first-child):not(:last-child) .page-link {
     border-radius: 50%; /* Tam bir yuvarlak */
-    width: 30px; /* Viewport genişliğinin yüzde beşi kadar genişlik */
-    height: 30px; /* Konteynırın genişliğinin beşte biri kadar yükseklik */
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
