@@ -8,14 +8,14 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Carbon\Carbon;
 use Livewire\Component;
 
-class Test extends Component
+class FinancialReport extends Component
 {
 
     public function render()
     {
         $columnChartModel = $this->generateChart();
 
-        return view('livewire.test')->with([
+        return view('livewire.financial-report')->with([
             'columnChartModel' => $columnChartModel,
         ]);
     }

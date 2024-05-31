@@ -9,25 +9,15 @@
     </div>
 
     <div class="card-body">
-    
 
-
-
-    <livewire:test/>
+    <livewire:financial-report/>
     </div>
 </div>
-
-
 
 @endsection
 @section('scripts')
 @parent
 
 @livewireChartsScripts
-<script>
-
-
-
-</script>
 
 @endsection
