@@ -427,15 +427,7 @@
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.expensesIncome.report') }} {{ trans('cruds.expensesIncome.title') }}
-                            </a>
-                        </li>
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses-incomes.report.commission") }}" class="c-sidebar-nav-link {{ request()->is("admin/report/commission") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.expensesIncome.report') }} {{ trans('cruds.expensesIncome.commission') }}
+                                {{ trans('cruds.expensesIncome.report') }}
                             </a>
                         </li>
                     @endcan

@@ -12,9 +12,6 @@
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-ExpensesIncome">
             <thead>
                 <tr>
-                    <th width="10">
-
-                    </th>
                     <th>
                         {{ trans('cruds.expensesIncome.fields.id') }}
                     </th>
@@ -71,8 +68,7 @@
         }
     },
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'patient_id', name: 'patient_id' },
+        { data: 'patient_id', name: 'patient_id', visible: false},
         { data: 'patient_name', name: 'patient.name' },
         { data: 'patient.code', name: 'patient.code' },
         { data: 'country_name', name: 'patient.city.country.name', sortable: false},

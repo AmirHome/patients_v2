@@ -6,8 +6,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('expenses-incomes/index/commission', 'ExpensesIncomeController@commission')->name('expenses-incomes.index.commission');
 
     Route::get('report/finance', 'ExpensesIncomeController@report')->name('expenses-incomes.report.finance');
-    Route::get('report/commission', 'ExpensesIncomeController@reportCommission')->name('expenses-incomes.report.commission');
-
 
 
     // GUIDE Modal AJAX Route
