@@ -1,24 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.admin')
+@section('content')
 
-    <title>Laravel</title>
+@includeIf('admin.expensesIncomes.relationships.formFilter')
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<div class="card">
+    <div class="card-header">
 
-    <livewire:styles />
-</head>
-<body class="bg-gray-200">
+    </div>
 
-<livewire:reportfinance/>
+    <div class="card-body">
+    
 
-<livewire:scripts />
+    <livewire:livewire-column-chart
+        key="{{ $columnChartModel->reactiveKey() }}"
+        :column-chart-model="$columnChartModel"
+    />
 
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <livewire:test/>
+    </div>
+</div>
+
+
+
+@endsection
+@section('scripts')
+@parent
 
 @livewireChartsScripts
+<script>
 
-</body>
-</html>
+
+
+</script>
+
+@endsection
