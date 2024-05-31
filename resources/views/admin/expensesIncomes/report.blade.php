@@ -10,7 +10,8 @@
 
     <div class="card-body">
 
-    <livewire:financial-report/>
+        <livewire:financial-report/>
+
     </div>
 </div>
 

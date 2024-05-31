@@ -10,10 +10,43 @@ use Livewire\Component;
 
 class FinancialReport extends Component
 {
+    public $currentYear;
+    public $type;
+
+    public $colors = [
+        '#ff0000', // January
+        '#ff7f00', // February
+        '#ffff00', // March
+        '#7fff00', // April
+        '#00ff00', // May
+        '#00ff7f', // June
+        '#00ffff', // July
+        '#007fff', // August
+        '#0000ff', // September
+        '#7f00ff', // October
+        '#ff00ff', // November
+        '#ff007f'  // December
+    ];
+
+    public function mount()
+    {
+        $this->currentYear = Carbon::now()->year;
+        $this->type = 'expenses';
+
+    }
 
     public function render()
     {
         $columnChartModel = $this->generateChart();
+        $columnChartModel->setTitle('Expenses by Type')
+                            ->setAnimated(true)
+                            // ->withOnColumnClickEventName('onColumnClick')
+                            // ->setDataLabelsEnabled(true)
+                            ->setLegendVisibility(false)
+                            ->setOpacity(0.5)
+                            ->setColors($this->colors)
+                            ->setColumnWidth(30)
+                            ->withGrid();
 
         return view('livewire.financial-report')->with([
             'columnChartModel' => $columnChartModel,
@@ -22,8 +55,8 @@ class FinancialReport extends Component
 
 
     public function generateChart(){
-        $currentYear = Carbon::now()->year;
-        $expensesByMonth = ExpensesIncome::whereYear('created_at', $currentYear)
+        
+        $expensesByMonth = ExpensesIncome::whereYear('created_at', $this->currentYear)
             ->where('category', 1) // Assuming 1 is the category for expenses
             ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
             ->groupBy('month')
