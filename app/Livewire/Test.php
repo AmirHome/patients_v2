@@ -8,18 +8,24 @@ use Livewire\Component;
 
 class Test extends Component
 {
-    public $firstRun = true;
-    public $showDataLabels = false;
-    public $types = ['food', 'shopping', 'entertainment', 'travel', 'other'];
-    public $colors = [
-        'food' => '#f6ad55',
-        'shopping' => '#fc8181',
-        'entertainment' => '#90cdf4',
-        'travel' => '#66DA26',
-        'other' => '#cbd5e0',
-    ];
 
     public function render()
+    {
+        $columnChartModel = $this->generateFakeChart();
+        // $this->generateChart();
+
+        return view('livewire.test')->with([
+            'columnChartModel' => $columnChartModel,
+        ]);
+    }
+
+
+    public function generateChart(){
+
+    }
+
+
+    public function generateFakeChart()
     {
         $expenses = collect([
             ['type' => 'food', 'amount' => 200],
@@ -28,33 +34,41 @@ class Test extends Component
             ['type' => 'entertainment', 'amount' => 200],
             ['type' => 'travel', 'amount' => 500],
         ]);
+        $types = ['food', 'shopping', 'entertainment', 'travel', 'other'];
+
+        $firstRun = true;
+        $showDataLabels = false;
+        $colors = [
+            'food' => '#0e5a92',
+            'shopping' => '#ffd77f',
+            'entertainment' => '#337043',
+            'travel' => '#ff5d01',
+            'other' => '#cbd5e0',
+        ];
 
         $columnChartModel = $expenses->groupBy('type')
-            ->reduce(function ($columnChartModel, $data) {
+            ->reduce(function ($columnChartModel, $data) use ($colors){
                 // dd($data->sum('amount'));
                 $type = $data->first()['type'];
                 $value = $data->sum('amount');
                 // $type = $data->first()->type;
                 // $value = $data->sum('amount');
 
-                return $columnChartModel->addColumn($type, $value, $this->colors[$type]);
+                return $columnChartModel->addColumn($type, $value, $colors[$type]);
             }, LivewireCharts::columnChartModel()
                 ->setTitle('Expenses by Type')
-                ->setAnimated($this->firstRun)
+                ->setAnimated($firstRun)
                 ->withOnColumnClickEventName('onColumnClick')
                 ->setLegendVisibility(false)
-                ->setDataLabelsEnabled($this->showDataLabels)
-                //->setOpacity(0.25)
-                ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
+                ->setDataLabelsEnabled($showDataLabels)
+                // ->setOpacity(0.125)
+                // ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
                 ->setColumnWidth(90)
                 ->withGrid()
             );
 
-            $this->firstRun = false;
+            $firstRun = false;
 
-
-        return view('livewire.test')->with([
-            'columnChartModel' => $columnChartModel,
-        ]);
+            return $columnChartModel;
     }
 }
