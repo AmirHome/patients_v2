@@ -21,7 +21,7 @@ class FinanceSeeder extends Seeder
         if (env('APP_ENV') === 'local') {
             
             // Generate fake expenses
-            $numberOfExpenses = 7;
+            $numberOfExpenses = 70;
             $patientIds = Patient::inRandomOrder()->take(10)->get('id');
             foreach($patientIds as $patientId) {
                 for ($i = 0; $i < $numberOfExpenses; $i++) {
@@ -36,7 +36,7 @@ class FinanceSeeder extends Seeder
                     // Commission Income is percent of amountIncome 10% - 20% and less or equal to amountCommissionExpenses
                     $amountCommissionIncome = (int)((($amountIncome>$amountCommissionExpenses)?$amountIncome:$amountCommissionExpenses) * Faker::create()->numberBetween(10, 20) / 100);
 
-                    $date = Faker::create()->dateTimeBetween('-1 year', 'now')->format('Y-m-d');
+                    $date = Faker::create()->dateTimeBetween('-10 year', 'now')->format('Y-m-d');
 
                     ExpensesIncome::create([
                         'user_id' => 77, // Admin user
