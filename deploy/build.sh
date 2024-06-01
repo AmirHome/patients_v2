@@ -45,7 +45,7 @@ function clean_root_unzip() {
 
   # protect files
   bash deploy/shield.sh
-  
+
   # Check if archive exists
   if [ ! -f "$download_folder/$archive_file.zip" ]; then
     echo "Info: Archive '$archive_file.zip' not found in '$download_folder'"
@@ -61,6 +61,20 @@ function clean_root_unzip() {
     unzip -q "$download_folder/$archive_file.zip" -d .
     echo "Extracted '$archive_file' to root directory."
 
+
+    ### Backups
+    rm -rf deploy/backup/
+    mkdir -p deploy/backup/
+    rsync -a --exclude='bootstrap' \
+          --exclude='deploy' \
+          --exclude='storage' \
+          --exclude='tests' \
+          --exclude='vendor' \
+          --exclude='artisan' \
+          --exclude='README.md' \
+          --exclude='phpunit.xml' \
+          --exclude='.*' \
+          ./ deploy/backup/
 
     # (Optional) Remove the archive file after extraction
     if [ $RM ]; then
@@ -84,20 +98,6 @@ function deployment() {
     clean_root_unzip
 
     cp deploy/.env.local .env
-
-    ### Backups
-    rm -rf deploy/backup/
-    mkdir -p deploy/backup/
-    rsync -a --exclude='bootstrap' \
-          --exclude='deploy' \
-          --exclude='storage' \
-          --exclude='tests' \
-          --exclude='vendor' \
-          --exclude='artisan' \
-          --exclude='README.md' \
-          --exclude='phpunit.xml' \
-          --exclude='.*' \
-          ./ deploy/backup/
           
     # rm -rf deploy/backup
     # mkdir -p deploy/backup/app/Models
