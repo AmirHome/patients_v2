@@ -43,14 +43,15 @@ function build() {
 
 function clean_root_unzip() {
 
+  # protect files
+  bash deploy/shield.sh
+  
   # Check if archive exists
   if [ ! -f "$download_folder/$archive_file.zip" ]; then
     echo "Info: Archive '$archive_file.zip' not found in '$download_folder'"
     # exit 1
   else
 
-    # protect files
-    bash deploy/shield.sh
 
     # clean files
     find . ! -path "./.git" ! -path "./.git/*" ! -path "./deploy*" -delete
