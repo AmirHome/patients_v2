@@ -194,7 +194,11 @@ if [ ! -z "$GIT" ]; then
   git commit -m "$GIT"
   git push
 else
-    git status
+    echo "\n\n\nChanged .................... ....................\n"
+    git status --short | grep -v database/migrations/ | grep -v deploy/
+    echo "\n\n\nBackup .................... ....................\n"
+    git status --short | grep deploy/backup | grep -v deploy/backup/database/migrations
+    # git status
 fi
 
 # Depriceated
