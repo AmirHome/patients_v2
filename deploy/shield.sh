@@ -14,41 +14,10 @@
 #     --exclude='.*' \
 #     $HOME/Downloads/dev-admin-e9f11f11d86ec53e/ deploy/backup/
 
-rm -rf deploy/transfer/
-mkdir -p deploy/transfer/
-rsync -a --exclude='bootstrap' \
-    --exclude='deploy' \
-    --exclude='migrations/*' \
-    --exclude='storage' \
-    --exclude='tests' \
-    --exclude='vendor' \
-    --exclude='artisan' \
-    --exclude='README.md' \
-    --exclude='phpunit.xml' \
-    --exclude='composer.json' \
-    --exclude='composer.lock' \
-    --exclude='package.json' \
-    --exclude='vite.config.js' \
-    --exclude='.*' \
-    --exclude='config/app.php' \
-    --exclude='config/telescope.php' \
-    --exclude='config/pulse.php' \
-    --exclude='app/Providers/pulse.php' \
-    --exclude='app/Providers/TelescopeServiceProvider.php' \
-    ./ deploy/transfer/
-
-chatInit
-
-cp .gitignore deploy/transfer
-
-
-echo "\r"
-git 
-
-
 
 ### Chat init function
-function chatInit(){
+function chat_init() {
+    cp database/migrations/chat_2019_11_12_104216_add_permission_tables.php deploy/transfer/database/migrations
     cp database/migrations/chat_2014_10_12_000000_create_users_table.php deploy/transfer/database/migrations
     cp database/migrations/chat_2019_09_16_051035_create_conversations_table.php deploy/transfer/database/migrations
     cp database/migrations/chat_2019_11_12_104216_add_permission_tables.php deploy/transfer/database/migrations
@@ -90,10 +59,35 @@ function chatInit(){
 
 }
 
+rm -rf deploy/transfer/
+mkdir -p deploy/transfer/
+rsync -a --exclude='bootstrap' \
+    --exclude='deploy' \
+    --exclude='migrations/*' \
+    --exclude='storage' \
+    --exclude='tests' \
+    --exclude='vendor' \
+    --exclude='artisan' \
+    --exclude='README.md' \
+    --exclude='phpunit.xml' \
+    --exclude='composer.json' \
+    --exclude='composer.lock' \
+    --exclude='package.json' \
+    --exclude='vite.config.js' \
+    --exclude='.*' \
+    --exclude='config/app.php' \
+    --exclude='config/telescope.php' \
+    --exclude='config/pulse.php' \
+    --exclude='app/Providers/pulse.php' \
+    --exclude='app/Providers/TelescopeServiceProvider.php' \
+    ./ deploy/transfer/
+
+chat_init
+cp .gitignore deploy/transfer
 
 
-
-
+# echo "\r"
+# git status
 
 
 exit
