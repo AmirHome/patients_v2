@@ -31,7 +31,7 @@ public function rules()
             ],
             'office_id' => [
                 'required',
-                'integer',
+                'nullable',
             ],
             'city_id' => [
                 'required',
@@ -51,15 +51,15 @@ public function rules()
             ],
             'mother_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'father_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'citizenship' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'passport_no' => [
                 'string',
@@ -67,7 +67,7 @@ public function rules()
             ],
             'passport_origin' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'phone' => [
                 'string',
@@ -75,7 +75,7 @@ public function rules()
             ],
             'foriegn_phone' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'email' => [
                 'required',
@@ -89,10 +89,10 @@ public function rules()
             ],
             'birth_place' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'address' => [
-                'required',
+                'nullable',
             ],
             'weight' => [
                 'numeric',

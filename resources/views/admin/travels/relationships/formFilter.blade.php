@@ -1,6 +1,6 @@
 <container>
-<div class="card-header-text">
-<h4 class="form-title-text pt-4 pb-4 font-weight-bold">Vaka Listesi</h4>
+<div class="card-header">
+Vaka Listesi
     </div>
     <div class="row pl-0">
         <div class="col-md-11 pl-0">

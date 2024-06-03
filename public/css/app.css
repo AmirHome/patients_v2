@@ -283,6 +283,7 @@ a.nav-link {
     border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
     box-sizing: border-box;
+    padding: 40px 50px 40px 30px;
 }
 .card-header {
     color: rgb(33, 43, 54);
@@ -518,6 +519,13 @@ td .btn-primary {
     content: "Search..."; /* Placeholder metni */
     color: #999; /* Placeholder rengi */
 }
+.form-group{
+    padding: 15px 10px 10px 10px; 
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #F9F9F9 !important;
+}
 /*Select İnput*/
 .select2-container--default
     .select2-selection--single
@@ -686,3 +694,5 @@ li.active .page-link {
     outline: none !important;
     box-shadow: none !important;
 }
+
+
