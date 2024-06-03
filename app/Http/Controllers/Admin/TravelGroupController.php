@@ -10,16 +10,52 @@ use App\Models\TravelGroup;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class TravelGroupController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('travel_group_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelGroups = TravelGroup::all();
+        if ($request->ajax()) {
+            $query = TravelGroup::query()->select(sprintf('%s.*', (new TravelGroup)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.travelGroups.index', compact('travelGroups'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'travel_group_show';
+                $editGate      = 'travel_group_edit';
+                $deleteGate    = 'travel_group_delete';
+                $crudRoutePart = 'travel-groups';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
+            });
+            $table->editColumn('color', function ($row) {
+                return $row->color ? $row->color : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.travelGroups.index');
     }
 
     public function create()

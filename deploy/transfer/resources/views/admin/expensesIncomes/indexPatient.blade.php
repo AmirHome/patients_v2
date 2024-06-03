@@ -19,7 +19,7 @@
 </div>
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
+        @includeIf('admin.expensesIncomes.relationships.formFilterPatient')
     </div>
 
     <div class="card-body">
@@ -40,10 +40,10 @@
                     </th>
                     <th>
                         {{ trans('cruds.patient.fields.surname') }}
-                    </th>
+                    </th> --}}
                     <th>
                         {{ trans('cruds.expensesIncome.fields.department') }}
-                    </th> --}}
+                    </th>
                     <th>
                         {{ trans('cruds.expensesIncome.fields.amount') }}
                     </th>
@@ -72,19 +72,24 @@
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
   let dtOverrideGlobals = {
-    buttons: dtButtons,
+    buttons: [],
     processing: true,
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.expenses-incomes.index.patient', $patientId) }}",
+    ajax: {
+        url: "{{ route('admin.expenses-incomes.patient.index', $patientId) }}",
+        data: function(d) {
+            d.ff_category = $('.filter[name="category"]').val();
+        }
+    },
     columns: [
     { data: 'placeholder', name: 'placeholder' },
     { data: 'id', name: 'id' , visible: false},
     { data: 'category', name: 'category' },
     // { data: 'patient_name', name: 'patient.name' },
     // { data: 'patient.surname', name: 'patient.surname' },
-    // { data: 'department_name', name: 'department.name' },
+    { data: 'department_name', name: 'department.name' },
     { data: 'amount', name: 'amount' },
     { data: 'created_at', name: 'created_at' },
     { data: 'actions', name: '{{ trans('global.actions') }}' }
@@ -98,7 +103,20 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
+    function handleFilterButtonClick(category, button) {
+        $('.filter[name="category"]').val(category);
+        $('.btn-filter').removeClass('btn-info').addClass('btn-secondary');
+        button.removeClass('btn-secondary').addClass('btn-info');
+        $('#category-name').text(button.text());
+        table.ajax.reload(); 
+    }
+
+    $('.btn-filter').on('click', function() {
+        const category = $(this).data('category');
+        handleFilterButtonClick(category, $(this));
+    });
+
 });
 
 </script>

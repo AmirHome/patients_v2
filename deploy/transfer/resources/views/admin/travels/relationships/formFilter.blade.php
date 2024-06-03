@@ -1,12 +1,12 @@
 <container>
 <div class="card-header-text">
-        <h4 class="text-left pb-4 font-weight-bold">Vakalar</h4>
+<h4 class="form-title-text pt-4 pb-4 font-weight-bold">Vaka Listesi</h4>
     </div>
-    <div class="row">
-        <div class="col-md-11">
-<div class="card card-table pl-2 pr-3">
-<h5 class="form-title-text pt-4 pl-3 font-weight-bold">Vaka Listeleme</h5>
+    <div class="row pl-0">
+        <div class="col-md-11 pl-0">
+<div class="card">
     <div class="card-body">
+
         <form action="{{ route('admin.travel-statuses.index') }}" method="get">
 
             <div class="row">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
              
-                <x-province class="col-md-4" :data="[$template='Province']"/>
+                <x-province-component class="col-md-4" :data="[$template='Province']"/>
 
             </div>
             <div class="row justify-content-center">

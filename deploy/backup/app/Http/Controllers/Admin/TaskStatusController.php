@@ -10,16 +10,52 @@ use App\Models\TaskStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class TaskStatusController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('task_status_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $taskStatuses = TaskStatus::all();
+        if ($request->ajax()) {
+            $query = TaskStatus::query()->select(sprintf('%s.*', (new TaskStatus)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.taskStatuses.index', compact('taskStatuses'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'task_status_show';
+                $editGate      = 'task_status_edit';
+                $deleteGate    = 'task_status_delete';
+                $crudRoutePart = 'task-statuses';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
+            });
+            $table->editColumn('color', function ($row) {
+                return $row->color ? $row->color : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.taskStatuses.index');
     }
 
     public function create()

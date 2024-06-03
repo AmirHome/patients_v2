@@ -1,4 +1,4 @@
-<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
+<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show ">
 
 
 
@@ -407,11 +407,27 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('expenses_income_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ (request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*")) && !request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.expensesIncome.title') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.index.commission") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expensesIncome.commission') }}
+                            </a>
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.expenses-incomes.report.finance") }}" class="c-sidebar-nav-link {{ request()->is("admin/report/finance") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.expensesIncome.report') }}
                             </a>
                         </li>
                     @endcan

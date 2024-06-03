@@ -1052,6 +1052,8 @@ return [
     'expensesIncome' => [
         'title'          => 'Expenses Income',
         'title_singular' => 'Expenses Income',
+        'commission'     => 'Commission',
+        'report'         => 'Report',
         'fields'         => [
             'id'                 => 'ID',
             'id_helper'          => ' ',

@@ -7,69 +7,30 @@
     </div>
 
     <div class="card-body">
-        <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Setting">
-                <thead>
-                    <tr>
-                        <th width="10">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Setting">
+            <thead>
+                <tr>
+                    <th width="10">
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.setting.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.setting.fields.central_hospital_mail') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.setting.fields.central_hospital_mail_cc') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.setting.fields.central_hospital_mail_bcc') }}
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($settings as $key => $setting)
-                        <tr data-entry-id="{{ $setting->id }}">
-                            <td>
-
-                            </td>
-                            <td>
-                                {{ $setting->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $setting->central_hospital_mail ?? '' }}
-                            </td>
-                            <td>
-                                {{ $setting->central_hospital_mail_cc ?? '' }}
-                            </td>
-                            <td>
-                                {{ $setting->central_hospital_mail_bcc ?? '' }}
-                            </td>
-                            <td>
-                                @can('setting_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.settings.show', $setting->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
-
-                                @can('setting_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.settings.edit', $setting->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
-
-                            </td>
-
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    </th>
+                    <th>
+                        {{ trans('cruds.setting.fields.id') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.setting.fields.central_hospital_mail') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.setting.fields.central_hospital_mail_cc') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.setting.fields.central_hospital_mail_bcc') }}
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 
@@ -82,18 +43,32 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
   
-  $.extend(true, $.fn.dataTable.defaults, {
+  let dtOverrideGlobals = {
+    buttons: dtButtons,
+    processing: true,
+    serverSide: true,
+    retrieve: true,
+    aaSorting: [],
+    ajax: "{{ route('admin.settings.index') }}",
+    columns: [
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'central_hospital_mail', name: 'central_hospital_mail' },
+{ data: 'central_hospital_mail_cc', name: 'central_hospital_mail_cc' },
+{ data: 'central_hospital_mail_bcc', name: 'central_hospital_mail_bcc' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
+    ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 10,
-  });
-  let table = $('.datatable-Setting:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  };
+  let table = $('.datatable-Setting').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
   
-})
+});
 
 </script>
 @endsection

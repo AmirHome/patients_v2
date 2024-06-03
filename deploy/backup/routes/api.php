@@ -1,6 +1,10 @@
 <?php
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
+    // Users
+    Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');
+    Route::apiResource('users', 'UsersApiController');
+
     // Team
     Route::post('teams/media', 'TeamApiController@storeMedia')->name('teams.storeMedia');
     Route::apiResource('teams', 'TeamApiController');
@@ -11,12 +15,34 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Province
     Route::apiResource('provinces', 'ProvinceApiController');
 
+    // User Alerts
+    Route::apiResource('user-alerts', 'UserAlertsApiController', ['except' => ['update']]);
+
+    // Crm Status
+    Route::apiResource('crm-statuses', 'CrmStatusApiController');
+
     // Crm Customer
     Route::apiResource('crm-customers', 'CrmCustomerApiController');
+
+    // Crm Note
+    Route::apiResource('crm-notes', 'CrmNoteApiController');
 
     // Crm Document
     Route::post('crm-documents/media', 'CrmDocumentApiController@storeMedia')->name('crm-documents.storeMedia');
     Route::apiResource('crm-documents', 'CrmDocumentApiController');
+
+    // Faq Category
+    Route::apiResource('faq-categories', 'FaqCategoryApiController');
+
+    // Faq Question
+    Route::post('faq-questions/media', 'FaqQuestionApiController@storeMedia')->name('faq-questions.storeMedia');
+    Route::apiResource('faq-questions', 'FaqQuestionApiController');
+
+    // Task Status
+    Route::apiResource('task-statuses', 'TaskStatusApiController');
+
+    // Task Tag
+    Route::apiResource('task-tags', 'TaskTagApiController');
 
     // Task
     Route::post('tasks/media', 'TaskApiController@storeMedia')->name('tasks.storeMedia');
@@ -40,8 +66,20 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Campaign Org
     Route::apiResource('campaign-orgs', 'CampaignOrgApiController');
 
+    // Translator
+    Route::apiResource('translators', 'TranslatorApiController');
+
     // Ministries
     Route::apiResource('ministries', 'MinistriesApiController');
+
+    // Settings
+    Route::apiResource('settings', 'SettingsApiController', ['except' => ['store', 'show', 'destroy']]);
+
+    // Travel Group
+    Route::apiResource('travel-groups', 'TravelGroupApiController');
+
+    // Department
+    Route::apiResource('departments', 'DepartmentApiController');
 
     // Office
     Route::apiResource('offices', 'OfficeApiController');
@@ -69,6 +107,16 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Travel Status
     Route::apiResource('travel-statuses', 'TravelStatusApiController');
+
+    // Content Category
+    Route::apiResource('content-categories', 'ContentCategoryApiController');
+
+    // Content Tag
+    Route::apiResource('content-tags', 'ContentTagApiController');
+
+    // Content Page
+    Route::post('content-pages/media', 'ContentPageApiController@storeMedia')->name('content-pages.storeMedia');
+    Route::apiResource('content-pages', 'ContentPageApiController');
 
     // Hotel
     Route::apiResource('hotels', 'HotelApiController');

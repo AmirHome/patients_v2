@@ -31,13 +31,13 @@ class ExpensesIncomeController extends Controller
 
         if ($request->ajax()) {
             // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
-            $query = ExpensesIncome::with(['user', 'patient', 'department'])
+            $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
                     DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
-                    DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                    // DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
                     DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
-                    DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                    // DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
                 )
                 ->groupBy('patient_id');
 
@@ -45,10 +45,9 @@ class ExpensesIncomeController extends Controller
 
             $table = Datatables::of($query);
 
-            $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) {
-                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.index.patient', $row->patient_id) . '">' .
+                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.patient.index', $row->patient_id) . '">' .
                     trans('global.view') .
                     '</a>';
             });
@@ -61,26 +60,176 @@ class ExpensesIncomeController extends Controller
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
             });
 
+            $table->addColumn('total_difference', function ($row) {
+                $total_expenses = $row->total_expenses;
+                $total_income = $row->total_income;
+                return $total_income - $total_expenses;
+            });
+
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
 
 
             return $table->make(true);
         }
 
-            $columnChartModel = (new ColumnChartModel())
-                ->setTitle('Expenses by Type')
-                ->addColumn('Food', 100, '#f6ad55')
-                ->addColumn('Shopping', 200, '#fc8181')
-                ->addColumn('Travel', 300, '#90cdf4');
+        return view('admin.expensesIncomes.index', $data);
+    }
 
-            $pieChartModel = (new PieChartModel())
-                ->setTitle('Expenses by Type')
-                ->addSlice('Food', 100, '#f6ad55')
-                ->addSlice('Shopping', 200, '#fc8181')
-                ->addSlice('Travel', 300, '#90cdf4');
-        return view('admin.expensesIncomes.index', $data)
-        ->with('pieChartModel', $pieChartModel)
-        ->with('columnChartModel', $columnChartModel);
+    public function commission(Request $request)
+    {
+        abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
+
+        if ($request->ajax()) {
+            $query = ExpensesIncome::with(['patient'])
+                ->select(
+                    'patient_id',
+                    // DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
+                    DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                    // DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
+                    DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                )
+                ->groupBy('patient_id');
+
+            $query = $this->financeFilter($request, $query);
+
+            $table = Datatables::of($query);
+
+            $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row) {
+                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.patient.index', $row->patient_id) . '">' .
+                    trans('global.view') .
+                    '</a>';
+            });
+
+            $table->addColumn('patient_name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name . ' ' . $row->patient->surname) : '';
+            });
+
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->addColumn('total_difference', function ($row) {
+                $total_expenses = $row->total_expenses_commission;
+                $total_income = $row->total_income_commission;
+                return $total_income - $total_expenses;
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+
+
+            return $table->make(true);
+        }
+
+        return view('admin.expensesIncomes.indexCommission', $data);
+    }
+
+    public function report(Request $request)
+    {
+        abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
+
+        
+
+ /*
+
+     <livewire:livewire-column-chart
+        key="{{ $columnChartModel->reactiveKey() }}"
+        :column-chart-model="$columnChartModel"
+    />
+
+    @livewireChartsScripts
+
+    $columnChartModel = (new ColumnChartModel())
+        ->setTitle('Expenses by Type')
+        ->addColumn('Food', 100, '#f6ad55')
+        ->addColumn('Shopping', 200, '#fc8181')
+        ->addColumn('Travel', 300, '#90cdf4');
+
+    $pieChartModel = (new PieChartModel())
+        ->setTitle('Expenses by Type')
+        ->addSlice('Food', 100, '#f6ad55')
+        ->addSlice('Shopping', 200, '#fc8181')
+        ->addSlice('Travel', 300, '#90cdf4'); 
+            
+               
+    */
+
+        return view('admin.expensesIncomes.report', $data);
+
+    }
+
+    public function reportCommission(Request $request)
+    {
+        abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $data = $this->financeMountFilter();
+
+        if ($request->ajax()) {
+            $query = ExpensesIncome::with(['patient'])
+                ->select(
+                    'patient_id',
+                    // DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
+                    DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
+                    // DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
+                    DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                )
+                ->groupBy('patient_id');
+
+            $query = $this->financeFilter($request, $query);
+
+            $table = Datatables::of($query);
+
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row) {
+                return '<a class="btn btn-xs btn-primary" href="' . route('admin.expenses-incomes.patient.index', $row->patient_id) . '">' .
+                    trans('global.view') .
+                    '</a>';
+            });
+
+            $table->addColumn('patient_name', function ($row) {
+                return $row->patient ? (is_string($row->patient) ? $row->patient :  $row->patient->name . ' ' . $row->patient->surname) : '';
+            });
+
+            $table->addColumn('country_name', function ($row) {
+                return $row->patient->city->country ? $row->patient->city?->country?->name : '';
+            });
+
+            $table->addColumn('total_difference', function ($row) {
+                $total_expenses = $row->total_expenses_commission;
+                $total_income = $row->total_income_commission;
+                return $total_income - $total_expenses;
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+
+
+            return $table->make(true);
+        }
+
+        /*         
+        @livewireChartsScripts
+        <livewire:scripts /> 
+        */
+        $columnChartModel = (new ColumnChartModel())
+            ->setTitle('Expenses by Type')
+            ->addColumn('Food', 100, '#f6ad55')
+            ->addColumn('Shopping', 200, '#fc8181')
+            ->addColumn('Travel', 300, '#90cdf4');
+
+        $pieChartModel = (new PieChartModel())
+            ->setTitle('Expenses by Type')
+            ->addSlice('Food', 100, '#f6ad55')
+            ->addSlice('Shopping', 200, '#fc8181')
+            ->addSlice('Travel', 300, '#90cdf4');
+
+        return view('admin.expensesIncomes.reportCommission', $data)
+            ->with('pieChartModel', $pieChartModel)
+            ->with('columnChartModel', $columnChartModel);
     }
 
     public function indexPatient(Request $request, $patientId)

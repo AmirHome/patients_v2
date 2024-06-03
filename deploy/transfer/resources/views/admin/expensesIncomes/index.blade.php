@@ -1,31 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-{{-- <div style="height: 32rem;"> --}}
-    <div class="card">
-        <div class="card-header">
-            head
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <livewire:livewire-column-chart
-                        key="{{ $columnChartModel->reactiveKey() }}"
-                        :column-chart-model="$columnChartModel" >
-                </div>
-                <div class="col-md-6">
-    
-                    <livewire:livewire-pie-chart
-                        key="{{ $pieChartModel->reactiveKey() }}"
-                        :pie-chart-model="$pieChartModel"
-                    />
-                 </div>
-            </div>
-        </div>
-    </div>
-    
-    {{-- </div> --}}
-
 @includeIf('admin.expensesIncomes.relationships.formFilter')
 
 <div class="card">
@@ -37,9 +12,6 @@
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-ExpensesIncome">
             <thead>
                 <tr>
-                    <th width="10">
-
-                    </th>
                     <th>
                         {{ trans('cruds.expensesIncome.fields.id') }}
                     </th>
@@ -59,6 +31,9 @@
                         total_income 
                     </th>
                     <th>
+                        total difference 
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -72,8 +47,7 @@
 @endsection
 @section('scripts')
 @parent
-@livewireChartsScripts
-<livewire:scripts />
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -94,13 +68,13 @@
         }
     },
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'patient_id', name: 'patient_id' },
+        { data: 'patient_id', name: 'patient_id', visible: false},
         { data: 'patient_name', name: 'patient.name' },
         { data: 'patient.code', name: 'patient.code' },
         { data: 'country_name', name: 'patient.city.country.name', sortable: false},
         { data: 'total_expenses', name: 'total_expenses', searchable:false, sortable: false },
         { data: 'total_income', name: 'total_income', searchable:false, sortable: false },
+        { data: 'total_difference', name: 'total_difference', searchable:false, sortable: false },
         { data: 'actions', name: '{{ trans('global.actions') }}' , sortable: false}
     ],
     orderCellsTop: true,

@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CrmStatus extends Model
 {
-    use HasFactory;
-
+    use SoftDeletes, Auditable, HasFactory;
 
     public $table = 'crm_statuses';
 

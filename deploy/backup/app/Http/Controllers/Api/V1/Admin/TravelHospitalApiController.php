@@ -17,7 +17,7 @@ class TravelHospitalApiController extends Controller
     {
         abort_if(Gate::denies('travel_hospital_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelHospitalResource(TravelHospital::with(['team'])->get());
+        return new TravelHospitalResource(TravelHospital::all());
     }
 
     public function store(StoreTravelHospitalRequest $request)
@@ -33,7 +33,7 @@ class TravelHospitalApiController extends Controller
     {
         abort_if(Gate::denies('travel_hospital_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TravelHospitalResource($travelHospital->load(['team']));
+        return new TravelHospitalResource($travelHospital);
     }
 
     public function update(UpdateTravelHospitalRequest $request, TravelHospital $travelHospital)

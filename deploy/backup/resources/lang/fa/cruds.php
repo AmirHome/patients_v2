@@ -155,10 +155,6 @@ return [
             'name_helper'       => ' ',
         ],
     ],
-    'report' => [
-        'title'          => 'Report',
-        'title_singular' => 'Report',
-    ],
     'auditLog' => [
         'title'          => 'Audit Logs',
         'title_singular' => 'Audit Log',
@@ -1041,8 +1037,6 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
-            'team'              => 'Team',
-            'team_helper'       => ' ',
         ],
     ],
     'finance' => [

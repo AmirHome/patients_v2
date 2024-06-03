@@ -74,7 +74,7 @@ return [
     'datatables'                     => [
         'copy'          => 'Kopyala',
         'csv'           => 'CSV',
-        'excel'         => 'Excel',
+        'excel'         => 'Excel Olarak İndir',
         'pdf'           => 'PDF',
         'print'         => 'Yazdır',
         'colvis'        => 'Sütun görünürlüğü',

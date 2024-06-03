@@ -19,7 +19,7 @@ class TravelHospitalController extends Controller
         abort_if(Gate::denies('travel_hospital_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = TravelHospital::with(['team'])->select(sprintf('%s.*', (new TravelHospital)->table));
+            $query = TravelHospital::query()->select(sprintf('%s.*', (new TravelHospital)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -76,8 +76,6 @@ class TravelHospitalController extends Controller
     {
         abort_if(Gate::denies('travel_hospital_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelHospital->load('team');
-
         return view('admin.travelHospitals.edit', compact('travelHospital'));
     }
 
@@ -92,7 +90,7 @@ class TravelHospitalController extends Controller
     {
         abort_if(Gate::denies('travel_hospital_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $travelHospital->load('team', 'notifyHospitalsTravels');
+        $travelHospital->load('notifyHospitalsTravels');
 
         return view('admin.travelHospitals.show', compact('travelHospital'));
     }

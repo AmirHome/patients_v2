@@ -31,16 +31,21 @@
     @include('partials.menu')
     <div class="c-wrapper">
         <header class="c-header c-header-fixed px-3">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-                <i class="fas fa-fw fa-bars"></i>
+        <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto toggleBtn" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+    <i id="smlighticon" class="fas fa-chevron-right"></i>
+</button>
+<a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
+
+          <button id="toggleButton" class="c-header-toggler mfs-3 d-md-down-none toggleBtn" type="button" responsive="true">
+         <i id="lefticon" class="fas fa-chevron-left"></i>
+         <i id="righticon" class="fas fa-chevron-right" style="display:none;"></i>
+          </button>
+
+            <!-- <button class="main-search" type="button" responsive="true">
+                <i class="fas fa-fw fa-search"></i>
             </button>
-
-            <a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
-
-            <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
-                <i class="fas fa-fw fa-bars"></i>
-            </button>
-
+            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button> -->
+            
             <ul class="c-header-nav ml-auto">
 
                 @if(count(config('panel.available_languages', [])) > 1)
@@ -103,16 +108,15 @@
                       <div class="dropdown-divider"></div>
                       @can('viewPulse')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
-                          <i class="fa fa-desktop" aria-hidden="true"></i> Pluse
+                          Pluse
                         </a>
                       @endcan
                       @can('viewTelescope')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
-                          <i class="fa fa-bug" aria-hidden="true"></i> Telescope
+                           Telescope
                         </a>
                       @endcan
                       <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                        <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt"></i>
                         {{ trans('global.logout') }}
                       </a>
                     </div>
@@ -252,7 +256,7 @@
           order: [],
           scrollX: true,
           pageLength: 10,
-          dom: 'lBfrtip<"actions">',
+          dom: 'Bfrtilp<"actions">',
           buttons: [
           /*       {
               extend: 'selectAll',
@@ -284,21 +288,22 @@
             //   }
             // },
             {
-              extend: 'csv',
-              className: 'btn-default',
-              text: csvButtonTrans,
+              extend: 'excel',
+              className: 'btn-excel',
+              text: '<i class="far fa-file-excel"></i> ' +excelButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }
             },
             {
-              extend: 'excel',
-              className: 'btn-default',
-              text: excelButtonTrans,
+              extend: 'csv',
+              className: 'btn-csv',
+              text: '<i class="far fa-file-alt"></i>' +csvButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }
             },
+        
             // {
             //   extend: 'pdf',
             //   className: 'btn-default',
@@ -309,8 +314,8 @@
             // },
             {
               extend: 'print',
-              className: 'btn-default',
-              text: printButtonTrans,
+              className: 'btn-print',
+              text: '<i class="fas fa-print"></i> '+printButtonTrans,
               exportOptions: {
                 columns: ':visible'
               }
@@ -339,6 +344,19 @@
       });
   
       $('.toast').toast('show');
+
+      document.getElementById('toggleButton').addEventListener('click', function() {
+    var lefticon = document.getElementById('lefticon');
+    var righticon = document.getElementById('righticon');
+
+    if (lefticon.style.display === 'none') {
+        lefticon.style.display = 'block';
+        righticon.style.display = 'none';
+    } else {
+        lefticon.style.display = 'none';
+        righticon.style.display = 'block';
+    }
+});
     </script>
     
     @yield('scripts')

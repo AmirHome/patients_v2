@@ -10,16 +10,52 @@ use App\Models\ContentTag;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class ContentTagController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('content_tag_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentTags = ContentTag::all();
+        if ($request->ajax()) {
+            $query = ContentTag::query()->select(sprintf('%s.*', (new ContentTag)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.contentTags.index', compact('contentTags'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'content_tag_show';
+                $editGate      = 'content_tag_edit';
+                $deleteGate    = 'content_tag_delete';
+                $crudRoutePart = 'content-tags';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
+            });
+            $table->editColumn('slug', function ($row) {
+                return $row->slug ? $row->slug : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.contentTags.index');
     }
 
     public function create()
