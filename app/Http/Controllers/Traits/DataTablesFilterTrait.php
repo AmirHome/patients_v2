@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Traits;
 
 use App\Models\Travel;
 use App\Models\CampaignChannel;
+use App\Models\CampaignOrg;
 use App\Models\Country;
 use App\Models\CrmStatus;
 use App\Models\Department;
@@ -134,15 +135,13 @@ trait DataTablesFilterTrait
     //financeFilter financeMountFilter
     public function financeMountFilter(){
         // Mount Data for Form filters
-        // $departments = Department::get(['id', 'name']);
-        // $users = User::get(['id', 'name']);
-        $patients = Patient::get(['id', 'name']);
-        // $statuses = CrmStatus::get(['id', 'name']);
 
-        return compact('patients');
+        $countries = Country::pluck('name', 'id');
+        $campaign_orgs = CampaignOrg::where('status', 1)->get(['id', 'title'])->pluck('title', 'id');
+
+        return compact( 'countries', 'campaign_orgs');
     }
     public function financeFilter (Request $request, $query){
-        // Add custom filter for search_index
         if ($request->has('ff_patient_name')) {
             $value = $request->input('ff_patient_name');
             $query->whereHas('patient', function ($query) use ($value) {
@@ -156,12 +155,22 @@ trait DataTablesFilterTrait
             $query->whereHas('patient', function ($query) use ($value) {
                 $query->where('code', 'like', '%' . $value . '%');
             });
+        }         
+        if ($request->ff_country_id) {
+            $value = $request->input('ff_country_id');
+            $query->whereHas('patient.city.country', function ($query) use ($value) {
+                $query->where('id', $value);
+            });
         }
-        //ff_category
-        if ($request->has('ff_category')) {
-            $value = $request->input('ff_category');
-            $query->where('category', $value);
+        if ($request->ff_campaign_org_id) {
+            $value = $request->input('ff_campaign_org_id');
+            $query->whereHas('patient.campaign_org', function ($query) use ($value) {
+                $query->where('id', $value);
+            });
         }
+        return $query;
+        
+        
         return $query;
         
     }
