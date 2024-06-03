@@ -10,16 +10,52 @@ use App\Models\CrmStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class CrmStatusController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('crm_status_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmStatuses = CrmStatus::all();
+        if ($request->ajax()) {
+            $query = CrmStatus::query()->select(sprintf('%s.*', (new CrmStatus)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.crmStatuses.index', compact('crmStatuses'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'crm_status_show';
+                $editGate      = 'crm_status_edit';
+                $deleteGate    = 'crm_status_delete';
+                $crudRoutePart = 'crm-statuses';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
+            });
+            $table->editColumn('color', function ($row) {
+                return $row->color ? $row->color : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.crmStatuses.index');
     }
 
     public function create()
@@ -54,7 +90,7 @@ class CrmStatusController extends Controller
     {
         abort_if(Gate::denies('crm_status_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmStatus->load('statusCrmDocuments.customer','statusCrmDocuments.user', 'statusCrmDocuments.status');
+        $crmStatus->load('statusCrmDocuments');
 
         return view('admin.crmStatuses.show', compact('crmStatus'));
     }
@@ -63,13 +99,8 @@ class CrmStatusController extends Controller
     {
         abort_if(Gate::denies('crm_status_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        // GUIDE delete related #2
-        try {
         $crmStatus->delete();
-            session()->flash('success', 'The status has been successfully deleted.');
-        } catch (\Exception $e) {
-            session()->flash('error', 'Error: The status could not be deleted.');
-        }
+
         return back();
     }
 

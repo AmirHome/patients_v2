@@ -11,16 +11,58 @@ use App\Models\Translator;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class TranslatorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('translator_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $translators = Translator::with(['city'])->get();
+        if ($request->ajax()) {
+            $query = Translator::with(['city'])->select(sprintf('%s.*', (new Translator)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.translators.index', compact('translators'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'translator_show';
+                $editGate      = 'translator_edit';
+                $deleteGate    = 'translator_delete';
+                $crudRoutePart = 'translators';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('title', function ($row) {
+                return $row->title ? $row->title : '';
+            });
+            $table->editColumn('email', function ($row) {
+                return $row->email ? $row->email : '';
+            });
+            $table->editColumn('phone', function ($row) {
+                return $row->phone ? $row->phone : '';
+            });
+            $table->addColumn('city_name', function ($row) {
+                return $row->city ? $row->city->name : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'city']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.translators.index');
     }
 
     public function create()

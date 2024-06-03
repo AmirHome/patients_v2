@@ -15,18 +15,96 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class UsersController extends Controller
 {
     use MediaUploadingTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::with(['office', 'roles', 'team', 'media'])->get();
+        if ($request->ajax()) {
+            $query = User::with(['office', 'roles', 'team'])->select(sprintf('%s.*', (new User)->table));
+            $table = Datatables::of($query);
 
-        return view('admin.users.index', compact('users'));
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'user_show';
+                $editGate      = 'user_edit';
+                $deleteGate    = 'user_delete';
+                $crudRoutePart = 'users';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : '';
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : '';
+            });
+            $table->editColumn('email', function ($row) {
+                return $row->email ? $row->email : '';
+            });
+            $table->addColumn('office_name', function ($row) {
+                return $row->office ? $row->office->name : '';
+            });
+
+            $table->editColumn('office.phone', function ($row) {
+                return $row->office ? (is_string($row->office) ? $row->office : $row->office->phone) : '';
+            });
+            $table->editColumn('phone', function ($row) {
+                return $row->phone ? $row->phone : '';
+            });
+            $table->editColumn('job_type', function ($row) {
+                return $row->job_type ? User::JOB_TYPE_SELECT[$row->job_type] : '';
+            });
+            $table->editColumn('can_see_prices', function ($row) {
+                return $row->can_see_prices ? User::CAN_SEE_PRICES_RADIO[$row->can_see_prices] : '';
+            });
+            $table->editColumn('can_set_prices', function ($row) {
+                return $row->can_set_prices ? User::CAN_SET_PRICES_RADIO[$row->can_set_prices] : '';
+            });
+            $table->editColumn('is_super', function ($row) {
+                return $row->is_super ? User::IS_SUPER_RADIO[$row->is_super] : '';
+            });
+
+            $table->editColumn('picture', function ($row) {
+                if ($photo = $row->picture) {
+                    return sprintf(
+                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
+                        $photo->url,
+                        $photo->thumbnail
+                    );
+                }
+
+                return '';
+            });
+            $table->editColumn('roles', function ($row) {
+                $labels = [];
+                foreach ($row->roles as $role) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
+                }
+
+                return implode(' ', $labels);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'office', 'picture', 'roles']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.users.index');
     }
 
     public function create()

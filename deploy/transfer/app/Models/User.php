@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\VerifyUserNotification;
+use App\Traits\Auditable;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Hash;
@@ -19,7 +20,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements HasMedia
 {
-    use SoftDeletes, Notifiable, InteractsWithMedia, HasFactory;
+    use SoftDeletes, Notifiable, InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'users';
 
