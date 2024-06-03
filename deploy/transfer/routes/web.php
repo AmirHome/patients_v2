@@ -41,10 +41,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('provinces/destroy', 'ProvinceController@massDestroy')->name('provinces.massDestroy');
     Route::resource('provinces', 'ProvinceController');
 
-    // Report
-    Route::delete('reports/destroy', 'ReportController@massDestroy')->name('reports.massDestroy');
-    Route::resource('reports', 'ReportController');
-
     // Audit Logs
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 

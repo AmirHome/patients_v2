@@ -40,8 +40,13 @@ class ExpensesIncomeController extends Controller
                     // DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
                 )
                 ->groupBy('patient_id');
-
+                
             $query = $this->financeFilter($request, $query);
+            
+            $expensesTotalQuery = ExpensesIncome::where('category', 1);
+            $incomesTotalQuery = ExpensesIncome::where('category', 3);
+            $expensesTotalQuery = $this->financeFilter($request, $expensesTotalQuery);
+            $incomesTotalQuery = $this->financeFilter($request, $incomesTotalQuery);
 
             $table = Datatables::of($query);
 
@@ -60,17 +65,30 @@ class ExpensesIncomeController extends Controller
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
             });
 
+            $table->editColumn('total_expenses', function ($row) {
+                return number_format($row->total_expenses, 2);
+            });
+            $table->editColumn('total_income', function ($row) {
+                return number_format($row->total_income, 2);
+            });
             $table->addColumn('total_difference', function ($row) {
                 $total_expenses = $row->total_expenses;
                 $total_income = $row->total_income;
-                return $total_income - $total_expenses;
+                return number_format($total_income - $total_expenses, 2);
             });
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
 
-
-            return $table->make(true);
+            $expensesTotal = $expensesTotalQuery->sum('amount');
+            $incomesTotal = $incomesTotalQuery->sum('amount');
+            $profit = $incomesTotal - $expensesTotal;
+        
+            return $table->with('expensesTotal', number_format($expensesTotal, 2))
+                         ->with('incomesTotal', number_format($incomesTotal, 2))
+                         ->with('profit', number_format($profit, 2))
+                         ->make(true);       
         }
+
 
         return view('admin.expensesIncomes.index', $data);
     }
