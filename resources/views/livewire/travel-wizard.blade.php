@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                             <input type="text" class="form-control" id="date"  readonly placeholder="Kayıt Tarihi" disabled>
+                             <input type="text" class="form-control" id="date"  readonly placeholder="{{getCurrentDate()}}" disabled>
                             </div>
                         </div>
                         </div>

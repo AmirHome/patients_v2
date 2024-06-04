@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.expensesIncome.'.$type) }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -74,7 +74,7 @@
     retrieve: true,
     aaSorting: [],
     ajax: {
-    url: "{{ route('admin.expenses-incomes.index') }}",
+    url: "{{ route('admin.expenses-incomes.index',$type) }}",
         data: function(d) {
             d.ff_patient_id = $('.filter[name="patient_id"]').val();
             d.ff_patient_name = $('.filter[name="patient_name"]').val();

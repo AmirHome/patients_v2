@@ -407,7 +407,7 @@
                 <ul class="c-sidebar-nav-dropdown-items">
                     @can('expenses_income_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses-incomes.index") }}" class="c-sidebar-nav-link {{ (request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*")) && !request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.expenses-incomes.index", ['type' => 'financial']) }}" class="c-sidebar-nav-link {{ (request()->is("admin/expenses-incomes") || request()->is("admin/expenses-incomes/*")) && !request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
@@ -415,7 +415,7 @@
                             </a>
                         </li>
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses-incomes.index.commission") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.expenses-incomes.index", ['type' => 'commission']) }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses-incomes/index/commission") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>

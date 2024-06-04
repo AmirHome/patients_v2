@@ -23,28 +23,31 @@ class ExpensesIncomeController extends Controller
 {
     use DataTablesFilterTrait;
 
-    public function index(Request $request)
+    public function index(Request $request, $type = null)
     {
+        //dd($request->all());
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $categories = ($type === 'commission') ? [2, 4] : [1, 3];
         $data = $this->financeMountFilter();
 
+        // dd($categories);
         if ($request->ajax()) {
-            // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            
             $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
-                    DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
-                    // DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
-                    DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
-                    // DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                    
+                    DB::raw('SUM(CASE WHEN category = ' . $categories[0] . ' THEN amount ELSE 0 END) as total_expenses'),
+                    DB::raw('SUM(CASE WHEN category = ' . $categories[1] . ' THEN amount ELSE 0 END) as total_income')
+
                 )
                 ->groupBy('patient_id');
                 
             $query = $this->financeFilter($request, $query);
-            
-            $expensesTotalQuery = ExpensesIncome::where('category', 1);
-            $incomesTotalQuery = ExpensesIncome::where('category', 3);
+
+            $expensesTotalQuery = ExpensesIncome::where('category', $categories[0]);
+            $incomesTotalQuery = ExpensesIncome::where('category', $categories[1]);
             $expensesTotalQuery = $this->financeFilter($request, $expensesTotalQuery);
             $incomesTotalQuery = $this->financeFilter($request, $incomesTotalQuery);
 
@@ -90,7 +93,7 @@ class ExpensesIncomeController extends Controller
         }
 
 
-        return view('admin.expensesIncomes.index', $data);
+        return view('admin.expensesIncomes.index', $data)->with('type', $type);
     }
 
     public function commission(Request $request)

@@ -1053,6 +1053,7 @@ return [
         'title'          => 'Expenses Income',
         'title_singular' => 'Expenses Income',
         'commission'     => 'Commission',
+        'financial'      => 'Financial',
         'report'         => 'Report',
         'fields'         => [
             'id'                 => 'ID',
