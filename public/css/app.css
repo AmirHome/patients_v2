@@ -686,6 +686,7 @@ td .btn-primary {
 .select2-search__field{
     outline:none!important;
     padding-top: 4px !important;
+    margin-top: 12px;
 }
 element.style{
     width: 0px !important;
