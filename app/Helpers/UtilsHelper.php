@@ -5,6 +5,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
+//Get current date without time
+if (!function_exists('getCurrentDate')) {
+    function getCurrentDate()
+    {
+        return Carbon::now()->format('Y-m-d');
+    }
+}
+
 if (!function_exists('checkShareCode')) {
     function checkShareCode($code, $salt = 'share_hospital')
     {
