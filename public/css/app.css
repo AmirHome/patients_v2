@@ -686,7 +686,7 @@ td .btn-primary {
 .select2-search__field{
     outline:none!important;
     padding-top: 4px !important;
-    margin-top: 12px;
+    margin-top: 12px !important;
 }
 element.style{
     width: 0px !important;
@@ -740,40 +740,6 @@ element.style{
     font-weight: 600;
 }
 
-.add-document-btn,
-.start-uploading-btn,
-.cancel-upload-btn,
-.delete-btn {
-    color: white;
-    border-radius: 8px !important;
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
-    padding: 6px 12px !important;
-    border: none;
-}
-.add-document-btn:hover,
-.add-document-btn:focus,
-.start-uploading-btn:hover,
-.start-uploading-btn:focus,
-.cancel-upload-btn:hover,
-.cancel-upload-btn:focus,
-.delete-btn:hover,
-.delete-btn:focus  {
-    color: white;
-    border-radius: 8px !important;
-    font-size: 0.875rem !important;
-    font-weight: 600 !important;
-    padding: 6px 12px !important;
-    outline: none;
-    box-shadow: none;
-}
-.add-document-btn i,
-.start-uploading-btn i,
-.cancel-upload-btn i,
-.delete-btn i {
-    padding-right: 15px;
-    font-weight: 600;
-}
 /* pagination  btn */
 .page-link:not(:disabled):not(.disabled) {
     cursor: pointer;
@@ -796,13 +762,22 @@ li.active .page-link {
     outline: none;
     box-shadow: none;
 }
-.pagination .page-link:not(:first-child):not(:last-child) {
-    font-size: 50px !important;
-}
+
 .dataTables_length {
     padding: 5px 5px 5px 25px;
 }
-
+div.dataTables_wrapper div.dataTables_info /*Shows data in the table*/
+{
+    display: none;
+}
+div.dataTables_wrapper div.dataTables_length label
+{
+    font-weight: 600;
+}
+.dataTables_length
+{
+    padding: 5px 5px 5px 5px;
+}
 .pagination > *:not(:first-child):not(:last-child) .page-link {
     border-radius: 50%; /* Tam bir yuvarlak */
     width: 30px;
