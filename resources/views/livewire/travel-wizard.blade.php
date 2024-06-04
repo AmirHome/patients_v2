@@ -15,12 +15,7 @@
                 <div class="card-body">
                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center "
-      style="width: 65px; height: 55px; border-radius: 50%;background-color: #00b8d9;"
-    >
-      <h4>1</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -30,12 +25,8 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #ffffff;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>2</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9313;</span>
+
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -45,12 +36,9 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #white;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>3</h4>
-    </div>
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9314;</span>
+
   </div>
 </div>
                     <div class="row">
@@ -264,16 +252,11 @@
 
         <div class="step-two {{$currentStep == 2 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header">Rapor</div>
+                <div class="card-header">Vaka Bilgileri ve Rapor Yükleme</div>
                 <div class="card-body">
                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
   <div class="d-flex justify-content-center">
-    <div
-      class="d-flex align-items-center justify-content-center "
-      style="width: 65px; height: 55px; border-radius: 50%;background-color: #white;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>1</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -283,12 +266,8 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #00b8d9;"
-    >
-      <h4>2</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9313;</span>
+
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -298,18 +277,14 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #white;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>3</h4>
-    </div>
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9314;</span>
+
   </div>
 </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="travel_treatment_activities_status">Status @json($status_id)</label>
                                 <select class="form-control" wire:model.live="status_id">
                                     <option value="" selected>Select status</option>
                                     @foreach ($statuses as $key=>$status)
@@ -322,7 +297,6 @@
                         <!-- GUIDE Select2 init -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">department @json($department_id)</label>
                                 <div wire:ignore>
                                     <select class="form-control select2" id="department_id">
                                         <option value="" selected>Select departmant</option>
@@ -338,7 +312,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="travel_treatment_activities_description">description</label>
                                 <textarea class="form-control" cols="2" rows="2" placeholder="Enter description"
                                     wire:model="description"></textarea>
                                 <span class="text-danger">@error('description'){{ $message }}@enderror</span>
@@ -347,10 +320,16 @@
                     </div>
                     <!-- GUIDE Dropzone init -->
                     <div class="row">
-                        <div class="col-md-12">@json($treatment_files)
+                        <div class="col-md-9">
+                            <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                             <div class="form-group" wire:ignore>
-                                <label class="required" for="treatment_file">{{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}</label>
-                                <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone"></div>
+                            <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                                <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
+                                <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
+                                <div class="dz-message" data-dz-message><p>Drop files here or click <a>browse</a> thorough your machien</p></div>
+                                </div>
+                                
+
                                 @if($errors->has('treatment_file'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('treatment_file') }}
@@ -368,16 +347,11 @@
 
         <div class="step-three {{$currentStep == 3 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP 3/3 - Frameworks experience</div>
+            <div class="card-header">Bilgilendirmeler</div>
                 <div class="card-body">
                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center "
-      style="width: 65px; height: 55px; border-radius: 50%;background-color: #white;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>1</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -387,12 +361,8 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #ffffff;border: 1px solid #00b8d9;color: #00b8d9 !important;"
-    >
-      <h4>2</h4>
-    </div>
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9313;</span>
+
   </div>
   <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
     <span
@@ -402,22 +372,19 @@
     </span>
   </div>
   <div class="d-flex justify-content-center">
-    <div
-      class="text-white d-flex align-items-center justify-content-center"
-      style="width: 65px; height: 60px;border-radius: 50%;background-color: #00b8d9;"
-    >
-      <h4>3</h4>
-    </div>
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9314;</span>
+
   </div>
 </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} @json($notifyHospitalIds)</label>
+                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
                                 <div wire:ignore>
-                                    <div style="padding-bottom: 4px">
-                                        <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                                        <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                    <div >
+                                        <span class="btn btn-info btn-xs select-all mb-3" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                                        <span class="btn btn-info btn-xs deselect-all mb-3" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                                     </div>
                                     <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notifyHospitalIds" multiple>
                                         @foreach($notify_hospitals as $id => $notify_hospital)
@@ -428,9 +395,12 @@
                                 <span class="text-danger">@error('notifyHospitalIds'){{ $message }}@enderror</span>
                             </div>
                         </div>
+</div>
+<div class="row">
+
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="traslators">Translators @json($translatorId)</label>
+                                <label for="traslators">Translators</label>
                                 <select class="form-control" wire:model.live="translatorId">
                                     <option value="" selected>Select translator</option>
                                     @foreach ($translators as $id => $translator)
@@ -440,7 +410,8 @@
                                 <span class="text-danger">@error('translatorId'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                    </div>
+                        </div>
+                    
                     
                 </div>
             </div>
@@ -448,21 +419,21 @@
     
         {{-- Buttons panel --}}
 
-        <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
+        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-3">
             @if ($currentStep == 1)
             <div></div>
             @endif
 
-            @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+            @if ($currentStep == 2 || $currentStep == 3 )
             <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
             @endif
 
-            @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
+            @if ($currentStep == 1 || $currentStep == 2 )
             <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
             @endif
 
-            @if ($currentStep == 4)
-            <button type="submit" class="btn btn-md btn-primary">Submit</button>
+            @if ($currentStep == 3)
+            <button type="submit" class="btn btn-md btn-primary">Final</button>
             @endif
 
             </div>
