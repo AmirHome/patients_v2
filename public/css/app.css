@@ -207,6 +207,7 @@ margin-left:3px !important;
     backdrop-filter:blur(20px);
 
  }
+ 
 /* ---------- SideBar ----------     */
 
 /*Logo En üst*/
@@ -568,6 +569,16 @@ td .btn-primary {
     border-style: dotted;
     border-left: 7px solid red;
 }
+.dataTables_length .custom-select {
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_N1nHa3hb0cnVn24zQPy6wHITNgbENByeJw&s') no-repeat right center;
+    background-size: 10px 5px;
+    background-position:35px;
+  }
+  
+ 
 
 /* ***************************************
    ---------- Form minimal ----------
@@ -656,7 +667,31 @@ td .btn-primary {
 .dropzone .dz-message {
     margin: 0.8em !important;
 }
+ /*Search*/
+div.dataTables_wrapper div.dataTables_filter input
+{
+    padding: 20px 0 20px 30px;
 
+}
+div.dataTables_wrapper div.dataTables_filter input::placeholder
+{
+  padding-left:5px;
+}
+input[type="search" i] {
+  appearance: auto;
+  box-sizing: border-box;
+  padding-block: 1px;
+  padding-inline: 2px;
+  appearance: none;
+  -webkit-appearance: none; /* Safari ve Chrome desteği için */
+  -moz-appearance: none; /* Firefox desteği için */
+  padding-left: 30px; /* Sol tarafta boşluk bırakmak için */
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw6dk7omKm0_uFS5GJbDqszFezNaqFk8aOABSnfBVHCcucQ92mIPkVZ0fFZt8HLSl0npM&usqp=CAU') no-repeat left center; /* Arama simgesi */
+  background-position: 10px center; /* Arama simgesinin sola 10px uzak olmasını sağlar */
+  background-size: 1em;
+  margin-right: 10px !important;
+
+}
 /*Select İnput*/
 .select2-container--default
     .select2-selection--single
@@ -907,3 +942,11 @@ div.dataTables_wrapper div.dataTables_length label
     box-shadow: none !important;
 }
 
+.btn-info{
+    color: white;
+    border: none !important;
+    outline: none;
+    box-shadow: none !important;
+    line-height: 1.71429;
+    border-radius: 8px !important;
+}

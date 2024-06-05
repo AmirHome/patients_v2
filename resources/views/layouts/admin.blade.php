@@ -66,7 +66,7 @@
     
 @endif
 
-                <ul class="c-header-nav ml-auto" > 
+                <ul class="c-header-nav ml-auto pl-3" > 
                     <li class="c-header-nav-item dropdown notifications-menu">
                         <a href="#" class="c-header-nav-link" data-toggle="dropdown">
                         <i class="fas fa-bell"></i>
@@ -77,7 +77,7 @@
                                     </span>
                                 @endif
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
                             @if(count($alerts = \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at', 'ASC')->get()->reverse()) > 0)
                                 @foreach($alerts as $alert)
                                     <div class="dropdown-item">
@@ -96,19 +96,19 @@
                         </div>
                     </li>
                 </ul>
-                <li >
+                <li  class="pl-3 pr-3">
                     <a class="c-header-nav-link" href="{{ config('chat.url') }}" >
                       <i class="fa fa-comments" aria-hidden="true" > </i>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link avatar-name " style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
+                <li class="nav-item dropdown ">
+                  <a class="nav-link avatar-name" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                      aria-haspopup="true" aria-expanded="false">
                      <img src="https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_25.jpg" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
                   </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
-                    <span class="dropdown-header-name">Jaydon Frankie</span>
+                    <span class="dropdown-header-name">{{\Auth::user()->name}}</span>
                       <span class="dropdown-header">{{\Auth::user()->email}}</span>
                       <div class="row avatar-menu">
         <div class="col-md-12">

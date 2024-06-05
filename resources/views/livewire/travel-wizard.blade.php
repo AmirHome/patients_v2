@@ -44,11 +44,13 @@
                     <div class="row">
                     <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Hasta Kodu</label>
                              <input type="text" class="form-control" id="code" value="{{$code}}" readonly placeholder="Code" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Hasta Geliş Tarihi</label>
                              <input type="text" class="form-control" id="date"  readonly placeholder="{{getCurrentDate()}}" disabled>
                             </div>
                         </div>
@@ -57,6 +59,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
+                            <label for="">İsim</label>
                                 <input type="text" class="form-control" placeholder="Enter first name"
                                     wire:model="name">
                                 <span class="text-danger">@error('name'){{ $message }}@enderror</span>
@@ -64,6 +67,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                            <label for="">İkinci ismi</label>
                                 <input type="text" class="form-control" placeholder="Enter middel name"
                                     wire:model="middle_name">
                                 <span class="text-danger">@error('middle_name'){{ $message }}@enderror</span>
@@ -71,6 +75,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Soyadı</label>
                                 <input type="text" class="form-control" placeholder="Enter last name"
                                     wire:model="surname">
                                 <span class="text-danger">@error('surname'){{ $message }}@enderror</span>
@@ -80,6 +85,7 @@
                     <div class="row">
                     <div class="col-md-3">
                             <div class="form-group">
+                            <label for="">Cinsiyet</label>
                                 <select class="form-control" wire:model.live="gender">
                                     <option value="" selected>Choose gender</option>
                                     @foreach ($genders as $key => $title)
@@ -91,6 +97,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group"> 
+                            <label for="">Doğum Tarihi</label>
                                 <input type="date" class="form-control" placeholder="Enter your birthday"
                                     wire:model="birthday">
                                 <span class="text-danger">@error('birthday'){{ $message }}@enderror</span>
@@ -99,6 +106,7 @@
                        
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="">Doğum Yeri</label>
                                 <input type="text" class="form-control" placeholder="Enter your birth place"
                                     wire:model="birth_place">
                                 <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
@@ -109,6 +117,7 @@
                     <div class="row">
                     <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Kan Grubu</label>
                                 <select class="form-control" wire:model.live="blood_group">
                                     <option value="" selected>Choose blood group</option>
                                     @foreach ($bloodGroups as $key => $title)
@@ -121,12 +130,14 @@
               
                         <div class="col-md-3">
                             <div class="form-group">
+                            <label for="">Kilosu</label>
                                 <input type="text" class="form-control" placeholder="Enter weight" wire:model="weight">
                                 <span class="text-danger">@error('weight'){{ $message }}@enderror</span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
+                            <label for="">Boyu</label>
                                 <input type="text" class="form-control" placeholder="Enter height" wire:model="height">
                                 <span class="text-danger">@error('height'){{ $message }}@enderror</span>
                             </div>
@@ -137,6 +148,7 @@
                     <div class="row">
                     <div class="col-md-4">
                             <div class="form-group">
+                            <label for="">Passport Numarası</label>
                                 <input type="text" class="form-control" placeholder="Enter your passport no"
                                     wire:model="passport_no">
                                 <span class="text-danger">@error('passport_no'){{ $message }}@enderror</span>
@@ -144,6 +156,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
+                            <label for="">Email Adresi</label>
                                 <input type="email" class="form-control" placeholder="Enter email address"
                                     wire:model="email">
                                 <span class="text-danger">@error('email'){{ $message }}@enderror</span>
@@ -152,6 +165,7 @@
                              
                         <div class="col-md-4">
                             <div class="form-group">
+                            <label for="">Telefon No</label>
                                 <input type="text" class="form-control" placeholder="Enter your phone"
                                     wire:model="phone">
                                 <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
@@ -161,6 +175,7 @@
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Ülke</label>
                                 <select class="form-control" wire:model.live="countryId">
                                     <option value=null>Select a country</option>
                                     @foreach ($countries as $country)
@@ -172,6 +187,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Şehir</label>
                                 <select class="form-control" wire:model.live="city_id">
                                     <option>Select city</option>
                                     @foreach ($cities as $city)
@@ -189,6 +205,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Kanal</label>
                                 <select class="form-control" wire:model.live="compaignChannelId">
                                     <option value="" selected>Choose channels</option>
                                     @foreach ($campaignChannels as $channel)
@@ -200,6 +217,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Organizasyon</label>
                                 <select class="form-control" wire:model.live="campaign_org_id">
                                     <option value="" selected>Choose organization</option>
                                     @foreach ($campaignOrganizations as $org)
@@ -213,6 +231,7 @@
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Referans Tipiniz</label>
                                 <select class="form-control" wire:model.live="reffering_type">
                                     <option value="" selected>Choose reffering type</option>
                                     @foreach ($refferingTypes as $key => $title)
@@ -224,7 +243,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-
+                            <label for="">Referansınız</label>
                                 @if ($reffering_type != 'Phone')
                                     @if ($reffering_type == 'Other')
                                     <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
@@ -285,6 +304,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Durum</label>
                                 <select class="form-control" wire:model.live="status_id">
                                     <option value="" selected>Select status</option>
                                     @foreach ($statuses as $key=>$status)
@@ -297,6 +317,7 @@
                         <!-- GUIDE Select2 init -->
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="">Departman</label>
                                 <div wire:ignore>
                                     <select class="form-control select2" id="department_id">
                                         <option value="" selected>Select departmant</option>
@@ -312,6 +333,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                            <label for="">Açıklama</label>
                                 <textarea class="form-control" cols="2" rows="2" placeholder="Enter description"
                                     wire:model="description"></textarea>
                                 <span class="text-danger">@error('description'){{ $message }}@enderror</span>
@@ -383,8 +405,8 @@
                                 <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
                                 <div wire:ignore>
                                     <div >
-                                        <span class="btn btn-info btn-xs select-all mb-3" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                                        <span class="btn btn-info btn-xs deselect-all mb-3" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                        <span class="btn btn-info btn-xs select-all mb-3">{{ trans('global.select_all') }}</span>
+                                        <span class="btn btn-info btn-xs deselect-all mb-3">{{ trans('global.deselect_all') }}</span>
                                     </div>
                                     <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notifyHospitalIds" multiple>
                                         @foreach($notify_hospitals as $id => $notify_hospital)
