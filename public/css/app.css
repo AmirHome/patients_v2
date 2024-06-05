@@ -146,14 +146,19 @@ body {
     color:#212B36;
     font-size:0.87rem;
     line-height:1.57143;
-    margin-left:15px;
     font-weight: 400;
     width: 70%;
  }
  .avatar-menu .c-sidebar-nav-link-exit{
     border-top: 1px dotted #ccc; 
+    margin-left:21px;
+
+ }   
+ .avatar-menu .c-sidebar-nav-link-li
+ {
     width: 155px;
     margin-left:16px
+
  }
  .avatar-menu .c-sidebar-nav-link-exit  .c-sidebar-nav-link{
     color:rgb(255, 86, 48);
@@ -163,6 +168,22 @@ body {
     width: 155px;
     margin-left: 0px !important;
     padding-left: 15px !important;
+    margin-top: 2px;
+ }
+ .avatar-menu .c-sidebar-nav-link-li .c-sidebar-nav-link
+{
+margin-left:3px !important;
+}
+ .avatar-menu .c-sidebar-nav-link-li:hover
+ {
+    background-color: rgba(145, 158, 171, 0.1);
+    border-radius: 6px;
+ }
+ .avatar-menu .c-sidebar-nav-link-exit  .c-sidebar-nav-link:hover{
+    color:rgb(255, 86, 48);
+    background-color: rgba(145, 158, 171, 0.1);
+    border-radius: 6px;
+
  }
  
  .dropdown-header-name{

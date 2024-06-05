@@ -114,17 +114,25 @@
         <div class="col-md-12">
             <div class="dotted-border">
             </div>
-        </div>                      @can('viewPulse')
+        </div>    
+        <div class="c-sidebar-nav-link-li">
+
+        @can('viewPulse')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
                           Pluse
                         </a> 
                       @endcan
+                      </div>
+
+                      <div class="c-sidebar-nav-link-li">
+
                       @can('viewTelescope')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link mt-2 mb-1" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
                            Telescope
                         </a>
                       @endcan
-   
+                      </div>
+
                       <div class="c-sidebar-nav-link-exit">
                         <a href="#" class="c-sidebar-nav-link  " onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         {{ trans('global.logout') }}
