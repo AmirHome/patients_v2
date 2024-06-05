@@ -120,6 +120,66 @@ body {
 .fa-sign-out-alt {
     color: RED;
 }
+.dropdown-item
+{
+     font-weight: 400;
+     font-family:"Public Sans", sans-serif;
+     border-radius:6px;
+     line-height:1.57143;
+     font-size:0.875rem;
+     padding:6px 8px;
+
+}
+.dropdown-item svg
+{
+    margin-right: 10px;
+    width: 1.75rem;
+    height: 1.75rem;
+ }
+ .dropdown-header{
+    color:rgb(99, 115, 129);
+    font-weight:400;
+    font-size:0.875rem;
+    line-height:1.57143;
+ }
+ .avatar-menu .c-sidebar-nav-link{
+    color:#212B36;
+    font-size:0.87rem;
+    line-height:1.57143;
+    margin-left:15px;
+    font-weight: 400;
+    width: 70%;
+ }
+ .avatar-menu .c-sidebar-nav-link-exit{
+    border-top: 1px dotted #ccc; 
+    width: 155px;
+    margin-left:16px
+ }
+ .avatar-menu .c-sidebar-nav-link-exit  .c-sidebar-nav-link{
+    color:rgb(255, 86, 48);
+    font-weight:700;
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+    width: 155px;
+    margin-left: 0px !important;
+    padding-left: 15px !important;
+ }
+ 
+ .dropdown-header-name{
+    font-weight:600;
+    font-size:0.875rem;
+    color: #212B36;
+    margin-left:20px;
+
+ }
+ .dropdown-menu.show{
+    box-shadow:rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px;
+    width: 100%;
+    margin-right: 15px;
+    border-radius: 8px;
+    backdrop-filter:blur(20px);
+
+ }
 /* ---------- SideBar ----------     */
 
 /*Logo En üst*/
