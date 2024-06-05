@@ -165,10 +165,6 @@
                         </div>
                     @endif
                     
-
-
-
-                              
                   <div style="position: fixed; top: 10px;right: 0; z-index: 2000;">
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="2000">

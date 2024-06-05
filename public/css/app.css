@@ -54,6 +54,9 @@ body {
     padding-top: 10px;
     border: none;
 }
+.c-header-nav{
+    font-size: 20px;
+}
 .main-search {
     border: none;
     background-color: white;
@@ -900,5 +903,4 @@ div.dataTables_wrapper div.dataTables_length label
     outline: none !important;
     box-shadow: none !important;
 }
-
 
