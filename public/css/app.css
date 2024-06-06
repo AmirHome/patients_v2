@@ -642,27 +642,27 @@ td .btn-primary {
     background-color: #F9F9F9 !important;
 }
 
-#treatment_file-dropzone {
+.dropzone {
     border: 1px dashed rgba(145, 158, 171, 0.2) !important;
     background-color: #F9FAFA!important;
     border-radius: 5px;
 }
-#treatment_file-dropzone:hover{
+.dropzone:hover{
     background-color: rgba(249, 250, 250, 0.4)!important;
 
 }
-#treatment_file-dropzone span:first-child {
+.dropzone span:first-child {
  color: #212B36;
  font-size: 1.125rem;
  font-weight:700;
 }
-#treatment_file-dropzone p{
+.dropzone p{
     color: #637381;
     font-size:0.875rem;
 }
-#treatment_file-dropzone p a{
-    color: #00A76F;
-    text-decoration: underline;
+.dropzone p a{
+    color: #00A76F !important;
+    text-decoration: underline !important;
 }
 .dropzone .dz-message {
     margin: 0.8em !important;
@@ -741,6 +741,7 @@ input[type="search" i] {
     outline: 1px solid #ced4da !important;
     border-radius: 5px !important;
 }
+
 .select2-container--default .select2-results>.select2-results__options
 {
     max-height:40vh !important;
@@ -812,6 +813,9 @@ input[type="search" i] {
 }
 element.style{
     width: 0px !important;
+}
+.select2-search--dropdown .select2-search__field{
+    padding-left: 30px !important;
 }
 /*Button Minimal*/
 .btn-excel {
