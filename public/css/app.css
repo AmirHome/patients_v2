@@ -352,7 +352,7 @@ a.nav-link {
 /*Cards Minimal*/
 .card {
     border: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 5px ;
 }
 
 .card-table {
