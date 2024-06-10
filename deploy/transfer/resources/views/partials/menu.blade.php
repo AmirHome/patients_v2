@@ -434,68 +434,6 @@
                 </ul>
             </li>
         @endcan
-        @can('expense_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/expense-categories*") ? "c-show" : "" }} {{ request()->is("admin/income-categories*") ? "c-show" : "" }} {{ request()->is("admin/expenses*") ? "c-show" : "" }} {{ request()->is("admin/incomes*") ? "c-show" : "" }} {{ request()->is("admin/expense-reports*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-money-bill c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.expenseManagement.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('expense_category_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expense-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expense-categories") || request()->is("admin/expense-categories/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-list c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.expenseCategory.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('income_category_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.income-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/income-categories") || request()->is("admin/income-categories/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-list c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.incomeCategory.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('expense_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expenses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expenses") || request()->is("admin/expenses/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-arrow-alt-circle-left c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.expense.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('income_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.incomes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/incomes") || request()->is("admin/incomes/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-arrow-circle-right c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.income.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('expense_report_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.expense-reports.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/expense-reports") || request()->is("admin/expense-reports/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-chart-line c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.expenseReport.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
         @can('faq_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/faq-categories*") ? "c-show" : "" }} {{ request()->is("admin/faq-questions*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">

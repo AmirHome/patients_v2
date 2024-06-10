@@ -18,7 +18,7 @@
 ### Chat init function
 function chat_init() {
     cp database/migrations/2024_06_10_122918_create_sessions_table.php deploy/transfer/database/migrations
-    
+
     cp database/migrations/chat_2014_10_12_000000_create_users_table.php deploy/transfer/database/migrations
     cp database/migrations/chat_2019_09_16_051035_create_conversations_table.php deploy/transfer/database/migrations
     cp database/migrations/chat_2019_11_12_104216_add_permission_tables.php deploy/transfer/database/migrations
@@ -84,6 +84,8 @@ rsync -a --exclude='bootstrap' \
     ./ deploy/transfer/
 
 chat_init
+mkdir -p deploy/transfer/config
+cp config/telescope.php deploy/transfer/config
 cp .gitignore deploy/transfer
 
 

@@ -243,7 +243,7 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $patient->load('user', 'office', 'campaign_org', 'city', 'patientTravels', 'patientExpenses', 'patientIncomes');
+        $patient->load('user', 'office', 'campaign_org', 'city', 'patientTravels');
 
         return view('admin.patients.show', compact('patient'));
     }

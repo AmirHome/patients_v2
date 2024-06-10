@@ -356,534 +356,430 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 87,
-                'title' => 'expense_management_access',
-            ],
-            [
-                'id'    => 88,
-                'title' => 'expense_category_create',
-            ],
-            [
-                'id'    => 89,
-                'title' => 'expense_category_edit',
-            ],
-            [
-                'id'    => 90,
-                'title' => 'expense_category_show',
-            ],
-            [
-                'id'    => 91,
-                'title' => 'expense_category_delete',
-            ],
-            [
-                'id'    => 92,
-                'title' => 'expense_category_access',
-            ],
-            [
-                'id'    => 93,
-                'title' => 'income_category_create',
-            ],
-            [
-                'id'    => 94,
-                'title' => 'income_category_edit',
-            ],
-            [
-                'id'    => 95,
-                'title' => 'income_category_show',
-            ],
-            [
-                'id'    => 96,
-                'title' => 'income_category_delete',
-            ],
-            [
-                'id'    => 97,
-                'title' => 'income_category_access',
-            ],
-            [
-                'id'    => 98,
-                'title' => 'expense_create',
-            ],
-            [
-                'id'    => 99,
-                'title' => 'expense_edit',
-            ],
-            [
-                'id'    => 100,
-                'title' => 'expense_show',
-            ],
-            [
-                'id'    => 101,
-                'title' => 'expense_delete',
-            ],
-            [
-                'id'    => 102,
-                'title' => 'expense_access',
-            ],
-            [
-                'id'    => 103,
-                'title' => 'income_create',
-            ],
-            [
-                'id'    => 104,
-                'title' => 'income_edit',
-            ],
-            [
-                'id'    => 105,
-                'title' => 'income_show',
-            ],
-            [
-                'id'    => 106,
-                'title' => 'income_delete',
-            ],
-            [
-                'id'    => 107,
-                'title' => 'income_access',
-            ],
-            [
-                'id'    => 108,
-                'title' => 'expense_report_create',
-            ],
-            [
-                'id'    => 109,
-                'title' => 'expense_report_edit',
-            ],
-            [
-                'id'    => 110,
-                'title' => 'expense_report_show',
-            ],
-            [
-                'id'    => 111,
-                'title' => 'expense_report_delete',
-            ],
-            [
-                'id'    => 112,
-                'title' => 'expense_report_access',
-            ],
-            [
-                'id'    => 113,
                 'title' => 'definition_access',
             ],
             [
-                'id'    => 114,
+                'id'    => 88,
                 'title' => 'campaign_channel_create',
             ],
             [
-                'id'    => 115,
+                'id'    => 89,
                 'title' => 'campaign_channel_edit',
             ],
             [
-                'id'    => 116,
+                'id'    => 90,
                 'title' => 'campaign_channel_show',
             ],
             [
-                'id'    => 117,
+                'id'    => 91,
                 'title' => 'campaign_channel_delete',
             ],
             [
-                'id'    => 118,
+                'id'    => 92,
                 'title' => 'campaign_channel_access',
             ],
             [
-                'id'    => 119,
+                'id'    => 93,
                 'title' => 'campaign_org_create',
             ],
             [
-                'id'    => 120,
+                'id'    => 94,
                 'title' => 'campaign_org_edit',
             ],
             [
-                'id'    => 121,
+                'id'    => 95,
                 'title' => 'campaign_org_show',
             ],
             [
-                'id'    => 122,
+                'id'    => 96,
                 'title' => 'campaign_org_delete',
             ],
             [
-                'id'    => 123,
+                'id'    => 97,
                 'title' => 'campaign_org_access',
             ],
             [
-                'id'    => 124,
+                'id'    => 98,
                 'title' => 'translator_create',
             ],
             [
-                'id'    => 125,
+                'id'    => 99,
                 'title' => 'translator_edit',
             ],
             [
-                'id'    => 126,
+                'id'    => 100,
                 'title' => 'translator_show',
             ],
             [
-                'id'    => 127,
+                'id'    => 101,
                 'title' => 'translator_delete',
             ],
             [
-                'id'    => 128,
+                'id'    => 102,
                 'title' => 'translator_access',
             ],
             [
-                'id'    => 129,
+                'id'    => 103,
                 'title' => 'ministry_create',
             ],
             [
-                'id'    => 130,
+                'id'    => 104,
                 'title' => 'ministry_edit',
             ],
             [
-                'id'    => 131,
+                'id'    => 105,
                 'title' => 'ministry_show',
             ],
             [
-                'id'    => 132,
+                'id'    => 106,
                 'title' => 'ministry_delete',
             ],
             [
-                'id'    => 133,
+                'id'    => 107,
                 'title' => 'ministry_access',
             ],
             [
-                'id'    => 134,
+                'id'    => 108,
                 'title' => 'setting_edit',
             ],
             [
-                'id'    => 135,
+                'id'    => 109,
                 'title' => 'setting_access',
             ],
             [
-                'id'    => 136,
+                'id'    => 110,
                 'title' => 'travel_group_create',
             ],
             [
-                'id'    => 137,
+                'id'    => 111,
                 'title' => 'travel_group_edit',
             ],
             [
-                'id'    => 138,
+                'id'    => 112,
                 'title' => 'travel_group_show',
             ],
             [
-                'id'    => 139,
+                'id'    => 113,
                 'title' => 'travel_group_delete',
             ],
             [
-                'id'    => 140,
+                'id'    => 114,
                 'title' => 'travel_group_access',
             ],
             [
-                'id'    => 141,
+                'id'    => 115,
                 'title' => 'department_create',
             ],
             [
-                'id'    => 142,
+                'id'    => 116,
                 'title' => 'department_edit',
             ],
             [
-                'id'    => 143,
+                'id'    => 117,
                 'title' => 'department_show',
             ],
             [
-                'id'    => 144,
+                'id'    => 118,
                 'title' => 'department_delete',
             ],
             [
-                'id'    => 145,
+                'id'    => 119,
                 'title' => 'department_access',
             ],
             [
-                'id'    => 146,
+                'id'    => 120,
                 'title' => 'office_create',
             ],
             [
-                'id'    => 147,
+                'id'    => 121,
                 'title' => 'office_edit',
             ],
             [
-                'id'    => 148,
+                'id'    => 122,
                 'title' => 'office_show',
             ],
             [
-                'id'    => 149,
+                'id'    => 123,
                 'title' => 'office_delete',
             ],
             [
-                'id'    => 150,
+                'id'    => 124,
                 'title' => 'office_access',
             ],
             [
-                'id'    => 151,
+                'id'    => 125,
                 'title' => 'hospital_create',
             ],
             [
-                'id'    => 152,
+                'id'    => 126,
                 'title' => 'hospital_edit',
             ],
             [
-                'id'    => 153,
+                'id'    => 127,
                 'title' => 'hospital_show',
             ],
             [
-                'id'    => 154,
+                'id'    => 128,
                 'title' => 'hospital_delete',
             ],
             [
-                'id'    => 155,
+                'id'    => 129,
                 'title' => 'hospital_access',
             ],
             [
-                'id'    => 156,
+                'id'    => 130,
                 'title' => 'doctor_create',
             ],
             [
-                'id'    => 157,
+                'id'    => 131,
                 'title' => 'doctor_edit',
             ],
             [
-                'id'    => 158,
+                'id'    => 132,
                 'title' => 'doctor_show',
             ],
             [
-                'id'    => 159,
+                'id'    => 133,
                 'title' => 'doctor_delete',
             ],
             [
-                'id'    => 160,
+                'id'    => 134,
                 'title' => 'doctor_access',
             ],
             [
-                'id'    => 161,
+                'id'    => 135,
                 'title' => 'patient_create',
             ],
             [
-                'id'    => 162,
+                'id'    => 136,
                 'title' => 'patient_edit',
             ],
             [
-                'id'    => 163,
+                'id'    => 137,
                 'title' => 'patient_show',
             ],
             [
-                'id'    => 164,
+                'id'    => 138,
                 'title' => 'patient_delete',
             ],
             [
-                'id'    => 165,
+                'id'    => 139,
                 'title' => 'patient_access',
             ],
             [
-                'id'    => 166,
+                'id'    => 140,
                 'title' => 'coordination_access',
             ],
             [
-                'id'    => 167,
+                'id'    => 141,
                 'title' => 'travel_create',
             ],
             [
-                'id'    => 168,
+                'id'    => 142,
                 'title' => 'travel_edit',
             ],
             [
-                'id'    => 169,
+                'id'    => 143,
                 'title' => 'travel_show',
             ],
             [
-                'id'    => 170,
+                'id'    => 144,
                 'title' => 'travel_delete',
             ],
             [
-                'id'    => 171,
+                'id'    => 145,
                 'title' => 'travel_access',
             ],
             [
-                'id'    => 172,
+                'id'    => 146,
                 'title' => 'travel_treatment_activity_create',
             ],
             [
-                'id'    => 173,
+                'id'    => 147,
                 'title' => 'travel_treatment_activity_edit',
             ],
             [
-                'id'    => 174,
+                'id'    => 148,
                 'title' => 'travel_treatment_activity_show',
             ],
             [
-                'id'    => 175,
+                'id'    => 149,
                 'title' => 'travel_treatment_activity_delete',
             ],
             [
-                'id'    => 176,
+                'id'    => 150,
                 'title' => 'travel_treatment_activity_access',
             ],
             [
-                'id'    => 177,
+                'id'    => 151,
                 'title' => 'activity_create',
             ],
             [
-                'id'    => 178,
+                'id'    => 152,
                 'title' => 'activity_edit',
             ],
             [
-                'id'    => 179,
+                'id'    => 153,
                 'title' => 'activity_show',
             ],
             [
-                'id'    => 180,
+                'id'    => 154,
                 'title' => 'activity_delete',
             ],
             [
-                'id'    => 181,
+                'id'    => 155,
                 'title' => 'activity_access',
             ],
             [
-                'id'    => 182,
+                'id'    => 156,
                 'title' => 'travel_status_create',
             ],
             [
-                'id'    => 183,
+                'id'    => 157,
                 'title' => 'travel_status_edit',
             ],
             [
-                'id'    => 184,
+                'id'    => 158,
                 'title' => 'travel_status_show',
             ],
             [
-                'id'    => 185,
+                'id'    => 159,
                 'title' => 'travel_status_delete',
             ],
             [
-                'id'    => 186,
+                'id'    => 160,
                 'title' => 'travel_status_access',
             ],
             [
-                'id'    => 187,
+                'id'    => 161,
                 'title' => 'content_management_access',
             ],
             [
-                'id'    => 188,
+                'id'    => 162,
                 'title' => 'content_category_create',
             ],
             [
-                'id'    => 189,
+                'id'    => 163,
                 'title' => 'content_category_edit',
             ],
             [
-                'id'    => 190,
+                'id'    => 164,
                 'title' => 'content_category_show',
             ],
             [
-                'id'    => 191,
+                'id'    => 165,
                 'title' => 'content_category_delete',
             ],
             [
-                'id'    => 192,
+                'id'    => 166,
                 'title' => 'content_category_access',
             ],
             [
-                'id'    => 193,
+                'id'    => 167,
                 'title' => 'content_tag_create',
             ],
             [
-                'id'    => 194,
+                'id'    => 168,
                 'title' => 'content_tag_edit',
             ],
             [
-                'id'    => 195,
+                'id'    => 169,
                 'title' => 'content_tag_show',
             ],
             [
-                'id'    => 196,
+                'id'    => 170,
                 'title' => 'content_tag_delete',
             ],
             [
-                'id'    => 197,
+                'id'    => 171,
                 'title' => 'content_tag_access',
             ],
             [
-                'id'    => 198,
+                'id'    => 172,
                 'title' => 'content_page_create',
             ],
             [
-                'id'    => 199,
+                'id'    => 173,
                 'title' => 'content_page_edit',
             ],
             [
-                'id'    => 200,
+                'id'    => 174,
                 'title' => 'content_page_show',
             ],
             [
-                'id'    => 201,
+                'id'    => 175,
                 'title' => 'content_page_delete',
             ],
             [
-                'id'    => 202,
+                'id'    => 176,
                 'title' => 'content_page_access',
             ],
             [
-                'id'    => 203,
+                'id'    => 177,
                 'title' => 'hotel_create',
             ],
             [
-                'id'    => 204,
+                'id'    => 178,
                 'title' => 'hotel_edit',
             ],
             [
-                'id'    => 205,
+                'id'    => 179,
                 'title' => 'hotel_show',
             ],
             [
-                'id'    => 206,
+                'id'    => 180,
                 'title' => 'hotel_delete',
             ],
             [
-                'id'    => 207,
+                'id'    => 181,
                 'title' => 'hotel_access',
             ],
             [
-                'id'    => 208,
+                'id'    => 182,
                 'title' => 'travel_hospital_create',
             ],
             [
-                'id'    => 209,
+                'id'    => 183,
                 'title' => 'travel_hospital_edit',
             ],
             [
-                'id'    => 210,
+                'id'    => 184,
                 'title' => 'travel_hospital_show',
             ],
             [
-                'id'    => 211,
+                'id'    => 185,
                 'title' => 'travel_hospital_delete',
             ],
             [
-                'id'    => 212,
+                'id'    => 186,
                 'title' => 'travel_hospital_access',
             ],
             [
-                'id'    => 213,
+                'id'    => 187,
                 'title' => 'finance_access',
             ],
             [
-                'id'    => 214,
+                'id'    => 188,
                 'title' => 'expenses_income_create',
             ],
             [
-                'id'    => 215,
+                'id'    => 189,
                 'title' => 'expenses_income_edit',
             ],
             [
-                'id'    => 216,
+                'id'    => 190,
                 'title' => 'expenses_income_show',
             ],
             [
-                'id'    => 217,
+                'id'    => 191,
                 'title' => 'expenses_income_delete',
             ],
             [
-                'id'    => 218,
+                'id'    => 192,
                 'title' => 'expenses_income_access',
             ],
             [
-                'id'    => 219,
+                'id'    => 193,
                 'title' => 'profile_password_edit',
             ],
         ];
