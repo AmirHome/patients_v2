@@ -93,16 +93,6 @@ class Patient extends Model implements HasMedia
         return $this->hasMany(Travel::class, 'patient_id', 'id');
     }
 
-    public function patientExpenses()
-    {
-        return $this->hasMany(Expense::class, 'patient_id', 'id');
-    }
-
-    public function patientIncomes()
-    {
-        return $this->hasMany(Income::class, 'patient_id', 'id');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

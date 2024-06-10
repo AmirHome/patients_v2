@@ -1,6 +1,7 @@
 {{-- <x-province-component class="col-md-4" :data="[$template='Province']"/> --}}
 <div class="{{$class}}">
     <div class="form-group">
+    <label for="">Ülke</label>
         <select class="form-control select2 filter" id="country_id">
             <option value=null>Ülke</option>
             @foreach ($countries as $country)
@@ -13,6 +14,7 @@
 
 <div class="{{$class}}">
     <div class="form-group">
+    <label for="">Şehir</label>
         <select class="form-control select2 filter" id="city_id">
             <option>Şehir</option>
             @foreach ($cities as $city)

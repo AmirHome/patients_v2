@@ -28,12 +28,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Income Category
     Route::apiResource('income-categories', 'IncomeCategoryApiController');
 
-    // Expense
-    Route::apiResource('expenses', 'ExpenseApiController');
-
-    // Income
-    Route::apiResource('incomes', 'IncomeApiController');
-
     // Campaign Channels
     Route::apiResource('campaign-channels', 'CampaignChannelsApiController');
 

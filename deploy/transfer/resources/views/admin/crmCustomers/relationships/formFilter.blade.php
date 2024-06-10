@@ -5,14 +5,14 @@
         <form action="{{ route('admin.crm-customers.index') }}" method="get">
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label for="">customer name</label>
+                        <label for="">Customer name</label>
                         <input type="text" class="form-control filter" placeholder="Enter customer name" name="name">
                         <span class="text-danger">@error('customer_name'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Status</label>
                         <select class="form-control filter" wire:model.live="status" name="status_id">
@@ -24,9 +24,9 @@
                         <span class="text-danger">@error('Status'){{ $message }}@enderror</span>
                     </div>
                 </div>
-            </div>
+            
 
-            <div class="row">
+          
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">Campaign channels</label>

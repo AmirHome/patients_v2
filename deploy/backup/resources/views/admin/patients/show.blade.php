@@ -260,26 +260,10 @@
                 {{ trans('cruds.travel.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#patient_expenses" role="tab" data-toggle="tab">
-                {{ trans('cruds.expense.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#patient_incomes" role="tab" data-toggle="tab">
-                {{ trans('cruds.income.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="patient_travels">
             @includeIf('admin.patients.relationships.patientTravels', ['travels' => $patient->patientTravels])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="patient_expenses">
-            @includeIf('admin.patients.relationships.patientExpenses', ['expenses' => $patient->patientExpenses])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="patient_incomes">
-            @includeIf('admin.patients.relationships.patientIncomes', ['incomes' => $patient->patientIncomes])
         </div>
     </div>
 </div>

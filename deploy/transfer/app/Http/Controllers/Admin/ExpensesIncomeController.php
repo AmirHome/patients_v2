@@ -23,25 +23,33 @@ class ExpensesIncomeController extends Controller
 {
     use DataTablesFilterTrait;
 
-    public function index(Request $request)
+    public function index(Request $request, $type = null)
     {
+        //dd($request->all());
         abort_if(Gate::denies('expenses_income_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $categories = ($type === 'commission') ? [2, 4] : [1, 3];
         $data = $this->financeMountFilter();
 
+        // dd($categories);
         if ($request->ajax()) {
-            // $query = ExpensesIncome::with(['user', 'patient', 'department'])->select(sprintf('%s.*', (new ExpensesIncome)->table));
+            
             $query = ExpensesIncome::with(['patient'])
                 ->select(
                     'patient_id',
-                    DB::raw('SUM(CASE WHEN category = 1 THEN amount ELSE 0 END) as total_expenses'),
-                    // DB::raw('SUM(CASE WHEN category = 2 THEN amount ELSE 0 END) as total_expenses_commission'),
-                    DB::raw('SUM(CASE WHEN category = 3 THEN amount ELSE 0 END) as total_income'),
-                    // DB::raw('SUM(CASE WHEN category = 4 THEN amount ELSE 0 END) as total_income_commission')
+                    
+                    DB::raw('SUM(CASE WHEN category = ' . $categories[0] . ' THEN amount ELSE 0 END) as total_expenses'),
+                    DB::raw('SUM(CASE WHEN category = ' . $categories[1] . ' THEN amount ELSE 0 END) as total_income')
+
                 )
                 ->groupBy('patient_id');
-
+                
             $query = $this->financeFilter($request, $query);
+
+            $expensesTotalQuery = ExpensesIncome::where('category', $categories[0]);
+            $incomesTotalQuery = ExpensesIncome::where('category', $categories[1]);
+            $expensesTotalQuery = $this->financeFilter($request, $expensesTotalQuery);
+            $incomesTotalQuery = $this->financeFilter($request, $incomesTotalQuery);
 
             $table = Datatables::of($query);
 
@@ -60,19 +68,32 @@ class ExpensesIncomeController extends Controller
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
             });
 
+            $table->editColumn('total_expenses', function ($row) {
+                return number_format($row->total_expenses, 2);
+            });
+            $table->editColumn('total_income', function ($row) {
+                return number_format($row->total_income, 2);
+            });
             $table->addColumn('total_difference', function ($row) {
                 $total_expenses = $row->total_expenses;
                 $total_income = $row->total_income;
-                return $total_income - $total_expenses;
+                return number_format($total_income - $total_expenses, 2);
             });
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
 
-
-            return $table->make(true);
+            $expensesTotal = $expensesTotalQuery->sum('amount');
+            $incomesTotal = $incomesTotalQuery->sum('amount');
+            $profit = $incomesTotal - $expensesTotal;
+        
+            return $table->with('expensesTotal', number_format($expensesTotal, 2))
+                         ->with('incomesTotal', number_format($incomesTotal, 2))
+                         ->with('profit', number_format($profit, 2))
+                         ->make(true);       
         }
 
-        return view('admin.expensesIncomes.index', $data);
+
+        return view('admin.expensesIncomes.index', $data)->with('type', $type);
     }
 
     public function commission(Request $request)

@@ -1,19 +1,65 @@
 <div>
 
-    <h1>STEP {{$currentStep}}</h1>
     <form wire:submit.prevent="store">
 
         {{-- STEP 1 --}}
 
+
+  <div class="container-fluid p-0 m-0">
+
+    <div class="row">
+        <div class="col-md-11">
         <div class="step-one {{$currentStep == 1 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">1/4 - Personal Details</div>
+            <div class="card-header">Hasta Bilgileri</div>
                 <div class="card-body">
-                    <span class="row mx-1 pb-3">Code: {{$code}}</span>
+                <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9313;</span>
+
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9314;</span>
+
+  </div>
+</div>
                     <div class="row">
-                        <div class="col-md-4">
+                    <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">First name</label>
+                            <label for="">Hasta Kodu</label>
+                             <input type="text" class="form-control" id="code" value="{{$code}}" readonly placeholder="Code" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="">Hasta Geliş Tarihi</label>
+                             <input type="text" class="form-control" id="date"  readonly placeholder="{{getCurrentDate()}}" disabled>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                            <label for="">İsim</label>
                                 <input type="text" class="form-control" placeholder="Enter first name"
                                     wire:model="name">
                                 <span class="text-danger">@error('name'){{ $message }}@enderror</span>
@@ -21,25 +67,25 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Middel name</label>
+                            <label for="">İkinci ismi</label>
                                 <input type="text" class="form-control" placeholder="Enter middel name"
                                     wire:model="middle_name">
                                 <span class="text-danger">@error('middle_name'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Last name</label>
+                            <label for="">Soyadı</label>
                                 <input type="text" class="form-control" placeholder="Enter last name"
                                     wire:model="surname">
                                 <span class="text-danger">@error('surname'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                    </div>
+                        </div>
                     <div class="row">
-                        <div class="col-md-2">
+                    <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Gender @json($gender)</label>
+                            <label for="">Cinsiyet</label>
                                 <select class="form-control" wire:model.live="gender">
                                     <option value="" selected>Choose gender</option>
                                     @foreach ($genders as $key => $title)
@@ -49,58 +95,29 @@
                                 <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="">Birthday</label>
+                        <div class="col-md-3">
+                            <div class="form-group"> 
+                            <label for="">Doğum Tarihi</label>
                                 <input type="date" class="form-control" placeholder="Enter your birthday"
                                     wire:model="birthday">
                                 <span class="text-danger">@error('birthday'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                       
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Birth place</label>
+                                <label for="">Doğum Yeri</label>
                                 <input type="text" class="form-control" placeholder="Enter your birth place"
                                     wire:model="birth_place">
                                 <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Mother Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your mother name"
-                                    wire:model="mother_name">
-                                <span class="text-danger">@error('mother_name'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Father Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your father name"
-                                    wire:model="father_name">
-                                <span class="text-danger">@error('father_name'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
                     </div>
                     {{-- Physicall --}}
                     <div class="row">
-                        <div class="col-md-3">
+                    <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Weight</label>
-                                <input type="text" class="form-control" placeholder="Enter weight" wire:model="weight">
-                                <span class="text-danger">@error('weight'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Height</label>
-                                <input type="text" class="form-control" placeholder="Enter height" wire:model="height">
-                                <span class="text-danger">@error('height'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Blood group @json($blood_group)</label>
+                            <label for="">Kan Grubu</label>
                                 <select class="form-control" wire:model.live="blood_group">
                                     <option value="" selected>Choose blood group</option>
                                     @foreach ($bloodGroups as $key => $title)
@@ -110,20 +127,85 @@
                                 <span class="text-danger">@error('blood_group'){{ $message }}@enderror</span>
                             </div>
                         </div>
+              
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Treating doctor @json($treating_doctor)</label>
-                                <input type="text" class="form-control" wire:model="treating_doctor">
-                                </select>
-                                <span class="text-danger">@error('treating_doctor'){{ $message }}@enderror</span>
+                            <label for="">Kilosu</label>
+                                <input type="text" class="form-control" placeholder="Enter weight" wire:model="weight">
+                                <span class="text-danger">@error('weight'){{ $message }}@enderror</span>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                            <label for="">Boyu</label>
+                                <input type="text" class="form-control" placeholder="Enter height" wire:model="height">
+                                <span class="text-danger">@error('height'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+            
                     </div>
                     {{-- Reffer, Campaign --}}
                     <div class="row">
-                        <div class="col-md-3">
+                    <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Campaign channels</label>
+                            <label for="">Passport Numarası</label>
+                                <input type="text" class="form-control" placeholder="Enter your passport no"
+                                    wire:model="passport_no">
+                                <span class="text-danger">@error('passport_no'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                            <label for="">Email Adresi</label>
+                                <input type="email" class="form-control" placeholder="Enter email address"
+                                    wire:model="email">
+                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                             
+                        <div class="col-md-4">
+                            <div class="form-group">
+                            <label for="">Telefon No</label>
+                                <input type="text" class="form-control" placeholder="Enter your phone"
+                                    wire:model="phone">
+                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="">Ülke</label>
+                                <select class="form-control" wire:model.live="countryId">
+                                    <option value=null>Select a country</option>
+                                    @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="">Şehir</label>
+                                <select class="form-control" wire:model.live="city_id">
+                                    <option>Select city</option>
+                                    @foreach ($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>
+                            </div>
+                        </div>                            
+                          </div>
+                           <div class="col-md-12 pt-3 pb-3">
+            <div class="dotted-border">
+            </div>
+        </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="">Kanal</label>
                                 <select class="form-control" wire:model.live="compaignChannelId">
                                     <option value="" selected>Choose channels</option>
                                     @foreach ($campaignChannels as $channel)
@@ -133,9 +215,9 @@
                                 <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Campaign organization @json($campaign_org_id)</label>
+                            <label for="">Organizasyon</label>
                                 <select class="form-control" wire:model.live="campaign_org_id">
                                     <option value="" selected>Choose organization</option>
                                     @foreach ($campaignOrganizations as $org)
@@ -145,9 +227,11 @@
                                 <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Reffering type @json($reffering_type)</label>
+                            <label for="">Referans Tipiniz</label>
                                 <select class="form-control" wire:model.live="reffering_type">
                                     <option value="" selected>Choose reffering type</option>
                                     @foreach ($refferingTypes as $key => $title)
@@ -157,11 +241,10 @@
                                 <span class="text-danger">@error('reffering_type'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <div class="form-group">
-
+                            <label for="">Referansınız</label>
                                 @if ($reffering_type != 'Phone')
-                                    <label for="">Reffering @json($reffering)</label>
                                     @if ($reffering_type == 'Other')
                                     <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
                                     @else
@@ -176,100 +259,10 @@
 
                                 <span class="text-danger">@error('reffering'){{ $message }}@enderror</span>
                             </div>
+                            
                         </div>
                     </div>
-                    {{-- Passport --}}
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Citizenship</label>
-                                <input type="text" class="form-control" placeholder="Enter citizenship"
-                                    wire:model="citizenship">
-                                <span class="text-danger">@error('citizenship'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Passport No</label>
-                                <input type="text" class="form-control" placeholder="Enter your passport no"
-                                    wire:model="passport_no">
-                                <span class="text-danger">@error('passport_no'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="">Passport Origin</label>
-                                <input type="text" class="form-control" placeholder="Enter your passport origin"
-                                    wire:model="passport_origin">
-                                <span class="text-danger">@error('passport_origin'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Passport Image</label>
-                                <input type="file" class="form-control" placeholder="Enter your birth place"
-                                    wire:model="passport_image">
-                                <span class="text-danger">@error('passport_image'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                    </div>
-                    {{-- Address --}}
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">Email Address</label>
-                                <input type="email" class="form-control" placeholder="Enter email address"
-                                    wire:model="email">
-                                <span class="text-danger">@error('email'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="">Phone</label>
-                                <input type="text" class="form-control" placeholder="Enter your phone"
-                                    wire:model="phone">
-                                <span class="text-danger">@error('phone'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="">Foriegn phone</label>
-                                <input type="text" class="form-control" placeholder="Enter your foriegn phone"
-                                    wire:model="foriegn_phone">
-                                <span class="text-danger">@error('foriegn_phone'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="">Countery</label>
-                                <select class="form-control" wire:model.live="countryId">
-                                    <option value=null>Select a country</option>
-                                    @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="">City @json($city_id)</label>
-                                <select class="form-control" wire:model.live="city_id">
-                                    <option>Select city</option>
-                                    @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Address</label>
-                        <textarea class="form-control" cols="2" rows="2" wire:model="address"></textarea>
-                        <span class="text-danger">@error('address'){{ $message }}@enderror</span>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -278,12 +271,40 @@
 
         <div class="step-two {{$currentStep == 2 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP 2/4 - Address & Contacts</div>
+                <div class="card-header">Vaka Bilgileri ve Rapor Yükleme</div>
                 <div class="card-body">
+                <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9313;</span>
+
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9314;</span>
+
+  </div>
+</div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="travel_treatment_activities_status">Status @json($status_id)</label>
+                            <label for="">Durum</label>
                                 <select class="form-control" wire:model.live="status_id">
                                     <option value="" selected>Select status</option>
                                     @foreach ($statuses as $key=>$status)
@@ -296,7 +317,7 @@
                         <!-- GUIDE Select2 init -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">department @json($department_id)</label>
+                            <label for="">Departman</label>
                                 <div wire:ignore>
                                     <select class="form-control select2" id="department_id">
                                         <option value="" selected>Select departmant</option>
@@ -312,7 +333,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="travel_treatment_activities_description">description</label>
+                            <label for="">Açıklama</label>
                                 <textarea class="form-control" cols="2" rows="2" placeholder="Enter description"
                                     wire:model="description"></textarea>
                                 <span class="text-danger">@error('description'){{ $message }}@enderror</span>
@@ -321,10 +342,16 @@
                     </div>
                     <!-- GUIDE Dropzone init -->
                     <div class="row">
-                        <div class="col-md-12">@json($treatment_files)
+                        <div class="col-md-9">
+                            <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                             <div class="form-group" wire:ignore>
-                                <label class="required" for="treatment_file">{{ trans('cruds.travelTreatmentActivity.fields.treatment_file') }}</label>
-                                <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone"></div>
+                            <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                                <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
+                                <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
+                                <div class="dz-message" data-dz-message><p>Drop files here or click <a>browse</a> thorough your machien</p></div>
+                                </div>
+                                
+
                                 @if($errors->has('treatment_file'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('treatment_file') }}
@@ -342,16 +369,44 @@
 
         <div class="step-three {{$currentStep == 3 ? 'd-block' : 'd-none'}}">
             <div class="card">
-                <div class="card-header bg-secondary text-white">STEP 3/4 - Frameworks experience</div>
+            <div class="card-header">Bilgilendirmeler</div>
                 <div class="card-body">
+                <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9312;</span>
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+  <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9313;</span>
+
+  </div>
+  <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
+    <span
+      class="w-100 rounded"
+      style="height: 0.1rem;background-color: #D7DDE0;"
+    >
+    </span>
+  </div>
+  <div class="d-flex justify-content-center">
+
+    <span style='font-size:60px;border: 0px solid #00b8d9;color: #00b8d9 !important;'>&#9314;</span>
+
+  </div>
+</div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} @json($notifyHospitalIds)</label>
+                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
                                 <div wire:ignore>
-                                    <div style="padding-bottom: 4px">
-                                        <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                                        <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                    <div >
+                                        <span class="btn btn-info btn-xs select-all mb-3">{{ trans('global.select_all') }}</span>
+                                        <span class="btn btn-info btn-xs deselect-all mb-3">{{ trans('global.deselect_all') }}</span>
                                     </div>
                                     <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notifyHospitalIds" multiple>
                                         @foreach($notify_hospitals as $id => $notify_hospital)
@@ -362,9 +417,12 @@
                                 <span class="text-danger">@error('notifyHospitalIds'){{ $message }}@enderror</span>
                             </div>
                         </div>
+</div>
+<div class="row">
+
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="traslators">Translators @json($translatorId)</label>
+                                <label for="traslators">Translators</label>
                                 <select class="form-control" wire:model.live="translatorId">
                                     <option value="" selected>Select translator</option>
                                     @foreach ($translators as $id => $translator)
@@ -372,38 +430,36 @@
                                     @endforeach
                                 </select>
                                 <span class="text-danger">@error('translatorId'){{ $message }}@enderror</span>
-
                             </div>
                         </div>
-                    </div>
+                        </div>
                     
-
-
-
+                    
                 </div>
             </div>
         </div>
     
         {{-- Buttons panel --}}
 
-        <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
+        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-3">
             @if ($currentStep == 1)
             <div></div>
             @endif
 
-            @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+            @if ($currentStep == 2 || $currentStep == 3 )
             <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
             @endif
 
-            @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
+            @if ($currentStep == 1 || $currentStep == 2 )
             <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
             @endif
 
-            @if ($currentStep == 4)
-            <button type="submit" class="btn btn-md btn-primary">Submit</button>
+            @if ($currentStep == 3)
+            <button type="submit" class="btn btn-md btn-primary">Final</button>
             @endif
 
-
+            </div>
+  </div>
         </div>
 
     </form>

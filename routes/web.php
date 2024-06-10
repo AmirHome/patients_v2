@@ -94,26 +94,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Tasks Calendar
     Route::resource('tasks-calendars', 'TasksCalendarController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
-    // Expense Category
-    Route::delete('expense-categories/destroy', 'ExpenseCategoryController@massDestroy')->name('expense-categories.massDestroy');
-    Route::resource('expense-categories', 'ExpenseCategoryController');
-
-    // Income Category
-    Route::delete('income-categories/destroy', 'IncomeCategoryController@massDestroy')->name('income-categories.massDestroy');
-    Route::resource('income-categories', 'IncomeCategoryController');
-
-    // Expense
-    Route::delete('expenses/destroy', 'ExpenseController@massDestroy')->name('expenses.massDestroy');
-    Route::resource('expenses', 'ExpenseController');
-
-    // Income
-    Route::delete('incomes/destroy', 'IncomeController@massDestroy')->name('incomes.massDestroy');
-    Route::resource('incomes', 'IncomeController');
-
-    // Expense Report
-    Route::delete('expense-reports/destroy', 'ExpenseReportController@massDestroy')->name('expense-reports.massDestroy');
-    Route::resource('expense-reports', 'ExpenseReportController');
-
     // Campaign Channels
     Route::delete('campaign-channels/destroy', 'CampaignChannelsController@massDestroy')->name('campaign-channels.massDestroy');
     Route::resource('campaign-channels', 'CampaignChannelsController');

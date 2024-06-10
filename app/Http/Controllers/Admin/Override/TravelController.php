@@ -21,6 +21,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Log;
 
 
 class TravelController extends ParentController
@@ -29,6 +30,7 @@ class TravelController extends ParentController
     
     public function index(Request $request)
     {
+
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $data = $this->travelFilterMount();

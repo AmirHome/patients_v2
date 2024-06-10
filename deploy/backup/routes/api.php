@@ -48,18 +48,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('tasks/media', 'TaskApiController@storeMedia')->name('tasks.storeMedia');
     Route::apiResource('tasks', 'TaskApiController');
 
-    // Expense Category
-    Route::apiResource('expense-categories', 'ExpenseCategoryApiController');
-
-    // Income Category
-    Route::apiResource('income-categories', 'IncomeCategoryApiController');
-
-    // Expense
-    Route::apiResource('expenses', 'ExpenseApiController');
-
-    // Income
-    Route::apiResource('incomes', 'IncomeApiController');
-
     // Campaign Channels
     Route::apiResource('campaign-channels', 'CampaignChannelsApiController');
 

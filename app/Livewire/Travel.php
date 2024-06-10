@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Log;
 
 
 class Travel extends Component
@@ -136,6 +136,7 @@ class Travel extends Component
 
     public function mount()
     {
+        Log::info('Travel Add Mount');
         $this->countries = Country::get(['id', 'name']);
         $this->cities    = collect();
         $this->countryId = 1;
@@ -191,6 +192,7 @@ class Travel extends Component
 
     public function increaseStep()
     {
+        Log::info('increaseStep');
         $this->resetErrorBag();
         $this->validateData();
         $this->currentStep++;
@@ -211,6 +213,7 @@ class Travel extends Component
     public function validateData()
     {
         if ($this->currentStep == 1) {
+            Log::error('Travel Add Step:'.$this->currentStep);
             
             $rules = (new StorePatientRequest())->rules();
             $rules = array_merge($rules, [
@@ -219,10 +222,12 @@ class Travel extends Component
             ]);
 
             $data = $this->validate($rules);
+            Log::info('Travel Add '.$this->currentStep, $data);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
             
         } elseif ($this->currentStep == 2) {
+            Log::info('Travel Add Step:'.$this->currentStep);
 
             $rulesTravel =  ['last_status_id' => 'nullable|integer',
                              'department_id' => 'required', 
@@ -238,6 +243,7 @@ class Travel extends Component
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
 
         } elseif ($this->currentStep == 3) {
+            Log::info('Travel Add Step:'.$this->currentStep);
 
             $rules = [
                 'notifyHospitalIds' => 'nullable|array',

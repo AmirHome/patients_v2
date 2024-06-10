@@ -152,7 +152,7 @@ function deployment() {
     php artisan livewire-charts:install
 
     ### Session config
-    # php artisan session:table
+    php artisan session:table
     # copy from deploy 2024_04_17_121142_create_sessions_table.php
 
     ### Install queue

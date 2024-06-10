@@ -48,31 +48,36 @@
             
             <ul class="c-header-nav ml-auto">
 
-                @if(count(config('panel.available_languages', [])) > 1)
-                    <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ strtoupper(app()->getLocale()) }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            @foreach(config('panel.available_languages') as $langLocale => $langName)
-                                <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
-                            @endforeach
-                        </div>
-                    </li>
-                @endif
+            @if(count(config('panel.available_languages', [])) > 1)
+    <li class="c-header-nav-item dropdown d-md-down-none ">
+        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >
+            <svg xmlns="http://www.w3.org/2000/svg"   xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"  class="component-iconify MuiBox-root css-1virv8 iconify iconify--flagpack" width="1.34em" height="1em" viewBox="0 0 32 24"><g fill="none"><path fill="#2E42A5" fill-rule="evenodd" d="M0 0v24h32V0z" clip-rule="evenodd"></path><mask id="iconifyReact7" width="32" height="24" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" fill-rule="evenodd" d="M0 0v24h32V0z" clip-rule="evenodd"></path></mask><g mask="url(#iconifyReact7)"><path fill="#fff" d="m-3.563 22.285l7.041 2.979L32.16 3.238l3.714-4.426l-7.53-.995l-11.698 9.491l-9.416 6.396z"></path><path fill="#F50100" d="M-2.6 24.372L.989 26.1L34.54-1.599h-5.037z"></path><path fill="#fff" d="m35.563 22.285l-7.042 2.979L-.159 3.238l-3.715-4.426l7.53-.995l11.698 9.491l9.416 6.396z"></path><path fill="#F50100" d="m35.323 23.783l-3.588 1.728l-14.286-11.86l-4.236-1.324l-17.445-13.5H.806l17.434 13.18l4.631 1.588z"></path><mask id="iconifyReact8" fill="#fff"><path fill-rule="evenodd" d="M19.778-2h-7.556V8H-1.973v8h14.195v10h7.556V16h14.25V8h-14.25z" clip-rule="evenodd"></path></mask><path fill="#F50100" fill-rule="evenodd" d="M19.778-2h-7.556V8H-1.973v8h14.195v10h7.556V16h14.25V8h-14.25z" clip-rule="evenodd"></path><path fill="#fff" d="M12.222-2v-2h-2v2zm7.556 0h2v-2h-2zM12.222 8v2h2V8zM-1.973 8V6h-2v2zm0 8h-2v2h2zm14.195 0h2v-2h-2zm0 10h-2v2h2zm7.556 0v2h2v-2zm0-10v-2h-2v2zm14.25 0v2h2v-2zm0-8h2V6h-2zm-14.25 0h-2v2h2zm-7.556-8h7.556v-4h-7.556zm2 8V-2h-4V8zm-16.195 2h14.195V6H-1.973zm2 6V8h-4v8zm12.195-2H-1.973v4h14.195zm2 12V16h-4v10zm5.556-2h-7.556v4h7.556zm-2-8v10h4V16zm16.25-2h-14.25v4h14.25zm-2-6v8h4V8zm-12.25 2h14.25V6h-14.25zm-2-12V8h4V-2z" mask="url(#iconifyReact8)"></path></g></g></svg>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="{{ url()->current() }}?change_language=tr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -30000 90000 60000">
+	<path fill="#e30a17" d="m0-30000h90000v60000H0z"/>
+	<path fill="#fff" d="m41750 0 13568-4408-8386 11541V-7133l8386 11541zm925 8021a15000 15000 0 1 1 0-16042 12000 12000 0 1 0 0 16042z"/>
+<script xmlns=""/></svg>Türkçe</a>
+            <a class="dropdown-item" href="{{ url()->current() }}?change_language=en">    
+ <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="component-iconify MuiBox-root css-1virv8 iconify iconify--flagpack" width="1.34em" height="1em" viewBox="0 0 32 24"><g fill="none"><path fill="#2E42A5" fill-rule="evenodd" d="M0 0v24h32V0z" clip-rule="evenodd"></path><mask id="iconifyReact7" width="32" height="24" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance"><path fill="#fff" fill-rule="evenodd" d="M0 0v24h32V0z" clip-rule="evenodd"></path></mask><g mask="url(#iconifyReact7)"><path fill="#fff" d="m-3.563 22.285l7.041 2.979L32.16 3.238l3.714-4.426l-7.53-.995l-11.698 9.491l-9.416 6.396z"></path><path fill="#F50100" d="M-2.6 24.372L.989 26.1L34.54-1.599h-5.037z"></path><path fill="#fff" d="m35.563 22.285l-7.042 2.979L-.159 3.238l-3.715-4.426l7.53-.995l11.698 9.491l9.416 6.396z"></path><path fill="#F50100" d="m35.323 23.783l-3.588 1.728l-14.286-11.86l-4.236-1.324l-17.445-13.5H.806l17.434 13.18l4.631 1.588z"></path><mask id="iconifyReact8" fill="#fff"><path fill-rule="evenodd" d="M19.778-2h-7.556V8H-1.973v8h14.195v10h7.556V16h14.25V8h-14.25z" clip-rule="evenodd"></path></mask><path fill="#F50100" fill-rule="evenodd" d="M19.778-2h-7.556V8H-1.973v8h14.195v10h7.556V16h14.25V8h-14.25z" clip-rule="evenodd"></path><path fill="#fff" d="M12.222-2v-2h-2v2zm7.556 0h2v-2h-2zM12.222 8v2h2V8zM-1.973 8V6h-2v2zm0 8h-2v2h2zm14.195 0h2v-2h-2zm0 10h-2v2h2zm7.556 0v2h2v-2zm0-10v-2h-2v2zm14.25 0v2h2v-2zm0-8h2V6h-2zm-14.25 0h-2v2h2zm-7.556-8h7.556v-4h-7.556zm2 8V-2h-4V8zm-16.195 2h14.195V6H-1.973zm2 6V8h-4v8zm12.195-2H-1.973v4h14.195zm2 12V16h-4v10zm5.556-2h-7.556v4h7.556zm-2-8v10h4V16zm16.25-2h-14.25v4h14.25zm-2-6v8h4V8zm-12.25 2h14.25V6h-14.25zm-2-12V8h4V-2z" mask="url(#iconifyReact8)"></path></g></g></svg> English
+          </a>
+        </div>
+    </li>
+    
+@endif
 
-                <ul class="c-header-nav ml-auto">
+                <ul class="c-header-nav ml-auto pl-3" > 
                     <li class="c-header-nav-item dropdown notifications-menu">
                         <a href="#" class="c-header-nav-link" data-toggle="dropdown">
-                            <i class="far fa-bell"></i>
-                            @php($alertsCount = \Auth::user()->userUserAlerts()->where('read', false)->count())
+                        <i class="fas fa-bell"></i>
+                        @php($alertsCount = \Auth::user()->userUserAlerts()->where('read', false)->count())
                                 @if($alertsCount > 0)
                                     <span class="badge badge-warning navbar-badge">
                                         {{ $alertsCount }}
                                     </span>
                                 @endif
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
                             @if(count($alerts = \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at', 'ASC')->get()->reverse()) > 0)
                                 @foreach($alerts as $alert)
                                     <div class="dropdown-item">
@@ -91,34 +96,47 @@
                         </div>
                     </li>
                 </ul>
-                <li>
-                    <a class="c-header-nav-link" href="{{ config('chat.url') }}">
-                      <i class="fa fa-comments" aria-hidden="true"> </i>
+                <li  class="pl-3 pr-3">
+                    <a class="c-header-nav-link" href="{{ config('chat.url') }}" >
+                      <i class="fa fa-comments" aria-hidden="true" > </i>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link avatar-name dropdown-toggle" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
+                <li class="nav-item dropdown ">
+                  <a class="nav-link avatar-name" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                      aria-haspopup="true" aria-expanded="false">
-                      <span class="profile-name">{{ (htmlspecialchars_decode(\Auth::user()->name))??'' }}</span>
-                      <img class="img-avatar rounded-circle" src="{{\Auth::user()->picture->url??''}}" style="height: 40px;" loading="lazy">
+                     <img src="https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_25.jpg" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
                   </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
+                    <span class="dropdown-header-name">{{\Auth::user()->name}}</span>
                       <span class="dropdown-header">{{\Auth::user()->email}}</span>
-                      <div class="dropdown-divider"></div>
-                      @can('viewPulse')
+                      <div class="row avatar-menu">
+        <div class="col-md-12">
+            <div class="dotted-border">
+            </div>
+        </div>    
+        <div class="c-sidebar-nav-link-li">
+
+        @can('viewPulse')
                         <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('pulse.path')) }}" title="Pulse">
                           Pluse
-                        </a>
+                        </a> 
                       @endcan
+                      </div>
+
+                      <div class="c-sidebar-nav-link-li">
+
                       @can('viewTelescope')
-                        <a class="c-sidebar-nav-icon c-sidebar-nav-link" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
+                        <a class="c-sidebar-nav-icon c-sidebar-nav-link mt-2 mb-1" target="_blank" href="{{ url(config('telescope.path')) }}" title="Telescope">
                            Telescope
                         </a>
                       @endcan
-                      <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                      </div>
+
+                      <div class="c-sidebar-nav-link-exit">
+                        <a href="#" class="c-sidebar-nav-link  " onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         {{ trans('global.logout') }}
-                      </a>
+                      </a></div>
                     </div>
               </li>
 
@@ -147,10 +165,6 @@
                         </div>
                     @endif
                     
-
-
-
-                              
                   <div style="position: fixed; top: 10px;right: 0; z-index: 2000;">
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="2000">
@@ -357,6 +371,8 @@
         righticon.style.display = 'block';
     }
 });
+
+
     </script>
     
     @yield('scripts')

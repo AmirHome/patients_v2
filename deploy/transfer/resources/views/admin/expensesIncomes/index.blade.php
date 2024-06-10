@@ -5,7 +5,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.expensesIncome.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.expensesIncome.'.$type) }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -38,7 +38,21 @@
                     </th>
                 </tr>
             </thead>
+
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Total Expenses:</th>
+                    <th>Total Incomes:</th>
+                    <th>Profit:</th>
+                </tr>
+            </tfoot>
         </table>
+
+
+
     </div>
 </div>
 
@@ -53,18 +67,20 @@
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
   let dtOverrideGlobals = {
-    dom: 'rlftp',
+    dom: 'rtlp',
     // buttons: dtButtons,
     processing: true,
     serverSide: true,
     retrieve: true,
     aaSorting: [],
     ajax: {
-    url: "{{ route('admin.expenses-incomes.index') }}",
+    url: "{{ route('admin.expenses-incomes.index',$type) }}",
         data: function(d) {
             d.ff_patient_id = $('.filter[name="patient_id"]').val();
             d.ff_patient_name = $('.filter[name="patient_name"]').val();
             d.ff_patient_code = $('.filter[name="patient_code"]').val();
+            d.ff_country_id = $('.filter[name="country_id"]').val();
+            d.ff_campaign_org_id = $('.filter[name="campaign_org_id"]').val();
         }
     },
     columns: [
@@ -80,6 +96,16 @@
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 10,
+    footerCallback: function (row, data, start, end, display) {
+      let api = this.api();
+      let totalExpenses = api.ajax.json().expensesTotal;
+      let totalIncomes = api.ajax.json().incomesTotal;
+      let profit = api.ajax.json().profit;
+
+      $(api.column(3).footer()).html('Total Expenses: ' + totalExpenses);
+      $(api.column(4).footer()).html('Total Incomes: ' + totalIncomes);
+      $(api.column(5).footer()).html('Profit: ' + profit);
+    }
   };
   let table = $('.datatable-ExpensesIncome').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
