@@ -25,10 +25,10 @@ protected function prepareForValidation(){
 public function rules()
     {
         return [
-            'patient_id' => [
-                'required',
-                'integer',
-            ],
+            // 'patient_id' => [
+            //     'required',
+            //     'integer',
+            // ],
             'last_status_id' => [
                 'required',
                 'integer',

@@ -23,15 +23,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('viewPulse', function (User $user) {
-            $user = User::findOrFail($user->id);
-            return $user->is_admin == 1;
-        });
+        // Gate::define('viewPulse', function (User $user) {
+        //     $user = User::findOrFail($user->id);
+        //     return $user->is_admin == 1;
+        // });
 
-        Gate::define('viewTelescope', function (User $user) {
-            $user = User::findOrFail($user->id);
-            return $user->is_admin == 1;
-        });
+        // Gate::define('viewTelescope', function (User $user) {
+        //     $user = User::findOrFail($user->id);
+        //     return $user->is_admin == 100;
+        // });
 
         // Gate::define('viewHorizon', function (User $user) {
         //     $user = User::findOrFail($user->id);
