@@ -63,6 +63,12 @@ class CampaignOrgController extends Controller
         return view('admin.campaignOrgs.index');
     }
 
+    public function ajaxIndexByChannelId($channel)
+    {
+        $campaignOrgs = CampaignOrg::where('channel_id', $channel)->where('status', 1)->pluck('title', 'id');
+        return response()->json($campaignOrgs);
+    }
+
     public function create()
     {
         abort_if(Gate::denies('campaign_org_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');

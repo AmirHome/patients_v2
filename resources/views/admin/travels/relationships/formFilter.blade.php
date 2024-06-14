@@ -142,30 +142,8 @@ Vaka Listesi
                 </div>
             </div>
              <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                    <label for="">Kanal</label>
-                        <select class="form-control filter" wire:model.live="compaignChannelId">
-                            <option value="" selected>Choose channels</option>
-                            @foreach ($campaignChannels as $channel)
-                            <option value="{{ $channel->id }}">{{ $channel->title }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                    <label for="">Organizasyon</label>
-                        <select class="form-control filter" wire:model.live="campaign_org_id">
-                            <option value="" selected>Choose organization</option>
-                            @foreach ($campaignOrganizations as $org)
-                            <option value="{{ $org->id }}">{{ $org->title }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+                
+                <x-campaign-channel-org-component class="col-md-4" :data="[$template='campaign-channel-org']"/>
                 
                 <div class="col-lg-2 colm-md-4 ">
         <div class="form-group">

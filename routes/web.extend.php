@@ -14,6 +14,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // crm_document
     Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
     Route::get('ajax-provinces/{country}', 'ProvinceController@ajaxIndexByCountryId')->name('ajax.provinces.index');
+    Route::get('ajax-campaign/{channel}', 'CampaignOrgController@ajaxIndexByChannelId')->name('ajax.campaign.index');
 });
 
 Route::group(['namespace' => 'Admin\Override'], function () {
