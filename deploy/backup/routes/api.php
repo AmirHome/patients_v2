@@ -5,10 +5,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('users/media', 'UsersApiController@storeMedia')->name('users.storeMedia');
     Route::apiResource('users', 'UsersApiController');
 
-    // Team
-    Route::post('teams/media', 'TeamApiController@storeMedia')->name('teams.storeMedia');
-    Route::apiResource('teams', 'TeamApiController');
-
     // Countries
     Route::apiResource('countries', 'CountriesApiController');
 

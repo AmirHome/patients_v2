@@ -74,7 +74,6 @@ class User extends Authenticatable implements HasMedia
         'is_super',
         'remember_token',
         'email_verified_at',
-        'team_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -184,10 +183,5 @@ class User extends Authenticatable implements HasMedia
     public function roles()
     {
         return $this->belongsToMany(Role::class);
-    }
-
-    public function team()
-    {
-        return $this->belongsTo(Team::class, 'team_id');
     }
 }

@@ -30,7 +30,7 @@ class TaskController extends Controller
         $data = $this->taskMountFilter();
 
         if ($request->ajax()) {
-            $query = Task::with(['status', 'assigned_to', 'user', 'team'])->select(sprintf('%s.*', (new Task)->table));
+            $query = Task::with(['status', 'assigned_to', 'user'])->select(sprintf('%s.*', (new Task)->table));
             $query = $this->taskFilter($request, $query);
 
             $table = Datatables::of($query);
@@ -140,7 +140,7 @@ class TaskController extends Controller
 
         $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $task->load('status', 'assigned_to', 'user', 'team');
+        $task->load('status', 'assigned_to', 'user');
 
         return view('admin.tasks.edit', compact('assigned_tos', 'statuses', 'task', 'users'));
     }
@@ -167,7 +167,7 @@ class TaskController extends Controller
     {
         abort_if(Gate::denies('task_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $task->load('status', 'assigned_to', 'user', 'team');
+        $task->load('status', 'assigned_to', 'user');
 
         return view('admin.tasks.show', compact('task'));
     }

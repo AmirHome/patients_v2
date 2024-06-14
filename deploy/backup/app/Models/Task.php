@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\Auditable;
-use App\Traits\MultiTenantModelTrait;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Task extends Model implements HasMedia
 {
-    use SoftDeletes, MultiTenantModelTrait, InteractsWithMedia, Auditable, HasFactory;
+    use SoftDeletes, InteractsWithMedia, Auditable, HasFactory;
 
     public $table = 'tasks';
 
@@ -46,7 +45,6 @@ class Task extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'user_id',
-        'team_id',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -88,10 +86,5 @@ class Task extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function team()
-    {
-        return $this->belongsTo(Team::class, 'team_id');
     }
 }

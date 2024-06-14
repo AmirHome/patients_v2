@@ -9,7 +9,6 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Office;
 use App\Models\Role;
-use App\Models\Team;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -26,7 +25,7 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = User::with(['office', 'roles', 'team'])->select(sprintf('%s.*', (new User)->table));
+            $query = User::with(['office', 'roles'])->select(sprintf('%s.*', (new User)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -115,9 +114,7 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.users.create', compact('offices', 'roles', 'teams'));
+        return view('admin.users.create', compact('offices', 'roles'));
     }
 
     public function store(StoreUserRequest $request)
@@ -143,11 +140,9 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-        $teams = Team::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $user->load('office', 'roles');
 
-        $user->load('office', 'roles', 'team');
-
-        return view('admin.users.edit', compact('offices', 'roles', 'teams', 'user'));
+        return view('admin.users.edit', compact('offices', 'roles', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
@@ -172,7 +167,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('office', 'roles', 'team', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userTasks', 'userUserAlerts');
+        $user->load('office', 'roles', 'userPatients', 'userTravelTreatmentActivities', 'userActivities', 'userCrmCustomers', 'userCrmDocuments', 'userTasks', 'userUserAlerts');
 
         return view('admin.users.show', compact('user'));
     }
