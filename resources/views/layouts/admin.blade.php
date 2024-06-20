@@ -66,7 +66,7 @@
     
 @endif
 
-                <ul class="c-header-nav ml-auto pl-3" > 
+                <ul class="c-header-nav ml-auto pl-1" > 
                     <li class="c-header-nav-item dropdown notifications-menu">
                         <a href="#" class="c-header-nav-link" data-toggle="dropdown">
                         <i class="fas fa-bell"></i>
@@ -96,7 +96,7 @@
                         </div>
                     </li>
                 </ul>
-                <li  class="pl-3 pr-3">
+                <li  class="pl-1 pr-1">
                     <a class="c-header-nav-link" href="{{ config('chat.url') }}" >
                       <i class="fa fa-comments" aria-hidden="true" > </i>
                     </a>
@@ -104,7 +104,7 @@
                 <li class="nav-item dropdown ">
                   <a class="nav-link avatar-name" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                      aria-haspopup="true" aria-expanded="false">
-                     <img src="https://api-prod-minimal-v510.vercel.app/assets/images/avatar/avatar_25.jpg" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
+                     <img src="https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-25.webp" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
                   </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -373,6 +373,25 @@
 });
 
 
+window.onload = function() {
+    var searchInput = document.querySelector('#DataTables_Table_0_filter input[type="search"].form-control.form-control-sm');
+
+    if (searchInput) {
+        searchInput.placeholder = 'Search...';
+    }
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+     const dateInputs = document.querySelectorAll('.form-control.date');
+
+     dateInputs.forEach(input => {
+        input.placeholder = 'YY-MM-DD';
+    });
+});
+
+
+
+ 
     </script>
     
     @yield('scripts')

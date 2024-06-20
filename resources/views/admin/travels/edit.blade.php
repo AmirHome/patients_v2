@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-<div class="card">
-   <div class="card-header">
-      {{ trans('global.edit') }} {{ trans('cruds.travel.title_singular') }}
-   </div>
-   <div class="card-body">
-      <div class="card-header mt-0 pt-0">
-         Hasta Biglileri
-      </div>
+
+
+
+  <div class="card">
+    <div class="card-header">
+      Hasta Biglileri
+    </div>
+    <div class="card-body">
+      
       <form method="POST" action="{{ route("admin.travels.update", [$travel->id]) }}" enctype="multipart/form-data">
       @method('PUT')
       @csrf
@@ -378,8 +379,11 @@
          </div>
       </div>
    </div>
+    </div>
+
   
-</div>
+
+
 
 
    <div class="card">

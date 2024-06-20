@@ -1,6 +1,6 @@
 <container>
 <div class="card-header">
-Vaka Listesi
+Vaka Listes
     </div>
     <div class="row pl-0">
         <div class="col-md-12 pl-0">
