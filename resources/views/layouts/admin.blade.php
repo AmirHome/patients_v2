@@ -372,7 +372,6 @@
     }
 });
 
-
 window.onload = function() {
     var searchInput = document.querySelector('#DataTables_Table_0_filter input[type="search"].form-control.form-control-sm');
 
@@ -385,13 +384,11 @@ document.addEventListener('DOMContentLoaded', function() {
      const dateInputs = document.querySelectorAll('.form-control.date');
 
      dateInputs.forEach(input => {
-        input.placeholder = 'YY-MM-DD';
+        input.placeholder = 'Tarih Giriniz...';
     });
 });
 
 
-
- 
     </script>
     
     @yield('scripts')

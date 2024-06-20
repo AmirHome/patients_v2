@@ -1,6 +1,6 @@
 <container>
 <div class="card-header">
-Vaka Listes
+Vaka Listesi
     </div>
     <div class="row pl-0">
         <div class="col-md-12 pl-0">
@@ -148,7 +148,7 @@ Vaka Listes
                 <div class="col-lg-2 colm-md-4 ">
         <div class="form-group">
         <label for="">Kampanya Baş.</label>
-            <input type="text" class="form-control filter" placeholder="Kampanya Başlangıç Tarihi"
+            <input type="text" class="form-control filter date" placeholder="Kampanya Başlangıç Tarihi"
                 name="birth_place1">
             <span class="text-danger">@error('birth_place1'){{ $message }}@enderror</span>
         </div>
@@ -156,7 +156,7 @@ Vaka Listes
                 <div class="col-lg-2 colm-md-4">
                     <div class="form-group">
                     <label for="">Kampanya Bitiş T.</label>
-                        <input type="text" class="form-control filter" placeholder="Kampanya Bitiş Tarihi"
+                        <input type="text" class="form-control filter date" placeholder="Kampanya Bitiş Tarihi"
                             name="birth_place">
                         <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
                     </div>
@@ -176,7 +176,7 @@ Vaka Listes
                         </a>
                         @endif
                         <a class="btn btn-success pt-2 mt-2" href="{{ url('admin/travel') }}">
-                            <i class="fas fa-plus"></i> {{ trans('global.add') }} {{
+                            {{ trans('global.add') }} {{
                             trans('cruds.travel.title_singular') }}
                         </a>
                         @endcan

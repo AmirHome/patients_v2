@@ -44,7 +44,7 @@
             <div class="col-8">
                 @can('expenses_income_create')
                     <a class="btn btn-success" href="{{ route('admin.expenses-incomes.create') }}">
-                        <i class="fas fa-plus"></i> {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
+                      {{ trans('global.add') }} {{ trans('cruds.expensesIncome.title_singular') }}
                     </a>
                 @endcan
             </div>

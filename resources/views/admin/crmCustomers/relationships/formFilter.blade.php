@@ -86,7 +86,7 @@
                     <div class="col-8">
                         @can('crm_customer_create')
                         <a class="btn btn-success" href="{{ route('admin.crm-customers.create') }}">
-                            <i class="fas fa-plus"></i> {{ trans('global.add') }} {{ trans('cruds.crmCustomer.title_singular') }}
+                        {{ trans('global.add') }} {{ trans('cruds.crmCustomer.title_singular') }}
 
                         </a>
                         @endcan

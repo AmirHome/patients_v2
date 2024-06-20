@@ -198,7 +198,7 @@ Vaka Listesi
                         </a>
                         @endif
                         <a class="btn btn-success pt-2 mt-2" href="{{ url('admin/travel') }}">
-                            <i class="fas fa-plus"></i> {{ trans('global.add') }} {{
+                          {{ trans('global.add') }} {{
                             trans('cruds.travel.title_singular') }}
                         </a>
                         @endcan

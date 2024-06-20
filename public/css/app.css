@@ -1020,3 +1020,20 @@ div.dataTables_wrapper div.dataTables_length label
     line-height: 1.71429;
     border-radius: 8px !important;
 }
+
+.btn-success::before{
+    content: "+";
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/*Notification*/
+.badge-warning{
+    background-color: #FF5630;
+    color: white;
+    font-weight:500;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    padding: 3px 6px;
+    margin-top:-20px !important;
+}

@@ -13,7 +13,7 @@
     <div class="col-4">
         @can('expenses_income_create')
             <a class="btn btn-success float-right" href="{{ route('admin.expenses-incomes.create') }}">
-                <i class="fas fa-plus"></i> {{ trans('global.add') }} <span id="category-name">Expenses Income</span>
+              {{ trans('global.add') }} <span id="category-name">Expenses Income</span>
             </a>
         @endcan
     </div>
