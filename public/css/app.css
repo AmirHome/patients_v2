@@ -57,6 +57,10 @@ body {
 .c-header-nav{
     font-size: 20px;
 }
+.c-header-toggler{
+    text-align: left;
+    transform: translateX(- px);
+}
 
 .c-header-nav-link:hover{
     border-radius: 50%;
@@ -228,6 +232,7 @@ margin-left:3px !important;
     background-color: rgb(255, 255, 255) !important;
     font-weight: 500;
     width: 266px !important;
+    
 }
 
 .c-sidebar-nav {
@@ -431,6 +436,12 @@ table.dataTable {
     border-collapse: collapse !important;
     /* border-spacing: 5em; */
 }
+@media (min-width: 1800px) {
+    tr td:last-child {
+        min-width: 220px; /* İstediğiniz minimum genişliği buraya yazın */
+    }
+}
+
 
 table,
 th,
@@ -995,7 +1006,8 @@ div.dataTables_wrapper div.dataTables_length label
 }
 .btn-primary,
 .btn-success,
-.btn-danger {
+.btn-danger,
+.btn-light {
     background-color: rgb(33, 43, 54);
     color: white;
     border: none !important;
@@ -1008,7 +1020,8 @@ div.dataTables_wrapper div.dataTables_length label
     border-radius: 8px;
 }
 .btn-danger{
-    color: #212B36;
+    background-color: rgb(33, 43, 54) ;
+    color: white ; 
     border: none !important;
     outline: none;
     box-shadow: none !important;
@@ -1021,12 +1034,15 @@ div.dataTables_wrapper div.dataTables_length label
 .btn-primary:hover,
 .btn-success:hover,
 .btn-danger:hover,
+.btn-light:hover,
 .btn-primary:focus,
 .btn-success:focus,
 .btn-danger:focus,
+.btn-light:focus,
 .btn-primary:active,
 .btn-success:active,
-.btn-danger:active {
+.btn-danger:active,
+.btn-light:active {
     background-color: rgb(69, 79, 91) !important;
     color: white;
     border-color: none !important;
@@ -1049,16 +1065,31 @@ div.dataTables_wrapper div.dataTables_length label
     font-size: 16px;
     margin-right: 5px;
 }
+.btn-success{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
  .btn-primary{
     margin-right: 15px;
 
  }
- .btn-default::before{
-    content: "<";
-    font-weight: 600;
-    font-size: 16px;
-    margin-right: 5px;
+ .btn-default{
+    background-color: #eff0f1;
     color: #212B36;
+    font-weight: bold;
+    font-size: 0.875rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none !important;
+    outline: none;
+    box-shadow: none !important;
+ }
+ .btn-default::before{
+    content: "\f060";
+    font-family: FontAwesome;
+    font-weight: 100;
+    margin-right: 5px;
+    color: #2c3238; 
  }
 .input-group-append .btn-primary{
     background-color: rgb(216, 216, 224) !important;
@@ -1151,3 +1182,46 @@ div.dataTables_wrapper div.dataTables_length label
             min-width: 200px;
         }
     }
+
+    /*Show*/
+th{
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1) !important;
+    color: black;
+} 
+th::after{
+    content: ":";
+}
+
+/*minimals tabs*/
+ .nav-tabs{
+    border-bottom:none !important;
+    margin-bottom:30px !important;
+}
+.nav-tabs .nav-link{
+    font-size:0.875rem;
+    color: #637381;
+    border: none !important;
+    font-weight: 600;
+    align-items:center;
+    justify-content:center;
+}
+.nav-tabs .nav-link.active{
+    font-size:0.875rem;
+    color: #1C252E;
+    border-bottom: 2px solid black !important;
+    font-weight: 700;
+} 
+
+.nav-tabs .nav-link::after{
+  content: "\f107";
+  font-family: FontAwesome;
+padding-left: 5px;
+} 
+.nav-tabs .nav-link.active::after{
+    content: "\f106";
+    font-family: FontAwesome;
+    color: #1C252E;
+    padding-left: 5px;
+
+  } 
+

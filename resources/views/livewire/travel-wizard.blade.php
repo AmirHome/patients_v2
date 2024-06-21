@@ -451,7 +451,7 @@
             @endif
 
             @if ($currentStep == 1 || $currentStep == 2 )
-            <button type="button" class="btn btn-md btn-success" wire:click="increaseStep()">Next</button>
+            <button type="button" class="btn btn-md btn-light" wire:click="increaseStep()">Next</button>
             @endif
 
             @if ($currentStep == 3)

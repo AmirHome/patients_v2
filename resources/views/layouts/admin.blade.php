@@ -375,12 +375,14 @@
 });
 
 window.onload = function() {
-    var searchInput = document.querySelector('#DataTables_Table_0_filter input[type="search"].form-control.form-control-sm');
+    var filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
 
-    if (searchInput) {
-        searchInput.placeholder = 'Search...';
-    }
+    filterInputs.forEach(function(input) {
+        input.placeholder = 'Search...';
+    });
 };
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
      const dateInputs = document.querySelectorAll('.form-control.date');
@@ -389,6 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
         input.placeholder = 'Tarih Giriniz...';
     });
 });
+
 
 
     </script>

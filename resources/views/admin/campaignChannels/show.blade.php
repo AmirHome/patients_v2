@@ -47,6 +47,7 @@
             <a class="nav-link" href="#channel_campaign_orgs" role="tab" data-toggle="tab">
                 {{ trans('cruds.campaignOrg.title') }}
             </a>
+            
         </li>
     </ul>
     <div class="tab-content">
