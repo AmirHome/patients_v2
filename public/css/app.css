@@ -1031,15 +1031,12 @@ div.dataTables_wrapper div.dataTables_length label
     padding: 6px 12px;
     border-radius: 8px;
 }
-.btn-primary:hover,
 .btn-success:hover,
 .btn-danger:hover,
 .btn-light:hover,
-.btn-primary:focus,
 .btn-success:focus,
 .btn-danger:focus,
 .btn-light:focus,
-.btn-primary:active,
 .btn-success:active,
 .btn-danger:active,
 .btn-light:active {
@@ -1069,10 +1066,23 @@ div.dataTables_wrapper div.dataTables_length label
     margin-top: 15px;
     margin-bottom: 10px;
 }
- .btn-primary{
-    margin-right: 15px;
+ .btn-primary i{
+    margin-left: 5px;
 
  }
+ .btn-primary{
+    background-color: #038ea7
+ }
+ .btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active
+{
+    background-color: #03a4c0;
+    color: white;
+    border-color: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
  .btn-default{
     background-color: #eff0f1;
     color: #212B36;
@@ -1184,11 +1194,11 @@ div.dataTables_wrapper div.dataTables_length label
     }
 
     /*Show*/
-th{
+tbody tr th{
     border-bottom: 1px dotted rgba(0, 0, 0, 0.1) !important;
     color: black;
 } 
-th::after{
+tbody tr th::after{
     content: ":";
 }
 
@@ -1225,3 +1235,32 @@ padding-left: 5px;
 
   } 
 
+/*calender*/
+.fc-day-header{
+    font-weight:600;
+    font-size: 0.875rem;
+    line-height:1.57143;
+    padding:13px 0px !important;
+    color: #1C252E;
+}
+thead tr {
+    border-top: 1px solid #E4E7EB !important;
+
+}
+.fc-day-top {
+    border: 1px solid #E4E7EB !important;
+    height: 22vh;
+    width: auto;
+}
+.fc-today-button{
+    background-color: #FF5630 !important;
+    color: white !important;
+    opacity:1 !important;
+}
+.fc-unthemed td.fc-today{
+    background-color: #F6F7F8!important;
+}
+
+.fc-row .fc-content-skeleton {
+    padding-bottom:0px !important;
+}
