@@ -227,12 +227,13 @@ margin-left:3px !important;
 .c-sidebar {
     background-color: rgb(255, 255, 255) !important;
     font-weight: 500;
+    width: 266px !important;
 }
 
 .c-sidebar-nav {
     border-right: 1px dashed rgba(145, 158, 171, 0.2);
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 0px;
 }
 .c-sidebar-nav-item i::before {
     content: "\f111";
@@ -1006,6 +1007,17 @@ div.dataTables_wrapper div.dataTables_length label
     padding: 6px 12px;
     border-radius: 8px;
 }
+.btn-danger{
+    color: #212B36;
+    border: none !important;
+    outline: none;
+    box-shadow: none !important;
+    line-height: 1.71429;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
 .btn-primary:hover,
 .btn-success:hover,
 .btn-danger:hover,
@@ -1041,6 +1053,16 @@ div.dataTables_wrapper div.dataTables_length label
     margin-right: 15px;
 
  }
+ .btn-default::before{
+    content: "<";
+    font-weight: 600;
+    font-size: 16px;
+    margin-right: 5px;
+    color: #212B36;
+ }
+.input-group-append .btn-primary{
+    background-color: rgb(216, 216, 224) !important;
+ }
 /*Notification*/
 .badge-warning{
     background-color: #FF5630;
@@ -1051,3 +1073,81 @@ div.dataTables_wrapper div.dataTables_length label
     padding: 3px 6px;
     margin-top:-20px !important;
 }
+
+
+/*Login*/
+.welcome-div{
+    background-color: #faf8f8;
+    height: 100vh;
+}
+.welcome-text {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-align: center; /* Metni ortalar */
+    font-size:2rem;
+    color: black;
+}
+.welcome-under-text{
+    text-align: center;
+    color:#637381;
+    font-size:1rem;
+    font-weight: 400;
+    font-family: 'Segoe UI', sans-serif;
+
+}
+.dashboard-img{
+    max-width: 100px;
+    padding-top: 2vh;
+    padding-bottom: 12vh;
+}
+.dashboard-hero-img {
+    display: flex;
+    justify-content: center;  
+    align-items: center;  
+}
+.login-alt-img{
+    display: flex;
+    justify-content: center;
+    align-items: center; }  
+.sign-text{
+    font-size:1.20rem;
+    font-weight: 700;
+    color: rgb(37, 37, 37);
+    }
+.sign-under-text{
+    color: #637381;
+    font-weight: 400;
+    }
+    .info-icon{
+        max-width: 30px;
+        color: #00B8D9;
+    }
+    .login-info-div{
+        background-color: #CAFDF5;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .login-info{
+        padding:8px 0px;
+        font-weight: 400;
+        font-size: 0.775rem;
+        line-height:1.5;
+    }
+    .login-info strong{
+        color: #003768;
+    }
+    .login-card-body {
+        min-width: 400px;
+    }
+    
+    @media (max-width: 992.98px) {
+        .login-card-body {
+            min-width: 300;
+        }
+    }
+    @media (max-width: 450px) {
+        .login-card-body {
+            min-width: 200px;
+        }
+    }
