@@ -527,7 +527,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="traslators">Translators</label>
-                            <select class="form-control" wire:model.live="translatorId">
+                            <select class="form-control" name="translatorId">
                                 <option value="" selected>Select translator</option>
                                 @foreach ($translators??[] as $id => $translator)
                                 <option value="{{ $id }}">{{ $translator }}</option>
