@@ -213,14 +213,13 @@ class TravelController extends ParentController
         $patient = Patient::find($travel->patient_id);
         $patient->load('user', 'office', 'campaign_org', 'city');
 
-        //return view('admin.patients.edit', compact('campaign_orgs', 'cities', 'offices', 'patient', 'users'));
-
+        $translators = Translator::get(['id', 'title'])->pluck('title', 'id');
 
         $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals');
 
         return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses',
                                                     'notify_hospitals', 'patients', 'travel',
-                                                    'campaign_orgs', 'cities', 'offices', 'patient'));
+                                                    'campaign_orgs', 'cities', 'offices', 'patient', 'translators'));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
