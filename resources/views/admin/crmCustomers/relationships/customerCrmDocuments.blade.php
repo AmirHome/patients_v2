@@ -2,6 +2,7 @@
     <div class="card-header">
         {{-- Create Modal --}}
         @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
+        @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsEdit', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
     </div>
 
     <div class="card-body">
