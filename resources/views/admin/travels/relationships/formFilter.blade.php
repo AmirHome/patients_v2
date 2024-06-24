@@ -155,7 +155,7 @@ Vaka Listesi
            </div>
                 <div class="col-lg-2 colm-md-4">
                     <div class="form-group">
-                    <label for="">Kampanya Bitiş T.</label>
+                    <label for="">Kampanya Bit.</label>
                         <input type="text" class="form-control filter date" placeholder="Kampanya Bitiş Tarihi"
                             name="birth_place">
                         <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>

@@ -216,7 +216,7 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">
+        <div class="tab-pane show active" ro le="tabpanel" id="travel_travel_treatment_activities">
             @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
         </div>
         <div class="tab-pane" role="tabpanel" id="travel_activities">

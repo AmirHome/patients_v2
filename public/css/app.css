@@ -436,8 +436,8 @@ table.dataTable {
     border-collapse: collapse !important;
     /* border-spacing: 5em; */
 }
-@media (min-width: 1800px) {
-    tr td:last-child {
+@media (min-width: 1200px) {
+   tbody.tr td:last-child {
         min-width: 220px; /* İstediğiniz minimum genişliği buraya yazın */
     }
 }
@@ -1264,3 +1264,4 @@ thead tr {
 .fc-row .fc-content-skeleton {
     padding-bottom:0px !important;
 }
+
