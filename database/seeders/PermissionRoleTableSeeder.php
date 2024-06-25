@@ -36,8 +36,12 @@ class PermissionRoleTableSeeder extends Seeder
                 && substr($permission->title, 0, 19) != 'crm_document_access'
                 && substr($permission->title, 0, 17) != 'crm_document_show'
                 && substr($permission->title, 0, 9) != 'task_tag_'
-                && substr($permission->title, 0, 26) != 'travel_treatment_activity_'
-                && substr($permission->title, 0, 9) != 'activity_'
+                && $permission->title != 'travel_treatment_activity_delete'
+                && $permission->title != 'travel_treatment_activity_show'
+                && $permission->title != 'travel_treatment_activity_access'
+                && $permission->title != 'activity_delete'
+                && $permission->title != 'activity_show'
+                && $permission->title != 'activity_access'
                 && substr($permission->title, 0, 11) != 'permission_'
                 && substr($permission->title, 0, 5) != 'team_';
         });

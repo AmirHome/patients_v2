@@ -241,20 +241,23 @@ class Travel extends Component
 
             $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rulesTravel));
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
+            
 
         } elseif ($this->currentStep == 3) {
+            dd('33333');
             Log::info('Travel Add Step:'.$this->currentStep);
 
             $rules = [
                 'notifyHospitalIds' => 'nullable|array',
                 'translatorId' => 'nullable|integer',
             ];
-            //$this->validate($rules);
+            $this->validate($rules);
             $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rules));
 
         }
 
         if ($this->currentStep == $this->totalSteps) {
+            dd('xxx');
             $this->store();
         }
     }

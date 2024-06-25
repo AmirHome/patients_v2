@@ -115,8 +115,9 @@ class TravelTreatmentActivityController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $travelTreatmentActivity->id]);
         }
+        return redirect()->back();
 
-        return redirect()->route('admin.travel-treatment-activities.index');
+        // return redirect()->route('admin.travel-treatment-activities.index');
     }
 
     public function edit(TravelTreatmentActivity $travelTreatmentActivity)
