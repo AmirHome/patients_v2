@@ -96,7 +96,7 @@ Vaka Listesi
              
                 <x-province-component class="col-md-4" :data="['province_id'=>10]"/>
 
-                <x-reffering-type-component class="col-md-4" :data=""/>
+                <x-reffering-type-component class="col-md-4" :data="[]"/>
 
             </div>
             <div class="row justify-content-center">
