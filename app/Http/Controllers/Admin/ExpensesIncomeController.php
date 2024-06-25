@@ -323,20 +323,19 @@ class ExpensesIncomeController extends Controller
     {
         abort_if(Gate::denies('expenses_income_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $departments = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.expensesIncomes.create', compact('departments', 'patients', 'users'));
+        return view('admin.expensesIncomes.create', compact('departments', 'patients'));
     }
 
     public function store(StoreExpensesIncomeRequest $request)
     {
         $expensesIncome = ExpensesIncome::create($request->all());
 
-        return redirect()->route('admin.expenses-incomes.index');
+        $type = ($expensesIncome->category == 2 || $expensesIncome->category == 4) ? 'commission' : 'financial';
+        return redirect()->route('admin.expenses-incomes.index', $type);
     }
 
     public function edit(ExpensesIncome $expensesIncome)
@@ -358,7 +357,8 @@ class ExpensesIncomeController extends Controller
     {
         $expensesIncome->update($request->all());
 
-        return redirect()->route('admin.expenses-incomes.index');
+        $type = ($expensesIncome->category == 2 || $expensesIncome->category == 4) ? 'commission' : 'financial';
+        return redirect()->route('admin.expenses-incomes.index', $type);
     }
 
     public function show(ExpensesIncome $expensesIncome)
