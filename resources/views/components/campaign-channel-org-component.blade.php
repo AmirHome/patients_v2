@@ -1,11 +1,13 @@
-{{-- <x-campaign-channel-org-component class="col-md-4" :data="[$template='campaign-channel-org']"/> --}}
+{{-- 
+    <x-campaign-channel-org-component class="col-md-4" :data="['template'=>'campaign-channel-org', 'campaign_org_id'=>2]"/>
+--}}
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">Channel</label>
         <select class="form-control select2 filter" id="channel_id">
             <option value=null>Channel</option>
             @foreach ($campaignChannels as $id => $title)
-            <option value="{{ $id }}">{{ $title }}</option>
+            <option value="{{ $id }}" {{($id==$campaignChannel)?'selected':''}}>{{ $title }}</option>
             @endforeach
         </select>
         <span class="text-danger">@error('channel_id'){{ $message }}@enderror</span>
@@ -17,8 +19,8 @@
     <label for="">Organ</label>
         <select class="form-control select2 filter" id="campaign_org_id">
             <option>Organ</option>
-            @foreach ($campaignOrgs as $item)
-            <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @foreach ($campaignOrgs as $id => $title)
+            <option value="{{ $id }}"  {{($id==$campaignOrg)?'selected':''}}>{{ $title }}</option>
             @endforeach
         </select>
         <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>

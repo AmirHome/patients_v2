@@ -32,49 +32,49 @@ use Illuminate\Support\Facades\Request as FacadesRequest;
 class TravelController extends ParentController
 {
     use DataTablesFilterTrait;
-    
+
     public function index(Request $request)
     {
 
         abort_if(Gate::denies('travel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $data = $this->travelFilterMount();
-        
+
         if ($request->ajax()) {
             $query = Travel::with(['patient.city.country', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals'])->select(sprintf('%s.*', (new Travel)->table));
-            
+
             $query = $this->travelFilter($request, $query);
-            
+
             $table = Datatables::of($query);
-            
+
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
-            
+
             $table->editColumn('actions', function ($row) {
                 $viewGate      = 'travel_show';
                 $editGate      = 'travel_edit';
                 $deleteGate    = 'travel_delete';
                 $crudRoutePart = 'travels';
-                
+
                 return view('partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
                     'crudRoutePart',
                     'row'
-                    ));
-                    });
-                    
+                ));
+            });
+
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
             $table->addColumn('patient_name', function ($row) {
-                return $row->patient ? $row->patient->name .' '.  $row->patient->surname: '';
+                return $row->patient ? $row->patient->name . ' ' .  $row->patient->surname : '';
             });
-            
+
             $table->editColumn('patient.middle_name', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->middle_name) : '';
             });
-                           
+
             // $table->editColumn('patient.surname', function ($row) {
             //     return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->surname) : '';
             // });
@@ -92,7 +92,7 @@ class TravelController extends ParentController
             $table->addColumn('department_name', function ($row) {
                 return $row->department ? $row->department->name : '';
             });
-            
+
             $table->addColumn('last_status_title', function ($row) {
                 return $row->last_status ? $row->last_status->title : '';
             });
@@ -137,9 +137,11 @@ class TravelController extends ParentController
             $table->editColumn('created_at', function ($row) {
                 return $row->created_at ? $row->created_at : '';
             });
-            
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status', 
-            'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status']);
+
+            $table->rawColumns([
+                'actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status',
+                'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status'
+            ]);
 
             return $table->make(true);
         }
@@ -149,36 +151,42 @@ class TravelController extends ParentController
 
     public function shares($code)
     {
-  
+
         $travel = checkShareCode($code, 'share_hospital');
-        
+
         $travel = Travel::find($travel)
-                    ->load('patient', 'group', 'hospital', 'department', 'last_status',
-                            'notify_hospitals',
-                            'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
-                    )
-                    ;
+            ->load(
+                'patient',
+                'group',
+                'hospital',
+                'department',
+                'last_status',
+                'notify_hospitals',
+                'travelTravelTreatmentActivities.status',
+                'travelTravelTreatmentActivities.user',
+            );
         return view('admin.travels.share', compact('travel'));
     }
 
     public function share($code)
     {
-  
+
         $id = checkShareCode($code, 'share_translator');
-        
-        $travel = Travel::with(['patient', 'group', 'hospital', 'department', 'last_status',
-        'travelTravelTreatmentActivities'=>function($query) use($id){
-            $query->where('id', $id);
-        }])
-        ->whereHas('travelTravelTreatmentActivities', function ($query) use ($id){
-            $query->where('id', $id);
-        })
-        // ->load('patient', 'group', 'hospital', 'department', 'last_status',
-        //         'notify_hospitals',
-        //         'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
-        // )
-        ->first();
-        ;
+
+        $travel = Travel::with([
+            'patient', 'group', 'hospital', 'department', 'last_status',
+            'travelTravelTreatmentActivities' => function ($query) use ($id) {
+                $query->where('id', $id);
+            }
+        ])
+            ->whereHas('travelTravelTreatmentActivities', function ($query) use ($id) {
+                $query->where('id', $id);
+            })
+            // ->load('patient', 'group', 'hospital', 'department', 'last_status',
+            //         'notify_hospitals',
+            //         'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
+            // )
+            ->first();;
         //dd( $code , $id, $data, $travel);
 
         return view('admin.travels.share', compact('travel'));
@@ -217,14 +225,25 @@ class TravelController extends ParentController
 
         $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals');
 
-        return view('admin.travels.edit', compact('departments', 'groups', 'hospitals', 'last_statuses',
-                                                    'notify_hospitals', 'patients', 'travel',
-                                                    'campaign_orgs', 'cities', 'offices', 'patient', 'translators'));
+        return view('admin.travels.edit', compact(
+            'departments',
+            'groups',
+            'hospitals',
+            'last_statuses',
+            'notify_hospitals',
+            'patients',
+            'travel',
+            'campaign_orgs',
+            'cities',
+            'offices',
+            'patient',
+            'translators'
+        ));
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
     {
-        $request->merge(['patient_id' => $travel->patient_id])->offsetUnset('code');//->offsetUnset('user_id');
+        $request->merge(['patient_id' => $travel->patient_id])->offsetUnset('code'); //->offsetUnset('user_id');
         //dd($request->all());
         $travel->update($request->all());
         $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
@@ -232,7 +251,7 @@ class TravelController extends ParentController
         $patient->update($request->all());
 
         if ($request->input('photo', false)) {
-            if (! $patient->photo || $request->input('photo') !== $patient->photo->file_name) {
+            if (!$patient->photo || $request->input('photo') !== $patient->photo->file_name) {
                 if ($patient->photo) {
                     $patient->photo->delete();
                 }
@@ -243,7 +262,7 @@ class TravelController extends ParentController
         }
 
         if ($request->input('passport_image', false)) {
-            if (! $patient->passport_image || $request->input('passport_image') !== $patient->passport_image->file_name) {
+            if (!$patient->passport_image || $request->input('passport_image') !== $patient->passport_image->file_name) {
                 if ($patient->passport_image) {
                     $patient->passport_image->delete();
                 }
@@ -256,4 +275,14 @@ class TravelController extends ParentController
         return redirect()->route('admin.travels.index');
     }
 
+
+    public function ajaxIndexByType($type)
+    {
+        $refferingIds = null;
+        if (in_array($type, ['Doctor', 'Ministry', 'Office'])) {
+            $refferingIds = resolve("App\\Models\\$type")::get(['id', 'name'])->pluck('name', 'id');
+        }
+
+        return response()->json($refferingIds);
+    }
 }

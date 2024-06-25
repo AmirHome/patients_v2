@@ -94,7 +94,9 @@ Vaka Listesi
                     </div>
                 </div>
              
-                <x-province-component class="col-md-4" :data="[$template='Province']"/>
+                <x-province-component class="col-md-4" :data="['province_id'=>10]"/>
+
+                <x-reffering-type-component class="col-md-4" :data=""/>
 
             </div>
             <div class="row justify-content-center">
@@ -143,7 +145,7 @@ Vaka Listesi
             </div>
              <div class="row">
                 
-                <x-campaign-channel-org-component class="col-md-4" :data="[$template='campaign-channel-org']"/>
+                <x-campaign-channel-org-component class="col-md-4" :data="[]"/>
                 
                 <div class="col-lg-2 colm-md-4 ">
         <div class="form-group">

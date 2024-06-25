@@ -1,11 +1,11 @@
-{{-- <x-province-component class="col-md-4" :data="[$template='Province']"/> --}}
+{{-- <x-province-component class="col-md-4" :data="['template'=>'province', 'province_id'=>'10']"/> --}}
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">Ülke</label>
         <select class="form-control select2 filter" id="country_id">
             <option value=null>Ülke</option>
-            @foreach ($countries as $country)
-            <option value="{{ $country->id }}">{{ $country->name }}</option>
+            @foreach ($countries as $id => $name)
+            <option value="{{ $id }}" {{($id==$country)?'selected':''}}>{{ $name }}</option>
             @endforeach
         </select>
         <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
@@ -17,8 +17,8 @@
     <label for="">Şehir</label>
         <select class="form-control select2 filter" id="city_id">
             <option>Şehir</option>
-            @foreach ($cities as $city)
-            <option value="{{ $city->id }}">{{ $city->name }}</option>
+            @foreach ($cities as $id => $name)
+            <option value="{{ $id }}" {{($id==$city)?'selected':''}}>{{ $name }}</option>
             @endforeach
         </select>
         <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>

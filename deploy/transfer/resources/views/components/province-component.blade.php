@@ -1,4 +1,4 @@
-{{-- <x-province-component class="col-md-4" :data="[$template='Province']"/> --}}
+{{-- <x-province-component class="col-md-4" :data="['template'='province', 'country_id'=>2]"/> --}}
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">Ülke</label>

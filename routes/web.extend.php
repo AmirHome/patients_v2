@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Admin\Override'], function () {
 
         // Override
         Route::resource('travels', 'TravelController');
+        Route::get('ajax-travel-reffering/{type}', 'TravelController@ajaxIndexByType')->name('ajax.travel-reffering.index');
        
 
     });
