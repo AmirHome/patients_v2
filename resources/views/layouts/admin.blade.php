@@ -104,7 +104,7 @@
                 <li class="nav-item dropdown ">
                   <a class="nav-link avatar-name" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
                      aria-haspopup="true" aria-expanded="false">
-                     <img src="https://api-prod-minimal-v6.vercel.app/assets/images/avatar/avatar-25.webp" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
+                     <img src="{{ asset('img/avatar-25.webp') }}" style="max-width:2.3rem" class="rounded-circle"   alt="Avatar" />
                   </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
