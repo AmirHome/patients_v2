@@ -100,9 +100,10 @@ trait DataTablesFilterTrait
         // Add custom filter for search_index
         if ($request->has('ff_content')) {
             $value = $request->input('ff_content');
+
             if(!empty($value)){
                 $query->where(function ($q) use($value){
-                    $q->where('name', 'like', '%' . $value . '%')
+                    $q->where('tasks.name', 'like', '%' . $value . '%')
                         ->orWhere('description', 'like', '%' . $value . '%');
                 });            
             }
