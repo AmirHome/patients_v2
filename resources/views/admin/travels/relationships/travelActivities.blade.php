@@ -1,7 +1,4 @@
-<div class="card">
 
-
-    <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-travelActivities">
                 <thead class="d-none">
@@ -90,8 +87,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
+  
 
 @section('scripts')
 @parent

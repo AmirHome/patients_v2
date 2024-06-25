@@ -30,6 +30,7 @@
             Rapor
         </a>
     </li>
+        </li>
 </ul>
 <div class="tab-content">
     <div class="tab-pane show active" role="tabpanel" id="travel_travel_treatment_activities">
@@ -411,6 +412,8 @@
             <div class="card-header">
                 Vaka Bilgileri ve Rapor Yükleme
             </div>
+            @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -541,6 +544,7 @@
         </div>
     </div>
     <div class="tab-pane" role="tabpanel" id="dates">
+        
     <div class="card">
    <div class="card-body">
       <div class="card-header">
@@ -649,6 +653,7 @@
    </div>
 
     <div class="tab-pane" role="tabpanel" id="reports">
+     @includeIf('admin.travels.relationships.travelActivities', ['activities' => $travel->travelActivities])
         <div class="card-body">
             <div class="card-header">
                Rapor
@@ -715,9 +720,9 @@
     </div>
 </div>
 </div>
- 
+
    <div class="form-group mb-5">
-      <button class="btn btn-danger float-right" type="submit">
+      <button class="btn btn-danger float-right" style="position: fixed; bottom: 15px; right: 20px;" type="submit">
       {{ trans('global.save') }}
       </button>
    </div>

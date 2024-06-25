@@ -437,7 +437,7 @@ table.dataTable {
     /* border-spacing: 5em; */
 }
 @media (min-width: 1200px) {
-   tbody.tr td:last-child {
+   tbodytr td:last-child {
         min-width: 220px; /* İstediğiniz minimum genişliği buraya yazın */
     }
 }
