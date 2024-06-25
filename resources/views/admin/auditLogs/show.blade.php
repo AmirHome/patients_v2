@@ -13,18 +13,18 @@
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped"   >
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.auditLog.fields.id') }}
+                            {{ trans('cruds.auditLog.fields.id') }} 
                         </th>
                         <td>
                             {{ $auditLog->id }}
                         </td>
                     </tr>
                     <tr>
-                        <th>
+                        <th style="min-width:120px">
                             {{ trans('cruds.auditLog.fields.description') }}
                         </th>
                         <td>

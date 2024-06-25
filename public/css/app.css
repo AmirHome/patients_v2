@@ -436,18 +436,25 @@ table.dataTable {
     border-collapse: collapse !important;
     /* border-spacing: 5em; */
 }
-@media (min-width: 1200px) {
-   tbodytr td:last-child {
-        min-width: 220px; /* İstediğiniz minimum genişliği buraya yazın */
+@media (min-width:1200px) {
+   tbody tr td:last-child {
+        min-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
     }
 }
 
 
+@media (min-width:1200px) {
+    ul tbody tr td:last-child {
+         min-width: 10px !important; /* İstediğiniz minimum genişliği buraya yazın */
+     }
+ }
+ 
 table,
 th,
 td {
     border: 0 !important;
 }
+
 
 table.dataTable thead tr {
     padding: 0;
@@ -1077,7 +1084,7 @@ div.dataTables_wrapper div.dataTables_length label
 .btn-primary:focus,
 .btn-primary:active
 {
-    background-color: #03a4c0;
+    background-color: #03a4c0 !important;
     color: white;
     border-color: none !important;
     outline: none !important;
@@ -1114,8 +1121,13 @@ div.dataTables_wrapper div.dataTables_length label
     padding: 3px 6px;
     margin-top:-20px !important;
 }
+.dropdown-item.active, .dropdown-item:active{
+    background-color: white !important;
+}
+.dropdown-item a{
+    color: rgb(2, 122, 82) !important;
 
-
+}
 /*Login*/
 .welcome-div{
     background-color: #faf8f8;
