@@ -52,7 +52,7 @@ class CampaignOrgController extends Controller
             });
 
             $table->editColumn('status', function ($row) {
-                return $row->status ? CampaignOrg::STATUS_RADIO[$row->status] : '';
+                return isset($row->status) ? CampaignOrg::STATUS_RADIO[$row->status] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'channel']);
