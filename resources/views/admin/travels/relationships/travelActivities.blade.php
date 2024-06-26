@@ -36,7 +36,6 @@
                             <td>
 
                             </td>
-
                             <td>
                                 <span>{{ $activity->created_at ?? '' }}</span>
                                 <h1>{{ $activity->status->title ?? '' }}</h1>

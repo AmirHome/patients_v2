@@ -911,7 +911,7 @@ element.style{
 .bootstrap-datetimepicker-widget table {
     height: 5px;
 }
-s/*Button Minimal*/
+/*Button Minimal*/
 .btn-excel {
     background-color: rgba(17, 141, 87) !important;
 }
@@ -1062,7 +1062,24 @@ div.dataTables_wrapper div.dataTables_length label
     line-height: 1.71429;
     border-radius: 8px !important;
 }
-
+.btn-outline-primary{
+    padding:6px 12px !important;
+    border-radius: 8px !important;
+    color: rgb(151, 151, 151) !important;
+    background-color:transparent !important;
+    border:rgb(151, 151, 151) 1px solid ;
+}
+.btn-outline-primary:active,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus
+{
+    background-color: rgba(151, 151, 151,0.5) !important;
+    color: white;
+    border-color: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border:rgb(151, 151, 151) 1px solid !important;
+}
 .btn-success::before{
     content: "+";
     font-weight: bolder;
@@ -1277,3 +1294,33 @@ thead tr {
     padding-bottom:0px !important;
 }
 
+/*Modal*/
+.modal-content{
+    border-radius: 12px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.modal.show{
+    background-color: rgba(75, 85, 94, 0.4); /* Hafif gri arka plan rengi (örnek) */
+}
+.modal-content button {
+    margin-left: auto;
+    display: block; /* Butonların blok olarak yerleştirilmesini sağlar */
+
+}
+/*Activity*/
+.activity-title{
+    font-weight: bold;
+    font-size: 18px;
+    color: #212B36;
+}
+.activity-info{
+color: #637381;
+font-weight:600;
+}
+.activity-desc{
+    color: #212B36;
+    margin-top: 15px;
+    font-weight:600;
+    }
+ 
