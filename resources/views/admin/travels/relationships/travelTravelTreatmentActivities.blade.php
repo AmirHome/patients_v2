@@ -28,8 +28,8 @@
                         <td style="max-width: 100px; width: 100px; text-align: center;">
                         <div class="d-flex justify-content-center">
                          <span style='font-size:30px;border: 1px solid #00b8d9;color: white !important;border-radius:50%;min-width:50px;background-color:#00b8d9'>{{ $key + 1 }}</span>
-                           </div>
-                            </td>
+                        </div>
+                        </td>
 
                             <td>
                                 <h5 class="activity-title">{{ $travelTreatmentActivity->status->title ?? '' }}</h5>

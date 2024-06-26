@@ -1073,7 +1073,7 @@ div.dataTables_wrapper div.dataTables_length label
 .btn-outline-primary:hover,
 .btn-outline-primary:focus
 {
-    background-color: rgba(151, 151, 151,0.5) !important;
+    background-color: rgb(245, 238, 238) !important;
     color: white;
     border-color: none !important;
     outline: none !important;

@@ -33,25 +33,30 @@
                 <tbody>
                     @foreach($activities as $key => $activity)
                         <tr data-entry-id="{{ $activity->id }}">
-                            <td>
-
+                        <td style="max-width: 100px; width: 100px; text-align: center;">
+                        <div class="d-flex justify-content-center">
+                         <span style='font-size:30px;border: 1px solid #00b8d9;color: white !important;border-radius:50%;min-width:50px;background-color:#00b8d9'>{{ $key + 1 }}</span>
+                           </div>
                             </td>
                             <td>
-                                <span>{{ $activity->created_at ?? '' }}</span>
-                                <h1>{{ $activity->status->title ?? '' }}</h1>
-                                <div>
-                                    <i class="fas fa-user"></i> {{ $activity->user->name ?? '' }}  <i class="far fa-envelope"></i> {{ $activity->user->email ?? '' }}
+                                <h5 class="activity-title">{{ $activity->status->title ?? '' }}</h5>
+                                <div class="activity-info">
+                                    <i class="fas fa-user"></i>  &nbsp; {{ $activity->user->name ?? '' }}   &nbsp;  - &nbsp; {{ $activity->user->email ?? '' }} &nbsp;  - &nbsp;  <span>{{ $activity->created_at ?? '' }} </span>
                                 </div>             
-                                <div>
+                                @if (!empty($travelTreatmentActivity->description))
+                                <div class="activity-desc">
                                     <pre><i class="fas fa-comments"></i> {{ $activity->description ?? '' }}</pre>
                                 </div>
-                                
+                                @endif
+
                                 @foreach($activity->document_file as $key => $media)
-                                <div class="">
-                                    <i class="fas fa-file-medical-alt"></i>
-                                    <a href="{{ $media->getUrl() }}" target="_blank">
-                                        {{ trans('global.view_file') }}
-                                    </a>
+                                <div class="activity-files">
+                                <div style="display: flex; align-items: center;">
+                               <i class="fas fa-file-medical-alt" style="margin-right: 5px;"></i> {{ $key + 1 }}. Dosyayı Görütülemek için &nbsp;
+                            <a href="{{ $media->getUrl() }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
+                                   {{ trans('global.view_file') }}
+                              </a> &nbsp;&nbsp;
+                               </div>
                                 </div>
                                 @endforeach
                             </td>
