@@ -11,6 +11,18 @@
             @method('PUT')
             @csrf
             <div class="row">
+            <div class="col-md-3">
+      <div class="form-group">
+    <label class="required" for="code">{{ trans('cruds.patient.fields.code') }}</label>
+    <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" placeholder="Code.." disabled required>
+    @if($errors->has('code'))
+        <div class="invalid-feedback">
+            {{ $errors->first('code') }}
+        </div>
+    @endif
+    <span class="help-block">{{ trans('cruds.patient.fields.code_helper') }}</span>
+</div>
+</div>
                 <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="user_id">{{ trans('cruds.patient.fields.user') }}</label>
@@ -27,7 +39,8 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.user_helper') }}</span>
             </div>
             </div>
-
+       
+   
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
@@ -42,23 +55,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
-            </div>
-            </div>
-
-            <div class="col-md-3">
-            <div class="form-group">
-                <label for="campaign_org_id">{{ trans('cruds.patient.fields.campaign_org') }}</label>
-                <select class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}" name="campaign_org_id" id="campaign_org_id">
-                    @foreach($campaign_orgs as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('campaign_org_id') ? old('campaign_org_id') : $patient->campaign_org->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('campaign_org'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('campaign_org') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.patient.fields.campaign_org_helper') }}</span>
             </div>
             </div>
 
@@ -344,19 +340,23 @@
             </div>
             </div>
             <div class="col-md-3">
-
             <div class="form-group">
-                <label class="required" for="code">{{ trans('cruds.patient.fields.code') }}</label>
-                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" placeholder="Code.." disabled required>
-                @if($errors->has('code'))
+                <label for="campaign_org_id">{{ trans('cruds.patient.fields.campaign_org') }}</label>
+                <select class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}" name="campaign_org_id" id="campaign_org_id">
+                    @foreach($campaign_orgs as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('campaign_org_id') ? old('campaign_org_id') : $patient->campaign_org->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('campaign_org'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('code') }}
+                        {{ $errors->first('campaign_org') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.patient.fields.code_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.patient.fields.campaign_org_helper') }}</span>
             </div>
             </div>
-          </div>
+           
+          <div class="col-md-12">
 
             <div class="form-group">
                 <label class="required" for="address">{{ trans('cruds.patient.fields.address') }}</label>
@@ -368,7 +368,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.patient.fields.address_helper') }}</span>
             </div>
-            
+            </div>
+            </div>
+
          <div class="row">
             <div class="col-md-6">
             <div class="form-group">
