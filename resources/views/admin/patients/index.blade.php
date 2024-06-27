@@ -25,52 +25,10 @@
                         {{ trans('cruds.patient.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.patient.fields.user') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.office') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.campaign_org') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.campaignOrg.fields.started_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.city') }}
+                        {{ trans('cruds.patient.fields.code') }}
                     </th>
                     <th>
                         {{ trans('cruds.patient.fields.name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.middle_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.surname') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.mother_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.father_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.citizenship') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.passport_no') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.passport_origin') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.phone') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.foriegn_phone') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.email') }}
                     </th>
                     <th>
                         {{ trans('cruds.patient.fields.gender') }}
@@ -82,32 +40,17 @@
                         {{ trans('cruds.patient.fields.birth_place') }}
                     </th>
                     <th>
-                        {{ trans('cruds.patient.fields.address') }}
+                        {{ trans('cruds.patient.fields.phone') }}
                     </th>
+              
                     <th>
-                        {{ trans('cruds.patient.fields.weight') }}
+                        {{ trans('cruds.patient.fields.email') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.height') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.blood_group') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.treating_doctor') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.code') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.photo') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.passport_image') }}
-                    </th>
+                    
                     <th>
                         &nbsp;
                     </th>
+                    
                 </tr>
             </thead>
         </table>
@@ -162,33 +105,13 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'user_name', name: 'user.name' },
-{ data: 'office_name', name: 'office.name' },
-{ data: 'campaign_org_title', name: 'campaign_org.title' },
-{ data: 'campaign_org.started_at', name: 'campaign_org.started_at' },
-{ data: 'city_name', name: 'city.name' },
+{ data: 'code', name: 'code' },
 { data: 'name', name: 'name' },
-{ data: 'middle_name', name: 'middle_name' },
-{ data: 'surname', name: 'surname' },
-{ data: 'mother_name', name: 'mother_name' },
-{ data: 'father_name', name: 'father_name' },
-{ data: 'citizenship', name: 'citizenship' },
-{ data: 'passport_no', name: 'passport_no' },
-{ data: 'passport_origin', name: 'passport_origin' },
-{ data: 'phone', name: 'phone' },
-{ data: 'foriegn_phone', name: 'foriegn_phone' },
-{ data: 'email', name: 'email' },
 { data: 'gender', name: 'gender' },
 { data: 'birthday', name: 'birthday' },
 { data: 'birth_place', name: 'birth_place' },
-{ data: 'address', name: 'address' },
-{ data: 'weight', name: 'weight' },
-{ data: 'height', name: 'height' },
-{ data: 'blood_group', name: 'blood_group' },
-{ data: 'treating_doctor', name: 'treating_doctor' },
-{ data: 'code', name: 'code' },
-{ data: 'photo', name: 'photo', sortable: false, searchable: false },
-{ data: 'passport_image', name: 'passport_image', sortable: false, searchable: false },
+{ data: 'phone', name: 'phone' },
+ { data: 'email', name: 'email' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
