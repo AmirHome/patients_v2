@@ -685,7 +685,7 @@ return [
             'hospitalization_date_helper'    => ' ',
             'planning_discharge_date'        => 'Planning Discharge Date',
             'planning_discharge_date_helper' => ' ',
-            'arrival_date'                   => 'Arrival Date',
+            'arrival_date'                   => 'Hasta  Geliş',
             'arrival_date_helper'            => ' ',
             'departure_date'                 => 'Departure Date',
             'departure_date_helper'          => ' ',

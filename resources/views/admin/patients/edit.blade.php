@@ -83,10 +83,23 @@
 </div>
                <div class="row">
                <div class="col-md-3">
+               <div class="form-group">
+                <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('code', $patient->code) }}" placeholder="Name.."  required>
+                @if($errors->has('name'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('name') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
+            </div>
+            </div>
+
+               <div class="col-md-3">
 
             <div class="form-group">
                 <label class="required" for="middle_name">{{ trans('cruds.patient.fields.middle_name') }}</label>
-                <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name) }}" required>
+                <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name) }}" placeholder="Middle Name.."  required>
                 @if($errors->has('middle_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('middle_name') }}
@@ -100,7 +113,7 @@
 
             <div class="form-group">
                 <label class="required" for="surname">{{ trans('cruds.patient.fields.surname') }}</label>
-                <input class="form-control {{ $errors->has('surname') ? 'is-invalid' : '' }}" type="text" name="surname" id="surname" value="{{ old('surname', $patient->surname) }}" required>
+                <input class="form-control {{ $errors->has('surname') ? 'is-invalid' : '' }}" type="text" name="surname" id="surname" value="{{ old('surname', $patient->surname) }}" placeholder="Surname.."  required>
                 @if($errors->has('surname'))
                     <div class="invalid-feedback">
                         {{ $errors->first('surname') }}
@@ -114,7 +127,7 @@
 
             <div class="form-group">
                 <label class="required" for="mother_name">{{ trans('cruds.patient.fields.mother_name') }}</label>
-                <input class="form-control {{ $errors->has('mother_name') ? 'is-invalid' : '' }}" type="text" name="mother_name" id="mother_name" value="{{ old('mother_name', $patient->mother_name) }}" required>
+                <input class="form-control {{ $errors->has('mother_name') ? 'is-invalid' : '' }}" type="text" name="mother_name" id="mother_name" value="{{ old('mother_name', $patient->mother_name) }}" placeholder="Mother Name.."  required>
                 @if($errors->has('mother_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('mother_name') }}
@@ -124,10 +137,15 @@
             </div>
             </div>
 
-            <div class="col-md-3">
+         
+
+                </div>
+                
+                <div class="row">
+                <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="father_name">{{ trans('cruds.patient.fields.father_name') }}</label>
-                <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}" type="text" name="father_name" id="father_name" value="{{ old('father_name', $patient->father_name) }}" required>
+                <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}" type="text" name="father_name" id="father_name" value="{{ old('father_name', $patient->father_name) }}" placeholder="Father Name.."  required>
                 @if($errors->has('father_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('father_name') }}
@@ -136,27 +154,12 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.father_name_helper') }}</span>
                 </div>
                 </div>
-
-                </div>
-                
-                <div class="row">
-                <div class="col-md-3">
-                <div class="form-group">
-                <label class="required" for="citizenship">{{ trans('cruds.patient.fields.citizenship') }}</label>
-                <input class="form-control {{ $errors->has('citizenship') ? 'is-invalid' : '' }}" type="text" name="citizenship" id="citizenship" value="{{ old('citizenship', $patient->citizenship) }}" required>
-                @if($errors->has('citizenship'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('citizenship') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.patient.fields.citizenship_helper') }}</span>
-            </div>
-            </div>
+           
 
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="passport_no">{{ trans('cruds.patient.fields.passport_no') }}</label>
-                <input class="form-control {{ $errors->has('passport_no') ? 'is-invalid' : '' }}" type="text" name="passport_no" id="passport_no" value="{{ old('passport_no', $patient->passport_no) }}" required>
+                <input class="form-control {{ $errors->has('passport_no') ? 'is-invalid' : '' }}" type="text" name="passport_no" id="passport_no" value="{{ old('passport_no', $patient->passport_no) }}" placeholder="Passport No.."  required>
                 @if($errors->has('passport_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('passport_no') }}
@@ -170,7 +173,7 @@
 
             <div class="form-group">
                 <label class="required" for="passport_origin">{{ trans('cruds.patient.fields.passport_origin') }}</label>
-                <input class="form-control {{ $errors->has('passport_origin') ? 'is-invalid' : '' }}" type="text" name="passport_origin" id="passport_origin" value="{{ old('passport_origin', $patient->passport_origin) }}" required>
+                <input class="form-control {{ $errors->has('passport_origin') ? 'is-invalid' : '' }}" type="text" name="passport_origin" id="passport_origin" value="{{ old('passport_origin', $patient->passport_origin) }}" placeholder="Passport Origin.."  required>
                 @if($errors->has('passport_origin'))
                     <div class="invalid-feedback">
                         {{ $errors->first('passport_origin') }}
@@ -184,7 +187,7 @@
 
             <div class="form-group">
                 <label class="required" for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone) }}" required>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone) }}" placeholder="Phone.."  required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
@@ -198,7 +201,7 @@
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="foriegn_phone">{{ trans('cruds.patient.fields.foriegn_phone') }}</label>
-                <input class="form-control {{ $errors->has('foriegn_phone') ? 'is-invalid' : '' }}" type="text" name="foriegn_phone" id="foriegn_phone" value="{{ old('foriegn_phone', $patient->foriegn_phone) }}" required>
+                <input class="form-control {{ $errors->has('foriegn_phone') ? 'is-invalid' : '' }}" type="text" name="foriegn_phone" id="foriegn_phone" value="{{ old('foriegn_phone', $patient->foriegn_phone) }}" placeholder="Foreign Phone.." required>
                 @if($errors->has('foriegn_phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('foriegn_phone') }}
@@ -212,7 +215,7 @@
 
             <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.patient.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $patient->email) }}" required>
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $patient->email) }}" placeholder="Email.." required>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -225,7 +228,7 @@
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="birth_place">{{ trans('cruds.patient.fields.birth_place') }}</label>
-                <input class="form-control {{ $errors->has('birth_place') ? 'is-invalid' : '' }}" type="text" name="birth_place" id="birth_place" value="{{ old('birth_place', $patient->birth_place) }}" required>
+                <input class="form-control {{ $errors->has('birth_place') ? 'is-invalid' : '' }}" type="text" name="birth_place" id="birth_place" value="{{ old('birth_place', $patient->birth_place) }}" placeholder="Birth Place.." required>
                 @if($errors->has('birth_place'))
                     <div class="invalid-feedback">
                         {{ $errors->first('birth_place') }}
@@ -273,7 +276,7 @@
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="weight">{{ trans('cruds.patient.fields.weight') }}</label>
-                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', $patient->weight) }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', $patient->weight) }}" placeholder="Weight.." step="0.01" required>
                 @if($errors->has('weight'))
                     <div class="invalid-feedback">
                         {{ $errors->first('weight') }}
@@ -287,7 +290,7 @@
 
             <div class="form-group">
                 <label class="required" for="height">{{ trans('cruds.patient.fields.height') }}</label>
-                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="number" name="height" id="height" value="{{ old('height', $patient->height) }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}" type="number" name="height" id="height" value="{{ old('height', $patient->height) }}" placeholder="Height.." step="0.01" required>
                 @if($errors->has('height'))
                     <div class="invalid-feedback">
                         {{ $errors->first('height') }}
@@ -317,9 +320,21 @@
             </div>
             <div class="row">
             <div class="col-md-3">
+                <div class="form-group">
+                <label class="required" for="citizenship">{{ trans('cruds.patient.fields.citizenship') }}</label>
+                <input class="form-control {{ $errors->has('citizenship') ? 'is-invalid' : '' }}" type="text" name="citizenship" id="citizenship" placeholder="Citizenship.." value="{{ old('citizenship', $patient->citizenship) }}" required>
+                @if($errors->has('citizenship'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('citizenship') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.patient.fields.citizenship_helper') }}</span>
+            </div>
+            </div>
+            <div class="col-md-3">
             <div class="form-group">
                 <label for="treating_doctor">{{ trans('cruds.patient.fields.treating_doctor') }}</label>
-                <input class="form-control {{ $errors->has('treating_doctor') ? 'is-invalid' : '' }}" type="text" name="treating_doctor" id="treating_doctor" value="{{ old('treating_doctor', $patient->treating_doctor) }}">
+                <input class="form-control {{ $errors->has('treating_doctor') ? 'is-invalid' : '' }}" type="text" name="treating_doctor" id="treating_doctor" placeholder="Treating Doctor.." value="{{ old('treating_doctor', $patient->treating_doctor) }}">
                 @if($errors->has('treating_doctor'))
                     <div class="invalid-feedback">
                         {{ $errors->first('treating_doctor') }}
@@ -332,7 +347,7 @@
 
             <div class="form-group">
                 <label class="required" for="code">{{ trans('cruds.patient.fields.code') }}</label>
-                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" required>
+                <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" placeholder="Code.." disabled required>
                 @if($errors->has('code'))
                     <div class="invalid-feedback">
                         {{ $errors->first('code') }}
@@ -341,12 +356,11 @@
                 <span class="help-block">{{ trans('cruds.patient.fields.code_helper') }}</span>
             </div>
             </div>
-
-</div>
+          </div>
 
             <div class="form-group">
                 <label class="required" for="address">{{ trans('cruds.patient.fields.address') }}</label>
-                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address" required>{{ old('address', $patient->address) }}</textarea>
+                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address" placeholder="Description.." required>{{ old('address', $patient->address) }}</textarea>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
@@ -391,7 +405,7 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

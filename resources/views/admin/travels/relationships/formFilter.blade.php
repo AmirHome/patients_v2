@@ -95,8 +95,8 @@ Vaka Listesi
                 </div>
              
                 <x-province-component class="col-md-4" :data="[]"/>
-
                 <x-reffering-type-component class="col-md-4" :data="[]"/>
+
 
             </div>
             <div class="row justify-content-center">
@@ -119,17 +119,17 @@ Vaka Listesi
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="form-group">
-                    <label for="">Hasta Geliş</label>
-                        <select class="form-control filter" wire:model.live="compaignChannelId">
-                            <option value="" selected>Hasta Geliş</option>
-                            @foreach ($campaignChannels as $channel)
-                            <option value="{{ $channel->id }}">{{ $channel->title }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+            <div class="form-group">
+               <label for="arrival_date">{{ trans('cruds.travel.fields.arrival_date') }}</label>
+               <input class="form-control date {{ $errors->has('arrival_date') ? 'is-invalid' : '' }}" type="text" name="arrival_date" id="arrival_date" >
+               @if($errors->has('arrival_date'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('arrival_date') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.travel.fields.arrival_date_helper') }}</span>
+            </div>
+         </div>
                 <div class="col-md-4">
                     <div class="form-group">
                     <label for="">Kategori</label>

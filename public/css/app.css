@@ -439,6 +439,10 @@ table.dataTable {
 @media (min-width:1200px) {
    tbody tr td:last-child {
         min-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
+        max-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
+    }
+    thead tr th:last-child{
+        max-width: 150px !important; /* İstediğiniz minimum genişliği buraya yazın */
     }
 }
 
