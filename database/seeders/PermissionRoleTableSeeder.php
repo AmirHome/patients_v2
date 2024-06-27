@@ -56,8 +56,7 @@ class PermissionRoleTableSeeder extends Seeder
                 && $permission->title != 'faq_category_show'
                 && $permission->title != 'content_category_show'
                 && $permission->title != 'content_tag_show'
-                && $permission->title != 'province_show'
-
+                && $permission->title != 'patient_show'
                 && substr($permission->title, 0, 11) != 'permission_'
                 && substr($permission->title, 0, 5) != 'team_';
         });

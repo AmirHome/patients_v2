@@ -34,32 +34,15 @@
                         {{ trans('cruds.user.fields.office') }}
                     </th>
                     <th>
-                        {{ trans('cruds.office.fields.phone') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.user.fields.phone') }}
                     </th>
                     <th>
                         {{ trans('cruds.user.fields.job_type') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.can_see_prices') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.can_set_prices') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.is_super') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.email_verified_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.user.fields.picture') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.user.fields.roles') }}
                     </th>
+                  
                     <th>
                         &nbsp;
                     </th>
@@ -120,14 +103,8 @@
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'office_name', name: 'office.name' },
-{ data: 'office.phone', name: 'office.phone' },
 { data: 'phone', name: 'phone' },
 { data: 'job_type', name: 'job_type' },
-{ data: 'can_see_prices', name: 'can_see_prices' },
-{ data: 'can_set_prices', name: 'can_set_prices' },
-{ data: 'is_super', name: 'is_super' },
-{ data: 'email_verified_at', name: 'email_verified_at' },
-{ data: 'picture', name: 'picture', sortable: false, searchable: false },
 { data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
