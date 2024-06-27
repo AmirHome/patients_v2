@@ -1073,12 +1073,12 @@ div.dataTables_wrapper div.dataTables_length label
 .btn-outline-primary:hover,
 .btn-outline-primary:focus
 {
-    background-color: rgb(245, 238, 238) !important;
-    color: white;
+    background-color: rgb(255,255,255) !important;
+    color: rgb(224, 219, 219);
     border-color: none !important;
     outline: none !important;
     box-shadow: none !important;
-    border:rgb(151, 151, 151) 1px solid !important;
+    border: rgb(224, 219, 219) 1px solid !important;
 }
 .btn-success::before{
     content: "+";

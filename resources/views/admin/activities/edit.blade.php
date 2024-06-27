@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.activities.update", [$activity->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <input type="hidden" name="travel_id" value="{{ $activity->id }}">
+
             <div class="form-group">
                 <label class="required" for="user_id">{{ trans('cruds.activity.fields.user') }}</label>
                 <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required>

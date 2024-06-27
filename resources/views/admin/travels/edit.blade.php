@@ -682,7 +682,7 @@
         <div class="form-group">
             <button type="button" class="btn btn-outline-primary" id="cancelButton">{{ trans('global.cancel') }}</button>
         </div>
-        <div class="form-group">
+        <div class="form-group mx-3">
             <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
         </div>
 </div>
@@ -749,10 +749,10 @@
         </div>
   <div class="row justify-content-end">
         <div class="form-group">
-            <button type="button" class="btn btn-outline-primary" id="cancelButton4">{{ trans('global.cancel') }}</button>
+            <button type="button" class="btn btn-outline-primary" id="cancelButton4" >{{ trans('global.cancel') }}</button>
         </div>
         <div class="form-group">
-            <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+            <button class="btn btn-danger mx-3" type="submit">{{ trans('global.save') }}</button>
         </div>
 </div>
             </form>
