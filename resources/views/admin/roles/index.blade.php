@@ -54,11 +54,11 @@
                                 @endforeach
                             </td>
                             <td>
-                                @can('role_show')
+                                <!-- @can('role_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
-                                @endcan
+                                @endcan -->
 
                                 @can('role_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.roles.edit', $role->id) }}">
@@ -130,7 +130,7 @@
   let table = $('.datatable-Role:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
+          .columns.adjust(); 
   });
   
 })

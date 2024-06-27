@@ -42,6 +42,21 @@ class PermissionRoleTableSeeder extends Seeder
                 && $permission->title != 'activity_delete'
                 && $permission->title != 'activity_show'
                 && $permission->title != 'activity_access'
+                && $permission->title != 'country_show'
+                && $permission->title != 'province_show'
+                && $permission->title != 'campaign_channel_show'
+                && $permission->title != 'campaign_org_show'
+                && $permission->title != 'travel_group_show'
+                && $permission->title != 'travel_status_show'
+                && $permission->title != 'travel_hospital_show' 
+                && $permission->title != 'ministry_show' 
+                && $permission->title != 'department_show' 
+                && $permission->title != 'crm_status_show' 
+                && $permission->title != 'task_status_show' 
+                && $permission->title != 'faq_category_show'
+                && $permission->title != 'content_category_show'
+                && $permission->title != 'content_tag_show'
+
                 && substr($permission->title, 0, 11) != 'permission_'
                 && substr($permission->title, 0, 5) != 'team_';
         });
