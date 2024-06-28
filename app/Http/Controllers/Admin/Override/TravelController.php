@@ -241,10 +241,10 @@ class TravelController extends ParentController
         ));
     }
 
-    public function update(Request $request, Travel $travel)
+    public function update(UpdateTravelRequest $request, Travel $travel)
     {//UpdateTravelRequest
         $request->merge(['patient_id' => $travel->patient_id])->offsetUnset('code'); //->offsetUnset('user_id');
-        //dd($request->all());
+        //dd($request->all(), $travel->toArray());
         $travel->update($request->all());
         $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
         $patient = Patient::find($travel->patient_id);
