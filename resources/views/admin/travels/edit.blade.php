@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+    <!--Modal Dosyalar-->
+    @includeIf('admin.travels.relationships.modalAddTreatmentActivities')
+    includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
+
+    <!--Modal Reports-->
+    @includeIf('admin.travels.relationships.modalAddActivities')
+    includeIf('admin.travels.relationships.modalEditActivities', [$genders])
+
     <div class="card">
         <div class="card-header">Travels Edit</div>
         <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
@@ -756,25 +764,17 @@
                 </div>
             </div>
             
-            <button class="btn btn-danger float-right" style="position: fixed; bottom: 15px; right: 20px;"
-            type="submit">
-            {{ trans('global.save') }}
-        </button>
+            <button class="btn btn-danger float-right" style="position: fixed; bottom: 15px; right: 20px;" type="submit">
+                {{ trans('global.save') }}
+            </button>
         
-    </form>
-    <!--Modal Dosyalar-->
-    includeIf('admin.travels.relationships.modalAddTreatmentActivities', [$genders])
-    includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
-
-    <!--Modal Reports-->
-    includeIf('admin.travels.relationships.modalAddActivities', [$genders])
-    includeIf('admin.travels.relationships.modalEditActivities', [$genders])
-
+        </form>
     </div>
 @endsection
 
 @section('scripts')
     <script>
+        // Photo 
         Dropzone.options.photoDropzone = {
             url: '{{ route('admin.patients.storeMedia') }}',
             maxFilesize: 2, // MB
@@ -828,7 +828,7 @@
             }
         }
 
-
+        // Passport Image
         Dropzone.options.passportImageDropzone = {
             url: '{{ route('admin.patients.storeMedia') }}',
             maxFilesize: 10, // MB
@@ -882,7 +882,7 @@
             }
         }
 
-
+        // Treatment File
         var uploadedTreatmentFileMap = {}
         Dropzone.options.treatmentFileDropzone = {
             url: '{{ route('admin.travel-treatment-activities.storeMedia') }}',
@@ -897,7 +897,7 @@
             success: function(file, response) {
                 $('form').append('<input type="hidden" name="treatment_file[]" value="' + response.name + '">')
                 uploadedTreatmentFileMap[file.name] = response.name
-                // GUIDE Dropzone set livewire
+                
             },
             removedfile: function(file) {
                 file.previewElement.remove()
@@ -906,7 +906,7 @@
                     name = file.file_name
                 } else {
                     name = uploadedTreatmentFileMap[file.name]
-                    // GUIDE Dropzone remove livewire
+                    
                     delete uploadedTreatmentFileMap[file.name];
                 }
                 $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
@@ -941,36 +941,5 @@
             }
         }
 
-        $(document).ready(function() {
-            $('#cancelButton').click(function() {
-                var modal = $('#modalAddTreatmentActivities');
-                modal.removeClass('show').css('display', 'none');
-                modal.attr('aria-hidden', 'true');
-
-                modal.removeAttr('role').removeAttr('aria-modal');
-
-                $('body').removeClass('modal-open');
-
-                $('.modal-backdrop').remove();
-
-            });
-        });
-
-
-
-        $(document).ready(function() {
-            $('#cancelButton4').click(function() {
-                var modal = $('#modalAddActivities');
-                modal.removeClass('show').css('display', 'none');
-                modal.attr('aria-hidden', 'true');
-
-                modal.removeAttr('role').removeAttr('aria-modal');
-
-                $('body').removeClass('modal-open');
-
-                $('.modal-backdrop').remove();
-
-            });
-        });
     </script>
 @endsection

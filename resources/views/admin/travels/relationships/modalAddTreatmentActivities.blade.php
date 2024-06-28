@@ -67,8 +67,9 @@ aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
             </div>
             <div class="row justify-content-end">
                 <div class="form-group">
-                    <button type="button" class="btn btn-outline-primary"
-                        id="cancelButton">{{ trans('global.cancel') }}</button>
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                        {{ trans('global.cancel') }}
+                    </button>
                 </div>
                 <div class="form-group mx-3">
                     <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
