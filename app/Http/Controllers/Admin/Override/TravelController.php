@@ -241,8 +241,8 @@ class TravelController extends ParentController
         ));
     }
 
-    public function update(UpdateTravelRequest $request, Travel $travel)
-    {
+    public function update(Request $request, Travel $travel)
+    {//UpdateTravelRequest
         $request->merge(['patient_id' => $travel->patient_id])->offsetUnset('code'); //->offsetUnset('user_id');
         //dd($request->all());
         $travel->update($request->all());
