@@ -457,7 +457,7 @@
                                 {{ trans('global.add') }}
                             </button>
                         </div>
-                        includeIf('admin.travels.relationships.travelTravelTreatmentActivities', [
+                        @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', [
                             'travelTreatmentActivities' => $travel->travelTravelTreatmentActivities,
                         ])
                     </div>
@@ -711,27 +711,29 @@
                                 {{ trans('global.add') }}
                             </button>
                         </div>
-                        includeIf('admin.travels.relationships.travelActivities', [
+                        @includeIf('admin.travels.relationships.travelActivities', [
                             'activities' => $travel->travelActivities,
                         ])
                     </div>
 
                 </div>
-
-                <!--Modal Dosyalar-->
-                includeIf('admin.travels.relationships.modalAddTreatmentActivities', [$genders])
-
-                <!--Modal Reports-->
-                includeIf('admin.travels.relationships.modalAddActivities', [$genders])
-
+                
             </div>
             
             <button class="btn btn-danger float-right" style="position: fixed; bottom: 15px; right: 20px;"
-                type="submit">
-                {{ trans('global.save') }}
-            </button>
-            
-        </form>
+            type="submit">
+            {{ trans('global.save') }}
+        </button>
+        
+    </form>
+    <!--Modal Dosyalar-->
+    includeIf('admin.travels.relationships.modalAddTreatmentActivities', [$genders])
+    includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
+
+    <!--Modal Reports-->
+    includeIf('admin.travels.relationships.modalAddActivities', [$genders])
+    includeIf('admin.travels.relationships.modalEditActivities', [$genders])
+
     </div>
 @endsection
 
