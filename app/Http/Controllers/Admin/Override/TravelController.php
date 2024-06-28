@@ -20,7 +20,6 @@ use App\Models\Office;
 use App\Models\Province;
 use App\Models\Translator;
 use App\Models\TravelHospital;
-use App\Models\TravelTreatmentActivity;
 use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -223,7 +222,7 @@ class TravelController extends ParentController
 
         $translators = Translator::get(['id', 'title'])->pluck('title', 'id');
 
-        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals');
+        $travel->load('patient', 'group', 'hospital', 'department', 'last_status', 'notify_hospitals', 'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user');
 
         return view('admin.travels.edit', compact(
             'departments',

@@ -5,7 +5,7 @@
     includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
 
     <!--Modal Reports-->
-    @includeIf('admin.travels.relationships.modalAddActivities')
+    includeIf('admin.travels.relationships.modalAddActivities')
     includeIf('admin.travels.relationships.modalEditActivities', [$genders])
 
     <div class="card">
@@ -554,7 +554,7 @@
                                 {{ trans('global.add') }}
                             </button>
                         </div>
-                        @includeIf('admin.travels.relationships.travelActivities', [
+                        includeIf('admin.travels.relationships.travelActivities', [
                             'activities' => $travel->travelActivities,
                         ])
                     </div>

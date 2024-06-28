@@ -68,12 +68,14 @@ class Travel extends Model
 
     public function travelTravelTreatmentActivities()
     {
-        return $this->hasMany(TravelTreatmentActivity::class, 'travel_id', 'id');
+        // TODO: migrate create_at index
+        return $this->hasMany(TravelTreatmentActivity::class, 'travel_id', 'id')->orderBy('created_at', 'desc');
     }
 
     public function travelActivities()
     {
-        return $this->hasMany(Activity::class, 'travel_id', 'id');
+        // TODO: migrate create_at index
+        return $this->hasMany(Activity::class, 'travel_id', 'id')->orderBy('created_at', 'desc');
     }
 
     public function patient()

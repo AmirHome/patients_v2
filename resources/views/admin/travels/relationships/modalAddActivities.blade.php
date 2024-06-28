@@ -46,7 +46,7 @@ aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
             </div>
 
             <div class="col-md-12">
-                <div class="form-group" wire:ignore>
+                <div class="form-group">
                     <label class="required" for="treatment_file">Dosya Yükle (max:10mb
                         pdf-excel-word-zip-img)</label>
                     <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }} treatment_file-dropzone"
