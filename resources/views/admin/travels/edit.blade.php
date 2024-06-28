@@ -28,6 +28,10 @@
                     Rapor
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#additional_Information" role="tab" data-toggle="tab">
+                    Ek Bilgiler
+                </a>
             </li>
         </ul>
 
@@ -39,9 +43,7 @@
                 <div class="tab-pane show active" role="tabpanel" id="travel_patient">
 
                     <div class="card-body">
-                        <div class="card-header pb-5">
-                            Hasta Bilgileri
-                        </div>
+                   
 
                         <div class="row">
                             <div class="col-md-3">
@@ -430,7 +432,7 @@
                     <div class="card-body">
 
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>Dosyalar</div>
+                            <div></div>
                             <button type="button" class="btn btn-xs btn-success" data-toggle="modal"
                                 data-target="#modalAddTreatmentActivities">
                                 {{ trans('global.add') }}
@@ -445,9 +447,7 @@
                 <div class="tab-pane" role="tabpanel" id="information">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-header">
-                                Bilgilendirmeler
-                            </div>
+                           
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -538,9 +538,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-header">
-                                Tarihler
-                            </div>
+                       
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -688,7 +686,7 @@
                     <div class="card-body">
 
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>Raporlar</div>
+                            <div></div>
                             <button type="button" class="btn btn-xs btn-success" data-toggle="modal"
                                 data-target="#modalAddActivities">
                                 {{ trans('global.add') }}
@@ -701,6 +699,14 @@
 
                 </div>
                 
+                        <!--Ek Bİlgiler--> 
+                        <div class="tab-pane" role="tabpanel" id="additional_Information">
+                    <div class="card-body">
+
+                   
+                    </div>
+
+                </div>
             </div>
             
             <button class="btn btn-danger float-right" style="position: fixed; bottom: 15px; right: 20px;"
