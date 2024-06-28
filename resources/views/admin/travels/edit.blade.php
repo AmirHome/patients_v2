@@ -165,7 +165,7 @@
                                         for="weight">{{ trans('cruds.patient.fields.weight') }}</label>
                                     <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}"
                                         type="number" placeholder="Kilosu" name="weight" id="weight"
-                                        value="{{ old('weight', $patient->weight ?? null) }}" step="0.01" >
+                                        value="{{ old('weight', $patient->weight ?? null) }}" step="1" >
                                     @if ($errors->has('weight'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('weight') }}
@@ -180,7 +180,7 @@
                                         for="height">{{ trans('cruds.patient.fields.height') }}</label>
                                     <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}"
                                         placeholder="Boyu" type="number" name="height" id="height"
-                                        value="{{ old('height', $patient->height ?? null) }}" step="0.01" >
+                                        value="{{ old('height', $patient->height ?? null) }}" step="1" >
                                     @if ($errors->has('height'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('height') }}
@@ -352,46 +352,12 @@
                                     <span class="help-block">{{ trans('cruds.travel.fields.hospital_helper') }}</span>
                                 </div>
                             </div>
+                            <x-province-component class="col-md-3" :data="[]"/>
+
+                     
                             <div class="col-md-3">
-                                <div class="form-group">
-                                    <label >Yönlendirilen kurum</label>
-                                    <select class="form-control {{ $errors->has('reffering_type') ? 'is-invalid' : '' }}"
-                                        name="reffering_type" id="reffering_type" >
-                                        <option value disabled
-                                            {{ old('reffering_type', null) === null ? 'selected' : '' }}>
-                                            {{ trans('global.pleaseSelect') }}</option>
-                                        @foreach (App\Models\Travel::REFFERING_TYPE_SELECT as $key => $label)
-                                            <option value="{{ $key }}"
-                                                {{ old('reffering_type', $travel->reffering_type) === (string) $key ? 'selected' : '' }}>
-                                                {{ $label }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('reffering_type'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('reffering_type') }}
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.travel.fields.reffering_type_helper') }}</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="reffering">Referans</label>
-                                    <input class="form-control {{ $errors->has('reffering') ? 'is-invalid' : '' }}"
-                                        placeholder="Referans" type="text" name="reffering" id="reffering"
-                                        value="{{ old('reffering', $travel->reffering) }}">
-                                    @if ($errors->has('reffering'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('reffering') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.travel.fields.reffering_helper') }}</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div>
-                                    <label class="required"
+                                <div class="form-group" >
+                                    <label 
                                         for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
                                     <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}"
                                         name="office_id" id="office_id" >
@@ -409,46 +375,14 @@
                                     <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="campaign_org_id">Kampanya kanalı</label>
-                                    <select
-                                        class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}"
-                                        placeholder="Kampanya Kanalı" name="campaign_org_id" id="campaign_org_id">
-                                        @foreach ($campaign_orgs ?? [] as $id => $entry)
-                                            <option value="{{ $id }}"
-                                                {{ (old('campaign_org_id') ? old('campaign_org_id') : $patient->campaign_org->id ?? '') == $id ? 'selected' : '' }}>
-                                                {{ $entry }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('campaign_org'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('campaign_org') }}
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.patient.fields.campaign_org_helper') }}</span>
-                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="">Kampanya</label>
-                                    <select class="form-control" wire:model.live="compaignChannelId">
-                                        <option value="" selected>Choose channels</option>
-                                        @foreach ($campaignChannels ?? [] as $channel)
-                                            <option value="{{ $channel->id }}">{{ $channel->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="text-danger">
-                                        @error('compaignChannelId')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                         
-                            </div>
+                            <div class="row">
+                            <x-campaign-channel-org-component class="col-md-3" :data="[]"/>
+                            <x-reffering-type-component class="col-md-3" :data="[]"/>
+                             </div>    
+                                              
+                           <div class="row">
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
