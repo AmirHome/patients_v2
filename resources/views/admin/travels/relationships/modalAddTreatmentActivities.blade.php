@@ -69,7 +69,26 @@
     </div>
 </div>
 
+@section('scripts')
+@parent
 <script>
-
+ 
+    $(function() {
+        //   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+        $.extend(true, $.fn.dataTable.defaults, {
+            orderCellsTop: true,
+            order: [
+                [1, 'desc']
+            ],
+        });
+        let table = $('.datatable-travelTravelTreatmentActivities:not(.ajaxTable)').DataTable({
+            buttons: dtButtons
+        })
+        $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    })
 
 </script>
+@endsection
