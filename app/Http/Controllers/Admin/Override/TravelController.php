@@ -271,7 +271,8 @@ class TravelController extends ParentController
             $patient->passport_image->delete();
         }
 
-        return redirect()->route('admin.travels.index');
+        return redirect()->back();
+        // return redirect()->route('admin.travels.index');
     }
 
 

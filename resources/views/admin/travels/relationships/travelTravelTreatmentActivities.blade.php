@@ -79,7 +79,7 @@
                                    </button>
                                @endcan
 
-                               @can('travel_treatment_activity_delete-off')
+                               @can('travel_treatment_activity_delete')
                                    <form
                                        action="{{ route('admin.travel-treatment-activities.destroy', $travelTreatmentActivity->id) }}"
                                        method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"

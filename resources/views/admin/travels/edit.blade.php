@@ -1,12 +1,10 @@
 @extends('layouts.admin')
 @section('content')
     <!--Modal Dosyalar-->
-    @includeIf('admin.travels.relationships.modalHelper', [$action='travel-treatment-activities', $actionMood = 'store', $dropzoneInputFileName='treatmentFile'])
-    includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
+    @includeIf('admin.travels.relationships.modalAddTreatmentActivities')
 
     <!--Modal Reports-->
-    includeIf('admin.travels.relationships.modalAddActivities')
-    includeIf('admin.travels.relationships.modalEditActivities', [$genders])
+    @includeIf('admin.travels.relationships.modalAddActivities')
 
     <div class="card">
         <div class="card-header">Travels Edit</div>
@@ -550,11 +548,11 @@
 
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div></div>
-                            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modalAddActivities">
+                            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-activities">
                                 {{ trans('global.add') }}
                             </button>
                         </div>
-                        includeIf('admin.travels.relationships.travelActivities', [
+                        @includeIf('admin.travels.relationships.travelActivities', [
                             'activities' => $travel->travelActivities,
                         ])
                     </div>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalAddTreatmentActivities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-travel-treatment-activities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.travel-treatment-activities.store') }}" enctype="multipart/form-data">
@@ -38,9 +38,8 @@
 
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="required" for="treatment_file">Dosya Yükle (max:10mb
-                            pdf-excel-word-zip-img)</label>
-                        <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }} treatment_file-dropzone" id="treatment_file-dropzone">
+                        <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                        <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
                             <div class="dz-message" data-dz-message><span>Drop or Select file</span></div>
                             <div class="dz-message" data-dz-message>
                                 <p>Drop files here or click <a>browse</a> through your machine</p>
