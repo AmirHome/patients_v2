@@ -18,6 +18,7 @@ class UpdateTravelRequest extends FormRequest
 protected function prepareForValidation(){
             $this->merge([
                 'user_id' => auth()->id(),
+                //'last_status_id' => $this->last_status_id ?? '1',
             ]);
         }
 
@@ -29,10 +30,10 @@ public function rules()
             //     'required',
             //     'integer',
             // ],
-            'last_status_id' => [
-                'required',
-                'integer',
-            ],
+            // 'last_status_id' => [
+            //     'required',
+            //     'integer',
+            // ],
             'attendant_name' => [
                 'string',
                 'nullable',
