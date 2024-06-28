@@ -46,6 +46,7 @@ Vaka Listesi
          
                
                 <div class="col-md-4">
+                    
                     <div class="form-group">
                     <label for="">Vaka Durumu</label>
                         <select class="form-control filter" wire:model.live="gender">
