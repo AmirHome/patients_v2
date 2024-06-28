@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <!--Modal Dosyalar-->
-    @includeIf('admin.travels.relationships.modalAddTreatmentActivities')
+    @includeIf('admin.travels.relationships.modalHelper', [''])
     includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
 
     <!--Modal Reports-->
