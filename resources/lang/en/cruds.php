@@ -537,7 +537,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'title'             => 'Title',
+            'title'             => 'Channel Name',
             'title_helper'      => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
@@ -637,7 +637,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Group Name',
             'name_helper'       => ' ',
             'color'             => 'Color',
             'color_helper'      => '#AA0000',
@@ -655,7 +655,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Department Name',
             'name_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',

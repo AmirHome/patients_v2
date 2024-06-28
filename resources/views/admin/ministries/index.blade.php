@@ -25,13 +25,10 @@
                         {{ trans('cruds.ministry.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.ministry.fields.name') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.ministry.fields.code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.ministry.fields.code_inc') }}
+                        {{ trans('cruds.ministry.fields.name') }}
                     </th>
                     <th>
                         &nbsp;
@@ -90,9 +87,8 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
 { data: 'code', name: 'code' },
-{ data: 'code_inc', name: 'code_inc' },
+{ data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

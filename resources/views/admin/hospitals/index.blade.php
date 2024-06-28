@@ -28,6 +28,9 @@
                         {{ trans('cruds.hospital.fields.name') }}
                     </th>
                     <th>
+                        {{ trans('cruds.hospital.fields.address') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.hospital.fields.email') }}
                     </th>
                     <th>
@@ -36,9 +39,7 @@
                     <th>
                         {{ trans('cruds.hospital.fields.fax') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.hospital.fields.address') }}
-                    </th>
+              
                     <th>
                         &nbsp;
                     </th>
@@ -97,10 +98,10 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
+{ data: 'address', name: 'address' },
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
 { data: 'fax', name: 'fax' },
-{ data: 'address', name: 'address' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

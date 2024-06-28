@@ -537,7 +537,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'title'             => 'Title',
+            'title'             => 'Kanal İsmi',
             'title_helper'      => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
@@ -637,7 +637,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Grup İsmi',
             'name_helper'       => ' ',
             'color'             => 'Color',
             'color_helper'      => '#AA0000',
@@ -655,7 +655,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'name'              => 'Name',
+            'name'              => 'Deparmtman İsmi',
             'name_helper'       => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
