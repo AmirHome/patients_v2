@@ -40,10 +40,6 @@
                         {{ trans('cruds.user.fields.job_type') }}
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.roles') }}
-                    </th>
-                  
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -105,7 +101,6 @@
 { data: 'office_name', name: 'office.name' },
 { data: 'phone', name: 'phone' },
 { data: 'job_type', name: 'job_type' },
-{ data: 'roles', name: 'roles.title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

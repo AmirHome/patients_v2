@@ -28,26 +28,15 @@
                         {{ trans('cruds.doctor.fields.name') }}
                     </th>
                     <th>
-                        {{ trans('cruds.doctor.fields.phone') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.doctor.fields.email') }}
                     </th>
                     <th>
-                        {{ trans('cruds.doctor.fields.address') }}
+                        {{ trans('cruds.doctor.fields.phone') }}
                     </th>
                     <th>
                         {{ trans('cruds.doctor.fields.city') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.doctor.fields.hospital') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.hospital.fields.phone') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.doctor.fields.department') }}
-                    </th>
+                   
                     <th>
                         &nbsp;
                     </th>
@@ -106,13 +95,9 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
-{ data: 'phone', name: 'phone' },
 { data: 'email', name: 'email' },
-{ data: 'address', name: 'address' },
+{ data: 'phone', name: 'phone' },
 { data: 'city_name', name: 'city.name' },
-{ data: 'hospital_name', name: 'hospital.name' },
-{ data: 'hospital.phone', name: 'hospital.phone' },
-{ data: 'department_name', name: 'department.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

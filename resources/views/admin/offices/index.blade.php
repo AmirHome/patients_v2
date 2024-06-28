@@ -25,7 +25,7 @@
                         {{ trans('cruds.office.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.office.fields.name') }}
+                        {{ trans('cruds.office.fields.city') }}
                     </th>
                     <th>
                         {{ trans('cruds.office.fields.phone') }}
@@ -36,9 +36,7 @@
                     <th>
                         {{ trans('cruds.office.fields.address') }}
                     </th>
-                    <th>
-                        {{ trans('cruds.office.fields.city') }}
-                    </th>
+             
                     <th>
                         &nbsp;
                     </th>
@@ -96,11 +94,10 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
+{ data: 'city_name', name: 'city.name' },
 { data: 'phone', name: 'phone' },
 { data: 'fax', name: 'fax' },
 { data: 'address', name: 'address' },
-{ data: 'city_name', name: 'city.name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

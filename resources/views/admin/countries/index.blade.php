@@ -25,14 +25,12 @@
                         {{ trans('cruds.country.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.country.fields.name') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.country.fields.short_code') }}
                     </th>
                     <th>
-                        {{ trans('cruds.country.fields.code_inc') }}
+                        {{ trans('cruds.country.fields.name') }}
                     </th>
+         
                     <th>
                         &nbsp;
                     </th>
@@ -90,9 +88,8 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
 { data: 'short_code', name: 'short_code' },
-{ data: 'code_inc', name: 'code_inc' },
+{ data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

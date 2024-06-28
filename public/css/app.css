@@ -441,9 +441,13 @@ table.dataTable {
         min-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
         max-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
     }
-    thead tr th:last-child{
+ 
+    thead tr td{
         max-width: 150px !important; /* İstediğiniz minimum genişliği buraya yazın */
+        text-align: center !important;
+        justify-content: center;
     }
+ 
 }
 
 

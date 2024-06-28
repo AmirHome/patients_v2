@@ -15,12 +15,8 @@
                     <th width="10">
 
                     </th>
-                    
                     <th>
-                        {{ trans('cruds.travel.fields.created_at') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.crmCustomer.fields.status') }}
+                        {{ trans('cruds.ministry.fields.id') }}
                     </th>
                     <th>
                         {{ trans('cruds.crmCustomer.fields.first_name') }}
@@ -36,6 +32,12 @@
                     </th>
                     <th>
                         {{ trans('cruds.crmCustomer.fields.campaign') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.crmCustomer.fields.status') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.travel.fields.created_at') }}
                     </th>
                     <th>
                         &nbsp;
@@ -101,15 +103,14 @@
     },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-
-      
-      { data: 'created_at', name: 'created_at' },
-      { data: 'status_name', name: 'status.name' },
+      { data: 'id', name: 'id' },
       { data: 'full_name', name: 'full_name'},
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },
 { data: 'city_name', name: 'city_name' },
 { data: 'campaign_title', name: 'campaign.title' },
+{ data: 'status_name', name: 'status.name' },
+{ data: 'created_at', name: 'created_at' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
