@@ -76,9 +76,9 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
-                                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" disabled
+                                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
                                         type="text" name="name" id="name"
                                         value="{{ old('name', $patient->name ?? null) }}" placeholder="İsim" required>
                                     @if ($errors->has('name'))
@@ -88,10 +88,10 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
                                 </div>
-                                <div class="form-group" >
-                                    <label class="required" >{{ trans('cruds.patient.fields.gender') }}</label>
+                                <div class="form-group">
+                                    <label>{{ trans('cruds.patient.fields.gender') }}</label>
                                     <select class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}"
-                                        name="gender" id="gender" required disabled>
+                                        name="gender" id="gender">
                                         <option value disabled {{ old('gender', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
                                         @foreach (App\Models\Patient::GENDER_SELECT as $key => $label)
@@ -113,7 +113,7 @@
                                     <label class="required"
                                         for="surname">{{ trans('cruds.patient.fields.surname') }}</label>
                                     <input class="form-control {{ $errors->has('surname') ? 'is-invalid' : '' }}"
-                                    disabled type="text" name="surname" id="surname" placeholder="Soyadı"
+                                        type="text" name="surname" id="surname" placeholder="Soyadı"
                                         value="{{ old('surname', $patient->surname ?? null) }}" required>
                                     @if ($errors->has('surname'))
                                         <div class="invalid-feedback">
@@ -126,7 +126,7 @@
                                     <label class="required"
                                         for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
                                     <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                        placeholder="Telefon no" type="text" name="phone" id="phone" disabled
+                                        placeholder="Telefon no" type="text" name="phone" id="phone"
                                         value="{{ old('phone', $patient->phone ?? null) }}" required>
                                     @if ($errors->has('phone'))
                                         <div class="invalid-feedback">
@@ -142,7 +142,7 @@
                                 <div class="form-group">
                                     <label>{{ trans('cruds.patient.fields.blood_group') }}</label>
                                     <select class="form-control {{ $errors->has('blood_group') ? 'is-invalid' : '' }}"
-                                        name="blood_group" id="blood_group" disabled>
+                                        name="blood_group" id="blood_group">
                                         <option value disabled {{ old('blood_group', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
                                         @foreach (App\Models\Patient::BLOOD_GROUP_SELECT as $key => $label)
@@ -161,11 +161,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
-                                        for="weight" >{{ trans('cruds.patient.fields.weight') }}</label>
+                                    <label
+                                        for="weight">{{ trans('cruds.patient.fields.weight') }}</label>
                                     <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}"
-                                        type="number" placeholder="Kilosu" name="weight" id="weight" disabled
-                                        value="{{ old('weight', $patient->weight ?? null) }}" step="0.01" required>
+                                        type="number" placeholder="Kilosu" name="weight" id="weight"
+                                        value="{{ old('weight', $patient->weight ?? null) }}" step="0.01" >
                                     @if ($errors->has('weight'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('weight') }}
@@ -176,11 +176,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label 
                                         for="height">{{ trans('cruds.patient.fields.height') }}</label>
                                     <input class="form-control {{ $errors->has('height') ? 'is-invalid' : '' }}"
-                                        placeholder="Boyu" type="number" name="height" id="height" disabled
-                                        value="{{ old('height', $patient->height ?? null) }}" step="0.01" required>
+                                        placeholder="Boyu" type="number" name="height" id="height"
+                                        value="{{ old('height', $patient->height ?? null) }}" step="0.01" >
                                     @if ($errors->has('height'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('height') }}
@@ -210,11 +210,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label 
                                         for="mother_name">{{ trans('cruds.patient.fields.mother_name') }}</label>
                                     <input class="form-control {{ $errors->has('mother_name') ? 'is-invalid' : '' }}"
                                         type="text" placeholder="Anne adı" name="mother_name" id="mother_name"
-                                        value="{{ old('mother_name', $patient->mother_name ?? null) }}" required>
+                                        value="{{ old('mother_name', $patient->mother_name ?? null) }}" >
                                     @if ($errors->has('mother_name'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('mother_name') }}
@@ -225,11 +225,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label
                                         for="father_name">{{ trans('cruds.patient.fields.father_name') }}</label>
                                     <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                         type="text" name="father_name" placeholder="Baba adı" id="father_name"
-                                        value="{{ old('father_name', $patient->father_name ?? null) }}" required>
+                                        value="{{ old('father_name', $patient->father_name ?? null) }}" >
                                     @if ($errors->has('father_name'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('father_name') }}
@@ -240,11 +240,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label 
                                         for="middle_name">{{ trans('cruds.patient.fields.middle_name') }}</label>
-                                    <input disabled class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}"
+                                    <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}"
                                         type="text" name="middle_name" placeholder="ikinci ismi" id="middle_name"
-                                        value="{{ old('middle_name', $patient->middle_name ?? null) }}" required>
+                                        value="{{ old('middle_name', $patient->middle_name ?? null) }}" >
                                     @if ($errors->has('middle_name'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('middle_name') }}
@@ -255,11 +255,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label 
                                         for="citizenship">{{ trans('cruds.patient.fields.citizenship') }}</label>
                                     <input class="form-control {{ $errors->has('citizenship') ? 'is-invalid' : '' }}"
                                         type="text" placeholder="Memleketi" name="citizenship" id="citizenship"
-                                        value="{{ old('citizenship', $patient->citizenship ?? null) }}" required>
+                                        value="{{ old('citizenship', $patient->citizenship ?? null) }}">
                                     @if ($errors->has('citizenship'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('citizenship') }}
@@ -270,11 +270,11 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label
                                         for="birth_place">{{ trans('cruds.patient.fields.birth_place') }}</label>
-                                    <input disabled class="form-control {{ $errors->has('birth_place') ? 'is-invalid' : '' }}"
+                                    <input class="form-control {{ $errors->has('birth_place') ? 'is-invalid' : '' }}"
                                         type="text" placeholder="Doğum yeri" name="birth_place" id="birth_place"
-                                        value="{{ old('birth_place', $patient->birth_place ?? null) }}" required>
+                                        value="{{ old('birth_place', $patient->birth_place ?? null) }}" >
                                     @if ($errors->has('birth_place'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('birth_place') }}
@@ -285,8 +285,8 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label  for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
-                                    <input disabled class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}"
+                                    <label for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
+                                    <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}"
                                         placeholder="Doğum Günü" type="text" name="birthday" id="birthday"
                                         value="{{ old('birthday', $patient->birthday ?? null) }}">
                                     @if ($errors->has('birthday'))
@@ -298,28 +298,31 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="required"
-                                        for="email">{{ trans('cruds.patient.fields.email') }}</label>
-                                    <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                        type="email" placeholder="Email" name="email" id="email"
-                                        value="{{ old('email', $patient->email ?? null) }}" required>
-                                    @if ($errors->has('email'))
+                            <div class="form-group">
+                                    <label
+                                        for="treating_doctor">{{ trans('cruds.patient.fields.treating_doctor') }}</label>
+                                    <input class="form-control {{ $errors->has('treating_doctor') ? 'is-invalid' : '' }}"
+                                        placeholder="Tedavi eden doktor" type="text" name="treating_doctor"
+                                        id="treating_doctor"
+                                        value="{{ old('treating_doctor', $patient->treating_doctor ?? null) }}">
+                                    @if ($errors->has('treating_doctor'))
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('email') }}
+                                            {{ $errors->first('treating_doctor') }}
                                         </div>
                                     @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.email_helper') }}</span>
+                                    <span
+                                        class="help-block">{{ trans('cruds.patient.fields.treating_doctor_helper') }}</span>
                                 </div>
-                            </div>
+                                </div>
+
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required"
+                                    <label 
                                         for="foriegn_phone">{{ trans('cruds.patient.fields.foriegn_phone') }}</label>
                                     <input class="form-control {{ $errors->has('foriegn_phone') ? 'is-invalid' : '' }}"
                                         placeholder="Yabancı telefon no" type="text" name="foriegn_phone"
                                         id="foriegn_phone"
-                                        value="{{ old('foriegn_phone', $patient->foriegn_phone ?? null) }}" required>
+                                        value="{{ old('foriegn_phone', $patient->foriegn_phone ?? null) }}" >
                                     @if ($errors->has('foriegn_phone'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('foriegn_phone') }}
@@ -351,9 +354,9 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="required">Yönlendirilen kurum</label>
+                                    <label >Yönlendirilen kurum</label>
                                     <select class="form-control {{ $errors->has('reffering_type') ? 'is-invalid' : '' }}"
-                                        name="reffering_type" id="reffering_type" required>
+                                        name="reffering_type" id="reffering_type" >
                                         <option value disabled
                                             {{ old('reffering_type', null) === null ? 'selected' : '' }}>
                                             {{ trans('global.pleaseSelect') }}</option>
@@ -387,11 +390,11 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <div>
                                     <label class="required"
                                         for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
                                     <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}"
-                                        name="office_id" id="office_id" required>
+                                        name="office_id" id="office_id" >
                                         @foreach ($offices ?? [] as $id => $entry)
                                             <option value="{{ $id }}"
                                                 {{ (old('office_id') ? old('office_id') : $patient->office->id ?? '') == $id ? 'selected' : '' }}>
@@ -411,7 +414,7 @@
                                     <label for="campaign_org_id">Kampanya kanalı</label>
                                     <select
                                         class="form-control select2 {{ $errors->has('campaign_org') ? 'is-invalid' : '' }}"
-                                        placeholder="Kampanya Kanalı" disabled name="campaign_org_id" id="campaign_org_id" >
+                                        placeholder="Kampanya Kanalı" name="campaign_org_id" id="campaign_org_id">
                                         @foreach ($campaign_orgs ?? [] as $id => $entry)
                                             <option value="{{ $id }}"
                                                 {{ (old('campaign_org_id') ? old('campaign_org_id') : $patient->campaign_org->id ?? '') == $id ? 'selected' : '' }}>
@@ -430,7 +433,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="">Kampanya</label>
-                                    <select class="form-control" disabled wire:model.live="compaignChannelId">
+                                    <select class="form-control" wire:model.live="compaignChannelId">
                                         <option value="" selected>Choose channels</option>
                                         @foreach ($campaignChannels ?? [] as $channel)
                                             <option value="{{ $channel->id }}">{{ $channel->title }}</option>
@@ -444,21 +447,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
-                                    <label
-                                        for="treating_doctor">{{ trans('cruds.patient.fields.treating_doctor') }}</label>
-                                    <input class="form-control {{ $errors->has('treating_doctor') ? 'is-invalid' : '' }}"
-                                        placeholder="Tedavi eden doktor" type="text" name="treating_doctor"
-                                        id="treating_doctor"
-                                        value="{{ old('treating_doctor', $patient->treating_doctor ?? null) }}">
-                                    @if ($errors->has('treating_doctor'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('treating_doctor') }}
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="help-block">{{ trans('cruds.patient.fields.treating_doctor_helper') }}</span>
-                                </div>
+                         
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
