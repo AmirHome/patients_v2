@@ -776,11 +776,11 @@
         
     </form>
     <!--Modal Dosyalar-->
-    includeIf('admin.travels.relationships.modalAddTreatmentActivities', [$genders])
+    @includeIf('admin.travels.relationships.modalAddTreatmentActivities')
     includeIf('admin.travels.relationships.modalEditTreatmentActivities', [$genders])
 
     <!--Modal Reports-->
-    includeIf('admin.travels.relationships.modalAddActivities', [$genders])
+    @includeIf('admin.travels.relationships.modalAddActivities')
     includeIf('admin.travels.relationships.modalEditActivities', [$genders])
 
     </div>
