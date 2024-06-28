@@ -71,17 +71,22 @@ Vaka Listesi
                 </div>   
                        
                 <div class="col-md-4">
-                    <div class="form-group">
-                    <label for="">Departman</label>
-                        <select class="form-control filter" wire:model.live="gender">
-                            <option value="" selected>Departman</option>
-                            @foreach ($genders as $key => $title)
-                            <option value="{{ $key }}">{{ $title }}</option>
-                            @endforeach
-                        </select>
-                        <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+                <div class="form-group">
+               <label for="department_id">{{ trans('cruds.travel.fields.department') }}</label>
+               <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id">
+               @foreach($departments as $id => $entry)
+               <option value="{{ $id }}" {{ (old('department_id') ? old('department_id') : $travel->department->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+               @endforeach
+               </select>
+               @if($errors->has('department'))
+               <div class="invalid-feedback">
+                  {{ $errors->first('department') }}
+               </div>
+               @endif
+               <span class="help-block">{{ trans('cruds.travel.fields.department_helper') }}</span>
+            </div>
+            </div>
+
              </div>
            
             <div class="row">

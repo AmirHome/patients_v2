@@ -173,94 +173,20 @@
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Ülke</label>
-                                <select class="form-control" wire:model.live="countryId">
-                                    <option value=null>Select a country</option>
-                                    @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Şehir</label>
-                                <select class="form-control" wire:model.live="city_id">
-                                    <option>Select city</option>
-                                    @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('city_id'){{ $message }}@enderror</span>
-                            </div>
-                        </div>                            
+                        <x-province-component class="col-md-6" :data="[]"/>
+        
                           </div>
                            <div class="col-md-12 pt-3 pb-3">
             <div class="dotted-border">
             </div>
         </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Kanal</label>
-                                <select class="form-control" wire:model.live="compaignChannelId">
-                                    <option value="" selected>Choose channels</option>
-                                    @foreach ($campaignChannels as $channel)
-                                    <option value="{{ $channel->id }}">{{ $channel->title }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Organizasyon</label>
-                                <select class="form-control" wire:model.live="campaign_org_id">
-                                    <option value="" selected>Choose organization</option>
-                                    @foreach ($campaignOrganizations as $org)
-                                    <option value="{{ $org->id }}">{{ $org->title }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('campaign_org_id'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
+                    <x-campaign-channel-org-component class="col-md-6" :data="[]"/>
+
                         </div>
                         <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Referans Tipiniz</label>
-                                <select class="form-control" wire:model.live="reffering_type">
-                                    <option value="" selected>Choose reffering type</option>
-                                    @foreach ($refferingTypes as $key => $title)
-                                    <option value="{{ $key }}">{{ $title }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('reffering_type'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label for="">Referansınız</label>
-                                @if ($reffering_type != 'Phone')
-                                    @if ($reffering_type == 'Other')
-                                    <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
-                                    @else
-                                    <select class="form-control" wire:model.live="reffering">
-                                        <option value="" selected>Choose Reffering</option>
-                                        @foreach ($refferingIds as $key => $refferings)
-                                        <option value="{{ $key }}">{{ $refferings }}</option>
-                                        @endforeach
-                                    </select>
-                                    @endif
-                                @endif
+                        <x-reffering-type-component class="col-md-6" :data="[]"/>
 
-                                <span class="text-danger">@error('reffering'){{ $message }}@enderror</span>
-                            </div>
-                            
-                        </div>
                     </div>
                    
                 </div>
