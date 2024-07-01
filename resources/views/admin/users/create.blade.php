@@ -9,6 +9,8 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -19,6 +21,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-4">
+
             <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
@@ -29,6 +34,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
             </div>
+        </div>
+        <div class="col-md-4">
+
             <div class="form-group">
                 <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
                 <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
@@ -39,6 +47,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="office_id">{{ trans('cruds.user.fields.office') }}</label>
                 <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" required>
@@ -53,6 +65,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.office_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-4">
             <div class="form-group">
                 <label for="phone">{{ trans('cruds.user.fields.phone') }}</label>
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}">
@@ -63,6 +77,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.phone_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-4">
             <div class="form-group">
                 <label>{{ trans('cruds.user.fields.job_type') }}</label>
                 <select class="form-control {{ $errors->has('job_type') ? 'is-invalid' : '' }}" name="job_type" id="job_type">
@@ -78,6 +94,30 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.job_type_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+            <div class="form-group">
+                <label class="required" for="roles" style="margin-top:35px;">{{ trans('cruds.user.fields.roles') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all mb-2" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all mb-2" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
+                    @foreach($roles as $id => $role)
+                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('roles'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('roles') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
+            </div>
+            </div>
+            <div class="col-md-2 mt-2 pt-4">
             <div class="form-group">
                 <label class="required">{{ trans('cruds.user.fields.can_see_prices') }}</label>
                 @foreach(App\Models\User::CAN_SEE_PRICES_RADIO as $key => $label)
@@ -93,6 +133,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.can_see_prices_helper') }}</span>
             </div>
+</div>
+
+<div class="col-md-2 mt-2 pt-4">
             <div class="form-group">
                 <label class="required">{{ trans('cruds.user.fields.can_set_prices') }}</label>
                 @foreach(App\Models\User::CAN_SET_PRICES_RADIO as $key => $label)
@@ -108,6 +151,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.can_set_prices_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-2 mt-2 pt-4">
             <div class="form-group">
                 <label class="required">{{ trans('cruds.user.fields.is_super') }}</label>
                 @foreach(App\Models\User::IS_SUPER_RADIO as $key => $label)
@@ -123,9 +168,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.is_super_helper') }}</span>
             </div>
+            </div>
+            </div>
+      
+            <div class="row">
+            <div class="col-md-12">
             <div class="form-group">
                 <label for="picture">{{ trans('cruds.user.fields.picture') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('picture') ? 'is-invalid' : '' }}" id="picture-dropzone">
+                <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
+                                        <div class="dz-message" data-dz-message>
+                                            <p>Drop files here or click <a>browse</a> thorough your machien</p>
+                                        </div>
                 </div>
                 @if($errors->has('picture'))
                     <div class="invalid-feedback">
@@ -134,26 +188,12 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.picture_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label class="required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
-                    @foreach($roles as $id => $role)
-                        <option value="{{ $id }}" {{ in_array($id, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('roles'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('roles') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
+            </div>
+    
+
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger  float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

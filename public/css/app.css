@@ -310,6 +310,7 @@ margin-left:3px !important;
     color: rgb(33, 43, 54);
     background-color: rgba(145, 158, 171, 0.08);
     border-radius: 6px;
+    
 }
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle::after {
@@ -813,7 +814,14 @@ input[type="search" i] {
     box-shadow: 0 0 0 1.5px black;
 
 }
-
+.select2-container--default .select2-selection--multiple{
+    border-color: #d8dbe0;
+}
+.select2-container--default .select2-selection--multiple:hover{
+    color: black; /* Yazı rengi siyah */
+    border-color: black !important; /* Border rengi siyah */
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+}
 .select2-container--default .select2-selection--multiple .select2-selection__choice
 {
     color:#006c9c !important;
@@ -858,6 +866,7 @@ element.style{
 .select2-container--default .select2-search--dropdown .select2-search__field:focus{
     border: 2px solid black !important;
  }
+ 
  .date {
     background: url('https://cdn-icons-png.freepik.com/512/8132/8132223.png') no-repeat right center;
     background-size: 20px; /* Resmin boyutunu input'un boyutuna sığacak şekilde ayarlar */
