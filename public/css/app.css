@@ -1440,13 +1440,35 @@ font-weight:600;
         animation: none;
       }
 
+      body  .show-header{ 
+    color: #637381 !important;
+    font-size: 0.875rem !important;
+    line-height:1.57143 !important;
+    margin:0px 0px 4px;
+    padding-left: 15px;
+      }
+    
+      .show-header-text{
+        padding-left: 36px !important;
+        color: #1C252E !important;
+        font-size: 0.875rem !important;
+        font-weight:600;
+
+      }
       
-      
-      
-      
-      
-      
-      
+      .show-desc-header{
+        color:#1C252E;
+        font-weight:600;
+        margin-top:24px;
+        margin-bottom:8px;
+        font-size:1.125rem;
+      }
+      .show-header-desc-text{
+        color:#1C252E;
+        font-size: 1rem;
+        line-height:1.5;
+        font-weight:400;
+      }
       
       
       

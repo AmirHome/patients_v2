@@ -52,9 +52,9 @@
 
 
                         <div class="row">
-                            <div class="col-md-3">
-                                <img class="card-img-top rounded-circle ml-4" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:200px">
-                            </div>
+                        <div class="col-md-3 pl-4">
+        <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:200px">
+                               </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="required" for="code">Hasta kodu</label>

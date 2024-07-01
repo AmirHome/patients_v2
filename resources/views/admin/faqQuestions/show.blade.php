@@ -16,28 +16,28 @@
    
         <div class="row">
             <div class="col-md-6">
-                <div class="text-center">
-             <div class="show-header-text">    <i class="fas fa-tag"></i>  {{ trans('cruds.faqQuestion.fields.category') }}</div>
-                    <br>
-                    {{ $faqQuestion->category->category ?? '' }}
+                <div class="text-left">
+             <div class="show-header"> <i class="fas fa-tag pr-1"></i>  {{ trans('cruds.faqQuestion.fields.category') }}</div>
+                 <span class="show-header-text"> {{ $faqQuestion->category->category ?? '' }}</span>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="text-center">
-                <div class="show-header-text">  <i class="fas fa-question-circle"></i> {{ trans('cruds.faqQuestion.fields.question') }}</div>
-                    <br>
-                    {{ $faqQuestion->question }}
+                <div class="text-left">
+                <div class="show-header"> <i class="fas fa-question-circle pr-1"></i> {{ trans('cruds.faqQuestion.fields.question') }}</div>
+                  <span class="show-header-text"> {{ $faqQuestion->question }}</span>
                 </div>
             </div>
         </div>
-                        
-        <div class="row pt-5">
-        <div class="col-md-12">
-        <div class="text-center">
+        <div class="col-md-12 pt-5">
+            <div class="dotted-border">
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12 ml-4">
+        <div class="text-left show-desc-header">
  {{ trans('cruds.faqQuestion.fields.answer') }}
-                            <br>
-                            {!! $faqQuestion->answer !!}
-                            </div>
+</div>
+<span class="show-header-desc-text">  {!! $faqQuestion->answer !!}</span>
                             </div>
                             </div>
 
