@@ -1,7 +1,9 @@
 <form class="" action="{{ route('admin.expenses-incomes.index',$type) }}" method="GET">
+<div class="card-body mb-2">
+<div class="card-header ml-3">Expenses Filter</div>
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="form-group">
                 <label for="">patient Code</label>
                 <input type="text" class="form-control filter" placeholder="Enter patient code"
@@ -57,3 +59,4 @@
     </div>
 </form>
 
+</div>

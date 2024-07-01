@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.expenses-incomes.update", [$expensesIncome->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="user_id">{{ trans('cruds.expensesIncome.fields.user') }}</label>
                 <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" required disabled>
@@ -24,6 +26,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.user_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required">{{ trans('cruds.expensesIncome.fields.category') }}</label>
                 <select class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" id="category" required>
@@ -39,6 +43,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.category_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-4">
             <div class="form-group">
                 <label for="patient_id">{{ trans('cruds.expensesIncome.fields.patient') }}</label>
                 <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id">
@@ -53,6 +59,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.patient_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label for="department_id">{{ trans('cruds.expensesIncome.fields.department') }}</label>
                 <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id">
@@ -67,9 +77,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.department_helper') }}</span>
             </div>
+            </div>
+              <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="amount">{{ trans('cruds.expensesIncome.fields.amount') }}</label>
-                <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}" type="number" name="amount" id="amount" value="{{ old('amount', $expensesIncome->amount) }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}" placeholder="Enter Amaount..." type="number" name="amount" id="amount" value="{{ old('amount', $expensesIncome->amount) }}" step="0.01" required>
                 @if($errors->has('amount'))
                     <div class="invalid-feedback">
                         {{ $errors->first('amount') }}
@@ -77,9 +89,13 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.amount_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
             <div class="form-group">
                 <label for="description">{{ trans('cruds.expensesIncome.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $expensesIncome->description) }}</textarea>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" placeholder="Enter Description..." name="description" id="description">{{ old('description', $expensesIncome->description) }}</textarea>
                 @if($errors->has('description'))
                     <div class="invalid-feedback">
                         {{ $errors->first('description') }}
@@ -87,8 +103,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.description_helper') }}</span>
             </div>
+            </div>
+            </div>
+
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

@@ -51,7 +51,7 @@
             </div>
             </div>
             </div>
-           <div class="row  ml-2">
+           <div class="row ml-2">
             <div class="col-md-2">
             <div class="form-group">
                 <label class="required radio-btn-header">{{ trans('cruds.campaignOrg.fields.status') }}</label>
