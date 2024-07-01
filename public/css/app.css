@@ -1388,6 +1388,14 @@ font-weight:600;
 }
 
       .select2-container--default.select2-container--disabled .select2-selection--single {
-
+        cursor: default !important;
+        color: rgb(145, 158, 171) !important;
+        background-color: #F9F9F9 !important;
       }
-      
+      .form-control:disabled, .form-control[readonly] {
+        cursor: default !important;
+        color: rgb(145, 158, 171) !important;
+    }
+    .select2-container--disabled .select2-selection--single .select2-selection__rendered {
+        color: rgb(145, 158, 171) !important;
+    }
