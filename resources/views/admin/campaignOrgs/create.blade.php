@@ -54,12 +54,12 @@
            <div class="row  ml-2">
             <div class="col-md-2">
             <div class="form-group">
-                <label class="required">{{ trans('cruds.campaignOrg.fields.status') }}</label>
+                <label class="required radio-btn-header">{{ trans('cruds.campaignOrg.fields.status') }}</label>
                 @foreach(App\Models\CampaignOrg::STATUS_RADIO as $key => $label)
-                <div class="row mt-3">
-                    <div class="mt-2 form-check {{ $errors->has('status') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', '0') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label" for="status_{{ $key }}">{{ $label }}</label>
+                <div class="row mb-4">
+                    <div class=" form-check {{ $errors->has('status') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input mt-4 radio-btn" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', '0') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label mt-3 radio-btn-text" for="status_{{ $key }}">{{ $label }}</label>
                     </div>
                     </div>
 

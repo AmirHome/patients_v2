@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route("admin.departments.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
             <div class="form-group">
                 
                 <label class="required" for="name">{{ trans('cruds.department.fields.name') }}</label>

@@ -11,7 +11,7 @@
             @method('PUT')
             @csrf
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.department.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Department Name.." type="text" name="name" id="name" value="{{ old('name', $department->name) }}" required>

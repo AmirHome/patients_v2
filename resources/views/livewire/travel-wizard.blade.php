@@ -51,7 +51,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                             <label for="">Hasta Geliş Tarihi</label>
-                             <input type="text" class="form-control" id="date"  readonly placeholder="{{getCurrentDate()}}" disabled>
+                             <input type="text" class="form-control" id="date" readonly placeholder="{{getCurrentDate()}}"  disabled>
                             </div>
                         </div>
                         </div>
@@ -96,14 +96,19 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="form-group"> 
-                            <label for="">Doğum Tarihi</label>
-                                <input type="date" class="form-control" placeholder="Enter your birthday"
-                                    wire:model="birthday">
-                                <span class="text-danger">@error('birthday'){{ $message }}@enderror</span>
-                            </div>
-                        </div>
-                       
+                                <div class="form-group">
+                                    <label for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
+                                    <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}" placeholder="Doğum Günü" type="text" name="birthday" id="birthday"
+                                        value="{{ old('birthday', $patient->birthday ?? null) }}">
+                                    @if ($errors->has('birthday'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('birthday') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.patient.fields.birthday_helper') }}</span>
+                                </div>
+                                </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Doğum Yeri</label>

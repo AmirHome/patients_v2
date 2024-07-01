@@ -5,14 +5,15 @@
         <form action="{{ route('admin.crm-customers.index') }}" method="get">
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Customer name</label>
                         <input type="text" class="form-control filter" placeholder="Enter customer name" name="name">
                         <span class="text-danger">@error('customer_name'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Status</label>
                         <select class="form-control filter" wire:model.live="status" name="status_id">
@@ -26,8 +27,7 @@
                 </div>
             
 
-          
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Campaign channels</label>
                         <select class="form-control filter" wire:model.live="compaignChannelId">
@@ -39,7 +39,9 @@
                         <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-3">
+                </div>
+            <div class="row">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Campaign organization</label>
                         <select class="form-control filter" wire:model.live="campaign_org_id">
@@ -52,10 +54,8 @@
                     </div>
                 </div>
 
-            </div>
 
-            <div class="row">
-                <div class="col-md-2">
+                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="">Countery</label>
                         <select class="form-control filter" wire:model.live="countryId">
@@ -67,7 +67,7 @@
                         <span class="text-danger">@error('country_id'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="">City</label>
                         <select class="form-control filter" wire:model.live="city_id">
