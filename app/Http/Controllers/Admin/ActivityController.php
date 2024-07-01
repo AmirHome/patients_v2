@@ -119,7 +119,8 @@ class ActivityController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $activity->id]);
         }
 
-        return redirect()->route('admin.activities.index');
+        return redirect()->back();
+        // return redirect()->route('admin.activities.index');
     }
 
     public function edit(Activity $activity)
