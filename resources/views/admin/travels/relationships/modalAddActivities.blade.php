@@ -1,58 +1,58 @@
 <div class="modal fade" id="modal-activities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data">
-                @csrf
+        <form method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data">
+        @csrf
                 <input type="hidden" name="travel_id" value="{{ $travel->id }}">
-                <div class="form-group">
-                    <label class="required" for="description">{{ trans('cruds.activity.fields.description') }}</label>
-                    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description" required>{{ old('description') }}</textarea>
-                    @if ($errors->has('description'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('description') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.activity.fields.description_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required" for="status_id">{{ trans('cruds.activity.fields.status') }}</label>
-                    <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                        @foreach ($last_statuses as $id => $entry)
-                            <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('status'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('status') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.activity.fields.status_helper') }}</span>
-                </div>
-                <div class="form-group">
-                    <label class="required" for="document_file">{{ trans('cruds.activity.fields.document_file') }}</label>
-                    <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
-                        <div class="dz-message" data-dz-message><span>Drop or Select file</span></div>
-                        <div class="dz-message" data-dz-message>
-                            <p>Drop files here or click <a>browse</a> through your machine</p>
-                        </div>
+                <div class="card-header text-left mx-3 mt-2">Add Reports</div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="required" for="status_id">{{ trans('cruds.travelTreatmentActivity.fields.status') }}</label>
+                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
+                            @foreach ($last_statuses as $id => $entry)
+                                <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('status'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('status') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.status_helper') }}</span>
                     </div>
-                    @if ($errors->has('document_file'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('document_file') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.activity.fields.document_file_helper') }}</span>
                 </div>
-                {{--             <div class="form-group">
-                <label for="document_name">{{ trans('cruds.activity.fields.document_name') }}</label>
-                <input class="form-control {{ $errors->has('document_name') ? 'is-invalid' : '' }}" type="text" name="document_name" id="document_name" value="{{ old('document_name', '') }}">
-                @if ($errors->has('document_name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('document_name') }}
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="description">{{ trans('cruds.travelTreatmentActivity.fields.description') }}</label>
+                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description') }}</textarea>
+                        @if ($errors->has('description'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('description') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.description_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.activity.fields.document_name_helper') }}</span>
-            </div> --}}
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                        <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
+                            <div class="dz-message" data-dz-message><span>Drop or Select file</span></div>
+                            <div class="dz-message" data-dz-message>
+                                <p>Drop files here or click <a>browse</a> through your machine</p>
+                            </div>
+                        </div>
+                        @if ($errors->has('treatment_file'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('treatment_file') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.treatment_file_helper') }}</span>
+                    </div>
+                </div>
                 <div class="row justify-content-end">
                     <div class="form-group">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
@@ -68,23 +68,25 @@
     </div>
 </div>
 
-
 @section('scripts')
+    @parent
     <script>
-        var uploadedDocumentFileMap = {}
-        Dropzone.options.documentFileDropzone = {
-            url: '{{ route('admin.activities.storeMedia') }}',
-            maxFilesize: 50, // MB
+        // Treatment File
+        var uploadedTreatmentFileMap = {}
+        Dropzone.options.treatmentFileDropzone = {
+            url: '{{ route('admin.travel-treatment-activities.storeMedia') }}',
+            maxFilesize: 10, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
             params: {
-                size: 50
+                size: 2
             },
             success: function(file, response) {
-                $('form').append('<input type="hidden" name="document_file[]" value="' + response.name + '">')
-                uploadedDocumentFileMap[file.name] = response.name
+                $('form').append('<input type="hidden" name="treatment_file[]" value="' + response.name + '">')
+                uploadedTreatmentFileMap[file.name] = response.name
+
             },
             removedfile: function(file) {
                 file.previewElement.remove()
@@ -92,19 +94,22 @@
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
                 } else {
-                    name = uploadedDocumentFileMap[file.name]
+                    name = uploadedTreatmentFileMap[file.name]
+
+                    delete uploadedTreatmentFileMap[file.name];
                 }
-                $('form').find('input[name="document_file[]"][value="' + name + '"]').remove()
+                $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
             },
             init: function() {
-                @if (isset($activity) && $activity->document_file)
+                @if (isset($travelTreatmentActivity) && $travelTreatmentActivity->treatment_file)
                     var files =
-                        {!! json_encode($activity->document_file) !!}
+                        {!! json_encode($travelTreatmentActivity->treatment_file) !!}
                     for (var i in files) {
                         var file = files[i]
                         this.options.addedfile.call(this, file)
                         file.previewElement.classList.add('dz-complete')
-                        $('form').append('<input type="hidden" name="document_file[]" value="' + file.file_name + '">')
+                        $('form').append('<input type="hidden" name="treatment_file[]" value="' + file.file_name +
+                            '">')
                     }
                 @endif
             },
@@ -121,7 +126,6 @@
                     node = _ref[_i]
                     _results.push(node.textContent = message)
                 }
-
                 return _results
             }
         }

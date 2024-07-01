@@ -49,95 +49,103 @@
                 <div class="tab-pane show active" role="tabpanel" id="travel_patient">
 
                     <div class="card-body">
-
-
-                        <div class="row">
-                        <div class="col-md-3 pl-4">
+                    <div class="row">
+    <div class="col-md-3 pl-4">
         <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:200px">
-                               </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="required" for="code">Hasta kodu</label>
-                                    <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" placeholder="Hasta kodu" disabled type="text" name="code" id="code" value="{{ old('code', $patient->code ?? null) }}" required>
-                                    @if ($errors->has('code'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('code') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.code_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label class="required" for="last_status_id">{{ trans('cruds.travelTreatmentActivity.fields.status') }}</label>
-                                    <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="last_status_id" id="last_status_id" required disabled>
-                                        @foreach ($last_statuses as $id => $entry)
-                                            <option value="{{ $id }}" {{ old('last_status_id', $travel->last_status_id ?? null) == $id ? 'selected' : '' }}>
-                                                {{ $entry }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('status'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('status') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.status_helper') }}</span>
-                                </div>
-
-
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
-                                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $patient->name ?? null) }}" placeholder="İsim" required>
-                                    @if ($errors->has('name'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('name') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ trans('cruds.patient.fields.gender') }}</label>
-                                    <select class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender" id="gender">
-                                        <option value disabled {{ old('gender', null) === null ? 'selected' : '' }}>
-                                            {{ trans('global.pleaseSelect') }}</option>
-                                        @foreach (App\Models\Patient::GENDER_SELECT as $key => $label)
-                                            <option value="{{ $key }}" {{ old('gender', $patient->gender ?? null) === (string) $key ? 'selected' : '' }}>
-                                                {{ $label }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('gender'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('gender') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.gender_helper') }}</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="required" for="surname">{{ trans('cruds.patient.fields.surname') }}</label>
-                                    <input class="form-control {{ $errors->has('surname') ? 'is-invalid' : '' }}" type="text" name="surname" id="surname" placeholder="Soyadı" value="{{ old('surname', $patient->surname ?? null) }}" required>
-                                    @if ($errors->has('surname'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('surname') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.surname_helper') }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label class="required" for="email">{{ trans('cruds.patient.fields.email') }}</label>
-                                    <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Email" type="email" name="email" id="email" value="{{ old('email', $patient->email ?? null) }}" required>
-                                    @if ($errors->has('email'))
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('email') }}
-                                        </div>
-                                    @endif
-                                    <span class="help-block">{{ trans('cruds.patient.fields.email_helper') }}</span>
-                                </div>
-                            </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required" for="code">Hasta kodu</label>
+                    <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" placeholder="Hasta kodu" disabled type="text" name="code" id="code" value="{{ old('code', $patient->code ?? null) }}" required>
+                    @if ($errors->has('code'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('code') }}
                         </div>
-                        <div class="row">
+                    @endif
+                    <span class="help-block">{{ trans('cruds.patient.fields.code_helper') }}</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required" for="last_status_id">{{ trans('cruds.travelTreatmentActivity.fields.status') }}</label>
+                    <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="last_status_id" id="last_status_id" required disabled>
+                        @foreach ($last_statuses as $id => $entry)
+                            <option value="{{ $id }}" {{ old('last_status_id', $travel->last_status_id ?? null) == $id ? 'selected' : '' }}>
+                                {{ $entry }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('status'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('status') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.travelTreatmentActivity.fields.status_helper') }}</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>{{ trans('cruds.patient.fields.gender') }}</label>
+                    <select class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender" id="gender">
+                        <option value disabled {{ old('gender', null) === null ? 'selected' : '' }}>
+                            {{ trans('global.pleaseSelect') }}</option>
+                        @foreach (App\Models\Patient::GENDER_SELECT as $key => $label)
+                            <option value="{{ $key }}" {{ old('gender', $patient->gender ?? null) === (string) $key ? 'selected' : '' }}>
+                                {{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('gender'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('gender') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.patient.fields.gender_helper') }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+        <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
+                    <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $patient->name ?? null) }}" placeholder="İsim" required>
+                    @if ($errors->has('name'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required" for="surname">{{ trans('cruds.patient.fields.surname') }}</label>
+                    <input class="form-control {{ $errors->has('surname') ? 'is-invalid' : '' }}" type="text" name="surname" id="surname" placeholder="Soyadı" value="{{ old('surname', $patient->surname ?? null) }}" required>
+                    @if ($errors->has('surname'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('surname') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.patient.fields.surname_helper') }}</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required" for="email">{{ trans('cruds.patient.fields.email') }}</label>
+                    <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Email" type="email" name="email" id="email" value="{{ old('email', $patient->email ?? null) }}" required>
+                    @if ($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.patient.fields.email_helper') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                        <div class="row mt-3">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>{{ trans('cruds.patient.fields.blood_group') }}</label>
@@ -390,10 +398,10 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
+                                        <label for="notify_hospitals" style="margin-top:35px;" >{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
                                         <div style="padding-bottom: 4px">
-                                            <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                                            <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span>
+                                            <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
+                                            <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
                                         </div>
                                         <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notify_hospitals" multiple>
                                             @foreach ($notify_hospitals as $id => $notify_hospital)

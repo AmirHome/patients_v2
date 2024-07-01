@@ -11,42 +11,39 @@ Vaka Listesi
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="floating-label">
-                        <input type="text" class="floating-input filter" 
-                            name="patient_code" placeholder=" ">
-                            <label >Hasta Kodu</label>
+                    <div class="form-group">
+                    <label for="">Hasta Kodu</label>
+                        <input type="text" class="form-control filter" 
+                            name="patient_code" placeholder="Hasta kodu">
                         <span class="text-danger">@error('patient_code'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="floating-label">
-                        <input type="text" class="floating-input filter" placeholder=""
+                    <div class="form-group">
+                    <label for="">Hasta Adı</label>
+                        <input type="text" class="form-control filter" placeholder="Hasta Adı"
                             name="patient_name">
-                            <label for="">Hasta Adı</label>
                         <span class="text-danger">@error('patient_name'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                
                 <div class="col-md-4">
-                    <div class="floating-label">
-                        <select class="floating-select filter" wire:model.live="gender" onclick="this.setAttribute('value', this.value);" value="">
-                            <option value="" > </option>
+                    <div class="form-group">
+                    <label for="">Cinsiyet</label>
+                        <select class="form-control filter" wire:model.live="gender">
+                            <option value="" selected>Cinsiyet</option>
                             @foreach ($genders as $key => $title)
                             <option value="{{ $key }}">{{ $title }}</option>
                             @endforeach
                         </select>
-                        <label for="">Cinsiyet</label>
-
                         <span class="text-danger">@error('gender'){{ $message }}@enderror</span>
                     </div>
-                </div>
+                </div>   
  
             </div>
             <div class="row">
          
                
                 <div class="col-md-4">
-                    
                     <div class="form-group">
                     <label for="">Vaka Durumu</label>
                         <select class="form-control filter" wire:model.live="gender">
@@ -202,46 +199,3 @@ Vaka Listesi
     </div>
 </div>
 </container>
-                            <!--Test input verileri edit sayfası bitene kadar örnek olması için
-                   
-<div class="floating-label">      
-      <input class="floating-input" type="text" placeholder=" ">
-      <label>Text</label>
-    </div>
-
-
-    <div class="floating-label">      
-      <input class="floating-input" type="text" onclick="(this.type='date')" placeholder=" ">
-      <span class="highlight"></span>
-      <label>Date</label>
-    </div>
-    <div class="floating-label">      
-      <input class="floating-input" type="password" placeholder=" ">
-      <span class="highlight"></span>
-      <label>Password</label>
-    </div>
-    <div class="floating-label">  
-      <select class="floating-select" onclick="this.setAttribute('value', this.value);" value="">
-        <option value="" disabled selected></option>
-        <option value="1">Alabama</option>
-        <option value="2">Boston</option>
-        <option value="3">Ohaio</option>
-        <option value="4">New York</option>
-        <option value="5">Washington</option>
-      </select>
-      <span class="highlight"></span>
-      <label>Select</label>
-    </div>
-
-    <div class="floating-label">      
-      <textarea class="floating-input floating-textarea" placeholder=" "></textarea>
-      <span class="highlight"></span>
-      <label>Textarea</label>
-    </div>
-
-
-                            
-                            
-                            
-                            
-                            -->

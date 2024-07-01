@@ -1333,113 +1333,7 @@ font-weight:600;
     }
  
  
-      /****  floating-Lable style start ****/
-      
-      .floating-label { 
-        position:relative; 
-        margin-bottom:20px;
-        z-index: 1;
-      }
-      
-      .floating-label .floating-input, .floating-select {
-        color: rgb(50, 50, 50); /* Daha koyu bir renk */
-        box-sizing: content-box;
-        background: none;
-        height: 1.4375em;
-        margin: 0px;
-        -webkit-tap-highlight-color: transparent;
-        display: block;
-        min-width: 0px;
-        width: 100%;
-        line-height: 1.57143;
-        font-size: 0.875rem;
-        font-family: "Public Sans", sans-serif;
-        font-weight: 400;
-        padding: 16.5px 0px 16.5px 14px;
-        cursor: pointer;
-        border-radius: 0.5rem; /* Border radiusu daha keskin */
-        text-overflow: ellipsis;
-        display: block;
-        background-color: transparent;
-        border: 1px solid #d8dbe0;
-      }
-      
-      .floating-input:focus, .floating-select:focus, .floating-input:active, .floating-select:active {
-        color: black;
-        background-color: #fff;
-        border-color: black;
-        outline: 0;
-        box-shadow: 0 0 0 0.07rem rgba(0, 0, 0, 0.82);
-        font-family: "Public Sans", sans-serif;
-        font-weight: 400;
-      }
-      
-       .floating-input:hover, .floating-select:hover {
-        color: black; /* Yazı rengi siyah */
-        border-color: black !important; /* Border rengi siyah */
-        box-shadow: 0 0 0 0.03rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
-      }
-  
-
-     .floating-label label {
-        color: #919EAB; 
-        font-size: 0.875rem;
-        font-weight: 400;
-        position: absolute;
-        pointer-events: none;
-        left: 11px;
-        top: 16px;
-        transition: 0.15s ease all; 
-        -moz-transition: 0.15s ease all; 
-        -webkit-transition: 0.15s ease all;
-      }
-  
-      .floating-label .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
-        top: -10px;
-        z-index: 2;
-        color: #1c252E;
-        font-weight: 600;
-        font-size:0.85rem;
-        background-color: white;
-        padding-left: 3px;
-        padding-right: 3px;
-      }
-      
-      .floating-label .floating-select:focus ~ label, .floating-select:not([value=""]):valid ~ label {
-        top: -10px;
-        z-index: 2;
-        color: #1c252E;
-        font-weight: 600;
-        font-size:0.85rem;
-        background-color: white;
-        padding-left: 3px;
-        padding-right: 3px;
-      }
-      
-      /* active state */
-      .floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
-        width: 50%;
-      }
-      
-      *, *:before, *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-      
-      .floating-textarea {
-        min-height: 30px;
-        max-height: 260px; 
-        overflow: hidden;
-      }
-      
-      /* active state */
-      .floating-input:focus ~ .highlight, .floating-select:focus ~ .highlight {
-        -webkit-animation: none;
-        -moz-animation: none;
-        animation: none;
-      }
-
+     
       body  .show-header{ 
     color: #637381 !important;
     font-size: 0.875rem !important;
@@ -1472,9 +1366,19 @@ font-weight:600;
       
       
       
-      
-      
-      
-      
-      
+      .form-group label {
+        position: absolute;
+    top: 6px;
+    left: 40px;
+    background-color: white !important;
+    z-index: 25;
+    font-size: 0.75rem;
+    font-weight: 600;
+     color: #637381 ;
+     padding: 0 4px;
+}
+
+      .select2-container--default.select2-container--disabled .select2-selection--single {
+
+      }
       
