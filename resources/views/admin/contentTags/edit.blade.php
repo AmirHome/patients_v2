@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.content-tags.update", [$contentTag->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <div class="row">
+                <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.contentTag.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $contentTag->name) }}" required>
@@ -20,6 +22,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentTag.fields.name_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-6">
+
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.contentTag.fields.slug') }}</label>
                 <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $contentTag->slug) }}">
@@ -30,8 +35,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentTag.fields.slug_helper') }}</span>
             </div>
+            </div>
+            </div>
+
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

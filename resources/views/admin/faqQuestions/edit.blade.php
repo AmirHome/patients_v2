@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.faq-questions.update", [$faqQuestion->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <div class="row">
+            <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="category_id">{{ trans('cruds.faqQuestion.fields.category') }}</label>
                 <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" required>
@@ -24,6 +26,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.faqQuestion.fields.category_helper') }}</span>
             </div>
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="question">{{ trans('cruds.faqQuestion.fields.question') }}</label>
                 <textarea class="form-control {{ $errors->has('question') ? 'is-invalid' : '' }}" name="question" id="question" required>{{ old('question', $faqQuestion->question) }}</textarea>
@@ -34,9 +41,12 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.faqQuestion.fields.question_helper') }}</span>
             </div>
+            </div>
+     
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="answer">{{ trans('cruds.faqQuestion.fields.answer') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}" name="answer" id="answer">{!! old('answer', $faqQuestion->answer) !!}</textarea>
+                <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}" placeholder="Please Enter Question.." name="answer" id="answer">{!! old('answer', $faqQuestion->answer) !!}</textarea>
                 @if($errors->has('answer'))
                     <div class="invalid-feedback">
                         {{ $errors->first('answer') }}
@@ -44,8 +54,11 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.faqQuestion.fields.answer_helper') }}</span>
             </div>
+            </div>
+            </div>
+
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

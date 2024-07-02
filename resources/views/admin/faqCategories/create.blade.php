@@ -9,6 +9,8 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.faq-categories.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="category">{{ trans('cruds.faqCategory.fields.category') }}</label>
                 <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category" id="category" value="{{ old('category', '') }}" required>
@@ -19,8 +21,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.faqCategory.fields.category_helper') }}</span>
             </div>
+            </div>
+</div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

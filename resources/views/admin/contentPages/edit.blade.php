@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.content-pages.update", [$contentPage->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <div class="row">
+            <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $contentPage->title) }}" required>
@@ -20,11 +22,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
-                <label for="categories">{{ trans('cruds.contentPage.fields.category') }}</label>
+                <label for="categories" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span>
+                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
                 </div>
                 <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
                     @foreach($categories as $id => $category)
@@ -38,11 +44,13 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.category_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-6">
             <div class="form-group">
-                <label for="tags">{{ trans('cruds.contentPage.fields.tag') }}</label>
+                <label for="tags" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.tag') }}</label>
                 <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span>
+                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
                 </div>
                 <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
                     @foreach($tags as $id => $tag)
@@ -56,6 +64,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
@@ -66,6 +78,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
             </div>
+            </div>
+            <div class="col-md-6">
+
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
                 <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
@@ -76,9 +91,17 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
             </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
             <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+                <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
+                                        <div class="dz-message" data-dz-message>
+                                            <p>Drop files here or click <a>browse</a> thorough your machien</p>
+                                        </div>
                 </div>
                 @if($errors->has('featured_image'))
                     <div class="invalid-feedback">
@@ -87,8 +110,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.featured_image_helper') }}</span>
             </div>
+            </div>
+            </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>

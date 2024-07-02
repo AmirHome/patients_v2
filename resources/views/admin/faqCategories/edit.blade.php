@@ -10,6 +10,8 @@
         <form method="POST" action="{{ route("admin.faq-categories.update", [$faqCategory->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="category">{{ trans('cruds.faqCategory.fields.category') }}</label>
                 <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category" id="category" value="{{ old('category', $faqCategory->category) }}" required>
@@ -20,7 +22,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.faqCategory.fields.category_helper') }}</span>
             </div>
-            <div class="form-group">
+            </div>
+            </div>
+
+            <div class="form-group float-right">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
