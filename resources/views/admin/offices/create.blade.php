@@ -13,7 +13,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.office.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Office Name.." type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -25,7 +25,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="phone">{{ trans('cruds.office.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', '') }}" required>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" placeholder="Enter Phone.."  name="phone" id="phone" value="{{ old('phone', '') }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
@@ -39,7 +39,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="fax">{{ trans('cruds.office.fields.fax') }}</label>
-                <input class="form-control {{ $errors->has('fax') ? 'is-invalid' : '' }}" type="text" name="fax" id="fax" value="{{ old('fax', '') }}" required>
+                <input class="form-control {{ $errors->has('fax') ? 'is-invalid' : '' }}" type="text" placeholder="Enter Fax.."  name="fax" id="fax" value="{{ old('fax', '') }}" required>
                 @if($errors->has('fax'))
                     <div class="invalid-feedback">
                         {{ $errors->first('fax') }}
@@ -51,7 +51,7 @@
               <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="city_id">{{ trans('cruds.office.fields.city') }}</label>
-                <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" required>
+                <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}"  name="city_id" id="city_id" required>
                     @foreach($cities as $id => $entry)
                         <option value="{{ $id }}" {{ old('city_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -69,7 +69,7 @@
              <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="address">{{ trans('cruds.office.fields.address') }}</label>
-                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address" required>{{ old('address') }}</textarea>
+                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" placeholder="Enter Adress.." name="address" id="address" required>{{ old('address') }}</textarea>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}

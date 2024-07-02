@@ -1,109 +1,124 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.task.title') }}
-    </div>
-
-    <div class="card-body">
-        <div class="form-group">
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.tasks.index') }}">
+ 
+<div class="container">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>{{ trans('global.show') }}  {{ trans('cruds.task.title') }} </span>
+            <div class="form-group mb-0">
+                <a class="btn btn-default" href="{{ route('admin.faq-questions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
-                <tbody>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $task->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.due_date') }}
-                        </th>
-                        <td>
-                            {{ $task->due_date }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.name') }}
-                        </th>
-                        <td>
-                            {{ $task->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.description') }}
-                        </th>
-                        <td>
-                            {{ $task->description }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.emergency') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Task::EMERGENCY_RADIO[$task->emergency] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.status') }}
-                        </th>
-                        <td>
-                            {{ $task->status->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.assigned_to') }}
-                        </th>
-                        <td>
-                            {{ $task->assigned_to->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.attachment') }}
-                        </th>
-                        <td>
-                            @if($task->attachment)
-                                <a href="{{ $task->attachment->getUrl() }}" target="_blank">
-                                    {{ trans('global.view_file') }}
-                                </a>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.created_at') }}
-                        </th>
-                        <td>
-                            {{ $task->created_at }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.task.fields.user') }}
-                        </th>
-                        <td>
-                            {{ $task->user->name ?? '' }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-    </div>
-</div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.task.fields.id') }}
+                            </div>
+                            <span class="show-header-text ml-1">   {{ $task->id }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                             {{ trans('cruds.task.fields.emergency') }}
+
+
+                            </div>
+                            <span class="show-header-text ml-1">                             {{ App\Models\Task::EMERGENCY_RADIO[$task->emergency] ?? '' }}
+
+
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.task.fields.due_date') }}
+                            </div>
+                            <span class="show-header-text ml-1">                             {{ $task->due_date }}
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">    {{ trans('cruds.task.fields.name') }}
+                            </div>
+                            <span class="show-header-text ml-1"> {{ $task->name }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">{{ trans('cruds.task.fields.status') }}
+                            </div>
+                            <span class="show-header-text ml-1">{{ $task->status->name ?? '' }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.task.fields.created_at') }}
+                            </div>
+                            <span class="show-header-text ml-1">{{ $task->created_at }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4"> {{ trans('cruds.task.fields.user') }}
+                            </div>
+                            <span class="show-header-text ml-1">
+                            {{ $task->user->name ?? '' }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                             {{ trans('cruds.task.fields.assigned_to') }}                            </div>
+                            <span class="show-header-text ml-1">                            {{ $task->assigned_to->name ?? '' }}
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+        
+                <div class="col-md-12 pt-5">
+                    <div class="dotted-border"></div>
+                </div>
+                <div class="row ml-4">
+                <div class="col-md-6">
+                        <div class="text-left show-desc-header">{{ trans('cruds.task.fields.description') }}
+                        </div>
+                        <span class="show-header-desc-text">   {{ $task->description }}
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-left show-desc-header"> {{ trans('cruds.task.fields.attachment') }}
+                        </div>
+                        <span class="show-header-desc-text">  
+                        @if($task->attachment)
+    
+                        {{ trans('global.view_file') }}
+                        @endif
+
+                        </span>
+                    </div>
+                  
+                </div>
+               
+            </div>
+        </div>
+        </div>
 
 
 

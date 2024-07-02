@@ -1,128 +1,110 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.user.title') }}
-    </div>
 
-    <div class="card-body">
-        <div class="form-group">
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.users.index') }}">
+<div class="container">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>{{ trans('global.show') }} {{ trans('cruds.user.title') }}</span>
+            <div class="form-group mb-0">
+                <a class="btn btn-default" href="{{ route('admin.faq-questions.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
-                <tbody>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $user->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.name') }}
-                        </th>
-                        <td>
-                            {{ $user->name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.email') }}
-                        </th>
-                        <td>
-                            {{ $user->email }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.office') }}
-                        </th>
-                        <td>
-                            {{ $user->office->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">{{ trans('cruds.user.fields.id') }}</div>
+                            <span class="show-header-text ml-1">{{ $user->id }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.user.fields.job_type') }}                            </div>
+                            <span class="show-header-text ml-1">                            {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.user.fields.name') }}
+                            </div>
+                            <span class="show-header-text ml-1">                            {{ $user->name }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4"> 
                             {{ trans('cruds.user.fields.phone') }}
-                        </th>
-                        <td>
-                            {{ $user->phone }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.job_type') }}
-                        </th>
-                        <td>
-                            {{ App\Models\User::JOB_TYPE_SELECT[$user->job_type] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.can_see_prices') }}
-                        </th>
-                        <td>
-                            {{ App\Models\User::CAN_SEE_PRICES_RADIO[$user->can_see_prices] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.can_set_prices') }}
-                        </th>
-                        <td>
-                            {{ App\Models\User::CAN_SET_PRICES_RADIO[$user->can_set_prices] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.is_super') }}
-                        </th>
-                        <td>
-                            {{ App\Models\User::IS_SUPER_RADIO[$user->is_super] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
-                        </th>
-                        <td>
-                            {{ $user->email_verified_at }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.picture') }}
-                        </th>
-                        <td>
-                            @if($user->picture)
+
+                            </div>
+                            <span class="show-header-text ml-1">{{ $user->phone }}   </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.user.fields.email') }}                            </div>
+                            <span class="show-header-text ml-1">                            {{ $user->email }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                            {{ trans('cruds.user.fields.email_verified_at') }}
+                            </div>
+                            <span class="show-header-text ml-1"> {{ $user->email_verified_at }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4">                             {{ trans('cruds.user.fields.office') }}
+                            </div>
+                            <span class="show-header-text ml-1">                                                    {{ $user->office->name ?? '' }}
+
+                            </span>
+                        </div>
+                    </div>
+              
+                </div>
+                <div class="col-md-12 pt-5">
+                    <div class="dotted-border"></div>
+                </div>
+                <div class="row ml-4">
+                    <div class="col-md-6">
+                        <div class="text-left show-desc-header">                            {{ trans('cruds.user.fields.roles') }}
+                        </div>
+                        <span class="show-header-desc-text"> @foreach($user->roles as $key => $roles)
+                                <span class="label label-info">{{ $roles->title }}</span>
+                            @endforeach</span>
+                    </div>
+                    <div class="col-md-5 ml-4">
+                        <div class="text-left show-desc-header">                            {{ trans('cruds.user.fields.picture') }}
+                        </div>
+                        <span class="show-header-desc-text"> @if($user->picture)
                                 <a href="{{ $user->picture->getUrl() }}" target="_blank" style="display: inline-block">
                                     <img src="{{ $user->picture->getUrl('thumb') }}">
                                 </a>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.roles') }}
-                        </th>
-                        <td>
-                            @foreach($user->roles as $key => $roles)
-                                <span class="label label-info">{{ $roles->title }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            @endif</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+@endsection
+
+<!-- 
 <div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
@@ -187,6 +169,5 @@
             @includeIf('admin.users.relationships.userUserAlerts', ['userAlerts' => $user->userUserAlerts])
         </div>
     </div>
-</div>
+</div> -->
 
-@endsection
