@@ -67,9 +67,7 @@
         </form>
     </div>
 </div>
-<script>
-    document.querySelector('.select2-search__field').placeholder = 'Enter ...';
-</script>
+
 
 
 @endsection

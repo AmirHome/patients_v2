@@ -11,6 +11,8 @@
             <div class="card-body">
                 <form method="POST" action="{{ route("profile.password.updateProfile") }}">
                     @csrf
+                    <div class="row">
+                        <div class="col-md-6">
                     <div class="form-group">
                         <label class="required" for="name">{{ trans('cruds.user.fields.name') }}</label>
                         <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', auth()->user()->name) }}" required>
@@ -20,6 +22,8 @@
                             </div>
                         @endif
                     </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="form-group">
                         <label class="required" for="title">{{ trans('cruds.user.fields.email') }}</label>
                         <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', auth()->user()->email) }}" required>
@@ -29,8 +33,11 @@
                             </div>
                         @endif
                     </div>
+                    </div>
+                    </div>
+
                     <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
+                        <button class="btn btn-danger float-right" type="submit">
                             {{ trans('global.save') }}
                         </button>
                     </div>
@@ -61,7 +68,7 @@
                         <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger" type="submit">
+                        <button class="btn btn-danger float-right" type="submit">
                             {{ trans('global.save') }}
                         </button>
                     </div>
@@ -70,14 +77,12 @@
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
                 {{ trans('global.delete_account') }}
-            </div>
-
-            <div class="card-body">
+            </div>  <div class="card-body">
                 <form method="POST" action="{{ route("profile.password.destroyProfile") }}" onsubmit="return prompt('{{ __('global.delete_account_warning') }}') == '{{ auth()->user()->email }}'">
                     @csrf
                     <div class="form-group">
@@ -86,9 +91,9 @@
                         </button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
+            </div>  
+         </div>
+    </div> -->
 
 </div>
 @endsection

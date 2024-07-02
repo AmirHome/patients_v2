@@ -933,7 +933,7 @@ element.style{
     background-color: rgba(17, 141, 87) !important;
 }
 .btn-excel:hover {
-    background-color: rgba(17, 141, 87, 0.88);
+    background-color: rgba(17, 141, 87, 0.78) !important;
 }
 .btn-csv {
     background-color: rgba(51, 153, 255) !important;
