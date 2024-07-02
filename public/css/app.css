@@ -869,10 +869,10 @@ element.style{
  
  .date {
     background: url('https://cdn-icons-png.freepik.com/512/8132/8132223.png') no-repeat right center;
-    background-size: 20px; /* Resmin boyutunu input'un boyutuna sığacak şekilde ayarlar */
+    background-size: 20px; 
     -webkit-appearance: none; /* Safari ve Chrome desteği için */
     -moz-appearance: none; /* Firefox desteği için */
-    background-position: right 15px center; /* Arama simgesinin sola 10px uzak olmasını sağlar */
+    background-position: right 15px center;
 }
 
 .table-condensed{
@@ -977,6 +977,7 @@ element.style{
     padding-right: 15px;
     font-weight: 600;
 }
+
 
 /* pagination  btn */
 .page-link:not(:disabled):not(.disabled) {
