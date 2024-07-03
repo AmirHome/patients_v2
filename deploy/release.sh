@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Parse arguments
+# sh release.sh env=ver2 -m
 for args in "$@"; do
   case $args in
   env=*)
