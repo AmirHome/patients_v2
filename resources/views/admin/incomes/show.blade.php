@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.income.fields.amount') }}
+                            {{ trans('cruds.income.fields.amount') }} 
                         </th>
                         <td>
                             {{ $income->amount }}

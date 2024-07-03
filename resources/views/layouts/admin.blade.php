@@ -227,6 +227,7 @@
         <script src="{{ asset('js/main.js') }}"></script>
  
     <script>
+      
       $(function() {
         let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
         let csvButtonTrans = '{{ trans('global.datatables.csv') }}'
@@ -305,7 +306,7 @@
             // },
             {
               extend: 'excel',
-              className: 'btn-excel',
+              className: 'btn-excel table-btn-margin ',
               text: '<i class="far fa-file-excel"></i> ' +excelButtonTrans,
               exportOptions: {
                 columns: ':visible'
@@ -351,6 +352,7 @@
       });
   
       $(document).ready(function () {
+        
           $(".notifications-menu").on('click', function () {
               if (!$(this).hasClass('open')) {
                   $('.notifications-menu .label-warning').hide();

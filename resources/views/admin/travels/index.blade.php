@@ -4,17 +4,14 @@
 
 @includeIf('admin.travels.relationships.formFilter', [$genders])
 
-<div class="card  m-4">
+<div class="card mt-4">
     <div class="card-header">
     <h4 class="form-title-text pt-2 pl-4 font-weight-bold">  {{ trans('cruds.travel.title_singular') }} {{ trans('global.list') }}</h4>
 
     </div>
 
-    <div class="card-body">
-
-        
-
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Travel">
+    <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
+      <table class=" table table-bordered table-hover ajaxTable datatable datatable-Travel ">
             <thead>
                 <tr>
                     <th width="10">

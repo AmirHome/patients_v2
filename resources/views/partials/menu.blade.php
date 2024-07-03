@@ -16,6 +16,7 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
+
         @can('user_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -217,16 +218,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('hotel_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.hotels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hotels") || request()->is("admin/hotels/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-concierge-bell c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.hotel.title') }}
-                            </a>
-                        </li>
-                    @endcan
                 </ul>
             </li>
         @endcan
@@ -498,6 +490,16 @@
                 </ul>
             </li>
         @endcan
+        @can('hotel_access')
+                        <li class="c-sidebar-nav-item-header">
+                            <a href="{{ route("admin.hotels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/hotels") || request()->is("admin/hotels/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.hotel.title') }}
+                            </a>
+                        </li>
+                    @endcan
         @can('user_alert_access')
             <li class="c-sidebar-nav-item-header">
                 <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
@@ -508,6 +510,7 @@
                 </a>
             </li>
         @endcan
+
 
         @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
             <li class="c-sidebar-nav-item-header">

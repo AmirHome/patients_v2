@@ -374,6 +374,8 @@ a.nav-link {
     padding: calc(var(--Grid-rowSpacing) / 2)
         calc(var(--Grid-columnSpacing) / 2);
     box-sizing: border-box;
+    table-layout: auto; /* Optional: Adjust table layout as needed */
+
 }
 .dotted-border {
     border-top: 1px dotted #ccc;
@@ -417,6 +419,7 @@ a.nav-link {
 }
 .dataTables_scroll {
     padding-bottom: 20px;
+ width: 120%;
 }
 
 .dataTables_wrapper
@@ -427,8 +430,8 @@ a.nav-link {
     > tr
     > td {
     vertical-align: middle;
-    padding-top: 10px !important;
-    padding-bottom: 20px;
+    padding-top: 20px !important;
+    padding-bottom: 30px;
 }
 
 table.dataTable {
@@ -478,6 +481,10 @@ table.dataTable thead th {
     color: rgb(99, 115, 129);
     white-space: nowrap;
     text-align: left;
+
+}
+.table-btn-margin{
+    margin-left: 65px !important;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -526,7 +533,9 @@ td .btn-info:hover {
     color: rgba(51, 153, 255, 0.5) !important;
 }
 td .btn-info:before {
-    content: "\f044";
+    content: "\f040";
+    width: 250px;
+    height: 250px;
 }
 
 td .btn-danger {
@@ -706,8 +715,11 @@ td .btn-primary {
 div.dataTables_wrapper div.dataTables_filter input
 {
     padding: 20px 0 20px 30px;
-
+    margin-right: -350px !important;
 }
+table.dataTable thead > tr > th.sorting_desc:first-child {
+    padding-left: 15px !important;
+  }
 div.dataTables_wrapper div.dataTables_filter input::placeholder
 {
   padding-left:5px;
@@ -867,10 +879,17 @@ element.style{
     border: 2px solid black !important;
  }
  /*Editor Text Field*/
- /* .ck.ck-reset_all, .ck.ck-reset_all * {
-   
-    background-color: red !important;
- } */
+
+ .ck.ck-reset_all, .ck.ck-reset_all *{
+    border-color: #d8dbe0 !important;
+    background-color: white !important ;
+
+ }
+ .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners{
+    border-color: #d8dbe0 !important;
+    border-radius: 5px !important;
+
+ }
  .date {
     background: url('https://cdn-icons-png.freepik.com/512/8132/8132223.png') no-repeat right center;
     background-size: 20px; 
@@ -1006,8 +1025,13 @@ li.active .page-link {
     box-shadow: none;
 }
 
+div.dataTables_wrapper div.dataTables_paginate{
+    position: absolute;
+    margin-left: calc(100% - 150px) !important;
+}
 .dataTables_length {
     padding: 5px 5px 5px 25px;
+    margin-left: 55px !important;
 }
 div.dataTables_wrapper div.dataTables_info /*Shows data in the table*/
 {
@@ -1237,6 +1261,7 @@ div.dataTables_wrapper div.dataTables_length label
         .login-card-body {
             min-width: 300;
         }
+    
     }
     @media (max-width: 450px) {
         .login-card-body {
@@ -1419,3 +1444,46 @@ font-weight:600;
   .radio-btn{
     margin-top: 25px !important;
   }
+  @media (max-width: 1810px) {
+    div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: calc(90% - 30px) !important;
+    }
+    div.dataTables_wrapper div.dataTables_paginate {
+        margin-left: calc(80% - 30px) !important;
+    }
+}
+@media (max-width: 1310px) {
+    div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: calc(90% - 120px) !important;
+    }
+    div.dataTables_wrapper div.dataTables_paginate {
+        margin-left: calc(80% - 120px) !important;
+    }
+}
+@media (max-width: 1150px) {
+    div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: calc(90% - 130px) !important;
+    }
+    div.dataTables_wrapper div.dataTables_paginate {
+        margin-left: calc(80% - 200px) !important;
+    }
+}
+@media (max-width: 690px) {
+    div.dataTables_wrapper div.dataTables_filter input {
+        display: block !important;
+        margin-left: 0px !important;
+    }
+    div.dataTables_wrapper div.dataTables_paginate {
+        display: block !important;
+        margin-left: 0px !important;
+
+    }
+}
+/*table last childs*/
+/* table.dataTable thead > tr > th.sorting:last-child {
+    max-width: 100px !important;
+  }
+  table.dataTable tbody tr td:last-child {
+      width: 0px !important;
+      max-width: 0px !important;
+  } */
