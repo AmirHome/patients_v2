@@ -270,10 +270,10 @@
             style:    'multi+shift',
             selector: 'td:first-child'
           }, */
-          order: [],
-          scrollX: true,
-          pageLength: 10,
-          dom: 'Bfrtilp<"actions">',
+            order: [],
+            scrollX: true,
+            pageLength: 10,
+            dom: 'Bfrtilp<"actions">',
           buttons: [
           /*       {
               extend: 'selectAll',
@@ -377,8 +377,10 @@
 });
 
 window.onload = function() {
-    var filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
+  document.querySelector("#DataTables_Table_0_paginate").classList.add("col-md-12"); //pagination responsive
 
+
+    var filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
     filterInputs.forEach(function(input) {
         input.placeholder = 'Search...';
     });
@@ -388,15 +390,11 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
      const dateInputs = document.querySelectorAll('.form-control.date');
-
      dateInputs.forEach(input => {
         input.placeholder = 'Tarih Giriniz...';
     });
 });
-
-
-
-    </script>
+  </script>
     
     @yield('scripts')
 </body>
