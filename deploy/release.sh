@@ -21,6 +21,11 @@ for args in "$@"; do
   esac
 done
 
+# Function to execute commands inside Docker container
+run_in_docker() {
+    docker exec -it app bash -c "$1"
+}
+
 # Function to clean code git
 function clean_code() {
   git reset --hard
@@ -84,4 +89,4 @@ function deployment() {
 # Main script execution
 clean_code
 pull_code
-deployment
+#deployment
