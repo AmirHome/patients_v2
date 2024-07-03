@@ -6,8 +6,8 @@
         {{ trans('cruds.auditLog.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-AuditLog">
+    <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
+        <table class=" table table-bordered table-hover ajaxTable datatable datatable-AuditLog">
             <thead>
                 <tr>
                     <th width="10">

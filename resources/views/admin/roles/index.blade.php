@@ -14,9 +14,8 @@
         {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Role">
+    <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
+            <table class=" table table-bordered  table-hover datatable datatable-Role">
                 <thead>
                     <tr>
                         <th width="10">
@@ -80,7 +79,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
     </div>
 </div>
 

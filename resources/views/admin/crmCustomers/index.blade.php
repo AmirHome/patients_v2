@@ -8,8 +8,8 @@
         {{ trans('cruds.crmCustomer.title_singular') }} {{ trans('global.list') }}
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-CrmCustomer">
+    <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
+        <table class=" table table-bordered table-hover ajaxTable datatable datatable-CrmCustomer">
             <thead>
                 <tr>
                     <th width="10">

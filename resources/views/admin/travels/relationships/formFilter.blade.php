@@ -1,8 +1,8 @@
 <container>
-<div class="card-header">
+<div class="card-header pl-4">
 Vaka Listesi
     </div>
-    <div class="row pl-0">
+    <div class="row pl-3">
         <div class="col-md-12 pl-0">
 <div class="card">
     <div class="card-body">
