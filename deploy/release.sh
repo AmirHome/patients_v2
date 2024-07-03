@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Parse arguments
+# sh release.sh env=ver2 -m
 for args in "$@"; do
   case $args in
   env=*)
@@ -21,6 +22,11 @@ for args in "$@"; do
   esac
 done
 
+# Function to execute commands inside Docker container
+run_in_docker() {
+    docker exec -it app bash -c "$1"
+}
+
 # Function to clean code git
 function clean_code() {
   git reset --hard
@@ -32,17 +38,24 @@ function pull_code() {
   git pull origin master
   echo -e "\e[34mPulled code from master.\e[0m"
 }
-
-# Function to develop laravel
-function deployment() {
-  echo "Current directory: $(pwd)"
-
+# Function Docker build and start
+function docker_build_start() {
   # If environment is not provided, default to 'local'
   if [ ! -z "$ENV" ]; then
     cp "deploy/.env.$ENV" .env
   fi
 
   cp deploy/.htaccess public/.htaccess
+
+  docker-compose up -d --build
+  echo "Docker build and start completed"
+}
+
+# Function to develop laravel
+function deployment() {
+  echo "Current directory: $(pwd)"
+
+
 
   # if set argument update -u or --update, update composer
   # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
@@ -84,4 +97,5 @@ function deployment() {
 # Main script execution
 clean_code
 pull_code
-deployment
+docker_build_start
+#deployment
