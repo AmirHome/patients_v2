@@ -54,6 +54,9 @@
             <div class="card-body">
                 <form method="POST" action="{{ route("profile.password.update") }}">
                     @csrf
+                    <div class="row">
+
+                    <div class="col-md-6">
                     <div class="form-group">
                         <label class="required" for="title">New {{ trans('cruds.user.fields.password') }}</label>
                         <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
@@ -63,10 +66,15 @@
                             </div>
                         @endif
                     </div>
+                    </div>
+                    <div class="col-md-6">
                     <div class="form-group">
                         <label class="required" for="title">Repeat New {{ trans('cruds.user.fields.password') }}</label>
                         <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
                     </div>
+                    </div>
+                    </div>
+
                     <div class="form-group">
                         <button class="btn btn-danger float-right" type="submit">
                             {{ trans('global.save') }}
