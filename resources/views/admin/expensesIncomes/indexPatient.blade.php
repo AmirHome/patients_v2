@@ -2,19 +2,65 @@
 @section('content')
 
 <div class="card">
+<div class="card-header d-flex justify-content-between align-items-center mb-0 pb-0">
+            <span>  Patient Info </span>
+            <div class="form-group mb-0 pb-0">
+                <a class="btn btn-default">
+                    {{ trans('global.back_to_list') }}
+                </a>
+            </div>
+            </div>
+
     <div class="card-header">
-        Patient Info
     </div>
-    <div class="card-body">
+    <div class="card-body mb-5">
         <div class="row">
             <div class="col-md-6">
-                {{ $patient->name}}  {{ $patient->middle_name}} {{ $patient->surname}} {{ $patient->code}}
-            </div>
+            <div class="text-left">
+
+            <div class="show-header ml-4"> Hastanın Adı </div>
+            <span class="show-header-text ml-1">  {{ $patient->name}} </span>
+              </div>
+              </div>
+
+              <div class="col-md-6">
+            <div class="text-left">
+
+            <div class="show-header ml-4"> Hastanın Diğer Ismi </div>
+            <span class="show-header-text ml-1">   {{ $patient->middle_name}} </span>
+              </div>
+              </div>
+              </div>
+                <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4"> Hastanın Soyadı</div>
+                            <span class="show-header-text ml-1"> {{ $patient->surname}} </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4"> Hasta Kodu</div>
+                            <span class="show-header-text ml-1"> {{ $patient->code}} </span>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row pt-4">
+                    <div class="col-md-6">
+                        <div class="text-left">
+                            <div class="show-header ml-4"> Şehri</div>
+                            <span class="show-header-text ml-1"> {{ $patient->city->name}} </span>
+                        </div>  
+                        </div>  
+
             <div class="col-md-6">
-                {{ $patient->city->name}} {{ $patient->city->country->name}}
+            <div class="text-left">
+                            <div class="show-header ml-4">  Ülkesi</div>
+                            <span class="show-header-text ml-1"> {{ $patient->city->country->name}} </span>
+                        </div>  
+                        </div>  
 
              </div>
-        </div>
     </div>
 </div>
 <div class="card">

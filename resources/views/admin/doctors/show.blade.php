@@ -5,7 +5,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>{{ trans('global.show') }} {{ trans('cruds.doctor.title') }}</span>
             <div class="form-group mb-0">
-                <a class="btn btn-default" href="{{ route('admin.faq-questions.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.doctors.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

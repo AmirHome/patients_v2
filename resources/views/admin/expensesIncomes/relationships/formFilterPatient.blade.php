@@ -11,7 +11,7 @@
         <button class="btn-filter btn btn-secondary" data-category="4"><i class="fas fa-search"></i> Commission In</button>
     </div>    
     <div class="col-4">
-        @can('expenses_income_create')
+        @can('expenses_income_create')          
             <a class="btn btn-success float-right" href="{{ route('admin.expenses-incomes.create') }}">
               {{ trans('global.add') }} <span id="category-name">Expenses Income</span>
             </a>
