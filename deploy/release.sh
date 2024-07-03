@@ -97,4 +97,5 @@ function deployment() {
 # Main script execution
 clean_code
 pull_code
+docker_build_start
 #deployment
