@@ -5,8 +5,8 @@
 <div class="card-header d-flex justify-content-between align-items-center mb-0 pb-0">
             <span>  Patient Info </span>
             <div class="form-group mb-0 pb-0">
-                <a class="btn btn-default">
-                    {{ trans('global.back_to_list') }}
+                <a class="btn btn-default" href="{{ route('admin.expenses-incomes.index', ['type' => 'financial']) }}">
+                    {{ trans('global.back_to_list') }} 
                 </a>
             </div>
             </div>

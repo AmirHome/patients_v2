@@ -866,7 +866,11 @@ element.style{
 .select2-container--default .select2-search--dropdown .select2-search__field:focus{
     border: 2px solid black !important;
  }
- 
+ /*Editor Text Field*/
+ /* .ck.ck-reset_all, .ck.ck-reset_all * {
+   
+    background-color: red !important;
+ } */
  .date {
     background: url('https://cdn-icons-png.freepik.com/512/8132/8132223.png') no-repeat right center;
     background-size: 20px; 

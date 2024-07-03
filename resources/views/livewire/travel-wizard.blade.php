@@ -407,7 +407,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="notify_hospitals">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
+                                <label for="notify_hospitals"  style="margin-top:35px;">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
                                 <div wire:ignore>
                                     <div >
                                         <span class="btn btn-info btn-xs select-all mb-3">{{ trans('global.select_all') }}</span>
