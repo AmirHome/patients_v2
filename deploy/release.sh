@@ -38,17 +38,24 @@ function pull_code() {
   git pull origin master
   echo -e "\e[34mPulled code from master.\e[0m"
 }
-
-# Function to develop laravel
-function deployment() {
-  echo "Current directory: $(pwd)"
-
+# Function Docker build and start
+function docker_build_start() {
   # If environment is not provided, default to 'local'
   if [ ! -z "$ENV" ]; then
     cp "deploy/.env.$ENV" .env
   fi
 
   cp deploy/.htaccess public/.htaccess
+
+  docker-compose up -d --build
+  echo "Docker build and start completed"
+}
+
+# Function to develop laravel
+function deployment() {
+  echo "Current directory: $(pwd)"
+
+
 
   # if set argument update -u or --update, update composer
   # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
