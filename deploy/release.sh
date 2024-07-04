@@ -52,7 +52,9 @@ function docker_build_start() {
   # cp deploy/.htaccess public/.htaccess
 
   docker-compose down
-  docker-compose rm -f -v app webserver mysql8
+  docker-compose rm -f app webserver mysql8
+
+  docker-compose build
 
   docker-compose up -d --build
   echo "\n Docker build and start completed. \n\n\n"
