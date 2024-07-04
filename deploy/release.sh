@@ -61,6 +61,7 @@ function deployment() {
 
 
   if [ "$DOCKER" ]; then
+    
     # if [ -d "vendor" ]; then
         run_in_docker "cd admin && rm -rf vendor"
     # fi
@@ -74,7 +75,7 @@ function deployment() {
     run_in_docker "cd admin && composer clear-cache"
     run_in_docker "cd admin && composer update"
     # run_in_docker "cd admin && composer dump-autoload"
-    run_in_docker "chown -R deploy:deploy /var/www"
+    run_in_docker "chown -R www-data:www-data /var/www"
 
     # if set argument migrate -m or --migrate, migrate database
 
