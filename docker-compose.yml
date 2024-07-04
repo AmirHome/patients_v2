@@ -44,7 +44,7 @@ services:
     depends_on:
       - app
 
-  #MySQL Service
+  ### Run solo docker-compose up --build db
   db:
     build:
       context: "./deploy/docker/bin/${DATABASE}"
