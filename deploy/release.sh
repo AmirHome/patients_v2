@@ -74,6 +74,7 @@ function deployment() {
     run_in_docker "cd admin && composer clear-cache"
     run_in_docker "cd admin && composer update"
     # run_in_docker "cd admin && composer dump-autoload"
+    run_in_docker "chown -R deploy:deploy /var/www"
 
     # if set argument migrate -m or --migrate, migrate database
 
