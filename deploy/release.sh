@@ -33,8 +33,8 @@ run_in_docker() {
 
 # Function to clean code git
 function clean_code() {
-  #git reset --hard
-  #git clean -df
+  git reset --hard
+  git clean -df
   echo "\n Cleaned code from git. \n\n\n"
 }
 
