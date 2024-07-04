@@ -1,17 +1,11 @@
-@extends('layouts.admin')
-@section('content')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.role.title_singular') }}
-    </div>
-
-    <div class="card-body">
-        
+<div class="modal fade" id="create-roles" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.roles.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="card-header">Create Roles</div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.role.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Roles Name.." type="text" name="title" id="title" value="{{ old('title', '') }}" required>
@@ -25,7 +19,7 @@
 </div>
 </div>
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="permissions" style="margin-top:35px;">{{ trans('cruds.role.fields.permissions') }}</label>
                 <div style="padding-bottom: 4px">
@@ -47,7 +41,7 @@
             </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger float-right" type="submit">
+                <button class="btn btn-danger float-right mb-4" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>
@@ -56,7 +50,7 @@
         </form>
     </div>
 </div>
+</div>
 
 
 
-@endsection

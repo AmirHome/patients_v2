@@ -63,7 +63,10 @@ class UserAlertsController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.userAlerts.index');
+        
+        $users = User::pluck('name', 'id');
+
+        return view('admin.userAlerts.index', compact('users'));
     }
 
     public function create()

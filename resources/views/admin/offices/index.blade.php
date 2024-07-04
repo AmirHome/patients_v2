@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.offices.create')
+
 @can('office_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.offices.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-offices">
                 {{ trans('global.add') }} {{ trans('cruds.office.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

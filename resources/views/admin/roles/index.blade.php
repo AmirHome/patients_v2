@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.roles.create')
+
 @can('role_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.roles.create') }}">
+            <button class="btn btn-success"data-toggle="modal" data-target="#create-roles">
                 {{ trans('global.add') }} {{ trans('cruds.role.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan
@@ -52,7 +54,7 @@
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>
-                            <td>
+                            <td >
                                 <!-- @can('role_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.roles.show', $role->id) }}">
                                         {{ trans('global.view') }}

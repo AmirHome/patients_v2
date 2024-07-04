@@ -60,8 +60,10 @@ class FaqQuestionController extends Controller
 
             return $table->make(true);
         }
+        $categories = FaqCategory::pluck('category', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.faqQuestions.index');
+        return view('admin.faqQuestions.index', compact('categories'));
+
     }
 
     public function create()

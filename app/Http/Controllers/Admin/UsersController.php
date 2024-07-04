@@ -102,8 +102,11 @@ class UsersController extends Controller
 
             return $table->make(true);
         }
+        $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.index');
+        $roles = Role::pluck('title', 'id');
+
+        return view('admin.users.index', compact('offices', 'roles'));
     }
 
     public function create()

@@ -22,16 +22,16 @@ class ProvinceController extends Controller
         if ($request->ajax()) {
             $query = Province::with(['country'])->select(sprintf('%s.*', (new Province)->table));
             $table = Datatables::of($query);
-
+    
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
-
+    
             $table->editColumn('actions', function ($row) {
                 $viewGate      = 'province_show';
                 $editGate      = 'province_edit';
                 $deleteGate    = 'province_delete';
                 $crudRoutePart = 'provinces';
-
+    
                 return view('partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
@@ -40,24 +40,26 @@ class ProvinceController extends Controller
                     'row'
                 ));
             });
-
+    
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
             $table->addColumn('country_name', function ($row) {
                 return $row->country ? $row->country->name : '';
             });
-
+    
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
-
+    
             $table->rawColumns(['actions', 'placeholder', 'country']);
-
+    
             return $table->make(true);
         }
-
-        return view('admin.provinces.index');
+    
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+    
+        return view('admin.provinces.index', compact('countries'));
     }
 
     public function ajaxIndexByCountryId($countryId){

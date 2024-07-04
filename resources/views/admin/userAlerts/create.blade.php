@@ -1,14 +1,10 @@
-@extends('layouts.admin')
-@section('content')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.userAlert.title_singular') }}
-    </div>
-
-    <div class="card-body">
+<div class="modal fade" id="create-user-alerts" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="margin-top:15vh;">
         <form method="POST" action="{{ route("admin.user-alerts.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="card-header">Create User Alerts</div>
+
             <div class="row">
                 <div class="col-md-6">
                     
@@ -37,7 +33,7 @@
             </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
             <div class="form-group">
                 <label for="users" style="margin-top:35px;">{{ trans('cruds.userAlert.fields.user') }}</label>
                 <div style="padding-bottom: 4px">
@@ -60,14 +56,14 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-danger float-right" type="submit">
+                <button class="btn btn-danger float-right mb-4" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>
         </form>
     </div>
 </div>
+</div>
 
 
 
-@endsection

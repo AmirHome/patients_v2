@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.campaignOrgs.create')
+
 @can('campaign_org_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.campaign-orgs.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-campaign-orgs">
                 {{ trans('global.add') }} {{ trans('cruds.campaignOrg.title_singular') }}
-            </a>
+</button>
         </div>
     </div>
 @endcan
@@ -36,7 +38,7 @@
                     <th>
                         {{ trans('cruds.campaignOrg.fields.status') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

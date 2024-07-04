@@ -1,11 +1,14 @@
 @extends('layouts.admin')
 @section('content')
+ <!--Modal Dosyalar-->
+ @includeIf('admin.countries.create')
+
 @can('country_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.countries.create') }}">
+            <button class="btn btn-success"  data-toggle="modal" data-target="#create-countries">
                 {{ trans('global.add') }} {{ trans('cruds.country.title_singular') }}
-            </a>
+          </button>
         </div>
     </div>
 @endcan
@@ -31,7 +34,7 @@
                         {{ trans('cruds.country.fields.name') }}
                     </th>
          
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>
@@ -39,7 +42,6 @@
         </table>
     </div>
 </div>
-
 
 
 @endsection

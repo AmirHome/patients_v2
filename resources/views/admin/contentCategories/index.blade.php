@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.contentCategories.create')
+
 @can('content_category_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-categories.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-content-categories">
                 {{ trans('global.add') }} {{ trans('cruds.contentCategory.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

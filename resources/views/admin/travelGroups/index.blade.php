@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.travelGroups.create')
+
 @can('travel_group_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.travel-groups.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#travel-groups">
                 {{ trans('global.add') }} {{ trans('cruds.travelGroup.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan
@@ -30,7 +32,7 @@
                     <th>
                         {{ trans('cruds.travelGroup.fields.color') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>
