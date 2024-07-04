@@ -57,9 +57,6 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
     volumes:
       - ./deploy/docker/config/mysql/my.cnf:/etc/mysql/my.cnf
       - ${MYSQL_DATA_DIR-./deploy/docker/data/mysql}:/var/lib/mysql
