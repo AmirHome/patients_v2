@@ -56,9 +56,9 @@ services:
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      # MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - ./deploy/docker/config/mysql/my.cnf:/etc/mysql/my.cnf
+      # - ./deploy/docker/config/mysql/my.cnf:/etc/mysql/my.cnf
       - ${MYSQL_DATA_DIR-./deploy/docker/data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./deploy/docker/logs/mysql}:/var/log/mysql
     networks:
