@@ -56,7 +56,7 @@ function docker_build_start() {
   # docker rm -f webserver
   # docker rm -f mysql8
 
-  docker rmi admin_db
+  docker rmi admin-db
 
   docker-compose build
 
