@@ -572,8 +572,16 @@ td .btn-danger:focus,
 td .btn-primary:focus {
     line-height: 0px;
     font-weight: 500;
-    color: inherit !important;
     background-color: inherit !important;
+}
+td .btn-info:focus{
+color: rgba(51, 153, 255, 0.5) !important;
+}
+td .btn-danger:focus{
+    color: rgba(229, 83, 83, 0.6) !important;
+}
+td .btn-primary:focus{
+    color: rgba(50, 31, 219, 0.6) !important;
 
 }
 td .btn-info,
@@ -1342,6 +1350,9 @@ thead tr {
 .fc-row .fc-content-skeleton {
     padding-bottom:0px !important;
 }
+.fc-state-default{
+    background-image: none !important;
+}
 
 /*Modal*/
 .modal-content{
@@ -1373,9 +1384,7 @@ font-weight:600;
     font-weight:600;
     }
  
- 
-     
-      body  .show-header{ 
+ body  .show-header{ 
     color: #637381 !important;
     font-size: 0.875rem !important;
     line-height:1.57143 !important;
@@ -1470,3 +1479,17 @@ font-weight:600;
         margin-left: 0px !important;
     }
 }
+
+tr>td>.fc-day-grid-event {
+    margin:4px 4px;
+    border-radius: 7px;
+}
+.fc-event-container {
+    position: relative;
+    top: -14vh; /* İstediğiniz top değerini burada belirleyin */
+  }
+  .fc-event-container a {
+     padding: 4px;
+     line-height:20px;
+     font-size:13px;
+  }
