@@ -57,7 +57,7 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-      # MYSQL_USER: ${DB_USERNAME}
+      MYSQL_USER: ${DB_USERNAME}
     volumes:
       - ${MYSQL_INITDB_DIR-./deploy/docker/config/initdb}:/docker-entrypoint-initdb.d
       - ${MYSQL_DATA_DIR-./deploy/docker/data/mysql}:/var/lib/mysql
