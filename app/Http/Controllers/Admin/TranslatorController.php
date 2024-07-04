@@ -61,8 +61,9 @@ class TranslatorController extends Controller
 
             return $table->make(true);
         }
-
-        return view('admin.translators.index');
+    
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('admin.translators.index', compact('cities'));
     }
 
     public function create()

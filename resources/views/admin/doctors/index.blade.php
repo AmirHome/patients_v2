@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.doctors.create')
+
 @can('doctor_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.doctors.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-doctors">
                 {{ trans('global.add') }} {{ trans('cruds.doctor.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan
@@ -37,7 +39,7 @@
                         {{ trans('cruds.doctor.fields.city') }}
                     </th>
                    
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

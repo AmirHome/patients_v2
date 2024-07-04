@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.departments.create')
+
 @can('department_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.departments.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-departments">
                 {{ trans('global.add') }} {{ trans('cruds.department.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

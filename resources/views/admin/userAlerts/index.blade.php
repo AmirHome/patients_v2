@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.userAlerts.create')
+
 @can('user_alert_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.user-alerts.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-user-alerts">
                 {{ trans('global.add') }} {{ trans('cruds.userAlert.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

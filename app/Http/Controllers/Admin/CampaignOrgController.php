@@ -60,7 +60,8 @@ class CampaignOrgController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.campaignOrgs.index');
+        $channels = CampaignChannel::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('admin.campaignOrgs.index', compact('channels'));
     }
 
     public function ajaxIndexByChannelId($channel)

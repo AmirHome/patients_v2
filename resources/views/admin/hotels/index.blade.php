@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.hotels.create')
+
 @can('hotel_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.hotels.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-hotels">
                 {{ trans('global.add') }} {{ trans('cruds.hotel.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

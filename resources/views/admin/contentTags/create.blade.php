@@ -1,19 +1,14 @@
-@extends('layouts.admin')
-@section('content')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.contentTag.title_singular') }}
-    </div>
-
-    <div class="card-body">
+<div class="modal fade" id="create-content-tags" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.content-tags.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="card-header">Create Content Tags</div>
             <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.contentTag.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Please Enter Name.." type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -22,11 +17,10 @@
                 <span class="help-block">{{ trans('cruds.contentTag.fields.name_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-6">
-
+            <div class="col-md-12">
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.contentTag.fields.slug') }}</label>
-                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" placeholder="Please Enter Slug.." type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
                 @if($errors->has('slug'))
                     <div class="invalid-feedback">
                         {{ $errors->first('slug') }}
@@ -38,14 +32,11 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-danger float-right" type="submit">
+                <button class="btn btn-danger float-right mb-4" type="submit">
                     {{ trans('global.save') }}
                 </button>
             </div>
         </form>
     </div>
 </div>
-
-
-
-@endsection
+</div>

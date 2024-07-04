@@ -66,8 +66,11 @@ class HotelController extends Controller
 
             return $table->make(true);
         }
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.hotels.index');
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.hotels.index', compact('cities', 'countries'));
     }
 
     public function create()

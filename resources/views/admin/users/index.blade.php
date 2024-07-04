@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.users.create')
+
 @can('user_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.users.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-users">
                 {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
-            </a>
+</button>
         </div>
     </div>
 @endcan
@@ -39,15 +41,14 @@
                     <th>
                         {{ trans('cruds.user.fields.job_type') }}
                     </th>
-                    <th>
-                        &nbsp;
+                    <th width="0" class="text-center align-middle float-middle">
+                    &nbsp; 
                     </th>
                 </tr>
             </thead>
         </table>
     </div>
 </div>
-
 
 
 @endsection
@@ -114,6 +115,59 @@
   });
   
 });
+
+    Dropzone.options.pictureDropzone = {
+    url: '{{ route('admin.users.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+      width: 4096,
+      height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="picture"]').remove()
+      $('form').append('<input type="hidden" name="picture" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="picture"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+@if(isset($user) && $user->picture)
+      var file = {!! json_encode($user->picture) !!}
+          this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="picture" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+@endif
+    },
+    error: function (file, response) {
+        if ($.type(response) === 'string') {
+            var message = response //dropzone sends it's own error messages in string
+        } else {
+            var message = response.errors.file
+        }
+        file.previewElement.classList.add('dz-error')
+        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+        _results = []
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            node = _ref[_i]
+            _results.push(node.textContent = message)
+        }
+
+        return _results
+    }
+}
 
 </script>
 @endsection

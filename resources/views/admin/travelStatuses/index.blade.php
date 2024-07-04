@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.travelStatuses.create')
+
 @can('travel_status_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.travel-statuses.create') }}">
+            <button class="btn btn-success"  data-toggle="modal" data-target="#create-travel-status">
                 {{ trans('global.add') }} {{ trans('cruds.travelStatus.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan
@@ -31,7 +33,7 @@
                     <th>
                         {{ trans('cruds.travelStatus.fields.ordering') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

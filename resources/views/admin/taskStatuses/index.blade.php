@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.taskStatuses.create')
+
 @can('task_status_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.task-statuses.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-task-status">
                 {{ trans('global.add') }} {{ trans('cruds.taskStatus.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

@@ -1,14 +1,10 @@
-@extends('layouts.admin')
-@section('content')
-
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.office.title_singular') }}
-    </div>
-
-    <div class="card-body">
+<!-- <div class="modal fade" id="create-offices" tabindex="-1" role="dialog"  aria-hidden="true" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.offices.store") }}" enctype="multipart/form-data">
             @csrf
+            <div class="card-header">Create Offices</div>
+
             <div class="row">
                 <div class="col-md-6">
             <div class="form-group">
@@ -88,7 +84,7 @@
         </form>
     </div>
 </div>
+</div>
 
 
-
-@endsection
+ -->

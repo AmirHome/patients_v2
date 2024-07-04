@@ -1470,11 +1470,3 @@ font-weight:600;
         margin-left: 0px !important;
     }
 }
-/*table last childs*/
-/* table.dataTable thead > tr > th.sorting:last-child {
-    max-width: 100px !important;
-  }
-  table.dataTable tbody tr td:last-child {
-      width: 0px !important;
-      max-width: 0px !important;
-  } */

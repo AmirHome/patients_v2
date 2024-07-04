@@ -1,11 +1,12 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.faqQuestions.create')
 @can('faq_question_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.faq-questions.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-faq-questions">
                 {{ trans('global.add') }} {{ trans('cruds.faqQuestion.title_singular') }}
-            </a>
+            </button>
         </div>
     </div>
 @endcan

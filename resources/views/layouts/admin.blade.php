@@ -378,6 +378,7 @@
 
 window.onload = function() {
   document.querySelector("#DataTables_Table_0_paginate").classList.add("col-md-12"); //pagination responsive
+  document.querySelector("#DataTables_Table_0_paginate").classList.add("float-right"); //pagination responsive
 
 
     var filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');

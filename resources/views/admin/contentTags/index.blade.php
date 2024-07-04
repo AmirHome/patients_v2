@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.contentTags.create')
+
 @can('content_tag_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-tags.create') }}">
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-content-tags">
                 {{ trans('global.add') }} {{ trans('cruds.contentTag.title_singular') }}
-            </a>
+</button>
         </div>
     </div>
 @endcan
