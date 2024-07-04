@@ -63,6 +63,7 @@ services:
       - ${MYSQL_LOG_DIR-./deploy/docker/logs/mysql}:/var/log/mysql
     networks:
       - app-network
+    command: --skip-grant-tables
 
 #Docker Networks
 networks:
