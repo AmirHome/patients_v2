@@ -59,7 +59,7 @@ function docker_build_start() {
 
   docker-compose build
 
-  docker-compose up -d --build
+  docker-compose up --build -d
   echo "\n Docker build and start completed. \n\n\n"
 }
 
