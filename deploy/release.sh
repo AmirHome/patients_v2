@@ -28,7 +28,7 @@ done
 
 # Function to execute commands inside Docker container
 run_in_docker() {
-    docker exec -it app bash -c "$1"
+    docker exec -u root -it app bash -c "$1"
 }
 
 # Function to clean code git
