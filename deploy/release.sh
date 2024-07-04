@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Parse arguments
-# sh release.sh env=ver2 -m
+# sh deploy/release.sh env=ver2 -m -d
 for args in "$@"; do
   case $args in
   env=*)
@@ -14,6 +14,10 @@ for args in "$@"; do
     ;;
   -ms)
     MIGRATESEED=true
+    shift
+    ;;
+  -d)
+    DOCKER=true
     shift
     ;;
   *)
@@ -29,14 +33,14 @@ run_in_docker() {
 
 # Function to clean code git
 function clean_code() {
-  git reset --hard
-  git clean -df
-  echo -e "\e[34mCleaned code from git.\e[0m"
+  #git reset --hard
+  #git clean -df
+  echo "\n Cleaned code from git. \n\n\n"
 }
 
 function pull_code() {
   git pull origin master
-  echo -e "\e[34mPulled code from master.\e[0m"
+  echo "\nPulled code from master.\n\n\n"
 }
 # Function Docker build and start
 function docker_build_start() {
@@ -45,10 +49,10 @@ function docker_build_start() {
     cp "deploy/.env.$ENV" .env
   fi
 
-  cp deploy/.htaccess public/.htaccess
+  # cp deploy/.htaccess public/.htaccess
 
   docker-compose up -d --build
-  echo "Docker build and start completed"
+  echo "\n Docker build and start completed. \n\n\n"
 }
 
 # Function to develop laravel
@@ -56,34 +60,61 @@ function deployment() {
   echo "Current directory: $(pwd)"
 
 
+  if [ "$DOCKER" ]; then
+    # if [ -d "vendor" ]; then
+        run_in_docker "cd admin && rm -rf vendor"
+    # fi
 
-  # if set argument update -u or --update, update composer
-  # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
-  # composer update
-  # fi
+    # Remove composer.lock if it exists
+    # if [ -f "composer.lock" ]; then
+        run_in_docker "cd admin && rm composer.lock"
+    # fi
 
-  composer update --ignore-platform-req=ext-zip --ignore-platform-req=ext-exif
+    # Update Composer and clear cache
+    run_in_docker "cd admin && composer clear-cache"
+    run_in_docker "cd admin && composer update"
+    # run_in_docker "cd admin && composer dump-autoload"
 
-  php artisan key:generate
-  php artisan storage:link
+    # if set argument migrate -m or --migrate, migrate database
 
-  php artisan media-library:clear
-  php artisan optimize:clear
-  # php artisan config:clear
-  # php artisan route:clear
-  # php artisan view:clear
-  # php artisan cache:clear
-  # php artisan log:clear
+    if [ "$MIGRATESEED" ]; then
+      run_in_docker "cd admin && php artisan migrate:fresh --seed"
+      echo "\n Database migrated and seeded.\n\n\n"
+    else
+      run_in_docker "cd admin && php artisan migrate --force"
+      echo "\n Database migrated.\n\n\n"
+    fi
 
-  # if set argument migrate -m or --migrate, migrate database
-
-  if [ "$MIGRATESEED" ]; then
-    php artisan migrate:fresh --seed
-    echo "Database migrated and seeded."
   else
-    php artisan migrate --force
-    echo "Database migrated."
+
+    # if set argument update -u or --update, update composer
+    # if [ "$1" == "-u" ] || [ "$1" == "--update" ]; then
+    # composer update
+    # fi
+
+    composer update --ignore-platform-req=ext-zip --ignore-platform-req=ext-exif
+
+    php artisan key:generate
+    php artisan storage:link
+
+    php artisan media-library:clear
+    php artisan optimize:clear
+    # php artisan config:clear
+    # php artisan route:clear
+    # php artisan view:clear
+    # php artisan cache:clear
+    # php artisan log:clear
+    # if set argument migrate -m or --migrate, migrate database
+
+    if [ "$MIGRATESEED" ]; then
+      php artisan migrate:fresh --seed
+      echo "Database migrated and seeded."
+    else
+      php artisan migrate --force
+      echo "Database migrated."
+    fi
   fi
+
 
   # php artisan test
   # php artisan optimize
@@ -98,4 +129,4 @@ function deployment() {
 clean_code
 pull_code
 docker_build_start
-#deployment
+deployment
