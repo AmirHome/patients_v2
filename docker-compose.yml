@@ -22,6 +22,8 @@ services:
       - ./deploy/docker/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
+    depends_on:
+      - db
 
   #Nginx Service
   webserver:
@@ -39,6 +41,8 @@ services:
       - ./deploy/docker/logs/nginx:/var/log/nginx
     networks:
       - app-network
+    depends_on:
+      - app
 
   #MySQL Service
   db:
@@ -65,7 +69,3 @@ services:
 networks:
   app-network:
     driver: bridge
-#Volumes
-volumes:
-  dbdata:
-    driver: local
