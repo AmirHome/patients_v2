@@ -53,14 +53,15 @@ services:
     tty: true
     ports:
       - "3306:3306"
-    environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      # MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
-      # - ./deploy/docker/config/mysql/my.cnf:/etc/mysql/my.cnf
+      - ${MYSQL_INITDB_DIR-./deploy/docker/config/initdb}:/docker-entrypoint-initdb.d
       - ${MYSQL_DATA_DIR-./deploy/docker/data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./deploy/docker/logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - app-network
     # command: --skip-grant-tables
