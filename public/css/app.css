@@ -60,7 +60,7 @@ body {
 .c-header-toggler{
     text-align: left;
     border-radius: 50%;
-    transform: translateX(-35px);
+    transform: translateX(-38px);
     z-index: 9999;
 }
 
@@ -399,6 +399,7 @@ a.nav-link {
     padding-left: 0px;
     border: 0px;
 }
+
 .card-body {
     font-size: 0.875rem;
 }
@@ -1010,7 +1011,41 @@ element.style{
     padding-right: 15px;
     font-weight: 600;
 }
+.btn-no,.btn-yes{
+    color: rgb(32, 101, 209);
+    font-weight:700;
+    line-height:1.71429;
+    font-size:0.875rem;
+    min-width:64px;
+    padding:6px 8px;
+    border:0px;
+    background-color: white;
+    border-radius:8px
+}
+.btn-no:hover,.btn-yes:hover{
+background-color: #EEF3FB;
+color: rgb(32, 101, 209) !important;
 
+}
+.btn-no:focus,.btn-yes:focus{
+    color: rgb(32, 101, 209) !important;
+    background-color: #EEF3FB;
+    border: 0px !important;
+    box-shadow: none  !important;
+    outline:none !important;
+    animation: gradient 0.8s forwards;
+    }
+    @keyframes gradient {
+        0% {
+            background-color: #EEF3FB;
+            color: rgb(32, 101, 209) !important;
+        }
+        100% {
+            background-color: #c3d4f7; 
+            color: rgb(32, 101, 209) !important;
+        }
+    }
+     
 
 /* pagination  btn */
 .page-link:not(:disabled):not(.disabled) {

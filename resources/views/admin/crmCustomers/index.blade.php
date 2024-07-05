@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.crmCustomers.relationships.delete_modal')
 
 @includeIf('admin.crmCustomers.relationships.formFilter')
 
@@ -39,7 +40,7 @@
                     <th>
                         {{ trans('cruds.travel.fields.created_at') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

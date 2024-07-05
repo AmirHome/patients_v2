@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+@includeIf('admin.tasks.relationships.delete_modal')
 @includeIf('admin.tasks.relationships.formFilter')
 
 <div class="card">

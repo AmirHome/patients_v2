@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.crmStatuses.create')
+@includeIf('admin.crmStatuses.relationships.delete_modal')
 
 @can('crm_status_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -32,7 +33,7 @@
                     <th>
                         {{ trans('cruds.crmStatus.fields.color') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

@@ -2,6 +2,7 @@
 @section('content')
  <!--Modal Dosyalar-->
  @includeIf('admin.countries.create')
+ @includeIf('admin.countries.relationships.delete_modal')
 
 @can('country_create')
     <div style="margin-bottom: 10px;" class="row">

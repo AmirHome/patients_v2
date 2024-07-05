@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.faqQuestions.create')
+@includeIf('admin.faqQuestions.relationships.delete_modal')
 @can('faq_question_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">

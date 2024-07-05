@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.users.create')
+@includeIf('admin.users.relationships.delete_modal')
 
 @can('user_create')
     <div style="margin-bottom: 10px;" class="row">

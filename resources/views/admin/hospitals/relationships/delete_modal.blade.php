@@ -2,11 +2,24 @@
 <div class="modal fade" id="delete_modal_hospitals" tabindex="-1" role="dialog"
     aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="margin-top:30vh;">
             <form action="{{ route('admin.hospitals.destroy', [0]) }}" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button class="btn btn-xs btn-danger submit" type="button">></button>
+                <div class="card-header mt-2" style="font-size: 1.2rem;">Silmek istediğinize emin misiniz?</div>
+                <div class="row">
+                    <h6 class="welcome-under-text mx-3">Bu İşlem Geri Alınamaz...</h6><br><br>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="form-group" style="padding-right:3px;">
+                        <button type="button" class="btn-no" data-dismiss="modal" aria-label="Close">
+                            {{ trans('global.no') }}
+                        </button>
+                    </div>
+                    <div class="form-group" style="padding-left:0px;">
+                        <button class="btn-yes btn btn-xs  submit" type="button">{{ trans('global.yes') }}</button>
+                    </div>
+                </div>                
             </form>
         </div>
     </div>

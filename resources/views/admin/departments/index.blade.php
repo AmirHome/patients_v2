@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.departments.create')
+@includeIf('admin.departments.relationships.delete_modal')
 
 @can('department_create')
     <div style="margin-bottom: 10px;" class="row">

@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.campaignOrgs.create')
+@includeIf('admin.campaignOrgs.relationships.delete_modal')
 
 @can('campaign_org_create')
     <div style="margin-bottom: 10px;" class="row">

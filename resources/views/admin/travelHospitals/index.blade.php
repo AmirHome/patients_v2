@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.travelHospitals.create')
+@includeIf('admin.travelHospitals.relationships.delete_modal')
 
 @can('travel_hospital_create')
     <div style="margin-bottom: 10px;" class="row">

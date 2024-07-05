@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.travelGroups.create')
+@includeIf('admin.travelGroups.relationships.delete_modal')
 
 @can('travel_group_create')
     <div style="margin-bottom: 10px;" class="row">

@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.userAlerts.create')
+@includeIf('admin.userAlerts.relationships.delete_modal')
 
 @can('user_alert_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -38,7 +39,7 @@
                     <th>
                         {{ trans('cruds.userAlert.fields.created_at') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

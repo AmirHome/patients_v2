@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.translators.create')
+@includeIf('admin.translators.relationships.delete_modal')
 
 @can('translator_create')
     <div style="margin-bottom: 10px;" class="row">

@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.taskStatuses.relationships.delete_modal')
 @includeIf('admin.taskStatuses.create')
 
 @can('task_status_create')
@@ -32,7 +33,7 @@
                     <th>
                         {{ trans('cruds.taskStatus.fields.color') }}
                     </th>
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>

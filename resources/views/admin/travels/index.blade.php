@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
+@includeIf('admin.travels.relationships.delete_modal')
 
 @includeIf('admin.travels.relationships.formFilter', [$genders])
 

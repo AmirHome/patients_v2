@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.contentPages.relationships.delete_modal')
 @can('content_page_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">

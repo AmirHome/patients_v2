@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.provinces.create')
+@includeIf('admin.provinces.relationships.delete_modal')
 
 @can('province_create')
     <div style="margin-bottom: 10px;" class="row">
