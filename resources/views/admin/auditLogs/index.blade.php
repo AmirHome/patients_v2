@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+@includeIf('admin.users.relationships.show_modal')
 
 <div class="card">
     <div class="card-header">

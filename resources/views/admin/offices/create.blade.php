@@ -1,6 +1,6 @@
  <div class="modal fade" id="create-offices" tabindex="-1" role="dialog"  aria-hidden="true" >
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="margin-top:25vh;">
+        <div class="modal-content" style="margin-top:15vh;">
         <form method="POST" action="{{ route("admin.offices.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="card-header">Create Offices</div>

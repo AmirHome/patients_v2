@@ -751,7 +751,6 @@ input[type="search" i] {
   background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw6dk7omKm0_uFS5GJbDqszFezNaqFk8aOABSnfBVHCcucQ92mIPkVZ0fFZt8HLSl0npM&usqp=CAU') no-repeat left center; /* Arama simgesi */
   background-position: 10px center; /* Arama simgesinin sola 10px uzak olmasını sağlar */
   background-size: 1em;
-  margin-right: 10px !important;
 
 }
 /*Select İnput*/
@@ -1072,11 +1071,11 @@ li.active .page-link {
 
 div.dataTables_wrapper div.dataTables_paginate{
     position: absolute;
-    margin-left: 15%;
+    margin-left: 17.9%;
 }
 .dataTables_length {
     padding: 5px 5px 5px 25px;
-    margin-left: 55px !important;
+    margin-left: 63px !important;
 }
 div.dataTables_wrapper div.dataTables_info /*Shows data in the table*/
 {
@@ -1449,7 +1448,13 @@ font-weight:600;
         font-weight:400;
       }
       
-      
+      html:not([dir=rtl]) .input-group>.form-control:not(:last-child){
+        left: 63px;
+      }
+      html:not([dir=rtl]) .input-group-append {
+        margin-left: 63px;
+        z-index: 0;
+    }
       
       .form-group label {
         position: absolute;
@@ -1512,6 +1517,11 @@ font-weight:600;
     div.dataTables_wrapper div.dataTables_filter input {
         display: block !important;
         margin-left: 0px !important;
+    }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        margin-right: 45px;
+        white-space: nowrap;
+        justify-content: center;
     }
 }
 

@@ -40,7 +40,7 @@
                         {{ trans('cruds.office.fields.address') }}
                     </th>
              
-                    <th>
+                    <th width="0">
                         &nbsp;
                     </th>
                 </tr>
