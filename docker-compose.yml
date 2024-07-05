@@ -25,7 +25,7 @@ services:
     depends_on:
       - db
 
-  #Nginx Service
+  ### Run solo Nginx docker-compose up --build webserver
   webserver:
     image: nginx:stable-alpine
     container_name: webserver
@@ -44,7 +44,7 @@ services:
     depends_on:
       - app
 
-  ### Run solo docker-compose up --build db
+  ### Run solo Mysql docker-compose up --build db
   db:
     build:
       context: "./deploy/docker/bin/${DATABASE}"
