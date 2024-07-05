@@ -64,8 +64,9 @@ class OfficeController extends Controller
 
             return $table->make(true);
         }
+        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.offices.index');
+        return view('admin.offices.index', compact('cities'));
     }
 
     public function create()

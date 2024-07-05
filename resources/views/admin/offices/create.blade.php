@@ -1,4 +1,4 @@
-<!-- <div class="modal fade" id="create-offices" tabindex="-1" role="dialog"  aria-hidden="true" >
+ <div class="modal fade" id="create-offices" tabindex="-1" role="dialog"  aria-hidden="true" >
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.offices.store") }}" enctype="multipart/form-data">
@@ -76,15 +76,19 @@
             </div>
             </div>
 
-            <div class="form-group">
-                <button class="btn btn-danger float-right" type="submit">
-                    {{ trans('global.save') }}
-                </button>
-            </div>
+            <div class="row justify-content-end">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                            {{ trans('global.cancel') }}
+                        </button>
+                    </div>
+                    <div class="form-group ">
+                        <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                    </div>
+                </div>
         </form>
     </div>
 </div>
 </div>
 
-
- -->
+ 
