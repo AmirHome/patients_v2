@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.hospitals.create')
+@includeIf('admin.hospitals.relationships.delete_modal')
 
 @can('hospital_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <button class="btn btn-success" data-toggle="modal" data-target="#create-hospitals">
                 {{ trans('global.add') }} {{ trans('cruds.hospital.title_singular') }}
-</button>
+            </button>
         </div>
     </div>
 @endcan
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.hospital.title_singular') }} {{ trans('global.list') }}

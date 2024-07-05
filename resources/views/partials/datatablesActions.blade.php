@@ -12,4 +12,9 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <button type="submit" class="btn btn-xs btn-danger"></button>
     </form>
+
+<button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#delete_modal_{{$crudRoutePart}}" data-id={{$row->id}}>
+    delete
+</button>
+   
 @endcan
