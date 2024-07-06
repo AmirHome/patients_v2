@@ -17,8 +17,8 @@ services:
     #   SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
-      - ./:/var/www/admin
-      - ../chat:/var/www/chat
+      - ./:/var/www/patientsv2.clinics.com.tr/html
+      - ../chat/:/var/www/inchat.clinics.com.tr/html
       - ./deploy/docker/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
