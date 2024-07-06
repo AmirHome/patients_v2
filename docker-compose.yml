@@ -37,8 +37,9 @@ services:
     volumes:
       - ./:/var/www/patientsv2
       - ../chat/:/var/www/inchat
-      - ./deploy/docker/config/nginx/patientsv2.conf:/etc/nginx/sites-available/patientsv2.conf
-      - ./deploy/docker/config/nginx/inchat.conf:/etc/nginx/sites-available/inchat.conf
+      # - ./deploy/docker/config/nginx/patientsv2.conf:/etc/nginx/sites-available/patientsv2.conf
+      # - ./deploy/docker/config/nginx/inchat.conf:/etc/nginx/sites-available/inchat.conf
+      - ./deploy/docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./deploy/docker/logs/nginx:/var/log/nginx
     networks:
       - app-network
