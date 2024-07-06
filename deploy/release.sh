@@ -57,6 +57,7 @@ function docker_build_start() {
   # docker rm -f mysql8
 
   # docker rmi admin-db
+  docker rmi nginx:stable-alpine
 
   docker-compose build
 
