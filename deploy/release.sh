@@ -72,18 +72,18 @@ function deployment() {
   if [ "$DOCKER" ]; then
     
     # if [ -d "vendor" ]; then
-        run_in_docker "cd admin && rm -rf vendor"
+        run_in_docker "cd patientsv2.clinics.com.tr && rm -rf vendor"
     # fi
 
     # Remove composer.lock if it exists
     # if [ -f "composer.lock" ]; then
-        run_in_docker "cd admin && rm composer.lock"
+        run_in_docker "cd patientsv2.clinics.com.tr && rm composer.lock"
     # fi
 
     # Update Composer and clear cache
-    run_in_docker "cd admin && composer clear-cache"
-    run_in_docker "cd admin && composer update"
-    # run_in_docker "cd admin && composer dump-autoload"
+    run_in_docker "cd patientsv2.clinics.com.tr && composer clear-cache"
+    run_in_docker "cd patientsv2.clinics.com.tr && composer update"
+    # run_in_docker "cd patientsv2.clinics.com.tr && composer dump-autoload"
     if [ $ENV == "production" ]; then
       run_in_docker "chown -R deploy:deploy /var/www"
     fi
@@ -92,10 +92,10 @@ function deployment() {
     # if set argument migrate -m or --migrate, migrate database
 
     if [ "$MIGRATESEED" ]; then
-      run_in_docker "cd admin && php artisan migrate:fresh --seed"
+      run_in_docker "cd patientsv2.clinics.com.tr && php artisan migrate:fresh --seed"
       echo "\n Database migrated and seeded.\n\n\n"
     else
-      run_in_docker "cd admin && php artisan migrate --force"
+      run_in_docker "cd patientsv2.clinics.com.tr && php artisan migrate --force"
       echo "\n Database migrated.\n\n\n"
     fi
 
