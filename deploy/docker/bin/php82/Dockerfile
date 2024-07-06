@@ -105,14 +105,14 @@ RUN apt-get -y update && \
 # RUN rm -rf /usr/src/*
 
 # Set working directory
-WORKDIR /var/www
+# WORKDIR /var/www
 
 # Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u $uid -d /var/www $user
-RUN mkdir -p /home/$user/.composer
-RUN chown -R $user:$user /var/www
+# RUN useradd -G www-data,root -u $uid -d /var/www $user
+# RUN mkdir -p /home/$user/.composer
+# RUN chown -R $user:$user /var/www
 
-USER $user
+# USER $user
 
 # RUN addgroup -g 1000 deploy
 
