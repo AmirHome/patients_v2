@@ -145,3 +145,5 @@ clean_code
 pull_code
 docker_build_start
 deployment
+
+sudo chown -R deploy:deploy ..
