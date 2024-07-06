@@ -88,7 +88,7 @@ function deployment() {
       run_in_docker "chown -R deploy:deploy /var/www"
     fi
     
-    docker exec -it webserver sh -c "mkdir -p /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/patientsv2.clinics.com.tr /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/inchat.clinics.com.tr /etc/nginx/sites-enabled/"
+    docker exec -it webserver sh -c "mkdir -p /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/patientsv2.clinics.com.tr /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/inchat.clinics.com.tr /etc/nginx/sites-enabled/ && nginx -s reload"
     # if set argument migrate -m or --migrate, migrate database
 
     if [ "$MIGRATESEED" ]; then
