@@ -35,9 +35,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/var/www/admin
-      - ../chat/:/var/www/chat
-      - ./deploy/docker/config/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./:/var/www/patientsv2.clinics.com.tr/html
+      - ../chat/:/var/www/inchat.clinics.com.tr/html
+      - ./deploy/docker/config/nginx/patientsv2.clinics.com.tr:/etc/nginx/sites-available/patientsv2.clinics.com.tr
+      - ./deploy/docker/config/nginx/inchat.clinics.com.tr:/etc/nginx/sites-available/inchat.clinics.com.tr
       - ./deploy/docker/logs/nginx:/var/log/nginx
     networks:
       - app-network
