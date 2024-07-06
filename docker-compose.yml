@@ -35,8 +35,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./public:/var/www/admin
-      - ../chat/public:/var/www/chat
+      - ./:/var/www/admin
+      - ../chat/:/var/www/chat
       - ./deploy/docker/config/nginx/conf.d/:/etc/nginx/conf.d/
       - ./deploy/docker/logs/nginx:/var/log/nginx
     networks:
