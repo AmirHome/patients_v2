@@ -42,6 +42,8 @@ services:
       - ./deploy/docker/logs/nginx:/var/log/nginx
     networks:
       - app-network
+    # Run command ln -s /etc/nginx/sites-available/patientsv2.clinics.com.tr /etc/nginx/sites-enabled/
+    command: /bin/sh -c "ln -s /etc/nginx/sites-available/patientsv2.clinics.com.tr /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/inchat.clinics.com.tr /etc/nginx/sites-enabled/"
     depends_on:
       - app
 
