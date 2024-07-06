@@ -58,6 +58,7 @@ function docker_build_start() {
 
   # docker rmi admin-db
   docker rmi nginx:stable-alpine
+  docker rmi deploy/php
 
   docker-compose build
 
