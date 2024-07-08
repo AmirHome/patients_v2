@@ -1350,23 +1350,45 @@ tbody tr th::after{
 }
 
 /*minimals tabs*/
+
+
+
  .nav-tabs{
     border-bottom:none !important;
     margin-bottom:30px !important;
+    background: rgba(145, 158, 171, 0.08);
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 16px 0px 2px;
+    width: 100%;
+}
+.nav-tabs .nav-item {
+    flex-grow: 1;
+    text-align: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    
 }
 .nav-tabs .nav-link{
+    width: 100%;
     font-size:0.875rem;
     color: #637381;
     border: none !important;
     font-weight: 600;
     align-items:center;
     justify-content:center;
+    min-height: 48px;
+    padding-top: 15px;
+ 
+
 }
 .nav-tabs .nav-link.active{
     font-size:0.875rem;
     color: #1C252E;
-    border-bottom: 2px solid black !important;
     font-weight: 700;
+    background: rgba(145, 158, 171, 0.009);
+    border-bottom: 2px solid black !important;
+    
 } 
 
 .nav-tabs .nav-link::after{

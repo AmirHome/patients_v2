@@ -11,7 +11,7 @@
         <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#travel_patient" role="tab" data-toggle="tab">
-                    Hasta Bilgileri
+                   <span> Hasta Bilgileri</span>
                 </a>
             </li>
             <li class="nav-item">
