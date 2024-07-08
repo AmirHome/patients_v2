@@ -51,9 +51,10 @@ function docker_build_start() {
 
   # cp deploy/.htaccess public/.htaccess
 
-  docker-compose down
+  docker stop $(docker ps -aq)
   docker rm $(docker ps -aq)
 
+  docker-compose down
 
   # docker rm -f app
   # docker rm -f webserver
