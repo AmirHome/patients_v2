@@ -28,7 +28,7 @@ done
 
 # Function to execute commands inside Docker container
 run_in_docker() {
-    docker exec -u root -it app bash -c "$1"
+    docker exec -u root -it laravel_application bash -c "$1"
 }
 
 # Function to clean code git
@@ -74,18 +74,18 @@ function deployment() {
   if [ "$DOCKER" ]; then
     
     # if [ -d "vendor" ]; then
-        run_in_docker "cd patientsv2 && rm -rf vendor"
+        run_in_docker "patientsv2rm -rf vendor"
     # fi
 
     # Remove composer.lock if it exists
     # if [ -f "composer.lock" ]; then
-        run_in_docker "cd patientsv2 && rm composer.lock"
+        run_in_docker "patientsv2rm composer.lock"
     # fi
 
     # Update Composer and clear cache
-    run_in_docker "cd patientsv2 && composer clear-cache"
-    run_in_docker "cd patientsv2 && composer update"
-    # run_in_docker "cd patientsv2 && composer dump-autoload"
+    run_in_docker "patientsv2composer clear-cache"
+    run_in_docker "patientsv2composer update"
+    # run_in_docker "patientsv2composer dump-autoload"
     if [ $ENV == "production" ]; then
       run_in_docker "chown -R deploy:deploy /var/www"
     fi
@@ -94,10 +94,10 @@ function deployment() {
     # if set argument migrate -m or --migrate, migrate database
 
     if [ "$MIGRATESEED" ]; then
-      run_in_docker "cd patientsv2 && php artisan migrate:fresh --seed"
+      run_in_docker "patientsv2php artisan migrate:fresh --seed"
       echo "\n Database migrated and seeded.\n\n\n"
     else
-      run_in_docker "cd patientsv2 && php artisan migrate --force"
+      run_in_docker "patientsv2php artisan migrate --force"
       echo "\n Database migrated.\n\n\n"
     fi
 

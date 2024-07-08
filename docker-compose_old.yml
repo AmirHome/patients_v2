@@ -1,0 +1,75 @@
+services:
+  
+  #PHP Service
+  app:
+    build:
+      args:
+        user: deploy
+        uid: 1000
+      context: ./deploy/docker/bin/${PHPVERSION}
+      # dockerfile: Dockerfile
+    image: deploy/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    # environment:
+    #   SERVICE_NAME: app
+    #   SERVICE_TAGS: dev
+    working_dir: /var/www/patientsv2
+    volumes:
+      - ./:/var/www/patientsv2
+      # - ../chat/:/var/www/inchat
+      - ./deploy/docker/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  ### Run solo Nginx docker-compose up --build webserver
+  webserver:
+    image: nginx:stable-alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www/patientsv2
+      # - ../chat/:/var/www/inchat
+      # - ./deploy/docker/config/nginx/patientsv2.conf:/etc/nginx/sites-available/patientsv2.conf
+      # - ./deploy/docker/config/nginx/inchat.conf:/etc/nginx/sites-available/inchat.conf
+      - ./deploy/docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./deploy/docker/logs/nginx:/var/log/nginx
+    networks:
+      - app-network
+    # command: sh -c "ln -s /etc/nginx/sites-available/patientsv2 /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/inchat /etc/nginx/sites-enabled/"
+    depends_on:
+      - app
+
+  ### Run solo Mysql docker-compose up --build db
+  db:
+    build:
+      context: "./deploy/docker/bin/${DATABASE}"
+    container_name: "${DATABASE}"
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${MYSQL_INITDB_DIR-./deploy/docker/config/initdb}:/docker-entrypoint-initdb.d
+      - ${MYSQL_DATA_DIR-./deploy/docker/data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./deploy/docker/logs/mysql}:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - app-network
+    # command: --skip-grant-tables
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
