@@ -398,11 +398,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="notify_hospitals" style="margin-top:35px;" >{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
-                                        <div style="padding-bottom: 4px">
-                                            <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                                            <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                                        </div>
+                                        <label for="notify_hospitals" >{{ trans('cruds.travel.fields.notify_hospitals') }}</label>
+                                     
                                         <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notify_hospitals" multiple>
                                             @foreach ($notify_hospitals as $id => $notify_hospital)
                                                 <option value="{{ $id }}" {{ in_array($id, old('notify_hospitals', [])) || $travel->notify_hospitals->contains($id) ? 'selected' : '' }}>

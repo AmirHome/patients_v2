@@ -627,12 +627,14 @@ td .btn-primary {
     appearance: none;
     -webkit-appearance: none; 
     -moz-appearance: none; 
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_N1nHa3hb0cnVn24zQPy6wHITNgbENByeJw&s') no-repeat right center;
-    background-size: 10px 5px;
+    background: url('https://icons.veryicon.com/png/o/miscellaneous/8atour/filter-arrow-down.png') no-repeat right center;
+    background-size: 10px 10px;
     background-position:35px;
   }
   
- 
+  .dropdown-toggle .caret {
+    color: blue !important;
+  }
 
 /* ***************************************
    ---------- Form minimal ----------
@@ -653,11 +655,22 @@ td .btn-primary {
     font-size: 0.875rem;
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
-    padding: 16.5px 0px 16.5px 0px;
     cursor: pointer;
-    border-radius: 0.5rem; /* Border radiusu daha keskin */
     text-overflow: ellipsis;
-    padding-left: 12px;
+    padding-left: 0px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 30px !important;
+}
+.form-control,.form-control:hover,.form-control:focus,.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--single:hover,
+.select2-container--default .select2-selection--single.select2-selection--single:focus,.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple:hover,.select2-container--default .select2-selection--multiple:focus
+{    
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0 !important;
 }
 
 .form-control::placeholder {
@@ -669,7 +682,7 @@ td .btn-primary {
 .form-control:hover {
     color: black; /* Yazı rengi siyah */
     border-color: black !important; /* Border rengi siyah */
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
 
 .form-control:focus {
@@ -677,13 +690,17 @@ td .btn-primary {
     background-color: #fff;
     border-color: black;
     outline: 0;
-    box-shadow: 0 0 0 0.07rem rgba(0, 0, 0, 0.82);
+    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
 .form-control-sm[type="search"] {
     position: relative;
     padding: 14.5px 26px 16.5px 12px;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.5rem;
+    padding: 16.5px 0px 16.5px 0px !important;
+    padding-left: 30px !important;
 }
 .form-control-sm[type="search"]::placeholder {
     content: "Search..."; /* Placeholder metni */
@@ -691,6 +708,7 @@ td .btn-primary {
 }
 .form-group{
     padding: 15px 10px 10px 10px; 
+    margin-bottom: 5px;
 }
 
 .form-control:disabled, .form-control[readonly] {
@@ -773,6 +791,8 @@ input[type="search" i] {
     font-size: 0.875rem;
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
+    padding: 0px !important;
+
 }
 
 .select2-container--default
@@ -780,25 +800,25 @@ input[type="search" i] {
     .select2-selection__arrow {
     margin-right: 7px;
     height: 49px;
+
+
 }
 
 .select2-container .select2-selection--single {
-    height: 55px;
-    padding: 8px;
-    border-radius: 0.5rem;
-    border: 1px solid #ced4da;
-    display: flex;
+     display: flex;
     align-items: center;
+    border-color:#d8dbe0;
+    padding: 0px !important;
 }
 
 .select2-container--default .select2-selection--single {
     background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 0.5rem;
+ 
 }
+ 
 .select2-container--default .select2-selection--single:hover {
     border-color: black !important;
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82);
+    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
 
 .select2-container--default .select2-selection--single:focus {
@@ -806,13 +826,12 @@ input[type="search" i] {
     background-color: #fff;
     border-color: black !important;
     outline: 0;
-    box-shadow: 0 0 0 0.04rem rgba(0, 0, 0, 0.82);
+    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
 .select2-search__field {
     outline: 1px solid #ced4da !important;
-    border-radius: 5px !important;
 }
 
 .select2-container--default .select2-results>.select2-results__options
@@ -842,11 +861,9 @@ input[type="search" i] {
     padding-left:10px !important;
 }
 .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border:solid black 1.5px !important;
+    border: 0px !important;
     outline: 0px !important;
-    border-radius:8px !important;
-    box-shadow: 0 0 0 1.5px black;
-
+    border-bottom: 1px solid #000102 !important;
 }
 .select2-container--default .select2-selection--multiple{
     border-color: #d8dbe0;
@@ -854,7 +871,7 @@ input[type="search" i] {
 .select2-container--default .select2-selection--multiple:hover{
     color: black; /* Yazı rengi siyah */
     border-color: black !important; /* Border rengi siyah */
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice
 {
@@ -1394,7 +1411,7 @@ tbody tr th::after{
 .nav-tabs .nav-link::after{
   content: "\f107";
   font-family: FontAwesome;
-padding-left: 5px;
+  padding-left: 5px;
 } 
 .nav-tabs .nav-link.active::after{
     content: "\f106";
@@ -1507,14 +1524,12 @@ font-weight:600;
       
       .form-group label {
         position: absolute;
-    top: 6px;
-    left: 40px;
-    background-color: white !important;
+    top: 3px;
+    left: 24px;
     z-index: 25;
     font-size: 0.75rem;
-    font-weight: 600;
+     font-weight: 600;
      color: #637381 ;
-     padding: 0 4px;
 }
 
       .select2-container--default.select2-container--disabled .select2-selection--single {

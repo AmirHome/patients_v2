@@ -14,7 +14,7 @@
             <div class="col-md-3">
       <div class="form-group">
     <label class="required" for="code">{{ trans('cruds.patient.fields.code') }}</label>
-    <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}" placeholder="Code.." disabled required>
+    <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}" type="text" name="code" id="code" value="{{ old('code', $patient->code) }}"  disabled required>
     @if($errors->has('code'))
         <div class="invalid-feedback">
             {{ $errors->first('code') }}
@@ -81,7 +81,7 @@
                <div class="col-md-3">
                <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('code', $patient->code) }}" placeholder="Name.."  required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('code', $patient->code) }}"   required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -95,7 +95,7 @@
 
             <div class="form-group">
                 <label class="required" for="middle_name">{{ trans('cruds.patient.fields.middle_name') }}</label>
-                <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name) }}" placeholder="Middle Name.."  required>
+                <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name) }}"   required>
                 @if($errors->has('middle_name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('middle_name') }}
