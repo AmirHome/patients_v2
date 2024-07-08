@@ -43,7 +43,7 @@ public function rules()
             ],
             'middle_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'surname' => [
                 'string',
@@ -96,11 +96,11 @@ public function rules()
             ],
             'weight' => [
                 'numeric',
-                'required',
+                'nullable',
             ],
             'height' => [
                 'numeric',
-                'required',
+                'nullable',
             ],
             'treating_doctor' => [
                 'string',

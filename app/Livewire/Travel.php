@@ -192,7 +192,7 @@ class Travel extends Component
 
     public function increaseStep()
     {
-        Log::info('increaseStep');
+        //dd('increaseStep');
         $this->resetErrorBag();
         $this->validateData();
         $this->currentStep++;
@@ -213,7 +213,7 @@ class Travel extends Component
     public function validateData()
     {
         if ($this->currentStep == 1) {
-            Log::error('Travel Add Step:'.$this->currentStep);
+            //dd('Travel Add Step:'.$this->currentStep);
             
             $rules = (new StorePatientRequest())->rules();
             $rules = array_merge($rules, [
@@ -222,12 +222,18 @@ class Travel extends Component
             ]);
 
             $data = $this->validate($rules);
-            Log::info('Travel Add '.$this->currentStep, $data);
+            foreach ($data as $key => $value) {
+                if ($value === "") {
+                    $data[$key] = null;
+                }
+            }
+            
+            // dd('Travel Add '.$this->currentStep, $data);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
             
         } elseif ($this->currentStep == 2) {
-            Log::info('Travel Add Step:'.$this->currentStep);
+            //dd('Travel Add Step:'.$this->currentStep);
 
             $rulesTravel =  ['last_status_id' => 'nullable|integer',
                              'department_id' => 'required', 
@@ -244,8 +250,7 @@ class Travel extends Component
             
 
         } elseif ($this->currentStep == 3) {
-            dd('33333');
-            Log::info('Travel Add Step:'.$this->currentStep);
+            // dd('Travel Add Step:'.$this->currentStep);
 
             $rules = [
                 'notifyHospitalIds' => 'nullable|array',
@@ -256,15 +261,15 @@ class Travel extends Component
 
         }
 
-        if ($this->currentStep == $this->totalSteps) {
-            dd('xxx');
-            $this->store();
-        }
+        // if ($this->currentStep == $this->totalSteps) {
+        //     //dd('current == total');
+        //     $this->store();
+        // }
     }
 
     public function store()
     {
-
+        // dd('store');
         $this->resetErrorBag();
 
         DB::beginTransaction();
@@ -312,7 +317,7 @@ class Travel extends Component
         } catch (\Exception $e) {
             DB::rollBack();
             // TODO: Show and log error
-            Log::error($e->getMessage());
+            dd($e->getMessage());
             return $e->getMessage();
         }
 

@@ -28,7 +28,7 @@ done
 
 # Function to execute commands inside Docker container
 run_in_docker() {
-    docker exec -u root -it app bash -c "$1"
+    docker exec -u root -it laravel_application bash -c "$1"
 }
 
 # Function to clean code git
@@ -51,12 +51,18 @@ function docker_build_start() {
 
   # cp deploy/.htaccess public/.htaccess
 
+  docker stop $(docker ps -aq)
+  docker rm $(docker ps -aq)
+
   docker-compose down
+
   # docker rm -f app
   # docker rm -f webserver
   # docker rm -f mysql8
 
-  docker rmi admin-db
+  # docker rmi admin-db
+  # docker rmi nginx:stable-alpine
+  # docker rmi deploy/php
 
   docker-compose build
 
@@ -72,29 +78,30 @@ function deployment() {
   if [ "$DOCKER" ]; then
     
     # if [ -d "vendor" ]; then
-        run_in_docker "cd admin && rm -rf vendor"
+        run_in_docker "rm -rf vendor"
     # fi
 
     # Remove composer.lock if it exists
     # if [ -f "composer.lock" ]; then
-        run_in_docker "cd admin && rm composer.lock"
+        run_in_docker "rm composer.lock"
     # fi
 
     # Update Composer and clear cache
-    run_in_docker "cd admin && composer clear-cache"
-    run_in_docker "cd admin && composer update"
-    # run_in_docker "cd admin && composer dump-autoload"
+    run_in_docker "composer clear-cache"
+    run_in_docker "composer update"
+    # run_in_docker "composer dump-autoload"
     if [ $ENV == "production" ]; then
       run_in_docker "chown -R deploy:deploy /var/www"
     fi
     
+    docker exec -it webserver sh -c "mkdir -p /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/patientsv2.conf /etc/nginx/sites-enabled/ && ln -s /etc/nginx/sites-available/inchat.conf /etc/nginx/sites-enabled/ && nginx -s reload"
     # if set argument migrate -m or --migrate, migrate database
 
     if [ "$MIGRATESEED" ]; then
-      run_in_docker "cd admin && php artisan migrate:fresh --seed"
+      run_in_docker "php artisan migrate:fresh --seed"
       echo "\n Database migrated and seeded.\n\n\n"
     else
-      run_in_docker "cd admin && php artisan migrate --force"
+      run_in_docker "php artisan migrate --force"
       echo "\n Database migrated.\n\n\n"
     fi
 
@@ -143,3 +150,5 @@ clean_code
 pull_code
 docker_build_start
 deployment
+
+sudo chown -R deploy:deploy ..
