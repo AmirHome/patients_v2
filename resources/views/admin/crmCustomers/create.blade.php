@@ -196,11 +196,7 @@
             </div>
 
             <div class="row justify-content-end">
-                    <div class="form-group">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
-                            {{ trans('global.cancel') }}
-                        </button>
-                    </div>
+                
                     <div class="form-group ">
                         <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
                     </div>

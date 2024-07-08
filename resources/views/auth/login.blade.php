@@ -83,7 +83,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary px-4 btn-block">
+                            <button type="submit" class="btn btn-light px-4 pt-2 pb-2 btn-block">
                                 {{ trans('global.login') }}
                             </button>
                         </div>
