@@ -15,10 +15,10 @@ services:
     # environment:
     #   SERVICE_NAME: app
     #   SERVICE_TAGS: dev
-    working_dir: /var/www
+    working_dir: /var/www/patientsv2
     volumes:
       - ./:/var/www/patientsv2
-      - ../chat/:/var/www/inchat
+      # - ../chat/:/var/www/inchat
       - ./deploy/docker/config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
@@ -36,7 +36,7 @@ services:
       - "443:443"
     volumes:
       - ./:/var/www/patientsv2
-      - ../chat/:/var/www/inchat
+      # - ../chat/:/var/www/inchat
       # - ./deploy/docker/config/nginx/patientsv2.conf:/etc/nginx/sites-available/patientsv2.conf
       # - ./deploy/docker/config/nginx/inchat.conf:/etc/nginx/sites-available/inchat.conf
       - ./deploy/docker/nginx/conf.d/:/etc/nginx/conf.d/
