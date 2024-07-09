@@ -4,7 +4,7 @@
         <div class="container-fluid p-0 m-0">
 
             <div class="row">
-                <div class="col-md-11">
+                <div class="col-md-12">
 
                     {{-- STEP 1 --}}
                     <div class="step-one {{ $currentStep == 1 ? 'd-block' : 'd-none' }}">
@@ -33,26 +33,26 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Hasta Kodu</label>
-                                            <input type="text" class="form-control" id="code" value="{{ $code }}" readonly placeholder="Code" disabled>
+                                            <input type="text" class="form-control" id="code" value="{{ $code }}"  disabled>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Hasta Geliş Tarihi</label>
                                             <input type="text" class="form-control" id="date" readonly placeholder="{{ getCurrentDate() }}" disabled>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row px-5">
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">İsim</label>
-                                            <input type="text" class="form-control" placeholder="Enter first name" wire:model="name">
+                                            <input type="text" class="form-control"  wire:model="name">
                                             <span class="text-danger">
                                                 @error('name')
                                                     {{ $message }}
@@ -60,10 +60,10 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">İkinci ismi</label>
-                                            <input type="text" class="form-control" placeholder="Enter middel name" wire:model="middle_name">
+                                            <input type="text" class="form-control" wire:model="middle_name">
                                             <span class="text-danger">
                                                 @error('middle_name')
                                                     {{ $message }}
@@ -71,10 +71,10 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Soyadı</label>
-                                            <input type="text" class="form-control" placeholder="Enter last name" wire:model="surname">
+                                            <input type="text" class="form-control"  wire:model="surname">
                                             <span class="text-danger">
                                                 @error('surname')
                                                     {{ $message }}
@@ -83,8 +83,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Cinsiyet</label>
                                             <select class="form-control" wire:model.live="gender">
@@ -100,10 +100,10 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
-                                            <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}" placeholder="Doğum Günü" type="text" name="birthday" id="birthday"
+                                            <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}"  type="text" name="birthday" id="birthday"
                                                 value="{{ old('birthday', $patient->birthday ?? null) }}">
                                             @if ($errors->has('birthday'))
                                                 <div class="invalid-feedback">
@@ -114,10 +114,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Doğum Yeri</label>
-                                            <input type="text" class="form-control" placeholder="Enter your birth place" wire:model="birth_place">
+                                            <input type="text" class="form-control"  wire:model="birth_place">
                                             <span class="text-danger">
                                                 @error('birth_place')
                                                     {{ $message }}
@@ -127,8 +127,8 @@
                                     </div>
                                 </div>
                                 {{-- Physicall --}}
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Kan Grubu</label>
                                             <select class="form-control" wire:model.live="blood_group">
@@ -145,10 +145,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Kilosu</label>
-                                            <input type="text" class="form-control" placeholder="Enter weight" wire:model="weight">
+                                            <input type="text" class="form-control"  wire:model="weight">
                                             <span class="text-danger">
                                                 @error('weight')
                                                     {{ $message }}
@@ -156,10 +156,10 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Boyu</label>
-                                            <input type="text" class="form-control" placeholder="Enter height" wire:model="height">
+                                            <input type="text" class="form-control"  wire:model="height">
                                             <span class="text-danger">
                                                 @error('height')
                                                     {{ $message }}
@@ -170,11 +170,11 @@
 
                                 </div>
                                 {{-- Reffer, Campaign --}}
-                                <div class="row">
+                                <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Passport Numarası</label>
-                                            <input type="text" class="form-control" placeholder="Enter your passport no" wire:model="passport_no">
+                                            <input type="text" class="form-control"  wire:model="passport_no">
                                             <span class="text-danger">
                                                 @error('passport_no')
                                                     {{ $message }}
@@ -185,7 +185,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Email Adresi</label>
-                                            <input type="email" class="form-control" placeholder="Enter email address" wire:model="email">
+                                            <input type="email" class="form-control"  wire:model="email">
                                             <span class="text-danger">
                                                 @error('email')
                                                     {{ $message }}
@@ -197,7 +197,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Telefon No</label>
-                                            <input type="text" class="form-control" placeholder="Enter your phone" wire:model="phone">
+                                            <input type="text" class="form-control"  wire:model="phone">
                                             <span class="text-danger">
                                                 @error('phone')
                                                     {{ $message }}
@@ -206,8 +206,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Ülke</label>
                                             <select class="form-control" wire:model.live="countryId">
@@ -223,7 +223,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Şehir</label>
                                             <select class="form-control" wire:model.live="city_id">
@@ -240,12 +240,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 pt-3 pb-3">
-                                    <div class="dotted-border">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                              
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Kanal</label>
                                             <select class="form-control" wire:model.live="compaignChannelId">
@@ -261,7 +258,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Organizasyon</label>
                                             <select class="form-control" wire:model.live="campaign_org_id">
@@ -278,8 +275,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row px-5">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Referans Tipiniz</label>
                                             <select class="form-control" wire:model.live="reffering_type">
@@ -295,12 +292,12 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Referansınız</label>
                                             @if ($reffering_type != 'Phone')
                                                 @if ($reffering_type == 'Other')
-                                                    <input type="text" class="form-control" placeholder="Enter reffering" wire:model.live="reffering">
+                                                    <input type="text" class="form-control" wire:model.live="reffering">
                                                 @else
                                                     <select class="form-control" wire:model.live="reffering">
                                                         <option value="" selected>Choose Reffering</option>
@@ -352,7 +349,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row px-5">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Durum</label>
@@ -389,11 +386,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                <div class="row px-5">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Açıklama</label>
-                                            <textarea class="form-control" cols="2" rows="2" placeholder="Enter description" wire:model="description"></textarea>
+                                            <textarea class="form-control" cols="2" rows="2"  wire:model="description" style="min-height:145px !important"></textarea>
                                             <span class="text-danger">
                                                 @error('description')
                                                     {{ $message }}
@@ -401,18 +398,13 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- GUIDE Dropzone init -->
-                                <div class="row">
-                                    <div class="col-md-9">
+                                    <div class="col-md-6">
                                         <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                                         <div class="form-group" wire:ignore>
                                             <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
-                                            <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
-                                                <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
-                                                <div class="dz-message" data-dz-message>
-                                                    <p>Drop files here or click <a>browse</a> thorough your machien</p>
-                                                </div>
+                                            <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
+                                                <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                                <div class="dz-message" data-dz-message><p>Upload File</p></div>
                                             </div>
 
 
@@ -456,15 +448,11 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row px-5">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="notify_hospitals" style="margin-top:35px;">{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
+                                            <label for="notify_hospitals"   >{{ trans('cruds.travel.fields.notify_hospitals') }} </label>
                                             <div wire:ignore>
-                                                <div>
-                                                    <span class="btn btn-info btn-xs select-all mb-3">{{ trans('global.select_all') }}</span>
-                                                    <span class="btn btn-info btn-xs deselect-all mb-3">{{ trans('global.deselect_all') }}</span>
-                                                </div>
                                                 <select class="form-control select2 {{ $errors->has('notify_hospitals') ? 'is-invalid' : '' }}" name="notify_hospitals[]" id="notifyHospitalIds" multiple>
                                                     @foreach ($notify_hospitals as $id => $notify_hospital)
                                                         <option value="{{ $id }}" {{ in_array($id, old('notify_hospitals', [])) ? 'selected' : '' }}>{{ $notify_hospital }}</option>
@@ -478,10 +466,8 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="traslators">Translators</label>
                                             <select class="form-control" wire:model.live="translatorId">

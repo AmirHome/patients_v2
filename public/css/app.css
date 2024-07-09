@@ -418,6 +418,47 @@ textarea {
     font-size: 0.875rem;
     color: rgb(33, 43, 54);
 }
+.activity-card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
+    border-radius: 8px; /* Köşe yuvarlatma */
+    padding: 10px; /* İçeriğin etrafındaki dolgu */
+    margin-bottom: 10px; /* Kartlar arasındaki boşluk */
+
+}
+.pointer{
+    cursor: pointer !important;
+}
+.activity-hover:hover{
+background-color: white !important;
+}
+.activity-hover{
+    border:none !important;
+}
+.activity-th th
+{
+color: #00B8D9;
+font-family: "Public Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; 
+border: none !important;
+background-color: white !important;
+
+}
+.activity-td td
+{
+    color:#212B36;
+    font-family: "Public Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    border: none !important;
+}
+
+/*
 /* ***************************************
    ---------- Datatable minimal ----------
 */
@@ -491,7 +532,7 @@ table.dataTable thead th {
 
 }
 .table-btn-margin{
-    margin-left: 65px !important;
+    margin-left: 24px !important;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -633,7 +674,7 @@ td .btn-primary {
     -webkit-appearance: none; 
     -moz-appearance: none; 
     background: url('https://icons.veryicon.com/png/o/miscellaneous/8atour/filter-arrow-down.png') no-repeat right center;
-    background-size: 10px 10px;
+    background-size: 9px 9px;
     background-position:35px;
   }
   
@@ -663,6 +704,7 @@ td .btn-primary {
     cursor: pointer;
     text-overflow: ellipsis;
     padding-left: 0px !important;
+    margin-bottom: 11px;
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow{
     height: 30px !important;
@@ -695,9 +737,10 @@ td .btn-primary {
     background-color: #fff;
     border-color: black;
     outline: 0;
-    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
+    box-shadow: none !important;
+    border-bottom: 2px solid black !important;
 }
 .form-control-input{
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
@@ -711,15 +754,15 @@ td .btn-primary {
     width: 80%;
     animation-name: mui-auto-fill-cancel;
     animation-duration: 10ms;
-    padding: 16.5px 0px 16.5px 0px;
+    padding: 12.5px 0px 12.5px 0px;
     line-height: 1.57143;
     font-size: 0.875rem;
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
-    border-radius: 0.5rem; /* Border radiusu daha keskin */
     cursor: pointer;
     text-overflow: ellipsis;
     padding-left: 12px;
+    border-radius: 0px !important;
 }
 
 
@@ -743,7 +786,7 @@ td .btn-primary {
     position: relative;
     padding: 14.5px 26px 16.5px 12px;
     border: 1px solid #ced4da !important;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem !important;
     padding: 16.5px 0px 16.5px 0px !important;
     padding-left: 30px !important;
 }
@@ -871,7 +914,8 @@ input[type="search" i] {
     background-color: #fff;
     border-color: black !important;
     outline: 0;
-    box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
+    box-shadow: none !important;
+    border-bottom: 2px solid black !important;
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
@@ -889,6 +933,7 @@ input[type="search" i] {
     background-color:rgba(255, 255, 255, 0.9) !important;
     box-shadow:rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px !important;
     padding-left: 2px !important;
+    font-weight: 400 !important;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected]{
     backdrop-filter:blur(20px) !important;
@@ -926,7 +971,9 @@ input[type="search" i] {
     font-weight:500 !important;
     border-radius:6px !important;
     border: none !important;
-    margin-top:12px !important;
+    padding-bottom: 0px !important;
+    margin-top: 7px !important;
+    margin-left: 0px;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice:hover
 {
@@ -1046,6 +1093,25 @@ input[type="radio" i]:focus-visible {
     height: 5px;
 }
 /*Button Minimal*/
+.btn-outline-success{
+    border-radius: 8px;
+background: #00A76F;
+ color: white;
+}
+.btn-outline-success:hover{
+    border-radius: 8px;
+background: #00A76F;
+ color: white;
+ outline: none;
+box-shadow: none !important;
+}
+.btn-outline-success:focus{
+    border-radius: 8px;
+  background: #00A76F;
+ color: white;
+ outline: none;
+ box-shadow: none !important;
+}
 .btn-excel {
     background-color: rgba(17, 141, 87) !important;
 }
@@ -1134,7 +1200,7 @@ color: rgb(32, 101, 209) !important;
 .page-link:not(:disabled):not(.disabled) {
     cursor: pointer;
     border-radius: 0.25rem;
-    margin-left: 0.333em;
+    margin-left: 0.633em;
     color: #006c9c;
     border-color: #006c9c !important;
 }
@@ -1164,6 +1230,11 @@ div.dataTables_wrapper div.dataTables_paginate{
 div.dataTables_wrapper div.dataTables_info /*Shows data in the table*/
 {
     display: none;
+}
+div.dataTables_wrapper div.dataTables_length select{
+    padding-left:12px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
 }
 div.dataTables_wrapper div.dataTables_length label
 {
@@ -1404,12 +1475,10 @@ div.dataTables_wrapper div.dataTables_length label
 
     /*Show*/
 tbody tr th{
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.1) ;
     color: black;
 } 
-tbody tr th::after{
-    content: ":";
-}
+
 
 /*minimals tabs*/
 
@@ -1515,18 +1584,28 @@ thead tr {
 }
 /*Activity*/
 .activity-title{
-    font-weight: bold;
+    color: #545454;
+    font-family: "Public Sans";
     font-size: 18px;
-    color: #212B36;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
 }
 .activity-info{
-color: #637381;
-font-weight:600;
+    color:#637381;
+    font-family: "Public Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
 }
 .activity-desc{
-    color: #212B36;
-    margin-top: 15px;
-    font-weight:600;
+    color:  #212B36;
+    font-family: "Public Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
     }
  
  body  .show-header{ 
