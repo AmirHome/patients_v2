@@ -387,8 +387,13 @@ a.nav-link {
     border-radius: 0.5rem !important; /* Border radiusu daha keskin */
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
     box-sizing: border-box;
-    padding: 40px 50px 40px 30px;
+    padding: 24px 16px 24px 16px;
 }
+textarea {
+    height: calc(1.25rem + 2px) !important;
+    min-height: 0px !important;
+}
+
 .card-header {
     color: rgb(33, 43, 54);
     font-weight: 700;
@@ -691,6 +696,46 @@ td .btn-primary {
     border-color: black;
     outline: 0;
     box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+}
+.form-control-input{
+    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0px;
+    width: 80%;
+    animation-name: mui-auto-fill-cancel;
+    animation-duration: 10ms;
+    padding: 16.5px 0px 16.5px 0px;
+    line-height: 1.57143;
+    font-size: 0.875rem;
+    font-family: "Public Sans", sans-serif;
+    font-weight: 400;
+    border-radius: 0.5rem; /* Border radiusu daha keskin */
+    cursor: pointer;
+    text-overflow: ellipsis;
+    padding-left: 12px;
+}
+
+
+.form-control-input::placeholder {
+    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+}
+.form-control-input:hover {
+    color: black; /* Yazı rengi siyah */
+    border-color: black !important; /* Border rengi siyah */
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+}
+.form-control-input:focus {
+    background-color: #fff;
+    border-color: black;
+    outline: 0;
+    box-shadow: 0 0 0 0.07rem rgba(0, 0, 0, 0.82);
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
 }
