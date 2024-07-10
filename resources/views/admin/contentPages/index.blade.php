@@ -1,18 +1,18 @@
 @extends('layouts.admin')
 @section('content')
 @includeIf('admin.contentPages.relationships.delete_modal')
-@can('content_page_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
 <div class="card">
-    <div class="card-header">
-        {{ trans('cruds.contentPage.title_singular') }} {{ trans('global.list') }}
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            {{ trans('cruds.contentPage.title_singular') }} {{ trans('global.list') }}
+        </div>
+        @can('content_page_create')
+            <div>
+                <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
+                </a>
+            </div>
+        @endcan
     </div>
 
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">

@@ -3,20 +3,19 @@
 @includeIf('admin.faqCategories.create')
 @includeIf('admin.faqCategories.relationships.delete_modal')
 
-@can('faq_category_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <button class="btn btn-success" data-toggle="modal" data-target="#create-faq-categories">
-                {{ trans('global.add') }} {{ trans('cruds.faqCategory.title_singular') }}
-            </button>
-        </div>
-    </div>
-@endcan
 <div class="card">
-    <div class="card-header">
-        {{ trans('cruds.faqCategory.title_singular') }} {{ trans('global.list') }}
-    </div>
-
+  <div class="card-header d-flex justify-content-between align-items-center">
+      <div>
+          {{ trans('cruds.faqCategory.title_singular') }} {{ trans('global.list') }}
+      </div>
+      @can('faq_category_create')
+          <div>
+              <button class="btn btn-success" data-toggle="modal" data-target="#create-faq-categories">
+                  {{ trans('global.add') }} {{ trans('cruds.faqCategory.title_singular') }}
+              </button>
+          </div>
+      @endcan
+  </div>
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
         <table class=" table table-bordered table-hover ajaxTable datatable datatable-FaqCategory">
             <thead>

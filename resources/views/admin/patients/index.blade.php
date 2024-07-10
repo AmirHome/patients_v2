@@ -2,18 +2,18 @@
 @section('content')
 @includeIf('admin.patients.relationships.delete_modal')
 
-@can('patient_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.patients.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.patient.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
 <div class="card">
-    <div class="card-header">
-        {{ trans('cruds.patient.title_singular') }} {{ trans('global.list') }}
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            {{ trans('cruds.patient.title_singular') }} {{ trans('global.list') }}
+        </div>
+        @can('patient_create')
+            <div>
+                <a class="btn btn-success" href="{{ route('admin.patients.create') }}">
+                    {{ trans('global.add') }} {{ trans('cruds.patient.title_singular') }}
+                </a>
+            </div>
+        @endcan
     </div>
 
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">

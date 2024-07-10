@@ -3,18 +3,18 @@
 @includeIf('admin.ministries.create')
 @includeIf('admin.ministries.relationships.delete_modal')
 
-@can('ministry_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <button class="btn btn-success" data-toggle="modal" data-target="#create-ministries">
-                {{ trans('global.add') }} {{ trans('cruds.ministry.title_singular') }}
-            </button>
-        </div>
-    </div>
-@endcan
 <div class="card">
-    <div class="card-header">
-        {{ trans('cruds.ministry.title_singular') }} {{ trans('global.list') }}
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            {{ trans('cruds.ministry.title_singular') }} {{ trans('global.list') }}
+        </div>
+        @can('ministry_create')
+            <div>
+                <button class="btn btn-success" data-toggle="modal" data-target="#create-ministries">
+                    {{ trans('global.add') }} {{ trans('cruds.ministry.title_singular') }}
+                </button>
+            </div>
+        @endcan
     </div>
 
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
