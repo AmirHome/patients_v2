@@ -3,19 +3,19 @@
 @includeIf('admin.users.create')
 @includeIf('admin.users.relationships.delete_modal')
 
-@can('user_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <button class="btn btn-success" data-toggle="modal" data-target="#create-users">
-                {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
-</button>
-        </div>
-    </div>
-@endcan
 <div class="card">
-    <div class="card-header">
-        {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
-    </div>
+  <div class="card-header d-flex justify-content-between align-items-center">
+      <div>
+          {{ trans('cruds.user.title_singular') }} {{ trans('global.list') }}
+      </div>
+      @can('user_create')
+          <div>
+              <button class="btn btn-success" data-toggle="modal" data-target="#create-users">
+                  {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
+              </button>
+          </div>
+      @endcan
+  </div>
 
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
         <table class=" table table-bordered table-hover ajaxTable datatable datatable-User">

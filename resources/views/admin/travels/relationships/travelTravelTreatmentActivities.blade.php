@@ -22,7 +22,9 @@
                             <div class="col-12 d-flex justify-content-between">
                                 <div>
                                     <div class="activity-title">
-                                        <i class="fas fa-chevron-down mx-3 mb-3 pointer" style="color:#00B8D9"></i>{{ $travelTreatmentActivity->status->title ?? '' }}</div>
+                                        <i class="fas fa-chevron-down mx-3 mb-3 pointer"  style="color:#00B8D9"></i>
+                                        <i class="fas fa-chevron-right mx-3 mb-3 pointer"  style="color:#00B8D9;display:none"></i>
+                                        {{ $travelTreatmentActivity->status->title ?? '' }}</div>
                                     <div class="activity-info mx-3">{{ $travelTreatmentActivity->user->name ?? '' }}</div>
                                     <div class="mx-3">
                                         @if (!empty($travelTreatmentActivity->description))
@@ -36,7 +38,7 @@
                                     <div class="activity-info"><span>{{ $travelTreatmentActivity->created_at ?? '' }}</span></div>
                                     @can('travel_treatment_activity_edit')
                                     <button class="btn btn-outline-success mt-5 " href="{{ route('admin.travel-treatment-activities.edit', $travelTreatmentActivity->id) }}" data-toggle="modal" data-target="#travelTreatmentActivities_edit_modal">
-                                        <i class="fa fa-pencil"></i>  {{ trans('global.edit') }}
+                                        <i class="fa fa-pencil"></i> Düzenle
                                     </button>
                                     @endcan
                                     @can('travel_treatment_activity_delete')
@@ -80,20 +82,19 @@
        @section('scripts')
            @parent
            <script>
-       document.addEventListener('DOMContentLoaded', (event) => {
-    const icons = document.querySelectorAll('.fa-chevron-down'); // İkonları seçin
-    const tables = document.querySelectorAll('.table-custom'); // Tabloları seçin
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    const icons = document.querySelectorAll('.fa-chevron-down'); 
+    const tables = document.querySelectorAll('.table-custom'); 
+    const rightIcon =document.querySelectorAll('.fa-chevron-right')
     icons.forEach((icon, index) => {
-        const table = tables[index]; // İkonun sırasına göre tabloyu seçin
+        const table = tables[index]; 
+      
 
         icon.addEventListener('click', () => {
-            const tableStyle = window.getComputedStyle(table);
-
-            if (tableStyle.display === 'none') {
+            if (table.style.display === 'none') {
                 table.style.display = 'table'; // Tabloyu göster
             } else {
-                table.style.display = 'none'; // Tabloyu gizle
+                table.style.display = 'none'; 
             }
         });
     });

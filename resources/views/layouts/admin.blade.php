@@ -389,12 +389,12 @@ window.onload = function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-     const dateInputs = document.querySelectorAll('.form-control.date');
-     dateInputs.forEach(input => {
-        input.placeholder = 'Tarih Giriniz...';
-    });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//      const dateInputs = document.querySelectorAll('.form-control.date');
+//      dateInputs.forEach(input => {
+//         input.placeholder = 'Tarih Giriniz...';
+//     });
+// });
   </script>
     
     @yield('scripts')

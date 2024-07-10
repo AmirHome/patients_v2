@@ -481,7 +481,15 @@ background-color: white !important;
     padding-top: 20px !important;
     padding-bottom: 30px;
 }
-
+.dataTables_wrapper
+    .dataTables_scroll
+    div.dataTables_scrollBody
+    > table
+    > tbody
+    > tr
+    > td:last-child {
+   text-align: center;
+}
 table.dataTable {
     width: 100%;
     margin-bottom: 1rem;
@@ -731,7 +739,12 @@ td .btn-primary {
     border-color: black !important; /* Border rengi siyah */
     box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
-
+div.dataTables_wrapper div.dataTables_filter input:hover{
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.82) !important;
+}
+div.dataTables_wrapper div.dataTables_filter input:focus{
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.82) !important;
+}
 .form-control:focus {
     color: black;
     background-color: #fff;
@@ -763,6 +776,9 @@ td .btn-primary {
     text-overflow: ellipsis;
     padding-left: 12px;
     border-radius: 0px !important;
+    border-color:#d8dbe0;
+    box-shadow: none !important;
+
 }
 
 
@@ -1100,14 +1116,14 @@ background: #00A76F;
 }
 .btn-outline-success:hover{
     border-radius: 8px;
-background: #00A76F;
- color: white;
+    background: rgba(0, 167, 111, 0.8);
+    color: white;
  outline: none;
 box-shadow: none !important;
 }
 .btn-outline-success:focus{
     border-radius: 8px;
-  background: #00A76F;
+    background-color: rgba(0, 167, 111, 0.6) !important;
  color: white;
  outline: none;
  box-shadow: none !important;
@@ -1667,6 +1683,7 @@ thead tr {
     }
     .select2-container--disabled .select2-selection--single .select2-selection__rendered {
         color: rgb(145, 158, 171) !important;
+        padding-bottom: 0px !important;
     }
     .radio-btn-header{
         font-weight: 600 !important;

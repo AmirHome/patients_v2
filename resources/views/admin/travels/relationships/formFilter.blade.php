@@ -14,14 +14,14 @@ Vaka Listesi
                     <div class="form-group">
                     <label for="">Hasta Kodu</label>
                         <input type="text" class="form-control filter" 
-                            name="patient_code" placeholder="Hasta kodu">
+                            name="patient_code" >
                         <span class="text-danger">@error('patient_code'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                     <label for="">Hasta Adı</label> 
-                        <input type="text" class="form-control filter" placeholder="Hasta Adı"
+                        <input type="text" class="form-control filter"
                             name="patient_name">
                         <span class="text-danger">@error('patient_name'){{ $message }}@enderror</span>
                     </div>
@@ -30,7 +30,7 @@ Vaka Listesi
                     <div class="form-group">
                     <label for="">Cinsiyet</label>
                         <select class="form-control filter" wire:model.live="gender">
-                            <option value="" selected>Cinsiyet</option>
+                            <option value="" selected> </option>
                             @foreach ($genders as $key => $title)
                             <option value="{{ $key }}">{{ $title }}</option>
                             @endforeach
@@ -46,7 +46,7 @@ Vaka Listesi
                 <div class="col-md-4">
                 <div class="form-group">
                                     <label class="required" for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
-                                    <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" placeholder="Telefon no" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone ?? null) }}" required>
+                                    <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone ?? null) }}" required>
                                     @if ($errors->has('phone'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('phone') }}
@@ -56,7 +56,21 @@ Vaka Listesi
                                 </div>
                
                 </div>  
+       
                 <div class="col-md-4">
+                <div class="form-group">
+                            <label for="">Vaka Durumu</label>
+                                <select class="form-control" wire:model.live="status_id">
+                                    <option value="" selected></option>
+                                    @foreach ($statuses as $key=>$status)
+                                    <option value="{{ $key }}">{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger">@error('status_id'){{ $message }}@enderror</span>
+                            </div>
+            
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                <label for="department_id">{{ trans('cruds.travel.fields.department') }}</label>
                <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id">
@@ -74,23 +88,12 @@ Vaka Listesi
                 
                 </div>   
                        
-                <div class="col-md-4">
-                <div class="form-group">
-                            <label for="">Vaka Durumu</label>
-                                <select class="form-control" wire:model.live="status_id">
-                                    <option value="" selected>Select status</option>
-                                    @foreach ($statuses as $key=>$status)
-                                    <option value="{{ $key }}">{{ $status }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger">@error('status_id'){{ $message }}@enderror</span>
-                            </div>
-            
-            </div>
 
              </div>
            
              <div class="row more-filters">
+    
+    <x-province-component class="col-md-4" :data="[]" />
     <div class="col-md-4">
         <div class="form-group">
             <label class="required" for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
@@ -106,20 +109,14 @@ Vaka Listesi
         </div>
     </div>
 
-    <x-province-component class="col-md-4" :data="[]" />
-    <br>
-    <div class="col-md-12 pt-3 pb-3">
-        <div class="dotted-border">
-         
-        </div>
-    </div>
+
     <x-reffering-type-component class="col-md-4" :data="[]" />
 
     <div class="col-md-4">
         <div class="form-group">
             <label for="">Rapor Geliş</label>
             <select class="form-control filter" wire:model.live="compaignChannelId">
-                <option value="" selected>Rapor Geliş</option>
+                <option value="" selected> </option>
                 @foreach ($campaignChannels as $channel)
                 <option value="{{ $channel->id }}">{{ $channel->title }}</option>
                 @endforeach
@@ -145,7 +142,7 @@ Vaka Listesi
         <div class="form-group">
             <label for="">Kategori</label>
             <select class="form-control filter" wire:model.live="compaignChannelId">
-                <option value="" selected>Kategori</option>
+                <option value="" selected> </option>
                 @foreach ($campaignChannels as $channel)
                 <option value="{{ $channel->id }}">{{ $channel->title }}</option>
                 @endforeach
@@ -173,7 +170,7 @@ Vaka Listesi
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
             <label for="">Kampanya Baş.</label>
-            <input type="text" class="form-control filter date" placeholder="Kampanya Başlangıç Tarihi" name="birth_place1">
+            <input type="text" class="form-control filter date"  name="birth_place1">
             <span class="text-danger">@error('birth_place1'){{ $message }}@enderror</span>
         </div>
     </div>
@@ -181,14 +178,11 @@ Vaka Listesi
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
             <label for="">Kampanya Bit.</label>
-            <input type="text" class="form-control filter date" placeholder="Kampanya Bitiş Tarihi" name="birth_place">
+            <input type="text" class="form-control filter date"  name="birth_place">
             <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
         </div>
     </div>
 </div>
-    
-        
-               
                 <div class="row ">
                      <div class="col-8">
                         @can('travel_create')
