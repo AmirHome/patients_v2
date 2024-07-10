@@ -23,7 +23,7 @@
                                 <div>
                                     <div class="activity-title">
                                         <i class="fas fa-chevron-down mx-3 mb-3 pointer"  style="color:#00B8D9"></i>
-                                        <i class="fas fa-chevron-right mx-3 mb-3 pointer"  style="color:#00B8D9;display:none"></i>
+                                         <i class="fas fa-chevron-right test mx-3 mb-3 pointer"  style="color:#00B8D9;"></i> 
                                         {{ $travelTreatmentActivity->status->title ?? '' }}</div>
                                     <div class="activity-info mx-3">{{ $travelTreatmentActivity->user->name ?? '' }}</div>
                                     <div class="mx-3">
@@ -82,20 +82,31 @@
        @section('scripts')
            @parent
            <script>
+
 document.addEventListener('DOMContentLoaded', (event) => {
-    const icons = document.querySelectorAll('.fa-chevron-down'); 
+    const downIcons = document.querySelectorAll('.fa-chevron-down'); 
+    const rightIcons = document.querySelectorAll('.test');
     const tables = document.querySelectorAll('.table-custom'); 
-    const rightIcon =document.querySelectorAll('.fa-chevron-right')
-    icons.forEach((icon, index) => {
-        const table = tables[index]; 
-      
+
+    downIcons.forEach((icon, index) => {
+        const table = tables[index];
+        const rightIcon = rightIcons[index];
+
+        // Initial state setup
+        table.style.display = 'table'; 
+        icon.style.display = 'inline';
+        rightIcon.style.display = 'none';
 
         icon.addEventListener('click', () => {
-            if (table.style.display === 'none') {
-                table.style.display = 'table'; // Tabloyu göster
-            } else {
-                table.style.display = 'none'; 
-            }
+            table.style.display = 'none'; 
+            icon.style.display = 'none'; 
+            rightIcon.style.display = 'inline'; 
+        });
+
+        rightIcon.addEventListener('click', () => {
+            table.style.display = 'table'; 
+            rightIcon.style.display = 'none'; 
+            icon.style.display = 'inline'; 
         });
     });
 });

@@ -481,14 +481,9 @@ background-color: white !important;
     padding-top: 20px !important;
     padding-bottom: 30px;
 }
-.dataTables_wrapper
-    .dataTables_scroll
-    div.dataTables_scrollBody
-    > table
-    > tbody
-    > tr
-    > td:last-child {
-   text-align: center;
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td:last-child
+{
+    text-align: center !important;
 }
 table.dataTable {
     width: 100%;
@@ -753,7 +748,6 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
     box-shadow: none !important;
-    border-bottom: 2px solid black !important;
 }
 .form-control-input{
     color: rgb(50, 50, 50); /* Daha koyu bir renk */
