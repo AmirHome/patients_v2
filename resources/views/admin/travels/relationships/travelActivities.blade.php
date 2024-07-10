@@ -29,63 +29,66 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             @foreach ($activities as $key => $activity)
-                <tr data-entry-id="{{ $activity->id }}">
-                    <td style="max-width: 100px; width: 100px; text-align: center;">
-                        <div class="d-flex justify-content-center">
-                            <span style='font-size:30px;border: 1px solid #00b8d9;color: white !important;border-radius:50%;min-width:50px;background-color:#00b8d9'>{{ $key + 1 }}</span>
-                        </div>
-                    </td>
-                    <td>
-                        <h5 class="activity-title">{{ $activity->status->title ?? '' }}</h5>
-                        <div class="activity-info">
-                            <i class="fas fa-user"></i> &nbsp; {{ $activity->user->name ?? '' }} &nbsp; - &nbsp; {{ $activity->user->email ?? '' }} &nbsp; - &nbsp; <span>{{ $activity->created_at ?? '' }} </span>
-                        </div>
-                        @if (!empty($travelTreatmentActivity->description))
-                            <div class="activity-desc">
-                                <pre><i class="fas fa-comments"></i> {{ $activity->description ?? '' }}</pre>
-                            </div>
-                        @endif
-
-                        @foreach ($activity->document_file as $key => $media)
-                            <div class="activity-files">
-                                <div style="display: flex; align-items: center;">
-                                    <i class="fas fa-file-medical-alt" style="margin-right: 5px;"></i> {{ $key + 1 }}. Dosyayı Görütülemek için &nbsp;
-                                    <a href="{{ $media->getUrl() }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
-                                        {{ trans('global.view_file') }}
-                                    </a> &nbsp;&nbsp;
+            <tr data-entry-id="{{ $activity->id }}" class="activity-hover">
+                <td colspan="3" class="activity-hover">
+                    <div class="container-fluid custom-border activity-card">
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-between">
+                                <div>
+                                    <div class="activity-title">
+                                        <i class="fas fa-chevron-down mx-3 mb-3 pointer"  style="color:#00B8D9"></i>
+                                         <i class="fas fa-chevron-right test mx-3 mb-3 pointer"  style="color:#00B8D9;"></i> 
+                                         {{ $activity->status->title ?? '' }}</div>
+                                    <div class="activity-info mx-3 pt-2">{{ $activity->user->name ?? '' }}</div>
+                                    <div class="mx-3">
+                                        @if (!empty($activity->description))
+                                        <div class="activity-desc mt-2">
+                                            {{ $activity->description ?? '' }}
+                                        </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="activity-info"><span>{{ $activity->created_at ?? '' }}</span></div>
+                                    @can('travel_treatment_activity_edit')
+                                    <button class="btn btn-outline-success mt-5 " href="{{ route('admin.activities.edit', $activity->id) }}">
+                                        <i class="fa fa-pencil"></i> Düzenle
+                                    </button>
+                                    @endcan
+                                    @can('travel_treatment_activity_delete')
+                                    <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        
+                                    </form>
+                                    @endcan
                                 </div>
                             </div>
-                        @endforeach
-                    </td>
-                    <td>
-                        {{ $activity->document_name ?? '' }}
-                    </td>
-                    <td>
-                        @can('activity_show')
-                            <a class="btn btn-xs btn-primary" href="{{ route('admin.activities.show', $activity->id) }}">
-                                {{ trans('global.view') }}
-                            </a>
-                        @endcan
-
-                        @can('activity_edit')
-                            <a class="btn btn-xs btn-info" href="{{ route('admin.activities.edit', $activity->id) }}">
-                                {{ trans('global.edit') }}
-                            </a>
-                        @endcan
-
-                        @can('activity_delete')
-                            <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                            </form>
-                        @endcan
-
-                    </td>
-
-                </tr>
+                        </div>
+                        <table class="table table-custom">
+                            <thead>
+                                <tr class="activity-th">
+                                    <th>Dosya</th>
+                                    <th>Yükleyen</th>
+                                    <th>Açıklama</th>
+                                    <th>Tarih</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="activity-td">
+                                    <td>socio-respectively-366996.pptx</td>
+                                    <td>Serra Tacar - Merkez Ofis</td>
+                                    <td>test deneme2344</td>
+                                    <td>12/03/2024 08:56:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
