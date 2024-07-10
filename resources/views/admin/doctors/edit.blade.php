@@ -14,7 +14,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.doctor.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Name..."  type="text" name="name" id="name" value="{{ old('name', $doctor->name) }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  type="text" name="name" id="name" value="{{ old('name', $doctor->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -26,7 +26,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="phone">{{ trans('cruds.doctor.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" placeholder="Enter Phone..."  type="text" name="phone" id="phone" value="{{ old('phone', $doctor->phone) }}" required>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"  type="text" name="phone" id="phone" value="{{ old('phone', $doctor->phone) }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
@@ -38,7 +38,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.doctor.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Enter Email..." type="text" name="email" id="email" value="{{ old('email', $doctor->email) }}" required>
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', $doctor->email) }}" required>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -102,7 +102,7 @@
             <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="address">{{ trans('cruds.doctor.fields.address') }}</label>
-                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}"   placeholder="Enter Adress..." name="address" id="address" required>{{ old('address', $doctor->address) }}</textarea>
+                <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}"  name="address" id="address" required>{{ old('address', $doctor->address) }}</textarea>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}

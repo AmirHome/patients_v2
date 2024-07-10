@@ -17,7 +17,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.travelGroup.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" placeholder="Enter Group Name..." name="name" id="name" value="{{ old('name', '') }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -29,7 +29,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="color">{{ trans('cruds.travelGroup.fields.color') }}</label>
-                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text" placeholder="Enter Color Code..." name="color" id="color" value="{{ old('color', '') }}" required>
+                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text" name="color" id="color" value="{{ old('color', '') }}" required>
                 @if($errors->has('color'))
                     <div class="invalid-feedback">
                         {{ $errors->first('color') }}

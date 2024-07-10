@@ -16,7 +16,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.travelHospital.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Hospital Name.." type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -28,7 +28,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label for="email">{{ trans('cruds.travelHospital.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Enter Email.."  type="text" name="email" id="email" value="{{ old('email', '') }}">
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"   type="text" name="email" id="email" value="{{ old('email', '') }}">
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}

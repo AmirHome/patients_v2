@@ -5,20 +5,16 @@
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <div>
-            {{ trans('cruds.translator.title_singular') }} {{ trans('global.list') }}
-        </div>
+        <span>{{ trans('cruds.translator.title_singular') }} {{ trans('global.list') }}</span>
         @can('translator_create')
-            <div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#create-translators">
-                    {{ trans('global.add') }} {{ trans('cruds.translator.title_singular') }}
-                </button>
-            </div>
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-tanslators">
+                {{ trans('global.add') }} {{ trans('cruds.translator.title_singular') }}
+            </button>
         @endcan
     </div>
 
     <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
-        <table class=" table table-bordered table-hover ajaxTable datatable datatable-Translator">
+        <table class="table table-bordered table-hover ajaxTable datatable datatable-Translator">
             <thead>
                 <tr>
                     <th width="10">

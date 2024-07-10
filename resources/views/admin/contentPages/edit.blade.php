@@ -27,11 +27,8 @@
             <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label for="categories" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.category') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                </div>
+                <label for="categories" style="margin-top:35px;top:-35px">{{ trans('cruds.contentPage.fields.category') }}</label>
+              
                 <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
                     @foreach($categories as $id => $category)
                         <option value="{{ $id }}" {{ (in_array($id, old('categories', [])) || $contentPage->categories->contains($id)) ? 'selected' : '' }}>{{ $category }}</option>
@@ -47,11 +44,7 @@
             </div>
             <div class="col-md-6">
             <div class="form-group">
-                <label for="tags" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.tag') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                </div>
+                <label for="tags" style="margin-top:35px;top:-35px">{{ trans('cruds.contentPage.fields.tag') }}</label>
                 <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
                     @foreach($tags as $id => $tag)
                         <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $contentPage->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
@@ -69,7 +62,7 @@
             <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+                <label for="page_text" style="top:-3px">{{ trans('cruds.contentPage.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
                 @if($errors->has('page_text'))
                     <div class="invalid-feedback">

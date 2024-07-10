@@ -8,7 +8,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.role.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Roles Name.." type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -21,11 +21,8 @@
 <div class="row">
 <div class="col-md-12">
             <div class="form-group">
-                <label class="required" for="permissions" style="margin-top:35px;">{{ trans('cruds.role.fields.permissions') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                </div>
+                <label class="required" for="permissions" style="margin-top:35px;top:-35px">{{ trans('cruds.role.fields.permissions') }}</label>
+             
                 <select class="form-control select2 {{ $errors->has('permissions') ? 'is-invalid' : '' }}" name="permissions[]" id="permissions"  multiple required>
                     @foreach($permissions as $id => $permission)
                         <option value="{{ $id }}" {{ in_array($id, old('permissions', [])) ? 'selected' : '' }} >{{ $permission }}</option>

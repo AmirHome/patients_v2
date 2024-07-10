@@ -8,7 +8,7 @@
             <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="category">{{ trans('cruds.faqCategory.fields.category') }}</label>
-                <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" placeholder="Please Enter Category Name.." name="category" id="category" value="{{ old('category', '') }}" required>
+                <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text"  name="category" id="category" value="{{ old('category', '') }}" required>
                 @if($errors->has('category'))
                     <div class="invalid-feedback">
                         {{ $errors->first('category') }}

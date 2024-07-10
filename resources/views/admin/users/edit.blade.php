@@ -101,11 +101,8 @@
             <div class="row">
             <div class="col-md-4">
             <div class="form-group">
-            <label class="required" for="roles" style="margin-top:35px;">{{ trans('cruds.user.fields.roles') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all  mb-2" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all  mb-2" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
+            <label class="required" for="roles" style="margin-top:35px;top:-35px">{{ trans('cruds.user.fields.roles') }}</label>
+              
                 <select class="form-control select2 {{ $errors->has('roles') ? 'is-invalid' : '' }}" name="roles[]" id="roles" multiple required>
                     @foreach($roles as $id => $role)
                         <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || $user->roles->contains($id)) ? 'selected' : '' }}>{{ $role }}</option>
@@ -122,9 +119,9 @@
  
             </div>
             <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
             <div class="form-group">
-                <label for="picture">{{ trans('cruds.user.fields.picture') }}</label>
+                <label for="picture" style="top:-5px">{{ trans('cruds.user.fields.picture') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('picture') ? 'is-invalid' : '' }}" id="picture-dropzone">
                 <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
                                         <div class="dz-message" data-dz-message>

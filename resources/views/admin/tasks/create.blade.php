@@ -25,7 +25,7 @@
             <div class="col-md-3">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.task.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Task Title..."  type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"   type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -73,12 +73,12 @@
             <div class="row">
             <div class="col-md-3">
             <div class="form-group">
-                <label class="required radio-btn-header">{{ trans('cruds.task.fields.emergency') }}</label>
+                <label class="required radio-btn-header mx-4">{{ trans('cruds.task.fields.emergency') }}</label>
                 @foreach(App\Models\Task::EMERGENCY_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('emergency') ? 'is-invalid' : '' }}">
                         <div class="row mb-4 ml-3">
-                        <input class="form-check-input mt-4 radio-btn" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', '0') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label mt-3 radio-btn-text" for="emergency_{{ $key }}">{{ $label }}</label>
+                        <input class="form-check-input mt-4  radio-btn" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', '0') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label mt-3 mx-3 radio-btn-text" for="emergency_{{ $key }}">{{ $label }}</label>
                     </div>
                     </div>
                 @endforeach

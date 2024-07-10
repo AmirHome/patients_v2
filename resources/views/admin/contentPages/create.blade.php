@@ -13,7 +13,7 @@
               <div class="col-md-12">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Enter The Title..." type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -26,11 +26,8 @@
             <div class="row">
             <div class="col-md-6">
             <div class="form-group">
-                <label for="categories" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.category') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                </div>
+                <label for="categories" style="margin-top:35px;top:-35px">{{ trans('cruds.contentPage.fields.category') }}</label>
+               
                 <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
                     @foreach($categories as $id => $category)
                         <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $category }}</option>
@@ -46,11 +43,8 @@
             </div>
             <div class="col-md-6">
             <div class="form-group">
-                <label for="tags" style="margin-top:35px;">{{ trans('cruds.contentPage.fields.tag') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
-                </div>
+                <label for="tags" style="margin-top:35px;top:-35px">{{ trans('cruds.contentPage.fields.tag') }}</label>
+           
                 <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
                     @foreach($tags as $id => $tag)
                         <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag }}</option>
@@ -68,8 +62,8 @@
               <div class="row">
               <div class="col-md-6">
             <div class="form-group">
-                <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" placeholder="Enter The Text..." name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
+                <label for="page_text" style="top:-3px">{{ trans('cruds.contentPage.fields.page_text') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
                 @if($errors->has('page_text'))
                     <div class="invalid-feedback">
                         {{ $errors->first('page_text') }}
@@ -81,7 +75,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" placeholder="Enter The Excerpt..." name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}"  name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
                 @if($errors->has('excerpt'))
                     <div class="invalid-feedback">
                         {{ $errors->first('excerpt') }}

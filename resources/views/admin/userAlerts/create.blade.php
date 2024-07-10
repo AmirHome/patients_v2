@@ -10,7 +10,7 @@
                     
             <div class="form-group">
                 <label class="required" for="alert_text">{{ trans('cruds.userAlert.fields.alert_text') }}</label>
-                <input class="form-control {{ $errors->has('alert_text') ? 'is-invalid' : '' }}" placeholder="Please Enter The Text..." type="text" name="alert_text" id="alert_text" value="{{ old('alert_text', '') }}" required>
+                <input class="form-control {{ $errors->has('alert_text') ? 'is-invalid' : '' }}" type="text" name="alert_text" id="alert_text" value="{{ old('alert_text', '') }}" required>
                 @if($errors->has('alert_text'))
                     <div class="invalid-feedback">
                         {{ $errors->first('alert_text') }}
@@ -22,7 +22,7 @@
             <div class="col-md-6">  
             <div class="form-group">
                 <label for="alert_link">{{ trans('cruds.userAlert.fields.alert_link') }}</label>
-                <input class="form-control {{ $errors->has('alert_link') ? 'is-invalid' : '' }}" type="text" placeholder="Please Enter The Link..." name="alert_link" id="alert_link" value="{{ old('alert_link', '') }}">
+                <input class="form-control {{ $errors->has('alert_link') ? 'is-invalid' : '' }}" type="text"  name="alert_link" id="alert_link" value="{{ old('alert_link', '') }}">
                 @if($errors->has('alert_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('alert_link') }}

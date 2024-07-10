@@ -14,7 +14,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.translator.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"  placeholder="Enter Translators..." id="title" value="{{ old('title', $translator->title) }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title"   id="title" value="{{ old('title', $translator->title) }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -26,7 +26,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.translator.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"  placeholder="Enter Email..." name="email" id="email" value="{{ old('email', $translator->email) }}" required>
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"  name="email" id="email" value="{{ old('email', $translator->email) }}" required>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -40,7 +40,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="phone">{{ trans('cruds.translator.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"  placeholder="Enter Phone..." type="text" name="phone" id="phone" value="{{ old('phone', $translator->phone) }}" required>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"  type="text" name="phone" id="phone" value="{{ old('phone', $translator->phone) }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}

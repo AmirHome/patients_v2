@@ -8,7 +8,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.travelStatus.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="Enter Status Name.." type="text" name="title" id="title" value="{{ old('title', '') }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -20,7 +20,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label for="ordering">{{ trans('cruds.travelStatus.fields.ordering') }}</label>
-                <input class="form-control {{ $errors->has('ordering') ? 'is-invalid' : '' }}" type="number" name="ordering" id="ordering" placeholder="Please Enter Ordering..." step="1">
+                <input class="form-control {{ $errors->has('ordering') ? 'is-invalid' : '' }}" type="number" name="ordering" id="ordering"  step="1">
                 @if($errors->has('ordering'))
                     <div class="invalid-feedback">
                         {{ $errors->first('ordering') }}

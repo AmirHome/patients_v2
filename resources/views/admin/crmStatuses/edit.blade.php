@@ -21,7 +21,7 @@
                 <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.crmStatus.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"  placeholder="Enter Name.." name="name" id="name" value="{{ old('name', $crmStatus->name) }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"   name="name" id="name" value="{{ old('name', $crmStatus->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -33,7 +33,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label for="color">{{ trans('cruds.crmStatus.fields.color') }}</label>
-                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text"  placeholder="Enter Color.." name="color" id="color" value="{{ old('color', $crmStatus->color) }}">
+                <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text"  name="color" id="color" value="{{ old('color', $crmStatus->color) }}">
                 @if($errors->has('color'))
                     <div class="invalid-feedback">
                         {{ $errors->first('color') }}

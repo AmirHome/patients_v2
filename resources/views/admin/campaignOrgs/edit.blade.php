@@ -15,7 +15,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.campaignOrg.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" placeholder="title" type="text" name="title" id="title" value="{{ old('title', $campaignOrg->title) }}" required>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $campaignOrg->title) }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}

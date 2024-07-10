@@ -46,7 +46,7 @@
             <div class="col-md-6">
             <div class="form-group">
                 <label for="answer">{{ trans('cruds.faqQuestion.fields.answer') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}" placeholder="Please Enter Question.." name="answer" id="answer">{!! old('answer', $faqQuestion->answer) !!}</textarea>
+                <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}"  name="answer" id="answer">{!! old('answer', $faqQuestion->answer) !!}</textarea>
                 @if($errors->has('answer'))
                     <div class="invalid-feedback">
                         {{ $errors->first('answer') }}

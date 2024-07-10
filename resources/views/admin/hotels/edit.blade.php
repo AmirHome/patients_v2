@@ -22,7 +22,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.hotel.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Name..." type="text" name="name" id="name" value="{{ old('name', $hotel->name) }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  type="text" name="name" id="name" value="{{ old('name', $hotel->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -33,7 +33,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="location">{{ trans('cruds.hotel.fields.location') }}</label>
-                <input class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" placeholder="Enter Location..." type="text" name="location" id="location" value="{{ old('location', $hotel->location) }}" required>
+                <input class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}"  type="text" name="location" id="location" value="{{ old('location', $hotel->location) }}" required>
                 @if($errors->has('location'))
                     <div class="invalid-feedback">
                         {{ $errors->first('location') }}
@@ -44,7 +44,7 @@
             <div class="col-md-4">
             <div class="form-group">
                 <label for="price">{{ trans('cruds.hotel.fields.price') }}</label>
-                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" placeholder="Enter Price..." name="price" id="price" value="{{ old('price', $hotel->price) }}" step="0.01">
+                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number"  name="price" id="price" value="{{ old('price', $hotel->price) }}" step="1">
                 @if($errors->has('price'))
                     <div class="invalid-feedback">
                         {{ $errors->first('price') }}
