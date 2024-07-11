@@ -187,7 +187,7 @@ Vaka Listesi
                      <div class="col-8">
                         @can('travel_create')
                         @if (Auth::user()->roles->first()->id == 100)
-                        <a class="btn btn-success " href="{{ route('admin.travels.create') }}">
+                        <a class="btn btn-success" id="travel-filter-add" href="{{ route('admin.travels.create') }}">
                             <i class="far fa-plus-square"></i> {{ trans('global.add') }} {{
                             trans('cruds.travel.title_singular') }}
                         </a>
@@ -199,7 +199,7 @@ Vaka Listesi
                         @endcan
                     </div>
                     <div class="col-4 ">
-                    <button class="float-right btn btn-primary ml-3 mt-3 p-2" type="button" id="form-filter-submit">
+                    <button class="float-right btn btn-primary ml-3 mt-3 p-2 travel-search" type="button" id="form-filter-submit">
                             Search <i class="fas fa-search"></i>
                         </button>
     <button class="btn btn-info float-right mt-3 p-2" type="button" id="show-filters">

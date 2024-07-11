@@ -5,7 +5,7 @@
             @csrf
             <div class="card-header">Create Campaign Orgs</div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.campaignOrg.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
@@ -17,7 +17,7 @@
                 <span class="help-block">{{ trans('cruds.campaignOrg.fields.title_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="channel_id">{{ trans('cruds.campaignOrg.fields.channel') }}</label>
                 <select class="form-control select2 {{ $errors->has('channel') ? 'is-invalid' : '' }}" name="channel_id" id="channel_id" required>
@@ -33,7 +33,7 @@
                 <span class="help-block">{{ trans('cruds.campaignOrg.fields.channel_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="started_at">{{ trans('cruds.campaignOrg.fields.started_at') }}</label>
                 <input class="form-control date {{ $errors->has('started_at') ? 'is-invalid' : '' }}" type="text" name="started_at" id="started_at" value="{{ old('started_at') }}" required>
@@ -45,20 +45,18 @@
                 <span class="help-block">{{ trans('cruds.campaignOrg.fields.started_at_helper') }}</span>
             </div>
             </div>
-            </div>
-           <div class="row ml-2">
-            <div class="col-md-2">
+            <div class="col-md-6" style="top: -10px">
             <div class="form-group">
-                <label class="required radio-btn-header">{{ trans('cruds.campaignOrg.fields.status') }}</label>
+                <label class="required radio-btn-header mx-4">{{ trans('cruds.campaignOrg.fields.status') }}</label>
+                <div class="d-flex flex-wrap">
                 @foreach(App\Models\CampaignOrg::STATUS_RADIO as $key => $label)
-                <div class="row mb-4">
-                    <div class=" form-check {{ $errors->has('status') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input mt-4 radio-btn" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', '0') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label mt-3 radio-btn-text" for="status_{{ $key }}">{{ $label }}</label>
+                    <div class=" form-check {{ $errors->has('status') ? 'is-invalid' : '' }}" style="padding-left:65px;margin-right:20px">
+                        <input class="form-check-input mt-4  radio-btn" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', '0') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label mt-3  radio-btn-text" for="status_{{ $key }}">{{ $label }}</label>
                     </div>
-                    </div>
-
                 @endforeach
+            </div>
+
                 @if($errors->has('status'))
                     <div class="invalid-feedback">
                         {{ $errors->first('status') }}

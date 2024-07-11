@@ -92,7 +92,7 @@
                         @endcan
                     </div>
                     <div class="col-4">
-                        <button class="float-right btn btn-primary" type="button" id="form-filter-submit">
+                        <button class="float-right btn btn-primary mt-3" type="button" id="form-filter-submit">
                             Search <i class="fas fa-search"></i>
                         </button>
                     </div>

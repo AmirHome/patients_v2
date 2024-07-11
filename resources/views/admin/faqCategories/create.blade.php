@@ -1,5 +1,5 @@
 <div class="modal fade" id="create-faq-categories" tabindex="-1" role="dialog"  aria-hidden="true" >
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.faq-categories.store") }}" enctype="multipart/form-data">
             @csrf

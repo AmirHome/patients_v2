@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+<div class="container">
 <div class="card">
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.faqCategory.title_singular') }}
@@ -11,7 +11,7 @@
             @method('PUT')
             @csrf
             <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="category">{{ trans('cruds.faqCategory.fields.category') }}</label>
                 <input class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" type="text" name="category" id="category" value="{{ old('category', $faqCategory->category) }}" required>
@@ -32,6 +32,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
 

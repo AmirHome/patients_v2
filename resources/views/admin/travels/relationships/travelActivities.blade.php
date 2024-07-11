@@ -38,8 +38,8 @@
                             <div class="col-12 d-flex justify-content-between">
                                 <div>
                                     <div class="activity-title">
-                                        <i class="fas fa-chevron-down mx-3 mb-3 pointer"  style="color:#00B8D9"></i>
-                                         <i class="fas fa-chevron-right test mx-3 mb-3 pointer"  style="color:#00B8D9;"></i> 
+                                        <i class="fas fa-chevron-down mx-3 mb-3 pointer"  style="color:#006C9C"></i>
+                                         <i class="fas fa-chevron-right test mx-3 mb-3 pointer"  style="color:#006C9C;"></i> 
                                          {{ $activity->status->title ?? '' }}</div>
                                     <div class="activity-info mx-3 pt-2">{{ $activity->user->name ?? '' }}</div>
                                     <div class="mx-3">

@@ -6,7 +6,7 @@
             <div class="card-header">Create Doctor</div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.doctor.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -18,7 +18,7 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.name_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="phone">{{ trans('cruds.doctor.fields.phone') }}</label>
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"   type="text" name="phone" id="phone" value="{{ old('phone', '') }}" required>
@@ -30,7 +30,7 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.phone_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="email">{{ trans('cruds.doctor.fields.email') }}</label>
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"  type="text" name="email" id="email" value="{{ old('email', '') }}" required>
@@ -42,9 +42,8 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.email_helper') }}</span>
             </div>
             </div>
-            </div>
-            <div class="row">
-            <div class="col-md-4">
+        
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="city_id">{{ trans('cruds.doctor.fields.city') }}</label>
                 <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}"  name="city_id" id="city_id" required>
@@ -60,7 +59,7 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.city_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="hospital_id">{{ trans('cruds.doctor.fields.hospital') }}</label>
                 <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id" required>
@@ -76,7 +75,7 @@
                 <span class="help-block">{{ trans('cruds.doctor.fields.hospital_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="department_id">{{ trans('cruds.doctor.fields.department') }}</label>
                 <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id" required>

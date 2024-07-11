@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+<div class="container">
 
 <div class="card">
     <div class="card-header">
@@ -64,6 +65,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
 

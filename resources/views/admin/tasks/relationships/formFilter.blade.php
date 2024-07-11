@@ -6,7 +6,7 @@
         <form action="{{ route('admin.tasks.index') }}" method="get">
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Assignee</label>
                         <select class="form-control filter" wire:model.live="assignee" name="assignee">
@@ -16,7 +16,14 @@
                         <span class="text-danger">@error('Assignee'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Content</label>
+                        <input type="text" class="form-control filter" placeholder="Enter content" name="content">
+                        <span class="text-danger">@error('content'){{ $message }}@enderror</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Status</label>
                         <select class="form-control filter select2" multiple name="status_id">
@@ -27,13 +34,7 @@
                         <span class="text-danger">@error('Status'){{ $message }}@enderror</span>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="">Content</label>
-                        <input type="text" class="form-control filter" placeholder="Enter content" name="content">
-                        <span class="text-danger">@error('content'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+             
                 
             </div>
 

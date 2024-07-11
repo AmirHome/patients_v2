@@ -35,10 +35,10 @@
             <div class="row">
                 <div class="col-md-12">
             <div class="form-group">
-                <label for="users" style="margin-top:35px;">{{ trans('cruds.userAlert.fields.user') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all mb-2">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all mb-2">{{ trans('global.deselect_all') }}</span>
+                <label for="users" style="margin-top:55px;">{{ trans('cruds.userAlert.fields.user') }}</label>
+                <div >
+                    <span class="btn btn-info btn-xs select-all  pt-2 pb-2" style="padding:1px 1%;font-size:14px;background-color: #006c9c !important;margin-bottom:15px">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all pt-2 pb-2" style="padding:1px 1%;font-size:14px; background-color: rgb(99, 99, 99) !important;margin-bottom:15px">{{ trans('global.deselect_all') }}</span>
                 </div>
                 <select class="form-control select2 {{ $errors->has('users') ? 'is-invalid' : '' }}" name="users[]" id="users" multiple>
                     @foreach($users as $id => $user)

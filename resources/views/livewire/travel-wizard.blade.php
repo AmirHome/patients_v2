@@ -239,9 +239,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
                               
-                                <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Kanal</label>
@@ -274,8 +272,6 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Referans Tipiniz</label>

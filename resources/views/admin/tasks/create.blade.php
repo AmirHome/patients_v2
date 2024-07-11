@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route("admin.tasks.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
             <div class="form-group">
                 <label for="due_date">{{ trans('cruds.task.fields.due_date') }}</label>
                 <input class="form-control date {{ $errors->has('due_date') ? 'is-invalid' : '' }}"  type="text" name="due_date" id="due_date" value="{{ old('due_date') }}">
@@ -22,7 +22,7 @@
                 <span class="help-block">{{ trans('cruds.task.fields.due_date_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.task.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"   type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -34,8 +34,46 @@
                 <span class="help-block">{{ trans('cruds.task.fields.name_helper') }}</span>
             </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="required radio-btn-header mx-4">{{ trans('cruds.task.fields.emergency') }}</label>
+                    <div class="d-flex flex-wrap">
+                    @foreach(App\Models\Task::EMERGENCY_RADIO as $key => $label)
+                        <div class="form-check {{ $errors->has('emergency') ? 'is-invalid' : '' }}" style="padding-left:65px;margin-right:20px">
+                            <input class="form-check-input mt-4  radio-btn" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', '0') === (string) $key ? 'checked' : '' }} required>
+                            <label class="form-check-label mt-3  radio-btn-text" for="emergency_{{ $key }}">{{ $label }}</label>
+                        </div>
+                    @endforeach
+                </div>
 
-            <div class="col-md-3">
+                    @if($errors->has('emergency'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('emergency') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.task.fields.emergency_helper') }}</span>
+                </div>
+                </div>
+           
+        </div>
+          <div class="row">
+            <div class="col-md-4">
+            <div class="form-group">
+                <label class="required" for="status_id">{{ trans('cruds.task.fields.status') }}</label>
+                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
+                    @foreach($statuses as $id => $entry)
+                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.task.fields.status_helper') }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="assigned_to_id ">{{ trans('cruds.task.fields.assigned_to') }}</label>
                 <select class="form-control select2 {{ $errors->has('assigned_to') ? 'is-invalid' : '' }}" name="assigned_to_id" id="assigned_to_id">
@@ -52,46 +90,24 @@
             </div>
             
             </div>
-            <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.task.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                    @foreach($statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
+                <label for="description">{{ trans('cruds.task.fields.description') }}</label>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" placeholder="Enter Description..." name="description" id="description">{{ old('description') }}</textarea>
+                @if($errors->has('description'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
+                        {{ $errors->first('description') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.task.fields.status_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.task.fields.description_helper') }}</span>
             </div>
             </div>
-            </div>
-
-            <div class="row">
-            <div class="col-md-3">
-            <div class="form-group">
-                <label class="required radio-btn-header mx-4">{{ trans('cruds.task.fields.emergency') }}</label>
-                @foreach(App\Models\Task::EMERGENCY_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('emergency') ? 'is-invalid' : '' }}">
-                        <div class="row mb-4 ml-3">
-                        <input class="form-check-input mt-4  radio-btn" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', '0') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label mt-3 mx-3 radio-btn-text" for="emergency_{{ $key }}">{{ $label }}</label>
-                    </div>
-                    </div>
-                @endforeach
-                @if($errors->has('emergency'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('emergency') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.task.fields.emergency_helper') }}</span>
-            </div>
-            </div>
-
-            <div class="col-md-9">
+       
+            
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
             <div class="form-group">
                 <label for="attachment">{{ trans('cruds.task.fields.attachment') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('attachment') ? 'is-invalid' : '' }}" id="attachment-dropzone">
@@ -108,22 +124,8 @@
                 <span class="help-block">{{ trans('cruds.task.fields.attachment_helper') }}</span>
             </div>
             </div>
-            </div>
-
-    
-            <div class="row">
-            <div class="col-md-12">
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.task.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" placeholder="Enter Description..." name="description" id="description">{{ old('description') }}</textarea>
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.task.fields.description_helper') }}</span>
-            </div>
-            </div>
+      
+     
             </div>
 
             <div class="form-group">

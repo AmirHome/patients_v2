@@ -6,7 +6,7 @@
             <div class="card-header">Create Travel Groups</div>
 
             <div class="row">
-                <div class="col-md-6 offset-3 text-align-center">
+                <div class="col-md-6 text-align-center">
                 <div class="login-info-div">
                 <svg class="info-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10m-10 5.75a.75.75 0 0 0 .75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75M12 7a1 1 0 1 1 0 2a1 1 0 0 1 0-2" clip-rule="evenodd"></path></svg>
                 <span class="login-info">Sample Color Entry <strong> #AA0000 </strong></span> </div>

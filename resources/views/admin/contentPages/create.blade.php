@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route("admin.content-pages.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  type="text" name="title" id="title" value="{{ old('title', '') }}" required>
@@ -22,6 +22,18 @@
                 <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
             </div>
             </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
+                  <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}"  name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
+                  @if($errors->has('excerpt'))
+                      <div class="invalid-feedback">
+                          {{ $errors->first('excerpt') }}
+                      </div>
+                  @endif
+                  <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
+              </div>
+              </div>
             </div>
             <div class="row">
             <div class="col-md-6">
@@ -72,24 +84,11 @@
                 <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-6">
-            <div class="form-group">
-                <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}"  name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
-                @if($errors->has('excerpt'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('excerpt') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
-            </div>
-            </div>
-            </div>
-             <div class="row">
-              <div class="col-md-12">
+   
+              <div class="col-md-6">
             <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
+                <div class="needsclick dropzone p-5 {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
                 <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
                                         <div class="dz-message" data-dz-message>
                                             <p>Drop files here or click <a>browse</a> thorough your machien</p>

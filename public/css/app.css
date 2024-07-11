@@ -437,7 +437,7 @@ background-color: white !important;
 }
 .activity-th th
 {
-color: #00B8D9;
+color: #006C9C;
 font-family: "Public Sans";
 font-size: 14px;
 font-style: normal;
@@ -562,12 +562,12 @@ table {
 }
 
 td .btn-primary {
-    color: #321fdb;
+    color: #006C9C;
     margin: 0px !important;
 }
 td .btn-primary:hover {
     background-color: initial !important;
-    color: rgba(50, 31, 219, 0.6) !important;
+    color: rgba(3, 142, 167,0.9) !important;
 }
 
 td .btn-primary:before {
@@ -575,13 +575,13 @@ td .btn-primary:before {
 }
 
 td .btn-info {
-    color: #39f;
+    color: #118D57;
     padding-left: 11px;
     padding-top: 2px
 }
 td .btn-info:hover {
     background-color: initial !important;
-    color: rgba(51, 153, 255, 0.5) !important;
+    color: rgba(17, 141, 87, 0.5) !important;
 }
 td .btn-info:before {
     content: "\f040";
@@ -624,13 +624,13 @@ td .btn-primary:focus {
     background-color: inherit !important;
 }
 td .btn-info:focus{
-color: rgba(51, 153, 255, 0.5) !important;
+color: rgba(17, 141, 87, 0.5) !important;
 }
 td .btn-danger:focus{
     color: rgba(229, 83, 83, 0.6) !important;
 }
 td .btn-primary:focus{
-    color: rgba(50, 31, 219, 0.6) !important;
+    color: rgba(3, 142, 167,0.8) !important;
 
 }
 td .btn-info,
@@ -938,7 +938,7 @@ input[type="search" i] {
     max-height:40vh !important;
     color:rgb(33, 43, 54) !important;
     line-height:1.5 !important;
-    font-size:1rem !important;
+    font-size:0.9rem !important;
     backdrop-filter:blur(20px) !important;
     background-color:rgba(255, 255, 255, 0.9) !important;
     box-shadow:rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px !important;
@@ -1108,6 +1108,23 @@ input[type="radio" i]:focus-visible {
 background: #00A76F;
  color: white;
 }
+#show-filters{
+    background-color: #118D57;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+#show-filters:hover{
+    background-color: rgba(17, 141, 87, 0.8);
+}
+#show-filters:focus{
+    background-color: rgba(17, 141, 87, 0.7);
+}
+.travel-search{
+    background-color: #006C9C !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
 .btn-outline-success:hover{
     border-radius: 8px;
     background: rgba(0, 167, 111, 0.8);
@@ -1360,7 +1377,7 @@ div.dataTables_wrapper div.dataTables_length label
 .btn-primary:focus,
 .btn-primary:active
 {
-    background-color: #03a4c0 !important;
+    background-color: rgba(0, 108, 156 ,0.8) !important;
     color: white;
     border-color: none !important;
     outline: none !important;
@@ -1400,6 +1417,7 @@ div.dataTables_wrapper div.dataTables_length label
 }
 .dropdown-item.active, .dropdown-item:active{
     background-color: white !important;
+    color: #000102;
 }
 .dropdown-item a{
     color: rgb(2, 122, 82) !important;
@@ -1453,15 +1471,16 @@ div.dataTables_wrapper div.dataTables_length label
         color: #00B8D9;
     }
     .login-info-div{
-        background-color: #CAFDF5;
+        background-color: rgba(0, 184, 217, 0.3);
         border-radius: 10px;
         padding: 10px;
         margin-bottom: 20px;
+        color: #003768;;
     }
     .login-info{
         padding:8px 0px;
         font-weight: 400;
-        font-size: 0.775rem;
+        font-size: 0.85rem;
         line-height:1.5;
     }
     .login-info strong{
@@ -1592,6 +1611,10 @@ thead tr {
     display: block; /* Butonların blok olarak yerleştirilmesini sağlar */
 
 }
+.modal-content {
+ padding: 2% 4% !important;
+ }
+
 /*Activity*/
 .activity-title{
     color: #545454;
@@ -1669,7 +1692,7 @@ thead tr {
       .select2-container--default.select2-container--disabled .select2-selection--single {
         cursor: default !important;
         color: rgb(145, 158, 171) !important;
-        background-color: #F9F9F9 !important;
+        background-color: #F7F7F7 !important;
       }
       .form-control:disabled, .form-control[readonly] {
         cursor: default !important;
@@ -1685,11 +1708,19 @@ thead tr {
         line-height: 1.57143 !important;
         color: #1C252E !important;
     }
+    html:not([dir=rtl]) .form-check-input{
+        margin-left: -40px !important;
+    }
+
   .radio-btn-text{
     font-weight: 400 !important;
     font-size:0.875rem !important;
     line-height: 1.57143 !important;
     color: #1C252E !important;
+    margin-left: 22px;
+  }
+  .dropdown-item a {
+    padding-left: 10px;
   }
   .radio-btn{
     margin-top: 25px !important;
