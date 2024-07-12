@@ -53,8 +53,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                            <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:200px">
+                                        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+                                            <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:150px">
+                                            <button type="button" class="btn btn-update mt-2" data-toggle="modal" data-target="#modal-profile-photo">Güncelle</button>
                                         </div>
                                         <div class="col-md-6 d-flex flex-column justify-content-center">
                                             <div class="form-group" style="padding: 0px 10px 0px 10px !important">
@@ -225,7 +226,12 @@
                                        
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="modal fade" id="modal-profile-photo" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <form  method="POST" enctype="multipart/form-data">
+                                                    <div class="card-header text-left mx-3 mt-2">Update Profile Photo</div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
                                                 <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}  d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
@@ -240,7 +246,36 @@
                                                 <span class="help-block">{{ trans('cruds.patient.fields.photo_helper') }}</span>
                                             </div>
                                         </div>
-                                    
+                                        <div class="row justify-content-end">
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                                                    {{ trans('global.cancel') }}
+                                                </button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                                            </div>
+                                        </div>
+                                     </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
+                                    <div class="d-flex flex-column align-items-center justify-content-center mt-2 needsclick dropzone {{ $errors->has('passport_image') ? 'is-invalid' : '' }}" id="passport_image-dropzone">
+                                        <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                    </div>
+                                    @if ($errors->has('passport_image'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('passport_image') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
+                                </div>
+                            </div>
+
                                     </div>
                     
                                         <div class="form-group">
@@ -325,21 +360,7 @@
                                                 <span class="help-block">{{ trans('cruds.travel.fields.group_helper') }}</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
-                                                <div class="d-flex flex-column align-items-center justify-content-center mt-2 needsclick dropzone {{ $errors->has('passport_image') ? 'is-invalid' : '' }}" id="passport_image-dropzone">
-                                                    <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                                    <div class="dz-message" data-dz-message><p>Upload File</p></div>
-                                                </div>
-                                                @if ($errors->has('passport_image'))
-                                                    <div class="invalid-feedback">
-                                                        {{ $errors->first('passport_image') }}
-                                                    </div>
-                                                @endif
-                                                <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
-                                            </div>
-                                        </div>
+                                        
 
                                         </div>
                     

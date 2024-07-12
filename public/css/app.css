@@ -3,6 +3,7 @@ body {
     font-family: "Public Sans", sans-serif;
     font-weight: 600;
 }
+
 :root {
     --white: rgb(255, 255, 255);
     --black: rgb(0, 0, 0);
@@ -710,7 +711,7 @@ td .btn-primary {
     margin-bottom: 11px;
 }
 .select2-container--default .select2-selection--single .select2-selection__arrow{
-    height: 30px !important;
+    height: 18px !important;
 }
 .form-control,.form-control:hover,.form-control:focus,.select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--single:hover,
@@ -812,6 +813,16 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
 .form-control:disabled, .form-control[readonly] {
     background-color: #F9F9F9 !important;
 }
+.select2-selection__arrow b {
+    display: none !important; /* Varsayılan oku gizler */
+}
+    .select2-selection__arrow {
+        background: initial !important;
+        background: url('https://static.thenounproject.com/png/1150091-200.png') no-repeat center center !important;
+        background-size: 9px 9px !important;
+        border: none !important;
+        margin-left: 20px !important;
+    }
 
 .dropzone {
     border: 1px dashed rgba(145, 158, 171, 0.2) !important;
@@ -896,7 +907,7 @@ input[type="search" i] {
 .select2-container--default
     .select2-selection--single
     .select2-selection__arrow {
-    margin-right: 7px;
+    margin-right: -15px;
     height: 49px;
 
 
@@ -907,6 +918,8 @@ input[type="search" i] {
     align-items: center;
     border-color:#d8dbe0;
     padding: 0px !important;
+    margin-right: -15px;
+
 }
 
 .select2-container--default .select2-selection--single {
@@ -1157,6 +1170,23 @@ box-shadow: none !important;
 .btn-print:hover {
     background-color: rgba(255, 171, 0, 0.75) !important;
 }
+.btn-update{
+    color: #006C9C;
+font-family: "Public Sans";
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: 22px;
+}
+.btn-update:hover{
+background-color: #006C9C;
+color: white;
+}
+.btn-update:focus{
+    box-shadow: none;
+    background-color: rgba(0, 108, 156, 0.8);
+    color: white;
+    }
 .btn-excel,
 .btn-csv,
 .btn-print {
@@ -1344,6 +1374,24 @@ div.dataTables_wrapper div.dataTables_length label
     color: rgb(151, 151, 151) !important;
     background-color:transparent !important;
     border:rgb(151, 151, 151) 1px solid ;
+}
+.btn-outline-secondary{
+    padding:8px 16px !important;
+    background-color: rgb(54, 179, 126);
+    border-radius:8px;
+    font-weight:700;
+    color: white;
+    margin-right:12px  !important;
+    width: 130px;
+}
+.btn-outline-secondary:active,.btn-outline-secondary:focus,.btn-outline-secondary:hover{
+    background-color: rgba(54, 179, 126,0.8);
+    color: white !important;
+    box-shadow: none !important;
+}
+.btn-outline-secondary:focus{
+    background-color: rgba(54, 179, 126,0.7) !important;
+ 
 }
 .btn-outline-primary:active,
 .btn-outline-primary:hover,

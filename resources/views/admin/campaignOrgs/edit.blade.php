@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+<div class="container">
 
 <div class="card">
     <div class="card-header">
@@ -54,12 +55,12 @@
             </div>
             </div>
             <div class="row ">
-            <div class="col-md-2">
+            <div class="col-md-4">
             <div class="form-group">
                 <label class="required radio-btn-header">{{ trans('cruds.campaignOrg.fields.status') }}</label>
                 <div class="d-flex flex-wrap" >
                 @foreach(App\Models\CampaignOrg::STATUS_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('status') ? 'is-invalid' : '' }}" style="padding-left:35px;margin-right:70px">
+                    <div class="form-check {{ $errors->has('status') ? 'is-invalid' : '' }}" style="padding-left:40px;margin-right:60px">
                         <input class="form-check-input mt-4 radio-btn" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', $campaignOrg->status) === (string) $key ? 'checked' : '' }} required>
                         <label class="form-check-label mt-3 radio-btn-text" style="margin-left: 0px;" for="status_{{ $key }}">{{ $label }}</label>
                     </div>
@@ -84,7 +85,6 @@
         </form>
     </div>
 </div>
-
-
+</div>
 
 @endsection

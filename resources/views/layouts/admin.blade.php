@@ -41,13 +41,15 @@
          <i id="righticon" class="fas fa-chevron-right" style="display:none;"></i>
           </button>
 
-            <!-- <button class="main-search" type="button" responsive="true">
+           <button class="main-search" type="button" responsive="true">
                 <i class="fas fa-fw fa-search"></i>
             </button>
-            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button> -->
+            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button>
             
             <ul class="c-header-nav ml-auto">
-
+              <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='{{ route('admin.travels.index') }}'">
+                Travels Page
+            </button>
             @if(count(config('panel.available_languages', [])) > 1)
     <li class="c-header-nav-item dropdown d-md-down-none ">
         <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >

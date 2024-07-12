@@ -228,7 +228,21 @@
                                     @endif
                                     <span class="help-block">{{ trans('cruds.patient.fields.photo_helper') }}</span>
                                 </div>
-
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
+                                    <div class="needsclick dropzone mt-2 {{ $errors->has('passport_image') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="passport_image-dropzone">
+                                        <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                    </div>
+                                    @if($errors->has('passport_image'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('passport_image') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
+                                </div>
                             </div>
                         </div>
 
@@ -357,21 +371,7 @@
                             <span class="help-block">{{ trans('cruds.patient.fields.campaign_org_helper') }}</span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
-                            <div class="needsclick dropzone mt-2 {{ $errors->has('passport_image') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="passport_image-dropzone">
-                                <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                <div class="dz-message" data-dz-message><p>Upload File</p></div>
-                            </div>
-                            @if($errors->has('passport_image'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('passport_image') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
-                        </div>
-                    </div>
+                    
 
                     </div>
 
