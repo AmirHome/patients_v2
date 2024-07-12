@@ -41,10 +41,7 @@
          <i id="righticon" class="fas fa-chevron-right" style="display:none;"></i>
           </button>
 
-           <button class="main-search" type="button" responsive="true">
-                <i class="fas fa-fw fa-search"></i>
-            </button>
-            <button class="un-clickable"><span class="K" responsive="true">⌘K</span></button>
+
             
             <ul class="c-header-nav ml-auto">
               <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='{{ route('admin.travels.index') }}'">
@@ -353,6 +350,9 @@
         $.fn.dataTable.ext.classes.sPageButton = '';
       });
   
+
+ 
+
       $(document).ready(function () {
         
           $(".notifications-menu").on('click', function () {
@@ -362,6 +362,7 @@
               }
           });
       });
+      
   
       $('.toast').toast('show');
 

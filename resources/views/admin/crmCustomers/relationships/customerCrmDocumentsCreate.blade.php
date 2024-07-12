@@ -2,8 +2,8 @@
 @can('crm_document_create')
     {{-- route('admin.crm-documents.create') --}}
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-ghost-success" data-toggle="modal" data-target="#crm-documents-store">
-        <i class="fa fa-plus"></i> Add Action
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#crm-documents-store">
+       Add Action
     </button>
 
     <!-- Modal -->

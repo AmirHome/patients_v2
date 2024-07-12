@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     downIcons.forEach((icon, index) => {
         const table = tables[index];
         const rightIcon = rightIcons[index];
-
         // Initial state setup
         table.style.display = 'table'; 
         icon.style.display = 'inline';
