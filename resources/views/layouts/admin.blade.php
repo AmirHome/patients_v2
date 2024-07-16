@@ -391,13 +391,56 @@ window.onload = function() {
 };
 
 
-
 // document.addEventListener('DOMContentLoaded', function() {
 //      const dateInputs = document.querySelectorAll('.form-control.date');
 //      dateInputs.forEach(input => {
 //         input.placeholder = 'Tarih Giriniz...';
 //     });
 // });
+
+
+//regex
+document.getElementById('phone').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    
+    });
+    document.getElementById('foriegn_phone').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    
+    });
+    document.getElementById('name').addEventListener('input', function (e) {
+        const input = e.target;
+        if (input.value.length < 2) {
+            input.setCustomValidity('Name must be at least 2 characters long.');
+            input.reportValidity();
+        } else {
+            input.setCustomValidity('');
+        }
+    });
+
+    
+
+    document.addEventListener('DOMContentLoaded', function () {
+       const form = document.querySelector('form');
+       const emailInput = document.getElementById('email');
+
+       form.addEventListener('submit', function (e) {
+           if (!emailInput.value.includes('@')) {
+               e.preventDefault();
+               emailInput.setCustomValidity('Email must contain an "@" symbol.');
+               emailInput.reportValidity();
+           } else {
+               emailInput.setCustomValidity('');
+           }
+       });
+
+       emailInput.addEventListener('input', function () {
+           if (emailInput.value.includes('@')) {
+               emailInput.setCustomValidity('');
+           }
+       });
+   });
+
   </script>
     
     @yield('scripts')

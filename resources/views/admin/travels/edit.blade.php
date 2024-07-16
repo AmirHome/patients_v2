@@ -275,9 +275,7 @@
                                     <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
                                 </div>
                             </div>
-
                                     </div>
-                    
                                         <div class="form-group">
                                             <button class="btn btn-danger float-right" type="submit">
                                                 {{ trans('global.save') }}

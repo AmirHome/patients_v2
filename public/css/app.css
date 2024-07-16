@@ -1791,6 +1791,7 @@ thead tr {
     }
  
 }
+
 @media (max-width: 690px) {
     div.dataTables_wrapper div.dataTables_filter input {
         display: block !important;
@@ -1801,6 +1802,7 @@ thead tr {
         white-space: nowrap;
         justify-content: center;
     }
+
 }
 
 tr>td>.fc-day-grid-event {

@@ -44,15 +44,6 @@ public function rules()
                 'string',
                 'nullable',
             ],
-            'can_see_prices' => [
-                'required',
-            ],
-            'can_set_prices' => [
-                'required',
-            ],
-            'is_super' => [
-                'required',
-            ],
             'roles.*' => [
                 'integer',
             ],

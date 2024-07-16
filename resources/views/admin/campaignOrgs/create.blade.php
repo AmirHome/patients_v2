@@ -45,14 +45,14 @@
                 <span class="help-block">{{ trans('cruds.campaignOrg.fields.started_at_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-6" style="top: -10px">
+            <div class="col-md-6 col-sm-12" style="top: -10px">
             <div class="form-group">
-                <label class="required radio-btn-header mx-4">{{ trans('cruds.campaignOrg.fields.status') }}</label>
+                <label class="required radio-btn-header ">{{ trans('cruds.campaignOrg.fields.status') }}</label>
                 <div class="d-flex flex-wrap">
                 @foreach(App\Models\CampaignOrg::STATUS_RADIO as $key => $label)
-                    <div class=" form-check {{ $errors->has('status') ? 'is-invalid' : '' }}" style="padding-left:65px;margin-right:20px">
+                    <div class=" form-check {{ $errors->has('status') ? 'is-invalid' : '' }}" style="padding-left:45px;margin-right:60px">
                         <input class="form-check-input mt-4  radio-btn" type="radio" id="status_{{ $key }}" name="status" value="{{ $key }}" {{ old('status', '0') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label mt-3  radio-btn-text" for="status_{{ $key }}">{{ $label }}</label>
+                        <label class="form-check-label mt-3   radio-btn-text" style="margin-left: 0px !important" for="status_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach
             </div>

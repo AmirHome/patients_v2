@@ -41,8 +41,6 @@ Vaka Listesi
  
             </div>
             <div class="row">
-         
-               
                 <div class="col-md-4">
                 <div class="form-group">
                                     <label class="required" for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
@@ -54,9 +52,7 @@ Vaka Listesi
                                     @endif
                                     <span class="help-block">{{ trans('cruds.patient.fields.phone_helper') }}</span>
                                 </div>
-               
                 </div>  
-       
                 <div class="col-md-4">
                 <div class="form-group">
                             <label for="">Vaka Durumu</label>
@@ -68,7 +64,6 @@ Vaka Listesi
                                 </select>
                                 <span class="text-danger">@error('status_id'){{ $message }}@enderror</span>
                             </div>
-            
             </div>
             <div class="col-md-4">
                 <div class="form-group">
@@ -85,22 +80,37 @@ Vaka Listesi
                @endif
                <span class="help-block">{{ trans('cruds.travel.fields.department_helper') }}</span>
             </div>
-                
                 </div>   
-                       
-
              </div>
-           
              <div class="row more-filters">
-    
-    <x-province-component class="col-md-4" :data="[]" />
+             <x-province-component class="col-md-4" :data="[]" />
+             <div class="col-md-4">
+                <div class="form-group">
+                    <label for="hospital_id">Sevk Yeri</label>
+                    <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id">
+                        @foreach ($hospitals ?? [] as $id => $entry)
+                            <option value="{{ $id }}" {{ (old('hospital_id') ? old('hospital_id') : $travel->hospital->id ?? '') == $id ? 'selected' : '' }}>
+                                {{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('hospital'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('hospital') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.travel.fields.hospital_helper') }}</span>
+                </div>
+            </div>
     <div class="col-md-4">
         <div class="form-group">
-            <label class="required" for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
-            <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" required>
-             
+            <label for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
+            <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id">
+                @foreach ($offices ?? [] as $id => $entry)
+                    <option value="{{ $id }}" {{ (old('office_id') ? old('office_id') : $patient->office->id ?? '') == $id ? 'selected' : '' }}>
+                        {{ $entry }}</option>
+                @endforeach
             </select>
-            @if($errors->has('office'))
+            @if ($errors->has('office'))
                 <div class="invalid-feedback">
                     {{ $errors->first('office') }}
                 </div>
@@ -112,19 +122,28 @@ Vaka Listesi
 
     <x-reffering-type-component class="col-md-4" :data="[]" />
 
+  
+
     <div class="col-md-4">
         <div class="form-group">
-            <label for="">Rapor Geliş</label>
-            <select class="form-control filter" wire:model.live="compaignChannelId">
-                <option value="" selected> </option>
-                @foreach ($campaignChannels as $channel)
-                <option value="{{ $channel->id }}">{{ $channel->title }}</option>
+            <label for="group_id">{{ trans('cruds.travel.fields.group') }}</label>
+            <select class="form-control select2 {{ $errors->has('group') ? 'is-invalid' : '' }}" name="group_id" id="group_id">
+                @foreach ($groups ?? [] as $id => $entry)
+                    <option value="{{ $id }}" {{ (old('group_id') ? old('group_id') : $travel->group->id ?? '') == $id ? 'selected' : '' }}>
+                        {{ $entry }}</option>
                 @endforeach
             </select>
-            <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
+            @if ($errors->has('group'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('group') }}
+                </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.travel.fields.group_helper') }}</span>
         </div>
     </div>
 
+
+    <x-campaign-channel-org-component class="col-md-4" :data="[]" />
     <div class="col-md-4">
         <div class="form-group">
             <label for="arrival_date">{{ trans('cruds.travel.fields.arrival_date') }}</label>
@@ -137,35 +156,19 @@ Vaka Listesi
             <span class="help-block">{{ trans('cruds.travel.fields.arrival_date_helper') }}</span>
         </div>
     </div>
-
     <div class="col-md-4">
         <div class="form-group">
-            <label for="">Kategori</label>
-            <select class="form-control filter" wire:model.live="compaignChannelId">
-                <option value="" selected> </option>
-                @foreach ($campaignChannels as $channel)
-                <option value="{{ $channel->id }}">{{ $channel->title }}</option>
-                @endforeach
-            </select>
-            <span class="text-danger">@error('compaignChannelId'){{ $message }}@enderror</span>
+            <label for="">Rapor Geliş Tarihi</label>
+            <input class="form-control date {{ $errors->has('arrival_date') ? 'is-invalid' : '' }}" type="text" name="arrival_date" id="arrival_date">
+            @if($errors->has('arrival_date'))
+            <div class="invalid-feedback">
+                {{ $errors->first('arrival_date') }}
+            </div>
+            @endif
+            <span class="help-block">{{ trans('cruds.travel.fields.arrival_date_helper') }}</span>
+        
         </div>
     </div>
-
-    <x-campaign-channel-org-component class="col-md-4" :data="[]" />
-    <div class="col-md-4">
-    <div class="form-group">
-                    
-                    <label for="hospital_id">Sevk Yeri</label>
-                    <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id">
-                        
-                    </select>
-                    @if ($errors->has('hospital'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('hospital') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.travel.fields.hospital_helper') }}</span>
-                </div>                                </div>
 
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
@@ -205,7 +208,6 @@ Vaka Listesi
     <button class="btn btn-info float-right mt-3 p-2" type="button" id="show-filters">
         Daha Fazla Filtre <i class="fas fa-filter"></i>
     </button>
-              
                 </div>
                 </div>
                 </div>
