@@ -528,8 +528,8 @@ return [
     ],
 ],
 'definition' => [
-    'title'          => 'Tanım',
-    'title_singular' => 'Tanım',
+    'title'          => 'Tanımlamalar',
+    'title_singular' => 'Tanımlamalar',
 ],
 'campaignChannel' => [
     'title'          => 'Kampanya Kanalları',
@@ -1073,5 +1073,10 @@ return [
         'deleted_at'         => 'Silinme Tarihi',
         'deleted_at_helper'  => ' ',
     ],
+],
+'Other' => [
+    'Expenses'          => 'Masraflar',
+    'Income'            => 'Gelir',
+    'patient_code'      => 'Hasta Kodumu', 
 ],
 ];
