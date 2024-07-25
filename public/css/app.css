@@ -120,7 +120,7 @@ body {
     appearance: none;
     text-align: center;
     flex: 0 0 auto;
-    border-radius: 50%; /* Kusursuz yuvarlak için */
+    border-radius: 50%; 
     color: rgb(99, 115, 129);
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     font-size: 0.625rem;
@@ -246,16 +246,15 @@ margin-left:3px !important;
 }
 .c-sidebar-nav-item i::before {
     content: "\f111";
-    /* content: "\f6aa"; */
     font-family: "Font Awesome 5 Free";
     color: #637381;
     background-color: #637381;
     border-radius: 50%;
     font-weight: 400;
-    font-size: 0.18rem; /* Adjust the font size as needed */
+    font-size: 0.18rem; 
     padding-bottom: 1px;
     padding-left: 1px;
-    vertical-align: middle; /* En üste sabitlemek için */
+    vertical-align: middle; 
 }
 
 .c-sidebar .c-sidebar-nav-dropdown-toggle .c-sidebar-nav-icon,
@@ -263,7 +262,7 @@ margin-left:3px !important;
 .c-sidebar .c-sidebar-nav-dropdown-toggle,
 .c-sidebar .c-sidebar-nav-link {
     color: #637381;
-    transition: none; /* Transitionu kaldır */
+    transition: none; 
 }
 .c-sidebar .c-sidebar-nav-dropdown-toggle::after {
     background-image: none;
@@ -357,7 +356,6 @@ margin-left:3px !important;
     color: currentColor;
     font-weight: 600;
     background-color: #ffffff;
-    /* border-color: #d8dbe0 #d8dbe0 #c4c9d0; */
 }
 .nav-tabs .nav-link,
 a.nav-link {
@@ -372,12 +370,12 @@ a.nav-link {
 }
 
 .card-table {
-    border-radius: 0.5rem !important; /* Border radiusu daha keskin */
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
+    border-radius: 0.5rem !important; 
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); 
     padding: calc(var(--Grid-rowSpacing) / 2)
         calc(var(--Grid-columnSpacing) / 2);
     box-sizing: border-box;
-    table-layout: auto; /* Optional: Adjust table layout as needed */
+    table-layout: auto; 
 
 }
 .dotted-border {
@@ -386,8 +384,8 @@ a.nav-link {
 }
 .card-body {
     background-color: white;
-    border-radius: 0.5rem !important; /* Border radiusu daha keskin */
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); /* Gri gölge efekti */
+    border-radius: 0.5rem !important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1); 
     box-sizing: border-box;
     padding: 24px 16px 24px 16px;
 }
@@ -422,10 +420,10 @@ textarea {
 }
 .activity-card {
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölgelendirme */
-    border-radius: 8px; /* Köşe yuvarlatma */
-    padding: 10px; /* İçeriğin etrafındaki dolgu */
-    margin-bottom: 10px; /* Kartlar arasındaki boşluk */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
 
 }
 .pointer{
@@ -491,16 +489,15 @@ table.dataTable {
     width: 100%;
     margin-bottom: 1rem;
     border-collapse: collapse !important;
-    /* border-spacing: 5em; */
 }
 @media (min-width:1200px) {
    tbody tr td:last-child {
-        min-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
-        max-width: 210px !important; /* İstediğiniz minimum genişliği buraya yazın */
+        min-width: 210px !important;
+        max-width: 210px !important;
     }
  
     thead tr td{
-        max-width: 150px !important; /* İstediğiniz minimum genişliği buraya yazın */
+        max-width: 150px !important;
         text-align: center !important;
         justify-content: center;
     }
@@ -510,7 +507,7 @@ table.dataTable {
 
 @media (min-width:1200px) {
     ul tbody tr td:last-child {
-         min-width: 10px !important; /* İstediğiniz minimum genişliği buraya yazın */
+         min-width: 10px !important;
      }
  }
  
@@ -658,7 +655,7 @@ td .btn-primary:focus {
     outline: none;
     font-weight: 500;
     border: none;
-    transform: none !important; /* Hover durumunda transformu devre dışı bırak */
+    transform: none !important; 
 }
 td .btn-danger,
 td .btn-info,
@@ -691,7 +688,7 @@ td .btn-primary {
    ---------- Form minimal ----------
 */
 .form-control {
-    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    color: rgb(50, 50, 50);
     box-sizing: content-box;
     background: none;
     height: 1.4375em;
@@ -726,14 +723,14 @@ td .btn-primary {
 }
 
 .form-control::placeholder {
-    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    color: rgb(50, 50, 50);
     font-family: "Public Sans", sans-serif;
     font-weight: 400;
     text-overflow: ellipsis;
 }
 .form-control:hover {
-    color: black; /* Yazı rengi siyah */
-    border-color: black !important; /* Border rengi siyah */
+    color: black; 
+    border-color: black !important;
     box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
 div.dataTables_wrapper div.dataTables_filter input:hover{
@@ -752,7 +749,7 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
     box-shadow: none !important;
 }
 .form-control-input{
-    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    color: rgb(50, 50, 50);
     box-sizing: content-box;
     background: none;
     height: 1.4375em;
@@ -779,12 +776,12 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
 
 
 .form-control-input::placeholder {
-    color: rgb(50, 50, 50); /* Daha koyu bir renk */
+    color: rgb(50, 50, 50);
 }
 .form-control-input:hover {
-    color: black; /* Yazı rengi siyah */
-    border-color: black !important; /* Border rengi siyah */
-    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82); /* Siyah gölge efekti */
+    color: black;
+    border-color: black !important;
+    box-shadow: 0 0 0 0.01rem rgba(0, 0, 0, 0.82);
 }
 .form-control-input:focus {
     background-color: #fff;
@@ -803,8 +800,8 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
     padding-left: 30px !important;
 }
 .form-control-sm[type="search"]::placeholder {
-    content: "Search..."; /* Placeholder metni */
-    color: #999; /* Placeholder rengi */
+    content: "Search...";
+    color: #999;
 }
 .form-group{
     padding: 15px 10px 10px 10px; 
@@ -815,7 +812,7 @@ div.dataTables_wrapper div.dataTables_filter input:focus{
     background-color: #F9F9F9 !important;
 }
 .select2-selection__arrow b {
-    display: none !important; /* Varsayılan oku gizler */
+    display: none !important;
 }
     .select2-selection__arrow {
         background: initial !important;
@@ -887,9 +884,9 @@ input[type="search" i] {
   appearance: none;
   -webkit-appearance: none; /* Safari ve Chrome desteği için */
   -moz-appearance: none; /* Firefox desteği için */
-  padding-left: 30px; /* Sol tarafta boşluk bırakmak için */
+  padding-left: 30px; 
   background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw6dk7omKm0_uFS5GJbDqszFezNaqFk8aOABSnfBVHCcucQ92mIPkVZ0fFZt8HLSl0npM&usqp=CAU') no-repeat left center; /* Arama simgesi */
-  background-position: 10px center; /* Arama simgesinin sola 10px uzak olmasını sağlar */
+  background-position: 10px center; 
   background-size: 1em;
 
 }
@@ -983,8 +980,8 @@ input[type="search" i] {
     border-color: #d8dbe0;
 }
 .select2-container--default .select2-selection--multiple:hover{
-    color: black; /* Yazı rengi siyah */
-    border-color: black !important; /* Border rengi siyah */
+    color: black; 
+    border-color: black !important; 
     box-shadow: 0 0.0rem 0 rgba(0, 0, 0, 0.82);
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice
@@ -1303,13 +1300,13 @@ div.dataTables_wrapper div.dataTables_length label
     padding: 5px 5px 5px 5px;
 }
 .pagination > *:not(:first-child):not(:last-child) .page-link {
-    border-radius: 50%; /* Tam bir yuvarlak */
+    border-radius: 50%; 
     width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 5%; /* İçeriği dikey olarak tam ortala */
+    line-height: 5%;
     max-width: 30px;
     max-height: 30px;
     margin-top: 2px;
@@ -1477,7 +1474,7 @@ div.dataTables_wrapper div.dataTables_length label
 .welcome-text {
     font-family: 'Segoe UI', sans-serif;
     font-weight: 700;
-    text-align: center; /* Metni ortalar */
+    text-align: center; 
     font-size:2rem;
     color: black;
 }
@@ -1650,11 +1647,11 @@ thead tr {
     padding-right: 15px !important;
 }
 .modal.show{
-    background-color: rgba(75, 85, 94, 0.4); /* Hafif gri arka plan rengi (örnek) */
+    background-color: rgba(75, 85, 94, 0.4);
 }
 .modal-content button {
     margin-left: auto;
-    display: block; /* Butonların blok olarak yerleştirilmesini sağlar */
+    display: block; 
 
 }
 .modal-content {
@@ -1811,7 +1808,7 @@ tr>td>.fc-day-grid-event {
 }
 .fc-event-container {
     position: relative;
-    top: -14vh; /* İstediğiniz top değerini burada belirleyin */
+    top: -14vh; 
   }
 
   .fc-event-container a {
