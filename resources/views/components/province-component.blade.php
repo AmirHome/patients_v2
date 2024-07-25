@@ -1,9 +1,9 @@
 {{-- <x-province-component class="col-md-4" :data="['template'=>'province', 'province_id'=>'10']"/> --}}
 <div class="{{$class}}">
     <div class="form-group">
-    <label for="">Ülke</label>
+    <label for="">{{ trans('cruds.travel.fields.country') }}</label>
         <select class="form-control select2 filter" id="country_id">
-            <option value=null>Ülke</option>
+            <option value=null>{{ trans('cruds.travel.fields.country') }}</option>
             @foreach ($countries as $id => $name)
             <option value="{{ $id }}" {{($id==$country)?'selected':''}}>{{ $name }}</option>
             @endforeach
@@ -14,9 +14,9 @@
 
 <div class="{{$class}}">
     <div class="form-group">
-    <label for="">Şehir</label>
+    <label for="">{{ trans('cruds.travel.fields.city') }}</label>
         <select class="form-control select2 filter" id="city_id">
-            <option>Şehir</option>
+            <option>{{ trans('cruds.travel.fields.city') }}</option>
             @foreach ($cities as $id => $name)
             <option value="{{ $id }}" {{($id==$city)?'selected':''}}>{{ $name }}</option>
             @endforeach

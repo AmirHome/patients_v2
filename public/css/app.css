@@ -217,6 +217,7 @@ margin-left:3px !important;
     margin-right: 15px;
     border-radius: 8px;
     backdrop-filter:blur(20px);
+    margin-top: 12px !important;
 
  }
  
@@ -1467,10 +1468,7 @@ div.dataTables_wrapper div.dataTables_length label
     background-color: white !important;
     color: #000102;
 }
-.dropdown-item a{
-    color: rgb(2, 122, 82) !important;
 
-}
 /*Login*/
 .welcome-div{
     background-color: #faf8f8;
@@ -1769,6 +1767,8 @@ thead tr {
   }
   .dropdown-item a {
     padding-left: 10px;
+        color:rgb(32, 101, 209)!important;
+
   }
   .radio-btn{
     margin-top: 25px !important;

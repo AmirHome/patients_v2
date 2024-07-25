@@ -1,6 +1,6 @@
 <container>
 <div class="card-header pl-4">
-Vaka Listesi
+    {{ trans('cruds.travel.fields.patient_filter_title') }}
     </div>
     <div class="row pl-3">
         <div class="col-md-12 pl-0">
@@ -12,7 +12,7 @@ Vaka Listesi
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label for="">Hasta Kodu</label>
+                    <label for=""> {{ trans('cruds.travel.fields.patient_code') }} </label>
                         <input type="text" class="form-control filter" 
                             name="patient_code" >
                         <span class="text-danger">@error('patient_code'){{ $message }}@enderror</span>
@@ -20,7 +20,7 @@ Vaka Listesi
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label for="">Hasta Adı</label> 
+                    <label for="">{{ trans('cruds.travel.fields.patient_name') }}</label> 
                         <input type="text" class="form-control filter"
                             name="patient_name">
                         <span class="text-danger">@error('patient_name'){{ $message }}@enderror</span>
@@ -28,7 +28,7 @@ Vaka Listesi
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                    <label for="">Cinsiyet</label>
+                    <label for="">{{ trans('cruds.travel.fields.gender') }}</label>
                         <select class="form-control filter" wire:model.live="gender">
                             <option value="" selected> </option>
                             @foreach ($genders as $key => $title)
@@ -55,7 +55,7 @@ Vaka Listesi
                 </div>  
                 <div class="col-md-4">
                 <div class="form-group">
-                            <label for="">Vaka Durumu</label>
+                            <label for="">{{ trans('cruds.travel.fields.patient_status') }}</label>
                                 <select class="form-control" wire:model.live="status_id">
                                     <option value="" selected></option>
                                     @foreach ($statuses as $key=>$status)

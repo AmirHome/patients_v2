@@ -819,6 +819,7 @@ return [
         'patient'                        => 'Hasta',
         'patient_helper'                 => ' ',
         'group'                          => 'Grup',
+        'patient_code'                   => 'Hasta Kodu',
         'group_helper'                   => ' ',
         'hospital'                       => 'Hastane',
         'hospital_helper'                => ' ',
