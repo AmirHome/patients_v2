@@ -4,7 +4,6 @@
         @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsCreate', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
         @includeIf('admin.crmCustomers.relationships.customerCrmDocumentsEdit', ['crmDocuments' => $crmCustomer->customerCrmDocuments])
     </div>
-
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-customerCrmDocuments">
@@ -21,7 +20,7 @@
                                                  <i class="fas fa-chevron-right test mx-3 mb-3 pointer"  style="color:#006C9C;"></i> 
                                                  {{ $crmDocument->status->name ?? '' }}
                                                 </div>
-                                            <div class="activity-info mx-3 pt-2">                                {{ $crmDocument->user->name ?? '' }}
+                                            <div class="activity-info mx-3 pt-2">     {{ $crmDocument->user->name ?? '' }}
                                             </div>
                                             <div class="mx-3">
                                                 @if (!empty($crmDocument->description))
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     downIcons.forEach((icon, index) => {
         const table = tables[index];
         const rightIcon = rightIcons[index];
-        // Initial state setup
+
         table.style.display = 'table'; 
         icon.style.display = 'inline';
         rightIcon.style.display = 'none';

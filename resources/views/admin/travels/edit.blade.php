@@ -226,40 +226,6 @@
                                        
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="modal-profile-photo" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-md" role="document">
-                                                <div class="modal-content">
-                                                    <form  method="POST" enctype="multipart/form-data">
-                                                    <div class="card-header text-left mx-3 mt-2">Update Profile Photo</div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
-                                                <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}  d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
-                                                    <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
-                                                </div>
-                                                @if ($errors->has('photo'))
-                                                    <div class="invalid-feedback">
-                                                        {{ $errors->first('photo') }}
-                                                    </div>
-                                                @endif
-                                                <span class="help-block">{{ trans('cruds.patient.fields.photo_helper') }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-end">
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
-                                                    {{ trans('global.cancel') }}
-                                                </button>
-                                            </div>
-                                            <div class="form-group">
-                                                <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
-                                            </div>
-                                        </div>
-                                     </form>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
@@ -733,19 +699,44 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
                 </div>
             </div>
-
         </form>
     </div>
+    <div class="modal fade" id="modal-profile-photo" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-md" role="document">
+                                                <div class="modal-content">
+                                                    <form  method="POST" enctype="multipart/form-data">
+                                                    <div class="card-header text-left mx-3 mt-2">Update Profile Photo</div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
+                                                <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}  d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
+                                                    <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                                </div>
+                                                @if ($errors->has('photo'))
+                                                    <div class="invalid-feedback">
+                                                        {{ $errors->first('photo') }}
+                                                    </div>
+                                                @endif
+                                                <span class="help-block">{{ trans('cruds.patient.fields.photo_helper') }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-end">
+                                            <div class="form-group">
+                                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                                                    {{ trans('global.cancel') }}
+                                                </button>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                                            </div>
+                                        </div>
+                                     </form>
+                                    </div>
+                                </div>
+                            </div>
 @endsection
 
 @section('scripts')
