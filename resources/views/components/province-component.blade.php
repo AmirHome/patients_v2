@@ -3,7 +3,7 @@
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.country') }}</label>
         <select class="form-control select2 filter" id="country_id">
-            <option value=null>{{ trans('cruds.travel.fields.country') }}</option>
+            <option value=null></option>
             @foreach ($countries as $id => $name)
             <option value="{{ $id }}" {{($id==$country)?'selected':''}}>{{ $name }}</option>
             @endforeach
@@ -16,7 +16,7 @@
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.city') }}</label>
         <select class="form-control select2 filter" id="city_id">
-            <option>{{ trans('cruds.travel.fields.city') }}</option>
+            <option> </option>
             @foreach ($cities as $id => $name)
             <option value="{{ $id }}" {{($id==$city)?'selected':''}}>{{ $name }}</option>
             @endforeach

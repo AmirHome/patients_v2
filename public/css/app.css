@@ -1770,6 +1770,7 @@ thead tr {
   .radio-btn{
     margin-top: 25px !important;
   }
+
   @media (max-width: 1810px) {
     div.dataTables_wrapper div.dataTables_filter input {
         margin-left: calc(90% - 30px) !important;
@@ -1780,7 +1781,17 @@ thead tr {
     div.dataTables_wrapper div.dataTables_filter input {
         margin-left: calc(90% - 120px) !important;
     }
-
+    .login-page-xl{
+        display: none;
+    }
+     .login-page-lg{
+            display: block;
+    background-color: white !important;
+  }
+      .login-page-lg header{
+    background-color: white !important;
+  }
+      
 }
 @media (max-width: 1150px) {
     div.dataTables_wrapper div.dataTables_filter input {
@@ -1788,20 +1799,94 @@ thead tr {
     }
  
 }
+ 
 
 @media (max-width: 690px) {
-    div.dataTables_wrapper div.dataTables_filter input {
-        display: block !important;
-        margin-left: 0px !important;
-    }
+
     div.dataTables_wrapper div.dataTables_paginate ul.pagination {
         margin-right: 45px;
         white-space: nowrap;
         justify-content: center;
     }
+    .pagination{
+        margin-left: 32vw !important;
+    }
 
 }
+@media (max-width: 640px) {
+   #DataTables_Table_0_filter{
+    margin-top: 20px;
+    margin-right: 33px;
+   }
+    div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+        margin-right: 45px;
+        white-space: nowrap;
+        justify-content: center;
+    }
+    .pagination{
+        margin-left: 0px !important;
+    }
 
+}
+    @media (max-width: 500px) {
+   .pagination li:not(.active) {
+        display: none !important;
+    }
+         .pagination li:nth-child(2) {
+        display: block !important;
+    }
+        .pagination li:nth-child(3) {
+        display: block !important;
+    }
+
+        .pagination li.previous,
+    .pagination li.next {
+        display: block !important;
+    }
+
+}
+@media (max-width: 445px) {
+   #DataTables_Table_0_filter {
+    text-align: right !important;
+    margin-right: 30% !important;
+   } 
+.btn-print{
+    margin-top: 10px;
+    padding: 4px 59px !important;
+    margin-left: 25px !important;
+}
+.dt-buttons{
+    text-align: left !important;
+}
+}
+
+    @media (max-width: 430px) {
+
+    .input-group-text{display: none;}
+    .login-page-lg{margin-top: 50px !important;}
+    }
+
+@media (max-width: 350px) {
+
+ .btn-excel,.btn-print,.btn-csv {
+    text-align: center !important;
+    margin-left: 25% !important;
+ }
+.btn-csv,.btn-print {
+    margin-top: 10px;
+    padding: 4px 59px !important;
+}
+ 
+}
+
+@media (min-width: 1310px) {
+    .login-page-xl {
+        display: block;
+    }
+    .login-page-lg {
+        display: none;
+    }
+}
 tr>td>.fc-day-grid-event {
     margin:4px 4px;
     border-radius: 7px;
@@ -1816,3 +1901,15 @@ tr>td>.fc-day-grid-event {
      line-height:20px;
      font-size:13px;
   }
+
+
+/*Login Logo*/
+.fixed-top {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: auto !important; 
+    padding: 0.5rem 1rem !important; 
+}
+
+ 

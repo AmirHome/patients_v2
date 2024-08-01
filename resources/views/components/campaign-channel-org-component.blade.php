@@ -5,7 +5,7 @@
     <div class="form-group">
     <label for="">Channel</label>
         <select class="form-control select2 filter" id="channel_id">
-            <option value=null>Channel</option>
+            <option value=null> </option>
             @foreach ($campaignChannels as $id => $title)
             <option value="{{ $id }}" {{($id==$campaignChannel)?'selected':''}}>{{ $title }}</option>
             @endforeach
@@ -18,7 +18,7 @@
     <div class="form-group">
     <label for="">Organ</label>
         <select class="form-control select2 filter" id="campaign_org_id">
-            <option>Organ</option>
+            <option></option>
             @foreach ($campaignOrgs as $id => $title)
             <option value="{{ $id }}"  {{($id==$campaignOrg)?'selected':''}}>{{ $title }}</option>
             @endforeach

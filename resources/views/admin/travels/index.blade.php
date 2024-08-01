@@ -43,7 +43,6 @@
                     <th>
                         {{ trans('cruds.travel.fields.created_at') }}
                     </th>
-                  
                     <th>
                         &nbsp;
                     </th>

@@ -93,7 +93,7 @@
                     </li>
                 </ul>
                 <li  class="pl-1 pr-1">
-                    <a class="c-header-nav-link" href="{{ config('chat.url') }}" >
+                    <a class="c-header-nav-link" href="http://patientsv2.clinics.com.tr:64001/login" target="_blank">
                       <i class="fa fa-comments" aria-hidden="true" > </i>
                     </a>
                 </li>
@@ -450,6 +450,9 @@ document.getElementById('phone').addEventListener('input', function (e) {
            }
        });
    });
+
+
+
 
   </script>
     

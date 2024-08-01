@@ -69,6 +69,7 @@
                 <div class="form-group">
                <label for="department_id">{{ trans('cruds.travel.fields.department') }}</label>
                <select class="form-control select2 {{ $errors->has('department') ? 'is-invalid' : '' }}" name="department_id" id="department_id">
+                 <option value disabled {{ old('job_type', null) === null ? 'selected' : '' }}></option>
                @foreach($departments as $id => $entry)
                <option value="{{ $id }}" {{ (old('department_id') ? old('department_id') : $travel->department->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                @endforeach

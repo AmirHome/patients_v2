@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    <header class="fixed-top bg-light p-3 mb-5">
+            <img src="{{ asset('img/clinics-logo.png') }}" alt="Logo Image" class="img-fluid">
+    </header>
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card mx-4">
@@ -39,4 +42,5 @@
         </div>
     </div>
 </div>
+
 @endsection

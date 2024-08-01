@@ -5,7 +5,7 @@
     <div class="form-group">
     <label for="">Referans Tipiniz</label>
         <select class="form-control" name="reffering_type">
-            <option value="" selected>Choose reffering type</option>
+            <option value="" selected> </option>
             @foreach ($refferingTypes as $id => $title)
             <option value="{{ $id }}" {{($id==$refferingType)?'selected':''}}>{{ $title }}</option>
             @endforeach
@@ -21,7 +21,7 @@
         <input type="text" class="form-control {{$refferingType == 'Other'?'':'d-none'}}" placeholder="Enter reffering" name="reffering" id="reffer-other" value="{{$reffering??''}}">
 
         <select class="form-control {{($refferingType != 'Other' && $refferingType != 'Phone')?'':'d-none'}}" name="reffering" id="reffer-select">
-            <option value="" selected>Choose Reffering</option>
+            <option value="" selected> </option>
             @foreach ($refferingIds as $id => $refferings)
             <option value="{{ $id }}" {{($id==$reffering)?'selected':''}}>{{ $refferings }}</option>
             @endforeach

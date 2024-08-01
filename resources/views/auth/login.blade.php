@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
-
+<div class="login-page-xl">
 <div class="row d-flex justify-content-center align-items-center full-height bg-white">
 <div class="col-md-3 welcome-div justify-content-center align-items-center">
 <img src="{{ asset('img/clinics-logo.png') }}" alt="Logo Image" class="dashboard-img img-fluid">
@@ -93,4 +93,84 @@
     <div class="col-md-3 ">
 </div>
 </div>
+</div>
+
+<div class="login-page-lg">
+    <header class="fixed-top bg-light p-3 mb-5">
+            <img src="{{ asset('img/clinics-logo.png') }}" alt="Logo Image" class="img-fluid">
+    </header>
+   <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 col-lg-4"> 
+            <div class="card">
+            <div class="card-body p-4 login-card-body">
+                <h3 class="sign-text">Sign in to your account</h3>     
+              <div> <span class="sign-under-text"> Don't have an account? </span>
+                 <a class="btn btn-link px-0" href="{{ route('register') }}" style="color:#00A76F;font-weight:600;">
+                                {{ trans('global.getStarted') }}
+                            </a></div>
+
+                @if(session('message'))
+                    <div class="alert alert-info" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
+                <br>
+                <div class="login-info-div">
+                <svg class="info-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2s10 4.477 10 10m-10 5.75a.75.75 0 0 0 .75-.75v-6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75M12 7a1 1 0 1 1 0 2a1 1 0 0 1 0-2" clip-rule="evenodd"></path></svg>
+                <span class="login-info">Use <strong>admin@admin.com</strong> with password  <strong> admin@123 </strong></span>
+
+                </div>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input id="email" name="email" type="text" class="form-control-input{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-12 text-right" >
+                            @if(Route::has('password.request'))
+                                <a class="btn btn-link px-0" style="color: #000;font-weight:400;" href="{{ route('password.request') }}">
+                                    {{ trans('global.forgot_password') }}
+                                </a><br>
+                            @endif
+                       
+                        </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        </div>
+
+                        <input id="password" name="password" type="password" class="form-control-input{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_password') }}">
+
+                        @if($errors->has('password'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password') }}
+                            </div>
+                        @endif
+                    </div>
+
+                  
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-light px-4 pt-2 pb-2 btn-block">
+                                {{ trans('global.login') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
 @endsection
