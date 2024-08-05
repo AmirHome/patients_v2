@@ -1,5 +1,5 @@
 <div>
-
+<!-- {{ trans('cruds.province.fields.back_to_homepage') }} -->
     <form wire:submit.prevent="store">
         <div class="container-fluid p-0 m-0">
 
@@ -9,7 +9,7 @@
                     {{-- STEP 1 --}}
                     <div class="step-one {{ $currentStep == 1 ? 'd-block' : 'd-none' }}">
                         <div class="card">
-                            <div class="card-header">Hasta Bilgileri</div>
+                            <div class="card-header">{{ trans('cruds.province.fields.patient_information') }}</div>
                             <div class="card-body">
                                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
                                     <div class="d-flex justify-content-center">
@@ -36,13 +36,13 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Hasta Kodu</label>
+                                            <label for="">{{ trans('cruds.province.fields.patient_code') }}</label>
                                             <input type="text" class="form-control" id="code" value="{{ $code }}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Hasta Geliş Tarihi</label>
+                                            <label for="">{{ trans('cruds.province.fields.patient_admission_date') }}</label>
                                             <input type="text" class="form-control" id="date" readonly placeholder="{{ getCurrentDate() }}" disabled>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">İsim</label>
+                                            <label for="">{{ trans('cruds.province.fields.name') }}</label>
                                             <input type="text" class="form-control"  wire:model="name">
                                             <span class="text-danger">
                                                 @error('name')
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">İkinci ismi</label>
+                                            <label for="">{{ trans('cruds.province.fields.middle_name') }}</label>
                                             <input type="text" class="form-control" wire:model="middle_name">
                                             <span class="text-danger">
                                                 @error('middle_name')
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Soyadı</label>
+                                            <label for="">{{ trans('cruds.patient.fields.surname') }}</label>
                                             <input type="text" class="form-control"  wire:model="surname">
                                             <span class="text-danger">
                                                 @error('surname')
@@ -86,9 +86,9 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Cinsiyet</label>
+                                            <label for="">{{ trans('cruds.patient.fields.gender') }}</label>
                                             <select class="form-control" wire:model.live="gender">
-                                                <option value="" selected>Choose gender</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_gender') }}</option>
                                                 @foreach ($genders as $key => $title)
                                                     <option value="{{ $key }}">{{ $title }}</option>
                                                 @endforeach
@@ -116,7 +116,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Doğum Yeri</label>
+                                            <label for="">{{ trans('cruds.patient.fields.birth_place') }}</label>
                                             <input type="text" class="form-control"  wire:model="birth_place">
                                             <span class="text-danger">
                                                 @error('birth_place')
@@ -130,9 +130,9 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Kan Grubu</label>
+                                            <label for="">{{ trans('cruds.patient.fields.blood_group') }}</label>
                                             <select class="form-control" wire:model.live="blood_group">
-                                                <option value="" selected>Choose blood group</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_blood_group') }}</option>
                                                 @foreach ($bloodGroups as $key => $title)
                                                     <option value="{{ $key }}">{{ $title }}</option>
                                                 @endforeach
@@ -147,7 +147,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Kilosu</label>
+                                            <label for="">{{ trans('cruds.travel.fields.weight') }}</label>
                                             <input type="text" class="form-control"  wire:model="weight">
                                             <span class="text-danger">
                                                 @error('weight')
@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Boyu</label>
+                                            <label for="">{{ trans('cruds.travel.fields.height') }}</label>
                                             <input type="text" class="form-control"  wire:model="height">
                                             <span class="text-danger">
                                                 @error('height')
@@ -173,7 +173,7 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Passport Numarası</label>
+                                            <label for="">{{ trans('cruds.travel.fields.passport_number') }}</label>
                                             <input type="text" class="form-control"  wire:model="passport_no">
                                             <span class="text-danger">
                                                 @error('passport_no')
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Email Adresi</label>
+                                            <label for="">{{ trans('cruds.travel.fields.email_address') }}</label>
                                             <input type="email" class="form-control"  wire:model="email">
                                             <span class="text-danger">
                                                 @error('email')
@@ -196,7 +196,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Telefon No</label>
+                                            <label for="">{{ trans('cruds.travel.fields.phone_number') }}</label>
                                             <input type="text" class="form-control"  wire:model="phone">
                                             <span class="text-danger">
                                                 @error('phone')
@@ -209,9 +209,9 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Ülke</label>
+                                            <label for="">{{ trans('cruds.travel.fields.countery') }}</label>
                                             <select class="form-control" wire:model.live="countryId">
-                                                <option value=null>Select a country</option>
+                                                <option value=null>{{ trans('cruds.travel.fields.select_a_country') }}</option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                                 @endforeach
@@ -225,9 +225,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Şehir</label>
+                                            <label for="">{{ trans('cruds.travel.fields.city') }}</label>
                                             <select class="form-control" wire:model.live="city_id">
-                                                <option>Select city</option>
+                                                <option>{{ trans('cruds.travel.fields.select_a_city') }}</option>
                                                 @foreach ($cities as $city)
                                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                                                 @endforeach
@@ -242,9 +242,9 @@
                               
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Kanal</label>
+                                            <label for="">{{ trans('cruds.travel.fields.channel') }}</label>
                                             <select class="form-control" wire:model.live="compaignChannelId">
-                                                <option value="" selected>Choose channels</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_channels') }}</option>
                                                 @foreach ($campaignChannels as $channel)
                                                     <option value="{{ $channel->id }}">{{ $channel->title }}</option>
                                                 @endforeach
@@ -258,9 +258,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Organizasyon</label>
+                                            <label for="">{{ trans('cruds.travel.fields.organization') }}</label>
                                             <select class="form-control" wire:model.live="campaign_org_id">
-                                                <option value="" selected>Choose organization</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_organization') }}</option>
                                                 @foreach ($campaignOrganizations as $org)
                                                     <option value="{{ $org->id }}">{{ $org->title }}</option>
                                                 @endforeach
@@ -274,9 +274,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Referans Tipiniz</label>
+                                            <label for="">{{ trans('cruds.travel.fields.your_reference_type') }}</label>
                                             <select class="form-control" wire:model.live="reffering_type">
-                                                <option value="" selected>Choose reffering type</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_reference_type') }}</option>
                                                 @foreach ($refferingTypes as $key => $title)
                                                     <option value="{{ $key }}">{{ $title }}</option>
                                                 @endforeach
@@ -290,13 +290,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Referansınız</label>
+                                            <label for="">{{ trans('cruds.travel.fields.your_reference') }}</label>
                                             @if ($reffering_type != 'Phone')
                                                 @if ($reffering_type == 'Other')
                                                     <input type="text" class="form-control" wire:model.live="reffering">
                                                 @else
                                                     <select class="form-control" wire:model.live="reffering">
-                                                        <option value="" selected>Choose Reffering</option>
+                                                        <option value="" selected>{{ trans('cruds.travel.fields.choose_reffering') }}</option>
                                                         @foreach ($refferingIds as $key => $refferings)
                                                             <option value="{{ $key }}">{{ $refferings }}</option>
                                                         @endforeach
@@ -321,7 +321,7 @@
                     {{-- STEP 2 --}}
                     <div class="step-two {{ $currentStep == 2 ? 'd-block' : 'd-none' }}">
                         <div class="card">
-                            <div class="card-header">Vaka Bilgileri ve Rapor Yükleme</div>
+                            <div class="card-header">{{ trans('cruds.travel.fields.case_information_and_report_upload') }}</div>
                             <div class="card-body">
                                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
                                     <div class="d-flex justify-content-center">
@@ -350,7 +350,7 @@
                                         <div class="form-group">
                                             <label for="">Durum</label>
                                             <select class="form-control" wire:model.live="status_id">
-                                                <option value="" selected>Select status</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.choose_status') }}</option>
                                                 @foreach ($statuses as $key => $status)
                                                     <option value="{{ $key }}">{{ $status }}</option>
                                                 @endforeach
@@ -365,10 +365,10 @@
                                     <!-- GUIDE Select2 init -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Departman</label>
+                                            <label for="">{{ trans('cruds.travel.fields.department') }}</label>
                                             <div wire:ignore>
                                                 <select class="form-control select2" id="department_id">
-                                                    <option value="" selected>Select departmant</option>
+                                                    <option value="" selected>{{ trans('cruds.travel.fields.select_department') }}</option>
                                                     @foreach ($departments as $id => $entry)
                                                         <option value="{{ $id }}">{{ $entry }}</option>
                                                     @endforeach
@@ -385,7 +385,7 @@
                                 <div class="row px-5">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Açıklama</label>
+                                            <label for="">{{ trans('cruds.travel.fields.explanation') }}</label>
                                             <textarea class="form-control" cols="2" rows="2"  wire:model="description" style="min-height:145px !important"></textarea>
                                             <span class="text-danger">
                                                 @error('description')
@@ -397,10 +397,10 @@
                                     <div class="col-md-6">
                                         <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                                         <div class="form-group" wire:ignore>
-                                            <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                                            <label class="required" for="treatment_file">{{ trans('cruds.travel.fields.upload_files') }} (max:10mb pdf-excel-word-zip-img)</label>
                                             <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
                                                 <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                                <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                                <div class="dz-message" data-dz-message><p>{{ trans('cruds.travel.fields.upload_files') }}</p></div>
                                             </div>
 
 
@@ -420,7 +420,7 @@
                     {{-- STEP 3 --}}
                     <div class="step-three {{ $currentStep == 3 ? 'd-block' : 'd-none' }}">
                         <div class="card">
-                            <div class="card-header">Bilgilendirmeler</div>
+                            <div class="card-header">{{ trans('cruds.travel.fields.information') }}</div>
                             <div class="card-body">
                                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
                                     <div class="d-flex justify-content-center">
@@ -465,9 +465,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="traslators">Translators</label>
+                                            <label for="traslators">{{ trans('cruds.travel.fields.translators') }}</label>
                                             <select class="form-control" wire:model.live="translatorId">
-                                                <option value="" selected>Select translator</option>
+                                                <option value="" selected>{{ trans('cruds.travel.fields.select_translator') }}</option>
                                                 @foreach ($translators as $id => $translator)
                                                     <option value="{{ $id }}">{{ $translator }}</option>
                                                 @endforeach
@@ -493,15 +493,15 @@
                         @endif
 
                         @if ($currentStep == 2 || $currentStep == 3)
-                            <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Back</button>
+                            <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">{{ trans('cruds.travel.fields.back') }}</button>
                         @endif
 
                         @if ($currentStep == 1 || $currentStep == 2)
-                            <button type="button" class="btn btn-md btn-light" wire:click="increaseStep()">Next</button>
+                            <button type="button" class="btn btn-md btn-light" wire:click="increaseStep()">{{ trans('cruds.travel.fields.next') }}</button>
                         @endif
 
                         @if ($currentStep == 3)
-                            <button type="submit" class="btn btn-md btn-primary" wire:click="increaseStep()">Final</button>
+                            <button type="submit" class="btn btn-md btn-primary" wire:click="increaseStep()">{{ trans('cruds.travel.fields.final') }}</button>
                         @endif
                     </div>
 
