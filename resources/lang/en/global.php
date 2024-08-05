@@ -276,7 +276,7 @@ return [
     'stripe_transactions'            => 'Stripe Transactions',
     'subscription-billing'           => 'Subscriptions',
     'subscription-payments'          => 'Payments',
-    'suffix'                         => 'Sufix',
+    'suffix'                         => 'Suffix',
     'tag'                            => 'Tag',
     'tags'                           => 'Tags',
     'task_management'                => 'Task management',

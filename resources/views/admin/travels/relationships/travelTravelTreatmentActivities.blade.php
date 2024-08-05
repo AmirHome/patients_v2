@@ -38,7 +38,7 @@
                                     <div class="activity-info"><span>{{ $travelTreatmentActivity->created_at ?? '' }}</span></div>
                                     @can('travel_treatment_activity_edit')
                                     <button class="btn btn-outline-success mt-5 " href="{{ route('admin.travel-treatment-activities.edit', $travelTreatmentActivity->id) }}" data-toggle="modal" data-target="#travelTreatmentActivities_edit_modal">
-                                        <i class="fa fa-pencil"></i> Düzenle
+                                        <i class="fa fa-pencil"></i> {{ trans('cruds.travel.fields.edit') }}
                                     </button>
                                     @endcan
                                     @can('travel_treatment_activity_delete')
@@ -54,11 +54,11 @@
                         </div>
                         <table class="table table-custom">
                             <thead>
-                                <tr class="activity-th">
-                                    <th>Dosya</th>
-                                    <th>Yükleyen</th>
-                                    <th>Açıklama</th>
-                                    <th>Tarih</th>
+                            <tr class="activity-th">
+                                    <th>{{ trans('cruds.travel.fields.file') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.uploaded_by') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.explanation') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.date') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

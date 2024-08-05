@@ -87,7 +87,7 @@
              <x-province-component class="col-md-4" :data="[]" />
              <div class="col-md-4">
                 <div class="form-group">
-                    <label for="hospital_id">Sevk Yeri</label>
+                    <label for="hospital_id">{{ trans('cruds.travel.fields.shipment_place') }}</label>
                     <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id">
                         @foreach ($hospitals ?? [] as $id => $entry)
                             <option value="{{ $id }}" {{ (old('hospital_id') ? old('hospital_id') : $travel->hospital->id ?? '') == $id ? 'selected' : '' }}>
@@ -159,7 +159,7 @@
     </div>
     <div class="col-md-4">
         <div class="form-group">
-            <label for="">Rapor Geliş Tarihi</label>
+            <label for="">{{ trans('cruds.travel.fields.report_arrival_date') }}</label>
             <input class="form-control date {{ $errors->has('arrival_date') ? 'is-invalid' : '' }}" type="text" name="arrival_date" id="arrival_date">
             @if($errors->has('arrival_date'))
             <div class="invalid-feedback">
@@ -173,7 +173,7 @@
 
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
-            <label for="">Kampanya Baş.</label>
+            <label for="">{{ trans('cruds.travel.fields.campaign_start_date') }}<label>
             <input type="text" class="form-control filter date"  name="birth_place1">
             <span class="text-danger">@error('birth_place1'){{ $message }}@enderror</span>
         </div>
@@ -181,7 +181,7 @@
 
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
-            <label for="">Kampanya Bit.</label>
+            <label for="">{{ trans('cruds.travel.fields.campaign_end') }}</label>
             <input type="text" class="form-control filter date"  name="birth_place">
             <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
         </div>
@@ -204,10 +204,10 @@
                     </div>
                     <div class="col-4 ">
                     <button class="float-right btn btn-primary ml-3 mt-3 p-2 travel-search" type="button" id="form-filter-submit">
-                            Search <i class="fas fa-search"></i>
+                    {{trans('cruds.travel.fields.search') }} <i class="fas fa-search"></i>
                         </button>
     <button class="btn btn-info float-right mt-3 p-2" type="button" id="show-filters">
-        Daha Fazla Filtre <i class="fas fa-filter"></i>
+    {{trans('cruds.travel.fields.more_filters') }} <i class="fas fa-filter"></i>
     </button>
                 </div>
                 </div>

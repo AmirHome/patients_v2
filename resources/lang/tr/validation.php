@@ -44,7 +44,7 @@ return [
     'gte' => [
         'numeric' => ':attribute :value \'dan büyük veya eşit olmalıdır',
         'file'    => ':attribute :value kilobyte büyük veya eşit olmalıdır',
-        'string'  => ':attribute :value \'dan fazla veya karaktere sahip olmalıdır',
+        'string'  => ':attribute :value \'dan fazla veya eşit karaktere sahip olmalıdır',
         'array'   => ':attribute :value dan fazla öğeye sahip olmalıdır',
     ],
     'image'    => ':attribute fotoğraf olmalı.',
@@ -77,7 +77,7 @@ return [
     'mimetypes' => ':attribute :values türünde bir dosya olmalı',
     'min'       => [
         'numeric' => ':attribute en az :min olmalı',
-        'file'    => ':attribute en az :min kiobayt olmalı',
+        'file'    => ':attribute en az :min kilobayt olmalı',
         'string'  => ':attribute en az :min karakter olmalı',
         'array'   => ':attribute en az :min parça olmalı',
     ],
@@ -113,7 +113,7 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'reserved_word'                  => ':attribute ayrılmış kelime içeriyor',
+    'reserved_word'                  => ':attribute rezerv edilmiş kelime içeriyor',
     'dont_allow_first_letter_number' => ':input alanının ilk karakteri rakam olamaz',
     'exceeds_maximum_number'         => ':attribute maksimum uzunluğu geçti',
     'db_column'                      => ':attribute sadece basit ISO karakterleinden oluşabilir. Türkçe karakterler kullanılamaz. Rakam ile başlayamaz',

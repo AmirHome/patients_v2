@@ -8,36 +8,36 @@
     @includeIf('admin.travels.relationships.modalAddActivities')
 
     <div class="card">
-        <div class="card-header">Travels Edit</div>
+        <div class="card-header">{{ trans('cruds.travel.travel_edit') }}</div>
         <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#travel_patient" role="tab" data-toggle="tab">
-                   <span> Hasta Bilgileri</span>
+                   <span> {{ trans('cruds.travel.fields.patient_information') }}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#travel_activities" role="tab" data-toggle="tab">
-                    Dosyalar
+                {{ trans('cruds.travel.fields.files') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#information" role="tab" data-toggle="tab">
-                    Bilgilendirmeler
+                {{ trans('cruds.travel.fields.information') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#dates" role="tab" data-toggle="tab">
-                    Tarihler
+                {{ trans('cruds.travel.fields.dates') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#reports" role="tab" data-toggle="tab">
-                    Rapor
+                {{ trans('cruds.travel.fields.report') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#additional_Information" role="tab" data-toggle="tab">
-                    Ek Bilgiler
+                {{ trans('cruds.travel.fields.additional_information') }}
                 </a>
             </li>
         </ul>
@@ -55,11 +55,11 @@
                                     <div class="row">
                                         <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
                                             <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:150px">
-                                            <button type="button" class="btn btn-update mt-2" data-toggle="modal" data-target="#modal-profile-photo">Güncelle</button>
+                                            <button type="button" class="btn btn-update mt-2" data-toggle="modal" data-target="#modal-profile-photo">{{ trans('cruds.travel.fields.update') }}</button>
                                         </div>
                                         <div class="col-md-6 d-flex flex-column justify-content-center">
                                             <div class="form-group" style="padding: 0px 10px 0px 10px !important">
-                                                <label class="required" for="code" style="position: relative; top: 8px; margin-top: -1px !important;margin-left:-23px !important">Hasta kodu</label>
+                                                <label class="required" for="code" style="position: relative; top: 8px; margin-top: -1px !important;margin-left:-23px !important">{{ trans('cruds.travel.fields.patient_code') }}</label>
                                                 <input class="form-control {{ $errors->has('code') ? 'is-invalid' : '' }}"  disabled type="text" name="code" id="code" value="{{ old('code', $patient->code ?? null) }}" required>
                                                 @if ($errors->has('code'))
                                                     <div class="invalid-feedback">
@@ -231,7 +231,7 @@
                                     <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
                                     <div class="d-flex flex-column align-items-center justify-content-center mt-2 needsclick dropzone {{ $errors->has('passport_image') ? 'is-invalid' : '' }}" id="passport_image-dropzone">
                                         <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                        <div class="dz-message" data-dz-message><p>{{ trans('cruds.travel.fields.upload_files') }}</p></div>
                                     </div>
                                     @if ($errors->has('passport_image'))
                                         <div class="invalid-feedback">
@@ -257,7 +257,7 @@
                                             <x-reffering-type-component class="col-md-6" :data="[]" />
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="hospital_id">Kazanan Hastane</label>
+                                                <label for="hospital_id">{{ trans('cruds.travel.fields.winning_hospital') }}</label>
                                                 <select class="form-control select2 {{ $errors->has('hospital') ? 'is-invalid' : '' }}" name="hospital_id" id="hospital_id">
                                                     @foreach ($hospitals ?? null as $id => $entry)
                                                         <option value="{{ $id }}" {{ (old('hospital_id') ? old('hospital_id') : $travel->hospital->id ?? '') == $id ? 'selected' : '' }}>
@@ -707,13 +707,13 @@
                                             <div class="modal-dialog modal-md" role="document">
                                                 <div class="modal-content">
                                                     <form  method="POST" enctype="multipart/form-data">
-                                                    <div class="card-header text-left mx-3 mt-2">Update Profile Photo</div>
+                                                    <div class="card-header text-left mx-3 mt-2">{{ trans('cruds.travel.fields.update_profile_photo') }}</div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
                                                 <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}  d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
                                                     <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
-                                        <div class="dz-message" data-dz-message><p>Upload File</p></div>
+                                        <div class="dz-message" data-dz-message><p>{{ trans('cruds.travel.fields.upload_files') }}</p></div>
                                                 </div>
                                                 @if ($errors->has('photo'))
                                                     <div class="invalid-feedback">

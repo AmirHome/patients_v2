@@ -51,12 +51,12 @@
                                 </div>
                                 <table class="table table-custom">
                                     <thead>
-                                        <tr class="activity-th">
-                                            <th>Dosya</th>
-                                            <th>Yükleyen</th>
-                                            <th>Açıklama</th>
-                                            <th>Tarih</th>
-                                        </tr>
+                                    <tr class="activity-th">
+                                    <th>{{ trans('cruds.travel.fields.file') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.uploaded_by') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.explanation') }}</th>
+                                    <th>{{ trans('cruds.travel.fields.date') }}</th>
+                                </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="activity-td">
