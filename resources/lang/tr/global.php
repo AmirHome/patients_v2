@@ -73,6 +73,7 @@ return [
     'reply'                          => 'Cevapla',
     'body'                           => 'Gövde',
     'discard'                        => 'İptal',
+    'for_more'                       => 'Daha fazlası İçin',
     'datatables'                     => [
         'copy'          => 'Kopyala',
         'csv'           => 'CSV',

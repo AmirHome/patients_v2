@@ -1450,7 +1450,18 @@ div.dataTables_wrapper div.dataTables_length label
 .input-group-append .btn-primary{
     background-color: rgb(216, 216, 224) !important;
  }
-
+.for-more{
+    color: white;
+    background-color: #637381;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.for-more:hover,.for-more:focus{
+       background-color: #637381;
+       opacity: 0.8;
+       color: white;
+       box-shadow: none !important;
+}
 /*Notification*/
 .badge-warning{
     background-color: #FF5630;

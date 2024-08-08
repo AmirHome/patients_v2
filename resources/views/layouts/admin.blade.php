@@ -34,7 +34,6 @@
         <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto toggleBtn" type="button" data-target="#sidebar" data-class="c-sidebar-show">
     <i id="smlighticon" class="fas fa-chevron-right"></i>
 </button>
-<a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
 
           <button id="toggleButton" class="c-header-toggler mfs-3 d-md-down-none toggleBtn" type="button" responsive="true">
          <i id="lefticon" class="fas fa-chevron-left"></i>

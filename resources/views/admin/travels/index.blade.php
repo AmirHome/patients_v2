@@ -18,11 +18,9 @@
                     <th width="10">
 
                     </th>
+                 
                     <th>
-                        {{ trans('cruds.travel.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.patient.fields.code') }}
+                      {{ trans('cruds.patient.fields.code') }}
                     </th>
                     <th>
                         {{ trans('cruds.travel.fields.patient') }}
@@ -104,8 +102,7 @@
         }
     },
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
+{ data: 'placeholder', name: 'placeholder' },
 { data: 'patient.code', name: 'patient.code' },
 { data: 'patient_name', name: 'patient.name' },
 

@@ -345,7 +345,7 @@
                         <div class="col-md-9">
                             <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                             <div class="form-group" wire:ignore>
-                            <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                            <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img-rar)</label>
                                 <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
                                 <div class="dz-message" data-dz-message><span>Drop or Select file</span> </div>
                                 <div class="dz-message" data-dz-message><p>Drop files here or click <a>browse</a> thorough your machien</p></div>

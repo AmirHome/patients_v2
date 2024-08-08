@@ -43,8 +43,8 @@
             <div class="row">
                 <div class="col-md-4">
                 <div class="form-group">
-                                    <label class="required" for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
-                                    <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone ?? null) }}" required>
+                                    <label for="phone">{{ trans('cruds.patient.fields.phone') }}</label>
+                                    <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone ?? null) }}" >
                                     @if ($errors->has('phone'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('phone') }}
@@ -173,16 +173,16 @@
 
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
-            <label for="">{{ trans('cruds.travel.fields.campaign_start_date') }}<label>
-            <input type="text" class="form-control filter date"  name="birth_place1">
-            <span class="text-danger">@error('birth_place1'){{ $message }}@enderror</span>
+            <label for="">{{ trans('cruds.travel.fields.campaign_start_date') }}</label>
+            <input type="text" class="form-control filter date"  name="campaign_start">
+            <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
         </div>
     </div>
 
     <div class="col-lg-2 col-md-4">
         <div class="form-group">
             <label for="">{{ trans('cruds.travel.fields.campaign_end') }}</label>
-            <input type="text" class="form-control filter date"  name="birth_place">
+            <input type="text" class="form-control filter date"  name="campaign_end">
             <span class="text-danger">@error('birth_place'){{ $message }}@enderror</span>
         </div>
     </div>

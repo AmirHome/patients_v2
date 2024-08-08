@@ -38,7 +38,7 @@
 
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img)</label>
+                        <label class="required" for="treatment_file">Dosya Yükle (max:10mb pdf-excel-word-zip-img-rar)</label>
                         <div class="needsclick dropzone {{ $errors->has('treatment_file') ? 'is-invalid' : '' }}" id="treatment_file-dropzone">
                             <div class="dz-message" data-dz-message><span>{{ trans('cruds.travel.fields.drop_or_select_file') }}</span></div>
                             <div class="dz-message" data-dz-message>

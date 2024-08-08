@@ -942,6 +942,7 @@ return [
             'back' => 'Back',
             'next' => 'Next',
             'final' => 'Final',
+            'current_status' => 'Current Status',
         ],
     ],
     'travelTreatmentActivity' => [

@@ -632,8 +632,8 @@ return [
     ],
 ],
 'travelGroup' => [
-    'title'          => 'Seyahat Grupları',
-    'title_singular' => 'Seyahat Grubu',
+    'title'          => 'Vaka Grupları',
+    'title_singular' => 'Vaka Grubu',
     'fields'         => [
         'id'                => 'ID',
         'id_helper'         => ' ',
@@ -812,8 +812,8 @@ return [
     'title_singular' => 'Koordinasyon',
 ],
 'travel' => [
-    'title'          => 'Seyahatler',
-    'title_singular' => 'Seyahat',
+    'title'          => 'Vakalar',
+    'title_singular' => 'Vaka',
     'fields'         => [
         'id'                             => 'ID',
         'id_helper'                      => ' ',
@@ -933,18 +933,18 @@ return [
         'back' => 'Geri',
         'next' => 'İleri',
         'final' => 'Bitir',
-
+        'current_status' => 'Güncel Durum',
     ],
 ],
    'travelTreatmentActivity' => [
-    'title'          => 'Seyahat Tedavi Faaliyeti',
-    'title_singular' => 'Seyahat Tedavi Faaliyeti',
+    'title'          => 'Vaka Tedavi Faaliyeti',
+    'title_singular' => 'Vaka Tedavi Faaliyeti',
     'fields'         => [
         'id'                    => 'ID',
         'id_helper'             => ' ',
         'user'                  => 'Kullanıcı',
         'user_helper'           => ' ',
-        'travel'                => 'Seyahat',
+        'travel'                => 'Vaka',
         'travel_helper'         => ' ',
         'description'           => 'Açıklama',
         'description_helper'    => ' ',
@@ -968,7 +968,7 @@ return [
         'id_helper'            => ' ',
         'user'                 => 'Kullanıcı',
         'user_helper'          => ' ',
-        'travel'               => 'Seyahat',
+        'travel'               => 'Vaka',
         'travel_helper'        => ' ',
         'description'          => 'Açıklama',
         'description_helper'   => ' ',
@@ -987,8 +987,8 @@ return [
     ],
 ],
 'travelStatus' => [
-    'title'          => 'Seyahat Durumu',
-    'title_singular' => 'Seyahat Durumu',
+    'title'          => 'Vaka Durumu',
+    'title_singular' => 'Vaka Durumu',
     'fields'         => [
         'id'                => 'ID',
         'id_helper'         => ' ',
@@ -1095,8 +1095,8 @@ return [
     ],
 ],
 'travelHospital' => [
-    'title'          => 'Seyahat Hastanesi',
-    'title_singular' => 'Seyahat Hastanesi',
+    'title'          => 'Vaka Hastanesi',
+    'title_singular' => 'Vaka Hastanesi',
     'fields'         => [
         'id'                => 'ID',
         'id_helper'         => ' ',

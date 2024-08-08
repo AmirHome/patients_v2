@@ -1,5 +1,5 @@
 <div>
-<!-- {{ trans('cruds.province.fields.back_to_homepage') }} -->
+<!-- {{ trans('cruds.travel.fields.back_to_homepage') }} -->
     <form wire:submit.prevent="store">
         <div class="container-fluid p-0 m-0">
 
@@ -9,7 +9,7 @@
                     {{-- STEP 1 --}}
                     <div class="step-one {{ $currentStep == 1 ? 'd-block' : 'd-none' }}">
                         <div class="card">
-                            <div class="card-header">{{ trans('cruds.province.fields.patient_information') }}</div>
+                            <div class="card-header">{{ trans('cruds.travel.fields.patient_information') }}</div>
                             <div class="card-body">
                                 <div class="row justify-content-center pb-5 pt-2 flex-nowrap">
                                     <div class="d-flex justify-content-center">
@@ -36,13 +36,13 @@
                                 <div class="row px-5">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">{{ trans('cruds.province.fields.patient_code') }}</label>
+                                            <label for="">{{ trans('cruds.travel.fields.patient_code') }}</label>
                                             <input type="text" class="form-control" id="code" value="{{ $code }}"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">{{ trans('cruds.province.fields.patient_admission_date') }}</label>
+                                            <label for="">{{ trans('cruds.travel.fields.patient_admission_date') }}</label>
                                             <input type="text" class="form-control" id="date" readonly placeholder="{{ getCurrentDate() }}" disabled>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">{{ trans('cruds.province.fields.name') }}</label>
+                                            <label for="">{{ trans('cruds.travel.fields.name') }}</label>
                                             <input type="text" class="form-control"  wire:model="name">
                                             <span class="text-danger">
                                                 @error('name')
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">{{ trans('cruds.province.fields.middle_name') }}</label>
+                                            <label for="">{{ trans('cruds.travel.fields.middle_name') }}</label>
                                             <input type="text" class="form-control" wire:model="middle_name">
                                             <span class="text-danger">
                                                 @error('middle_name')
@@ -386,7 +386,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">{{ trans('cruds.travel.fields.explanation') }}</label>
-                                            <textarea class="form-control" cols="2" rows="2"  wire:model="description" style="min-height:145px !important"></textarea>
+                                            <textarea class="form-control pt-3" cols="2" rows="2"  wire:model="description" style="min-height:145px !important"></textarea>
                                             <span class="text-danger">
                                                 @error('description')
                                                     {{ $message }}
@@ -397,7 +397,7 @@
                                     <div class="col-md-6">
                                         <!-- @json($treatment_files) boş [] geliyordu kapattım -->
                                         <div class="form-group" wire:ignore>
-                                            <label class="required" for="treatment_file">{{ trans('cruds.travel.fields.upload_files') }} (max:10mb pdf-excel-word-zip-img)</label>
+                                            <label class="required" for="treatment_file">{{ trans('cruds.travel.fields.upload_files') }} (max:10mb pdf-excel-word-zip-img-rar)</label>
                                             <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
                                                 <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
                                                 <div class="dz-message" data-dz-message><p>{{ trans('cruds.travel.fields.upload_files') }}</p></div>
@@ -464,7 +464,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group mt-3">
                                             <label for="traslators">{{ trans('cruds.travel.fields.translators') }}</label>
                                             <select class="form-control" wire:model.live="translatorId">
                                                 <option value="" selected>{{ trans('cruds.travel.fields.select_translator') }}</option>

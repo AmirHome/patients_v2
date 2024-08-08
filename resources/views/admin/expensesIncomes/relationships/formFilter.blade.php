@@ -4,23 +4,23 @@
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
-                <label for="">patient Code</label>
-                <input type="text" class="form-control filter" placeholder="Enter patient code"
+                <label for="">{{ trans('cruds.travel.fields.patient_code') }}</label>
+                <input type="text" class="form-control filter"
                     name="patient_code">
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="">patient name</label>
-                <input type="text" class="form-control filter" placeholder="Enter patient name"
+                <label for="">{{ trans('cruds.travel.fields.patient_name') }}</label>
+                <input type="text" class="form-control filter"
                     name="patient_name">
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="form-group mt-1">
                 <label>{{ trans('cruds.province.fields.country') }}</label>
                 <select class="form-control select2 filter" name="country_id">
-                    <option value="">All</option>
+                    <option value=""></option>
                     @foreach($countries as $id => $entry)
                         <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -28,10 +28,10 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group">
-                <label>campaign org</label>
+            <div class="form-group mt1">
+                <label>{{ trans('cruds.patient.fields.campaign_org') }}</label>
                 <select class="form-control select2 filter" name="campaign_org_id">
-                    <option value="">All</option>
+                    <option value=""></option>
                     @foreach($campaign_orgs as $id => $entry)
                         <option value="{{ $id }}" {{ old('campaign_org_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -51,7 +51,7 @@
             </div>
             <div class="col-4">
                 <button class="float-right btn btn-primary" type="button" id="form-filter-submit">
-                    Search <i class="fas fa-search"></i>
+                    {{trans('cruds.travel.fields.search') }}  <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>

@@ -17,58 +17,6 @@
             </a>
         </li>
 
-        @can('user_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.userManagement.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('permission_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.permissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-unlock-alt c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.permission.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('role_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user-lock c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.role.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('user_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.user.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('audit_log_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.audit-logs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.auditLog.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
         @can('definition_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/countries*") ? "c-show" : "" }} {{ request()->is("admin/provinces*") ? "c-show" : "" }} {{ request()->is("admin/campaign-channels*") ? "c-show" : "" }} {{ request()->is("admin/campaign-orgs*") ? "c-show" : "" }} {{ request()->is("admin/travel-groups*") ? "c-show" : "" }} {{ request()->is("admin/travel-statuses*") ? "c-show" : "" }} {{ request()->is("admin/travel-hospitals*") ? "c-show" : "" }} {{ request()->is("admin/ministries*") ? "c-show" : "" }} {{ request()->is("admin/departments*") ? "c-show" : "" }} {{ request()->is("admin/offices*") ? "c-show" : "" }} {{ request()->is("admin/hospitals*") ? "c-show" : "" }} {{ request()->is("admin/doctors*") ? "c-show" : "" }} {{ request()->is("admin/translators*") ? "c-show" : "" }} {{ request()->is("admin/settings*") ? "c-show" : "" }} {{ request()->is("admin/hotels*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -222,58 +170,35 @@
                 </ul>
             </li>
         @endcan
-        @can('coordination_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/patients*") ? "c-show" : "" }} {{ request()->is("admin/travels*") ? "c-show" : "" }} {{ request()->is("admin/travel-treatment-activities*") ? "c-show" : "" }} {{ request()->is("admin/activities*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-ambulance c-sidebar-nav-icon">
+             
 
-                    </i>
-                    {{ trans('cruds.coordination.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('patient_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-bed c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.patient.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('travel_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.travels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travels") || request()->is("admin/travels/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-briefcase-medical c-sidebar-nav-icon">
+@can('travel_access')
+    <li class="c-sidebar-nav-item-header">
+        <a href="{{ route("admin.travels.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travels") || request()->is("admin/travels/*") ? "c-active" : "" }}">
+            <i class="fa-fw fas fa-briefcase-medical c-sidebar-nav-icon"></i>
+            {{ trans('cruds.travel.title') }}
+        </a>
+    </li>
+@endcan
 
-                                </i>
-                                {{ trans('cruds.travel.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('travel_treatment_activity_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.travel-treatment-activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-activities") || request()->is("admin/travel-treatment-activities/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-medical c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.travelTreatmentActivity.title') }}
-                            </a>
-                        </li>
-                    @endcan
+@can('travel_treatment_activity_access')
+    <li class="c-sidebar-nav-item-header">
+        <a href="{{ route("admin.travel-treatment-activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/travel-treatment-activities") || request()->is("admin/travel-treatment-activities/*") ? "c-active" : "" }}">
+            <i class="fa-fw fas fa-file-medical c-sidebar-nav-icon"></i>
+            {{ trans('cruds.travelTreatmentActivity.title') }}
+        </a>
+    </li>
+@endcan
                     @can('activity_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/activities") || request()->is("admin/activities/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-notes-medical c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.activity.title') }}
-                            </a>
-                        </li>
+                    <li class="c-sidebar-nav-item-header">
+        <a href="{{ route("admin.activities.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/activities") || request()->is("admin/activities/*") ? "c-active" : "" }}">
+            <i class="fa-fw fas fa-notes-medical c-sidebar-nav-icon"></i>
+                 {{ trans('cruds.activity.title') }}
+                </a>
+                </li>
                     @endcan
-                </ul>
-            </li>
-        @endcan
+               
         @can('basic_c_r_m_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crm-statuses*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/crm-notes*") ? "c-show" : "" }} {{ request()->is("admin/crm-documents*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -500,6 +425,14 @@
                             </a>
                         </li>
                     @endcan
+        @can('patient_access')
+            <li class="c-sidebar-nav-item-header">
+                   <a href="{{ route("admin.patients.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/patients") || request()->is("admin/patients/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-bed c-sidebar-nav-icon"></i>
+                     {{ trans('cruds.patient.title') }}
+                  </a>
+             </li>
+        @endcan
         @can('user_alert_access')
             <li class="c-sidebar-nav-item-header">
                 <a href="{{ route("admin.user-alerts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-alerts") || request()->is("admin/user-alerts/*") ? "c-active" : "" }}">
@@ -511,7 +444,58 @@
             </li>
         @endcan
 
+ @can('user_management_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }} {{ request()->is("admin/audit-logs*") ? "c-show" : "" }} {{ request()->is("admin/teams*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
+                    </i>
+                    {{ trans('cruds.userManagement.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('permission_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.permissions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/permissions") || request()->is("admin/permissions/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-unlock-alt c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.permission.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('role_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.roles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/roles") || request()->is("admin/roles/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user-lock c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.role.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('user_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.users.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.user.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('audit_log_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.audit-logs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/audit-logs") || request()->is("admin/audit-logs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.auditLog.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @if(\Illuminate\Support\Facades\Schema::hasColumn('teams', 'owner_id') && \App\Models\Team::where('owner_id', auth()->user()->id)->exists())
             <li class="c-sidebar-nav-item-header">
                 <a class="{{ request()->is("admin/team-members") || request()->is("admin/team-members/*") ? "c-active" : "" }} c-sidebar-nav-link" href="{{ route("admin.team-members.index") }}">

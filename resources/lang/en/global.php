@@ -72,6 +72,7 @@ return [
     'reply'                          => 'Reply',
     'body'                           => 'Body',
     'discard'                        => 'Discard',
+    'for_more'                       => 'For more',
     'datatables'                     => [
         'copy'          => 'Copy',
         'csv'           => 'CSV',

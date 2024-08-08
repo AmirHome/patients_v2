@@ -17,6 +17,11 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#travel_activities" role="tab" data-toggle="tab">
+                {{ trans('cruds.travel.fields.current_status') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#reports" role="tab" data-toggle="tab">
                 {{ trans('cruds.travel.fields.files') }}
                 </a>
             </li>
@@ -28,11 +33,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="#dates" role="tab" data-toggle="tab">
                 {{ trans('cruds.travel.fields.dates') }}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#reports" role="tab" data-toggle="tab">
-                {{ trans('cruds.travel.fields.report') }}
                 </a>
             </li>
             <li class="nav-item">
@@ -124,8 +124,8 @@
                                            </div>
                                            <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="birthday">{{ trans('cruds.patient.fields.birthday') }}</label>
-                                                <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}"  type="text" name="birthday" id="birthday"
+                                                <label for="birthday" class="required" >{{ trans('cruds.patient.fields.birthday') }}</label>
+                                                <input class="form-control date {{ $errors->has('birthday') ? 'is-invalid' : '' }}"  type="text" name="birthday" id="birthday" required
                                                     value="{{ old('birthday', $patient->birthday ?? null) }}">
                                                 @if ($errors->has('birthday'))
                                                     <div class="invalid-feedback">
@@ -137,8 +137,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>{{ trans('cruds.patient.fields.gender') }}</label>
-                                                <select class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender" id="gender">
+                                                <label class="required">{{ trans('cruds.patient.fields.gender') }}</label>
+                                                <select class="form-control {{ $errors->has('gender') ? 'is-invalid' : '' }}" name="gender" id="gender" required>
                                                     <option value disabled {{ old('gender', null) === null ? 'selected' : '' }}>
                                                         {{ trans('global.pleaseSelect') }}</option>
                                                     @foreach (App\Models\Patient::GENDER_SELECT as $key => $label)
@@ -213,8 +213,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="required" for="email">{{ trans('cruds.patient.fields.email') }}</label>
-                                                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"  type="email" name="email" id="email" value="{{ old('email', $patient->email ?? null) }}" required>
+                                                <label for="email">{{ trans('cruds.patient.fields.email') }}</label>
+                                                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"  type="email" name="email" id="email" value="{{ old('email', $patient->email ?? null) }}" >
                                                 @if ($errors->has('email'))
                                                     <div class="invalid-feedback">
                                                         {{ $errors->first('email') }}
@@ -241,15 +241,18 @@
                                     <span class="help-block">{{ trans('cruds.patient.fields.passport_image_helper') }}</span>
                                 </div>
                             </div>
-                                    </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-danger float-right" type="submit">
-                                                {{ trans('global.save') }}
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
+                         </div>
+                      <div class="form-group">
+                           <button class="btn btn-danger float-right ml-4" type="submit">
+                             {{ trans('global.save') }}
+                         </button>
+                            <a class="btn float-right for-more" href=""> <!--Patient edite atacak her vakayı kendi editine-->
+                             {{ trans('global.for_more') }}
+                            </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
@@ -404,10 +407,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="traslators">Translators</label>
+                                    <div class="form-group mt-3">
+                                        <label for="traslators">{{ trans('cruds.travel.fields.translators') }}</label>
                                         <select class="form-control" name="translatorId">
-                                            <option value="" selected>Select translator</option>
                                             @foreach ($translators ?? [] as $id => $translator)
                                                 <option value="{{ $id }}">{{ $translator }}</option>
                                             @endforeach
@@ -504,9 +506,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="required" for="passport_no">{{ trans('cruds.patient.fields.passport_no') }}</label>
+                                                    <label  for="passport_no">{{ trans('cruds.patient.fields.passport_no') }}</label>
                                                     <input class="form-control {{ $errors->has('passport_no') ? 'is-invalid' : '' }}" type="text" name="passport_no" id="passport_no"
-                                                        value="{{ old('passport_no', $patient->passport_no ?? null) }}" required>
+                                                        value="{{ old('passport_no', $patient->passport_no ?? null) }}" >
                                                     @if ($errors->has('passport_no'))
                                                         <div class="invalid-feedback">
                                                             {{ $errors->first('passport_no') }}
@@ -518,9 +520,9 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="required" for="passport_origin">{{ trans('cruds.patient.fields.passport_origin') }}</label>
+                                                        <label  for="passport_origin">{{ trans('cruds.patient.fields.passport_origin') }}</label>
                                                         <input class="form-control {{ $errors->has('passport_origin') ? 'is-invalid' : '' }}" type="text"  name="passport_origin" id="passport_origin"
-                                                            value="{{ old('passport_origin', $patient->passport_origin ?? null) }}" required>
+                                                            value="{{ old('passport_origin', $patient->passport_origin ?? null) }}" >
                                                         @if ($errors->has('passport_origin'))
                                                             <div class="invalid-feedback">
                                                                 {{ $errors->first('passport_origin') }}
