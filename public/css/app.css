@@ -1923,4 +1923,9 @@ tr>td>.fc-day-grid-event {
     padding: 0.5rem 1rem !important; 
 }
 
- 
+ tr .clickable-cell:first-child {
+   color: black;
+    cursor: pointer !important;
+    font-weight: 600;
+    text-decoration: underline;
+ }

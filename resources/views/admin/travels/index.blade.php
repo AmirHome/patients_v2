@@ -25,10 +25,6 @@
                     <th>
                         {{ trans('cruds.travel.fields.patient') }}
                     </th>
-                
-                    <th>
-                        {{ trans('cruds.travel.fields.group') }}
-                    </th>
                     <th>
                         {{ trans('cruds.travel.fields.hospital') }}
                     </th>
@@ -51,93 +47,51 @@
 </div>
 
 
-
 @endsection
 @section('scripts')
 @parent
 <script>
     $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('travel_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('admin.travels.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
-      });
-
-      if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
-
-        return
-      }
-
-      if (confirm('{{ trans('global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  // dtButtons.push(deleteButton)
-@endcan
-
-  let dtOverrideGlobals = {
-    // buttons: dtButtons,
-    processing: true,
-    serverSide: true,
-    retrieve: true,
-    aaSorting: [],
-    ajax: {
-        url: "{{ route('admin.travels.index') }}",
-        data: function(d) {
-            d.ff_patient_name = $('.filter[name="patient_name"]').val();
-            d.ff_patient_code = $('.filter[name="patient_code"]').val();
-        }
-    },
-    columns: [
-{ data: 'placeholder', name: 'placeholder' },
-{ data: 'patient.code', name: 'patient.code' },
-{ data: 'patient_name', name: 'patient.name' },
-
-{ data: 'group_name', name: 'group.name' },
-{ data: 'hospital_name', name: 'hospital.name' },
-{ data: 'department_name', name: 'department.name' },
-{ data: 'last_status_title', name: 'last_status.title' },
-{ data: 'created_at', name: 'created_at' },
-
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
-    ],
-    orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
-    pageLength: 10,
-    // dom: '<"top"i>rt<"bottom"flp><"clear">',
-    // dom: '<"wrapper"flipt>',
-    // rowGroup: {
-    //     dataSrc: 'group_name'
-    // }    
-    createdRow: function (row, data, dataIndex) {
-        if (data['group_name'] == 'Acil') {
-            $(row).addClass('emergency');
-        }
-    },
-  };
-  let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
-  $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
-  
-  $('#form-filter-submit').click(function () {
-    table.ajax.reload();
-    })
-});
-
+        let dtOverrideGlobals = {
+            processing: true,
+            serverSide: true,
+            retrieve: true,
+            aaSorting: [],
+            ajax: {
+                url: "{{ route('admin.travels.index') }}",
+                data: function(d) {
+                    d.ff_patient_name = $('.filter[name="patient_name"]').val();
+                    d.ff_patient_code = $('.filter[name="patient_code"]').val();
+                }
+            },
+            columns: [
+                { data: 'placeholder', name: 'placeholder' },
+                { data: 'patient.code', name: 'patient.code' },
+                { data: 'patient_name', name: 'patient.name' },
+                { data: 'hospital_name', name: 'hospital.name' },
+                { data: 'department_name', name: 'department.name' },
+                { data: 'last_status_title', name: 'last_status.title' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'actions', name: '{{ trans('global.actions') }}' }
+            ],
+            orderCellsTop: true,
+            order: [[ 1, 'desc' ]],
+            pageLength: 10,
+             createdRow: function (row, data, dataIndex) {
+                $(row).find('td').addClass('clickable-cell').on('click', function() {
+                    window.location.href = "{{ route('admin.travels.edit', ':id') }}".replace(':id', data.id);
+                });
+            },
+        };
+        let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
+        $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+        
+        $('#form-filter-submit').click(function () {
+            table.ajax.reload();
+        });
+    });
 </script>
 @endsection

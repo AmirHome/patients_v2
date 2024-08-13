@@ -877,7 +877,7 @@ return [
         'add_reports' => 'Rapor Ekle',
         'drop_or_select_file' => 'Dosya Seç veya Sürükle',
         'file' => 'Dosya',
-        'files' => 'Dosyalar',
+        'files' => 'Güncel Durum ',
         'uploaded_by' => 'Yükleyen',
         'explanation' => 'Açıklama',
         'date' => 'Tarih',
@@ -933,7 +933,7 @@ return [
         'back' => 'Geri',
         'next' => 'İleri',
         'final' => 'Bitir',
-        'current_status' => 'Güncel Durum',
+        'current_status' => 'Reports',
     ],
 ],
    'travelTreatmentActivity' => [
@@ -1071,7 +1071,7 @@ return [
     ],
 ],
     'hotel' => [
-    'title'          => 'Otel',
+    'title'          => 'Oteller',
     'title_singular' => 'Otel',
     'fields'         => [
         'id'                => 'ID',
