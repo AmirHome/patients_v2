@@ -886,7 +886,7 @@ return [
             'add_reports' => 'Add Reports',
             'drop_or_select_file' => 'Drop or Select file',
             'file' => 'File',
-            'files' => 'Files',
+            'files' => 'Reports',
             'uploaded_by' => 'Uploaded By',
             'explanation' => 'Explanation',
             'date' => 'Date',

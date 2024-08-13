@@ -15,9 +15,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.auditLog.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.auditLog.fields.description') }}
                     </th>
                     <th>
@@ -62,7 +59,6 @@
     ajax: "{{ route('admin.audit-logs.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'description', name: 'description' },
 { data: 'subject_id', name: 'subject_id' },
 { data: 'subject_type', name: 'subject_type' },

@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.ministry.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.ministry.fields.code') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.ministries.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'code', name: 'code' },
 { data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

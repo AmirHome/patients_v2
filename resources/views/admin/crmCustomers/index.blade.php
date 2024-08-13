@@ -17,9 +17,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.ministry.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.crmCustomer.fields.first_name') }}
                     </th>
                     <th>
@@ -104,7 +101,6 @@
     },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-      { data: 'id', name: 'id' },
       { data: 'full_name', name: 'full_name'},
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },

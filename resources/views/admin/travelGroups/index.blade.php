@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.travelGroup.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.travelGroup.fields.name') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.travel-groups.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'color', name: 'color' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

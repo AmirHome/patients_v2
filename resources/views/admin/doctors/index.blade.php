@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.doctor.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.doctor.fields.name') }}
                     </th>
                     <th>

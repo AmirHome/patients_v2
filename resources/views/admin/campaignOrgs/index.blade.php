@@ -24,9 +24,7 @@
                     <th width="10">
 
                     </th>
-                    <th>
-                        {{ trans('cruds.campaignOrg.fields.id') }}
-                    </th>
+
                     <th>
                         {{ trans('cruds.campaignOrg.fields.title') }}
                     </th>
@@ -95,7 +93,6 @@
     ajax: "{{ route('admin.campaign-orgs.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
 { data: 'channel_title', name: 'channel.title' },
 { data: 'started_at', name: 'started_at' },

@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.taskStatus.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.taskStatus.fields.name') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.task-statuses.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'color', name: 'color' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

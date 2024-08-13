@@ -16,9 +16,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.task.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.task.fields.created_at') }}
                     </th>
                     <th>
@@ -105,7 +102,6 @@
     },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'created_at', name: 'created_at' },
 { data: 'due_date', name: 'due_date' },
 { data: 'name', name: 'name' },

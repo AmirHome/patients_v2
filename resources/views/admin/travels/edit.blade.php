@@ -17,12 +17,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#travel_activities" role="tab" data-toggle="tab">
-                {{ trans('cruds.travel.fields.files') }}
+                {{ trans('cruds.travel.fields.current_status') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#reports"  role="tab" data-toggle="tab">
-                {{ trans('cruds.travel.fields.current_status') }}
+                {{ trans('cruds.travel.fields.files') }}
                 </a>
             </li>
 

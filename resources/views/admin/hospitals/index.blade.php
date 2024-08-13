@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.hospital.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.hospital.fields.name') }}
                     </th>
                     <th>
@@ -99,7 +96,6 @@
     ajax: "{{ route('admin.hospitals.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'address', name: 'address' },
 { data: 'email', name: 'email' },

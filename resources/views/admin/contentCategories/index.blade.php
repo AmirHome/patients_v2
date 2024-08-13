@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.contentCategory.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.contentCategory.fields.name') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.content-categories.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'slug', name: 'slug' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

@@ -14,9 +14,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.setting.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.setting.fields.central_hospital_mail') }}
                     </th>
                     <th>
@@ -52,7 +49,6 @@
     ajax: "{{ route('admin.settings.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'central_hospital_mail', name: 'central_hospital_mail' },
 { data: 'central_hospital_mail_cc', name: 'central_hospital_mail_cc' },
 { data: 'central_hospital_mail_bcc', name: 'central_hospital_mail_bcc' },

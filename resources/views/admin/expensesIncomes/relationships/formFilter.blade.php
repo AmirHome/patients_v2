@@ -2,21 +2,21 @@
 <div class="card-header ml-3">Expenses Filter</div>
 <div class="card-body mb-2">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="">{{ trans('cruds.travel.fields.patient_code') }}</label>
                 <input type="text" class="form-control filter"
                     name="patient_code">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="">{{ trans('cruds.travel.fields.patient_name') }}</label>
                 <input type="text" class="form-control filter"
                     name="patient_name">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group mt-1">
                 <label>{{ trans('cruds.province.fields.country') }}</label>
                 <select class="form-control select2 filter" name="country_id">
@@ -27,17 +27,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group mt1">
-                <label>{{ trans('cruds.patient.fields.campaign_org') }}</label>
-                <select class="form-control select2 filter" name="campaign_org_id">
-                    <option value=""></option>
-                    @foreach($campaign_orgs as $id => $entry)
-                        <option value="{{ $id }}" {{ old('campaign_org_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+
     </div>
 
     <div class="bar">

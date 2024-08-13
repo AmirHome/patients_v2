@@ -24,9 +24,6 @@
                     <th width="10">
                     </th>
                     <th>
-                        {{ trans('cruds.user.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.user.fields.name') }}
                     </th>
                     <th>
@@ -96,7 +93,6 @@
     ajax: "{{ route('admin.users.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'email', name: 'email' },
 { data: 'office_name', name: 'office.name' },

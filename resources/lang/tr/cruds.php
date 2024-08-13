@@ -877,7 +877,7 @@ return [
         'add_reports' => 'Rapor Ekle',
         'drop_or_select_file' => 'Dosya Seç veya Sürükle',
         'file' => 'Dosya',
-        'files' => 'Güncel Durum ',
+        'files' => 'Raporlar',
         'uploaded_by' => 'Yükleyen',
         'explanation' => 'Açıklama',
         'date' => 'Tarih',
@@ -933,7 +933,7 @@ return [
         'back' => 'Geri',
         'next' => 'İleri',
         'final' => 'Bitir',
-        'current_status' => 'Reports',
+        'current_status' => 'Güncel Durum',
     ],
 ],
    'travelTreatmentActivity' => [
