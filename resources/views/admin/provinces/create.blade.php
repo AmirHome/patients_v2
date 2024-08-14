@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.provinces.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">{{ trans('cruds.province.fields.create_provinces') }}</div>
+            <div class="card-header">{{ trans('cruds.Other.create_province') }}</div>
             <div class="row">
                 <div class="col-md-12">
             <div class="form-group">

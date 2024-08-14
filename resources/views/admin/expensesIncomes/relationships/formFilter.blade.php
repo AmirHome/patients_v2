@@ -1,5 +1,5 @@
 <form class="" action="{{ route('admin.expenses-incomes.index',$type) }}" method="GET">
-<div class="card-header ml-3">Expenses Filter</div>
+<div class="card-header ml-3">{{ trans('cruds.expensesIncome.expenses_filter') }}</div>
 <div class="card-body mb-2">
     <div class="row">
         <div class="col-md-4">

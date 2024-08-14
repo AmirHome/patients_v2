@@ -3,7 +3,7 @@
 
 <div class="card">
 <div class="card-header d-flex justify-content-between align-items-center mb-0 pb-0">
-            <span>  Patient Info </span>
+            <span>  {{ trans('cruds.patient.title_ex') }} </span>
             <div class="form-group mb-0 pb-0">
                 <a class="btn btn-default" href="{{ route('admin.expenses-incomes.index', ['type' => 'financial']) }}">
                     {{ trans('global.back_to_list') }} 
@@ -18,7 +18,7 @@
             <div class="col-md-6">
             <div class="text-left">
 
-            <div class="show-header ml-4"> Hastanın Adı </div>
+            <div class="show-header ml-4"> {{ trans('cruds.patient.patient_name') }}</div>
             <span class="show-header-text ml-1">  {{ $patient->name}} </span>
               </div>
               </div>
@@ -26,7 +26,7 @@
               <div class="col-md-6">
             <div class="text-left">
 
-            <div class="show-header ml-4"> Hastanın Diğer Ismi </div>
+            <div class="show-header ml-4"> {{ trans('cruds.patient.patient_other_name') }} </div>
             <span class="show-header-text ml-1">   {{ $patient->middle_name}} </span>
               </div>
               </div>
@@ -34,13 +34,13 @@
                 <div class="row pt-4">
                     <div class="col-md-6">
                         <div class="text-left">
-                            <div class="show-header ml-4"> Hastanın Soyadı</div>
+                            <div class="show-header ml-4"> {{ trans('cruds.patient.patient_surname') }}</div>
                             <span class="show-header-text ml-1"> {{ $patient->surname}} </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="text-left">
-                            <div class="show-header ml-4"> Hasta Kodu</div>
+                            <div class="show-header ml-4"> {{ trans('cruds.patient.patient_code') }}</div>
                             <span class="show-header-text ml-1"> {{ $patient->code}} </span>
                         </div>
                     </div>
@@ -48,14 +48,14 @@
                     <div class="row pt-4">
                     <div class="col-md-6">
                         <div class="text-left">
-                            <div class="show-header ml-4"> Şehri</div>
+                            <div class="show-header ml-4"> {{ trans('cruds.patient.city') }}</div>
                             <span class="show-header-text ml-1"> {{ $patient->city->name}} </span>
                         </div>  
                         </div>  
 
             <div class="col-md-6">
             <div class="text-left">
-                            <div class="show-header ml-4">  Ülkesi</div>
+                            <div class="show-header ml-4">  {{ trans('cruds.patient.country') }}</div>
                             <span class="show-header-text ml-1"> {{ $patient->city->country->name}} </span>
                         </div>  
                         </div>  
@@ -64,6 +64,7 @@
     </div>
 </div>
 <div class="card">
+    
     <div class="card-header">
         @includeIf('admin.expensesIncomes.relationships.formFilterPatient')
     </div>

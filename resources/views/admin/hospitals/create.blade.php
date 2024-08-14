@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.hospitals.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Hospital</div>
+            <div class="card-header">{{ trans('cruds.Other.create_hospital') }}</div>
             <div class="row">
                 <div class="col-md-6">
             <div class="form-group">

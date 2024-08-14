@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.campaign-orgs.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Campaign Orgs</div>
+            <div class="card-header">{{ trans('cruds.Other.create_campaign_org') }}</div>
             <div class="row">
                 <div class="col-md-6">
             <div class="form-group">

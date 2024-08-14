@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.travel-statuses.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Travel Status</div>
+            <div class="card-header">{{ trans('cruds.Other.create_travel_status') }}</div>
             <div class="row">
                 <div class="col-md-6">
             <div class="form-group">

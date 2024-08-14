@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.ministries.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Ministries </div>
+            <div class="card-header">{{ trans('cruds.Other.create_ministries') }}</div>
             <div class="row">
                 <div class="col-md-6">
             <div class="form-group">

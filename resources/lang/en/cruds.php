@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'dashboard' => [
+        'title' => 'Dashboard',
+    ],
     'userManagement' => [
         'title'          => 'User management',
         'title_singular' => 'User management',
@@ -222,6 +225,7 @@ return [
             'deleted_at_helper' => ' ',
             'color'             => 'Color',
             'color_helper'      => 'Sample: #FFFFFF',
+            'create_crm_status' => 'Create CRM Status',
         ],
     ],
     'crmCustomer' => [
@@ -484,6 +488,10 @@ return [
             'user_helper'             => ' ',
             'departmant'              => 'Departmant',
             'departmant_helper'       => ' ',
+            'total_expenses'          => 'Total Expenses',
+            'total_income'            => 'Total Income',
+            'total_diffenrence'       => 'Total Diffenrence',
+            'profit'                  => 'Profit',
         ],
     ],
     'income' => [
@@ -745,6 +753,13 @@ return [
     'patient' => [
         'title'          => 'Patients',
         'title_singular' => 'Patient',
+        'title_ex'          => 'Patient Info',
+        'patient_name'   => 'Patient Name',
+        'patient_other_name' => 'Patient Other Name',
+        'patient_code'   => 'Patient Code',
+        'patient_surname' => 'Patient Surname',
+        'city'           => 'City',
+        'country'      => 'Country',
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
@@ -1131,7 +1146,10 @@ return [
         'title'          => 'Expenses Income',
         'title_singular' => 'Expenses Income',
         'commission'     => 'Commission',
+        'commission_ex'  => 'Commission Expense',
+        'commission_in'  => 'Commission Income',
         'financial'      => 'Financial',
+        'expenses_filter' => 'Expenses Filter',
         'report'         => 'Report',
         'fields'         => [
             'id'                 => 'ID',
@@ -1156,5 +1174,41 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-
+    'Other' => [
+    'Expenses'          => 'Expenses',
+    'Income'            => 'Income',
+    'patient_code'      => 'Patient Code', 
+    'expenses_of'      => 'Expenses of',
+     'commission_of'      => 'Commission of',
+     'expenses_by_country' => 'Expenses by Country of',
+     'create_status' => 'Create Status',
+     'create_faq_questions' => 'Create FAQ Questions',
+     'create_faq_categories' => 'Create FAQ Categories',
+     'create_content_categories' => 'Create Content Categories',
+     'create_content_tags' => 'Create Content Tags',
+     'create_country' => 'Create Country',
+     'create_province' => 'Create Province',
+     'create_campaign_channels' => 'Create Campaign Channels',
+     'create_campaign_org' => 'Create Campaign Orgs',
+     'create_travel_group' => 'Create Travel Group',
+     'create_travel_status' => 'Create Travel Status',
+     'create_travel_hospital' => 'Create Travel Hospital',
+     'create_ministries' => 'Create Ministries',
+     'create_department' => 'Create Department',
+     'create_office' => 'Create Office',
+     'create_hospital' => 'Create Hospital',
+     'create_doctor' => 'Create Doctor',
+     'create_translator' => 'Create Translator',
+     'sample_color_entry' => 'Sample Color Entry',
+     'comma_separator_example' => 'comma separator Example:',
+     'create_hotel' => 'Create Hotel',
+     'entered_location' => 'Entered as location link Example:',
+     'price_in_tl' => 'and The price is entered in €',
+     'create_patient' => 'Create Patient',
+     'create_user_alerts' => 'Create User Alerts',
+     'create_role' => 'Create Roles',
+     'create_users' => 'Create Users',
+        'repeat_new' => 'Repeat New ',
+     'new' => 'New',
+],
 ];

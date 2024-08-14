@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.crm-statuses.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create CRM Status</div>
+            <div class="card-header">{{ trans('cruds.crmStatus.fields.create_crm_status') }}</div>
 
             <div class="row">
                 <div class="col-md-6  text-align-center">

@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:18vh;">
         <form method="POST" action="{{ route("admin.doctors.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Doctor</div>
+            <div class="card-header">{{ trans('cruds.Other.create_doctor') }}</div>
 
             <div class="row">
                 <div class="col-md-6">

@@ -3,7 +3,7 @@
 --}}
 <div class="{{$class}}">
     <div class="form-group">
-    <label for="">Referans Tipiniz</label>
+    <label for="">{{ trans('cruds.travel.fields.choose_reference_type') }}</label>
         <select class="form-control" name="reffering_type">
             <option value="" selected> </option>
             @foreach ($refferingTypes as $id => $title)
@@ -16,7 +16,7 @@
 
 <div class="{{$class}}">
     <div class="form-group">
-    <label for="">Referansınız</label>
+    <label for="">{{ trans('cruds.travel.fields.your_reference') }}</label>
         
         <input type="text" class="form-control {{$refferingType == 'Other'?'':'d-none'}}" placeholder="Enter reffering" name="reffering" id="reffer-other" value="{{$reffering??''}}">
 

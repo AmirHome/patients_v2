@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:10vh;">
         <form method="POST" action="{{ route("admin.faq-questions.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create FAQ Questions</div>
+            <div class="card-header">{{ trans('cruds.Other.create_faq_questions') }}</div>
             <div class="row">
             <div class="col-md-12">
             <div class="form-group">

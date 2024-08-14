@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:15vh;">
         <form method="POST" action="{{ route("admin.user-alerts.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create User Alerts</div>
+            <div class="card-header">{{ trans('cruds.Other.create_user_alerts') }}</div>
 
             <div class="row">
                 <div class="col-md-6">
