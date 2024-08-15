@@ -66,7 +66,11 @@
             },
             columns: [
                 { data: 'placeholder', name: 'placeholder' },
-                { data: 'patient.code', name: 'patient.code' },
+                { data: 'patient.code', name: 'patient.code',
+                    render: function(data, type, row) {
+                        return '<a class="clickable-cell" href="{{ url('admin') }}/travels/'+row.id+'/edit">'+data+'</a>';
+                    }
+                },
                 { data: 'patient_name', name: 'patient.name' },
                 { data: 'hospital_name', name: 'hospital.name' },
                 { data: 'department_name', name: 'department.name' },
@@ -77,11 +81,6 @@
             orderCellsTop: true,
             order: [[ 1, 'desc' ]],
             pageLength: 10,
-             createdRow: function (row, data, dataIndex) {
-                $(row).find('td').addClass('clickable-cell').on('click', function() {
-                    window.location.href = "{{ route('admin.travels.edit', ':id') }}".replace(':id', data.id);
-                });
-            },
         };
         let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
         $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
