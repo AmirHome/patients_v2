@@ -1,6 +1,9 @@
 @can($viewGate)
-    <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
-    </a>
+    @if($showIndex??false)
+    <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}"></a>
+    @else
+    <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}"></a>
+    @endif
 @endcan
 @can($editGate)
     <a class="btn btn-xs btn-info"   href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">

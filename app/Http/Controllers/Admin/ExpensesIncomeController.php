@@ -80,7 +80,7 @@ class ExpensesIncomeController extends Controller
                 return number_format($total_income - $total_expenses, 2);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
+            $table->rawColumns([ 'actions', 'placeholder', 'patient', 'department']);
 
             $expensesTotal = $expensesTotalQuery->sum('amount');
             $incomesTotal = $incomesTotalQuery->sum('amount');
@@ -155,29 +155,29 @@ class ExpensesIncomeController extends Controller
 
         
 
- /*
+        /*
 
-     <livewire:livewire-column-chart
-        key="{{ $columnChartModel->reactiveKey() }}"
-        :column-chart-model="$columnChartModel"
-    />
+            <livewire:livewire-column-chart
+                key="{{ $columnChartModel->reactiveKey() }}"
+                :column-chart-model="$columnChartModel"
+            />
 
-    @livewireChartsScripts
+            @livewireChartsScripts
 
-    $columnChartModel = (new ColumnChartModel())
-        ->setTitle('Expenses by Type')
-        ->addColumn('Food', 100, '#f6ad55')
-        ->addColumn('Shopping', 200, '#fc8181')
-        ->addColumn('Travel', 300, '#90cdf4');
+            $columnChartModel = (new ColumnChartModel())
+                ->setTitle('Expenses by Type')
+                ->addColumn('Food', 100, '#f6ad55')
+                ->addColumn('Shopping', 200, '#fc8181')
+                ->addColumn('Travel', 300, '#90cdf4');
 
-    $pieChartModel = (new PieChartModel())
-        ->setTitle('Expenses by Type')
-        ->addSlice('Food', 100, '#f6ad55')
-        ->addSlice('Shopping', 200, '#fc8181')
-        ->addSlice('Travel', 300, '#90cdf4'); 
-            
-               
-    */
+            $pieChartModel = (new PieChartModel())
+                ->setTitle('Expenses by Type')
+                ->addSlice('Food', 100, '#f6ad55')
+                ->addSlice('Shopping', 200, '#fc8181')
+                ->addSlice('Travel', 300, '#90cdf4'); 
+                    
+                    
+            */
 
         return view('admin.expensesIncomes.report', $data);
 

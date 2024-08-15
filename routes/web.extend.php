@@ -3,8 +3,8 @@
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
     Route::get('expenses-incomes/{patient}/index', 'ExpensesIncomeController@indexPatient')->name('expenses-incomes.patient.index');
-    //Route::get('expenses-incomes/index/commission', 'ExpensesIncomeController@commission')->name('expenses-incomes.index.commission');
     Route::get('expenses-incomes/index/{type}', 'ExpensesIncomeController@index')->name('expenses-incomes.index');
+    Route::get('expenses-incomes/show/{expenses_income}', 'ExpensesIncomeController@show')->name('expenses-incomes.show');
 
 
     Route::get('report/finance', 'ExpensesIncomeController@report')->name('expenses-incomes.report.finance');

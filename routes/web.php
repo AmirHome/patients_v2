@@ -177,7 +177,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Expenses Income
     Route::delete('expenses-incomes/destroy', 'ExpensesIncomeController@massDestroy')->name('expenses-incomes.massDestroy');
-    Route::resource('expenses-incomes', 'ExpensesIncomeController')->except(['index']);
+    Route::resource('expenses-incomes', 'ExpensesIncomeController')->except(['index', 'show']);
 
     Route::get('team-members', 'TeamMembersController@index')->name('team-members.index');
     Route::post('team-members', 'TeamMembersController@invite')->name('team-members.invite');

@@ -85,7 +85,9 @@
     },
     columns: [
         { data: 'patient_id', name: 'patient_id', visible: false},
-        { data: 'patient_name', name: 'patient.name' },
+        { data: 'patient_name', name: 'patient.name', render: function(data, type, row) {
+            return '<a href="{{url('admin')}}/expenses-incomes/' + row.patient_id + '/index">' + data + '</a>';
+        }},
         { data: 'patient.code', name: 'patient.code' },
         { data: 'country_name', name: 'patient.city.country.name', sortable: false},
         { data: 'total_expenses', name: 'total_expenses', searchable:false, sortable: false },
