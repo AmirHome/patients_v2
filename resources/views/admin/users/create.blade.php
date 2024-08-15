@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:7vh;">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Users</div>
+            <div class="card-header">{{ trans('cruds.Other.create_users') }}</div>
             <div class="row">
             <div class="col-md-6">
             <div class="form-group">

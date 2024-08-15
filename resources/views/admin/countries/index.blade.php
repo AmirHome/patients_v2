@@ -26,9 +26,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.country.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.country.fields.short_code') }}
                     </th>
                     <th>
@@ -90,7 +87,6 @@
     ajax: "{{ route('admin.countries.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'short_code', name: 'short_code' },
 { data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

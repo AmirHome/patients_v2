@@ -58,7 +58,7 @@
 
                     <div class="col-md-6">
                     <div class="form-group">
-                        <label class="required" for="title">New {{ trans('cruds.user.fields.password') }}</label>
+                        <label class="required" for="title">{{ trans('cruds.Other.new') }} {{ trans('cruds.user.fields.password') }}</label>
                         <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
                         @if($errors->has('password'))
                             <div class="invalid-feedback">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-md-6">
                     <div class="form-group">
-                        <label class="required" for="title">Repeat New {{ trans('cruds.user.fields.password') }}</label>
+                        <label class="required" for="title">{{ trans('cruds.Other.repeat_new') }}{{ trans('cruds.user.fields.password') }}</label>
                         <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required>
                     </div>
                     </div>

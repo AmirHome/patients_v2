@@ -19,19 +19,19 @@
                         {{ trans('cruds.expensesIncome.fields.patient') }}
                     </th>
                     <th>
-                         patient_code 
+                         {{ trans('cruds.travel.fields.patient_code') }} 
                     </th>
                     <th>
-                         countery 
+                         {{ trans('cruds.travel.fields.country') }} 
                     </th>
                     <th>
-                         total_expenses 
+                         {{ trans('cruds.expense.fields.total_expenses') }}  
                     </th>
                     <th>
-                        total_income 
+                        {{ trans('cruds.expense.fields.total_income') }}   
                     </th>
                     <th>
-                        total difference 
+                    {{ trans('cruds.expense.fields.total_diffenrence') }}   
                     </th>
                     <th>
                         &nbsp;
@@ -44,9 +44,9 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th>Total Expenses:</th>
-                    <th>Total Incomes:</th>
-                    <th>Profit:</th>
+                    <th>{{ trans('cruds.expense.fields.total_expenses') }} :</th>
+                    <th>{{ trans('cruds.expense.fields.total_income') }} :</th>
+                    <th>{{ trans('cruds.expense.fields.profit') }} :</th>
                 </tr>
             </tfoot>
         </table>

@@ -21,9 +21,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.translator.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.translator.fields.title') }}
                     </th>
                     <th>
@@ -91,7 +88,6 @@
     ajax: "{{ route('admin.translators.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
 { data: 'email', name: 'email' },
 { data: 'phone', name: 'phone' },

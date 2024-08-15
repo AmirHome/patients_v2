@@ -3,7 +3,7 @@
         <div class="modal-content" style="margin-top:25vh;">
         <form method="POST" action="{{ route("admin.content-tags.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="card-header">Create Content Tags</div>
+            <div class="card-header">{{ trans('cruds.Other.create_content_tags') }}</div>
             <div class="row">
             <div class="col-md-12">
             <div class="form-group">

@@ -24,9 +24,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.hotel.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.hotel.fields.name') }}
                     </th>
                     <th>
@@ -97,7 +94,6 @@
     ajax: "{{ route('admin.hotels.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'location', name: 'location' },
 { data: 'price', name: 'price' },

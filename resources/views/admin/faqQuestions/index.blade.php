@@ -24,9 +24,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.faqQuestion.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.faqQuestion.fields.category') }}
                     </th>
                     <th>
@@ -88,7 +85,6 @@
     ajax: "{{ route('admin.faq-questions.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'category_category', name: 'category.category' },
 { data: 'question', name: 'question' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

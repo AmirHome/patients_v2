@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.office.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.office.fields.city') }}
                     </th>
                     <th>
@@ -96,7 +93,6 @@
     ajax: "{{ route('admin.offices.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'city_name', name: 'city.name' },
 { data: 'phone', name: 'phone' },
 { data: 'fax', name: 'fax' },

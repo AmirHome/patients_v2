@@ -25,7 +25,7 @@
                     <th width="10">
 
                     </th>
-                    <th>
+                              <th>
                         {{ trans('cruds.travelStatus.fields.id') }}
                     </th>
                     <th>
@@ -97,7 +97,7 @@ let dtOverrideGlobals = {
     },
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
+      {data:'id',name:'id'},
 { data: 'title', name: 'title' },
 { data: 'ordering', name: 'ordering' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

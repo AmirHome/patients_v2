@@ -27,7 +27,7 @@ return [
     'login_password_confirmation'    => 'Yeni şifreyi onayla',
     'logout'                         => 'Çıkış yap',
     'month'                          => 'Ay',
-    'no'                             => 'Numara',
+    'no'                             => 'Hayır',
     'pleaseSelect'                   => 'Lütfen seçiniz',
     'register'                       => 'Kaydol',
     'remember_me'                    => 'Beni Hatırla',

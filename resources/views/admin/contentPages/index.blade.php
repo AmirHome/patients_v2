@@ -23,9 +23,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.contentPage.fields.title') }}
                     </th>
                     <th>
@@ -96,7 +93,6 @@
     ajax: "{{ route('admin.content-pages.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
 { data: 'category', name: 'categories.name' },
 { data: 'tag', name: 'tags.name' },

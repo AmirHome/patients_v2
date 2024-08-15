@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.travelHospital.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.travelHospital.fields.title') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.travel-hospitals.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
 { data: 'email', name: 'email' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

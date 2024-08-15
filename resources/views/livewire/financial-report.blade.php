@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Expenses of @json($selectedYear)</h4>
+                    <h4>{{ trans('cruds.Other.expenses_of') }} @json($selectedYear)</h4>
                 </div>
                 <div class="card-body" style="height: 24rem;">
                     <livewire:livewire-column-chart
@@ -23,7 +23,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Commisson of @json($selectedYear)</h4>
+                    <h4>{{ trans('cruds.Other.commission_of') }}@json($selectedYear)</h4>
                 </div>
                 <div class="card-body" style="height: 24rem;">
                     <livewire:livewire-column-chart
@@ -39,7 +39,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Expenses by Country of @json($selectedYear)</h4>
+                    <h4>{{ trans('cruds.Other.expenses_by_country') }}@json($selectedYear)</h4>
                 </div>
                 <div class="card-body" style="height: 24rem;">
                     <livewire:livewire-pie-chart :pie-chart-model="$pieChartModelExpenses" />
@@ -49,7 +49,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Commisson of @json($selectedYear)</h4>
+                    <h4>{{ trans('cruds.Other.commission_of') }} @json($selectedYear)</h4>
                 </div>
                 <div class="card-body" style="height: 24rem;">
                     <livewire:livewire-pie-chart :pie-chart-model="$pieChartModelCommission" />

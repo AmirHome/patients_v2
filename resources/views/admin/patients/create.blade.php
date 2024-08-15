@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div class="card-header">Create Patient</div>
+<div class="card-header">{{ trans('cruds.Other.create_patient') }}</div>
 <div class="row mb-5">
     <div class="col-md-6">
         <div class="card">

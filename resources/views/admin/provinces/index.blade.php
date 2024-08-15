@@ -25,9 +25,6 @@
 
                     </th>
                     <th>
-                        {{ trans('cruds.province.fields.id') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.province.fields.country') }}
                     </th>
                     <th>
@@ -89,7 +86,6 @@
     ajax: "{{ route('admin.provinces.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
 { data: 'country_name', name: 'country.name' },
 { data: 'name', name: 'name' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
