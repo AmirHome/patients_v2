@@ -107,7 +107,7 @@ class ActivityController extends Controller
         return view('admin.activities.create', compact('statuses', 'travel', 'users'));
     }
 
-    public function store(StoreActivityRequest $request)
+    public function store( StoreActivityRequest $request)
     {
         $activity = Activity::create($request->all());
 
