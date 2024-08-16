@@ -69,6 +69,9 @@ class TravelController extends ParentController
             $table->addColumn('patient_name', function ($row) {
                 return $row->patient ? $row->patient->name . ' ' .  $row->patient->surname : '';
             });
+            $table->addColumn('patient_phone', function ($row) {
+                return $row->patient ? $row->patient->phone : '';
+            });
 
             $table->editColumn('patient.middle_name', function ($row) {
                 return $row->patient ? (is_string($row->patient) ? $row->patient : $row->patient->middle_name) : '';

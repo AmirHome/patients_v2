@@ -26,6 +26,9 @@
                         {{ trans('cruds.travel.fields.patient') }}
                     </th>
                     <th>
+                        {{ trans('cruds.patient.fields.phone') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.travel.fields.hospital') }}
                     </th>
                     <th>
@@ -72,6 +75,7 @@
                     }
                 },
                 { data: 'patient_name', name: 'patient.name' },
+                { data: 'patient_phone', name: 'patient.phone' },
                 { data: 'hospital_name', name: 'hospital.name' },
                 { data: 'department_name', name: 'department.name' },
                 { data: 'last_status_title', name: 'last_status.title' },
