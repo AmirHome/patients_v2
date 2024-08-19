@@ -4,7 +4,7 @@
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.channel') }}</label>
-        <select class="form-control select2 filter" id="channel_id">
+        <select class="form-control select2 filter" id="channel_id" name="channel_id">
             <option value=null> </option>
             @foreach ($campaignChannels as $id => $title)
             <option value="{{ $id }}" {{($id==$campaignChannel)?'selected':''}}>{{ $title }}</option>
@@ -17,7 +17,7 @@
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.organization') }}</label>
-        <select class="form-control select2 filter" id="campaign_org_id">
+        <select class="form-control select2 filter" id="campaign_org_id" name="campaign_org_id">
             <option></option>
             @foreach ($campaignOrgs as $id => $title)
             <option value="{{ $id }}"  {{($id==$campaignOrg)?'selected':''}}>{{ $title }}</option>

@@ -4,7 +4,7 @@
 <div class="{{$class}}">
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.choose_reference_type') }}</label>
-        <select class="form-control" name="reffering_type">
+        <select class="form-control filter" name="reffering_type">
             <option value="" selected> </option>
             @foreach ($refferingTypes as $id => $title)
             <option value="{{ $id }}" {{($id==$refferingType)?'selected':''}}>{{ $title }}</option>
@@ -18,9 +18,9 @@
     <div class="form-group">
     <label for="">{{ trans('cruds.travel.fields.your_reference') }}</label>
         
-        <input type="text" class="form-control {{$refferingType == 'Other'?'':'d-none'}}" placeholder="Enter reffering" name="reffering" id="reffer-other" value="{{$reffering??''}}">
+        <input type="text" class="form-control filter {{$refferingType == 'Other'?'':'d-none'}}" placeholder="Enter reffering" name="reffering" id="reffer-other" value="{{$reffering??''}}">
 
-        <select class="form-control {{($refferingType != 'Other' && $refferingType != 'Phone')?'':'d-none'}}" name="reffering" id="reffer-select">
+        <select class="form-control filter {{($refferingType != 'Other' && $refferingType != 'Phone')?'':'d-none'}}" name="reffering" id="reffer-select">
             <option value="" selected> </option>
             @foreach ($refferingIds as $id => $refferings)
             <option value="{{ $id }}" {{($id==$reffering)?'selected':''}}>{{ $refferings }}</option>

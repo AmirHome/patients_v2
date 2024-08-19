@@ -9,9 +9,11 @@ use App\Models\Country;
 use App\Models\CrmStatus;
 use App\Models\Department;
 use App\Models\Hospital;
+use App\Models\Office;
 use App\Models\Patient;
 use App\Models\TaskStatus;
 use App\Models\Translator;
+use App\Models\TravelGroup;
 use App\Models\TravelStatus;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,13 +34,18 @@ trait DataTablesFilterTrait
                 $departments = Department::get(['id', 'name'])->pluck('name', 'id');
                 $notify_hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
                 $translators = Translator::get(['id', 'title'])->pluck('title', 'id');
+                $hospitals = Hospital::get(['id', 'name'])->pluck('name', 'id');
+                $offices = Office::get(['id', 'name'])->pluck('name', 'id');
+                $groups = TravelGroup::get(['id', 'name'])->pluck('name', 'id');
 
-                return compact('countries', 'cities','genders', 'bloodGroups', 'refferingTypes', 'campaignChannels', 'campaignOrganizations', 'statuses', 'departments', 'notify_hospitals', 'translators');
+
+                return compact('countries', 'cities','genders', 'bloodGroups', 'refferingTypes', 'campaignChannels', 'campaignOrganizations',
+                 'statuses', 'departments', 'notify_hospitals', 'translators', 'hospitals', 'offices', 'groups');
     }
 
     public function travelFilter(Request $request, $query){
             // Add custom filter for search_index
-            if ($request->has('ff_patient_name')) {
+            if ($request->filled('ff_patient_name')) {
                 $value = $request->input('ff_patient_name');
                 $query->whereHas('patient', function ($query) use ($value) {
                     $query->where('name', 'like', '%' . $value . '%')
@@ -46,12 +53,119 @@ trait DataTablesFilterTrait
                         ->orWhere('middle_name', 'like', '%' . $value . '%');
                 });
             }
-            if ($request->has('ff_patient_code')) {
+            if ($request->filled('ff_patient_code')) {
                 $value = $request->input('ff_patient_code');
                 $query->whereHas('patient', function ($query) use ($value) {
                     $query->where('code', 'like', '%' . $value . '%');
                 });
             }
+            // ff_gender filter patient.gender
+            if ($request->filled('ff_gender')) {
+                $value = $request->input('ff_gender');
+                $query->whereHas('patient', function ($query) use ($value) {
+                    $query->where('gender', $value);
+                });
+            }
+            // ff_phone filter patient.phone
+            if ($request->filled('ff_phone')) {
+                $value = $request->input('ff_phone');
+                $query->whereHas('patient', function ($query) use ($value) {
+                    $query->where('phone', 'like', '%' . $value . '%');
+                });
+            }
+            // ff_status_id filter status_id
+            if ($request->filled('ff_status_id')) {
+                $value = $request->input('ff_status_id');
+                $query->where('last_status_id', $value);
+            }
+            // ff_department_id filter department_id
+            if ($request->filled('ff_department_id')) {
+                $value = $request->input('ff_department_id');
+                $query->where('department_id', $value);
+            }
+            // ff_country_id filter patient.city.country_id
+            if ($request->filled('ff_country_id') && $request->input('ff_country_id') !== 'null') {
+                $value = $request->input('ff_country_id');
+                $query->whereHas('patient.city.country', function ($query) use ($value) {
+                    $query->where('id', $value);
+                });
+            }
+            // ff_city_id filter patient.city_id
+            if ($request->filled('ff_city_id') && $request->input('ff_city_id') !== 'null') {
+                $value = $request->input('ff_city_id');
+                $query->whereHas('patient.city', function ($query) use ($value) {
+                    $query->where('id', $value);
+                });
+            }
+            // ff_hospital_id filter hospital_id
+            if ($request->filled('ff_hospital_id')) {
+                $value = $request->input('ff_hospital_id');
+                $query->where('hospital_id', $value);
+            }
+            // ff_office_id filter patient.office_id
+            if ($request->filled('ff_office_id')) {
+                $value = $request->input('ff_office_id');
+                $query->whereHas('patient.office', function ($query) use ($value) {
+                    $query->where('id', $value);
+                });
+            }
+            // ff_reffering_type filter reffering_type
+            if ($request->filled('ff_reffering_type')) {
+                $value = $request->input('ff_reffering_type');
+                $query->where('reffering_type', $value);
+            }
+            // ff_reffering filter reffering
+            if ($request->filled('ff_reffering')) {
+                $value = $request->input('ff_reffering');
+                $query->where('reffering', 'like', '%' . $value . '%');
+            }
+            // ff_group_id filter group_id
+            if ($request->filled('ff_group_id')) {
+                $value = $request->input('ff_group_id');
+                $query->where('group_id', $value);
+            }
+            // ff_channel_id filter patient.campaign_org.channel_id
+            if ($request->filled('ff_channel_id') && $request->input('ff_channel_id') !== 'null') {
+                $value = $request->input('ff_channel_id');
+                $query->whereHas('patient.campaign_org', function ($query) use ($value) {
+                    $query->where('channel_id', $value);
+                });
+            }
+            // ff_campaign_org_id filter patient.campaign_org_id
+            if ($request->filled('ff_campaign_org_id') && $request->input('ff_campaign_org_id') !== 'null') {
+                $value = $request->input('ff_campaign_org_id');
+                $query->whereHas('patient', function ($query) use ($value) {
+                    $query->where('campaign_org_id', $value);
+                });
+            }
+            // ff_arrival_date_start and ff_arrival_date_end filter travel.created_at
+            if ($request->filled('ff_arrival_date_start') && $request->filled('ff_arrival_date_end')) {
+                $value_start = $request->input('ff_arrival_date_start');
+                $value_end = $request->input('ff_arrival_date_end');
+                $query->whereBetween('travels.created_at', [$value_start . ' 00:00:00', $value_end . ' 23:59:59']);
+            }
+            // ff_report_arrival_date_start 00:00:00 and ff_report_arrival_date_end time 23:59:59 filter, latast recode of travelActivities.created_at
+            if ($request->filled('ff_report_arrival_date_start') && $request->filled('ff_report_arrival_date_end')) {
+                $value_start = $request->input('ff_report_arrival_date_start');
+                $value_end = $request->input('ff_report_arrival_date_end');
+                $query->whereHas('travelActivities', function ($query) use ($value_start, $value_end) {
+                    $query->whereBetween('created_at', [$value_start . ' 00:00:00', $value_end . ' 23:59:59']);
+                });
+            }
+            // ff_campaign_start 00:00:00 and ff_campaign_end 23:59:59 filter patient.campaign_org.created_at
+            if ($request->filled('ff_campaign_start') && $request->filled('ff_campaign_end')) {
+                $value_start = $request->input('ff_campaign_start');
+                $value_end = $request->input('ff_campaign_end');
+                $query->whereHas('patient.campaign_org', function ($query) use ($value_start, $value_end) {
+                    $query->whereBetween('campaign_orgs.created_at', [$value_start . ' 00:00:00', $value_end . ' 23:59:59']);
+                });
+            }
+            
+
+            
+
+
+
         return $query;
     }
 

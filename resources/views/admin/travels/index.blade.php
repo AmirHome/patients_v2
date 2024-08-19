@@ -65,6 +65,33 @@
                 data: function(d) {
                     d.ff_patient_name = $('.filter[name="patient_name"]').val();
                     d.ff_patient_code = $('.filter[name="patient_code"]').val();
+                    d.ff_gender = $('.filter[name="gender"]').val();
+
+                    d.ff_phone = $('.filter[name="phone"]').val();
+                    d.ff_status_id = $('.filter[name="status_id"]').val();
+                    d.ff_department_id = $('.filter[name="department_id"]').val();
+                    
+                    d.ff_country_id = $('.filter[name="country_id"]').val();
+                    d.ff_city_id = $('.filter[name="city_id"]').val();
+                    d.ff_hospital_id = $('.filter[name="hospital_id"]').val();
+
+                    d.ff_office_id = $('.filter[name="office_id"]').val();
+                    d.ff_reffering_type = $('.filter[name="reffering_type"]').val();
+                    d.ff_reffering = $('.filter[name="reffering"]').val();
+
+                    d.ff_group_id = $('.filter[name="group_id"]').val();
+                    d.ff_channel_id = $('.filter[name="channel_id"]').val();
+                    d.ff_campaign_org_id = $('.filter[name="campaign_org_id"]').val();
+
+                    d.ff_arrival_date_start = $('.filter[name="arrival_date_start"]').val();
+                    d.ff_arrival_date_end = $('.filter[name="arrival_date_end"]').val();
+
+                    d.ff_report_arrival_date_start = $('.filter[name="report_arrival_date_start"]').val();
+                    d.ff_report_arrival_date_end = $('.filter[name="report_arrival_date_end"]').val();
+
+                    d.ff_campaign_start = $('.filter[name="campaign_start"]').val();
+                    d.ff_campaign_end = $('.filter[name="campaign_end"]').val();
+
                 }
             },
             columns: [
@@ -85,6 +112,7 @@
             orderCellsTop: true,
             order: [[ 1, 'desc' ]],
             pageLength: 10,
+
         };
         let table = $('.datatable-Travel').DataTable(dtOverrideGlobals);
         $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
