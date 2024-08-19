@@ -18,7 +18,7 @@
                 <span class="help-block">{{ trans('cruds.contentCategory.fields.name_helper') }}</span>
             </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 d-none">
 
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.contentCategory.fields.slug') }}</label>

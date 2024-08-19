@@ -18,6 +18,7 @@ class UpdateContentCategoryRequest extends FormRequest
 protected function prepareForValidation(){
             $this->merge([
                 'user_id' => auth()->id(),
+                'slug' => \Str::slug($this->name),
             ]);
         }
 
