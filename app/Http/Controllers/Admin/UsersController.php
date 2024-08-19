@@ -149,7 +149,7 @@ class UsersController extends Controller
     }
 
     public function update(UpdateUserRequest $request, User $user)
-    {
+    {//dd('UpdateUserRequest');
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
         if ($request->input('picture', false)) {

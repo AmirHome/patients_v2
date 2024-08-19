@@ -7,8 +7,8 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">
-        @method('PUT')
+        <form method="POST" action="{{ route("admin.users.update", [$user->id]) }}" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="row">
             <div class="col-md-4">
