@@ -30,16 +30,40 @@ return [
 
     'disks' => [
 
-        'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-            'throw' => false,
-        ],
+        // 'local' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app'),
+        //     'throw' => false,
+        // ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'reports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/uploads/reports'),
+            'url' => env('APP_URL').'/uploads/reports',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'user_photos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/uploads/user_photos'),
+            'url' => env('APP_URL').'/uploads/user_photos',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'patient_photos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/uploads/patient_photos'),
+            'url' => env('APP_URL').'/uploads/patient_photos',
             'visibility' => 'public',
             'throw' => false,
         ],

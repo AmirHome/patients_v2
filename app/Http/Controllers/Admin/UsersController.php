@@ -125,7 +125,7 @@ class UsersController extends Controller
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
         if ($request->input('picture', false)) {
-            $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('picture'))))->toMediaCollection('picture');
+            $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('picture'))))->toMediaCollection('picture', 'user_photos');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -149,7 +149,7 @@ class UsersController extends Controller
     }
 
     public function update(UpdateUserRequest $request, User $user)
-    {//dd('UpdateUserRequest');
+    {
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
         if ($request->input('picture', false)) {
@@ -157,7 +157,7 @@ class UsersController extends Controller
                 if ($user->picture) {
                     $user->picture->delete();
                 }
-                $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('picture'))))->toMediaCollection('picture');
+                $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('picture'))))->toMediaCollection('picture', 'user_photos');
             }
         } elseif ($user->picture) {
             $user->picture->delete();

@@ -112,7 +112,8 @@ class ActivityController extends Controller
         $activity = Activity::create($request->all());
 
         foreach ($request->input('document_file', []) as $file) {
-            $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file');
+            $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file', 'reports');
+
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -152,7 +153,7 @@ class ActivityController extends Controller
         $media = $activity->document_file->pluck('file_name')->toArray();
         foreach ($request->input('document_file', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file');
+                $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file', 'reports');
             }
         }
 

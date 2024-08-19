@@ -109,7 +109,7 @@ class TravelTreatmentActivityController extends Controller
         $travelTreatmentActivity = TravelTreatmentActivity::create($request->all());
 
         foreach ($request->input('treatment_file', []) as $file) {
-            $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
+            $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file', 'reports');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -149,7 +149,7 @@ class TravelTreatmentActivityController extends Controller
         $media = $travelTreatmentActivity->treatment_file->pluck('file_name')->toArray();
         foreach ($request->input('treatment_file', []) as $file) {
             if (count($media) === 0 || ! in_array($file, $media)) {
-                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
+                $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file', 'reports');
             }
         }
 

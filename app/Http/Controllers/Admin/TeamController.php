@@ -190,7 +190,7 @@ class TeamController extends Controller
         $model         = new Team();
         $model->id     = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media', 'others');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

@@ -170,6 +170,7 @@ class User extends Authenticatable implements HasMedia
 
     public function getPictureAttribute()
     {
+        // return $this->getMedia('picture')->last();
         $file = $this->getMedia('picture')->last();
         if ($file) {
             $file->url       = $file->getUrl();

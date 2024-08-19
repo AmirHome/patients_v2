@@ -179,11 +179,11 @@ class PatientController extends Controller
         $patient = Patient::create($request->all());
 
         if ($request->input('photo', false)) {
-            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo', 'patient_photos');
         }
 
         if ($request->input('passport_image', false)) {
-            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
+            $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image', 'patient_photos');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -219,7 +219,7 @@ class PatientController extends Controller
                 if ($patient->photo) {
                     $patient->photo->delete();
                 }
-                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo', 'patient_photos');
             }
         } elseif ($patient->photo) {
             $patient->photo->delete();
@@ -230,7 +230,7 @@ class PatientController extends Controller
                 if ($patient->passport_image) {
                     $patient->passport_image->delete();
                 }
-                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image');
+                $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image', 'patient_photos');
             }
         } elseif ($patient->passport_image) {
             $patient->passport_image->delete();
