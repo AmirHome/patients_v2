@@ -141,8 +141,18 @@ class TravelController extends ParentController
             });
 
             $table->rawColumns([
-                'actions', 'placeholder', 'patient', 'group', 'hospital', 'department', 'last_status',
-                'has_pestilence', 'hospital_mail_notify', 'notify_hospitals', 'wants_shopping', 'visa_status'
+                'actions',
+                'placeholder',
+                'patient',
+                'group',
+                'hospital',
+                'department',
+                'last_status',
+                'has_pestilence',
+                'hospital_mail_notify',
+                'notify_hospitals',
+                'wants_shopping',
+                'visa_status'
             ]);
 
             return $table->make(true);
@@ -176,7 +186,11 @@ class TravelController extends ParentController
         $id = checkShareCode($code, 'share_translator');
 
         $travel = Travel::with([
-            'patient', 'group', 'hospital', 'department', 'last_status',
+            'patient',
+            'group',
+            'hospital',
+            'department',
+            'last_status',
             'travelTravelTreatmentActivities' => function ($query) use ($id) {
                 $query->where('id', $id);
             }
@@ -244,7 +258,7 @@ class TravelController extends ParentController
     }
 
     public function update(UpdateTravelRequest $request, Travel $travel)
-    {//UpdateTravelRequest
+    { //dd('UpdateTravelRequest');
         $request->merge(['patient_id' => $travel->patient_id])->offsetUnset('code'); //->offsetUnset('user_id');
         //dd($request->all(), $travel->toArray());
         $travel->update($request->all());

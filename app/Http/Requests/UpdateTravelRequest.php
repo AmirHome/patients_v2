@@ -52,9 +52,9 @@ public function rules()
                 'string',
                 'nullable',
             ],
-            'reffering_type' => [
-                'required',
-            ],
+            // 'reffering_type' => [
+            //     'required',
+            // ],
             'hospitalization_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
