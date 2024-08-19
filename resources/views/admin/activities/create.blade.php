@@ -101,6 +101,7 @@
 Dropzone.options.documentFileDropzone = {
     url: '{{ route('admin.activities.storeMedia') }}',
     maxFilesize: 50, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar',
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"

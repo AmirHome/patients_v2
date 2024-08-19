@@ -192,7 +192,8 @@
 
     Dropzone.options.attachmentDropzone = {
     url: '{{ route('admin.tasks.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 20, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {

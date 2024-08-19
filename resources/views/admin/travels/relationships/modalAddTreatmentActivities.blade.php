@@ -75,7 +75,8 @@
         var uploadedTreatmentFileMap = {}
         Dropzone.options.treatmentFileDropzone = {
             url: '{{ route('admin.travel-treatment-activities.storeMedia') }}',
-            maxFilesize: 10, // MB
+            maxFilesize: 100, // MB
+            acceptedFiles: '.jpeg,.jpg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar',
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"

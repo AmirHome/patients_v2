@@ -370,7 +370,7 @@
     Dropzone.options.passportImageDropzone = {
     url: '{{ route('admin.patients.storeMedia') }}',
     maxFilesize: 10, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    acceptedFiles: '.jpeg,.jpg,.png,.gif,.pdf',
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
