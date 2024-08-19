@@ -89,6 +89,18 @@
             </div>
             </div>
 
+                   
+            <div class="form-group">
+                <label class="required" for="created_at">{{ trans('cruds.campaignOrg.fields.created_at') }}</label>
+                <input class="form-control date {{ $errors->has('created_at') ? 'is-invalid' : '' }}" type="text" name="created_at" id="created_at" value="{{ old('created_at') }}" required>
+                @if($errors->has('created_at'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('created_at') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.campaignOrg.fields.created_at_helper') }}</span>
+            </div>
+            
             <div class="form-group">
                 <button class="btn btn-danger float-right" type="submit">
                     {{ trans('global.save') }}
