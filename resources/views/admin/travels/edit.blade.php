@@ -671,8 +671,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <x-province-component class="col-md-6" :data="[]" />
-                                        <x-campaign-channel-org-component class="col-md-6" :data="[]" />
+                                        <x-province-component class="col-md-6" :data="['province_id'=>$patient->city_id]" />
+                                        <x-campaign-channel-org-component class="col-md-6" :data="[ 'campaign_org_id'=>$patient->campaign_org_id]" />
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="treating_doctor">{{ trans('cruds.patient.fields.treating_doctor') }}</label>
