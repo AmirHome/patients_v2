@@ -21,7 +21,7 @@ class FinanceSeeder extends Seeder
         if (env('APP_ENV') === 'local') {
             
             // Generate fake expenses
-            $numberOfExpenses = 70;
+            $numberOfExpenses = 7;
             $patientIds = Patient::inRandomOrder()->take(10)->get('id');
             foreach($patientIds as $patientId) {
                 for ($i = 0; $i < $numberOfExpenses; $i++) {

@@ -260,7 +260,10 @@ class ExpensesIncomeController extends Controller
         $data = $this->financeMountFilter();
 
         // append patient id to data
+
         $data['patient'] = Patient::find($patientId);
+        $data['patients'] = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $data['departments'] = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         if ($request->ajax()) {
 
@@ -310,6 +313,7 @@ class ExpensesIncomeController extends Controller
             $table->addColumn('country_name', function ($row) {
                 return $row->patient->city->country ? $row->patient->city?->country?->name : '';
             });
+
 
             $table->rawColumns(['actions', 'placeholder', 'patient', 'department']);
             // dd($table->toArray());
