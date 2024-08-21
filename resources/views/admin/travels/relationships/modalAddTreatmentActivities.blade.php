@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-travel-treatment-activities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-add-travel-treatment-activities" tabindex="-1" role="dialog" aria-labelledby="modalAddActivitiesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.travel-treatment-activities.store') }}" enctype="multipart/form-data">

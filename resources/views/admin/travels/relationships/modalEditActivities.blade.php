@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-add-activities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit-activities" tabindex="-1" role="dialog" aria-labelledby="modalEditTreatmentActivitiesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         <form method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data">

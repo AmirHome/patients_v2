@@ -2,9 +2,11 @@
 @section('content')
     <!--Modal Dosyalar-->
     @includeIf('admin.travels.relationships.modalAddTreatmentActivities')
+    @includeIf('admin.travels.relationships.modalEditTreatmentActivities')
 
     <!--Modal Reports-->
     @includeIf('admin.travels.relationships.modalAddActivities')
+    @includeIf('admin.travels.relationships.modalEditActivities')
 
     <div class="card">
         <div class="card-header">{{ trans('cruds.travel.travel_edit') }}</div>
@@ -346,7 +348,7 @@
 
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div></div>
-                        <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-travel-treatment-activities">
+                        <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-add-travel-treatment-activities">
                             {{ trans('global.add') }}
                         </button>
                     </div>
@@ -577,7 +579,7 @@
 
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div></div>
-                            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-activities">
+                            <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-add-activities">
                                 {{ trans('global.add') }}
                             </button>
                         </div>
