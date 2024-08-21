@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // crm_document
     Route::get('ajax-crm-documents/{crm_document}', 'CrmDocumentController@ajaxShow')->name('ajax.crm-documents.show');
     Route::get('ajax-activities/{activity}', 'ActivityController@ajaxShow')->name('ajax.activities.show');
-    Route::get('ajax-treatmentActivities/{travel_treatment_activity}', 'TravelTreatmentActivityController@ajaxShow')->name('ajax.treatmentActivities.show');
+    Route::get('ajax-travel-treatment-activities/{travel_treatment_activity}', 'TravelTreatmentActivityController@ajaxShow')->name('ajax.travel-treatment-activities.show');
 
     Route::get('ajax-provinces/{country}', 'ProvinceController@ajaxIndexByCountryId')->name('ajax.provinces.index');
     Route::get('ajax-campaign/{channel}', 'CampaignOrgController@ajaxIndexByChannelId')->name('ajax.campaign.index');

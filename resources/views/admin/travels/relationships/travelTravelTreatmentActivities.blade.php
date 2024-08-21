@@ -25,7 +25,7 @@
                                     <div class="text-right">
                                         <div class="activity-info"><span>{{ $travelTreatmentActivity->created_at ?? '' }}</span></div>
                                         @can('travel_treatment_activity_edit')
-                                            <button class="btn btn-outline-success mt-5 " href="{{ route('admin.travel-treatment-activities.edit', $travelTreatmentActivity->id) }}" data-toggle="modal" data-target="#travelTreatmentActivities_edit_modal">
+                                            <button type="button" class="btn btn-outline-success mt-5 " data-toggle="modal" data-target="#modal-edit-travel-treatment-activities" data-travel-treatment-activities_id={{ $travelTreatmentActivity->id }}>
                                                 <i class="fa fa-pencil"></i> {{ trans('cruds.travel.fields.edit') }}
                                             </button>
                                         @endcan

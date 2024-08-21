@@ -1,7 +1,8 @@
-<div class="modal fade" id="modal-edit-travel-treatment-activities" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit-travel-treatment-activities" tabindex="-1" role="dialog" aria-labelledby="modalEditTreatmentActivitiesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form method="POST" action="{{ route('admin.travel-treatment-activities.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.travel-treatment-activities.update', [0]) }}" enctype="multipart/form-data" id="travel-treatment-activities">
+                @method('PUT')
                 @csrf
                 <input type="hidden" name="travel_id" value="{{ $travel->id }}">
                 <div class="card-header text-left mx-3 mt-2">Add Files</div>
@@ -60,7 +61,7 @@
                         </button>
                     </div>
                     <div class="form-group mx-3">
-                        <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                        <button class="btn btn-danger submit" type="button">{{ trans('global.save') }}</button>
                     </div>
                 </div>
             </form>
@@ -130,5 +131,65 @@
                 return _results
             }
         }
+
+        // GUIDE Modal AJAX Script
+        var filesAddedWithEmit = [];
+
+        $('#modal-edit-travel-treatment-activities').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var documentId = button.data('travel-treatment-activities_id') ?? 0;
+
+            $.ajax({
+                url: "{{ route('admin.ajax.travel-treatment-activities.show', ['travel_treatment_activity' => ':param']) }}".replace(
+                    ':param', documentId),
+                type: 'GET',
+                success: function(data) {
+
+                    $("form#travel-treatment-activities").find("[name='description']").val(data.travelTreatmentActivity
+                        .description);
+
+                    $("form#travel-treatment-activities").find(".select2").val(data.travelTreatmentActivity.status_id).trigger('change');
+
+                    var dropzoneElement = $("form#travel-treatment-activities").find(".dropzone");
+
+                    $('form#travel-treatment-activities').find('input[name="treatment_file[]"]').remove();
+
+                    filesAddedWithEmit.forEach(function(file) {
+                        dropzoneElement[0].dropzone.removeFile(file);
+                    });
+
+                    dropzoneElement[0].dropzone.removeAllFiles(true);
+
+                    data.travelTreatmentActivity.treatment_file.forEach(file => {
+                        const mockFile = {
+                            name: file.file_name,
+                            size: file.size,
+                            dataURL: file.url
+                        };
+
+                        dropzoneElement[0].dropzone.emit('addedfile', mockFile);
+                        dropzoneElement[0].dropzone.emit('thumbnail', mockFile, file
+                            .preview_url);
+                        dropzoneElement[0].dropzone.emit('complete', mockFile);
+                        $('form#travel-treatment-activities').append(
+                            '<input type="hidden" name="treatment_file[]" value="' + file
+                            .file_name + '">');
+
+                        filesAddedWithEmit.push(mockFile);
+                    });
+
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+            $('#modal-edit-travel-treatment-activities').on('click', 'button.submit[type="button"]', function() {
+                var form = $("form#travel-treatment-activities");
+                form.attr('action', form.attr('action').replace('/0', '/' + documentId));
+
+                form.submit();
+            });
+        });
     </script>
 @endsection

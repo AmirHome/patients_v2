@@ -26,13 +26,12 @@
                                         <div class="activity-info"><span>{{ $activity->created_at ?? '' }}</span></div>
 
                                         @can('activity_edit')
-                                        <button type="button" class="btn btn-outline-success mt-5 " data-toggle="modal" data-target="#modal-edit-activities" data-activity_id={{ $activity->id }}>
+                                            <button type="button" class="btn btn-outline-success mt-5 " data-toggle="modal" data-target="#modal-edit-activities" data-activity_id={{ $activity->id }}>
                                                 <i class="fa fa-pencil"></i> {{ trans('cruds.travel.fields.edit') }}
                                             </button>
                                         @endcan
                                         @can('activity_delete')
-                                            <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
-                                                style="display: inline-block;">
+                                            <form action="{{ route('admin.activities.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -42,7 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-custom {{($activity->document_file->count()>0) ? '' : 'd-none'}}">
+                            <table class="table table-custom {{ $activity->document_file->count() > 0 ? '' : 'd-none' }}">
                                 <thead>
                                     <tr class="activity-th">
                                         <th>{{ trans('cruds.travel.fields.file') }}</th>

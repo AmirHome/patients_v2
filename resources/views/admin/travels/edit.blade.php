@@ -355,7 +355,7 @@
                             {{ trans('global.add') }}
                         </button>
                     </div>
-                    includeIf('admin.travels.relationships.travelTravelTreatmentActivities', [
+                    @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', [
                         'travelTreatmentActivities' => $travel->travelTravelTreatmentActivities,
                     ])
 

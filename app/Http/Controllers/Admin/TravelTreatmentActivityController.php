@@ -137,7 +137,7 @@ class TravelTreatmentActivityController extends Controller
     }
 
     public function update(UpdateTravelTreatmentActivityRequest $request, TravelTreatmentActivity $travelTreatmentActivity)
-    {
+    {//dd('TravelTreatmentActivityController@update');
         $travelTreatmentActivity->update($request->all());
 
         if (count($travelTreatmentActivity->treatment_file) > 0) {
@@ -153,8 +153,8 @@ class TravelTreatmentActivityController extends Controller
                 $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file', 'reports');
             }
         }
-
-        return redirect()->route('admin.travel-treatment-activities.index');
+        return redirect()->back()->with('success', 'Treatment Activity updated successfully');
+        // return redirect()->route('admin.travel-treatment-activities.index');
     }
 
     public function show(TravelTreatmentActivity $travelTreatmentActivity)
@@ -164,6 +164,16 @@ class TravelTreatmentActivityController extends Controller
         $travelTreatmentActivity->load('user', 'travel', 'status');
 
         return view('admin.travelTreatmentActivities.show', compact('travelTreatmentActivity'));
+    }
+
+    public function ajaxShow(TravelTreatmentActivity $travelTreatmentActivity)
+    {
+        //abort_if(Gate::denies('activity_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $travelTreatmentActivity->load('status');
+        return response()->json([
+            'travelTreatmentActivity' => $travelTreatmentActivity,
+        ]);
     }
 
     public function destroy(TravelTreatmentActivity $travelTreatmentActivity)

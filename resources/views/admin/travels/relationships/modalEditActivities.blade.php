@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-edit-activities" tabindex="-1" role="dialog" aria-labelledby="modalEditTreatmentActivitiesLabel" aria-hidden="true">
+<div class="modal fade" id="modal-edit-activities" tabindex="-1" role="dialog" aria-labelledby="modalEditActivitiesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.activities.update', [0]) }}" enctype="multipart/form-data" id="activities">
