@@ -1,8 +1,9 @@
 <div class="modal fade" id="modal-edit-activities" tabindex="-1" role="dialog" aria-labelledby="modalEditTreatmentActivitiesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-        <form method="POST" action="{{ route('admin.activities.store') }}" enctype="multipart/form-data">
-        @csrf
+            <form method="POST" action="{{ route('admin.activities.update', [0]) }}" enctype="multipart/form-data" id="activities">
+                @method('PUT')
+                @csrf
                 <input type="hidden" name="travel_id" value="{{ $travel->id }}">
                 <div class="card-header text-left mx-3 mt-2">{{ trans('cruds.travel.fields.add_reports') }}</div>
                 <div class="col-md-12">
@@ -60,7 +61,7 @@
                         </button>
                     </div>
                     <div class="form-group mx-3">
-                        <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                        <button class="btn btn-danger submit" type="button">{{ trans('global.save') }}</button>
                     </div>
                 </div>
             </form>
@@ -130,5 +131,65 @@
                 return _results
             }
         }
+
+        // GUIDE Modal AJAX Script
+        var filesAddedWithEmit = [];
+
+        $('#modal-edit-activities').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var documentId = button.data('activity_id') ?? 0;
+
+            $.ajax({
+                url: "{{ route('admin.ajax.activities.show', ['activity' => ':param']) }}".replace(
+                    ':param', documentId),
+                type: 'GET',
+                success: function(data) {
+
+                    $("form#activities").find("[name='description']").val(data.activity
+                        .description);
+
+                    $("form#activities").find(".select2").val(data.activity.status_id).trigger('change');
+
+                    var dropzoneElement = $("form#activities").find(".dropzone");
+
+                    $('form#activities').find('input[name="document_file[]"]').remove();
+
+                    filesAddedWithEmit.forEach(function(file) {
+                        dropzoneElement[0].dropzone.removeFile(file);
+                    });
+
+                    dropzoneElement[0].dropzone.removeAllFiles(true);
+
+                    data.activity.document_file.forEach(file => {
+                        const mockFile = {
+                            name: file.file_name,
+                            size: file.size,
+                            dataURL: file.url
+                        };
+
+                        dropzoneElement[0].dropzone.emit('addedfile', mockFile);
+                        dropzoneElement[0].dropzone.emit('thumbnail', mockFile, file
+                            .preview_url);
+                        dropzoneElement[0].dropzone.emit('complete', mockFile);
+                        $('form#activities').append(
+                            '<input type="hidden" name="document_file[]" value="' + file
+                            .file_name + '">');
+
+                        filesAddedWithEmit.push(mockFile);
+                    });
+
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+            $('#modal-edit-activities').on('click', 'button.submit[type="button"]', function() {
+                var form = $("form#activities");
+                form.attr('action', form.attr('action').replace('/0', '/' + documentId));
+
+                form.submit();
+            });
+        });
     </script>
 @endsection

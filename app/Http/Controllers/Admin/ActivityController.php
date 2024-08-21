@@ -156,8 +156,8 @@ class ActivityController extends Controller
                 $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file', 'reports');
             }
         }
-
-        return redirect()->route('admin.activities.index');
+        return redirect()->back()->with('success', 'Activity updated successfully');
+        // return redirect()->route('admin.activities.index');
     }
 
     public function show(Activity $activity)
@@ -167,6 +167,16 @@ class ActivityController extends Controller
         $activity->load('user', 'travel', 'status');
 
         return view('admin.activities.show', compact('activity'));
+    }
+
+    public function ajaxShow(Activity $activity)
+    {
+        //abort_if(Gate::denies('activity_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $activity->load('status');
+        return response()->json([
+            'activity' => $activity,
+        ]);
     }
 
     public function destroy(Activity $activity)

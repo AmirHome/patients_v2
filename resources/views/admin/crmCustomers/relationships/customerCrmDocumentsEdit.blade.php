@@ -143,8 +143,9 @@
 
                     $("form#crm_document_edit_form").find("[name='description']").val(data.crmDocument
                         .description);
-                    $("form#crm_document_edit_form").find(".select2").select2().select2('val', data
-                        .crmDocument.status_id.toString());
+                    // $("form#crm_document_edit_form").find(".select2").select2().select2('val', data
+                    //     .crmDocument.status_id.toString());
+                    $("form#crm_document_edit_form").find(".select2").val(data.crmDocument.status_id).trigger('change');
 
                     var dropzoneElement = $("form#crm_document_edit_form").find(".dropzone");
 

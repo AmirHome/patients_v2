@@ -24,8 +24,9 @@
                                     </div>
                                     <div class="text-right">
                                         <div class="activity-info"><span>{{ $activity->created_at ?? '' }}</span></div>
+
                                         @can('activity_edit')
-                                            <button class="btn btn-outline-success mt-5 " href="{{ route('admin.activities.edit', $activity->id) }}" data-toggle="modal" data-target="#activities_edit_modal">
+                                        <button type="button" class="btn btn-outline-success mt-5 " data-toggle="modal" data-target="#modal-edit-activities" data-activity_id={{ $activity->id }}>
                                                 <i class="fa fa-pencil"></i> {{ trans('cruds.travel.fields.edit') }}
                                             </button>
                                         @endcan
