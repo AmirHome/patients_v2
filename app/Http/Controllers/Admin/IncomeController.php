@@ -90,7 +90,7 @@ class IncomeController extends Controller
     {
         $income = Income::create($request->all());
 
-        return redirect()->route('admin.incomes.index');
+        return redirect()->route('admin.incomes.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Income $income)
@@ -112,7 +112,7 @@ class IncomeController extends Controller
     {
         $income->update($request->all());
 
-        return redirect()->route('admin.incomes.index');
+        return redirect()->route('admin.incomes.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Income $income)

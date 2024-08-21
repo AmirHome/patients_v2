@@ -69,7 +69,7 @@ class ContentTagController extends Controller
     {
         $contentTag = ContentTag::create($request->all());
 
-        return redirect()->route('admin.content-tags.index');
+        return redirect()->route('admin.content-tags.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(ContentTag $contentTag)
@@ -83,7 +83,7 @@ class ContentTagController extends Controller
     {
         $contentTag->update($request->all());
 
-        return redirect()->route('admin.content-tags.index');
+        return redirect()->route('admin.content-tags.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(ContentTag $contentTag)

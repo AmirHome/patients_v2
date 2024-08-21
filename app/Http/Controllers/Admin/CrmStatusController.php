@@ -69,7 +69,7 @@ class CrmStatusController extends Controller
     {
         $crmStatus = CrmStatus::create($request->all());
 
-        return redirect()->route('admin.crm-statuses.index');
+        return redirect()->route('admin.crm-statuses.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(CrmStatus $crmStatus)
@@ -83,7 +83,7 @@ class CrmStatusController extends Controller
     {
         $crmStatus->update($request->all());
 
-        return redirect()->route('admin.crm-statuses.index');
+        return redirect()->route('admin.crm-statuses.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(CrmStatus $crmStatus)

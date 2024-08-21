@@ -69,7 +69,7 @@ class ContentCategoryController extends Controller
     {
         $contentCategory = ContentCategory::create($request->all());
 
-        return redirect()->route('admin.content-categories.index');
+        return redirect()->route('admin.content-categories.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(ContentCategory $contentCategory)
@@ -83,7 +83,7 @@ class ContentCategoryController extends Controller
     {
         $contentCategory->update($request->all());
 
-        return redirect()->route('admin.content-categories.index');
+        return redirect()->route('admin.content-categories.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(ContentCategory $contentCategory)

@@ -83,7 +83,7 @@ class UserAlertsController extends Controller
         $userAlert = UserAlert::create($request->all());
         $userAlert->users()->sync($request->input('users', []));
 
-        return redirect()->route('admin.user-alerts.index');
+        return redirect()->route('admin.user-alerts.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function show(UserAlert $userAlert)

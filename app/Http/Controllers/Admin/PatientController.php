@@ -190,7 +190,7 @@ class PatientController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $patient->id]);
         }
 
-        return redirect()->route('admin.patients.index');
+        return redirect()->route('admin.patients.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Patient $patient)
@@ -236,7 +236,7 @@ class PatientController extends Controller
             $patient->passport_image->delete();
         }
 
-        return redirect()->route('admin.patients.index');
+        return redirect()->route('admin.patients.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Patient $patient)

@@ -80,7 +80,7 @@ class TravelStatusController extends Controller
     {
         $travelStatus = TravelStatus::create($request->all());
 
-        return redirect()->route('admin.travel-statuses.index');
+        return redirect()->route('admin.travel-statuses.index')->with('success', trans('global.success_Store_Message'));
     }
 
     public function edit(TravelStatus $travelStatus)
@@ -94,7 +94,7 @@ class TravelStatusController extends Controller
     {
         $travelStatus->update($request->all());
 
-        return redirect()->route('admin.travel-statuses.index');
+        return redirect()->route('admin.travel-statuses.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(TravelStatus $travelStatus)

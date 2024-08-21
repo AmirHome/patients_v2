@@ -78,7 +78,7 @@ class HospitalController extends Controller
     {
         $hospital = Hospital::create($request->all());
 
-        return redirect()->route('admin.hospitals.index');
+        return redirect()->route('admin.hospitals.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Hospital $hospital)
@@ -92,7 +92,7 @@ class HospitalController extends Controller
     {
         $hospital->update($request->all());
 
-        return redirect()->route('admin.hospitals.index');
+        return redirect()->route('admin.hospitals.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Hospital $hospital)

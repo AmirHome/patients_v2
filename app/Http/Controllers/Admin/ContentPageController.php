@@ -115,7 +115,7 @@ class ContentPageController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $contentPage->id]);
         }
 
-        return redirect()->route('admin.content-pages.index');
+        return redirect()->route('admin.content-pages.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(ContentPage $contentPage)
@@ -147,7 +147,7 @@ class ContentPageController extends Controller
             $contentPage->featured_image->delete();
         }
 
-        return redirect()->route('admin.content-pages.index');
+        return redirect()->route('admin.content-pages.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(ContentPage $contentPage)

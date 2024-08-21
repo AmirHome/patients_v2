@@ -79,7 +79,7 @@ class TranslatorController extends Controller
     {
         $translator = Translator::create($request->all());
 
-        return redirect()->route('admin.translators.index');
+        return redirect()->route('admin.translators.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Translator $translator)
@@ -97,7 +97,7 @@ class TranslatorController extends Controller
     {
         $translator->update($request->all());
 
-        return redirect()->route('admin.translators.index');
+        return redirect()->route('admin.translators.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Translator $translator)

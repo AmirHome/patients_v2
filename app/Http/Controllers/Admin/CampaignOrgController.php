@@ -83,7 +83,7 @@ class CampaignOrgController extends Controller
     {
         $campaignOrg = CampaignOrg::create($request->all());
 
-        return redirect()->route('admin.campaign-orgs.index');
+        return redirect()->route('admin.campaign-orgs.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(CampaignOrg $campaignOrg)
@@ -101,7 +101,7 @@ class CampaignOrgController extends Controller
     {
         $campaignOrg->update($request->all());
 
-        return redirect()->route('admin.campaign-orgs.index');
+        return redirect()->route('admin.campaign-orgs.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(CampaignOrg $campaignOrg)

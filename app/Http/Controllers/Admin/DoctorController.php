@@ -105,7 +105,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::create($request->all());
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('admin.doctors.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Doctor $doctor)
@@ -127,7 +127,7 @@ class DoctorController extends Controller
     {
         $doctor->update($request->all());
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('admin.doctors.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Doctor $doctor)

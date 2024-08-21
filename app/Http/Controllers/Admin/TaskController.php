@@ -127,7 +127,7 @@ class TaskController extends Controller
             return redirect()->route('admin.tasks.index')->with('error', 'Error: ' . $e->getMessage());
         }
 
-        return redirect()->route('admin.tasks.index')->with('success', 'Task created successfully.');
+        return redirect()->route('admin.tasks.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Task $task)
@@ -160,7 +160,7 @@ class TaskController extends Controller
             $task->attachment->delete();
         }
 
-        return redirect()->route('admin.tasks.index');
+        return redirect()->route('admin.tasks.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Task $task)

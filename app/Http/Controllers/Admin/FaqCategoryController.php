@@ -66,7 +66,7 @@ class FaqCategoryController extends Controller
     {
         $faqCategory = FaqCategory::create($request->all());
 
-        return redirect()->route('admin.faq-categories.index');
+        return redirect()->route('admin.faq-categories.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(FaqCategory $faqCategory)
@@ -80,7 +80,7 @@ class FaqCategoryController extends Controller
     {
         $faqCategory->update($request->all());
 
-        return redirect()->route('admin.faq-categories.index');
+        return redirect()->route('admin.faq-categories.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(FaqCategory $faqCategory)

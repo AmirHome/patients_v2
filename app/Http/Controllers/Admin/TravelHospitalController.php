@@ -69,7 +69,7 @@ class TravelHospitalController extends Controller
     {
         $travelHospital = TravelHospital::create($request->all());
 
-        return redirect()->route('admin.travel-hospitals.index');
+        return redirect()->route('admin.travel-hospitals.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(TravelHospital $travelHospital)
@@ -83,7 +83,7 @@ class TravelHospitalController extends Controller
     {
         $travelHospital->update($request->all());
 
-        return redirect()->route('admin.travel-hospitals.index');
+        return redirect()->route('admin.travel-hospitals.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(TravelHospital $travelHospital)
