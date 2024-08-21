@@ -1208,7 +1208,7 @@ return [
      'create_user_alerts' => 'Create User Alerts',
      'create_role' => 'Create Roles',
      'create_users' => 'Create Users',
-        'repeat_new' => 'Repeat New ',
+     'repeat_new' => 'Repeat New ',
      'new' => 'New',
 ],
 ];

@@ -424,72 +424,90 @@
                                             }
                                         });
 
-                                        // window.onload = function() {
-                                        //   document.querySelector("#DataTables_Table_0_paginate").classList.add("col-md-12"); //pagination responsive
-                                        //   document.querySelector("#DataTables_Table_0_paginate").classList.add("float-right"); //pagination responsive
+                                        window.onload = function() {
+                                            const paginationElement = document.querySelector("#DataTables_Table_0_paginate");
+                                            if (paginationElement) {
+                                                paginationElement.classList.add("col-md-12");
+                                                paginationElement.classList.add("float-right");
+                                            }
 
+                                            const filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
+                                            if (filterInputs.length > 0) {
+                                                filterInputs.forEach(function(input) {
+                                                    input.placeholder = 'Search...';
+                                                });
+                                            }
+                                        };
 
-                                        //     var filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
-                                        //     filterInputs.forEach(function(input) {
-                                        //         input.placeholder = 'Search...';
-                                        //     });
-                                        // };
-                                        // document.addEventListener('DOMContentLoaded', function () {
-                                        //         var urlParams = new URLSearchParams(window.location.search);
-                                        //         var selectedFlagElement = document.getElementById('selectedFlag');
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                                var urlParams = new URLSearchParams(window.location.search);
+                                                var selectedFlagElement = document.getElementById('selectedFlag');
 
-                                        //         if (urlParams.has('change_language')) {
-                                        //             var selectedLanguage = urlParams.get('change_language');
+                                                if (urlParams.has('change_language')) {
+                                                    var selectedLanguage = urlParams.get('change_language');
 
-                                        //             if (selectedLanguage === 'tr') {
-                                        //                 selectedFlagElement.innerHTML = document.getElementById('TrFlag').outerHTML;
-                                        //             } else if (selectedLanguage === 'en') {
-                                        //                 selectedFlagElement.innerHTML = document.getElementById('EnFlag').outerHTML;
-                                        //             }
-                                        //         }
-                                        //     });
+                                                    if (selectedLanguage === 'tr') {
+                                                        selectedFlagElement.innerHTML = document.getElementById('TrFlag').outerHTML;
+                                                    } else if (selectedLanguage === 'en') {
+                                                        selectedFlagElement.innerHTML = document.getElementById('EnFlag').outerHTML;
+                                                    }
+                                                }
+                                            });
 
 
                                         //regex
-                                        // document.getElementById('phone').addEventListener('input', function(e) {
-                                        //     e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                   const phoneInput = document.getElementById('phone');
+                                        if (phoneInput) {
+                                            phoneInput.addEventListener('input', function(e) {
+                                                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                            });
+                                        }
 
-                                        // });
-                                        // document.getElementById('foriegn_phone').addEventListener('input', function(e) {
-                                        //     e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                        // foreign_phone input
+                                        const foreignPhoneInput = document.getElementById('foriegn_phone');
+                                        if (foreignPhoneInput) {
+                                            foreignPhoneInput.addEventListener('input', function(e) {
+                                                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                            });
+                                        }
 
-                                        // });
-                                        // document.getElementById('name').addEventListener('input', function(e) {
-                                        //     const input = e.target;
-                                        //     if (input.value.length < 2) {
-                                        //         input.setCustomValidity('Name must be at least 2 characters long.');
-                                        //         input.reportValidity();
-                                        //     } else {
-                                        //         input.setCustomValidity('');
-                                        //     }
-                                        // });
+                                        // name input
+                                        const nameInput = document.getElementById('name');
+                                        if (nameInput) {
+                                            nameInput.addEventListener('input', function(e) {
+                                                const input = e.target;
+                                                if (input.value.length < 2) {
+                                                    input.setCustomValidity('Name must be at least 2 characters long.');
+                                                    input.reportValidity();
+                                                } else {
+                                                    input.setCustomValidity('');
+                                                }
+                                            });
+                                        }
 
+                                        // email input and form submission
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            const form = document.querySelector('form');
+                                            const emailInput = document.getElementById('email');
 
-                                        // document.addEventListener('DOMContentLoaded', function() {
-                                        //     const form = document.querySelector('form');
-                                        //     const emailInput = document.getElementById('email');
+                                            if (form && emailInput) {
+                                                form.addEventListener('submit', function(e) {
+                                                    if (!emailInput.value.includes('@')) {
+                                                        e.preventDefault();
+                                                        emailInput.setCustomValidity('Email must contain an "@" symbol.');
+                                                        emailInput.reportValidity();
+                                                    } else {
+                                                        emailInput.setCustomValidity('');
+                                                    }
+                                                });
 
-                                        //     form.addEventListener('submit', function(e) {
-                                        //         if (!emailInput.value.includes('@')) {
-                                        //             e.preventDefault();
-                                        //             emailInput.setCustomValidity('Email must contain an "@" symbol.');
-                                        //             emailInput.reportValidity();
-                                        //         } else {
-                                        //             emailInput.setCustomValidity('');
-                                        //         }
-                                        //     });
-
-                                        //     emailInput.addEventListener('input', function() {
-                                        //         if (emailInput.value.includes('@')) {
-                                        //             emailInput.setCustomValidity('');
-                                        //         }
-                                        //     });
-                                        // });
+                                                emailInput.addEventListener('input', function() {
+                                                    if (emailInput.value.includes('@')) {
+                                                        emailInput.setCustomValidity('');
+                                                    }
+                                                });
+                                            }
+                                        });
                                     </script>
 
                                     @yield('scripts')
