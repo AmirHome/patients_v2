@@ -72,7 +72,7 @@ class CountriesController extends Controller
     {
         $country = Country::create($request->all());
 
-        return redirect()->route('admin.countries.index');
+        return redirect()->route('admin.countries.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Country $country)
@@ -86,7 +86,7 @@ class CountriesController extends Controller
     {
         $country->update($request->all());
 
-        return redirect()->route('admin.countries.index');
+        return redirect()->route('admin.countries.index')->with('success', trans('global.success_Edit_Message'));;
     }
 
     public function show(Country $country)

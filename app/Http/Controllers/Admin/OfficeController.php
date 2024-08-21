@@ -82,7 +82,7 @@ class OfficeController extends Controller
     {
         $office = Office::create($request->all());
 
-        return redirect()->route('admin.offices.index');
+        return redirect()->route('admin.offices.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Office $office)
@@ -100,7 +100,7 @@ class OfficeController extends Controller
     {
         $office->update($request->all());
 
-        return redirect()->route('admin.offices.index');
+        return redirect()->route('admin.offices.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Office $office)

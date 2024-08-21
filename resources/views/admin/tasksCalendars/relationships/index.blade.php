@@ -1,18 +1,17 @@
-@extends('layouts.admin')
-@section('content')
 
-<div class="card">
-    <div class="card-header">
+
+  <div class="row">
+          <div class="col-md-6 dashboarCalendars">
+                <div class="card-header">
         {{ trans('cruds.tasksCalendar.title') }}
     </div>
 
     <div class="card-body">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
         <div id="calendar"></div>
-
     </div>
-</div>
-
+    </div> 
+ </div>
 
 
 @endsection
@@ -41,4 +40,3 @@
         });
 </script>
 
-@stop

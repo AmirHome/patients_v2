@@ -14,7 +14,7 @@
         <div class="card-body">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                            <div class="text-left">
                             <div class="show-header ml-4">
                                 {{ trans('cruds.task.fields.name') }}
@@ -24,7 +24,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="text-left">
                             <div class="show-header ml-4">
                                 {{ trans('cruds.task.fields.emergency') }}
@@ -34,7 +34,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="text-left">
                             <div class="show-header ml-4">
                                 {{ trans('cruds.task.fields.due_date') }}

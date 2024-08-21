@@ -838,7 +838,7 @@ return [
         'patient_code'                   => 'Hasta Kodu',
         'patient_name'                   => 'Hasta Adı',
         'gender'                         => 'Cinsiyet',
-        'patient_status'                 => 'Hasat Durumu',
+        'patient_status'                 => 'Hasta Durumu',
         'department'                     => 'Departman',
         'country'                        => 'Ülke',
         'group_helper'                   => ' ',

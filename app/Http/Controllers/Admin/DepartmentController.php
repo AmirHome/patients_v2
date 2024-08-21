@@ -66,7 +66,7 @@ class DepartmentController extends Controller
     {
         $department = Department::create($request->all());
 
-        return redirect()->route('admin.departments.index');
+        return redirect()->route('admin.departments.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Department $department)
@@ -80,7 +80,7 @@ class DepartmentController extends Controller
     {
         $department->update($request->all());
 
-        return redirect()->route('admin.departments.index');
+        return redirect()->route('admin.departments.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Department $department)

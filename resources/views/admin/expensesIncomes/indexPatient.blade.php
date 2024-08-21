@@ -57,18 +57,15 @@
             <div class="text-left">
                             <div class="show-header ml-4">  {{ trans('cruds.patient.country') }}</div>
                             <span class="show-header-text ml-1"> {{ $patient->city->country->name}} </span>
+                          </div>  
                         </div>  
-                        </div>  
-
-             </div>
-    </div>
-</div>
-<div class="card">
-    
+                    </div>
+                </div>
+            </div>
+    <div class="card">
     <div class="card-header">
-        @includeIf('admin.expensesIncomes.relationships.formFilterPatient')
         @includeIf('admin.expensesIncomes.relationships.create')
-
+        @includeIf('admin.expensesIncomes.relationships.formFilterPatient')
     </div>
 
 

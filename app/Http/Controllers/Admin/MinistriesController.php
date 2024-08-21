@@ -72,7 +72,7 @@ class MinistriesController extends Controller
     {
         $ministry = Ministry::create($request->all());
 
-        return redirect()->route('admin.ministries.index');
+        return redirect()->route('admin.ministries.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Ministry $ministry)
@@ -86,7 +86,7 @@ class MinistriesController extends Controller
     {
         $ministry->update($request->all());
 
-        return redirect()->route('admin.ministries.index');
+        return redirect()->route('admin.ministries.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Ministry $ministry)

@@ -66,7 +66,7 @@ class CampaignChannelsController extends Controller
     {
         $campaignChannel = CampaignChannel::create($request->all());
 
-        return redirect()->route('admin.campaign-channels.index');
+        return redirect()->route('admin.campaign-channels.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(CampaignChannel $campaignChannel)
@@ -80,7 +80,7 @@ class CampaignChannelsController extends Controller
     {
         $campaignChannel->update($request->all());
 
-        return redirect()->route('admin.campaign-channels.index');
+        return redirect()->route('admin.campaign-channels.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(CampaignChannel $campaignChannel)

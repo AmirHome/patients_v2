@@ -140,7 +140,7 @@ class CrmCustomerController extends Controller
     {
         $crmCustomer = CrmCustomer::create($request->all());
 
-        return redirect()->route('admin.crm-customers.index');
+        return redirect()->route('admin.crm-customers.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(CrmCustomer $crmCustomer)
@@ -164,7 +164,7 @@ class CrmCustomerController extends Controller
     {
         $crmCustomer->update($request->all());
 
-        return redirect()->route('admin.crm-customers.index');
+        return redirect()->route('admin.crm-customers.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(CrmCustomer $crmCustomer)

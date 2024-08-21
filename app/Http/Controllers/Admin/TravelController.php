@@ -147,7 +147,7 @@ class TravelController extends Controller
         $travel = Travel::create($request->all());
         $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
 
-        return redirect()->route('admin.travels.index');
+        return redirect()->route('admin.travels.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Travel $travel)
@@ -176,7 +176,7 @@ class TravelController extends Controller
         $travel->update($request->all());
         $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
 
-        return redirect()->route('admin.travels.index');
+        return redirect()->route('admin.travels.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Travel $travel)

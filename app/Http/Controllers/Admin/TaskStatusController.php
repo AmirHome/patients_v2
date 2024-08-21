@@ -69,7 +69,7 @@ class TaskStatusController extends Controller
     {
         $taskStatus = TaskStatus::create($request->all());
 
-        return redirect()->route('admin.task-statuses.index');
+        return redirect()->route('admin.task-statuses.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(TaskStatus $taskStatus)
@@ -83,7 +83,7 @@ class TaskStatusController extends Controller
     {
         $taskStatus->update($request->all());
 
-        return redirect()->route('admin.task-statuses.index');
+        return redirect()->route('admin.task-statuses.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(TaskStatus $taskStatus)

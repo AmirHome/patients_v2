@@ -6,7 +6,6 @@
         <div class="col-md-12 pl-0">
             <div class="card">
                 <div class="card-body">
-
                     <form action="{{ route('admin.travel-statuses.index') }}" method="get">
 
                         <div class="row">
@@ -272,6 +271,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         const showFiltersButton = document.getElementById('show-filters');
         const moreFilters = document.querySelector('.more-filters');
+        const formInputs = document.querySelectorAll('.filter');
+        const searchButton = document.getElementById('form-filter-submit');
 
         moreFilters.style.display = 'none';
 
@@ -283,6 +284,15 @@
                 moreFilters.style.display = 'none';
                 showFiltersButton.innerHTML = 'Daha Fazla Filtre <i class="fas fa-filter"></i>';
             }
+        });
+
+        formInputs.forEach(function(input) {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    searchButton.click();
+                }
+            });
         });
     });
 </script>

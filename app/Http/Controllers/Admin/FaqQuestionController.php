@@ -83,7 +83,7 @@ class FaqQuestionController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $faqQuestion->id]);
         }
 
-        return redirect()->route('admin.faq-questions.index');
+        return redirect()->route('admin.faq-questions.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(FaqQuestion $faqQuestion)
@@ -101,7 +101,7 @@ class FaqQuestionController extends Controller
     {
         $faqQuestion->update($request->all());
 
-        return redirect()->route('admin.faq-questions.index');
+        return redirect()->route('admin.faq-questions.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(FaqQuestion $faqQuestion)

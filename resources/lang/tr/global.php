@@ -325,5 +325,9 @@ return [
     'leave'                          => 'Ayrıl',
     'calendar'                       => 'Takvim',
     'messenger'                      => 'Mesaj Gönderici',
+    'success_Create_Message'         => 'Başarılı Bir Şekilde Oluşturuldu.',
+    'success_Edit_Message'           => 'Başarılı Bir Şekilde Düzenlendi.',
+    'success_Delete_Message'        => 'Başarılı Bir Şekilde Silindi.',
+
 
 ];

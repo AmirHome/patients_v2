@@ -69,7 +69,7 @@ class TravelGroupController extends Controller
     {
         $travelGroup = TravelGroup::create($request->all());
 
-        return redirect()->route('admin.travel-groups.index');
+        return redirect()->route('admin.travel-groups.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(TravelGroup $travelGroup)
@@ -83,7 +83,7 @@ class TravelGroupController extends Controller
     {
         $travelGroup->update($request->all());
 
-        return redirect()->route('admin.travel-groups.index');
+        return redirect()->route('admin.travel-groups.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(TravelGroup $travelGroup)

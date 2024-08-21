@@ -88,7 +88,7 @@ class HotelController extends Controller
     {
         $hotel = Hotel::create($request->all());
 
-        return redirect()->route('admin.hotels.index');
+        return redirect()->route('admin.hotels.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Hotel $hotel)
@@ -108,7 +108,7 @@ class HotelController extends Controller
     {
         $hotel->update($request->all());
 
-        return redirect()->route('admin.hotels.index');
+        return redirect()->route('admin.hotels.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Hotel $hotel)

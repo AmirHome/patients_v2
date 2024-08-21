@@ -17,12 +17,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#travel_activities" role="tab" data-toggle="tab">
+                <a class="nav-link" href="#reports" role="tab" data-toggle="tab">
                     {{ trans('cruds.travel.fields.current_status') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#reports" role="tab" data-toggle="tab">
+                <a class="nav-link" href="#travel_activities" role="tab" data-toggle="tab">
                     {{ trans('cruds.travel.fields.files') }}
                 </a>
             </li>
@@ -247,7 +247,10 @@
                                         <button class="btn btn-danger float-right ml-4" type="submit">
                                             {{ trans('global.save') }}
                                         </button>
-                                        <a class="btn float-right for-more" href=""> <!--Patient edite atacak her vakayı kendi editine-->
+                                             <button class="btn btn-danger float-right ml-4" style="background-color:#3D3D3D"  id="edit-btn">
+                                            {{ trans('global.edit') }}
+                                        </button>
+                                        <a class="btn float-right for-more" href="{{ url('admin/patients/' . $patient->id . '/edit') }}">
                                             {{ trans('global.for_more') }}
                                         </a>
                                     </div>
@@ -851,5 +854,57 @@
                 return _results
             }
         }
+
+     //edit disabled inputs
+     document.addEventListener('DOMContentLoaded', function() {
+        const inputs = [
+            document.getElementById('name'),
+            document.getElementById('surname'),
+            document.getElementById('birth_place'),
+            document.getElementById('birthday'),
+            document.getElementById('gender'),
+            document.getElementById('blood_group'),
+            document.getElementById('height'),
+            document.getElementById('weight'),
+            document.getElementById('phone'),
+            document.getElementById('email'),
+            document.getElementById('passport_image-dropzone')
+        ];
+
+        inputs.forEach(input => {
+            if (input) {
+                input.disabled = true;
+            }
+        });
+    });
+
+    document.getElementById('edit-btn').addEventListener('click', function(event) {
+        const inputs = [
+            document.getElementById('name'),
+            document.getElementById('surname'),
+            document.getElementById('birth_place'),
+            document.getElementById('birthday'),
+            document.getElementById('gender'),
+            document.getElementById('blood_group'),
+            document.getElementById('height'),
+            document.getElementById('weight'),
+            document.getElementById('phone'),
+            document.getElementById('email'),
+            document.getElementById('passport_image-dropzone')
+        ];
+
+        inputs.forEach(input => {
+            if (input) {
+                input.disabled = !input.disabled;
+            }
+        });
+
+        const editButton = document.getElementById('edit-btn');
+        if (editButton.textContent.trim() === "{{ trans('global.edit') }}") {
+            editButton.textContent = "{{ trans('global.cancel') }}";
+        } else {
+            editButton.textContent = "{{ trans('global.edit') }}";
+        }
+    });
     </script>
 @endsection

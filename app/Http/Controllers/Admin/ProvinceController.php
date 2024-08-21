@@ -84,7 +84,7 @@ class ProvinceController extends Controller
     {
         $province = Province::create($request->all());
 
-        return redirect()->route('admin.provinces.index');
+        return redirect()->route('admin.provinces.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(Province $province)
@@ -102,7 +102,7 @@ class ProvinceController extends Controller
     {
         $province->update($request->all());
 
-        return redirect()->route('admin.provinces.index');
+        return redirect()->route('admin.provinces.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(Province $province)

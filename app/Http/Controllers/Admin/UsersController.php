@@ -132,7 +132,7 @@ class UsersController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $user->id]);
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', trans('global.success_Create_Message'));
     }
 
     public function edit(User $user)
@@ -163,7 +163,7 @@ class UsersController extends Controller
             $user->picture->delete();
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', trans('global.success_Edit_Message'));
     }
 
     public function show(User $user)

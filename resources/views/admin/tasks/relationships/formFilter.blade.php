@@ -61,3 +61,19 @@
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formInputs = document.querySelectorAll('.filter');
+        const searchButton = document.getElementById('form-filter-submit');
+
+        formInputs.forEach(function(input) {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    searchButton.click();
+                }
+            });
+        });
+    });
+</script>
