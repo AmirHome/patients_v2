@@ -245,7 +245,7 @@
                                         <button class="btn btn-danger float-right ml-4" type="submit">
                                             {{ trans('global.save') }}
                                         </button>
-                                        <a class="btn float-right for-more" href=""> <!--Patient edite atacak her vakayı kendi editine-->
+                                        <a class="btn float-right for-more" href="{{ url('admin/patients/' . $patient->id . '/edit') }}">
                                             {{ trans('global.for_more') }}
                                         </a>
                                     </div>

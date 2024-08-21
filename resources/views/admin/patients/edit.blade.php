@@ -12,7 +12,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="required" for="name">{{ trans('cruds.patient.fields.name') }}</label>
-                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('code', $patient->code) }}">
+                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $patient->name) }}">
                                 @if($errors->has('name'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('name') }}

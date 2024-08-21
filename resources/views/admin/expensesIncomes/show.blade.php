@@ -1,83 +1,97 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
+<div class="container">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
         {{ trans('global.show') }} {{ trans('cruds.expensesIncome.title') }}
-    </div>
-
-    <div class="card-body">
-        <div class="form-group">
-            <div class="form-group">
+            <div class="form-group mb-0">
                 <a class="btn btn-default" href="{{ route('admin.expenses-incomes.patient.index', $expensesIncome->patient->id) }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
-            <table class="table table-bordered table-striped">
-                <tbody>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.expensesIncome.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $expensesIncome->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                           <div class="text-left">
+                            <div class="show-header ml-4">
                             {{ trans('cruds.expensesIncome.fields.user') }}
-                        </th>
-                        <td>
+                            </div>
+                            <span class="show-header-text ml-1">
                             {{ $expensesIncome->user->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.expensesIncome.fields.category') }}
-                        </th>
-                        <td>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">
+                              {{ trans('cruds.expensesIncome.fields.category') }}
+                            </div>
+                            <span class="show-header-text ml-1">
                             {{ App\Models\ExpensesIncome::CATEGORY_SELECT[$expensesIncome->category] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">
                             {{ trans('cruds.expensesIncome.fields.patient') }}
-                        </th>
-                        <td>
+                            </div>
+                            <span class="show-header-text ml-1">
                             {{ $expensesIncome->patient->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">
                             {{ trans('cruds.expensesIncome.fields.department') }}
-                        </th>
-                        <td>
+                            </div>
+                            <span class="show-header-text ml-1">
                             {{ $expensesIncome->department->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-md-4">
+                        <div class="text-left">
+                            <div class="show-header ml-4">
                             {{ trans('cruds.expensesIncome.fields.amount') }}
-                        </th>
-                        <td>
-                            {{ $expensesIncome->amount }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
+                            </div>
+                            <span class="show-header-text ml-1">
+                           € {{ $expensesIncome->amount }}
+                            </span>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="col-md-12 pt-5">
+                    <div class="dotted-border"></div>
+                </div>
+                <div class="row ml-4">
+                    <div class="col-md-12">
+                        <div class="text-left show-desc-header">
                             {{ trans('cruds.expensesIncome.fields.description') }}
-                        </th>
-                        <td>
+                        </div>
+                        <span class="show-header-desc-text">
                             {{ $expensesIncome->description }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        
+                        </span>
+                    </div>
+              
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+ 
+  
+        
 
 
 @endsection

@@ -21,7 +21,6 @@
                                     </div>
                                     <div class="d-flex justify-content-center">
                                         <span style='font-size:60px;border: 0px solid #00b8d9;color: #D7DDE0 !important;'>&#9313;</span>
-
                                     </div>
                                     <div class="col-md-4 d-flex justify-content-center align-items-center p-0">
                                         <span class="w-100 rounded" style="height: 0.1rem;background-color: #D7DDE0;">

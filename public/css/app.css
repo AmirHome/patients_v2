@@ -1929,9 +1929,14 @@ tr>td>.fc-day-grid-event {
     font-weight: 600;
     text-decoration: underline;
  }
+
  span .ck-editor__editable
  {
     min-height: 240px !important;
  }
 
- 
+.fc-day-top{
+    background-color: red !important;
+    height: 20px !important;
+    color:red !important;
+}
