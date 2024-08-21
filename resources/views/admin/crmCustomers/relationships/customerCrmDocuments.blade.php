@@ -88,6 +88,7 @@
 @section('scripts')
     @parent
     <script>
+        
         document.addEventListener('DOMContentLoaded', (event) => {
             const downIcons = document.querySelectorAll('.fa-chevron-down');
             const rightIcons = document.querySelectorAll('.test');

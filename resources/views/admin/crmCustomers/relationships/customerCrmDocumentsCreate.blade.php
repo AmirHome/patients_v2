@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">
                         <button class="btn btn-danger" type="submit">
                             {{ trans('global.save') }}
                         </button>

@@ -24,6 +24,7 @@ yarn-error.log
 storage/debugbar/*
 
 
+
 /.vscode
 /deploy/docker/data/*
 /deploy/docker/logs/*

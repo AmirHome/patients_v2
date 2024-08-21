@@ -1,10 +1,8 @@
 <!-- GUIDE Modal Body -->
-<div class="modal fade" id="crm_document_edit_modal" tabindex="-1" role="dialog"
-    aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="crm_document_edit_modal" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form method="POST" action="{{ route('admin.crm-documents.update', [0]) }}" enctype="multipart/form-data"
-                id="crm_document_edit_form">
+            <form method="POST" action="{{ route('admin.crm-documents.update', [0]) }}" enctype="multipart/form-data" id="crm_document_edit_form">
                 <div class="modal-header">
                     <h5 class="modal-title" id="customerDocumentCreateModalLabel">
                         {{ trans('global.edit') }} {{ trans('cruds.crmDocument.title_singular') }}
@@ -18,8 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
-                        <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}"
-                            id="document_file-dropzone">
+                        <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
                         </div>
                         @if ($errors->has('document_file'))
                             <div class="invalid-feedback">
@@ -40,8 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
-                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}"
-                            name="status_id" required>
+                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" required>
                             @foreach ($statuses as $id => $entry)
                                 <option value="{{ $id }}">{{ $entry }}</option>
                             @endforeach
@@ -69,6 +65,7 @@
 
 
 @section('scripts')
+    @parent
     <script>
         // $(document).ready(function() {
 
