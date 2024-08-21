@@ -108,7 +108,7 @@ class ActivityController extends Controller
     }
 
     public function store( StoreActivityRequest $request)
-    {
+    {//dd('ActivityController@store');
         $activity = Activity::create($request->all());
 
         foreach ($request->input('document_file', []) as $file) {

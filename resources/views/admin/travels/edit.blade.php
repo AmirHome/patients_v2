@@ -701,6 +701,7 @@
             </div>
         </form>
     </div>
+    
     <div class="modal fade" id="modal-profile-photo" tabindex="-1" role="dialog" aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
