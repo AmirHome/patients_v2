@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use App\Models\Task;
 
 class HomeController
 {
@@ -162,6 +163,10 @@ class HomeController
                 ->{$settings4['aggregate_function'] ?? 'count'}($settings4['aggregate_field'] ?? '*');
         }
 
-        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4'));
+        $events = Task::whereNotNull('due_date')->get();
+
+        //return view('admin.tasksCalendars.index', compact('events'));
+
+        return view('home', compact('settings1', 'settings2', 'settings3', 'settings4', 'events'));
     }
 }
