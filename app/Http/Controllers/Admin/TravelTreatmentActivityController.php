@@ -105,7 +105,8 @@ class TravelTreatmentActivityController extends Controller
     }
 
     public function store(StoreTravelTreatmentActivityRequest $request)
-    {
+    {//dd('TravelTreatmentActivityController@store');
+        
         $travelTreatmentActivity = TravelTreatmentActivity::create($request->all());
 
         foreach ($request->input('treatment_file', []) as $file) {

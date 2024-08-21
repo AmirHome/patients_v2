@@ -42,11 +42,11 @@ public function rules()
             ],
             'document_file' => [
                 'array',
-                'required',
+                // 'required',
             ],
-            'document_file.*' => [
-                'required',
-            ],
+            // 'document_file.*' => [
+            //     'required',
+            // ],
             'document_name' => [
                 'string',
                 'nullable',
