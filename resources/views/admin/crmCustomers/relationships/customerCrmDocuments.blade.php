@@ -1,3 +1,4 @@
+<div class="container">
 <div class="card">
     <div class="card-header">
         {{-- Create Modal --}}
@@ -19,8 +20,6 @@
                                                     <i class="fas fa-chevron-down mx-3 mb-3 pointer" style="color:#006C9C"></i>
                                                     <i class="fas fa-chevron-right test mx-3 mb-3 pointer" style="color:#006C9C;"></i>
                                                     {{ $crmDocument->status->name ?? '' }}
-                                                </div>
-                                                <div class="activity-info mx-3 pt-2"> {{ $crmDocument->user->name ?? '' }}
                                                 </div>
                                                 <div class="mx-3">
                                                     @if (!empty($crmDocument->description))
@@ -53,25 +52,23 @@
                                         <thead>
                                             <tr class="activity-th">
                                                 <th>{{ trans('cruds.travel.fields.file') }}</th>
-                                                <th>{{ trans('cruds.travel.fields.uploaded_by') }}</th>
-                                                <th>{{ trans('cruds.travel.fields.explanation') }}</th>
+                                                <th >{{ trans('cruds.travel.fields.uploaded_by') }}</th>
                                                 <th>{{ trans('cruds.travel.fields.date') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="activity-td">
-                                                <td>
+                                                <td >
                                                     @foreach ($crmDocument->document_file as $key => $media)
                                                         <div>
                                                             <a href="{{ $media->getUrl() }}" target="_blank" title="{{ $media->file_name }}">
-                                                                {{ Str::limit($media->name, 48) }}
+                                                                {{ Str::limit($media->name, 30, '...') }}
                                                             </a><sup>{{ formatSize($media->size) }}</sup>
                                                         </div>
                                                     @endforeach
                                                 </td>
-                                                <td>Serra Tacar - Merkez Ofis</td>
-                                                <td>test deneme2344</td>
-                                                <td>12/03/2024 08:56:00</td>
+                                                <td  >{{ $crmDocument->user->name ?? '' }} - {{ $crmDocument->user->office->name ?? '' }}</td>
+                                                <td >{{ $crmDocument->created_at ?? '' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -83,6 +80,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 
 @section('scripts')

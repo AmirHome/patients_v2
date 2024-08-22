@@ -59,7 +59,7 @@
                             {{ trans('global.cancel') }}
                         </button>
                     </div>
-                    <div class="form-group mx-3">
+                    <div class="form-group">
                         <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
                     </div>
                 </div>

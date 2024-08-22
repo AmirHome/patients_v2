@@ -3,20 +3,20 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.crm-documents.update', [0]) }}" enctype="multipart/form-data" id="crm_document_edit_form">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="customerDocumentCreateModalLabel">
+                    <h5 class="modal-title card-header" id="customerDocumentCreateModalLabel">
                         {{ trans('global.edit') }} {{ trans('cruds.crmDocument.title_singular') }}
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+               
                 <div class="modal-body">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
                         <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
+                             <div class="dz-message" data-dz-message><span>{{ trans('cruds.travel.fields.drop_or_select_file') }}</span></div>
+                                             <div class="dz-message" data-dz-message>
+                                <p>Drop files here or click <a>browse</a> through your machine</p>
+                                             </div>
                         </div>
                         @if ($errors->has('document_file'))
                             <div class="invalid-feedback">
@@ -53,9 +53,16 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger submit" type="button">
-                        {{ trans('global.save') }}
-                    </button>
+                    <div class="row justify-content-end">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                            {{ trans('global.cancel') }}
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
+                    </div>
+                </div>
                 </div>
             </form>
         </div>

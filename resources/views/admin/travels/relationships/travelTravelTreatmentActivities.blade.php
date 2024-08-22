@@ -43,22 +43,22 @@
                             </div>
                             <table class="table table-custom {{($travelTreatmentActivity->treatment_file->count()>0) ? '' : 'd-none'}}">
                                 <thead>
-                                    <tr class="activity-th">
-                                        <th>{{ trans('cruds.travel.fields.file') }}</th>
-                                        <th>{{ trans('cruds.travel.fields.uploaded_by') }}</th>
-                                        <th>{{ trans('cruds.travel.fields.date') }}</th>
+                                    <tr class="activity-th row mx-3">
+                                        <th  class="col-md-5">{{ trans('cruds.travel.fields.file') }}</th>
+                                        <th  class="col-md-4">{{ trans('cruds.travel.fields.uploaded_by') }}</th>
+                                        <th  class="col-md-3">{{ trans('cruds.travel.fields.date') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($travelTreatmentActivity->treatment_file as $key => $media)
-                                        <tr class="activity-td">
-                                            <td>
+                                        <tr class="activity-td row mx-3">
+                                            <td  class="col-md-5">
                                                 <a href="{{ $media->getUrl() }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
                                                     {{ Str::limit($media->file_name, 50, '...') }}
                                                 </a>
                                             </td>
-                                            <td>{{ $travelTreatmentActivity->user->name ?? '' }} - {{ $travelTreatmentActivity->user->office->name ?? '' }}</td>
-                                            <td>{{ $travelTreatmentActivity->created_at ?? '' }}</td>
+                                            <td  class="col-md-4">{{ $travelTreatmentActivity->user->name ?? '' }} - {{ $travelTreatmentActivity->user->office->name ?? '' }}</td>
+                                            <td  class="col-md-3">{{ $travelTreatmentActivity->created_at ?? '' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

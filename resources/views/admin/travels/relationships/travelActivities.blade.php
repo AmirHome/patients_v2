@@ -13,7 +13,6 @@
                                             <i class="fas fa-chevron-right test mx-3 mb-3 pointer" style="color:#006C9C;"></i>
                                             {{ $activity->status->title ?? '' }}
                                         </div>
-
                                         <div class="mx-3">
                                             @if (!empty($activity->description))
                                                 <div class="activity-desc mt-2">
@@ -41,24 +40,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-custom {{ $activity->document_file->count() > 0 ? '' : 'd-none' }}">
+                            <table class="table table-custom {{( $activity->document_file->count() > 0) ? '' : 'd-none' }}">
                                 <thead>
-                                    <tr class="activity-th">
-                                        <th>{{ trans('cruds.travel.fields.file') }}</th>
-                                        <th>{{ trans('cruds.travel.fields.uploaded_by') }}</th>
-                                        <th>{{ trans('cruds.travel.fields.date') }}</th>
+                                    <tr class="activity-th row mx-3">
+                                        <th class="col-md-5">{{ trans('cruds.travel.fields.file') }}</th>
+                                        <th class="col-md-4">{{ trans('cruds.travel.fields.uploaded_by') }}</th>
+                                        <th class="col-md-3">{{ trans('cruds.travel.fields.date') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($activity->document_file as $key => $media)
-                                        <tr class="activity-td">
-                                            <td>
+                                        <tr class="activity-td row mx-3" >
+                                            <td class="col-md-5">
                                                 <a href="{{ $media->getUrl() }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
                                                     {{ Str::limit($media->file_name, 50, '...') }}
                                                 </a>
                                             </td>
-                                            <td>{{ $activity->user->name ?? '' }} - {{ $activity->user->office->name ?? '' }}</td>
-                                            <td>{{ $activity->created_at ?? '' }}</td>
+                                            <td class="col-md-4">{{ $activity->user->name ?? '' }} - {{ $activity->user->office->name ?? '' }}</td>
+                                            <td class="col-md-3">{{ $activity->created_at ?? '' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
