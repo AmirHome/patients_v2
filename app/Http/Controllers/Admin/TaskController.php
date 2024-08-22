@@ -127,7 +127,7 @@ class TaskController extends Controller
             $data = [
                 'title' => $request->input('name'),
                 'task_id' => $task->id,
-                'status' => Task::EMERGENCY_RADIO[$request->input('status_id')],
+                'status' => Task::EMERGENCY_RADIO[$request->input('emergency')],
                 'user_id' => $request->input('assigned_to_id'),
                 'user' =>  User::find($request->input('assigned_to_id'))->name??'',
                 'email' => User::find($request->input('assigned_to_id'))->email??'',
@@ -142,6 +142,7 @@ class TaskController extends Controller
             Log::debug('Task created successfully');
         } catch (\Exception $e) {
             DB::rollBack();
+           
             return redirect()->route('admin.tasks.index')->with('error', 'Error: ' . $e->getMessage());
         }
 
