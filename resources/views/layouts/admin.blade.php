@@ -134,7 +134,7 @@
                                         </li>
                                     </ul>
                                     <li class="pl-1 pr-1">
-                                        <a class="c-header-nav-link" href="http://patientsv2.clinics.com.tr:64001/login" target="_blank">
+                                        <a class="c-header-nav-link" href="http://intchatv2.clinics.com.tr/conversations" target="_blank">
                                             <i class="fa fa-comments" aria-hidden="true"> </i>
                                         </a>
                                     </li>
@@ -204,7 +204,7 @@
 
                                                 <div style="position: fixed; top: 10px;right: 0; z-index: 3000;">
                                                     @if (session('success'))
-                                                    <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="300000">
+                                                    <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="3000">
                                                         {{ session('success') }}
                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>

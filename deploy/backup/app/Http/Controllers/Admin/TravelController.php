@@ -73,7 +73,6 @@ class TravelController extends Controller
             $table->addColumn('department_name', function ($row) {
                 return $row->department ? $row->department->name : '';
             });
-
             $table->addColumn('last_status_title', function ($row) {
                 return $row->last_status ? $row->last_status->title : '';
             });

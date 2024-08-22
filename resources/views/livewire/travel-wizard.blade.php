@@ -184,7 +184,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">{{ trans('cruds.travel.fields.email_address') }}</label>
-                                            <input type="email" class="form-control"  wire:model="email">
+                                            <input type="email" class="form-control"  wire:model="email" id="email">
                                             <span class="text-danger">
                                                 @error('email')
                                                     {{ $message }}
@@ -196,7 +196,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">{{ trans('cruds.travel.fields.phone_number') }}</label>
-                                            <input type="text" class="form-control"  wire:model="phone">
+                                            <input type="text" class="form-control"  wire:model="phone" id="phone">
                                             <span class="text-danger">
                                                 @error('phone')
                                                     {{ $message }}

@@ -32,6 +32,9 @@
                         {{ trans('cruds.travel.fields.hospital') }}
                     </th>
                     <th>
+                        {{ trans('cruds.task.fields.emergency') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.travel.fields.department') }}
                     </th>
                     <th>
@@ -104,11 +107,17 @@
                 { data: 'patient_name', name: 'patient.name' },
                 { data: 'patient_phone', name: 'patient.phone' },
                 { data: 'hospital_name', name: 'hospital.name' },
+                { data: 'group_name', name: 'emergency',visible: false },
                 { data: 'department_name', name: 'department.name' },
                 { data: 'last_status_title', name: 'last_status.title' },
                 { data: 'created_at', name: 'created_at' },
                 { data: 'actions', name: '{{ trans('global.actions') }}' }
             ],
+            createdRow: function (row, data, dataIndex) {
+        if (data['group_name'] == 'Acil') {
+            $(row).addClass('emergency');
+          }
+          },
             orderCellsTop: true,
             order: [[ 1, 'desc' ]],
             pageLength: 10,

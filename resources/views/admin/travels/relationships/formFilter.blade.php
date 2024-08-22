@@ -164,7 +164,7 @@
 
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="arrival_date_start">{{ trans('cruds.travel.fields.arrival_date') }}</label>
+                                    <label for="arrival_date_start" style="white-space: nowrap">{{ trans('cruds.travel.fields.arrival_date') }}</label>
                                     <input class="form-control date filter {{ $errors->has('arrival_date_start') ? 'is-invalid' : '' }}" type="text" name="arrival_date_start" id="arrival_date_start">
                                     @if ($errors->has('arrival_date_start'))
                                         <div class="invalid-feedback">
@@ -176,7 +176,7 @@
                             </div>
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="arrival_date_end">{{ trans('cruds.travel.fields.arrival_date') }}</label>
+                                    <label for="arrival_date_end" style="white-space: nowrap">{{ trans('cruds.travel.fields.arrival_end_date') }}</label>
                                     <input class="form-control date filter {{ $errors->has('arrival_date_end') ? 'is-invalid' : '' }}" type="text" name="arrival_date_end" id="arrival_date_end">
                                     @if ($errors->has('arrival_date_end'))
                                         <div class="invalid-feedback">
@@ -189,7 +189,7 @@
 
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="">{{ trans('cruds.travel.fields.report_arrival_date') }}</label>
+                                    <label for="" style="white-space: nowrap">{{ trans('cruds.travel.fields.report_arrival_date') }}</label>
                                     <input class="form-control date filter {{ $errors->has('report_arrival_date_start') ? 'is-invalid' : '' }}" type="text" name="report_arrival_date_start" id="report_arrival_date_start">
                                     @if ($errors->has('report_arrival_date_start'))
                                         <div class="invalid-feedback">
@@ -202,7 +202,7 @@
                             </div>
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="">{{ trans('cruds.travel.fields.report_arrival_date') }}</label>
+                                    <label for="" style="white-space: nowrap">{{ trans('cruds.travel.fields.report_arrival_end_date') }}</label>
                                     <input class="form-control date filter {{ $errors->has('report_arrival_date_end') ? 'is-invalid' : '' }}" type="text" name="report_arrival_date_end" id="report_arrival_date_end">
                                     @if ($errors->has('report_arrival_date_end'))
                                         <div class="invalid-feedback">
@@ -216,7 +216,7 @@
 
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="">{{ trans('cruds.travel.fields.campaign_start_date') }}</label>
+                                    <label for="" style="white-space: nowrap">{{ trans('cruds.travel.fields.campaign_start_date') }}</label>
                                     <input type="text" class="form-control filter date" name="campaign_start">
                                     <span class="text-danger">
                                         @error('birth_place')
@@ -228,7 +228,7 @@
 
                             <div class="col-lg-2 col-md-4">
                                 <div class="form-group">
-                                    <label for="">{{ trans('cruds.travel.fields.campaign_end') }}</label>
+                                    <label for="" style="white-space: nowrap">{{ trans('cruds.travel.fields.campaign_end') }}</label>
                                     <input type="text" class="form-control filter date" name="campaign_end">
                                     <span class="text-danger">
                                         @error('birth_place')
@@ -274,15 +274,20 @@
         const formInputs = document.querySelectorAll('.filter');
         const searchButton = document.getElementById('form-filter-submit');
 
+        const hideFiltersText = "{{ trans('global.hide_filter') }}";
+        const moreFiltersText = "{{ trans('global.more_filter') }}";
+
         moreFilters.style.display = 'none';
+
+        showFiltersButton.innerHTML = moreFiltersText + ' <i class="fas fa-filter"></i>';
 
         showFiltersButton.addEventListener('click', function() {
             if (moreFilters.style.display === 'none') {
                 moreFilters.style.display = 'flex';
-                showFiltersButton.innerHTML = 'Filtreyi Gizle  <i class="fas fa-filter"></i>';
+                showFiltersButton.innerHTML = hideFiltersText + ' <i class="fas fa-filter"></i>';
             } else {
                 moreFilters.style.display = 'none';
-                showFiltersButton.innerHTML = 'Daha Fazla Filtre <i class="fas fa-filter"></i>';
+                showFiltersButton.innerHTML = moreFiltersText + ' <i class="fas fa-filter"></i>';
             }
         });
 
