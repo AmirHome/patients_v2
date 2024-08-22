@@ -27,6 +27,7 @@ use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 
+use function PHPUnit\Framework\isNull;
 
 class Travel extends Component
 {
@@ -170,9 +171,14 @@ class Travel extends Component
 
     public function updatedCountryId($value)
     {
-        $this->cities = Province::where('country_id', $value)->get(['id', 'name']);
+        if ($value != 'null' && $value != null) {
+            $this->cities = Province::where('country_id', $value)->get(['id', 'name']);
 
-        $this->code = generateCode($value);
+            $this->code = generateCode($value);
+        }else{
+            $this->cities = collect();
+        }
+        
         $this->city_id = null;
     }
 
@@ -214,7 +220,7 @@ class Travel extends Component
     {
         if ($this->currentStep == 1) {
             //dd('Travel Add Step:'.$this->currentStep);
-            
+
             $rules = (new StorePatientRequest())->rules();
             $rules = array_merge($rules, [
                 'reffering_type' => 'required',
@@ -227,17 +233,17 @@ class Travel extends Component
                     $data[$key] = null;
                 }
             }
-            
+
             // dd('Travel Add '.$this->currentStep, $data);
             $this->wizardData['Patient'] = array_diff_key($data, array_flip(['reffering_type', 'reffering']));
             $this->wizardData['Travel'] = array_intersect_key($data, array_flip(['reffering_type', 'reffering']));
-            
         } elseif ($this->currentStep == 2) {
             //dd('Travel Add Step:'.$this->currentStep);
 
-            $rulesTravel =  ['last_status_id' => 'nullable|integer',
-                             'department_id' => 'required', 
-                            ];
+            $rulesTravel =  [
+                'last_status_id' => 'nullable|integer',
+                'department_id' => 'required',
+            ];
             $rulesTravelTreatmentActivity = [
                 'status_id'                 => 'integer',
                 'description'               => 'required',
@@ -247,8 +253,6 @@ class Travel extends Component
 
             $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rulesTravel));
             $this->wizardData['TravelTreatmentActivity'] = $this->validate($rulesTravelTreatmentActivity);
-            
-
         } elseif ($this->currentStep == 3) {
             // dd('Travel Add Step:'.$this->currentStep);
 
@@ -258,7 +262,6 @@ class Travel extends Component
             ];
             $this->validate($rules);
             $this->wizardData['Travel'] = array_merge($this->wizardData['Travel'], $this->validate($rules));
-
         }
 
         // if ($this->currentStep == $this->totalSteps) {
@@ -289,33 +292,33 @@ class Travel extends Component
             foreach ($this->treatment_files as $file) {
                 $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file');
             }
-            
+
             Country::where('id', $this->countryId)->increment('code_inc');
 
-            $data['link'] = url('share/hospital/'.makeShareCode($travel->id,'share_hospital'));
+            $data['link'] = url('share/hospital/' . makeShareCode($travel->id, 'share_hospital'));
             //if (!empty($this->treatment_files)){
-                foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
-                    $data['email'] = TravelHospital::find($hospitalId)->email??null;
-                    if (!empty($data['email'])) {
-                        $data['subject'] = 'Hospital: New Travel Created';
-                        dispatch(new EmailSendingJob('emails.email_hospital',$data));
-                    }
+            foreach ($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
+                $data['email'] = TravelHospital::find($hospitalId)->email ?? null;
+                if (!empty($data['email'])) {
+                    $data['subject'] = 'Hospital: New Travel Created';
+                    dispatch(new EmailSendingJob('emails.email_hospital', $data));
                 }
+            }
             //}
             //dd($data);
-            $data['email'] = Setting::find(1)->email??null;
+            $data['email'] = Setting::find(1)->email ?? null;
             if (!empty($data['email'])) {
                 $data['subject'] = 'Setting Hospital: New Travel Created';
-                dispatch(new EmailSendingJob('emails.email_hospital',$data));
+                dispatch(new EmailSendingJob('emails.email_hospital', $data));
             }
 
-            $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])->email??null;
+            $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])->email ?? null;
             if (!empty($data['email'])) {
                 $data['subject'] = 'Translator: New Travel Created';
-                $data['link'] = url('share/translator/'.makeShareCode($travelTreatmentActivity->id,'share_translator'));
-                dispatch(new EmailSendingJob('emails.email_translator',$data));
+                $data['link'] = url('share/translator/' . makeShareCode($travelTreatmentActivity->id, 'share_translator'));
+                dispatch(new EmailSendingJob('emails.email_translator', $data));
             }
-                        
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
