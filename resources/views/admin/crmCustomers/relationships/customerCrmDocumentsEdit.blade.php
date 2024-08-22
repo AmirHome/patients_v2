@@ -10,6 +10,39 @@
                 <div class="modal-body">
                     @method('PUT')
                     @csrf
+                                   <div class="row">
+                            <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
+                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"></textarea>
+                        @if ($errors->has('description'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('description') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.crmDocument.fields.description_helper') }}</span>
+                    </div>
+                                        </div>
+                            <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
+                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" required>
+                            @foreach ($statuses as $id => $entry)
+                                <option value="{{ $id }}">{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('status'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('status') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.crmDocument.fields.status_helper') }}</span>
+                    </div>
+                    </div>
+                    </div>
+           <div class="row">
+                            <div class="col-md-12">
                     <div class="form-group">
                         <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
                         <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
@@ -25,32 +58,8 @@
                         @endif
                         <span class="help-block">{{ trans('cruds.crmDocument.fields.document_file_helper') }}</span>
                     </div>
-                    <div class="form-group">
-                        <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
-                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"></textarea>
-                        @if ($errors->has('description'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('description') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.crmDocument.fields.description_helper') }}</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
-                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" required>
-                            @foreach ($statuses as $id => $entry)
-                                <option value="{{ $id }}">{{ $entry }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('status'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('status') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.crmDocument.fields.status_helper') }}</span>
-                    </div>
-
-
+               </div>  
+              </div>
                 </div>
                 <div class="modal-footer">
                     <div class="row justify-content-end">
