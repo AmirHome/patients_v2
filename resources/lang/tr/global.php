@@ -328,6 +328,8 @@ return [
     'success_Create_Message'         => 'Başarılı Bir Şekilde Oluşturuldu.',
     'success_Edit_Message'           => 'Başarılı Bir Şekilde Düzenlendi.',
     'success_Delete_Message'        => 'Başarılı Bir Şekilde Silindi.',
+    'hide_filter'                   => 'Filtreyi Gizle',
+    'more_filter'                  => 'Daha Fazla Filtre',
 
 
 ];

@@ -422,9 +422,13 @@ textarea {
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 8px; 
-    padding: 10px; 
+    padding: 16px; 
     margin-bottom: 10px; 
+    padding-top: 30px;
 
+}
+.activity-card .text-right {
+    padding-right:12px
 }
 .pointer{
     cursor: pointer !important;
@@ -1693,6 +1697,7 @@ thead tr {
     font-style: normal;
     font-weight: 400;
     line-height: 18px; /* 128.571% */
+    padding-top: 18px;
     }
  
  body  .show-header{ 

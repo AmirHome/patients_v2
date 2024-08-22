@@ -863,6 +863,7 @@ return [
             'planning_discharge_date'        => 'Planning Discharge Date',
             'planning_discharge_date_helper' => ' ',
             'arrival_date'                   => 'Arrival Date',
+            'arrival_end_date'               => 'Arrival End Date',
             'arrival_date_helper'            => ' ',
             'departure_date'                 => 'Departure Date',
             'departure_date_helper'          => ' ',
@@ -894,6 +895,7 @@ return [
             'this_transaction_cannot_be_undone' => 'This transaction cannot be undone',
             'shipment_place'                  => 'Shipment Place',
             'report_arrival_date'              => 'Report Arrival Date',
+            'report_arrival_end_date'         => 'Report End Date',
             'campaign_end'                    => 'Campaign End',
             'campaign_start_date'              => 'Campaign Start Date',
             'more_filters' => 'More Filters',
@@ -1116,6 +1118,7 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'photo'             => 'Photos of the hotel',
         ],
     ],
     'travelHospital' => [

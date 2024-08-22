@@ -327,4 +327,6 @@ return [
     'success_Create_Message'        => 'Created Successfully.',
     'success_Edit_Message'           => 'Updated Successfully.',
     'success_Delete_Message'        => 'Deleted Successfully.',
+    'hide_filter'                   => 'Hide Filter',
+    'more_filter'                  => 'More Filter',
 ];
