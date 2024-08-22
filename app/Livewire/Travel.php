@@ -296,19 +296,22 @@ class Travel extends Component
             //if (!empty($this->treatment_files)){
                 foreach($this->wizardData['Travel']['notifyHospitalIds'] as $hospitalId) {
                     $data['email'] = TravelHospital::find($hospitalId)->email??null;
-                    if ($data['email']) {
+                    if (!empty($data['email'])) {
+                        $data['subject'] = 'Hospital: New Travel Created';
                         dispatch(new EmailSendingJob('emails.email_hospital',$data));
                     }
                 }
             //}
-
+            //dd($data);
             $data['email'] = Setting::find(1)->email??null;
-            if ($data['email']) {
+            if (!empty($data['email'])) {
+                $data['subject'] = 'Setting Hospital: New Travel Created';
                 dispatch(new EmailSendingJob('emails.email_hospital',$data));
             }
 
             $data['email'] = Translator::find($this->wizardData['Travel']['translatorId'])->email??null;
-            if ($data['email']) {
+            if (!empty($data['email'])) {
+                $data['subject'] = 'Translator: New Travel Created';
                 $data['link'] = url('share/translator/'.makeShareCode($travelTreatmentActivity->id,'share_translator'));
                 dispatch(new EmailSendingJob('emails.email_translator',$data));
             }

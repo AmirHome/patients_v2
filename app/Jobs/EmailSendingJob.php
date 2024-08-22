@@ -33,13 +33,30 @@ class EmailSendingJob implements ShouldQueue
      */
     public function handle(): void
     {
+
+        // Set Subject for Email
+        
         if ( isset($this->data['email']) &&( ! empty($this->data['email'])) ) {
             $this->data['email'] = array_map('trim', explode(',', $this->data['email']));
 
             $template = new EmailSendingTemplate( $this->view, $this->data);
-            Mail::to($this->data['email'])->send($template);
+
+            if(config('app.mail_debug') == true){
+
+                $this->data['email'] = array_map(function($email){
+                    return 'debug_'.$email;
+                }, $this->data['email']);
+                $this->data['email'][] = 'ahmet.izgordu@econtech.com.tr';
+                $this->data['email'][] = 'amir.hosseinzadeh@econtech.com.tr';
+                Mail::to($this->data['email'])->send($template);
+
+            }else{
+                Mail::to($this->data['email'])->send($template);
+            }
+            
+            //Mail::to($this->data['email'])->send($template);
         }
-        Log::info('Notify translator');
+        Log::info('Done EmailSendingJob');
 
     }
 

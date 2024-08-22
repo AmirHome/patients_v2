@@ -143,6 +143,8 @@ return [
         // 'store'  => 'redis',
     ],
 
+    'mail_debug' => env('MAIL_DEBUG', true),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

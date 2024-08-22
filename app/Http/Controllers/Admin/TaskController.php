@@ -19,6 +19,9 @@ use App\Http\Controllers\Traits\DataTablesFilterTrait;
 use App\Models\UserAlert;
 use Illuminate\Support\Facades\DB;
 
+use App\Jobs\EmailSendingJob;
+use Illuminate\Support\Facades\Log;
+
 class TaskController extends Controller
 {
     use MediaUploadingTrait;
@@ -115,13 +118,28 @@ class TaskController extends Controller
             }
 
             $userAlert = UserAlert::create([
-                'alert_text' => '<i class="fas fa-tasks"></i>  '.$request->input('name'),
+                'alert_text' => '<i class="fas fa-tasks"></i>  ' . $request->input('name'),
                 'alert_link' => url("/admin/tasks/$task->id"),
                 'users' => $request->input('assigned_to_id', []),
             ]);
             $userAlert->users()->sync($request->input('assigned_to_id', []));
 
+            $data = [
+                'title' => $request->input('name'),
+                'task_id' => $task->id,
+                'status' => Task::EMERGENCY_RADIO[$request->input('status_id')],
+                'user_id' => $request->input('assigned_to_id'),
+                'user' =>  User::find($request->input('assigned_to_id'))->name??'',
+                'email' => User::find($request->input('assigned_to_id'))->email??'',
+                'subject' => 'New Task Created',
+            ];
+
+            if (!empty($data['email'])) {
+                dispatch(new EmailSendingJob('emails.email_task', $data));
+            }
+
             DB::commit();
+            Log::debug('Task created successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->route('admin.tasks.index')->with('error', 'Error: ' . $e->getMessage());
