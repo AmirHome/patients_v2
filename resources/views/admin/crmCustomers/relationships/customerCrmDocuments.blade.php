@@ -48,30 +48,40 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <table class="table table-custom">
-                                        <thead>
-                                            <tr class="activity-th">
-                                                <th>{{ trans('cruds.travel.fields.file') }}</th>
-                                                <th >{{ trans('cruds.travel.fields.uploaded_by') }}</th>
-                                                <th>{{ trans('cruds.travel.fields.date') }}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="activity-td">
-                                                <td >
-                                                    @foreach ($crmDocument->document_file as $key => $media)
-                                                        <div>
-                                                            <a href="{{ $media->getUrl() }}" target="_blank" title="{{ $media->file_name }}">
-                                                                {{ Str::limit($media->name, 30, '...') }}
-                                                            </a><sup>{{ formatSize($media->size) }}</sup>
-                                                        </div>
-                                                    @endforeach
-                                                </td>
-                                                <td  >{{ $crmDocument->user->name ?? '' }} - {{ $crmDocument->user->office->name ?? '' }}</td>
-                                                <td >{{ $crmDocument->created_at ?? '' }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <table class="table table-custom" style="width: 100%; border-collapse: collapse;">
+                                    <thead>
+                                        <tr class="activity-th">
+                                            <th style="width: 33.33%; text-align: left; border: 1px solid #ddd; padding: 8px;">
+                                                {{ trans('cruds.travel.fields.file') }}
+                                            </th>
+                                            <th style="width: 33.33%; text-align: left; border: 1px solid #ddd; padding: 8px;">
+                                                {{ trans('cruds.travel.fields.uploaded_by') }}
+                                            </th>
+                                            <th style="width: 33.33%; text-align: left; border: 1px solid #ddd; padding: 8px;">
+                                                {{ trans('cruds.travel.fields.date') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="activity-td">
+                                            <td style="width: 33.33%; border: 1px solid #ddd; padding: 8px;">
+                                                @foreach ($crmDocument->document_file as $key => $media)
+                                                    <div>
+                                                        <a href="{{ $media->getUrl() }}" target="_blank" title="{{ $media->file_name }}">
+                                                            {{ Str::limit($media->name, 30, '...') }}
+                                                        </a><sup>{{ formatSize($media->size) }}</sup>
+                                                    </div>
+                                                @endforeach
+                                            </td>
+                                            <td style="width: 33.33%; border: 1px solid #ddd; padding: 8px;">
+                                                {{ $crmDocument->user->name ?? '' }} - {{ $crmDocument->user->office->name ?? '' }}
+                                            </td>
+                                            <td style="width: 33.33%; border: 1px solid #ddd; padding: 8px;">
+                                                {{ $crmDocument->created_at ?? '' }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 </div>
                             </td>
                         </tr>
