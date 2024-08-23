@@ -389,10 +389,6 @@ a.nav-link {
     box-sizing: border-box;
     padding: 24px 16px 24px 16px;
 }
-textarea {
-    height: calc(1.25rem + 2px) !important;
-    min-height: 0px !important;
-}
 
 .card-header {
     color: rgb(33, 43, 54);
