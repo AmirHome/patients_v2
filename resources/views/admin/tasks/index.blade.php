@@ -118,7 +118,7 @@
         }
     },
     orderCellsTop: true,
-    order: [[ 8, 'desc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 10,
   };
   let table = $('.datatable-Task').DataTable(dtOverrideGlobals);

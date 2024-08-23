@@ -146,7 +146,7 @@
                 ],
                 orderCellsTop: true,
                 order: [
-                    [1, 'desc']
+                    [7, 'desc']
                 ],
                 pageLength: 10,
             };
