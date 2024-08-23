@@ -99,7 +99,7 @@
                             {{ trans('cruds.task.fields.description') }}
                         </div>
                         <span class="show-header-desc-text">
-                            {{ $task->description }}
+                            {!! $task->description !!}
                         </span>
                     </div>
                     <div class="col-md-6">
