@@ -11,7 +11,7 @@
             <div class="modal-content">
 
                 <form method="POST" action="{{ route('admin.crm-documents.store') }}" enctype="multipart/form-data">
-                              <h5 class="modal-title" id="modalLabel">{{ trans('global.create') }} {{ trans('cruds.crmDocument.title_singular') }}</h5>
+                              <h5 class="modal-title card-header" id="modalLabel">{{ trans('global.create') }} {{ trans('cruds.crmDocument.title_singular') }}</h5>
                     <div class="modal-body">
                         @csrf
                         <div class="row">

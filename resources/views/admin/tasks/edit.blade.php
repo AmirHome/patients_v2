@@ -102,7 +102,7 @@
                 <div class="form-group mt-4">
                     <label for="attachment"></label>
                     <div class="d-flex flex-column align-items-center justify-content-center mt-2 needsclick dropzone attachment-dropzone {{ $errors->has('attachment') ? 'is-invalid' : '' }}" id="attachment-dropzone">
-                    <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid mt-4">
+                  <div class="dz-message" data-dz-message>  <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid mt-4"></div>
                 <div class="dz-message" data-dz-message><p>{{ trans('cruds.travel.fields.upload_files') }}</p></div>
                     </div>
                     @if($errors->has('attachment'))

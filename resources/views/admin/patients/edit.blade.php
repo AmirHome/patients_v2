@@ -218,7 +218,7 @@
                                 <div class="form-group">
                                     <label for="photo">{{ trans('cruds.patient.fields.photo') }}</label>
                                     <div class="mt-2 needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="photo-dropzone">
-                                        <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                     <div class="dz-message" data-dz-message>   <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid"></div>
                                         <div class="dz-message" data-dz-message><p>Upload File</p></div>
                                     </div>
                                     @if($errors->has('photo'))
@@ -233,7 +233,7 @@
                                 <div class="form-group">
                                     <label for="passport_image">{{ trans('cruds.patient.fields.passport_image') }}</label>
                                     <div class="needsclick dropzone mt-2 {{ $errors->has('passport_image') ? 'is-invalid' : '' }} d-flex flex-column align-items-center justify-content-center" id="passport_image-dropzone">
-                                        <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid">
+                                     <div class="dz-message" data-dz-message>   <img src="{{ asset('img/upload.png') }}" alt="dashboard Image" class="dashboard-hero-img img-fluid"> </div>
                                         <div class="dz-message" data-dz-message><p>Upload File</p></div>
                                     </div>
                                     @if($errors->has('passport_image'))
