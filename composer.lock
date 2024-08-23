@@ -8,26 +8,26 @@
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
-            "version": "v3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/asantibanez/livewire-charts.git",
-                "reference": "d58465084e24dd3b3d587039a27e934ff1c02304"
+                "reference": "343ebbaeee8cfddd4ec1cb451eebccb65e544619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asantibanez/livewire-charts/zipball/d58465084e24dd3b3d587039a27e934ff1c02304",
-                "reference": "d58465084e24dd3b3d587039a27e934ff1c02304",
+                "url": "https://api.github.com/repos/asantibanez/livewire-charts/zipball/343ebbaeee8cfddd4ec1cb451eebccb65e544619",
+                "reference": "343ebbaeee8cfddd4ec1cb451eebccb65e544619",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
                 "livewire/livewire": "^3.0",
                 "php": "^7.2|^7.3|^7.4|^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
-                "phpunit/phpunit": "^8.0|^9.5.10"
+                "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^8.0|^9.5.10|^10.5"
             },
             "type": "library",
             "extra": {
@@ -64,9 +64,9 @@
             ],
             "support": {
                 "issues": "https://github.com/asantibanez/livewire-charts/issues",
-                "source": "https://github.com/asantibanez/livewire-charts/tree/v3.0.1"
+                "source": "https://github.com/asantibanez/livewire-charts/tree/3.1.0"
             },
-            "time": "2023-11-07T19:50:23+00:00"
+            "time": "2024-08-22T15:41:44+00:00"
         },
         {
             "name": "brick/math",
