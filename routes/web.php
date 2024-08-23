@@ -169,6 +169,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Hotel
     Route::delete('hotels/destroy', 'HotelController@massDestroy')->name('hotels.massDestroy');
+    Route::post('hotels/media', 'HotelController@storeMedia')->name('hotels.storeMedia');
+    Route::post('hotels/ckmedia', 'HotelController@storeCKEditorImages')->name('hotels.storeCKEditorImages');
     Route::resource('hotels', 'HotelController');
 
     // Travel Hospital

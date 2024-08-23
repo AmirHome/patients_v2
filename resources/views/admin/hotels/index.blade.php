@@ -3,25 +3,28 @@
 @includeIf('admin.hotels.create')
 @includeIf('admin.hotels.relationships.delete_modal')
 
-<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <div>
-            {{ trans('cruds.hotel.title_singular') }} {{ trans('global.list') }}
-        </div>
-        @can('hotel_create')
-            <div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#create-hotels">
-                    {{ trans('global.add') }} {{ trans('cruds.hotel.title_singular') }}
-                </button>
-            </div>
-        @endcan
+
+@can('hotel_create')
+    <div>
+        <button class="btn btn-success" data-toggle="modal" data-target="#create-hotels">
+            {{ trans('global.add') }} {{ trans('cruds.hotel.title_singular') }}
+        </button>
     </div>
-    <div class="card-body" style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
-        <table class=" table table-bordered table-hover ajaxTable datatable datatable-Hotel">
+@endcan
+<div class="card">
+    <div class="card-header">
+        {{ trans('cruds.hotel.title_singular') }} {{ trans('global.list') }}
+    </div>
+
+    <div class="card-body">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Hotel">
             <thead>
                 <tr>
                     <th width="10">
 
+                    </th>
+                    <th>
+                        {{ trans('cruds.hotel.fields.id') }}
                     </th>
                     <th>
                         {{ trans('cruds.hotel.fields.name') }}
@@ -82,7 +85,7 @@
       }
     }
   }
-  // dtButtons.push(deleteButton)
+  dtButtons.push(deleteButton)
 @endcan
 
   let dtOverrideGlobals = {
@@ -94,6 +97,7 @@
     ajax: "{{ route('admin.hotels.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'location', name: 'location' },
 { data: 'price', name: 'price' },

@@ -16,15 +16,7 @@ class MassDestroyHotelRequest extends FormRequest
         return true;
     }
 
-    
-protected function prepareForValidation(){
-            $this->merge([
-                'user_id' => auth()->id(),
-            ]);
-        }
-
-    
-public function rules()
+    public function rules()
     {
         return [
             'ids'   => 'required|array',

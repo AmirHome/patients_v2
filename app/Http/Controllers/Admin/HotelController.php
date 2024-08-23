@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyHotelRequest;
 use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
@@ -11,11 +12,14 @@ use App\Models\Hotel;
 use App\Models\Province;
 use Gate;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 class HotelController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index(Request $request)
     {
         abort_if(Gate::denies('hotel_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -66,11 +70,12 @@ class HotelController extends Controller
 
             return $table->make(true);
         }
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.hotels.index', compact('cities', 'countries'));
+                $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        
+                $cities = Province::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+         
+                return view('admin.hotels.index', compact('cities', 'countries'));
+        // return view('admin.hotels.index');
     }
 
     public function create()
@@ -87,6 +92,14 @@ class HotelController extends Controller
     public function store(StoreHotelRequest $request)
     {
         $hotel = Hotel::create($request->all());
+
+        foreach ($request->input('photos', []) as $file) {
+            $hotel->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photos');
+        }
+
+        if ($media = $request->input('ck-media', false)) {
+            Media::whereIn('id', $media)->update(['model_id' => $hotel->id]);
+        }
 
         return redirect()->route('admin.hotels.index')->with('success', trans('global.success_Create_Message'));
     }
@@ -107,6 +120,20 @@ class HotelController extends Controller
     public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
         $hotel->update($request->all());
+
+        if (count($hotel->photos) > 0) {
+            foreach ($hotel->photos as $media) {
+                if (! in_array($media->file_name, $request->input('photos', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $hotel->photos->pluck('file_name')->toArray();
+        foreach ($request->input('photos', []) as $file) {
+            if (count($media) === 0 || ! in_array($file, $media)) {
+                $hotel->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('photos');
+            }
+        }
 
         return redirect()->route('admin.hotels.index')->with('success', trans('global.success_Edit_Message'));
     }
@@ -138,5 +165,17 @@ class HotelController extends Controller
         }
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('hotel_create') && Gate::denies('hotel_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new Hotel();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }

@@ -14,15 +14,7 @@ class StoreHotelRequest extends FormRequest
         return Gate::allows('hotel_create');
     }
 
-    
-protected function prepareForValidation(){
-            $this->merge([
-                'user_id' => auth()->id(),
-            ]);
-        }
-
-    
-public function rules()
+    public function rules()
     {
         return [
             'name' => [
@@ -40,6 +32,9 @@ public function rules()
             'city_id' => [
                 'required',
                 'integer',
+            ],
+            'photos' => [
+                'array',
             ],
         ];
     }

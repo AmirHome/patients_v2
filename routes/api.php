@@ -103,6 +103,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('content-pages', 'ContentPageApiController');
 
     // Hotel
+    Route::post('hotels/media', 'HotelApiController@storeMedia')->name('hotels.storeMedia');
     Route::apiResource('hotels', 'HotelApiController');
 
     // Travel Hospital
