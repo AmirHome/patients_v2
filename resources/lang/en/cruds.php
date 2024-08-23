@@ -1119,6 +1119,9 @@ return [
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
             'photo'             => 'Photos of the hotel',
+            'photos'             => 'Photo',
+            'create'             => 'Create Hotel',
+
         ],
     ],
     'travelHospital' => [

@@ -100,7 +100,7 @@
             <td>
                 @foreach($hotel->photos as $key => $media)
                     <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                        <img src="{{ $media->getUrl('thumb') }}">
+                        <img src="{{ $media->getUrl() ?? 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png' }}">
                     </a>
                 @endforeach
             </td>

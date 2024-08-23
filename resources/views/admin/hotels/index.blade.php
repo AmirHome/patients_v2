@@ -3,21 +3,23 @@
 @includeIf('admin.hotels.create')
 @includeIf('admin.hotels.relationships.delete_modal')
 
+<div class="card">
 
-@can('hotel_create')
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+        {{ trans('cruds.hotel.title_singular') }} {{ trans('global.list') }}
+        </div>
+        @can('hotel_create')
     <div>
         <button class="btn btn-success" data-toggle="modal" data-target="#create-hotels">
             {{ trans('global.add') }} {{ trans('cruds.hotel.title_singular') }}
         </button>
     </div>
-@endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.hotel.title_singular') }} {{ trans('global.list') }}
+        @endcan
     </div>
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Hotel">
+    <div class="card-body"  style="padding: 40px 16.6% 40px 0px; !important;margin:0px !important">
+        <table class="table table-bordered table-hover ajaxTable datatable datatable-Hotel">
             <thead>
                 <tr>
                     <th width="10">
@@ -85,7 +87,7 @@
       }
     }
   }
-  dtButtons.push(deleteButton)
+  // dtButtons.push(deleteButton)
 @endcan
 
   let dtOverrideGlobals = {

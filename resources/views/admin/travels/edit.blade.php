@@ -56,8 +56,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-                                            <img class="card-img-top rounded-circle" src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png" alt="Card image" style="max-width:150px">
+                                     <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+                                           <img class="card-img-top rounded-circle" src="{{ $patient->photo?->getUrl() ?? 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png' }}" 
+                                                alt="Card image" 
+                                                style="max-width:150px;min-width:150px">
                                             <button type="button" class="btn btn-update mt-2" data-toggle="modal" data-target="#modal-profile-photo">{{ trans('cruds.travel.fields.update') }}</button>
                                         </div>
                                         <div class="col-md-6 d-flex flex-column justify-content-center">
@@ -248,7 +250,7 @@
                                         <button class="btn btn-danger float-right ml-4" type="submit">
                                             {{ trans('global.save') }}
                                         </button>
-                                             <button class="btn btn-danger float-right ml-4" style="background-color:#3D3D3D"  id="edit-btn">
+                                             <button class="btn btn-danger float-right ml-4" style="background-color:#3D3D3D" type="button"  id="edit-btn">
                                             {{ trans('global.edit') }}
                                         </button>
                                         <a class="btn float-right for-more" href="{{ url('admin/patients/' . $patient->id . '/edit') }}">
@@ -349,7 +351,6 @@
                 </div>
                 <!--Tab Dosyalar-->
                 <div class="tab-pane" role="tabpanel" id="travel_activities">
-
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div></div>
                         <button type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#modal-add-travel-treatment-activities">
@@ -359,13 +360,11 @@
                     @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', [
                         'travelTreatmentActivities' => $travel->travelTravelTreatmentActivities,
                     ])
-
                 </div>
                 <!--Tab Bilgilendirmeler-->
                 <div class="tab-pane" role="tabpanel" id="information">
                     <div class="card">
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -707,8 +706,7 @@
             </div>
         </form>
     </div>
-    
-    @includeIf('admin.travels.relationships.modal-profile-photo');
+    @includeIf('admin.travels.relationships.modal-profile-photo')
 @endsection
 
 @section('scripts')

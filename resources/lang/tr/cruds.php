@@ -1115,6 +1115,8 @@ return [
         'deleted_at'        => 'Silinme Tarihi',
         'deleted_at_helper' => ' ',
         'photo'            => 'Otelin Fotoğrafları',
+        'photos'           => 'Fotoğraflar',
+        'create'             => 'Otel Oluştur',
     ],
 ],
 'travelHospital' => [
