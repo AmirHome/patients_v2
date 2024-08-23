@@ -8,6 +8,7 @@
     @includeIf('admin.travels.relationships.modalAddActivities')
     @includeIf('admin.travels.relationships.modalEditActivities')
 
+    
     <div class="card">
         <div class="card-header">{{ trans('cruds.travel.travel_edit') }}</div>
         <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
