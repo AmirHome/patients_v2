@@ -3,82 +3,79 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.crm-documents.update', [0]) }}" enctype="multipart/form-data" id="crm_document_edit_form">
-                    <h5 class="modal-title card-header" id="customerDocumentCreateModalLabel">
-                        {{ trans('global.edit') }} {{ trans('cruds.crmDocument.title_singular') }}
-                    </h5>
-               
+                @method('PUT')
+                @csrf
+                <h5 class="modal-title card-header" id="customerDocumentCreateModalLabel">
+                    {{ trans('global.edit') }} {{ trans('cruds.crmDocument.title_singular') }}
+                </h5>
                 <div class="modal-body">
-                    @method('PUT')
-                    @csrf
-                                   <div class="row">
-                            <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
-                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"></textarea>
-                        @if ($errors->has('description'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('description') }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="description">{{ trans('cruds.crmDocument.fields.description') }}</label>
+                                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description"></textarea>
+                                @if ($errors->has('description'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('description') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.crmDocument.fields.description_helper') }}</span>
                             </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.crmDocument.fields.description_helper') }}</span>
-                    </div>
-                                        </div>
-                            <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
-                        <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" required>
-                            @foreach ($statuses as $id => $entry)
-                                <option value="{{ $id }}">{{ $entry }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('status'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('status') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.crmDocument.fields.status_helper') }}</span>
-                    </div>
-                    </div>
-                    </div>
-           <div class="row">
-                            <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
-                        <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
-                             <div class="dz-message" data-dz-message><span>{{ trans('cruds.travel.fields.drop_or_select_file') }}</span></div>
-                                             <div class="dz-message" data-dz-message>
-                                <p>Drop files here or click <a>browse</a> through your machine</p>
-                                             </div>
                         </div>
-                        @if ($errors->has('document_file'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('document_file') }}
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label class="required" for="status_id">{{ trans('cruds.crmDocument.fields.status') }}</label>
+                                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" required>
+                                    @foreach ($statuses as $id => $entry)
+                                        <option value="{{ $id }}">{{ $entry }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('status'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('status') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.crmDocument.fields.status_helper') }}</span>
                             </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.crmDocument.fields.document_file_helper') }}</span>
+                        </div>
                     </div>
-               </div>  
-              </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="document_file">{{ trans('cruds.crmDocument.fields.document_file') }}</label>
+                                <div class="needsclick dropzone {{ $errors->has('document_file') ? 'is-invalid' : '' }}" id="document_file-dropzone">
+                                    <div class="dz-message" data-dz-message><span>{{ trans('cruds.travel.fields.drop_or_select_file') }}</span></div>
+                                    <div class="dz-message" data-dz-message>
+                                        <p>Drop files here or click <a>browse</a> through your machine</p>
+                                    </div>
+                                </div>
+                                @if ($errors->has('document_file'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('document_file') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.crmDocument.fields.document_file_helper') }}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="row justify-content-end">
-                    <div class="form-group">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
-                            {{ trans('global.cancel') }}
-                        </button>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal" aria-label="Close">
+                                {{ trans('global.cancel') }}
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger submit" type="button">{{ trans('global.save') }}</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-danger" type="submit">{{ trans('global.save') }}</button>
-                    </div>
-                </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
 
 @section('scripts')
     @parent
@@ -185,8 +182,7 @@
                             .preview_url);
                         dropzoneElement[0].dropzone.emit('complete', mockFile);
                         $('form#crm_document_edit_form').append(
-                            '<input type="hidden" name="document_file[]" value="' + file
-                            .file_name + '">');
+                            '<input type="hidden" name="document_file[]" value="' + file.file_name + '">');
 
                         filesAddedWithEmit.push(mockFile);
                     });
@@ -199,6 +195,8 @@
 
             $('#crm_document_edit_modal').on('click', 'button.submit[type="button"]', function() {
                 var form = $("form#crm_document_edit_form");
+                console.log(form.attr('action'));
+                console.log(documentId);
                 form.attr('action', form.attr('action').replace('/0', '/' + documentId));
                 form.append('<input type="hidden" name="customer_id" value="{{ $crmCustomer->id }}">');
                 form.submit();
