@@ -91,22 +91,8 @@
                 <span class="help-block">{{ trans('cruds.expensesIncome.fields.amount_helper') }}</span>
             </div>
             </div>
-            </div>
-            <div class="row">
-            <div class="col-md-12">
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.expensesIncome.fields.description') }}</label>
-                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" placeholder="Enter Description..." name="description" id="description">{{ old('description', $expensesIncome->description) }}</textarea>
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.expensesIncome.fields.description_helper') }}</span>
-            </div>
-            </div>
-            </div>
-       
+                          <div class="col-md-4">
+
             <div class="form-group">
                 <label class="required" for="created_at">{{ trans('cruds.campaignOrg.fields.created_at') }}</label>
                 <input class="form-control date {{ $errors->has('created_at') ? 'is-invalid' : '' }}" type="text" name="created_at" id="created_at" value="{{ old('created_at', $expensesIncome->created_at) }}" required>
@@ -116,6 +102,23 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.campaignOrg.fields.created_at_helper') }}</span>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-12">
+            <div class="form-group">
+                <label for="description">{{ trans('cruds.expensesIncome.fields.description') }}</label>
+                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $expensesIncome->description) }}</textarea>
+                @if($errors->has('description'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('description') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.expensesIncome.fields.description_helper') }}</span>
+            </div>
+            </div>
+     
             </div>
 
             <div class="form-group">

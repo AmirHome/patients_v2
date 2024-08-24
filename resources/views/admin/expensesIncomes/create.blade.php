@@ -76,7 +76,7 @@
                      <div class="col-md-6">
                         <div class="form-group">
                             <label class="required" for="created_at">{{ trans('cruds.campaignOrg.fields.created_at') }}</label>
-                            <input class="form-control date {{ $errors->has('created_at') ? 'is-invalid' : '' }}" type="text" name="created_at" id="created_at" value="{{ old('created_at') }}" required>
+                            <input class="form-control date {{ $errors->has('created_at') ? 'is-invalid' : '' }}" type="text" name="created_at" id="created_at" required>
                             @if($errors->has('created_at'))
                                 <div class="invalid-feedback">
                                     {{ $errors->first('created_at') }}
@@ -111,5 +111,18 @@
         </div>
     </div>
         </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var today = new Date();
+        var day = ('0' + today.getDate()).slice(-2);
+        var month = ('0' + (today.getMonth() + 1)).slice(-2); // Aylar 0 tabanlıdır
+        var year = today.getFullYear();
+        
+        // Tarih formatını YYYY-MM-DD şeklinde oluşturuyoruz
+        var formattedDate = year + '-' + month + '-' + day;
+        
+        // Input elemanının değerini bugünün tarihi ile ayarlıyoruz
+        document.getElementById('created_at').value = formattedDate;
+    });
+</script>
 @endsection
