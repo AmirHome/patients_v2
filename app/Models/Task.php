@@ -80,7 +80,15 @@ class Task extends Model implements HasMedia
 
     public function getAttachmentAttribute()
     {
-        return $this->getMedia('attachment')->last();
+        //return $this->getMedia('attachment')->last();
+        $file = $this->getMedia('attachment')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 
     public function user()
