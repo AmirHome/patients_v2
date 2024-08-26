@@ -12,11 +12,13 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                @foreach($hotel->photos as $key => $media)
-                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                        <img src="{{ asset('img/img-not-found.png')  }}">
-                    </a>
-                @endforeach
+               <div class="item active">
+                  <img src="{{  $media->getUrl()  }}">
+                </div>
+               @endforeach
+              
             </div>
+
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>

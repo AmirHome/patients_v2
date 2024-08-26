@@ -47,7 +47,7 @@ return [
         'reports' => [
             'driver' => 'local',
             'root' => storage_path('app/public/uploads/reports'),
-            'url' => env('APP_URL').'/uploads/reports',
+            'url' => env('APP_URL').'/storage/uploads/reports',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -55,7 +55,7 @@ return [
         'user_photos' => [
             'driver' => 'local',
             'root' => storage_path('app/public/uploads/user_photos'),
-            'url' => env('APP_URL').'/uploads/user_photos',
+            'url' => env('APP_URL').'/storage/uploads/user_photos',
             'visibility' => 'public',
             'throw' => false,
         ],
