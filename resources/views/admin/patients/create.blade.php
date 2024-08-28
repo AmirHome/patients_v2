@@ -488,5 +488,28 @@
     }
 }
 
+         // Email validation
+       document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form');
+                const emailInput = document.getElementById('email');
+                if (form && emailInput) {
+                    form.addEventListener('submit', function(e) {
+            if (!emailInput.value.includes('@')) {
+                e.preventDefault();
+                emailInput.setCustomValidity('Email must contain an "@" symbol.');
+                emailInput.reportValidity();
+            } else {
+                emailInput.setCustomValidity('');
+            }
+                    });
+
+                    emailInput.addEventListener('input', function() {
+            if (emailInput.value.includes('@')) {
+                emailInput.setCustomValidity('');
+               }
+                    });
+                }
+            });
+
 </script>
 @endsection

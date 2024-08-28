@@ -76,7 +76,7 @@
 
             <div class="form-group">
                 <label class="required" for="amount">{{ trans('cruds.expensesIncome.fields.amount') }}</label>
-                <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}"  type="number" name="amount" id="amount" value="{{ old('amount', '') }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}"  type="number" name="amount" id="amount" value="{{ old('amount', '') }}" step="1" required>
                 @if($errors->has('amount'))
                     <div class="invalid-feedback">
                         {{ $errors->first('amount') }}
