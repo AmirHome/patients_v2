@@ -1,13 +1,14 @@
-@extends('layouts.mail')
+@extends('layouts.share')
 @section('content')
 
     <div class="header">
         <img src="{{ asset('img/clinic-template-logo.png') }}" alt="logo" class="main-logo">
     </div>
 
-<div class="container">
-  @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
-</div>
+    <div class="container">
+        @includeIf('admin.travels.relationships.travelTravelTreatmentActivities', ['travelTreatmentActivities' => $travel->travelTravelTreatmentActivities])
+    </div>
+@endsection
 
 @section('scripts')
     @parent

@@ -164,8 +164,7 @@ class TravelController extends ParentController
     public function shares($code)
     {
 
-        //$travel = checkShareCode($code, 'share_hospital');
-        $travel = 7264;
+        $travel = checkShareCode($code, 'share_hospital');
 
         $travel = Travel::find($travel)
             ->load(
@@ -184,8 +183,7 @@ class TravelController extends ParentController
     public function share($code)
     {
 
-        //$id = checkShareCode($code, 'share_translator');
-        $id = 10719;
+        $id = checkShareCode($code, 'share_translator');
 
         $travel = Travel::with([
             'patient',
