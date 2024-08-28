@@ -56,7 +56,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="http://patientsv2.test/img/clinic-template-logo.png" alt="Şirket Logo">
+        <img src="{{url('/').'img/clinic-template-logo.png'}}" alt="Şirket Logo">
     </div>
 
     <div class="content">
