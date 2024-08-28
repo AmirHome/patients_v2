@@ -30,8 +30,6 @@
 
         .header img {
             width: auto;
-                    
-            
         }
 
         .content {
