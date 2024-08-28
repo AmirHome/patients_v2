@@ -21,30 +21,30 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <style>
         .header {
-            background-color: white; 
+            background-color: white;
             height: 120px;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-   
-   .main-logo {
+
+        .main-logo {
             max-width: 20%;
             height: auto;
-       }
+        }
     </style>
 
- 
+
     @yield('styles')
 </head>
 
 
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page" >
-  
-        <div class="container-fluid">
-            @yield("content")
-        </div>
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
+
+    <div class="container-fluid">
+        @yield("content")
+    </div>
     @yield('scripts')
 </body>
 
