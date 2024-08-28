@@ -202,10 +202,12 @@ class TravelController extends ParentController
             //         'notify_hospitals',
             //         'travelTravelTreatmentActivities.status', 'travelTravelTreatmentActivities.user',
             // )
-            ->first();;
-        //dd( $code , $id, $data, $travel);
+            ->first();
 
-        return view('admin.travels.share', compact('travel'));
+        $last_statuses = TravelStatus::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+
+        return view('admin.travels.share', compact('travel', 'last_statuses'));
     }
 
     public function edit(Travel $travel)

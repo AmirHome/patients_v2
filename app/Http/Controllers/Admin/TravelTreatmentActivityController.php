@@ -105,7 +105,7 @@ class TravelTreatmentActivityController extends Controller
     }
 
     public function store(StoreTravelTreatmentActivityRequest $request)
-    {//dd('TravelTreatmentActivityController@store');
+    {
         
         $travelTreatmentActivity = TravelTreatmentActivity::create($request->all());
 
@@ -116,9 +116,8 @@ class TravelTreatmentActivityController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $travelTreatmentActivity->id]);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Treatment Activity created successfully');
 
-        // return redirect()->route('admin.travel-treatment-activities.index');
     }
 
     public function edit(TravelTreatmentActivity $travelTreatmentActivity)

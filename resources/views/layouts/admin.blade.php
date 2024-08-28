@@ -439,24 +439,24 @@
                                             }
                                         };
 
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                                var urlParams = new URLSearchParams(window.location.search);
-                                                var selectedFlagElement = document.getElementById('selectedFlag');
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            var urlParams = new URLSearchParams(window.location.search);
+                                            var selectedFlagElement = document.getElementById('selectedFlag');
 
-                                                if (urlParams.has('change_language')) {
-                                                    var selectedLanguage = urlParams.get('change_language');
+                                            if (urlParams.has('change_language')) {
+                                                var selectedLanguage = urlParams.get('change_language');
 
-                                                    if (selectedLanguage === 'tr') {
-                                                        selectedFlagElement.innerHTML = document.getElementById('TrFlag').outerHTML;
-                                                    } else if (selectedLanguage === 'en') {
-                                                        selectedFlagElement.innerHTML = document.getElementById('EnFlag').outerHTML;
-                                                    }
+                                                if (selectedLanguage === 'tr') {
+                                                    selectedFlagElement.innerHTML = document.getElementById('TrFlag').outerHTML;
+                                                } else if (selectedLanguage === 'en') {
+                                                    selectedFlagElement.innerHTML = document.getElementById('EnFlag').outerHTML;
                                                 }
-                                            });
+                                            }
+                                        });
 
 
                                         //regex
-                                   const phoneInput = document.getElementById('phone');
+                                        const phoneInput = document.getElementById('phone');
                                         if (phoneInput) {
                                             phoneInput.addEventListener('input', function(e) {
                                                 e.target.value = e.target.value.replace(/[^0-9]/g, '');

@@ -24,6 +24,7 @@
                                     </div>
                                     <div class="text-right">
                                         <div class="activity-info"><span>{{ $travelTreatmentActivity->created_at ?? '' }}</span></div>
+                                        @if( ! request()->is("share/*"))
                                         @can('travel_treatment_activity_edit')
                                             <button type="button" class="btn btn-outline-success mt-5 " data-toggle="modal" data-target="#modal-edit-travel-treatment-activities" data-travel-treatment-activities_id={{ $travelTreatmentActivity->id }}>
                                                 <i class="fa fa-pencil"></i> {{ trans('cruds.travel.fields.edit') }}
@@ -38,6 +39,7 @@
 
                                             </form>
                                         @endcan
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +55,7 @@
                                     @foreach ($travelTreatmentActivity->treatment_file as $key => $media)
                                         <tr class="activity-td row mx-3">
                                             <td  class="col-md-5">
-                                                <a href="{{ $media->getUrl() }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
+                                                <a href="{{ $media->getUrl()??'' }}" target="_blank" style="text-decoration: none; color: #007bff; font-weight: 500;">
                                                     {{ Str::limit($media->file_name, 50, '...') }}
                                                 </a>
                                             </td>
