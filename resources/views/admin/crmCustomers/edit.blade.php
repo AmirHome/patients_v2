@@ -158,7 +158,7 @@
                                         <span class="help-block">{{ trans('cruds.crmCustomer.fields.status_helper') }}</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-3">
                                     <div class="form-group">
                                         <label class="required" for="city_id">{{ trans('cruds.crmCustomer.fields.city') }}</label>
                                         <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" required>
@@ -174,7 +174,7 @@
                                         <span class="help-block">{{ trans('cruds.crmCustomer.fields.city_helper') }}</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6  mt-3">
                                     <div class="form-group">
                                         <label class="required" for="campaign_id">{{ trans('cruds.crmCustomer.fields.campaign') }}</label>
                                         <select class="form-control select2 {{ $errors->has('campaign') ? 'is-invalid' : '' }}" name="campaign_id" id="campaign_id" required>
@@ -190,10 +190,10 @@
                                         <span class="help-block">{{ trans('cruds.crmCustomer.fields.campaign_helper') }}</span>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 mt-4">
                                     <div class="form-group">
                                         <label for="description">{{ trans('cruds.crmCustomer.fields.description') }}</label>
-                                        <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $crmCustomer->description) }}</textarea>
+                                        <textarea class="form-control mt-1 pt-1 {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $crmCustomer->description) }}</textarea>
                                         @if($errors->has('description'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('description') }}
@@ -218,5 +218,29 @@
 </div>
 
 
+<script>
+        // Email validation
+       document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form');
+                const emailInput = document.getElementById('email');
+                if (form && emailInput) {
+                    form.addEventListener('submit', function(e) {
+            if (!emailInput.value.includes('@')) {
+                e.preventDefault();
+                emailInput.setCustomValidity('Email must contain an "@" symbol.');
+                emailInput.reportValidity();
+            } else {
+                emailInput.setCustomValidity('');
+            }
+                    });
+
+                    emailInput.addEventListener('input', function() {
+            if (emailInput.value.includes('@')) {
+                emailInput.setCustomValidity('');
+               }
+                    });
+                }
+            });
+    </script>
 
 @endsection

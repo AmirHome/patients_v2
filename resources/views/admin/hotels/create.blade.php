@@ -29,7 +29,7 @@
                 <div class="col-md-6">
                 <div class="form-group">
                     <label for="price">{{ trans('cruds.hotel.fields.price') }}</label>
-                    <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', '') }}" step="0.01">
+                    <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', '') }}" step="1">
                     @if($errors->has('price'))
                         <div class="invalid-feedback">
                             {{ $errors->first('price') }}
