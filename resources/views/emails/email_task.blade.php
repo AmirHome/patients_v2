@@ -56,12 +56,12 @@
 
 <div class="container">
     <div class="header">
-        <img src="{{ asset('img/template-logo.png') }}" alt="Şirket Logo">
+        <img src="http://patientsv2.test/img/clinic-template-logo.png" alt="Şirket Logo">
     </div>
 
     <div class="content">
         <p>Merhaba,</p>
-        <p>{{$data['user']}} tarafından size yeni bir görev tanımlandı. Görevin başlığı "<strong>{{$data['title']}}</strong>" olup, görev ID'si <strong>{{$data['task_id']}}</strong> olarak belirlenmiştir. Görevin durumu şu an için <strong>{{$data['status']}}</strong> olarak belirtilmiştir.
+        <p>{{$data['user']}} tarafından size yeni bir görev tanımlandı. Görevin başlığı "<strong>{{$data['title']}}</strong>" olup, Görevin durumu şu an için <strong>{{$data['status']}}</strong> olarak belirtilmiştir.
             {{-- {{$data['user_id']}} şuan için gerekli değil --}}
         <p>Görev detaylarını incelemek ve gerekli aksiyonları almak için lütfen <a href="{{url('/').'/admin/tasks/'.$data['task_id']}}">buraya tıklayın</a>.</p>
         <p>İyi çalışmalar dileriz.</p>

@@ -62,7 +62,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="{{ asset('img/template-logo.png') }}" alt="Turmeda Logo">
+        <img src="http://patientsv2.test/img/clinic-template-logo.png" alt="Turmeda Logo">
     </div>
 
     <div class="content">

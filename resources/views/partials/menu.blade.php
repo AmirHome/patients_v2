@@ -5,7 +5,7 @@
     <ul class="c-sidebar-nav">
     <li class="c-sidebar-nav-logo">
             <a href="{{ route("admin.home") }}" class="c-sidebar-nav-logo">
-            <img src="https://patients-old.clinics.com.tr/assets/clinics-logo.png" alt="logo" class="main-logo">
+            <img src="{{ asset('img/clinics-logo.png') }}" alt="logo" class="main-logo">
             </a>
         </li>
         <li class="c-sidebar-nav-item-header">
