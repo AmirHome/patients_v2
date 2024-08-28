@@ -62,13 +62,13 @@
 
 <div class="container">
     <div class="header">
-        <img src="{{url('/').'img/clinics-turmeda-mail.png'}}" alt="Turmeda Logo">
+        <img src="{{url('/').'/img/turmeda-mail-logo.png'}}" alt="Turmeda Logo">
     </div>
 
     <div class="content">
         <p>Translator Bilgilendirme-Dosyalar Mevcuttur</p>
-        <p>Dosyalar Mevcuttur linke tıklayarak indirebilirsiniz </p>
-        <p><a href="{{$data['link']}}">https://patients.clinics.com.tr/staffView/translator/9798/e21cece511f43a5cb18d4932429915ed</a></p>
+        <p>Dosyalar mevcuttur aşağıdaki sayfaya yönlendire tıklayarak sayfaya gidip indirebilirsiniz </p>
+        <p><a href="{{$data['link']}}">Sayfaya Yönlendir</a></p>
     </div>
 
     <div class="footer">

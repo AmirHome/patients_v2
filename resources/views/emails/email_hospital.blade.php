@@ -63,7 +63,7 @@
 
 <div class="container">
     <div class="header">
-        <img src="{{url('/').'img/clinics-turmeda-mail.png'}}" alt="Turmeda Logo">
+        <img src="{{url('/').'/img/turmeda-mail-logo.png'}}" alt="Turmeda Logo">
     </div>
 
     <div class="content">
