@@ -185,4 +185,23 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        $relatedCount = 0;
+        static ::deleting(function ($user) use (&$relatedCount) {
+            $relatedCount += Patient::where('user_id', $user->id)->count();
+            $relatedCount += TravelTreatmentActivity::where('user_id', $user->id)->count();
+            $relatedCount += Activity::where('user_id', $user->id)->count();
+            $relatedCount += CrmCustomer::where('user_id', $user->id)->count();
+            $relatedCount += CrmDocument::where('user_id', $user->id)->count();
+            $relatedCount += Task::where('user_id', $user->id)->count();
+            $relatedCount += $user->userUserAlerts()->count();
+
+            if ($relatedCount > 0) {
+                throw new \Exception('Cannot delete this user because it is referenced by other records.');
+            }
+        });
+    }
 }

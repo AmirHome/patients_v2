@@ -180,21 +180,25 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->delete();
-
-        return back();
-    }
-
-    public function massDestroy(MassDestroyUserRequest $request)
-    {
-        $users = User::find(request('ids'));
-
-        foreach ($users as $user) {
+        try {
             $user->delete();
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error: ' . $e->getMessage());
         }
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return back()->with('success', trans('global.success_Create_Message'));
     }
+
+    // public function massDestroy(MassDestroyUserRequest $request)
+    // {
+    //     $users = User::find(request('ids'));
+
+    //     foreach ($users as $user) {
+    //         $user->delete();
+    //     }
+
+    //     return response(null, Response::HTTP_NO_CONTENT);
+    // }
 
     public function storeCKEditorImages(Request $request)
     {
