@@ -94,13 +94,19 @@ class FaqCategoryController extends Controller
     {
         abort_if(Gate::denies('faq_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $faqCategory->delete();
+        try {
+            $faqCategory->delete();
+        } catch (\Exception $e) {
+            return back()->withError($e->getMessage());
+        }
 
-        return back();
+        return back()->with('success', trans('global.success_Create_Message'));
     }
 
     public function massDestroy(MassDestroyFaqCategoryRequest $request)
     {
+        abort(404);
+
         $faqCategories = FaqCategory::find(request('ids'));
 
         foreach ($faqCategories as $faqCategory) {

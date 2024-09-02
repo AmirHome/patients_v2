@@ -189,16 +189,17 @@ class UsersController extends Controller
         return back()->with('success', trans('global.success_Create_Message'));
     }
 
-    // public function massDestroy(MassDestroyUserRequest $request)
-    // {
-    //     $users = User::find(request('ids'));
+    public function massDestroy(MassDestroyUserRequest $request)
+    {
+        abort(404);
+        $users = User::find(request('ids'));
 
-    //     foreach ($users as $user) {
-    //         $user->delete();
-    //     }
+        foreach ($users as $user) {
+            $user->delete();
+        }
 
-    //     return response(null, Response::HTTP_NO_CONTENT);
-    // }
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 
     public function storeCKEditorImages(Request $request)
     {
