@@ -132,7 +132,7 @@ class CrmCustomerController extends Controller
 
         $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.crmCustomers.create', compact('campaigns', 'cities', 'statuses', 'users'));
     }
@@ -154,7 +154,7 @@ class CrmCustomerController extends Controller
 
         $campaigns = CampaignOrg::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $crmCustomer->load('status', 'city', 'campaign', 'user');
 

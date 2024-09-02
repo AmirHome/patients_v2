@@ -163,7 +163,7 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -197,7 +197,7 @@ class PatientController extends Controller
     {
         abort_if(Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

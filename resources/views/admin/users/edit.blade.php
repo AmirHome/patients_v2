@@ -116,6 +116,22 @@
                             <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
                         </div>
                     </div>
+                    {{-- is_active tinyint field 0 inactive 1 active --}}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="is_active">Activate User</label>
+                            <select class="form-control {{ $errors->has('is_active') ? 'is-invalid' : '' }}" name="is_active" id="is_active">
+                                <option value="1" {{ old('is_active', $user->is_active) == 1 ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ old('is_active', $user->is_active) == 0 ? 'selected' : '' }}>Inactive</option>                              
+                            </select>
+                            @if ($errors->has('is_active'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('is_active') }}
+                                </div>
+                            @endif
+                            <span class="help-block"></span>
+                        </div>
+                    </div>                                
 
                 </div>
                 <div class="row">

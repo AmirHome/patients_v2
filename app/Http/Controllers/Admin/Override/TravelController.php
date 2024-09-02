@@ -213,7 +213,7 @@ class TravelController extends ParentController
     public function edit(Travel $travel)
     {
         abort_if(Gate::denies('travel_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        // abort_if(Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('patient_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $patients = Patient::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -227,8 +227,7 @@ class TravelController extends ParentController
 
         $notify_hospitals = TravelHospital::pluck('title', 'id');
 
-
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        //$users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $offices = Office::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

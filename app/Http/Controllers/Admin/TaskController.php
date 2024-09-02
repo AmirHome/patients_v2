@@ -96,9 +96,9 @@ class TaskController extends Controller
 
         $statuses = TaskStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assigned_tos = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.tasks.create', compact('assigned_tos', 'statuses', 'users'));
     }
@@ -155,9 +155,9 @@ class TaskController extends Controller
 
         $statuses = TaskStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assigned_tos = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assigned_tos = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $task->load('status', 'assigned_to', 'user');
 

@@ -89,7 +89,7 @@ class ExpenseController extends Controller
 
         $patients = Patient::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $departmants = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -111,7 +111,7 @@ class ExpenseController extends Controller
 
         $patients = Patient::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::isActive()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $departmants = Department::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

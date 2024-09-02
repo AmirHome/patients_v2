@@ -71,7 +71,8 @@ class User extends Authenticatable implements HasMedia
         'job_type',
         'can_see_prices',
         'can_set_prices',
-        'is_super',
+        // 'is_super',
+        'is_active',
         'remember_token',
         'email_verified_at',
         'created_at',
@@ -82,6 +83,12 @@ class User extends Authenticatable implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    // is_active filter all users with is_active = 0
+    public function scopeIsActive($query)
+    {
+        return $query->where('is_active', 1);
     }
 
     public function getIsAdminAttribute()
@@ -189,6 +196,11 @@ class User extends Authenticatable implements HasMedia
     public static function boot()
     {
         parent::boot();
+
+        // static::addGlobalScope('isActive', function ($query) {
+        //     $query->where('is_active', 1);
+        // });
+
         $relatedCount = 0;
         static ::deleting(function ($user) use (&$relatedCount) {
             $relatedCount += Patient::where('user_id', $user->id)->count();

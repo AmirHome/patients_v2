@@ -64,7 +64,7 @@ class UserAlertsController extends Controller
         }
 
         
-        $users = User::pluck('name', 'id');
+        $users = User::isActive()->pluck('name', 'id');
 
         return view('admin.userAlerts.index', compact('users'));
     }
@@ -73,7 +73,7 @@ class UserAlertsController extends Controller
     {
         abort_if(Gate::denies('user_alert_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id');
+        $users = User::isActive()->pluck('name', 'id');
 
         return view('admin.userAlerts.create', compact('users'));
     }
