@@ -107,7 +107,7 @@
                 { data: 'patient_name', name: 'patient.name' },
                 { data: 'patient_phone', name: 'patient.phone' },
                 { data: 'hospital_name', name: 'hospital.name' },
-                { data: 'group_name', name: 'emergency',visible: false },
+                { data: 'group_name', name: 'group_name',visible: false },
                 { data: 'department_name', name: 'department.name' },
                 { data: 'last_status_title', name: 'last_status.title' },
                 { data: 'created_at', name: 'created_at' },
