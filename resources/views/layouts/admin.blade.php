@@ -439,21 +439,28 @@
                                             }
                                         };
 
-                                        document.addEventListener('DOMContentLoaded', function() {
+                                    document.addEventListener('DOMContentLoaded', function() {
                                             var urlParams = new URLSearchParams(window.location.search);
-                                            var selectedFlagElement = document.getElementById('selectedFlag');
 
                                             if (urlParams.has('change_language')) {
                                                 var selectedLanguage = urlParams.get('change_language');
+                                                localStorage.setItem('language', selectedLanguage);
 
                                                 if (selectedLanguage === 'tr') {
-                                                    selectedFlagElement.innerHTML = document.getElementById('TrFlag').outerHTML;
+                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
                                                 } else if (selectedLanguage === 'en') {
-                                                    selectedFlagElement.innerHTML = document.getElementById('EnFlag').outerHTML;
+                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
+                                                }
+                                                window.history.replaceState(null, '', window.location.pathname);
+                                            } else {
+                                                var storedLanguage = localStorage.getItem('language');
+                                                if (storedLanguage === 'tr') {
+                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
+                                                } else if (storedLanguage === 'en') {
+                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
                                                 }
                                             }
                                         });
-
 
                                         //regex
                                         const phoneInput = document.getElementById('phone');
