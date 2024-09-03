@@ -32,8 +32,8 @@
 
             <div class="row">
             <div class="col-md-6">
-            <div class="form-group">
-                <label class="required" for="question">{{ trans('cruds.faqQuestion.fields.question') }}</label>
+            <div class="form-group mt-4">
+                <label class="required mt-2" for="question">{{ trans('cruds.faqQuestion.fields.question') }}</label>
                 <textarea class="form-control {{ $errors->has('question') ? 'is-invalid' : '' }}" name="question" id="question" required>{{ old('question', $faqQuestion->question) }}</textarea>
                 @if($errors->has('question'))
                     <div class="invalid-feedback">
@@ -45,8 +45,8 @@
             </div>
      
             <div class="col-md-6">
-            <div class="form-group">
-                <label for="answer">{{ trans('cruds.faqQuestion.fields.answer') }}</label>
+            <div class="form-group mt-2">
+                <label  for="answer">{{ trans('cruds.faqQuestion.fields.answer') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('answer') ? 'is-invalid' : '' }}"  name="answer" id="answer">{!! old('answer', $faqQuestion->answer) !!}</textarea>
                 @if($errors->has('answer'))
                     <div class="invalid-feedback">

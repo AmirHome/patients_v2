@@ -835,6 +835,7 @@ return [
         'patient'                        => 'Hasta',
         'patient_helper'                 => ' ',
         'group'                          => 'Grup',
+        'patient_filter_title'           => 'Vaka Filtresi',
         'patient_code'                   => 'Hasta Kodu',
         'patient_name'                   => 'Hasta Adı',
         'gender'                         => 'Cinsiyet',
