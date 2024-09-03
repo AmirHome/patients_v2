@@ -34,11 +34,19 @@
             var rowId = button.data('id') ?? 0;
 
             $('#delete_modal_faq-categories').on('click', 'button.submit[type="button"]', function() {
-                // get form in this div
+                var $this = $(this);
+
+                $this.prop('disabled', true);
+
                 var form =  $('#delete_modal_faq-categories').find('form');
                 
                 form.attr('action', form.attr('action').replace('/0', '/' + rowId));
+
                 form.submit();
+
+                setTimeout(function() {
+                    $this.prop('disabled', false);
+                }, 2000);
             });
         });
     </script>

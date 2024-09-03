@@ -395,9 +395,6 @@
                                             $.fn.dataTable.ext.classes.sPageButton = '';
                                         });
 
-
-
-
                                         $(document).ready(function() {
 
                                             $(".notifications-menu").on('click', function() {
@@ -492,10 +489,19 @@
                                             });
                                         }
 
-             
-                                    </script>
-
-                                    @yield('scripts')
+                document.addEventListener('DOMContentLoaded', function() {
+                        const submitButtons = document.querySelectorAll('button[type="submit"]');
+                        submitButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                if (!button.disabled) {
+                                    button.disabled = true;
+                                    button.form.submit(); 
+                                }
+                            });
+                        });
+                    });
+          </script>
+        @yield('scripts')
 </body>
 
 </html>

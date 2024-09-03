@@ -29,15 +29,25 @@
 @section('scripts')
 @parent
     <script>
-        $('#delete_modal_roles').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var rowId = button.data('id') ?? 0;
+    $('#delete_modal_roles').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        var rowId = button.data('id') ?? 0;
 
-            $('#delete_modal_roles').on('click', 'button.submit[type="button"]', function() {
-                var form = $('#delete_modal_roles').find('form');
-                form.attr('action', form.attr('action').replace('/0', '/' + rowId));
-                form.submit();
-            });
+        $('#delete_modal_roles').on('click', 'button.submit[type="button"]', function() {
+            var $this = $(this);
+
+            $this.prop('disabled', true);
+
+            var form = $('#delete_modal_roles').find('form');
+
+            form.attr('action', form.attr('action').replace('/0', '/' + rowId));
+
+            form.submit();
+
+            setTimeout(function() {
+                $this.prop('disabled', false);
+            }, 2000);
         });
+    });
     </script>
 @endsection
