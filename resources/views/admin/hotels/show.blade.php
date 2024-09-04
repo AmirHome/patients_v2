@@ -2,6 +2,14 @@
 @section('content')
 
 <div class="container">
+  <div class="card-header d-flex justify-content-end align-items-end">
+    <div class="form-group mb-0">
+        <a class="btn btn-default" href="{{ route('admin.hotels.index') }}">
+            {{ trans('global.back_to_list') }}
+        </a>
+    </div>
+</div>
+
     <div class="hotel-header">
         <h1 class="hotel-name">{{ $hotel->name }}</h1>
         <p class="hotel-location">{{ $hotel->city->name ?? '' }}, {{ $hotel->country->name ?? '' }}</p>
@@ -31,15 +39,10 @@
     </div>
 
     <div class="hotel-details">
-        <h2>{{ trans('cruds.hotel.fields.location') }} {{ $hotel->location }},</h2>
-        <p><strong>{{ trans('cruds.hotel.fields.price') }}:</strong> {{ $hotel->price }} €</p>
+        <h2 class="pt-2">{{ trans('cruds.hotel.fields.location') }} {{ $hotel->location }},</h2>
+        <p class="pt-3"><strong>{{ trans('cruds.hotel.fields.price') }}:</strong> {{ $hotel->price }} €</p>
     </div>
 
-    <div class="back-to-list mt-5">
-        <a class="btn btn-primary" href="{{ route('admin.hotels.index') }}">
-            {{ trans('global.back_to_list') }}
-        </a>
-    </div>
 </div>
 
 <style>
@@ -61,7 +64,7 @@
 
     .hotel-location {
         font-size: 1.2rem;
-        color: #676262;
+        color: #646161;
     }
 
     .hotel-images {

@@ -1,4 +1,3 @@
-<!-- GUIDE Modal Body -->
 <div class="modal fade" id="delete_modal_expenses-incomes" tabindex="-1" role="dialog"
     aria-labelledby="expensesIncomesModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -17,7 +16,7 @@
                         </button>
                     </div>
                     <div class="form-group" style="padding-left:0px;">
-                        <button class="btn-yes btn btn-xs  submit" type="button">{{ trans('global.yes') }}</button>
+                        <button class="btn-yes btn btn-xs submit" type="button">{{ trans('global.yes') }}</button>
                     </div>
                 </div>                
             </form>
@@ -25,10 +24,28 @@
     </div>
 </div>
 
-
 @section('scripts')
 @parent
     <script>
- 
+        $('#delete_modal_expenses-incomes').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var rowId = button.data('id') ?? 0;
+
+            $('#delete_modal_expenses-incomes').on('click', 'button.submit[type="button"]', function() {
+                var $this = $(this);
+
+                $this.prop('disabled', true);
+
+                var form = $('#delete_modal_expenses-incomes').find('form');
+                
+                form.attr('action', form.attr('action').replace('/0', '/' + rowId));
+                
+                form.submit();
+
+                setTimeout(function() {
+                    $this.prop('disabled', false);
+                }, 2000);
+            });
+        });
     </script>
 @endsection
