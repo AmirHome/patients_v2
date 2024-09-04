@@ -63,7 +63,7 @@ return [
         'patient_photos' => [
             'driver' => 'local',
             'root' => storage_path('app/public/uploads/patient_photos'),
-            'url' => env('APP_URL').'/uploads/patient_photos',
+            'url' => env('APP_URL').'/storage/uploads/patient_photos',
             'visibility' => 'public',
             'throw' => false,
         ],
