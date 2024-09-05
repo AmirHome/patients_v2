@@ -831,6 +831,7 @@ return [
         'title'          => 'Travels',
         'title_singular' => 'Travel',
         'travel_edit' => 'Travel Edit',
+        'title_list'    => 'Travel List',
          'fields'         => [
             'id'                             => 'ID',
             'id_helper'                      => ' ',

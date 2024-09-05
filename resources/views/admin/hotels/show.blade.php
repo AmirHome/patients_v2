@@ -16,7 +16,13 @@
     </div>
     <div id="hotelCarousel" class="carousel slide hotel-images" data-ride="carousel">
         <div class="carousel-inner">
-@forelse($hotel->photos as $key => $media)
+               <div class="carousel-item active">
+                    <img src="https://picsum.photos/id/237/200/300" class="img-fluid d-block w-100" alt="Hotel Image">
+                </div>   
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/id/16/400/300" class="img-fluid d-block w-100" alt="Hotel Image">
+                </div>
+{{-- @forelse($hotel->photos as $key => $media)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <img src="{{ $media->getUrl() }}" class="d-block w-100" alt="Hotel Image {{ $key + 1 }}">
                 </div>
@@ -26,7 +32,7 @@
                      <img src="{{ asset('img/img-not-found.png') }}" class="d-block w-100" alt="Hotel Image">
                    </div>
                 </div>
-            @endforelse
+            @endforelse --}}
         </div>
         <a class="carousel-control-prev" href="#hotelCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

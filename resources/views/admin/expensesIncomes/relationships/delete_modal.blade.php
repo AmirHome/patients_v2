@@ -1,8 +1,8 @@
 <div class="modal fade" id="delete_modal_expenses-incomes" tabindex="-1" role="dialog"
-    aria-labelledby="expensesIncomesModalLabel" aria-hidden="true">
+    aria-labelledby="customerDocumentCreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="margin-top:30vh;">
-            <form action="{{ route('admin.doctors.destroy', [0]) }}" method="POST">
+            <form action="{{ route('admin.expensesIncomes.destroy', [0]) }}" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="card-header mt-2" style="font-size: 1.2rem;">{{ trans('cruds.travel.fields.are_you_sure_you_want_to_delete') }}</div>
