@@ -115,6 +115,7 @@
                                                 @endif
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
+                                                <div class="notification-title" style="background-color: #009ef7; color: white; padding: 10px 20px; font-weight: 700; margin-top: -8px; border-top-left-radius: 6px; border-top-right-radius: 6px;"> Bildirimler </div>
                                                 @if (count($alerts = \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at', 'ASC')->get()->reverse()) > 0)
                                                 @foreach ($alerts as $alert)
                                                 <div class="dropdown-item">

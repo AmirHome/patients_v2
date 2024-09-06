@@ -15,14 +15,8 @@
         <p class="hotel-location">{{ $hotel->city->name ?? '' }}, {{ $hotel->country->name ?? '' }}</p>
     </div>
     <div id="hotelCarousel" class="carousel slide hotel-images" data-ride="carousel">
-        <div class="carousel-inner">
-               {{-- <div class="carousel-item active">
-                    <img src="https://picsum.photos/id/237/200/300" class="img-fluid d-block w-100" alt="Hotel Image">
-                </div>   
-                <div class="carousel-item">
-                    <img src="https://picsum.photos/id/16/400/300" class="img-fluid d-block w-100" alt="Hotel Image">
-                </div> --}}
-@forelse($hotel->photos as $key => $media)
+         <div class="carousel-inner">
+           @forelse($hotel->photos as $key => $media)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                     <img src="{{ $media->getUrl() }}" class="d-block w-100" alt="Hotel Image {{ $key + 1 }}">
                 </div>
@@ -87,14 +81,30 @@
     }
 
     .carousel-inner {
-        min-height: 400px; 
+        min-height: 400px;
         width: 100%; 
     }
 
     .carousel-inner img, .no-image-placeholder {
-        min-height: 400px;
-        object-fit: cover;
-        background-color: rgb(41, 41, 41); 
+        height: 400px;
+        object-fit: contain;
     }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-image: none !important;
+    }
+  .carousel-control-prev::before {
+        content: '◁';
+        color: #646161;
+        font-size: 1rem;
+    }
+
+    .carousel-control-next::before {
+        content: '▷';
+        color: #646161;
+        font-size: 1rem;
+    }
+
 </style>
 @endsection
