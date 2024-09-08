@@ -265,28 +265,32 @@ class TravelController extends ParentController
         $travel->update($request->all());
         $travel->notify_hospitals()->sync($request->input('notify_hospitals', []));
         $patient = Patient::find($travel->patient_id);
+        //dd($patient->passport_image->file_name, $patient->passport_image->delete());
         $patient->update($request->all());
+
+        //dd($request->all(), !$patient->photo , $request->input('photo') !== $patient->photo->file_name);
 
         if ($request->input('photo', false)) {
             if (!$patient->photo || $request->input('photo') !== $patient->photo->file_name) {
                 if ($patient->photo) {
-                    $patient->photo->delete();
+                    //$patient->photo->delete();
                 }
                 $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo', 'patient_photos');
             }
         } elseif ($patient->photo) {
-            $patient->photo->delete();
+            //$patient->photo->delete();
         }
 
         if ($request->input('passport_image', false)) {
             if (!$patient->passport_image || $request->input('passport_image') !== $patient->passport_image->file_name) {
                 if ($patient->passport_image) {
-                    $patient->passport_image->delete();
+                    // dd($patient->passport_image);
+                    //$patient->passport_image->delete();
                 }
                 $patient->addMedia(storage_path('tmp/uploads/' . basename($request->input('passport_image'))))->toMediaCollection('passport_image', 'patient_photos');
             }
         } elseif ($patient->passport_image) {
-            $patient->passport_image->delete();
+            //$patient->passport_image->delete();
         }
 
         return redirect()->back();
