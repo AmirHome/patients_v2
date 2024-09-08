@@ -829,6 +829,8 @@ return [
 'travel' => [
     'title'          => 'Vakalar',
     'title_singular' => 'Vaka',
+    'travel_edit' => 'Vaka Düzenle',
+    'title_list'    => 'Vaka Listesi',
     'fields'         => [
         'id'                             => 'ID',
         'id_helper'                      => ' ',

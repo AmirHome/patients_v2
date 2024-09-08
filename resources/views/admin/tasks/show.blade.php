@@ -108,7 +108,9 @@
                         </div>
                         <span class="show-header-desc-text">
                             @if($task->attachment)
+                                <a href="{{$task->attachment->getUrl()}}" target="_blank"> 
                                 {{ trans('global.view_file') }}
+                                </a>
                             @endif
                         </span>
                     </div>

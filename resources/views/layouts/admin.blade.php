@@ -115,6 +115,7 @@
                                                 @endif
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
+                                                <div class="notification-title" style="background-color: #009ef7; color: white; padding: 10px 20px; font-weight: 700; margin-top: -8px; border-top-left-radius: 6px; border-top-right-radius: 6px;"> Bildirimler </div>
                                                 @if (count($alerts = \Auth::user()->userUserAlerts()->withPivot('read')->limit(10)->orderBy('created_at', 'ASC')->get()->reverse()) > 0)
                                                 @foreach ($alerts as $alert)
                                                 <div class="dropdown-item">
@@ -436,29 +437,37 @@
                                             }
                                         };
 
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                            var urlParams = new URLSearchParams(window.location.search);
-
-                                            if (urlParams.has('change_language')) {
-                                                var selectedLanguage = urlParams.get('change_language');
-                                                localStorage.setItem('language', selectedLanguage);
-
-                                                if (selectedLanguage === 'tr') {
-                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
-                                                } else if (selectedLanguage === 'en') {
-                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
-                                                }
-                                                window.history.replaceState(null, '', window.location.pathname);
-                                            } else {
-                                                var storedLanguage = localStorage.getItem('language');
-                                                if (storedLanguage === 'tr') {
-                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
-                                                } else if (storedLanguage === 'en') {
-                                                    document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
-                                                }
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var urlParams = new URLSearchParams(window.location.search);
+                                    if (urlParams.has('change_language')) {
+                                        var selectedLanguage = urlParams.get('change_language');
+                                        localStorage.setItem('language', selectedLanguage);
+                                        if (selectedLanguage === 'tr') {
+                                            document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
+                                        } else if (selectedLanguage === 'en') {
+                                            document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
+                                        }
+                                        window.history.replaceState(null, '', window.location.pathname); 
+                                    } else {
+                                        var storedLanguage = localStorage.getItem('language');
+                                        if (storedLanguage) {
+                                            if (storedLanguage === 'tr') {
+                                                document.getElementById('selectedFlag').innerHTML = document.getElementById('TrFlag').outerHTML;
+                                            } else if (storedLanguage === 'en') {
+                                                document.getElementById('selectedFlag').innerHTML = document.getElementById('EnFlag').outerHTML;
                                             }
-                                        });
-
+                                        } else {
+                                            var userLanguage = navigator.language || navigator.userLanguage; 
+                                            if (userLanguage.startsWith('tr')) {
+                                                window.location.href = "{{ url()->current() }}?change_language=tr";
+                                            } else if (userLanguage.startsWith('en')) {
+                                                window.location.href = "{{ url()->current() }}?change_language=en";
+                                            } else {
+                                                window.location.href = "{{ url()->current() }}?change_language=en";
+                                            }
+                                        }
+                                    }
+                                });
                                         //regex
                                         const phoneInput = document.getElementById('phone');
                                         if (phoneInput) {
