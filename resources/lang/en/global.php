@@ -329,4 +329,8 @@ return [
     'success_Delete_Message'        => 'Deleted Successfully.',
     'hide_filter'                   => 'Hide Filter',
     'more_filter'                  => 'More Filter',
+    'sign_In_Message'              => 'Sign in to your account',
+    'dont_Account'                => 'Don\'t have an account?',
+    'hi_Welcome'                  => 'Hi, Welcome back!',
+    'more_Effectively'            => 'More effectively with optimized workflows.',
 ];

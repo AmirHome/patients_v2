@@ -327,9 +327,12 @@ return [
     'messenger'                      => 'Mesaj Gönderici',
     'success_Create_Message'         => 'Başarılı Bir Şekilde Oluşturuldu.',
     'success_Edit_Message'           => 'Başarılı Bir Şekilde Düzenlendi.',
-    'success_Delete_Message'        => 'Başarılı Bir Şekilde Silindi.',
-    'hide_filter'                   => 'Filtreyi Gizle',
-    'more_filter'                  => 'Daha Fazla Filtre',
-
+    'success_Delete_Message'         => 'Başarılı Bir Şekilde Silindi.',
+    'hide_filter'                    => 'Filtreyi Gizle',
+    'more_filter'                    => 'Daha Fazla Filtre',
+    'sign_In_Message'                => 'Hesabınızda oturum açın',
+    'dont_Account'                   => 'Hesabınız yok mu?',
+    'hi_Welcome'                     => 'Merhaba, tekrar hoş geldiniz',
+    'more_Effectively'               => 'Optimize edilmiş iş akışlarıyla daha etkili.',
 
 ];
