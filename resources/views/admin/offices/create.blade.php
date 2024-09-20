@@ -12,7 +12,8 @@
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                         {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.office.fields.name_helper') }}</span>
@@ -24,7 +25,7 @@
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text"   name="phone" id="phone" value="{{ old('phone', '') }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('phone') }}
+                        {{ str_replace('phone', trans('global.phone'), $errors->first('phone')) }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.office.fields.phone_helper') }}</span>

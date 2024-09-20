@@ -334,5 +334,13 @@ return [
     'dont_Account'                   => 'Hesabınız yok mu?',
     'hi_Welcome'                     => 'Merhaba, tekrar hoş geldiniz',
     'more_Effectively'               => 'Optimize edilmiş iş akışlarıyla daha etkili.',
+    'travels_page'                   => 'Hasta Sayfası',
+    'upload-file'                    => 'Dosya Yükle',
+    'email'                          => 'Email',
+    'name'                           => 'İsim',
+    'middle_name'                    => 'İkinci İsim',
+'surname'                        => 'Soy İsim',
+  'passport_no'                     => 'Passport Numarası',
+  'phone'                          => 'Telefon',
 
 ];

@@ -333,4 +333,12 @@ return [
     'dont_Account'                => 'Don\'t have an account?',
     'hi_Welcome'                  => 'Hi, Welcome back!',
     'more_Effectively'            => 'More effectively with optimized workflows.',
+        'travels_page'                   => 'Travels Page',
+        'upload-file'                    => 'Upload File',
+        'email'                          => 'Email',
+        'name'                           => 'Name',
+        'middle_name'                    => 'Middle Name',
+        'surname'                        => 'Surname',
+        'passport_no'                     => 'Passport Number',
+        'phone'                          => 'Phone',
 ];

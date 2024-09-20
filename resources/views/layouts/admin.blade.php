@@ -41,7 +41,7 @@
             </button>
             <ul class="c-header-nav ml-auto">
                 <button class="btn btn-outline-secondary" type="button" onclick="window.location.href='{{ route('admin.travels.index') }}'">
-                    Travels Page
+                 {{ trans('global.travels_page') }}
                 </button>
                 @if (count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none ">

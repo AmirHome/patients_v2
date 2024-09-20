@@ -18,7 +18,7 @@
 
                         @if($errors->has('email'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
                             </div>
                         @endif
                     </div>

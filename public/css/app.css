@@ -1936,3 +1936,8 @@ tr>td>.fc-day-grid-event {
     min-height: 240px !important;
  }
 
+
+input.form-control.is-invalid {
+    padding-right: 0.8rem !important;
+
+}

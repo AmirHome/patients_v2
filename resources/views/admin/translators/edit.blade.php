@@ -29,7 +29,7 @@
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"  name="email" id="email" value="{{ old('email', $translator->email) }}" required>
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
+                        {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.translator.fields.email_helper') }}</span>
@@ -43,7 +43,7 @@
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"  type="text" name="phone" id="phone" value="{{ old('phone', $translator->phone) }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('phone') }}
+                        {{ str_replace('phone', trans('global.phone'), $errors->first('phone')) }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.translator.fields.phone_helper') }}</span>

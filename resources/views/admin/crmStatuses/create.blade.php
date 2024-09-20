@@ -19,7 +19,8 @@
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"  name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                         {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.crmStatus.fields.name_helper') }}</span>
