@@ -1217,5 +1217,5 @@ return [
      'create_users' => 'Create Users',
      'repeat_new' => 'Repeat New ',
      'new' => 'New',
-],
+  ],
 ];

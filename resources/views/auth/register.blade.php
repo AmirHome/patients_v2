@@ -24,7 +24,8 @@
                         <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus placeholder="{{ trans('global.user_name') }}" value="{{ old('name', null) }}">
                         @if($errors->has('name'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                 {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+
                             </div>
                         @endif
                     </div>
@@ -38,7 +39,7 @@
                         <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
                         @if($errors->has('email'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
                             </div>
                         @endif
                     </div>

@@ -18,7 +18,8 @@
                         <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', auth()->user()->name) }}" required>
                         @if($errors->has('name'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+                                 {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+
                             </div>
                         @endif
                     </div>
@@ -29,7 +30,7 @@
                         <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', auth()->user()->email) }}" required>
                         @if($errors->has('email'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
                             </div>
                         @endif
                     </div>

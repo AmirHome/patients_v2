@@ -97,7 +97,8 @@
                                                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $patient->name ?? null) }}" required>
                                                 @if ($errors->has('name'))
                                                     <div class="invalid-feedback">
-                                                        {{ $errors->first('name') }}
+                                                         {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+
                                                     </div>
                                                 @endif
                                                 <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
@@ -207,7 +208,7 @@
                                                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone ?? null) }}" required>
                                                 @if ($errors->has('phone'))
                                                     <div class="invalid-feedback">
-                                                        {{ $errors->first('phone') }}
+                                                        {{ str_replace('phone', trans('global.phone'), $errors->first('phone')) }}
                                                     </div>
                                                 @endif
                                                 <span class="help-block">{{ trans('cruds.patient.fields.phone_helper') }}</span>
@@ -219,7 +220,7 @@
                                                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $patient->email ?? null) }}">
                                                 @if ($errors->has('email'))
                                                     <div class="invalid-feedback">
-                                                        {{ $errors->first('email') }}
+                                                        {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
                                                     </div>
                                                 @endif
                                                 <span class="help-block">{{ trans('cruds.patient.fields.email_helper') }}</span>
@@ -515,7 +516,8 @@
                                                 <input class="form-control {{ $errors->has('passport_no') ? 'is-invalid' : '' }}" type="text" name="passport_no" id="passport_no" value="{{ old('passport_no', $patient->passport_no ?? null) }}">
                                                 @if ($errors->has('passport_no'))
                                                     <div class="invalid-feedback">
-                                                        {{ $errors->first('passport_no') }}
+                                                        {{ str_replace('passport_no', trans('global.passport_no'), $errors->first('passport_no')) }}
+
                                                     </div>
                                                 @endif
                                                 <span class="help-block">{{ trans('cruds.patient.fields.passport_no_helper') }}</span>
@@ -630,7 +632,7 @@
                                                 <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name ?? null) }}">
                                                 @if ($errors->has('middle_name'))
                                                     <div class="invalid-feedback">
-                                                        {{ $errors->first('middle_name') }}
+                                                        {{ str_replace('middle_name', trans('global.middle_name'), $errors->first('middle_name')) }}
                                                     </div>
                                                 @endif
                                                 <span class="help-block">{{ trans('cruds.patient.fields.middle_name_helper') }}</span>
