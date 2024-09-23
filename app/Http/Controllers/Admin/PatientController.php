@@ -176,6 +176,9 @@ class PatientController extends Controller
 
     public function store(StorePatientRequest $request)
     {
+        $code = generateCode($request->country_id);
+        $request->merge(['code' => $code]);
+        
         $patient = Patient::create($request->all());
 
         if ($request->input('photo', false)) {
@@ -212,6 +215,9 @@ class PatientController extends Controller
 
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
+        // $code = generateCode($request->country_id);
+        // $request->merge(['code' => $code]);
+
         $patient->update($request->all());
 
         if ($request->input('photo', false)) {

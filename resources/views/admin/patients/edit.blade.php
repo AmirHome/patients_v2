@@ -259,38 +259,8 @@
         <div class="card">
             <div class="card-body">
                     <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="user_id">{{ trans('cruds.patient.fields.user') }}</label>
-                            <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" >
-                                @foreach($users as $id => $entry)
-                                    <option value="{{ $id }}" {{ (old('user_id') ? old('user_id') : $patient->user->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('user'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('user') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.patient.fields.user_helper') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label  for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
-                            <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" >
-                                @foreach($offices as $id => $entry)
-                                    <option value="{{ $id }}" {{ (old('office_id') ? old('office_id') : $patient->office->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('office'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('office') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
-                        </div>
-                    </div>
+
+{{-- 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="city_id">{{ trans('cruds.patient.fields.city') }}</label>
@@ -305,6 +275,24 @@
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.patient.fields.city_helper') }}</span>
+                        </div>
+                    </div> --}}
+                    <x-province-component class="col-md-6" :data="['province_id'=>$patient->city->id ?? '']" />
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label  for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
+                            <select class="form-control select2 {{ $errors->has('office') ? 'is-invalid' : '' }}" name="office_id" id="office_id" >
+                                @foreach($offices as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('office_id') ? old('office_id') : $patient->office->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('office'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('office') }}
+                                </div>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
                         </div>
                     </div>
                     <div class="col-md-6">

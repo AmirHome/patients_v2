@@ -30,7 +30,6 @@ public function rules()
                 'integer',
             ],
             'office_id' => [
-                'required',
                 'nullable',
             ],
             'city_id' => [
@@ -63,7 +62,7 @@ public function rules()
             ],
             'passport_no' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'passport_origin' => [
                 'string',
@@ -78,7 +77,7 @@ public function rules()
                 'nullable',
             ],
             'email' => [
-                'required',
+                'nullable',
             ],
             'gender' => [
                 'required',

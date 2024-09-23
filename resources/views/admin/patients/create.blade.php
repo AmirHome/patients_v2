@@ -259,22 +259,25 @@
           
             <div class="card-body">
                     <div class="row">
-                    <div class="col-md-6">
+
+                    {{-- <div class="col-md-6">
                         <div class="form-group">
-                            <label  for="user_id">{{ trans('cruds.patient.fields.user') }}</label>
-                            <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id" >
-                                @foreach($users as $id => $entry)
-                                    <option value="{{ $id }}" {{ (old('user_id') ? old('user_id') : $patient->user->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            <label  for="city_id">{{ trans('cruds.patient.fields.city') }}</label>
+                            <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" >
+                                @foreach($cities as $id => $entry)
+                                    <option value="{{ $id }}" {{ (old('city_id') ? old('city_id') : $patient->city->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('user'))
+                            @if($errors->has('city'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('user') }}
+                                    {{ $errors->first('city') }}
                                 </div>
                             @endif
-                            <span class="help-block">{{ trans('cruds.patient.fields.user_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.patient.fields.city_helper') }}</span>
                         </div>
-                    </div>
+                    </div> --}}
+                    <x-province-component class="col-md-6" :data="['province_id'=>$patient->city->id ?? '']" />
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="office_id">{{ trans('cruds.patient.fields.office') }}</label>
@@ -291,22 +294,7 @@
                             <span class="help-block">{{ trans('cruds.patient.fields.office_helper') }}</span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label  for="city_id">{{ trans('cruds.patient.fields.city') }}</label>
-                            <select class="form-control select2 {{ $errors->has('city') ? 'is-invalid' : '' }}" name="city_id" id="city_id" >
-                                @foreach($cities as $id => $entry)
-                                    <option value="{{ $id }}" {{ (old('city_id') ? old('city_id') : $patient->city->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('city'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('city') }}
-                                </div>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.patient.fields.city_helper') }}</span>
-                        </div>
-                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="citizenship">{{ trans('cruds.patient.fields.citizenship') }}</label>

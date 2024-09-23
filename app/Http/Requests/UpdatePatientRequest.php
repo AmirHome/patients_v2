@@ -31,11 +31,11 @@ public function rules()
             ],
             'office_id' => [
                 'required',
-                'integer',
+                'nullable',
             ],
             'city_id' => [
                 'required',
-                'integer',
+                'nullable',
             ],
             'name' => [
                 'string',
@@ -43,7 +43,7 @@ public function rules()
             ],
             'middle_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'surname' => [
                 'string',
@@ -51,23 +51,23 @@ public function rules()
             ],
             'mother_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'father_name' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'citizenship' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'passport_no' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'passport_origin' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'phone' => [
                 'string',
@@ -75,10 +75,10 @@ public function rules()
             ],
             'foriegn_phone' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'email' => [
-                'required',
+                'nullable',
             ],
             'gender' => [
                 'required',
@@ -89,10 +89,10 @@ public function rules()
             ],
             'birth_place' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'address' => [
-                'required',
+                'nullable',
             ],
             'weight' => [
                 'numeric',
@@ -108,7 +108,6 @@ public function rules()
             ],
             'code' => [
                 'string',
-                'required',
             ],
         ];
     }
