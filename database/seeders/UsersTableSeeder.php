@@ -31,6 +31,13 @@ class UsersTableSeeder extends Seeder
                 'is_system' => 1,
                 'is_super_admin' => (in_array($userData->id, [66]) || $userData->is_super) ? true : false, // Chat
             ])->roles()->sync((in_array($userData->id, [66]) || $userData->is_super) ? 1 : 2); // Erkan id = 66
+
+            //['role_id' => 100, 'model_type' => 'App\Models\User', 'model_id' => 77],
+            // DB::table('model_has_roles')->create([
+            //     'role_id' => (in_array($userData->id, [66]) || $userData->is_super) ? 1 : 2,
+            //     'model_type' => 'App\Models\User',
+            //     'model_id' => $userData->id,
+            // ]);
         }
 
         User::create([
@@ -75,12 +82,12 @@ class UsersTableSeeder extends Seeder
             'is_super_admin' => false,
         ])->roles()->sync(2);
 
-        DB::table('model_has_roles')->insert([
-            ['role_id' => 100, 'model_type' => 'App\Models\User', 'model_id' => 77],
-            ['role_id' => 1, 'model_type' => 'App\Models\User', 'model_id' => 2],
-            ['role_id' => 1, 'model_type' => 'App\Models\User', 'model_id' => 66],
-            ['role_id' => 2, 'model_type' => 'App\Models\User', 'model_id' => 78],
-        ]);
+        // DB::table('model_has_roles')->insert([
+        //     ['role_id' => 100, 'model_type' => 'App\Models\User', 'model_id' => 77],
+        //     ['role_id' => 1, 'model_type' => 'App\Models\User', 'model_id' => 2],
+        //     // ['role_id' => 1, 'model_type' => 'App\Models\User', 'model_id' => 66],
+        //     ['role_id' => 2, 'model_type' => 'App\Models\User', 'model_id' => 78],
+        // ]);
 
     }
 }
