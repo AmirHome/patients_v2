@@ -24,8 +24,8 @@ class Patient extends Model implements HasMedia
     ];
 
     public const GENDER_SELECT = [
-        '0' => 'women',
-        '1' => 'men',
+        '0' => 'Kadın',
+        '1' => 'Erkek',
         '2' => 'N/A',
     ];
 
