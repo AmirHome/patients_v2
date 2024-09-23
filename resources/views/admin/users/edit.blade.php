@@ -16,8 +16,7 @@
                             <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $user->name) }}" required>
                             @if ($errors->has('name'))
                                 <div class="invalid-feedback">
-                                     {{ str_replace('name', trans('global.name'), $errors->first('name')) }}
-
+                                     {{ $errors->first('name') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.name_helper') }}</span>
@@ -30,7 +29,7 @@
                             <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $user->email) }}" required>
                             @if ($errors->has('email'))
                                 <div class="invalid-feedback">
-                                    {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
+                                    {{ $errors->first('email') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
@@ -74,7 +73,7 @@
                             <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}">
                             @if ($errors->has('phone'))
                                 <div class="invalid-feedback">
-                                    {{ str_replace('phone', trans('global.phone'), $errors->first('phone')) }}
+                                    {{ $errors->first('phone') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.user.fields.phone_helper') }}</span>

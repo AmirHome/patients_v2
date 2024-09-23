@@ -31,7 +31,7 @@
                 <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"   type="text" name="email" id="email" value="{{ old('email', '') }}">
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
-                        {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
+                        {{ $errors->first('email') }}
                     </div>
                 @endif
             </div>

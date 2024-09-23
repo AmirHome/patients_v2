@@ -18,8 +18,7 @@
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Enter Name.." type="text" name="name" id="name" value="{{ old('name', $taskStatus->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
-                         {{ str_replace('name', trans('global.name'), $errors->first('name')) }}
-
+                         {{ $errors->first('name') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.taskStatus.fields.name_helper') }}</span>

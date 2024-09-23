@@ -49,7 +49,7 @@
                         <input id="email" name="email" type="text" class="form-control-input{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
                         @if($errors->has('email'))
                             <div class="invalid-feedback">
-                                {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
+                                {{ $errors->first('email') }}
                             </div>
                         @endif
                     </div>
@@ -125,7 +125,7 @@
                         <input id="email" name="email" type="text" class="form-control-input{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
                         @if($errors->has('email'))
                             <div class="invalid-feedback">
-                                {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
+                                {{ $errors->first('email') }}
                             </div>
                         @endif
                     </div>

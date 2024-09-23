@@ -15,8 +15,7 @@
                                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $patient->name) }}">
                                 @if($errors->has('name'))
                                     <div class="invalid-feedback">
-                                         {{ str_replace('name', trans('global.name'), $errors->first('name')) }}
-
+                                         {{ $errors->first('name') }}
                                     </div>
                                 @endif
                                 <span class="help-block">{{ trans('cruds.patient.fields.name_helper') }}</span>
@@ -28,7 +27,7 @@
                             <input class="form-control {{ $errors->has('middle_name') ? 'is-invalid' : '' }}" type="text" name="middle_name" id="middle_name" value="{{ old('middle_name', $patient->middle_name) }}"  >
                             @if($errors->has('middle_name'))
                                 <div class="invalid-feedback">
-                                    {{ str_replace('middle_name', trans('global.middle_name'), $errors->first('middle_name')) }}
+                                    {{ $errors->first('middle_name') }}
                                 </div>
                             @endif
                             <span class="help-block">{{ trans('cruds.patient.fields.middle_name_helper') }}</span>
@@ -97,7 +96,7 @@
                                     <input class="form-control {{ $errors->has('passport_no') ? 'is-invalid' : '' }}" type="text" name="passport_no" id="passport_no" value="{{ old('passport_no', $patient->passport_no) }}">
                                     @if($errors->has('passport_no'))
                                         <div class="invalid-feedback">
-                                            {{ str_replace('passport_no', trans('global.passport_no'), $errors->first('passport_no')) }}
+                                            {{ $errors->first('passport_no') }}
 
                                         </div>
                                     @endif
@@ -184,7 +183,7 @@
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $patient->phone) }}" >
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
-                        {{ str_replace('phone', trans('global.phone'), $errors->first('phone')) }}
+                        {{ $errors->first('phone') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.patient.fields.phone_helper') }}</span>
@@ -196,7 +195,7 @@
                                     <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $patient->email) }}">
                                     @if($errors->has('email'))
                                         <div class="invalid-feedback">
-                                            {{ str_replace('email', trans('global.email'), $errors->first('email')) }}
+                                            {{ $errors->first('email') }}
                                         </div>
                                     @endif
                                     <span class="help-block">{{ trans('cruds.patient.fields.email_helper') }}</span>
