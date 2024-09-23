@@ -193,17 +193,23 @@
                                                     </div>
                                                 </div>
                                                 @endif
-                                                @if ($errors->count() > 0)
-                                                <div class="alert alert-danger">
-                                                    <ul class="list-unstyled">
-                                                        @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                                @endif
+                                          
 
                                                 <div style="position: fixed; top: 10px;right: 0; z-index: 3000;">
+
+                                                    @if ($errors->count() > 0)
+                                                    <div class="alert alert-danger alert-dismissible fade show toast" data-autohide="true" data-delay="3000">
+                                                        <ul class="list-unstyled">
+                                                            @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }} </li>
+                                                            @endforeach
+                                                        </ul>
+                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    @endif
+
                                                     @if (session('success'))
                                                     <div class="alert alert-success alert-dismissible fade show toast" data-autohide="true" data-delay="3000">
                                                         {{ session('success') }}

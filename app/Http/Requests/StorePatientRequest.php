@@ -108,7 +108,7 @@ public function rules()
             ],
             'code' => [
                 'string',
-                'required',
+                // 'required',
             ],
         ];
     }

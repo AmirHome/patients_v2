@@ -24,7 +24,7 @@
                         <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus placeholder="{{ trans('global.user_name') }}" value="{{ old('name', null) }}">
                         @if($errors->has('name'))
                             <div class="invalid-feedback">
-                                 {{ str_replace('name', trans('global.name'), $errors>first('name')) }}
+                                 {{ str_replace('name', trans('global.name'), $errors->first('name')) }}
 
                             </div>
                         @endif
