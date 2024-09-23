@@ -79,6 +79,18 @@ public function rules()
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
+            'height' => [
+                'nullable',
+                'numeric',
+                'min:50',
+                'max:300',
+            ],
+            'weight' => [
+                'nullable',
+                'numeric',
+                'min:10',
+                'max:500',
+            ],
         ];
     }
 }
