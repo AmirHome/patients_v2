@@ -10,7 +10,7 @@ class HomeController
     public function index()
     {
         $settings1 = [
-            'chart_title'           => 'Users',
+            'chart_title'           => trans('global.users'),
             'chart_type'            => 'number_block',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\User',
@@ -48,7 +48,7 @@ class HomeController
         }
 
         $settings2 = [
-            'chart_title'           => 'Users Active',
+            'chart_title'           => trans('global.userActive'),
             'chart_type'            => 'number_block',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\User',
@@ -86,7 +86,7 @@ class HomeController
         }
 
         $settings3 = [
-            'chart_title'           => 'Patients 30D',
+            'chart_title'           => trans('global.patients30'),
             'chart_type'            => 'number_block',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Patient',
@@ -125,7 +125,7 @@ class HomeController
         }
 
         $settings4 = [
-            'chart_title'           => 'Travels 30D',
+            'chart_title'           => trans('global.travels30'),
             'chart_type'            => 'number_block',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Travel',

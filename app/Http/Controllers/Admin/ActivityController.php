@@ -156,7 +156,7 @@ class ActivityController extends Controller
                 $activity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('document_file', 'reports');
             }
         }
-        return redirect()->back()->with('success', 'Activity updated successfully');
+        return redirect()->back()->with('success', trans('global.success_Edit_Message'));
         // return redirect()->route('admin.activities.index');
     }
 

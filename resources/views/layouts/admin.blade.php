@@ -438,7 +438,8 @@
                                             const filterInputs = document.querySelectorAll('input[type="search"].form-control.form-control-sm');
                                             if (filterInputs.length > 0) {
                                                 filterInputs.forEach(function(input) {
-                                                    input.placeholder = 'Search...';
+                                                    //  input.placeholder = trans('global.search');
+                                                     input.placeholder ='Search...';
                                                 });
                                             }
                                         };

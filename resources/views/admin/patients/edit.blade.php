@@ -278,6 +278,7 @@
                         </div>
                     </div> --}}
                     <x-province-component class="col-md-6" :data="['province_id'=>$patient->city->id ?? '']" />
+                    <x-province-component class="col-md-6" :data="['province_id'=>$patient->country->id ?? '']" />
 
                     <div class="col-md-6">
                         <div class="form-group">

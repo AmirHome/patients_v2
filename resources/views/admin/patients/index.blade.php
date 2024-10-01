@@ -103,12 +103,21 @@
     ajax: "{{ route('admin.patients.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'code', name: 'code' },
+{ data: 'code', name: 'code',
+    render: function(data, type, row) {
+    return '<a class="clickable-cell" href="{{ url('admin') }}/patients/'+row.id+'/edit">'+data+'</a>';
+   }
+ },
 { data: 'name', name: 'name' },
 { data: 'gender', name: 'gender' },
 { data: 'birthday', name: 'birthday' },
 { data: 'birth_place', name: 'birth_place' },
-{ data: 'phone', name: 'phone' },
+{ data: 'phone', name: 'phone',
+                         render: function(data, type, row) {
+                        let phoneNumber = data.replace(/\D/g, ''); // Sadece rakamları alalım
+                        return '<a class="clickable-cell" href="https://api.whatsapp.com/send?phone=' + phoneNumber + '" target="_blank">' + data + '</a>';
+                    }
+ },
  { data: 'email', name: 'email' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],

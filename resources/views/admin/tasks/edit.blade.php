@@ -87,7 +87,7 @@
                             <div class="d-flex flex-wrap">
                                 @foreach (App\Models\Task::EMERGENCY_RADIO as $key => $label)
                                     <div class="form-check {{ $errors->has('emergency') ? 'is-invalid' : '' }}" style="padding-left:43px;margin-right:50px">
-                                        <input class="form-check-input radio-btn"type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', $task->emergency) === (string) $key ? 'checked' : '' }}
+                                        <input class="form-check-input radio-btn" type="radio" id="emergency_{{ $key }}" name="emergency" value="{{ $key }}" {{ old('emergency', $task->emergency) === (string) $key ? 'checked' : '' }}
                                             required>
                                         <label class="form-check-label mt-3 radio-btn-text" for="emergency_{{ $key }}" style="margin-left:9px !important">{{ $label }}</label>
                                     </div>

@@ -8,24 +8,24 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Assignee</label>
+                        <label for="">{{trans('global.assignee')}}</label>
                         <select class="form-control filter" wire:model.live="assignee" name="assignee">
-                            <option value="1" selected>Assigned to me</option>
-                            <option value="0">Owner</option>
+                            <option value="1" selected>{{trans('global.assigneeToMe')}}</option>
+                            <option value="0">{{trans('global.owner')}}</option>
                         </select>
                         <span class="text-danger">@error('Assignee'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Content</label>
-                        <input type="text" class="form-control filter" placeholder="Enter content" name="content">
+                        <label for="">{{trans('global.content')}}</label>
+                        <input type="text" class="form-control filter" name="content">
                         <span class="text-danger">@error('content'){{ $message }}@enderror</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">Status</label>
+                        <label for="">{{trans('global.status')}}</label>
                         <select class="form-control filter select2" multiple name="status_id">
                             @foreach ($statuses as $id => $status)
                             <option value="{{ $id }}" {{($id != 30 ? 'selected' : '')}}>{{ $status }}</option>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-4">
                         <button class="float-right btn btn-primary" type="button" id="form-filter-submit">
-                            Search <i class="fas fa-search"></i>
+                            {{trans('global.searchBtn')}} <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>

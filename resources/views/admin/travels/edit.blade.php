@@ -264,7 +264,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <x-reffering-type-component class="col-md-6" :data="['reffering'=>$travel->reffering, 'reffering_type'=>$travel->reffering_type]" />
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="hospital_id">{{ trans('cruds.travel.fields.winning_hospital') }}</label>
@@ -335,6 +334,7 @@
                                             </div>
                                         </div>
 
+                                        <x-reffering-type-component class="col-md-6" :data="['reffering'=>$travel->reffering, 'reffering_type'=>$travel->reffering_type]" />
 
                                     </div>
 
@@ -414,6 +414,7 @@
                                     <div class="form-group mt-3">
                                         <label for="traslators">{{ trans('cruds.travel.fields.translators') }}</label>
                                         <select class="form-control" name="translatorId">
+                                      <option value="" selected>{{ trans('cruds.travel.fields.select_translator') }}</option>
                                             @foreach ($translators ?? [] as $id => $translator)
                                                 <option value="{{ $id }}">{{ $translator }}</option>
                                             @endforeach

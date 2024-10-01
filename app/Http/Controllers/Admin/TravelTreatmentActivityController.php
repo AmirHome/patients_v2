@@ -116,7 +116,7 @@ class TravelTreatmentActivityController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $travelTreatmentActivity->id]);
         }
-        return redirect()->back()->with('success', 'Treatment Activity created successfully');
+        return redirect()->back()->with('success', trans('global.success_Create_Message'));
 
     }
 
@@ -152,7 +152,7 @@ class TravelTreatmentActivityController extends Controller
                 $travelTreatmentActivity->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('treatment_file', 'reports');
             }
         }
-        return redirect()->back()->with('success', 'Treatment Activity updated successfully');
+        return redirect()->back()->with('success', trans('global.success_Edit_Message'));
         // return redirect()->route('admin.travel-treatment-activities.index');
     }
 

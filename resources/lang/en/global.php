@@ -341,4 +341,17 @@ return [
         'surname'                        => 'Surname',
         'passport_no'                     => 'Passport Number',
         'phone'                          => 'Phone',
+      'travels30'                      => 'Travels 30 Day',
+    'patients30'                     => 'Patients 30 Day',
+    'userActive'                     => 'Users Active',
+    'users'                           => 'Users',
+    'search'                          => 'Search...',
+     'assignee'                          => 'Assignee',
+    'assigneeToMe'                          => 'Assignee to me',
+        'owner'                             => 'Owner',
+    'content'                        => 'Content',
+    'searchBtn'                      => 'Search',
+    'emergency'                      => 'Emergency',
+
+
 ];

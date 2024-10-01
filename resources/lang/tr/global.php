@@ -339,8 +339,20 @@ return [
     'email'                          => 'Email',
     'name'                           => 'İsim',
     'middle_name'                    => 'İkinci İsim',
-'surname'                        => 'Soy İsim',
-  'passport_no'                     => 'Passport Numarası',
-  'phone'                          => 'Telefon',
+    'surname'                        => 'Soy İsim',
+    'passport_no'                     => 'Passport Numarası',
+    'phone'                          => 'Telefon',
+    'travels30'                      => 'Vaka 30 Gün',
+    'patients30'                     => 'Hasta 30 Gün',
+    'userActive'                     => 'Aktif Kullanıcılar',
+    'users'                           => 'Kullanıcılar',
+    'search'                          => 'Ara...',
+    'assignee'                          => 'Atama',
+    'assigneeToMe'                     => 'Bana Atananlar',
+    'owner'                             => 'Atadıklarım',
+    'content'                        => 'İçerik',
+    'searchBtn'                      => 'Ara',
+    'emergency'                      => 'Acil',
+
 
 ];

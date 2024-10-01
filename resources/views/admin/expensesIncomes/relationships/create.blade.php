@@ -2,7 +2,7 @@
 
 <div class="card mb-5">
     <div class="card-header">
-        {{ trans('global.create') }} {{ trans('cruds.expensesIncome.title_singular') }}
+   {{ trans('cruds.expensesIncome.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label class="required">{{ trans('cruds.expensesIncome.fields.category') }}</label>
                 <select class="form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" id="category" required>
-                    <option value disabled {{ old('category', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    <option value disabled >{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\ExpensesIncome::CATEGORY_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('category', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
@@ -33,7 +33,7 @@
                 <label for="patient_id">{{ trans('cruds.expensesIncome.fields.patient') }}</label>
                 <select class="form-control select2 {{ $errors->has('patient') ? 'is-invalid' : '' }}" name="patient_id" id="patient_id">
                     @foreach($patients as $id => $entry)
-                        <option value="{{ $id }}" {{ old('patient_id', $patient->id) == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        <option value="{{ $id }}" >{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('patient'))

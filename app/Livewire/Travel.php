@@ -332,7 +332,7 @@ class Travel extends Component
         $this->reset();
         $this->currentStep = 1;
 
-        return redirect('admin/travel')->with('success', 'Travel created successfully');
+        return redirect('admin/travel')->with('success', trans('global.success_Create_Message'));
 
         // return redirect()->route('travel', $data);
         // return redirect()->route('admin.travels.index', compact('data'));

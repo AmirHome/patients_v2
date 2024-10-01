@@ -105,7 +105,12 @@
                     }
                 },
                 { data: 'patient_name', name: 'patient.name' },
-                { data: 'patient_phone', name: 'patient.phone' },
+                { data: 'patient_phone', name: 'patient.phone',
+                     render: function(data, type, row) {
+                        let phoneNumber = data.replace(/\D/g, ''); // Sadece rakamları alalım
+                        return '<a class="clickable-cell" href="https://api.whatsapp.com/send?phone=' + phoneNumber + '" target="_blank">' + data + '</a>';
+                    }
+                 },
                 { data: 'hospital_name', name: 'hospital.name' },
                 { data: 'group_name', name: 'group_name',visible: false },
                 { data: 'department_name', name: 'department.name' },
