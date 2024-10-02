@@ -99,7 +99,7 @@
 { data: 'name', name: 'name' },
 { data: 'address', name: 'address' },
 { data: 'email', name: 'email' },
-{ data: 'phone', name: 'phone', },
+{ data: 'phone', name: 'phone' },
 { data: 'fax', name: 'fax' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
