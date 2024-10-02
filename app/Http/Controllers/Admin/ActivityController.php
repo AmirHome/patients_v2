@@ -146,7 +146,8 @@ class ActivityController extends Controller
         if (count($activity->document_file) > 0) {
             foreach ($activity->document_file as $media) {
                 if (! in_array($media->file_name, $request->input('document_file', []))) {
-                    $media->delete();
+                    // $media->delete();
+                    Media::where('id', $media->id)->delete();
                 }
             }
         }

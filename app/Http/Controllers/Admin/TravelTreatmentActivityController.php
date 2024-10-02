@@ -142,7 +142,8 @@ class TravelTreatmentActivityController extends Controller
         if (count($travelTreatmentActivity->treatment_file) > 0) {
             foreach ($travelTreatmentActivity->treatment_file as $media) {
                 if (! in_array($media->file_name, $request->input('treatment_file', []))) {
-                    $media->delete();
+                    // $media->delete();
+                    Media::where('id', $media->id)->delete();
                 }
             }
         }

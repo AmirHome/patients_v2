@@ -92,14 +92,22 @@
             removedfile: function(file) {
                 file.previewElement.remove()
                 var name = ''
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name
+                // if (typeof file.file_name !== 'undefined') {
+                if (uploadedActivityFileMap[file.name] === undefined) {
+
+                    name = file.name
                 } else {
                     name = uploadedActivityFileMap[file.name]
-
                     delete uploadedActivityFileMap[file.name];
                 }
-                $('form').find('input[name="document_file[]"][value="' + name + '"]').remove()
+                $('form').find('input[name="document_file[]"][value="' + name + '"]').remove();
+
+                // console.log('removedfile');
+                // console.log(uploadedActivityFileMap);
+                // var treatmentFiles = $('form').find('input[name="document_file[]"]').map(function() {
+                //         return $(this).val();
+                //     }).get();
+                // console.log(treatmentFiles);
             },
             init: function() {
                 @if (isset($activity) && $activity->document_file)

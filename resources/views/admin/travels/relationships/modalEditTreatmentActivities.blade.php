@@ -72,65 +72,7 @@
 @section('scripts')
     @parent
     <script>
-        // Treatment File
-        var uploadedTreatmentFileMap = {}
-        Dropzone.options.treatmentFileDropzone = {
-            url: '{{ route('admin.travel-treatment-activities.storeMedia') }}',
-            maxFilesize: 100, // MB
-            acceptedFiles: '.jpeg,.jpg,.png,.gif,.pdf,.doc,.docx,.xls,.xlsx,.zip,.rar',
-            addRemoveLinks: true,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            params: {
-                size: 2
-            },
-            success: function(file, response) {
-                $('form').append('<input type="hidden" name="treatment_file[]" value="' + response.name + '">')
-                uploadedTreatmentFileMap[file.name] = response.name
-
-            },
-            removedfile: function(file) {
-                file.previewElement.remove()
-                var name = ''
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name
-                } else {
-                    name = uploadedTreatmentFileMap[file.name]
-
-                    delete uploadedTreatmentFileMap[file.name];
-                }
-                $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
-            },
-            init: function() {
-                @if (isset($travelTreatmentActivity) && $travelTreatmentActivity->treatment_file)
-                    var files =
-                        {!! json_encode($travelTreatmentActivity->treatment_file) !!}
-                    for (var i in files) {
-                        var file = files[i]
-                        this.options.addedfile.call(this, file)
-                        file.previewElement.classList.add('dz-complete')
-                        $('form').append('<input type="hidden" name="treatment_file[]" value="' + file.file_name +
-                            '">')
-                    }
-                @endif
-            },
-            error: function(file, response) {
-                if ($.type(response) === 'string') {
-                    var message = response //dropzone sends it's own error messages in string
-                } else {
-                    var message = response.errors.file
-                }
-                file.previewElement.classList.add('dz-error')
-                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-                _results = []
-                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                    node = _ref[_i]
-                    _results.push(node.textContent = message)
-                }
-                return _results
-            }
-        }
+        // init Dropzone on modal add Treatment Activities
 
         // GUIDE Modal AJAX Script
         var filesAddedWithEmit = [];

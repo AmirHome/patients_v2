@@ -90,16 +90,35 @@
 
             },
             removedfile: function(file) {
+                // file.previewElement.remove()
+                // var name = ''
+                // if (typeof file.file_name !== 'undefined') {
+                //     name = file.file_name
+                // } else {
+                //     name = uploadedTreatmentFileMap[file.name]
+
+                //     delete uploadedTreatmentFileMap[file.name];
+                // }
+                // $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
+
                 file.previewElement.remove()
                 var name = ''
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name
+                // if (typeof file.file_name !== 'undefined') {
+                if (uploadedTreatmentFileMap[file.name] === undefined) {
+
+                    name = file.name
                 } else {
                     name = uploadedTreatmentFileMap[file.name]
-
                     delete uploadedTreatmentFileMap[file.name];
                 }
-                $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove()
+                $('form').find('input[name="treatment_file[]"][value="' + name + '"]').remove();
+
+                // console.log('removedfile');
+                // console.log(uploadedTreatmentFileMap);
+                // var treatmentFiles = $('form').find('input[name="treatment_file[]"]').map(function() {
+                //         return $(this).val();
+                //     }).get();
+                // console.log(treatmentFiles);
             },
             init: function() {
                 @if (isset($travelTreatmentActivity) && $travelTreatmentActivity->treatment_file)
